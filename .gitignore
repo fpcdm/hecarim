@@ -1,3 +1,4 @@
 #ignore userdata
 */xcuserdata
+*/xcuserdata/*
 .DS_Store
