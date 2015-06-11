@@ -25,7 +25,7 @@
                         ],
                       @[
                         @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址", @"data" : @""},
-                        @{@"id" : @"profile", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"个人资料", @"data" : @""},
+                        @{@"id" : @"profile", @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料", @"data" : @""},
                         @{@"id" : @"safety", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"账户与安全", @"data" : @""},
                         ],
                       @[
@@ -106,8 +106,13 @@
 #pragma mark - Action
 - (void)actionContact:(NSDictionary *)cellData
 {
-    NSString *tel = [NSString stringWithFormat:@"telprompt://%@", [cellData objectForKey:@"data"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
+    NSString *tel = [cellData objectForKey:@"data"];
+    [self.delegate actionContact:tel];
+}
+
+- (void)actionProfile
+{
+    [self.delegate actionProfile];
 }
 
 @end

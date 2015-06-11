@@ -9,6 +9,7 @@
 #import "AccountViewController.h"
 #import "AccountView.h"
 #import "SettingViewController.h"
+#import "ProfileViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -34,13 +35,26 @@
     
     UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置"];
     barButtonItem.target = self;
-    barButtonItem.action = @selector(pushSetting);
+    barButtonItem.action = @selector(actionSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
-- (void)pushSetting
+#pragma mark - Action
+- (void)actionSetting
 {
     SettingViewController *viewController = [[SettingViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)actionContact:(NSString *)tel
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", tel];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
+- (void)actionProfile
+{
+    ProfileViewController *viewController = [[ProfileViewController alloc] init];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

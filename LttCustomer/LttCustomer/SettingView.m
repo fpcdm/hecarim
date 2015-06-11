@@ -8,7 +8,7 @@
 
 #import "SettingView.h"
 
-@interface SettingView () <UIActionSheetDelegate>
+@interface SettingView ()
 
 @end
 
@@ -34,7 +34,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 30;
+        return 10;
     } else {
         return 0;
     }
@@ -63,32 +63,10 @@
     return cell;
 }
 
-#pragma mark - Sheet
-//弹出sheet
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (actionSheet.tag != 1) return;
-    
-    switch (buttonIndex) {
-        //确定
-        case 0:
-            DDLogDebug(@"todo: delegate 清除缓存");
-            break;
-        //取消
-        default:
-            break;
-    }
-}
-
 #pragma mark - Action
 - (void)actionClear
 {
-    UIActionSheet *sheet = [UIActionSheet alloc];
-    
-    sheet = [sheet initWithTitle:@"确定清除缓存吗" delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
-    
-    sheet.tag = 1;
-    [sheet showInView:self];
+    [self.delegate actionClear];
 }
 
 @end

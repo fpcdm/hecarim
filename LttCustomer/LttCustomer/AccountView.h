@@ -10,6 +10,10 @@
 
 @protocol AccountViewDelegate <NSObject>
 
+- (void)actionContact:(NSString *)tel;
+
+- (void)actionProfile;
+
 @end
 
 @interface AccountView : AppTableView

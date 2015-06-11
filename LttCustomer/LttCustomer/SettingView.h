@@ -10,6 +10,8 @@
 
 @protocol SettingViewDelegate <NSObject>
 
+- (void)actionClear;
+
 @end
 
 @interface SettingView : AppTableView

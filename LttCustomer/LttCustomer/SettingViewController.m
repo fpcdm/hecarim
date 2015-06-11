@@ -9,7 +9,7 @@
 #import "SettingViewController.h"
 #import "SettingView.h"
 
-@interface SettingViewController () <SettingViewDelegate>
+@interface SettingViewController () <SettingViewDelegate, UIActionSheetDelegate>
 
 @end
 
@@ -31,6 +31,34 @@
     [super viewDidLoad];
     
     self.title = @"设置";
+}
+
+#pragma mark - Sheet
+//弹出sheet
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag != 1) return;
+    
+    switch (buttonIndex) {
+            //确定
+        case 0:
+            DDLogDebug(@"todo: delegate 清除缓存");
+            break;
+            //取消
+        default:
+            break;
+    }
+}
+
+#pragma mark - Action
+- (void)actionClear
+{
+    UIActionSheet *sheet = [UIActionSheet alloc];
+    
+    sheet = [sheet initWithTitle:@"确定清除缓存吗" delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
+    
+    sheet.tag = 1;
+    [sheet showFromTabBar:self.tabBarController.tabBar];
 }
 
 @end
