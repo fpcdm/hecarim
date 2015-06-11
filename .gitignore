@@ -1,4 +1,5 @@
 #ignore userdata
 */xcuserdata
 */xcuserdata/*
+*/*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
 .DS_Store
