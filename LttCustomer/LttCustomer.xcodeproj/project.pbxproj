@@ -10,6 +10,8 @@
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
 		2F39E3061B297AB60064CA28 /* AppUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E3051B297AB60064CA28 /* AppUIUtil.m */; };
 		2F39E3081B297ADE0064CA28 /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F39E3071B297ADE0064CA28 /* nopic.png */; };
+		2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E30A1B2983300064CA28 /* SettingViewController.m */; };
+		2F39E3101B2983F10064CA28 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E30F1B2983F10064CA28 /* SettingView.m */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F54CB3A1AFB3E0C00295A8D /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F54CB391AFB3E0C00295A8D /* OrderEntity.m */; };
 		2F54CB3D1AFB3F0300295A8D /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F54CB3C1AFB3F0300295A8D /* GoodsEntity.m */; };
@@ -157,6 +159,10 @@
 		2F39E3041B297AB60064CA28 /* AppUIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUIUtil.h; sourceTree = "<group>"; };
 		2F39E3051B297AB60064CA28 /* AppUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUIUtil.m; sourceTree = "<group>"; };
 		2F39E3071B297ADE0064CA28 /* nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopic.png; sourceTree = "<group>"; };
+		2F39E3091B2983300064CA28 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		2F39E30A1B2983300064CA28 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		2F39E30E1B2983F10064CA28 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		2F39E30F1B2983F10064CA28 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F54CB381AFB3E0C00295A8D /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
 		2F54CB391AFB3E0C00295A8D /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
@@ -556,6 +562,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F39E30C1B2983B80064CA28 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				2FE4623F1B27E4F700780AF5 /* AccountView.h */,
+				2FE462401B27E4F700780AF5 /* AccountView.m */,
+				2F39E30E1B2983F10064CA28 /* SettingView.h */,
+				2F39E30F1B2983F10064CA28 /* SettingView.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		2F39E30D1B2983BF0064CA28 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF3F751B2821AA00C0DC54 /* HomeView.h */,
+				2FBF3F761B2821AA00C0DC54 /* HomeView.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		2F628BEF1AE88FF800530B07 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,10 +642,8 @@
 		2F628BF41AE8903200530B07 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2FE4623F1B27E4F700780AF5 /* AccountView.h */,
-				2FE462401B27E4F700780AF5 /* AccountView.m */,
-				2FBF3F751B2821AA00C0DC54 /* HomeView.h */,
-				2FBF3F761B2821AA00C0DC54 /* HomeView.m */,
+				2F39E30D1B2983BF0064CA28 /* Home */,
+				2F39E30C1B2983B80064CA28 /* Account */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -899,6 +923,8 @@
 			children = (
 				2F9BD1A21B26E19E00632751 /* AccountViewController.h */,
 				2F9BD1A31B26E19E00632751 /* AccountViewController.m */,
+				2F39E3091B2983300064CA28 /* SettingViewController.h */,
+				2F39E30A1B2983300064CA28 /* SettingViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -1390,6 +1416,7 @@
 				2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */,
 				2F89A6361B0EC8E80043B236 /* GoodsHandler.m in Sources */,
 				2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */,
+				2F39E3101B2983F10064CA28 /* SettingView.m in Sources */,
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
 				2FED82C11B1EDBFB00306A11 /* split.c in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
@@ -1437,6 +1464,7 @@
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
+				2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */,
 				2FCAF84E1B20136900F3B084 /* AppStorageUtil.m in Sources */,
 				2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */,
 				2F9000441B1D8B930040D97B /* UIView+Toast.m in Sources */,

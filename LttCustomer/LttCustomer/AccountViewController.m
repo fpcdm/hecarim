@@ -8,6 +8,7 @@
 
 #import "AccountViewController.h"
 #import "AccountView.h"
+#import "SettingViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -32,8 +33,15 @@
     self.title = @"账户";
     
     UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置"];
+    barButtonItem.target = self;
+    barButtonItem.action = @selector(pushSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;
-    
+}
+
+- (void)pushSetting
+{
+    SettingViewController *viewController = [[SettingViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
