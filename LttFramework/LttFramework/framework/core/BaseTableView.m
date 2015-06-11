@@ -30,16 +30,16 @@ static NSString *cellReuseIdentifier = @"cell";
      
      self.tableData = [[NSMutableArray alloc] initWithObjects:
         @[
-        @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0},
+            @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0},
         ],
         @[
-            @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
-            @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0},
-            @{@"id" : @"safety", @"index" : @3, @"type" : @"action", @"image": @"", @"text" : @"账户与安全", @"data" : @"", @"height": @0},
+            @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
+            @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"action": @"actionProfile:", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0},
+            @{@"id" : @"safety", @"index" : @3, @"type" : @"action", @"action": @"actionSafety:indexPath:", @"image": @"", @"text" : @"账户与安全", @"data" : @"", @"height": @0},
         ],
         @[
-            @{@"id" : @"feedback", @"index" : @4, @"type" : @"action", @"image": @"", @"text" : @"意见反馈", @"data" : @"", @"height": @0},
-            @{@"id" : @"contact", @"index" : @5, @"type" : @"custom", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555", @"height": @0},
+            @{@"id" : @"feedback", @"index" : @4, @"type" : @"action", @"action": @"actionFeedback:", @"image": @"", @"text" : @"意见反馈", @"data" : @"", @"height": @0},
+            @{@"id" : @"contact", @"index" : @5, @"type" : @"custom", @"action": @"actionContact", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555", @"height": @0},
         ],
         nil];
      ****************************************************************/
@@ -85,8 +85,7 @@ static NSString *cellReuseIdentifier = @"cell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *sectionData = [self.tableData objectAtIndex:indexPath.section];
-    NSDictionary *cellData = [sectionData objectAtIndex:indexPath.row];
+    NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
     
     NSNumber *height = [cellData objectForKey:@"height"];
     if (height != nil && [height floatValue] > 0.0f) {
@@ -113,8 +112,7 @@ static NSString *cellReuseIdentifier = @"cell";
         cell = [[UITableViewCell alloc] init];
     }
     
-    NSArray *sectionData = [self.tableData objectAtIndex:indexPath.section];
-    NSDictionary *cellData = [sectionData objectAtIndex:indexPath.row];
+    NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
     
     NSString *type = [cellData objectForKey:@"type"];
     //normal
@@ -164,6 +162,39 @@ static NSString *cellReuseIdentifier = @"cell";
         cell = [self tableView:tableView customCellForRowAtIndexPath:indexPath withCell:cell];
         return cell;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+    NSString *action = [cellData objectForKey:@"action"];
+    if (action == nil || [action length] < 1) {
+        return;
+    }
+    
+    //分析SEL参数个数
+    NSArray *components = [action componentsSeparatedByString:@":"];
+    NSUInteger paramCount = (components != nil) ? [components count] : 0;
+    if (paramCount < 1) {
+        return;
+    }
+    
+    //根据参数个数传参数，最多支持两个参数
+    SEL selector = NSSelectorFromString(action);
+    if (paramCount == 1) {
+        [self performSelector:selector];
+    } else if (paramCount == 2) {
+        [self performSelector:selector withObject:cellData];
+    } else {
+        [self performSelector:selector withObject:tableView withObject:indexPath];
+    }
+}
+
+- (NSDictionary *)tableView:(UITableView *)tableView cellDataForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *sectionData = [self.tableData objectAtIndex:indexPath.section];
+    NSDictionary *cellData = [sectionData objectAtIndex:indexPath.row];
+    return cellData;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell

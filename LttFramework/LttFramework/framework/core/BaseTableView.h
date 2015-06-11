@@ -14,6 +14,8 @@
 
 @property (retain, nonatomic) NSMutableArray *tableData;
 
+- (NSDictionary *)tableView:(UITableView *)tableView cellDataForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell;
 
 @end

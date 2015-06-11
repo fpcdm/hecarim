@@ -21,16 +21,16 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0},
+                        @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @60},
                         ],
                       @[
-                        @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
-                        @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0},
-                        @{@"id" : @"safety", @"index" : @3, @"type" : @"action", @"image": @"", @"text" : @"账户与安全", @"data" : @"", @"height": @0},
+                        @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
+                        @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0},
+                        @{@"id" : @"safety", @"index" : @3, @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全", @"data" : @"", @"height": @0},
                         ],
                       @[
-                        @{@"id" : @"feedback", @"index" : @4, @"type" : @"action", @"image": @"", @"text" : @"意见反馈", @"data" : @"", @"height": @0},
-                        @{@"id" : @"contact", @"index" : @5, @"type" : @"custom", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555", @"height": @0},
+                        @{@"id" : @"feedback", @"index" : @4, @"type" : @"action", @"action": @"actionFeedback", @"image": @"", @"text" : @"意见反馈", @"data" : @"", @"height": @0},
+                        @{@"id" : @"contact", @"index" : @5, @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555", @"height": @0},
                         ],
                       nil];
     
@@ -57,13 +57,38 @@
 #pragma mark - TableView
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell
 {
+    NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+    
+    NSString *id = [cellData objectForKey:@"id"];
+    //info
+    if ([@"info" isEqualToString:id]) {
+        
+    //contact
+    } else {
+        UILabel *contactLabel = [[UILabel alloc] init];
+        contactLabel.text = [cellData objectForKey:@"data"];
+        contactLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+        [cell addSubview:contactLabel];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        [contactLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(cell.textLabel.mas_top);
+            make.bottom.equalTo(cell.textLabel.mas_bottom);
+            
+            make.right.equalTo(cell.mas_right).offset(-30);
+        }];
+    }
+    
     return cell;
 }
 
+
+
 #pragma mark - Action
-- (void)actionAddress
+- (void)actionContact:(NSDictionary *)cellData
 {
-    
+    NSLog(@"contact: %@", cellData);
 }
 
 @end
