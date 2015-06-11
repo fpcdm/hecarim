@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "Config.h"
+#import "AppUIUtil.h"
 
 @interface AppViewController : BaseViewController
 {
@@ -19,7 +20,6 @@
     BOOL showBackBar;
 }
 
-- (UIBarButtonItem *) makeBarButtonItem: (NSString *) title;
 - (BOOL) checkLogin;
 
 @end

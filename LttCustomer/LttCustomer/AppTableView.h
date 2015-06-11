@@ -8,6 +8,7 @@
 
 #import "BaseTableView.h"
 #import "Config.h"
+#import "AppUIUtil.h"
 
 @interface AppTableView : BaseTableView
 

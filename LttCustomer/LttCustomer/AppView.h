@@ -8,6 +8,7 @@
 
 #import "BaseView.h"
 #import "Config.h"
+#import "AppUIUtil.h"
 
 @interface AppView : BaseView
 

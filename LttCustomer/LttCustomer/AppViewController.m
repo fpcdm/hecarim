@@ -33,30 +33,15 @@
     
     //左侧返回栏
     if (showBackBar) {
-        UIBarButtonItem *barButtonItem = [self makeBarButtonItem:@" <"];
+        UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@" <"];
         [barButtonItem setTarget:self];
         [barButtonItem setAction:@selector(navigationBack)];
-        [barButtonItem setTitleTextAttributes:@{
-                                                NSFontAttributeName:[UIFont systemFontOfSize:16]
-                                                } forState:UIControlStateNormal];
         self.navigationItem.leftBarButtonItem = barButtonItem;
     }
 }
 
 - (void)navigationBack {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (UIBarButtonItem *) makeBarButtonItem: (NSString *) title {
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] init];
-    barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
-    barButtonItem.title = title;
-    
-    [barButtonItem setTitleTextAttributes:@{
-                                            NSFontAttributeName:[UIFont systemFontOfSize:SIZE_BAR_TEXT]
-                                            } forState:UIControlStateNormal];
-    
-    return barButtonItem;
 }
 
 - (BOOL) checkLogin {

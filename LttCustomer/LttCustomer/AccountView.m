@@ -21,7 +21,7 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @60},
+                        @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"", @"data" : @"大勇", @"height": @60},
                         ],
                       @[
                         @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址", @"data" : @""},
@@ -62,7 +62,27 @@
     NSString *id = [cellData objectForKey:@"id"];
     //info
     if ([@"info" isEqualToString:id]) {
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.image = [AppUIUtil nopicImage];
+        [cell addSubview:imageView];
         
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(cell.mas_top).offset(10);
+            make.left.equalTo(cell.mas_left).offset(10);
+            
+            make.width.equalTo(@40);
+            make.height.equalTo(@40);
+        }];
+        
+        UILabel *nameLabel = [UILabel new];
+        nameLabel.text = [cellData objectForKey:@"data"];
+        nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        [cell addSubview:nameLabel];
+        
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.centerY.equalTo(cell.mas_centerY);
+            make.left.equalTo(imageView.mas_right).offset(10);
+        }];
     //contact
     } else {
         UILabel *contactLabel = [[UILabel alloc] init];

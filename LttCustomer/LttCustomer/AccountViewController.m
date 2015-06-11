@@ -31,7 +31,7 @@
     
     self.title = @"账户";
     
-    UIBarButtonItem *barButtonItem = [self makeBarButtonItem:@"设置"];
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置"];
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
 }
