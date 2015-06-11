@@ -24,8 +24,9 @@ static NSString *cellReuseIdentifier = @"cell";
     
     /****************************************************************
      tableData数据格式介绍：
-     type: normal|action|custom
-     字段：可自定义字段，加入更多默认功能
+     默认字段：id,index,type,action,text,image,height,data
+     type取值: normal|action|custom
+     自定义字段：可自定义字段，加入更多默认功能
      优化：可以将NSDictionry改为TableCellEntity之类的数据固定格式，从而简化访问
      
      self.tableData = [[NSMutableArray alloc] initWithObjects:

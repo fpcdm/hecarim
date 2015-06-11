@@ -21,16 +21,16 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @60},
+                        @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @60},
                         ],
                       @[
-                        @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
-                        @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0},
-                        @{@"id" : @"safety", @"index" : @3, @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全", @"data" : @"", @"height": @0},
+                        @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址", @"data" : @""},
+                        @{@"id" : @"profile", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"个人资料", @"data" : @""},
+                        @{@"id" : @"safety", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"账户与安全", @"data" : @""},
                         ],
                       @[
-                        @{@"id" : @"feedback", @"index" : @4, @"type" : @"action", @"action": @"actionFeedback", @"image": @"", @"text" : @"意见反馈", @"data" : @"", @"height": @0},
-                        @{@"id" : @"contact", @"index" : @5, @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555", @"height": @0},
+                        @{@"id" : @"feedback", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"意见反馈", @"data" : @""},
+                        @{@"id" : @"contact", @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555"},
                         ],
                       nil];
     
@@ -83,12 +83,11 @@
     return cell;
 }
 
-
-
 #pragma mark - Action
 - (void)actionContact:(NSDictionary *)cellData
 {
-    NSLog(@"contact: %@", cellData);
+    NSString *tel = [NSString stringWithFormat:@"telprompt://%@", [cellData objectForKey:@"data"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
 }
 
 @end
