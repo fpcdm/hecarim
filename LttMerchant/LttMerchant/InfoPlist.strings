@@ -1,0 +1,36 @@
+/* 
+  InfoPlist.strings
+  LttCustomer
+
+  Created by wuyong on 15/5/6.
+  Copyright (c) 2015年 Gilbert. All rights reserved.
+*/
+
+//系统错误
+"ERROR_GPS_LOCATION" = "请开启手机定位哦~亲！";
+
+"ERROR_PARAM_REQUIRED" = "页面出错了哦~亲！";
+
+//业务错误
+"ERROR_MOBILE_REQUIRED" = "请填写手机号哦~亲！";
+"ERROR_MOBILE_FORMAT" = "手机号不正确哦~亲！";
+"ERROR_PASSWORD_REQUIRED" = "请填写密码哦~亲！";
+
+//提示消息
+"TIP_LOADING_MESSAGE" = "加载中";
+"TIP_LOADING_SUCCESS" = "加载完成";
+"TIP_LOADING_FAILURE" = "加载失败";
+
+"TIP_REQUEST_MESSAGE" = "请求中";
+"TIP_REQUEST_SUCCESS" = "请求成功";
+"TIP_REQUEST_FAILURE" = "请求失败";
+
+"TIP_LOGIN_LOADING" = "正在登陆";
+"TIP_LOGIN_SUCCESS" = "登陆成功";
+
+"TIP_INTENTION_LAST" = "您抢到的单还未处理完成\n请先处理完哦~亲！";
+"TIP_INTENTION_COME" = "有新的订单，快来抢哦~亲！";
+
+"TIP_CHALLENGE_START" = "开始抢单";
+"TIP_CHALLENGE_SUCCESS" = "抢单成功";
+"TIP_CHALLENGE_FAIL" = "抢单失败，下次手快点哦~亲！";
