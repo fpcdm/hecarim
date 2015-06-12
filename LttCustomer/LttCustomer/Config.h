@@ -55,14 +55,32 @@
 #define ORDER_STATUS_FAIL @"fail"
 
 //颜色配置
+//主背景
 #define COLOR_MAIN_BG @"EEEEEE"
+//主边框
 #define COLOR_MAIN_BORDER @"D8D8D8"
-#define COLOR_MAIN_TITLE_BG @"FF4400"
-#define COLOR_MAIN_TITLE @"FFFFFF"
+//主标题背景
+#define COLOR_MAIN_TITLE_BG @"F8F8F8"
+//主标题
+#define COLOR_MAIN_TITLE @"000000"
+//首页标题背景
+#define COLOR_INDEX_TITLE_BG @"F15353"
+//首页标题文字
+#define COLOR_INDEX_TITLE @"FFFFFF"
+//文字颜色
 #define COLOR_MAIN_TEXT @"000000"
+//文字高亮
+#define COLOR_MAIN_TEXT_HIGHLIGHTED @"F15353"
+//文字背景
 #define COLOR_MAIN_TEXT_BG @"FFFFFF"
+//button 文字
 #define COLOR_MAIN_BUTTON @"FFFFFF"
-#define COLOR_MAIN_BUTTON_BG @"FF0000"
+//button 背景
+#define COLOR_MAIN_BUTTON_BG @"F15353"
+//tabbar背景
+#define COLOR_MAIN_TABBAR_BG @"F8F8F8"
+//tabbar高亮
+#define COLOR_MAIN_TARBAR_HIGHLIGHTED @"F15353"
 
 //字体配置
 #define SIZE_TITLE_TEXT 18

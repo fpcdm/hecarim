@@ -33,6 +33,20 @@
     }
 #endif
     
+    //全局导航栏颜色
+    UINavigationBar *navigationBar = [UINavigationBar appearance];
+    navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+    navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+    navigationBar.titleTextAttributes = @{
+                                          NSFontAttributeName:[UIFont systemFontOfSize:SIZE_TITLE_TEXT],
+                                          NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
+                                          };
+    
+    //全局TabBar颜色
+    UITabBar *tabBar = [UITabBar appearance];
+    tabBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TABBAR_BG];
+    tabBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TARBAR_HIGHLIGHTED];
+    
     //初始化控制器
     [self initViewController];
     
@@ -68,11 +82,8 @@
     tabBarController.viewControllers = [NSArray arrayWithObjects:firstNavigationController, secondNavigationController, thirdNavigationController, forthNavigationController, nil];
     
     self.window.rootViewController = tabBarController;
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     [self.window makeKeyAndVisible];
-    
-    //状态栏颜色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

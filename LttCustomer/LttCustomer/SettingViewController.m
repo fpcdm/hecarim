@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad
 {
-    showBackBar = YES;
     [super viewDidLoad];
     
     self.title = @"设置";

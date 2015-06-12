@@ -13,9 +13,20 @@
 
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title
 {
+    return [self makeBarButtonItem:title highlighted:NO];
+}
+
++ (UIBarButtonItem *) makeBarButtonItem: (NSString *) title highlighted:(BOOL) highlighted
+{
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] init];
-    barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
-    barButtonItem.title = title;
+    
+    if (highlighted) {
+        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
+        barButtonItem.title = title;
+    } else {
+        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+        barButtonItem.title = title;
+    }
     
     [barButtonItem setTitleTextAttributes:@{
                                             NSFontAttributeName:[UIFont systemFontOfSize:SIZE_BAR_TEXT]

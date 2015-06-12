@@ -12,4 +12,17 @@
 
 @interface BaseView : UIView
 
+- (id)initWithData:(NSDictionary *)data;
+
+- (id)initWithData:(NSDictionary *)data frame:(CGRect)frame;
+
+//设置数据，init之后调用
+- (void)setData:(NSString *)key value:(id)value;
+
+//获取数据，init之后调用
+- (id)getData:(NSString *)key;
+
+//渲染数据，init之后调用
+- (void)renderData;
+
 @end

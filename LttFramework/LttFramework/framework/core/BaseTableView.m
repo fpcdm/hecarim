@@ -68,6 +68,14 @@ static NSString *cellReuseIdentifier = @"cell";
     return self;
 }
 
+#pragma mark - reloadData
+- (void) reloadData
+{
+    NSLog(@"dddd:");
+    return;
+    
+}
+
 #pragma mark - TableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

@@ -37,6 +37,8 @@
     //退出按钮
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:@"退出当前账号" forState:UIControlStateNormal];
+    [button.layer setMasksToBounds:YES];
+    [button.layer setCornerRadius:10.0];
     button.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
     button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
     [self addSubview:button];
@@ -87,7 +89,7 @@
     } else {
         UILabel *contactLabel = [[UILabel alloc] init];
         contactLabel.text = [cellData objectForKey:@"data"];
-        contactLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+        contactLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
         [cell addSubview:contactLabel];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

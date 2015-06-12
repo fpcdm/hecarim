@@ -9,5 +9,51 @@
 #import "BaseView.h"
 
 @implementation BaseView
+{
+    NSMutableDictionary *viewData;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    if (viewData == nil) {
+        viewData = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
+
+- (id)initWithData:(NSDictionary *)data
+{
+    viewData = [[NSMutableDictionary alloc] initWithDictionary:data];
+    
+    return [self init];
+}
+
+- (id)initWithData:(NSDictionary *)data frame:(CGRect)frame
+{
+    self = [self initWithData:data];
+    
+    self.frame = frame;
+    
+    return self;
+}
+
+- (void)setData: (NSString *)key value:(id)value
+{
+    [viewData setObject:value forKey:key];
+}
+
+- (id)getData:(NSString *)key
+{
+    return [viewData objectForKey:key];
+}
+
+- (void)reloadData
+{
+    
+}
 
 @end

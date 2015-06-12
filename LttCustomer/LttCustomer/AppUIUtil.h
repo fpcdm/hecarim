@@ -13,6 +13,8 @@
 
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title;
 
++ (UIBarButtonItem *) makeBarButtonItem: (NSString *) title highlighted:(BOOL) highlighted;
+
 + (UIImage *) nopicImage;
 
 @end

@@ -21,9 +21,9 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"photo", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"头像", @"data" : @""},
-                        @{@"id" : @"nickname", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"昵称", @"data" : @""},
-                        @{@"id" : @"sex", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"性别", @"data" : @""},
+                        @{@"id" : @"photo", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"头像", @"data" : @"", @"height" : @60},
+                        @{@"id" : @"nickname", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"昵称", @"data" : @""},
+                        @{@"id" : @"sex", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"性别", @"data" : @""},
                         ],
                       nil];
     
@@ -47,6 +47,20 @@
     NSString *id = [cellData objectForKey:@"id"];
     //photo
     if ([@"photo" isEqualToString:id]) {
+        UIImageView *imageView = [UIImageView new];
+        imageView.image = [AppUIUtil nopicImage];
+        [cell addSubview:imageView];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(cell.mas_top).offset(10);
+            make.bottom.equalTo(cell.mas_bottom).offset(-10);
+            make.right.equalTo(cell.mas_right).offset(-30);
+            
+            make.width.equalTo(@40);
+            make.height.equalTo(@40);
+        }];
     }
     
     return cell;

@@ -19,29 +19,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //全局背景色
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
-    //导航栏颜色
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
-    self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSFontAttributeName:[UIFont systemFontOfSize:SIZE_TITLE_TEXT],
-                                                                    NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
-                                                                    };
-    //隐藏TabBar
-    self.tabBarController.tabBar.hidden = hideTabBar ? YES : NO;
-    
-    //左侧返回栏
-    if (showBackBar) {
-        UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@" <"];
-        [barButtonItem setTarget:self];
-        [barButtonItem setAction:@selector(navigationBack)];
-        self.navigationItem.leftBarButtonItem = barButtonItem;
+    //是否有返回按钮(子页面生效)
+    if (hasBackButton) {
+        UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:@""];
+        self.navigationItem.backBarButtonItem = backButtonItem;
     }
 }
 
-- (void)navigationBack {
-    [self.navigationController popViewControllerAnimated:YES];
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //隐藏TabBar
+    self.tabBarController.tabBar.hidden = showTabBar ? NO : YES;
+    
+    //状态栏颜色
+    if (isIndexNavBar) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    } else {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    }
+    
+    //导航栏高亮，返回时保留
+    if (isIndexNavBar) {
+        UINavigationBar *navigationBar = self.navigationController.navigationBar;
+        navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE_BG];
+        navigationBar.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
+        navigationBar.titleTextAttributes = @{
+                                              NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_INDEX_TITLE]
+                                              };
+    } else {
+        UINavigationBar *navigationBar = self.navigationController.navigationBar;
+        navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+        navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+        navigationBar.titleTextAttributes = @{
+                                              NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
+                                              };
+    }
 }
 
 - (BOOL) checkLogin {

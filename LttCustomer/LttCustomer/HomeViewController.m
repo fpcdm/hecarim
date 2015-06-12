@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad
 {
+    showTabBar = YES;
     [super viewDidLoad];
     
     self.title = @"首页";

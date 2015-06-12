@@ -13,11 +13,14 @@
 
 @interface AppViewController : BaseViewController
 {
-    //是否隐藏TabBar
-    BOOL hideTabBar;
+    //是否显示TabBar
+    BOOL showTabBar;
     
-    //是否含有返回按钮
-    BOOL showBackBar;
+    //是否有返回按钮(子页面生效)
+    BOOL hasBackButton;
+    
+    //是否是首页导航栏(背景高亮)
+    BOOL isIndexNavBar;
 }
 
 - (BOOL) checkLogin;

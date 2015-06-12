@@ -29,11 +29,14 @@
 
 - (void)viewDidLoad
 {
+    showTabBar = YES;
+    isIndexNavBar = YES;
+    hasBackButton = YES;
     [super viewDidLoad];
     
     self.title = @"账户";
     
-    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置"];
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;
