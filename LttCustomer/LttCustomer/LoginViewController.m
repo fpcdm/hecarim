@@ -47,7 +47,7 @@
     
     [[StorageUtil sharedStorage] setUser:user];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    //跳转首页
 }
 
 @end

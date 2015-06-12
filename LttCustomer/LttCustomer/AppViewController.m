@@ -8,7 +8,7 @@
 
 #import "AppViewController.h"
 #import "LoginViewController.h"
-#import "StorageUtil.h"
+#import "AppStorageUtil.h"
 
 @interface AppViewController ()
 
@@ -58,28 +58,21 @@
     }
 }
 
-- (BOOL) needLogin {
-    return NO;
-}
-
 - (BOOL) isLogin {
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     if (user) {
         return YES;
     } else {
         return NO;
+        
     }
 }
 
-- (void)pushAppViewController:(AppViewController *)viewController animated:(BOOL)animated {
-    BOOL needLogin = [viewController needLogin];
-    //不需要登陆或已经登陆
-    if (!needLogin || [self isLogin]) {
-        [self.navigationController pushViewController:viewController animated:animated];
-    } else {
-        LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        [self.navigationController pushViewController:loginViewController animated:animated];
-    }
+- (void) checkLogin {
+    if ([self isLogin]) return;
+    
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:loginViewController animated:YES];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AppUserViewController.h"
+#import "LoginViewController.h"
 
 @interface AppUserViewController ()
 
@@ -14,8 +15,10 @@
 
 @implementation AppUserViewController
 
-- (BOOL) needLogin {
-    return YES;
+- (void) viewDidLoad {
+    //[self checkLogin];
+    
+    [super viewDidLoad];
 }
 
 @end
