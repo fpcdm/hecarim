@@ -64,7 +64,7 @@
 //主标题
 #define COLOR_MAIN_TITLE @"000000"
 //首页标题背景
-#define COLOR_INDEX_TITLE_BG @"F15353"
+#define COLOR_INDEX_TITLE_BG @"E2383B"
 //首页标题文字
 #define COLOR_INDEX_TITLE @"FFFFFF"
 //文字颜色

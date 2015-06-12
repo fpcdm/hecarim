@@ -10,9 +10,13 @@
 
 @protocol AccountViewDelegate <NSObject>
 
+@required
+
 - (void)actionContact:(NSString *)tel;
 
 - (void)actionProfile;
+
+- (void)actionLogout;
 
 @end
 

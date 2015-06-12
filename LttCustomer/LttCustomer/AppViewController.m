@@ -58,17 +58,28 @@
     }
 }
 
-- (BOOL) checkLogin {
-    //已登录
+- (BOOL) needLogin {
+    return NO;
+}
+
+- (BOOL) isLogin {
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     if (user) {
         return YES;
+    } else {
+        return NO;
     }
-    
-    //跳转登陆
-    LoginViewController *viewController = [[LoginViewController alloc] init];
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-    return NO;
+}
+
+- (void)pushAppViewController:(AppViewController *)viewController animated:(BOOL)animated {
+    BOOL needLogin = [viewController needLogin];
+    //不需要登陆或已经登陆
+    if (!needLogin || [self isLogin]) {
+        [self.navigationController pushViewController:viewController animated:animated];
+    } else {
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:animated];
+    }
 }
 
 @end

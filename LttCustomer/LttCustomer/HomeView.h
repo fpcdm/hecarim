@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "BaseView.h"
+#import "AppView.h"
 
-@interface HomeView : BaseView
+@interface HomeView : AppView
 
 @end

@@ -23,7 +23,14 @@
     BOOL isIndexNavBar;
 }
 
-- (BOOL) checkLogin;
+//是否需要登陆才能访问
+- (BOOL) needLogin;
+
+//是否登陆
+- (BOOL) isLogin;
+
+//跳转控制器，自动判断登陆
+- (void) pushAppViewController:(AppViewController *)viewController animated:(BOOL)animated;
 
 @end
 

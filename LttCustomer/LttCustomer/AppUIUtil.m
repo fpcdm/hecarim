@@ -35,6 +35,17 @@
     return barButtonItem;
 }
 
++ (UIButton *)makeButton:(NSString *)title
+{
+    UIButton *button = [[UIButton alloc] init];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button.layer setMasksToBounds:YES];
+    [button.layer setCornerRadius:3.0];
+    button.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
+    button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
+    return button;
+}
+
 + (UIImage *)nopicImage
 {
     UIImage *image = [UIImage imageNamed:@"nopic"];

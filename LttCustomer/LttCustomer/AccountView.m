@@ -38,7 +38,8 @@
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:@"退出当前账号" forState:UIControlStateNormal];
     [button.layer setMasksToBounds:YES];
-    [button.layer setCornerRadius:10.0];
+    [button.layer setCornerRadius:3.0];
+    [button addTarget:self action:@selector(actionLogout) forControlEvents:UIControlEventTouchUpInside];
     button.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
     button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
     [self addSubview:button];
@@ -104,6 +105,11 @@
 - (void)actionProfile
 {
     [self.delegate actionProfile];
+}
+
+- (void)actionLogout
+{
+    [self.delegate actionLogout];
 }
 
 @end

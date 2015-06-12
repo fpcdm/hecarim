@@ -10,6 +10,8 @@
 #import "AccountView.h"
 #import "SettingViewController.h"
 #import "ProfileViewController.h"
+#import "AppStorageUtil.h"
+#import "LoginViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -46,7 +48,7 @@
 - (void)actionSetting
 {
     SettingViewController *viewController = [[SettingViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushAppViewController:viewController animated:YES];
 }
 
 - (void)actionContact:(NSString *)tel
@@ -58,7 +60,15 @@
 - (void)actionProfile
 {
     ProfileViewController *viewController = [[ProfileViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushAppViewController:viewController animated:YES];
+}
+
+- (void)actionLogout
+{
+    [[StorageUtil sharedStorage] setUser:nil];
+    
+    LoginViewController *viewController = [[LoginViewController alloc] init];
+    [self pushAppViewController:viewController animated:YES];
 }
 
 @end

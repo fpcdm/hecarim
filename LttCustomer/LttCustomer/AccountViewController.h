@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "AppUserViewController.h"
 
-@interface AccountViewController : AppViewController
+@interface AccountViewController : AppUserViewController
 
 @end

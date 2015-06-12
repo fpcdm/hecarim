@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
+		2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */; };
+		2F2E0C731B2ADB58000A7C90 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C721B2ADB58000A7C90 /* LoginView.m */; };
 		2F39E3061B297AB60064CA28 /* AppUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E3051B297AB60064CA28 /* AppUIUtil.m */; };
 		2F39E3081B297ADE0064CA28 /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F39E3071B297ADE0064CA28 /* nopic.png */; };
 		2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E30A1B2983300064CA28 /* SettingViewController.m */; };
@@ -158,6 +160,10 @@
 /* Begin PBXFileReference section */
 		2F0D0B501B0DDDE9008C7F24 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
+		2F2E0C6E1B2ACBEF000A7C90 /* AppUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserViewController.h; sourceTree = "<group>"; };
+		2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserViewController.m; sourceTree = "<group>"; };
+		2F2E0C711B2ADB58000A7C90 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		2F2E0C721B2ADB58000A7C90 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		2F39E3041B297AB60064CA28 /* AppUIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUIUtil.h; sourceTree = "<group>"; };
 		2F39E3051B297AB60064CA28 /* AppUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUIUtil.m; sourceTree = "<group>"; };
 		2F39E3071B297ADE0064CA28 /* nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopic.png; sourceTree = "<group>"; };
@@ -586,6 +592,8 @@
 			children = (
 				2FBF3F751B2821AA00C0DC54 /* HomeView.h */,
 				2FBF3F761B2821AA00C0DC54 /* HomeView.m */,
+				2F2E0C711B2ADB58000A7C90 /* LoginView.h */,
+				2F2E0C721B2ADB58000A7C90 /* LoginView.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1090,6 +1098,8 @@
 			children = (
 				2FD795921AE7ACC900D51FB0 /* AppViewController.h */,
 				2FD795931AE7ACC900D51FB0 /* AppViewController.m */,
+				2F2E0C6E1B2ACBEF000A7C90 /* AppUserViewController.h */,
+				2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */,
 				2FE462421B27E59300780AF5 /* AppView.h */,
 				2FE462431B27E59300780AF5 /* AppView.m */,
 				2FBF3F691B281A9E00C0DC54 /* AppTableView.h */,
@@ -1467,6 +1477,7 @@
 				2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */,
 				2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */,
 				2F9001101B1D9D550040D97B /* REFrostedContainerViewController.m in Sources */,
+				2F2E0C731B2ADB58000A7C90 /* LoginView.m in Sources */,
 				2FCAF8AC1B20456C00F3B084 /* UserEntity.m in Sources */,
 				2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */,
 				2FED7D991B1EA2D300306A11 /* SDWebImagePrefetcher.m in Sources */,
@@ -1511,6 +1522,7 @@
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F9001051B1D9D550040D97B /* MJRefreshFooter.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
+				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2FED82BE1B1EDBFB00306A11 /* qrinput.c in Sources */,
 				2F89A6391B0ECDA40043B236 /* IntentionHandler.m in Sources */,
