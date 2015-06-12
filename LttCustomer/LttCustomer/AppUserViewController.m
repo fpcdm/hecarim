@@ -14,16 +14,6 @@
 
 @implementation AppUserViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    if (![self isLogin]) {
-        [self pushAppViewController:self animated:YES];
-        return;
-    }
-}
-
 - (BOOL) needLogin {
     return YES;
 }
