@@ -24,18 +24,20 @@ static NSString *cellReuseIdentifier = @"cell";
     
     /****************************************************************
      tableData数据格式介绍：
-     默认字段：id,index,type,action,text,image,height,data
-     type取值: normal|action|custom
+     默认字段：id,index,type,action,text,image,height,data,style,detail
+     type取值: normal|action|custom，默认normal
+     style取值：default|subtitle|value1|value2，默认default
      自定义字段：可自定义字段，加入更多默认功能
+     备注：没有值的字段可不配置，会自动忽略
      优化：可以将NSDictionry改为TableCellEntity之类的数据固定格式，从而简化访问
      
      self.tableData = [[NSMutableArray alloc] initWithObjects:
         @[
-            @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0},
+            @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0, @"style": @"default", @"detail": @"文字"},
         ],
         @[
             @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
-            @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"action": @"actionProfile:", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0},
+            @{@"id" : @"profile", @"index" : @2, @"type" : @"action", @"action": @"actionProfile:", @"image": @"", @"text" : @"个人资料", @"data" : @"", @"height": @0, @"style":@"value1", @"detail":@"你好"},
             @{@"id" : @"safety", @"index" : @3, @"type" : @"action", @"action": @"actionSafety:indexPath:", @"image": @"", @"text" : @"账户与安全", @"data" : @"", @"height": @0},
         ],
         @[
@@ -66,14 +68,6 @@ static NSString *cellReuseIdentifier = @"cell";
     self.tableView.tableFooterView = tableFooterView;
     
     return self;
-}
-
-#pragma mark - reloadData
-- (void) reloadData
-{
-    NSLog(@"dddd:");
-    return;
-    
 }
 
 #pragma mark - TableView
@@ -116,57 +110,54 @@ static NSString *cellReuseIdentifier = @"cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
+    //获取样式
+    NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+    NSString *style = [cellData objectForKey:@"style"];
+    NSUInteger cellStyle = UITableViewCellStyleDefault;
+    if ([@"subtitle" isEqualToString:style]) {
+        cellStyle = UITableViewCellStyleSubtitle;
+    } else if ([@"value1" isEqualToString:style]) {
+        cellStyle = UITableViewCellStyleValue1;
+    } else if ([@"value2" isEqualToString:style]) {
+        cellStyle = UITableViewCellStyleValue2;
     }
     
-    NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+    //初始化Cell
+    //UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellReuseIdentifier];
     
     NSString *type = [cellData objectForKey:@"type"];
+    
+    //全局配置
+    NSString *text = [cellData objectForKey:@"text"];
+    if (text != nil && [text length] > 0) {
+        cell.textLabel.text = [cellData objectForKey:@"text"];
+        if (FONT_TABLE_CELL_DEFAULT > 0) {
+            cell.textLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DEFAULT];
+        }
+    }
+    NSString *image = [cellData objectForKeyedSubscript:@"image"];
+    if (image != nil && [image length] > 0) {
+        cell.imageView.image = [UIImage imageNamed:image];
+    }
+    NSString *detail = [cellData objectForKey:@"detail"];
+    if (detail != nil && [detail length] > 0) {
+        cell.detailTextLabel.text = detail;
+        if (FONT_TABLE_CELL_DETAIL_DEFAULT) {
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DETAIL_DEFAULT];
+        }
+    }
+    
     //normal
     if ([@"normal" isEqualToString:type]) {
-        cell.textLabel.text = [cellData objectForKey:@"text"];
-        if (FONT_TABLE_CELL_DEFAULT > 0) {
-            cell.textLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DEFAULT];
-        }
-        
-        NSString *image = [cellData objectForKeyedSubscript:@"image"];
-        if (image != nil && [image length] > 0) {
-            cell.imageView.image = [UIImage imageNamed:image];
-        }
-        
         return cell;
-        //action
+    //action
     } else if ([@"action" isEqualToString:type]) {
-        cell.textLabel.text = [cellData objectForKey:@"text"];
-        if (FONT_TABLE_CELL_DEFAULT > 0) {
-            cell.textLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DEFAULT];
-        }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        NSString *image = [cellData objectForKeyedSubscript:@"image"];
-        if (image != nil && [image length] > 0) {
-            cell.imageView.image = [UIImage imageNamed:image];
-        }
-        
         return cell;
-        //custom
+    //custom
     } else {
         //默认设置了值保留原视图，原始图基础上自定义，没设置则直接忽略，下同
-        NSString *text = [cellData objectForKey:@"text"];
-        if (text != nil && [text length] > 0) {
-            cell.textLabel.text = [cellData objectForKey:@"text"];
-            if (FONT_TABLE_CELL_DEFAULT > 0) {
-                cell.textLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DEFAULT];
-            }
-        }
-        
-        NSString *image = [cellData objectForKeyedSubscript:@"image"];
-        if (image != nil && [image length] > 0) {
-            cell.imageView.image = [UIImage imageNamed:image];
-        }
-        
         //自定义视图方法，重写即可，可以忽略cell完全重写，默认直接返回cell
         cell = [self tableView:tableView customCellForRowAtIndexPath:indexPath withCell:cell];
         return cell;

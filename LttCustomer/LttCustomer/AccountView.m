@@ -21,16 +21,16 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"", @"data" : @"大勇", @"height": @60},
+                        @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"", @"height": @60},
                         ],
                       @[
-                        @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址", @"data" : @""},
-                        @{@"id" : @"profile", @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料", @"data" : @""},
-                        @{@"id" : @"safety", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"账户与安全", @"data" : @""},
+                        @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址"},
+                        @{@"id" : @"profile", @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料"},
+                        @{@"id" : @"safety", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"账户与安全"},
                         ],
                       @[
-                        @{@"id" : @"feedback", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"意见反馈", @"data" : @""},
-                        @{@"id" : @"contact", @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"data" : @"400-820-5555"},
+                        @{@"id" : @"feedback", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"意见反馈"},
+                        @{@"id" : @"contact", @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"style": @"value1", @"detail": @"400-820-5555"},
                         ],
                       nil];
     
@@ -77,7 +77,7 @@
         }];
         
         UILabel *nameLabel = [UILabel new];
-        nameLabel.text = [cellData objectForKey:@"data"];
+        nameLabel.text = @"未填写";
         nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
         [cell addSubview:nameLabel];
         
@@ -87,19 +87,8 @@
         }];
     //contact
     } else {
-        UILabel *contactLabel = [[UILabel alloc] init];
-        contactLabel.text = [cellData objectForKey:@"data"];
-        contactLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
-        [cell addSubview:contactLabel];
-        
+        cell.detailTextLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        [contactLabel mas_makeConstraints:^(MASConstraintMaker *make){
-            make.top.equalTo(cell.textLabel.mas_top);
-            make.bottom.equalTo(cell.textLabel.mas_bottom);
-            
-            make.right.equalTo(cell.mas_right).offset(-30);
-        }];
     }
     
     return cell;
@@ -108,7 +97,7 @@
 #pragma mark - Action
 - (void)actionContact:(NSDictionary *)cellData
 {
-    NSString *tel = [cellData objectForKey:@"data"];
+    NSString *tel = [cellData objectForKey:@"detail"];
     [self.delegate actionContact:tel];
 }
 

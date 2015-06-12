@@ -21,9 +21,9 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"photo", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"头像", @"data" : @"", @"height" : @60},
-                        @{@"id" : @"nickname", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"昵称", @"data" : @""},
-                        @{@"id" : @"sex", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"性别", @"data" : @""},
+                        @{@"id" : @"photo", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"头像", @"height" : @60},
+                        @{@"id" : @"nickname", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"昵称", @"style" : @"value1", @"detail" : @"未填写"},
+                        @{@"id" : @"sex", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"性别", @"style" : @"value1", @"detail":@"未选择"},
                         ],
                       nil];
     
