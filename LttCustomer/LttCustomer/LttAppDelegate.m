@@ -11,7 +11,7 @@
 #import "AccountViewController.h"
 #import "LoginViewController.h"
 #import "BPush.h"
-#import "AppUtil.h"
+#import "AppUIUtil.h"
 
 @interface LttAppDelegate () /*<BPushDelegate>*/
 

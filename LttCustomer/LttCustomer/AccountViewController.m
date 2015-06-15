@@ -27,6 +27,11 @@
     accountView = [[AccountView alloc] init];
     accountView.delegate = self;
     self.view = accountView;
+    
+    //加载数据
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    [accountView setData:@"user" value:user];
+    [accountView renderData];
 }
 
 - (void)viewDidLoad
@@ -38,7 +43,7 @@
     
     self.title = @"账户";
     
-    UIBarButtonItem *barButtonItem = [AppUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;

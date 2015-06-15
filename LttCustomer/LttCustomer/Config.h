@@ -37,6 +37,9 @@
 //用户登录类型
 #define USER_TYPE_MEMBER @"member"
 
+//客服电话
+#define LTT_CUSTOMER_SERVICE @"400-820-5555"
+
 //需求状态
 #define INTENTION_STATUS_NEW @"new"
 #define INTENTION_STATUS_LOCKED @"locked"

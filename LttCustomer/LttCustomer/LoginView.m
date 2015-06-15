@@ -15,7 +15,7 @@
     self = [super init];
     if (!self) return nil;
     
-    UIButton *button = [AppUtil makeButton:@"模拟"];
+    UIButton *button = [AppUIUtil makeButton:@"模拟"];
     [button addTarget:self action:@selector(actionLogin) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     

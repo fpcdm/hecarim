@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "Config.h"
-#import "AppUtil.h"
+#import "AppUIUtil.h"
 
 @interface AppViewController : BaseViewController
 {

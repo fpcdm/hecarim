@@ -7,12 +7,17 @@
 //
 
 #import "AccountView.h"
+#import "UserEntity.h"
 
 @interface AccountView ()
 
 @end
 
 @implementation AccountView
+{
+    UIImageView *imageView;
+    UILabel *nameLabel;
+}
 
 - (id)init
 {
@@ -30,7 +35,7 @@
                         ],
                       @[
                         @{@"id" : @"feedback", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"意见反馈"},
-                        @{@"id" : @"contact", @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"style": @"value1", @"detail": @"400-820-5555"},
+                        @{@"id" : @"contact", @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"style": @"value1", @"detail": LTT_CUSTOMER_SERVICE},
                         ],
                       nil];
     
@@ -54,6 +59,10 @@
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_BIG_BUTTON]);
     }];
     
+    //初始化数据视图
+    imageView = [[UIImageView alloc] init];
+    nameLabel = [[UILabel alloc] init];
+    
     return self;
 }
 
@@ -65,8 +74,7 @@
     NSString *id = [cellData objectForKey:@"id"];
     //info
     if ([@"info" isEqualToString:id]) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.image = [AppUtil nopicImage];
+        imageView.image = [AppUIUtil nopicImage];
         [cell addSubview:imageView];
         
         [imageView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -77,8 +85,6 @@
             make.height.equalTo(@40);
         }];
         
-        UILabel *nameLabel = [UILabel new];
-        nameLabel.text = @"未填写";
         nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
         [cell addSubview:nameLabel];
         
@@ -95,11 +101,18 @@
     return cell;
 }
 
+#pragma mark - RenderData
+- (void) renderData
+{
+    UserEntity *user = [self getData:@"user"];
+    
+    nameLabel.text = user.name;
+}
+
 #pragma mark - Action
 - (void)actionContact:(NSDictionary *)cellData
 {
-    NSString *tel = [cellData objectForKey:@"detail"];
-    [self.delegate actionContact:tel];
+    [self.delegate actionContact:LTT_CUSTOMER_SERVICE];
 }
 
 - (void)actionProfile

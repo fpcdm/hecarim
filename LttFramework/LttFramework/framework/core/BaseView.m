@@ -43,12 +43,12 @@
 
 - (void)setData: (NSString *)key value:(id)value
 {
-    [viewData setValue:value forKey:key];
+    [viewData setObject:value forKey:key];
 }
 
 - (id)getData:(NSString *)key
 {
-    return [viewData valueForKey:key];
+    return [viewData objectForKey:key];
 }
 
 //子类重写

@@ -11,7 +11,7 @@
 
 @class AppViewController;
 
-@interface AppUtil : NSObject
+@interface AppUIUtil : NSObject
 
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title;
 

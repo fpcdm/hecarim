@@ -22,7 +22,7 @@
     
     //子页面是否有导航返回按钮
     if (hasNavBack) {
-        UIBarButtonItem *backButtonItem = [AppUtil makeBarButtonItem:@""];
+        UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:@""];
         self.navigationItem.backBarButtonItem = backButtonItem;
     }
     

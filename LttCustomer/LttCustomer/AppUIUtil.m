@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppUtil.h"
+#import "AppUIUtil.h"
 #import "Config.h"
 #import "AppUserViewController.h"
 #import "AppStorageUtil.h"
 #import "LoginViewController.h"
 
-@implementation AppUtil
+@implementation AppUIUtil
 
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title
 {
