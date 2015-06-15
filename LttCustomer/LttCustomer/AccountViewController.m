@@ -12,6 +12,7 @@
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
 #import "SafetyViewController.h"
+#import "AddressViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -90,6 +91,12 @@
 - (void)actionSafety
 {
     SafetyViewController *viewController = [[SafetyViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionAddress
+{
+    AddressViewController *viewController = [[AddressViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

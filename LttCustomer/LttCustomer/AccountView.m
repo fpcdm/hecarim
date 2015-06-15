@@ -28,7 +28,7 @@
                         @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"", @"height": @60},
                         ],
                       @[
-                        @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址"},
+                        @{@"id" : @"address", @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址"},
                         @{@"id" : @"profile", @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料"},
                         @{@"id" : @"safety", @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全"},
                         ],
@@ -127,6 +127,11 @@
 - (void)actionLogout
 {
     [self.delegate actionLogout];
+}
+
+- (void)actionAddress
+{
+    [self.delegate actionAddress];
 }
 
 @end

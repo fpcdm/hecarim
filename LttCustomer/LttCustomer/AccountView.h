@@ -20,6 +20,8 @@
 
 - (void)actionSafety;
 
+- (void)actionAddress;
+
 @end
 
 @interface AccountView : AppTableView

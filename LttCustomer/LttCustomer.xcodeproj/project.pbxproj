@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2F089D741B2EC957002A0EA5 /* SafetyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D731B2EC957002A0EA5 /* SafetyViewController.m */; };
 		2F089D771B2EC999002A0EA5 /* SafetyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D761B2EC999002A0EA5 /* SafetyView.m */; };
+		2F089D7A1B2ECE9C002A0EA5 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D791B2ECE9C002A0EA5 /* AddressViewController.m */; };
+		2F089D7D1B2ECF23002A0EA5 /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D7C1B2ECF23002A0EA5 /* AddressView.m */; };
+		2F089D801B2ED05C002A0EA5 /* AddressEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D7F1B2ED05C002A0EA5 /* AddressEntity.m */; };
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
 		2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */; };
 		2F2E0C731B2ADB58000A7C90 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C721B2ADB58000A7C90 /* LoginView.m */; };
@@ -164,6 +167,12 @@
 		2F089D731B2EC957002A0EA5 /* SafetyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyViewController.m; sourceTree = "<group>"; };
 		2F089D751B2EC999002A0EA5 /* SafetyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyView.h; sourceTree = "<group>"; };
 		2F089D761B2EC999002A0EA5 /* SafetyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyView.m; sourceTree = "<group>"; };
+		2F089D781B2ECE9C002A0EA5 /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
+		2F089D791B2ECE9C002A0EA5 /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
+		2F089D7B1B2ECF0F002A0EA5 /* AddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressView.h; sourceTree = "<group>"; };
+		2F089D7C1B2ECF23002A0EA5 /* AddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressView.m; sourceTree = "<group>"; };
+		2F089D7E1B2ED05C002A0EA5 /* AddressEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressEntity.h; sourceTree = "<group>"; };
+		2F089D7F1B2ED05C002A0EA5 /* AddressEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressEntity.m; sourceTree = "<group>"; };
 		2F0D0B501B0DDDE9008C7F24 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		2F2E0C6E1B2ACBEF000A7C90 /* AppUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserViewController.h; sourceTree = "<group>"; };
@@ -591,6 +600,8 @@
 				2F39E3121B29904C0064CA28 /* ProfileView.m */,
 				2F089D751B2EC999002A0EA5 /* SafetyView.h */,
 				2F089D761B2EC999002A0EA5 /* SafetyView.m */,
+				2F089D7B1B2ECF0F002A0EA5 /* AddressView.h */,
+				2F089D7C1B2ECF23002A0EA5 /* AddressView.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -659,6 +670,8 @@
 				2F54CB391AFB3E0C00295A8D /* OrderEntity.m */,
 				2F54CB3B1AFB3F0300295A8D /* GoodsEntity.h */,
 				2F54CB3C1AFB3F0300295A8D /* GoodsEntity.m */,
+				2F089D7E1B2ED05C002A0EA5 /* AddressEntity.h */,
+				2F089D7F1B2ED05C002A0EA5 /* AddressEntity.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -953,6 +966,8 @@
 				2F39E3151B2990650064CA28 /* ProfileViewController.m */,
 				2F089D721B2EC957002A0EA5 /* SafetyViewController.h */,
 				2F089D731B2EC957002A0EA5 /* SafetyViewController.m */,
+				2F089D781B2ECE9C002A0EA5 /* AddressViewController.h */,
+				2F089D791B2ECE9C002A0EA5 /* AddressViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -1495,6 +1510,7 @@
 				2FED7D9B1B1EA2D300306A11 /* UIImage+GIF.m in Sources */,
 				2FED7E101B1EA79300306A11 /* DDTTYLogger.m in Sources */,
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2F089D801B2ED05C002A0EA5 /* AddressEntity.m in Sources */,
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
@@ -1541,12 +1557,14 @@
 				2F54CB3A1AFB3E0C00295A8D /* OrderEntity.m in Sources */,
 				2FED7D961B1EA2D300306A11 /* SDWebImageDownloader.m in Sources */,
 				2F9BD1A71B26E31700632751 /* LoginViewController.m in Sources */,
+				2F089D7A1B2ECE9C002A0EA5 /* AddressViewController.m in Sources */,
 				2FED82BB1B1EDBFB00306A11 /* mask.c in Sources */,
 				2FCAF88E1B203E6100F3B084 /* BaseViewController.m in Sources */,
 				2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FED7D9A1B1EA2D300306A11 /* UIButton+WebCache.m in Sources */,
 				2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */,
 				2F90010E1B1D9D550040D97B /* Reachability.m in Sources */,
+				2F089D7D1B2ECF23002A0EA5 /* AddressView.m in Sources */,
 				2F9001111B1D9D550040D97B /* REFrostedViewController.m in Sources */,
 				2F9001141B1D9D550040D97B /* UIViewController+REFrostedViewController.m in Sources */,
 			);
