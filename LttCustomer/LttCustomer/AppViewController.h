@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import "Config.h"
 #import "AppUIUtil.h"
+#import "AppExtension.h"
 
 @interface AppViewController : BaseViewController
 {

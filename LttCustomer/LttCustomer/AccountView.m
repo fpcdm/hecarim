@@ -7,7 +7,6 @@
 //
 
 #import "AccountView.h"
-#import "UserEntity.h"
 
 @interface AccountView ()
 
@@ -74,7 +73,6 @@
     NSString *id = [cellData objectForKey:@"id"];
     //info
     if ([@"info" isEqualToString:id]) {
-        imageView.image = [AppUIUtil nopicImage];
         [cell addSubview:imageView];
         
         [imageView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -106,6 +104,7 @@
 {
     UserEntity *user = [self getData:@"user"];
     
+    imageView.image = [user avatarImage];
     nameLabel.text = user.name;
 }
 

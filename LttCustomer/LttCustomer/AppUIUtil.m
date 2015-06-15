@@ -9,8 +9,8 @@
 #import "AppUIUtil.h"
 #import "Config.h"
 #import "AppUserViewController.h"
-#import "AppStorageUtil.h"
 #import "LoginViewController.h"
+#import "AppExtension.h"
 
 @implementation AppUIUtil
 
@@ -47,12 +47,6 @@
     button.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
     button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
     return button;
-}
-
-+ (UIImage *)nopicImage
-{
-    UIImage *image = [UIImage imageNamed:@"nopic"];
-    return image;
 }
 
 @end

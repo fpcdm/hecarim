@@ -9,6 +9,7 @@
 #import "BaseView.h"
 #import "Config.h"
 #import "AppUIUtil.h"
+#import "AppExtension.h"
 
 @interface AppView : BaseView
 

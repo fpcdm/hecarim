@@ -23,6 +23,11 @@
     profileView = [[ProfileView alloc] init];
     profileView.delegate = self;
     self.view = profileView;
+    
+    //加载数据
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    [profileView setData:@"user" value:user];
+    [profileView renderData];
 }
 
 - (void)viewDidLoad

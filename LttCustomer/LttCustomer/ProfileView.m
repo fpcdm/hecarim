@@ -13,23 +13,29 @@
 @end
 
 @implementation ProfileView
-
-- (id)init
 {
-    self = [super init];
-    if (!self) return nil;
+    UIImage *userAvatar;
+}
+
+#pragma mark - RenderData
+- (void) renderData
+{
+    UserEntity *user = [self getData:@"user"];
+    userAvatar = [user avatarImage];
+    NSString *userNickname = user.nickname ? user.nickname : @"";
+    NSString *userSexName = [user sexName];
+    userSexName = userSexName ? userSexName : @"";
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
                         @{@"id" : @"photo", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"头像", @"height" : @60},
-                        @{@"id" : @"nickname", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"昵称", @"style" : @"value1", @"detail" : @"未填写"},
-                        @{@"id" : @"sex", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"性别", @"style" : @"value1", @"detail":@"未选择"},
+                        @{@"id" : @"nickname", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"昵称", @"style" : @"value1", @"detail" : userNickname},
+                        @{@"id" : @"sex", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"性别", @"style" : @"value1", @"detail":userSexName},
                         ],
                       nil];
-    
-    return self;
 }
 
+#pragma mark - TableView
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
@@ -39,7 +45,6 @@
     }
 }
 
-#pragma mark - TableView
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell
 {
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
@@ -48,7 +53,7 @@
     //photo
     if ([@"photo" isEqualToString:id]) {
         UIImageView *imageView = [UIImageView new];
-        imageView.image = [AppUIUtil nopicImage];
+        imageView.image = userAvatar;
         [cell addSubview:imageView];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -102,7 +102,6 @@
 		2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8321B20115700F3B084 /* TimerUtil.m */; };
 		2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8341B20115700F3B084 /* ValidateUtil.m */; };
 		2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8411B20117D00F3B084 /* BaseHandler.m */; };
-		2FCAF84E1B20136900F3B084 /* AppStorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF84D1B20136900F3B084 /* AppStorageUtil.m */; };
 		2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF86F1B2025A000F3B084 /* NotificationUtil.m */; };
 		2FCAF88E1B203E6100F3B084 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF88D1B203E6100F3B084 /* BaseViewController.m */; };
 		2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8A81B20456C00F3B084 /* ErrorEntity.m */; };
@@ -145,6 +144,7 @@
 		2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B41B1EDBFB00306A11 /* qrspec.c */; };
 		2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B61B1EDBFB00306A11 /* rscode.c */; };
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
+		2FF8F72D1B2EAE6F00689C33 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -433,8 +433,6 @@
 		2FCAF8341B20115700F3B084 /* ValidateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateUtil.m; sourceTree = "<group>"; };
 		2FCAF8401B20117D00F3B084 /* BaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHandler.h; sourceTree = "<group>"; };
 		2FCAF8411B20117D00F3B084 /* BaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHandler.m; sourceTree = "<group>"; };
-		2FCAF84C1B20135F00F3B084 /* AppStorageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStorageUtil.h; sourceTree = "<group>"; };
-		2FCAF84D1B20136900F3B084 /* AppStorageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStorageUtil.m; sourceTree = "<group>"; };
 		2FCAF86E1B2025A000F3B084 /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
 		2FCAF86F1B2025A000F3B084 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtil.m; sourceTree = "<group>"; };
 		2FCAF88C1B203E6100F3B084 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -534,6 +532,8 @@
 		2FED82B91B1EDBFB00306A11 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		2FF39DAE1AEB7E6900077790 /* Config_product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
 		2FF39DAF1AEB7E8400077790 /* Config_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
+		2FF8F72B1B2EAE6400689C33 /* AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppExtension.h; sourceTree = "<group>"; };
+		2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppExtension.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1106,8 +1106,8 @@
 				2FBF3F6A1B281A9E00C0DC54 /* AppTableView.m */,
 				2F39E3041B297AB60064CA28 /* AppUIUtil.h */,
 				2F39E3051B297AB60064CA28 /* AppUIUtil.m */,
-				2FCAF84C1B20135F00F3B084 /* AppStorageUtil.h */,
-				2FCAF84D1B20136900F3B084 /* AppStorageUtil.m */,
+				2FF8F72B1B2EAE6400689C33 /* AppExtension.h */,
+				2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1488,11 +1488,11 @@
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
 				2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */,
-				2FCAF84E1B20136900F3B084 /* AppStorageUtil.m in Sources */,
 				2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */,
 				2F9000441B1D8B930040D97B /* UIView+Toast.m in Sources */,
 				2F9001031B1D9D550040D97B /* MJRefreshComponent.m in Sources */,
 				2FE462411B27E4F700780AF5 /* AccountView.m in Sources */,
+				2FF8F72D1B2EAE6F00689C33 /* AppExtension.m in Sources */,
 				2FED7E131B1EA79300306A11 /* DDMultiFormatter.m in Sources */,
 				2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */,
 				2F628BFD1AE8940300530B07 /* HomeViewController.m in Sources */,

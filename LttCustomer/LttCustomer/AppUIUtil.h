@@ -19,6 +19,4 @@
 
 + (UIButton *) makeButton: (NSString *) title;
 
-+ (UIImage *) nopicImage;
-
 @end

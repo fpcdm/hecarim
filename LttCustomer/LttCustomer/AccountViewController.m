@@ -10,7 +10,6 @@
 #import "AccountView.h"
 #import "SettingViewController.h"
 #import "ProfileViewController.h"
-#import "AppStorageUtil.h"
 #import "LoginViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>

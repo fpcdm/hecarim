@@ -22,4 +22,10 @@
 
 @synthesize type;
 
+@synthesize nickname;
+
+@synthesize sex;
+
+@synthesize avatar;
+
 @end

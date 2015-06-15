@@ -22,4 +22,10 @@
 
 @property (nonatomic, retain) NSString *type;
 
+@property (nonatomic, retain) NSString *nickname;
+
+@property (nonatomic, retain) NSNumber *sex;
+
+@property (nonatomic, retain) NSString *avatar;
+
 @end

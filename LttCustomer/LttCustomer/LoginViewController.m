@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "UserEntity.h"
-#import "AppStorageUtil.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -48,6 +47,9 @@
     user.mobile = @"18875001455";
     user.token = @"token";
     user.type = USER_TYPE_MEMBER;
+    user.nickname = @"勇哥";
+    user.sex = @1;
+    user.avatar = nil;
     
     [[StorageUtil sharedStorage] setUser:user];
     

@@ -51,6 +51,9 @@ static StorageUtil *sharedStorage = nil;
         userCopy.token = user.token ? user.token : @"";
         userCopy.password = user.password ? user.password : @"";
         userCopy.type = user.type ? user.type : @"";
+        userCopy.nickname = user.nickname ? user.nickname : @"";
+        userCopy.sex = user.sex ? user.sex : @0;
+        userCopy.avatar = user.avatar ? user.avatar : @"";
         
         NSDictionary *userDict = [userCopy toDictionary];
         userCopy = nil;
@@ -78,12 +81,15 @@ static StorageUtil *sharedStorage = nil;
     [user fromDictionary:userDict];
     
     //还原NSUserDefaults空值为null
-    if ([@0 isEqualToNumber:user.id]) user.id = nil;
+    if (user.id == nil || [@0 isEqualToNumber:user.id]) user.id = nil;
     if ([@"" isEqualToString:user.name]) user.name = nil;
     if ([@"" isEqualToString:user.mobile]) user.mobile = nil;
     if ([@"" isEqualToString:user.token]) user.token = nil;
     if ([@"" isEqualToString:user.password]) user.password = nil;
     if ([@"" isEqualToString:user.type]) user.type = nil;
+    if ([@"" isEqualToString:user.nickname]) user.nickname = nil;
+    if (user.sex == nil || [@0 isEqualToNumber:user.sex]) user.sex = nil;
+    if ([@"" isEqualToString:user.avatar]) user.avatar = nil;
     
     NSLog(@"get user: %@", [user toDictionary]);
     return user;
