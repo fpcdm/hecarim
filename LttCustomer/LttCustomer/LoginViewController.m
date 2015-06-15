@@ -27,11 +27,15 @@
 }
 
 - (void)viewDidLoad {
+    hideBackButton = YES;
     [super viewDidLoad];
     
     self.title = @"登陆";
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (BOOL) hasTabBar
+{
+    return YES;
 }
 
 #pragma mark - Action
@@ -47,7 +51,10 @@
     
     [[StorageUtil sharedStorage] setUser:user];
     
-    //跳转首页
+    //是否有返回控制器
+    if (self.returnController != nil) {
+        [self.navigationController pushViewController:self.returnController animated:YES];
+    }
 }
 
 @end

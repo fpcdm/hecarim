@@ -48,7 +48,7 @@
     //photo
     if ([@"photo" isEqualToString:id]) {
         UIImageView *imageView = [UIImageView new];
-        imageView.image = [AppUIUtil nopicImage];
+        imageView.image = [AppUtil nopicImage];
         [cell addSubview:imageView];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

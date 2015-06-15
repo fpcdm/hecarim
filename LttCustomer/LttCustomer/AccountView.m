@@ -66,7 +66,7 @@
     //info
     if ([@"info" isEqualToString:id]) {
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.image = [AppUIUtil nopicImage];
+        imageView.image = [AppUtil nopicImage];
         [cell addSubview:imageView];
         
         [imageView mas_makeConstraints:^(MASConstraintMaker *make){

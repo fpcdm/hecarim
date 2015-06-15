@@ -9,7 +9,9 @@
 #import "LttAppDelegate.h"
 #import "HomeViewController.h"
 #import "AccountViewController.h"
+#import "LoginViewController.h"
 #import "BPush.h"
+#import "AppUtil.h"
 
 @interface LttAppDelegate () /*<BPushDelegate>*/
 
@@ -74,7 +76,15 @@
     
     //4
     AccountViewController *forthViewController = [[AccountViewController alloc] init];
-    UINavigationController *forthNavigationController = [[UINavigationController alloc] initWithRootViewController:forthViewController];
+    UINavigationController *forthNavigationController = nil;
+    //是否登陆
+    if ([forthViewController isLogin]) {
+        forthNavigationController = [[UINavigationController alloc] initWithRootViewController:forthViewController];
+    } else {
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        loginViewController.returnController = forthViewController;
+        forthNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    }
     forthNavigationController.title = @"账户";
     
     //TabBar

@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface AppUIUtil : NSObject
+@class AppViewController;
+
+@interface AppUtil : NSObject
 
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title;
 

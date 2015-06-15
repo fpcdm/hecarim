@@ -31,24 +31,29 @@
 
 - (void)viewDidLoad
 {
-    showTabBar = YES;
+    hideBackButton = YES;
     isIndexNavBar = YES;
-    hasBackButton = YES;
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.title = @"账户";
     
-    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
+    UIBarButtonItem *barButtonItem = [AppUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (BOOL) hasTabBar
+{
+    return YES;
 }
 
 #pragma mark - Action
 - (void)actionSetting
 {
     SettingViewController *viewController = [[SettingViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionContact:(NSString *)tel
@@ -60,7 +65,7 @@
 - (void)actionProfile
 {
     ProfileViewController *viewController = [[ProfileViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionLogout
@@ -68,7 +73,8 @@
     [[StorageUtil sharedStorage] setUser:nil];
     
     LoginViewController *viewController = [[LoginViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    viewController.returnController = [[AccountViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

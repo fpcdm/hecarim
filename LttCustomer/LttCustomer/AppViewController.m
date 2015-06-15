@@ -9,6 +9,7 @@
 #import "AppViewController.h"
 #import "LoginViewController.h"
 #import "AppStorageUtil.h"
+#import "AppUserViewController.h"
 
 @interface AppViewController ()
 
@@ -19,10 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //是否有返回按钮(子页面生效)
-    if (hasBackButton) {
-        UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:@""];
+    //子页面是否有导航返回按钮
+    if (hasNavBack) {
+        UIBarButtonItem *backButtonItem = [AppUtil makeBarButtonItem:@""];
         self.navigationItem.backBarButtonItem = backButtonItem;
+    }
+    
+    //当前页面是否隐藏返回按钮
+    if (hideBackButton) {
+        self.navigationItem.hidesBackButton = YES;
+    } else {
+        self.navigationItem.hidesBackButton = NO;
     }
 }
 
@@ -31,7 +39,7 @@
     [super viewWillAppear:animated];
     
     //隐藏TabBar
-    self.tabBarController.tabBar.hidden = showTabBar ? NO : YES;
+    self.tabBarController.tabBar.hidden = [self hasTabBar] ? NO : YES;
     
     //状态栏颜色
     if (isIndexNavBar) {
@@ -58,21 +66,35 @@
     }
 }
 
-- (BOOL) isLogin {
+- (BOOL) isLogin
+{
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     if (user) {
         return YES;
     } else {
         return NO;
-        
     }
 }
 
-- (void) checkLogin {
-    if ([self isLogin]) return;
-    
-    LoginViewController *loginViewController = [[LoginViewController alloc] init];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+- (BOOL) hasTabBar {
+    return NO;
+}
+
+- (void) pushViewController:(AppViewController *)viewController animated: (BOOL)animated
+{
+    //需要登陆
+    if ([viewController isKindOfClass:[AppUserViewController class]] &&
+        ![viewController isMemberOfClass:[LoginViewController class]] &&
+        ![self isLogin]) {
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        loginViewController.returnController = viewController;
+        //是否显示TabBar
+        viewController.hidesBottomBarWhenPushed = [viewController hasTabBar] ? NO : YES;
+        [self.navigationController pushViewController:loginViewController animated:YES];
+    } else {
+        viewController.hidesBottomBarWhenPushed = [viewController hasTabBar] ? NO : YES;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 @end

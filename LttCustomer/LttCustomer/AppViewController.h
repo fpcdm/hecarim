@@ -9,25 +9,28 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "Config.h"
-#import "AppUIUtil.h"
+#import "AppUtil.h"
 
 @interface AppViewController : BaseViewController
 {
-    //是否显示TabBar
-    BOOL showTabBar;
+    //子页面是否有导航返回按钮
+    BOOL hasNavBack;
     
-    //是否有返回按钮(子页面生效)
-    BOOL hasBackButton;
+    //当前页面是否隐藏返回按钮
+    BOOL hideBackButton;
     
     //是否是首页导航栏(背景高亮)
     BOOL isIndexNavBar;
 }
 
-//检查登陆
-- (void) checkLogin;
-
 //是否登陆
 - (BOOL) isLogin;
+
+//是否需要TabBar
+- (BOOL) hasTabBar;
+
+//弹出控制器，自动检查登陆
+- (void) pushViewController:(AppViewController *)viewController animated: (BOOL)animated;
 
 @end
 

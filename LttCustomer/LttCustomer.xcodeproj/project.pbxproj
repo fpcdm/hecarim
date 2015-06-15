@@ -10,7 +10,7 @@
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
 		2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */; };
 		2F2E0C731B2ADB58000A7C90 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C721B2ADB58000A7C90 /* LoginView.m */; };
-		2F39E3061B297AB60064CA28 /* AppUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E3051B297AB60064CA28 /* AppUIUtil.m */; };
+		2F39E3061B297AB60064CA28 /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E3051B297AB60064CA28 /* AppUtil.m */; };
 		2F39E3081B297ADE0064CA28 /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F39E3071B297ADE0064CA28 /* nopic.png */; };
 		2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E30A1B2983300064CA28 /* SettingViewController.m */; };
 		2F39E3101B2983F10064CA28 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E30F1B2983F10064CA28 /* SettingView.m */; };
@@ -164,8 +164,8 @@
 		2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserViewController.m; sourceTree = "<group>"; };
 		2F2E0C711B2ADB58000A7C90 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		2F2E0C721B2ADB58000A7C90 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
-		2F39E3041B297AB60064CA28 /* AppUIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUIUtil.h; sourceTree = "<group>"; };
-		2F39E3051B297AB60064CA28 /* AppUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUIUtil.m; sourceTree = "<group>"; };
+		2F39E3041B297AB60064CA28 /* AppUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtil.h; sourceTree = "<group>"; };
+		2F39E3051B297AB60064CA28 /* AppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtil.m; sourceTree = "<group>"; };
 		2F39E3071B297ADE0064CA28 /* nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopic.png; sourceTree = "<group>"; };
 		2F39E3091B2983300064CA28 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		2F39E30A1B2983300064CA28 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
@@ -1104,8 +1104,8 @@
 				2FE462431B27E59300780AF5 /* AppView.m */,
 				2FBF3F691B281A9E00C0DC54 /* AppTableView.h */,
 				2FBF3F6A1B281A9E00C0DC54 /* AppTableView.m */,
-				2F39E3041B297AB60064CA28 /* AppUIUtil.h */,
-				2F39E3051B297AB60064CA28 /* AppUIUtil.m */,
+				2F39E3041B297AB60064CA28 /* AppUtil.h */,
+				2F39E3051B297AB60064CA28 /* AppUtil.m */,
 				2FCAF84C1B20135F00F3B084 /* AppStorageUtil.h */,
 				2FCAF84D1B20136900F3B084 /* AppStorageUtil.m */,
 			);
@@ -1507,7 +1507,7 @@
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,
 				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
-				2F39E3061B297AB60064CA28 /* AppUIUtil.m in Sources */,
+				2F39E3061B297AB60064CA28 /* AppUtil.m in Sources */,
 				2FED7D9F1B1EA2D300306A11 /* UIView+WebCacheOperation.m in Sources */,
 				2FE462441B27E59300780AF5 /* AppView.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,

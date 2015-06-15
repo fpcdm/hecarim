@@ -10,4 +10,6 @@
 
 @interface LoginViewController : AppViewController
 
+@property (retain, nonatomic) AppViewController *returnController;
+
 @end
