@@ -11,6 +11,7 @@
 #import "SettingViewController.h"
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
+#import "SafetyViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -26,11 +27,6 @@
     accountView = [[AccountView alloc] init];
     accountView.delegate = self;
     self.view = accountView;
-    
-    //加载数据
-    UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    [accountView setData:@"user" value:user];
-    [accountView renderData];
 }
 
 - (void)viewDidLoad
@@ -40,12 +36,22 @@
     hasNavBack = YES;
     [super viewDidLoad];
     
-    self.title = @"账户";
+    self.navigationItem.title = @"账户";
     
     UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //加载数据
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    [accountView setData:@"user" value:user];
+    [accountView renderData];
 }
 
 - (BOOL) hasTabBar
@@ -78,6 +84,12 @@
     
     LoginViewController *viewController = [[LoginViewController alloc] init];
     viewController.returnController = [[AccountViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionSafety
+{
+    SafetyViewController *viewController = [[SafetyViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

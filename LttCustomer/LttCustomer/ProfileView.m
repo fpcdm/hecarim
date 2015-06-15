@@ -28,11 +28,12 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"photo", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"头像", @"height" : @60},
-                        @{@"id" : @"nickname", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"昵称", @"style" : @"value1", @"detail" : userNickname},
-                        @{@"id" : @"sex", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"性别", @"style" : @"value1", @"detail":userSexName},
+                        @{@"id" : @"photo", @"type" : @"custom", @"action": @"actionAvatar", @"image": @"", @"text" : @"头像", @"height" : @60},
+                        @{@"id" : @"nickname", @"type" : @"action", @"action": @"actionNickname", @"image": @"", @"text" : @"昵称", @"style" : @"value1", @"detail" : userNickname},
+                        @{@"id" : @"sex", @"type" : @"action", @"action": @"actionSex", @"image": @"", @"text" : @"性别", @"style" : @"value1", @"detail":userSexName},
                         ],
                       nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark - TableView
@@ -69,6 +70,21 @@
     }
     
     return cell;
+}
+
+- (void)actionSex
+{
+    [self.delegate actionSex];
+}
+
+- (void)actionNickname
+{
+    [self.delegate actionNickname];
+}
+
+- (void)actionAvatar
+{
+    [self.delegate actionAvatar];
 }
 
 @end

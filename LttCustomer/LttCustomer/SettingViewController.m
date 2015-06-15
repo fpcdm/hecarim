@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"设置";
+    self.navigationItem.title = @"设置";
 }
 
 #pragma mark - Sheet

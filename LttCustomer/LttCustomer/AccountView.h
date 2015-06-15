@@ -18,6 +18,8 @@
 
 - (void)actionLogout;
 
+- (void)actionSafety;
+
 @end
 
 @interface AccountView : AppTableView

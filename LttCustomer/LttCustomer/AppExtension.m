@@ -18,12 +18,13 @@
 
 - (UIImage *)avatarImage
 {
-    //todo: 初始化头像
-    if (self.avatar) {
+    UIImage *image = nil;
+    if (self.avatar && [[NSFileManager defaultManager] fileExistsAtPath:self.avatar]) {
+        image = [UIImage imageWithContentsOfFile:self.avatar];
+    } else {
+        //返回默认头像
+        image = [UIImage imageNamed:@"nopic"];
     }
-    
-    //返回默认头像
-    UIImage *image = [UIImage imageNamed:@"nopic"];
     return image;
 }
 

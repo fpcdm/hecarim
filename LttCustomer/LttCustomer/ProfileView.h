@@ -10,6 +10,12 @@
 
 @protocol ProfileViewDelegate <NSObject>
 
+- (void)actionSex;
+
+- (void)actionNickname;
+
+- (void)actionAvatar;
+
 @end
 
 @interface ProfileView : AppTableView

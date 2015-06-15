@@ -125,6 +125,7 @@ static NSString *cellReuseIdentifier = @"cell";
     //初始化Cell
     //UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellReuseIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSString *type = [cellData objectForKey:@"type"];
     

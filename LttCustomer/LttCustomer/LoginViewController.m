@@ -29,7 +29,7 @@
     hideBackButton = YES;
     [super viewDidLoad];
     
-    self.title = @"登陆";
+    self.navigationItem.title = @"登陆";
 }
 
 - (BOOL) hasTabBar

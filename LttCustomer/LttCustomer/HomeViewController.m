@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"首页";
+    self.navigationItem.title = @"首页";
 }
 
 - (BOOL) hasTabBar

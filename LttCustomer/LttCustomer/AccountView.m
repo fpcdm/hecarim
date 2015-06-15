@@ -30,7 +30,7 @@
                       @[
                         @{@"id" : @"address", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"管理我的地址"},
                         @{@"id" : @"profile", @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料"},
-                        @{@"id" : @"safety", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"账户与安全"},
+                        @{@"id" : @"safety", @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全"},
                         ],
                       @[
                         @{@"id" : @"feedback", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"意见反馈"},
@@ -117,6 +117,11 @@
 - (void)actionProfile
 {
     [self.delegate actionProfile];
+}
+
+- (void)actionSafety
+{
+    [self.delegate actionSafety];
 }
 
 - (void)actionLogout
