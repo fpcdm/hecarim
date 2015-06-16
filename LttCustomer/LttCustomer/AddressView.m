@@ -7,7 +7,6 @@
 //
 
 #import "AddressView.h"
-#import "AddressEntity.h"
 
 @implementation AddressView
 
@@ -19,7 +18,7 @@
     
     if (addressList != nil) {
         for (AddressEntity *address in addressList) {
-            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"", @"height":address.isDefault ? @100 : @80, @"data": address}];
+            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":address.isDefault ? @100 : @80, @"data": address}];
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
@@ -34,13 +33,11 @@
     int padding = 10;
     int paddingDefault = 30;
     UIView *superview = cell;
-    CGFloat fontSize = SIZE_MIDDLE_TEXT;
     
     //是否默认
     if (address.isDefault) {
-        UILabel *defaultLabel = [[UILabel alloc] init];
-        defaultLabel.text = @"默认";
-        defaultLabel.font = [UIFont systemFontOfSize:fontSize weight:1.0];
+        UILabel *defaultLabel = [self makeCellLabel:@"默认"];
+        defaultLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT weight:1.0];
         [cell addSubview:defaultLabel];
         
         [defaultLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -50,9 +47,7 @@
     }
     
     //姓名
-    UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.text = address.name;
-    nameLabel.font = [UIFont systemFontOfSize:fontSize];
+    UILabel *nameLabel = [self makeCellLabel:address.name];
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -62,9 +57,7 @@
     }];
     
     //手机号
-    UILabel *mobileLabel = [[UILabel alloc] init];
-    mobileLabel.text = address.mobile;
-    mobileLabel.font = [UIFont systemFontOfSize:fontSize];
+    UILabel *mobileLabel = [self makeCellLabel:address.mobile];
     [cell addSubview:mobileLabel];
     
     [mobileLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -73,7 +66,45 @@
         
     }];
     
+    //区域
+    NSString *areaText = [NSString stringWithFormat:@"%@ %@", [address areaName], address.streetName];
+    UILabel *areaLabel = [self makeCellLabel:areaText];
+    [cell addSubview:areaLabel];
+    
+    [areaLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(nameLabel.mas_bottom).offset(5);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        
+    }];
+    
+    //地址
+    UILabel *addressLabel = [self makeCellLabel:address.address];
+    [cell addSubview:addressLabel];
+    
+    [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(areaLabel.mas_bottom).offset(5);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        
+    }];
+    
     return cell;
+}
+
+//绘制cell中的label
+- (UILabel *) makeCellLabel: (NSString *)text
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.text = text;
+    label.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    return label;
+}
+
+#pragma mark - Action
+- (void)actionDetail:(NSDictionary *)cellData
+{
+    AddressEntity *address = [cellData objectForKey:@"data"];
+    
+    [self.delegate actionDetail:address];
 }
 
 @end

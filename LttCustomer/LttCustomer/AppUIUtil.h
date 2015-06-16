@@ -17,6 +17,10 @@
 
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title highlighted:(BOOL) highlighted;
 
++ (UIBarButtonItem *) makeBarButtonSystemItem: (UIBarButtonSystemItem) systemItem;
+
++ (UIBarButtonItem *) makeBarButtonSystemItem: (UIBarButtonSystemItem) systemItem highlighted:(BOOL) highlighted;
+
 + (UIButton *) makeButton: (NSString *) title;
 
 @end

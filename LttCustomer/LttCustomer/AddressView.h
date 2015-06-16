@@ -7,8 +7,13 @@
 //
 
 #import "AppTableView.h"
+#import "AddressEntity.h"
 
 @protocol AddressViewDelegate <NSObject>
+
+@required
+
+- (void)actionDetail:(AddressEntity *)address;
 
 @end
 

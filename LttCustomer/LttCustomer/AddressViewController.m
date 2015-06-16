@@ -9,6 +9,8 @@
 #import "AddressViewController.h"
 #import "AddressView.h"
 #import "AddressEntity.h"
+#import "AddressDetailViewController.h"
+#import "AddressFormViewController.h"
 
 @interface AddressViewController () <AddressViewDelegate>
 
@@ -27,10 +29,21 @@
 }
 
 - (void)viewDidLoad {
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"管理我的地址";
     
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonSystemItem:UIBarButtonSystemItemAdd];
+    barButtonItem.target = self;
+    barButtonItem.action = @selector(actionAdd);
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+    [self loadData];
+}
+
+- (void) loadData
+{
     //初始化数据
     NSMutableArray *addressList = [[NSMutableArray alloc] initWithObjects:nil];
     
@@ -68,6 +81,20 @@
     
     [addressView setData:@"addressList" value:addressList];
     [addressView renderData];
+}
+
+#pragma mark - Action
+- (void) actionAdd
+{
+    AddressFormViewController *viewController = [[AddressFormViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void) actionDetail:(AddressEntity *)address
+{
+    AddressDetailViewController *viewController = [[AddressDetailViewController alloc] init];
+    viewController.address = address;
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

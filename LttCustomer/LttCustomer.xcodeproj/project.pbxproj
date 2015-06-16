@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F06312C1B30023B00AA8A94 /* AddressFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F06312B1B30023B00AA8A94 /* AddressFormView.m */; };
+		2F06312F1B30025600AA8A94 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F06312E1B30025600AA8A94 /* AddressDetailView.m */; };
 		2F089D741B2EC957002A0EA5 /* SafetyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D731B2EC957002A0EA5 /* SafetyViewController.m */; };
 		2F089D771B2EC999002A0EA5 /* SafetyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D761B2EC999002A0EA5 /* SafetyView.m */; };
 		2F089D7A1B2ECE9C002A0EA5 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F089D791B2ECE9C002A0EA5 /* AddressViewController.m */; };
@@ -149,6 +151,8 @@
 		2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B41B1EDBFB00306A11 /* qrspec.c */; };
 		2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B61B1EDBFB00306A11 /* rscode.c */; };
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
+		2FF3E6A81B2FFB1B00B90045 /* AddressFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3E6A71B2FFB1B00B90045 /* AddressFormViewController.m */; };
+		2FF3E6AB1B2FFB3200B90045 /* AddressDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3E6AA1B2FFB3200B90045 /* AddressDetailViewController.m */; };
 		2FF8F72D1B2EAE6F00689C33 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +167,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F06312A1B30023B00AA8A94 /* AddressFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressFormView.h; sourceTree = "<group>"; };
+		2F06312B1B30023B00AA8A94 /* AddressFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressFormView.m; sourceTree = "<group>"; };
+		2F06312D1B30025600AA8A94 /* AddressDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressDetailView.h; sourceTree = "<group>"; };
+		2F06312E1B30025600AA8A94 /* AddressDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressDetailView.m; sourceTree = "<group>"; };
 		2F089D721B2EC957002A0EA5 /* SafetyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyViewController.h; sourceTree = "<group>"; };
 		2F089D731B2EC957002A0EA5 /* SafetyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyViewController.m; sourceTree = "<group>"; };
 		2F089D751B2EC999002A0EA5 /* SafetyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyView.h; sourceTree = "<group>"; };
@@ -547,6 +555,10 @@
 		2FED82B91B1EDBFB00306A11 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		2FF39DAE1AEB7E6900077790 /* Config_product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
 		2FF39DAF1AEB7E8400077790 /* Config_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
+		2FF3E6A61B2FFB1B00B90045 /* AddressFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressFormViewController.h; sourceTree = "<group>"; };
+		2FF3E6A71B2FFB1B00B90045 /* AddressFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressFormViewController.m; sourceTree = "<group>"; };
+		2FF3E6A91B2FFB3200B90045 /* AddressDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressDetailViewController.h; sourceTree = "<group>"; };
+		2FF3E6AA1B2FFB3200B90045 /* AddressDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressDetailViewController.m; sourceTree = "<group>"; };
 		2FF8F72B1B2EAE6400689C33 /* AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppExtension.h; sourceTree = "<group>"; };
 		2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppExtension.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -602,6 +614,10 @@
 				2F089D761B2EC999002A0EA5 /* SafetyView.m */,
 				2F089D7B1B2ECF0F002A0EA5 /* AddressView.h */,
 				2F089D7C1B2ECF23002A0EA5 /* AddressView.m */,
+				2F06312A1B30023B00AA8A94 /* AddressFormView.h */,
+				2F06312B1B30023B00AA8A94 /* AddressFormView.m */,
+				2F06312D1B30025600AA8A94 /* AddressDetailView.h */,
+				2F06312E1B30025600AA8A94 /* AddressDetailView.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -968,6 +984,10 @@
 				2F089D731B2EC957002A0EA5 /* SafetyViewController.m */,
 				2F089D781B2ECE9C002A0EA5 /* AddressViewController.h */,
 				2F089D791B2ECE9C002A0EA5 /* AddressViewController.m */,
+				2FF3E6A91B2FFB3200B90045 /* AddressDetailViewController.h */,
+				2FF3E6AA1B2FFB3200B90045 /* AddressDetailViewController.m */,
+				2FF3E6A61B2FFB1B00B90045 /* AddressFormViewController.h */,
+				2FF3E6A71B2FFB1B00B90045 /* AddressFormViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -1469,6 +1489,7 @@
 				2FED82C11B1EDBFB00306A11 /* split.c in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
 				2FED7D931B1EA2D300306A11 /* SDImageCache.m in Sources */,
+				2F06312F1B30025600AA8A94 /* AddressDetailView.m in Sources */,
 				2F9001151B1D9D550040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2FED7E0F1B1EA79300306A11 /* DDLog.m in Sources */,
 				2F9001131B1D9D550040D97B /* UIView+REFrostedViewController.m in Sources */,
@@ -1492,6 +1513,7 @@
 				2FED82BA1B1EDBFB00306A11 /* bitstream.c in Sources */,
 				2FED7D9E1B1EA2D300306A11 /* UIImageView+WebCache.m in Sources */,
 				2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */,
+				2F06312C1B30023B00AA8A94 /* AddressFormView.m in Sources */,
 				2FED7D9D1B1EA2D300306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2FED7D9C1B1EA2D300306A11 /* UIImage+MultiFormat.m in Sources */,
 				2F90010B1B1D9D550040D97B /* UIScrollView+MJExtension.m in Sources */,
@@ -1513,6 +1535,7 @@
 				2F089D801B2ED05C002A0EA5 /* AddressEntity.m in Sources */,
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
+				2FF3E6AB1B2FFB3200B90045 /* AddressDetailViewController.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
 				2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */,
 				2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */,
@@ -1530,6 +1553,7 @@
 				2FBF3F771B2821AA00C0DC54 /* HomeView.m in Sources */,
 				2F9000381B1D8B930040D97B /* CRToastViewController.m in Sources */,
 				2F9001041B1D9D550040D97B /* MJRefreshConst.m in Sources */,
+				2FF3E6A81B2FFB1B00B90045 /* AddressFormViewController.m in Sources */,
 				2F90003E1B1D8B930040D97B /* MASViewAttribute.m in Sources */,
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,
 				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,

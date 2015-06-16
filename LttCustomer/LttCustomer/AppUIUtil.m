@@ -22,13 +22,34 @@
 + (UIBarButtonItem *) makeBarButtonItem: (NSString *) title highlighted:(BOOL) highlighted
 {
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] init];
+    barButtonItem.title = title;
     
     if (highlighted) {
         barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
-        barButtonItem.title = title;
     } else {
         barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
-        barButtonItem.title = title;
+    }
+    
+    [barButtonItem setTitleTextAttributes:@{
+                                            NSFontAttributeName:[UIFont systemFontOfSize:SIZE_BAR_TEXT]
+                                            } forState:UIControlStateNormal];
+    
+    return barButtonItem;
+}
+
++ (UIBarButtonItem *)makeBarButtonSystemItem:(UIBarButtonSystemItem)systemItem
+{
+    return [self makeBarButtonSystemItem:systemItem highlighted:NO];
+}
+
++ (UIBarButtonItem *)makeBarButtonSystemItem:(UIBarButtonSystemItem)systemItem highlighted:(BOOL)highlighted
+{
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    
+    if (highlighted) {
+        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
+    } else {
+        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
     }
     
     [barButtonItem setTitleTextAttributes:@{
