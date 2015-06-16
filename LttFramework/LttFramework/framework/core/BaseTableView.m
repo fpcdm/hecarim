@@ -51,7 +51,7 @@ static NSString *cellReuseIdentifier = @"cell";
         self.tableData = [[NSMutableArray alloc] initWithObjects:nil];
     }
     
-    self.tableView = [[UITableView alloc] init];
+    self.tableView = [[UITableView alloc] initWithFrame:[self bounds] style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellReuseIdentifier];

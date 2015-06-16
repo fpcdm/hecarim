@@ -50,6 +50,22 @@
     address.address = @"龙山大道111号龙湖紫都星座B座1608";
     [addressList addObject:address];
     
+    AddressEntity *address2 = [[AddressEntity alloc] init];
+    address2.id = @2;
+    address2.isDefault = NO;
+    address2.name = @"某某";
+    address2.mobile = @"13333333333";
+    address2.provinceId = @1;
+    address2.cityId = @2;
+    address2.countyId = @3;
+    address2.streetId = @4;
+    address2.provinceName = @"重庆";
+    address2.cityName = @"重庆市";
+    address2.countyName = @"渝北区";
+    address2.streetName = @"龙山街道";
+    address2.address = @"龙山大道111号龙湖紫都星座B座1608";
+    [addressList addObject:address2];
+    
     [addressView setData:@"addressList" value:addressList];
     [addressView renderData];
 }

@@ -90,6 +90,8 @@
 #define SIZE_BAR_TEXT 16
 #define SIZE_MAIN_TEXT 16
 #define SIZE_BUTTON_TEXT 16
+#define SIZE_MIDDLE_TEXT 14
+#define SIZE_SMALL_TEXT 12
 
 //按钮配置
 #define HEIGHT_MAIN_BUTTON 30
