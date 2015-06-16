@@ -19,16 +19,6 @@
     self = [super init];
     if (!self) return nil;
     
-    self.tableData = [[NSMutableArray alloc] initWithObjects:
-                      @[
-                        @{@"id" : @"name", @"type" : @"custom", @"text" : @"联系人"},
-                        @{@"id" : @"mobile", @"type" : @"custom", @"text" : @"手机号码"},
-                        @{@"id" : @"area", @"type" : @"custom", @"text" : @"地区"},
-                        @{@"id" : @"street", @"type" : @"custom", @"text" : @"街道"},
-                        @{@"id" : @"addres", @"type" : @"custom", @"text" : @"地址"},
-                        ],
-                      nil];
-    
     //删除按钮
     UIButton *button = [AppUIUtil makeButton:@"删除" font:SIZE_MIDDLE_BUTTON_TEXT];
     [button addTarget:self action:@selector(actionDelete) forControlEvents:UIControlEventTouchUpInside];

@@ -24,16 +24,19 @@ static NSString *cellReuseIdentifier = @"cell";
     
     /****************************************************************
      tableData数据格式介绍：
-     默认字段：id,index,type,action,text,image,height,data,style,detail
+     默认字段：id,index,type,view,action,text,image,height,data,style,detail,font,detailFont
      type取值: normal|action|custom，默认normal
      style取值：default|subtitle|value1|value2，默认default
+     action说明：参数个数为1时，参数为cellData字典；为2时参数为tableView和indexPath
+     view说明：定义了view且type为custom时，使用该方法的返回值作为视图；参数个数为1时为cell,为2时为cell和cellData
+     customCell说明：type为custom且未定义view或view参数不满足需求时，使用此方式
      自定义字段：可自定义字段，加入更多默认功能
      备注：没有值的字段可不配置，会自动忽略
      优化：可以将NSDictionry改为TableCellEntity之类的数据固定格式，从而简化访问
      
      self.tableData = [[NSMutableArray alloc] initWithObjects:
         @[
-            @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0, @"style": @"default", @"detail": @"文字"},
+            @{@"id" : @"info", @"index" : @0, @"type" : @"custom", @"view": @"", @"action": @"", @"image": @"", @"text" : @"TODO", @"data" : @"", @"height": @0, @font: @14, @"style": @"default", @"detail": @"文字"},
         ],
         @[
             @{@"id" : @"address", @"index" : @1, @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址", @"data" : @"", @"height": @0},
@@ -133,7 +136,10 @@ static NSString *cellReuseIdentifier = @"cell";
     NSString *text = [cellData objectForKey:@"text"];
     if (text != nil && [text length] > 0) {
         cell.textLabel.text = [cellData objectForKey:@"text"];
-        if (FONT_TABLE_CELL_DEFAULT > 0) {
+        NSNumber *font = [cellData objectForKey:@"font"];
+        if (font != nil && [font floatValue] > 0.0f) {
+            cell.textLabel.font = [UIFont systemFontOfSize:[font floatValue]];
+        } else if (FONT_TABLE_CELL_DEFAULT > 0) {
             cell.textLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DEFAULT];
         }
     }
@@ -144,7 +150,10 @@ static NSString *cellReuseIdentifier = @"cell";
     NSString *detail = [cellData objectForKey:@"detail"];
     if (detail != nil && [detail length] > 0) {
         cell.detailTextLabel.text = detail;
-        if (FONT_TABLE_CELL_DETAIL_DEFAULT) {
+        NSNumber *detailFont = [cellData objectForKey:@"detailFont"];
+        if (detailFont != nil && [detailFont floatValue] > 0.0f) {
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:[detailFont floatValue]];
+        } else if (FONT_TABLE_CELL_DETAIL_DEFAULT > 0) {
             cell.detailTextLabel.font = [UIFont systemFontOfSize:FONT_TABLE_CELL_DETAIL_DEFAULT];
         }
     }
@@ -159,8 +168,29 @@ static NSString *cellReuseIdentifier = @"cell";
     //custom
     } else {
         //默认设置了值保留原视图，原始图基础上自定义，没设置则直接忽略，下同
+        //自定义视图钩子，仅支持最多两个参数
+        NSString *view = [cellData objectForKey:@"view"];
+        if (view != nil && [view length] > 0) {
+            //分析SEL参数个数
+            NSArray *components = [view componentsSeparatedByString:@":"];
+            NSUInteger paramCount = (components != nil) ? [components count] : 0;
+            if (paramCount < 1) {
+                return cell;
+            }
+            
+            //根据参数个数传参数，最多支持两个参数
+            SEL selector = NSSelectorFromString(view);
+            if (paramCount == 1) {
+                [self performSelector:selector];
+            } else if (paramCount == 2) {
+                [self performSelector:selector withObject:cell];
+            } else {
+                [self performSelector:selector withObject:cell withObject:cellData];
+            }
         //自定义视图方法，重写即可，可以忽略cell完全重写，默认直接返回cell
-        cell = [self tableView:tableView customCellForRowAtIndexPath:indexPath withCell:cell];
+        } else {
+            cell = [self tableView:tableView customCellForRowAtIndexPath:indexPath withCell:cell];
+        }
         return cell;
     }
 }

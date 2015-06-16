@@ -8,6 +8,7 @@
 
 #import "AddressDetailViewController.h"
 #import "AddressDetailView.h"
+#import "AddressFormViewController.h"
 
 @interface AddressDetailViewController () <AddressDetailViewDelegate>
 
@@ -31,12 +32,19 @@
 }
 
 - (void)viewDidLoad {
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"我的地址";
+    
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"编辑"];
+    barButtonItem.target = self;
+    barButtonItem.action = @selector(actionEdit);
+    self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
 #pragma mark - Action
+//删除地址
 - (void) actionDelete
 {
     //@todo: 删除地址
@@ -44,11 +52,20 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//设为默认地址
 - (void) actionDefault
 {
     //@todo: 设置默认
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+//编辑页面
+- (void) actionEdit
+{
+    AddressFormViewController *viewController = [[AddressFormViewController alloc] init];
+    viewController.address = address;
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

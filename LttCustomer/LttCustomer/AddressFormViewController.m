@@ -31,6 +31,14 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"新建地址";
+    
+    //初始化默认
+    if (self.address == nil) {
+        self.address = [[AddressEntity alloc] init];
+    }
+    
+    [addressFormView setData:@"address" value:self.address];
+    [addressFormView renderData];
 }
 
 @end
