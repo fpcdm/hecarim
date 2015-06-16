@@ -86,16 +86,26 @@
 #define COLOR_MAIN_TARBAR_HIGHLIGHTED @"F15353"
 
 //字体配置
+//标题字体
 #define SIZE_TITLE_TEXT 18
+//导航文字字体
 #define SIZE_BAR_TEXT 16
+//主要字体
 #define SIZE_MAIN_TEXT 16
+//大按钮文字
 #define SIZE_BUTTON_TEXT 16
+//中按钮文字
+#define SIZE_MIDDLE_BUTTON_TEXT 14
+//中号字体
 #define SIZE_MIDDLE_TEXT 14
+//小号字体
 #define SIZE_SMALL_TEXT 12
 
 //按钮配置
-#define HEIGHT_MAIN_BUTTON 30
-#define HEIGHT_BIG_BUTTON 45
+//中按钮高度
+#define HEIGHT_MIDDLE_BUTTON 35
+//大按钮高度
+#define HEIGHT_MAIN_BUTTON 45
 /********<<<公用配置********/
 
 

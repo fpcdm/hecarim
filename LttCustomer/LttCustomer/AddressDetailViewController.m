@@ -25,6 +25,9 @@
     addressDetailView = [[AddressDetailView alloc] init];
     addressDetailView.delegate = self;
     self.view = addressDetailView;
+    
+    [addressDetailView setData:@"address" value:self.address];
+    [addressDetailView renderData];
 }
 
 - (void)viewDidLoad {

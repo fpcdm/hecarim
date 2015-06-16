@@ -39,13 +39,8 @@
                       nil];
     
     //退出按钮
-    UIButton *button = [[UIButton alloc] init];
-    [button setTitle:@"退出当前账号" forState:UIControlStateNormal];
-    [button.layer setMasksToBounds:YES];
-    [button.layer setCornerRadius:3.0];
+    UIButton *button = [AppUIUtil makeButton:@"退出当前账号"];
     [button addTarget:self action:@selector(actionLogout) forControlEvents:UIControlEventTouchUpInside];
-    button.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
-    button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
     [self addSubview:button];
     
     UIView *superview = self;
@@ -55,7 +50,7 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo([NSNumber numberWithInt:HEIGHT_BIG_BUTTON]);
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
     //初始化数据视图

@@ -61,11 +61,16 @@
 
 + (UIButton *)makeButton:(NSString *)title
 {
+    return [self makeButton:title font:SIZE_BUTTON_TEXT];
+}
+
++ (UIButton *)makeButton:(NSString *)title font:(CGFloat)font
+{
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:title forState:UIControlStateNormal];
     [button.layer setMasksToBounds:YES];
     [button.layer setCornerRadius:3.0];
-    button.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
+    button.titleLabel.font = [UIFont systemFontOfSize:font];
     button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
     return button;
 }
