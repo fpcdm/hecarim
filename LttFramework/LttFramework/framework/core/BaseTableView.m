@@ -8,9 +8,6 @@
 
 #import "BaseTableView.h"
 
-//默认cell标识
-static NSString *cellReuseIdentifier = @"cell";
-
 @interface BaseTableView ()
 
 @end
@@ -54,10 +51,14 @@ static NSString *cellReuseIdentifier = @"cell";
         self.tableData = [[NSMutableArray alloc] initWithObjects:nil];
     }
     
-    self.tableView = [[UITableView alloc] initWithFrame:[self bounds] style:UITableViewStyleGrouped];
+    //默认TableView
+    self.tableView = [self loadTableView];
+    if (self.tableView == nil) {
+        self.tableView = [[UITableView alloc] initWithFrame:[self bounds] style:UITableViewStyleGrouped];
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT];
+    }
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellReuseIdentifier];
     [self addSubview:self.tableView];
     
     UIView *superview = self;
@@ -71,6 +72,11 @@ static NSString *cellReuseIdentifier = @"cell";
     self.tableView.tableFooterView = tableFooterView;
     
     return self;
+}
+
+- (UITableView *)loadTableView
+{
+    return nil;
 }
 
 #pragma mark - TableView
@@ -111,26 +117,35 @@ static NSString *cellReuseIdentifier = @"cell";
     return HEIGHT_TABLE_SECTION_FOOTER_DEFAULT;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView loadReuseTableViewCell:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //获取样式
+    //默认TableViewCell
+    UITableViewCell *cell = [self tableView:tableView loadReuseTableViewCell:indexPath];
+    //单元格数据
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
-    NSString *style = [cellData objectForKey:@"style"];
-    NSUInteger cellStyle = UITableViewCellStyleDefault;
-    if ([@"subtitle" isEqualToString:style]) {
-        cellStyle = UITableViewCellStyleSubtitle;
-    } else if ([@"value1" isEqualToString:style]) {
-        cellStyle = UITableViewCellStyleValue1;
-    } else if ([@"value2" isEqualToString:style]) {
-        cellStyle = UITableViewCellStyleValue2;
+    
+    //初始化默认Cell
+    if (cell == nil) {
+        //获取样式
+        NSString *style = [cellData objectForKey:@"style"];
+        NSUInteger cellStyle = UITableViewCellStyleDefault;
+        if ([@"subtitle" isEqualToString:style]) {
+            cellStyle = UITableViewCellStyleSubtitle;
+        } else if ([@"value1" isEqualToString:style]) {
+            cellStyle = UITableViewCellStyleValue1;
+        } else if ([@"value2" isEqualToString:style]) {
+            cellStyle = UITableViewCellStyleValue2;
+        }
+        
+        //cell = [self.tableView dequeueReusableCellWithIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT forIndexPath:indexPath];
+        cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
-    //初始化Cell
-    //UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellReuseIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    NSString *type = [cellData objectForKey:@"type"];
     
     //全局配置
     NSString *text = [cellData objectForKey:@"text"];
@@ -158,6 +173,7 @@ static NSString *cellReuseIdentifier = @"cell";
         }
     }
     
+    NSString *type = [cellData objectForKey:@"type"];
     //normal
     if ([@"normal" isEqualToString:type]) {
         return cell;

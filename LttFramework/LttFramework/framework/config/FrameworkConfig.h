@@ -75,6 +75,7 @@
 #define NOTIFICATION_USERINFO_KEY @""
 
 //表格默认配置
+#define CELL_REUSE_IDENTIFIER_DEFAULT @"cellIdentifier"
 //UITableViewStyleGrouped时0不会生效，必须大于0
 #define HEIGHT_TABLE_MARGIN_ZERO 0.01
 #define HEIGHT_TABLE_MARGIN_DEFAULT 10
