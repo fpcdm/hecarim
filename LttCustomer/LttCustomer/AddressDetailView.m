@@ -50,6 +50,7 @@
     [defaultButton setTitleColor:[UIColor colorWithHexString:@"008000"] forState:UIControlStateNormal];
     defaultButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_BUTTON_TEXT];
     defaultButton.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    [defaultButton addTarget:self action:@selector(actionDefault) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:defaultButton];
     
     [defaultButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -111,7 +112,12 @@
 #pragma mark - Action
 - (void)actionDelete
 {
-    
+    [self.delegate actionDelete];
+}
+
+- (void)actionDefault
+{
+    [self.delegate actionDefault];
 }
 
 @end

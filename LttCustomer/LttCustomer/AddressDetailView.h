@@ -10,6 +10,11 @@
 
 @protocol AddressDetailViewDelegate <NSObject>
 
+@required
+- (void) actionDelete;
+
+- (void) actionDefault;
+
 @end
 
 @interface AddressDetailView : AppTableView

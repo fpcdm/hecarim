@@ -19,6 +19,7 @@
 @implementation AddressViewController
 {
     AddressView *addressView;
+    NSMutableArray *addressList;
 }
 
 - (void)loadView
@@ -45,7 +46,7 @@
 - (void) loadData
 {
     //初始化数据
-    NSMutableArray *addressList = [[NSMutableArray alloc] initWithObjects:nil];
+    addressList = [[NSMutableArray alloc] initWithObjects:nil];
     
     AddressEntity *address = [[AddressEntity alloc] init];
     address.id = @1;

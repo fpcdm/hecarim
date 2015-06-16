@@ -36,4 +36,19 @@
     self.navigationItem.title = @"我的地址";
 }
 
+#pragma mark - Action
+- (void) actionDelete
+{
+    //@todo: 删除地址
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) actionDefault
+{
+    //@todo: 设置默认
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end
