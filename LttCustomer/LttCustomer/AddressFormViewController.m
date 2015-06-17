@@ -8,6 +8,7 @@
 
 #import "AddressFormViewController.h"
 #import "AddressFormView.h"
+#import "AreaActionSheetPickerPickerDelegate.h"
 
 @interface AddressFormViewController () <AddressFormViewDelegate>
 
@@ -47,6 +48,23 @@
     //视图赋值
     [addressFormView setData:@"address" value:self.address];
     [addressFormView renderData];
+    
+    AreaActionSheetPickerPickerDelegate *delg = [[AreaActionSheetPickerPickerDelegate alloc] init];
+    
+    [ActionSheetCustomPicker showPickerWithTitle:@"请选择地区" delegate:delg showCancelButton:NO origin:barButtonItem];
+    
+    /*
+    ActionStringDoneBlock done = ^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        if ([sender respondsToSelector:@selector(setText:)]) {
+            [sender performSelector:@selector(setText:) withObject:selectedValue];
+        }
+    };
+    ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
+        NSLog(@"Block Picker Canceled");
+    };
+    NSArray *colors = @[@"Red", @"Green", @"Blue", @"Orange"];
+    [ActionSheetStringPicker showPickerWithTitle:@"Select a Block" rows:colors initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+     */
 }
 
 #pragma mark - Action
