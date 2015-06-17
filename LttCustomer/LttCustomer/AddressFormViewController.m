@@ -8,9 +8,9 @@
 
 #import "AddressFormViewController.h"
 #import "AddressFormView.h"
-#import "AreaActionSheetPickerPickerDelegate.h"
+#import "AppAddressPicker.h"
 
-@interface AddressFormViewController () <AddressFormViewDelegate>
+@interface AddressFormViewController () <AddressFormViewDelegate, AppAddressPickerDelegate>
 
 @end
 
@@ -48,25 +48,17 @@
     //视图赋值
     [addressFormView setData:@"address" value:self.address];
     [addressFormView renderData];
+}
+
+#pragma mark - Delegate
+- (void)pickFinish:(NSString *)province city:(NSString *)city area:(NSString *)area
+{
+    //todo: 修改其他数据
     
-    /*
-    AreaActionSheetPickerPickerDelegate *delg = [[AreaActionSheetPickerPickerDelegate alloc] init];
-    
-    [ActionSheetCustomPicker showPickerWithTitle:@"请选择地区" delegate:delg showCancelButton:NO origin:barButtonItem];
-     */
-    
-    /*
-    ActionStringDoneBlock done = ^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-        if ([sender respondsToSelector:@selector(setText:)]) {
-            [sender performSelector:@selector(setText:) withObject:selectedValue];
-        }
-    };
-    ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
-        NSLog(@"Block Picker Canceled");
-    };
-    NSArray *colors = @[@"Red", @"Green", @"Blue", @"Orange"];
-    [ActionSheetStringPicker showPickerWithTitle:@"Select a Block" rows:colors initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
-     */
+    self.address.provinceName = province;
+    self.address.cityName = city;
+    self.address.countyName = area;
+    [addressFormView renderData];
 }
 
 #pragma mark - Action
@@ -79,7 +71,10 @@
 
 - (void)actionArea
 {
+    AppAddressPicker *addressPicker = [[AppAddressPicker alloc] init];
+    addressPicker.delegate = self;
     
+    [ActionSheetCustomPicker showPickerWithTitle:@"请选择地区" delegate:addressPicker showCancelButton:YES origin:addressFormView];
 }
 
 - (void)actionStreet
@@ -92,7 +87,7 @@
         //@todo 设置街道id
         self.address.streetName = selectedValue;
         [addressFormView renderData];
-    } cancelBlock:^(ActionSheetStringPicker *picker){} origin:[UIView new]];
+    } cancelBlock:^(ActionSheetStringPicker *picker){} origin:addressFormView];
 }
 
 @end

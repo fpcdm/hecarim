@@ -17,7 +17,9 @@
     BaseEntity *entity = [[[self class] allocWithZone:zone] init];
     
     //赋值为当前字典的值
+    NSLog(@"to: %@", [self toDictionary]);
     [entity fromDictionary:[self toDictionary]];
+    NSLog(@"from: %@", [entity toDictionary]);
     
     return entity;
 }
@@ -33,8 +35,8 @@
 {
     if (dict) {
         for (NSString *keyName in [dict allKeys]) {
-            //构建出属性的set方法
-            NSString *destMethodName = [NSString stringWithFormat:@"set%@:",[keyName capitalizedString]]; //capitalizedString返回每个单词首字母大写的字符串（每个单词的其余字母转换为小写）
+            //构建出属性的set方法，第一个字母大写，其余字母不变，否则找不到方法，不能使用[keyName capitalizedString]
+            NSString *destMethodName = [NSString stringWithFormat:@"set%@%@:",[[keyName substringToIndex:1] uppercaseString], [keyName substringFromIndex:1]];
             SEL destMethodSelector = NSSelectorFromString(destMethodName);
             
             if ([self respondsToSelector:destMethodSelector]) {

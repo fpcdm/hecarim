@@ -6,15 +6,56 @@
 //
 //
 
-#import "AreaActionSheetPickerPickerDelegate.h"
+#import "AppAddressPicker.h"
 
-@implementation AreaActionSheetPickerPickerDelegate
+@implementation AppAddressPicker
 
 
 - (id)init
 {
     if (self = [super init]) {
-        _provinces = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area.plist" ofType:nil]];
+        //@todo: 初始化数据，动态获取
+        
+        _provinces = @[
+                       @{
+                           @"state": @"四川",
+                           @"cities": @[
+                                   @{
+                                       @"city": @"资阳",
+                                       @"areas": @[
+                                               @"小院",
+                                               @"东峰",
+                                               ],
+                                       },
+                                   @{
+                                       @"city": @"成都",
+                                       @"areas": @[
+                                               @"地区1",
+                                               @"地区2",
+                                               ],
+                                       }
+                                   ],
+                           },
+                       @{
+                           @"state": @"重庆",
+                           @"cities": @[
+                                   @{
+                                       @"city": @"重庆",
+                                       @"areas": @[
+                                               @"渝北",
+                                               @"北部新区",
+                                               ],
+                                       },
+                                   @{
+                                       @"city": @"璧山",
+                                       @"areas": @[
+                                               @"地区1",
+                                               @"地区2",
+                                               ],
+                                       }
+                                   ],
+                           },
+                       ];
         _cities = [[_provinces objectAtIndex:0] objectForKey:@"cities"];
         _areas = [[_cities objectAtIndex:0] objectForKey:@"areas"];
         
@@ -40,12 +81,8 @@
 
 - (void)actionSheetPickerDidSucceed:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin
 {
-    NSString *resultMessage = [NSString stringWithFormat:@"%@ %@ %@", self.selectedProvince, self.selectedCity,self.selectedAreas, nil];
-    
-    UITextField *txt=(UITextField*)origin;
-    txt.text=resultMessage;
-    
-    //[[[UIAlertView alloc] initWithTitle:@"Success!" message:resultMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+    //@todo: 操作
+    [self.delegate pickFinish:self.selectedProvince city:self.selectedCity area:self.selectedAreas];
 }
 
 /////////////////////////////////////////////////////////////////////////

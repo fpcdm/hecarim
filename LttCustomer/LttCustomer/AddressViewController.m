@@ -94,7 +94,8 @@
 - (void) actionDetail:(AddressEntity *)address
 {
     AddressDetailViewController *viewController = [[AddressDetailViewController alloc] init];
-    viewController.address = address;
+    //拷贝对象
+    viewController.address = [address copy];
     [self pushViewController:viewController animated:YES];
 }
 

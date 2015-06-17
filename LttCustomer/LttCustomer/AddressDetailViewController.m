@@ -64,7 +64,8 @@
 - (void) actionEdit
 {
     AddressFormViewController *viewController = [[AddressFormViewController alloc] init];
-    viewController.address = address;
+    //拷贝对象
+    viewController.address = [address copy];
     [self pushViewController:viewController animated:YES];
 }
 

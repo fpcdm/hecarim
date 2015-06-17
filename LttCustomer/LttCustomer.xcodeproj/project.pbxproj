@@ -41,9 +41,7 @@
 		2F6D3E161B312164007A4159 /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E0C1B312164007A4159 /* ActionSheetStringPicker.m */; };
 		2F6D3E171B312164007A4159 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E0E1B312164007A4159 /* DistancePickerView.m */; };
 		2F6D3E181B312164007A4159 /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E101B312164007A4159 /* SWActionSheet.m */; };
-		2F6D3E1B1B312446007A4159 /* AreaActionSheetPickerPickerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E1A1B312446007A4159 /* AreaActionSheetPickerPickerDelegate.m */; };
-		2F6D3E1E1B312452007A4159 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D3E1C1B312452007A4159 /* area.plist */; };
-		2F6D3E1F1B312452007A4159 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D3E1D1B312452007A4159 /* city.plist */; };
+		2F6D3E1B1B312446007A4159 /* AppAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E1A1B312446007A4159 /* AppAddressPicker.m */; };
 		2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E231B312765007A4159 /* MJRefreshAutoFooter.m */; };
 		2F6D3E4E1B312765007A4159 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E251B312765007A4159 /* MJRefreshBackFooter.m */; };
 		2F6D3E4F1B312765007A4159 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E271B312765007A4159 /* MJRefreshComponent.m */; };
@@ -255,10 +253,8 @@
 		2F6D3E0E1B312164007A4159 /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePickerView.m; sourceTree = "<group>"; };
 		2F6D3E0F1B312164007A4159 /* SWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWActionSheet.h; sourceTree = "<group>"; };
 		2F6D3E101B312164007A4159 /* SWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWActionSheet.m; sourceTree = "<group>"; };
-		2F6D3E191B312446007A4159 /* AreaActionSheetPickerPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaActionSheetPickerPickerDelegate.h; sourceTree = "<group>"; };
-		2F6D3E1A1B312446007A4159 /* AreaActionSheetPickerPickerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaActionSheetPickerPickerDelegate.m; sourceTree = "<group>"; };
-		2F6D3E1C1B312452007A4159 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
-		2F6D3E1D1B312452007A4159 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		2F6D3E191B312446007A4159 /* AppAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAddressPicker.h; sourceTree = "<group>"; };
+		2F6D3E1A1B312446007A4159 /* AppAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAddressPicker.m; sourceTree = "<group>"; };
 		2F6D3E221B312765007A4159 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		2F6D3E231B312765007A4159 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		2F6D3E241B312765007A4159 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -1288,10 +1284,6 @@
 		2FCAF8941B20447B00F3B084 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2F6D3E1C1B312452007A4159 /* area.plist */,
-				2F6D3E1D1B312452007A4159 /* city.plist */,
-				2F6D3E191B312446007A4159 /* AreaActionSheetPickerPickerDelegate.h */,
-				2F6D3E1A1B312446007A4159 /* AreaActionSheetPickerPickerDelegate.m */,
 				2FD795921AE7ACC900D51FB0 /* AppViewController.h */,
 				2FD795931AE7ACC900D51FB0 /* AppViewController.m */,
 				2F2E0C6E1B2ACBEF000A7C90 /* AppUserViewController.h */,
@@ -1304,6 +1296,8 @@
 				2F39E3051B297AB60064CA28 /* AppUIUtil.m */,
 				2FF8F72B1B2EAE6400689C33 /* AppExtension.h */,
 				2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */,
+				2F6D3E191B312446007A4159 /* AppAddressPicker.h */,
+				2F6D3E1A1B312446007A4159 /* AppAddressPicker.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1600,10 +1594,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD795991AE7ACC900D51FB0 /* Images.xcassets in Resources */,
-				2F6D3E1E1B312452007A4159 /* area.plist in Resources */,
 				2F6D3E5B1B312765007A4159 /* MJRefresh.bundle in Resources */,
 				2F39E3081B297ADE0064CA28 /* nopic.png in Resources */,
-				2F6D3E1F1B312452007A4159 /* city.plist in Resources */,
 				2F6683891AF9BA3F00D430D0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1737,7 +1729,7 @@
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,
-				2F6D3E1B1B312446007A4159 /* AreaActionSheetPickerPickerDelegate.m in Sources */,
+				2F6D3E1B1B312446007A4159 /* AppAddressPicker.m in Sources */,
 				2F089D771B2EC999002A0EA5 /* SafetyView.m in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,
