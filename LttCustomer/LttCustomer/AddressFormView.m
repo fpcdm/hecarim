@@ -48,8 +48,8 @@
                       @[
                         @{@"id" : @"name", @"type" : @"custom", @"view" : @"cellName:"},
                         @{@"id" : @"mobile", @"type" : @"custom", @"view" : @"cellMobile:"},
-                        @{@"id" : @"area", @"type" : @"normal", @"action": @"actionArea", @"text": area, @"font": [NSNumber numberWithFloat:SIZE_MIDDLE_TEXT]},
-                        @{@"id" : @"street", @"type" : @"action", @"action" : @"actionStreet", @"text": street, @"font": [NSNumber numberWithFloat:SIZE_MIDDLE_TEXT]},
+                        @{@"id" : @"area", @"type" : @"normal", @"action": @"actionArea", @"text": area},
+                        @{@"id" : @"street", @"type" : @"action", @"action" : @"actionStreet", @"text": street},
                         @{@"id" : @"addres", @"type" : @"custom", @"view" : @"cellAddress:", @"height": @80},
                         ],
                       nil];
@@ -74,7 +74,7 @@
 - (UITableViewCell *)cellName:(UITableViewCell *)cell
 {
     nameField.placeholder = @"联系人姓名";
-    nameField.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    nameField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [cell addSubview:nameField];
     
     //占位符用来定位
@@ -94,7 +94,7 @@
 - (UITableViewCell *)cellMobile:(UITableViewCell *)cell
 {
     mobileField.placeholder = @"手机号码";
-    mobileField.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    mobileField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [cell addSubview:mobileField];
     
     //占位符用来定位
@@ -115,7 +115,7 @@
 {
     addressView.placeholder = @"详细地址";
     addressView.delegate = self;
-    addressView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    addressView.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [cell addSubview:addressView];
     
     UIView *superview = cell;

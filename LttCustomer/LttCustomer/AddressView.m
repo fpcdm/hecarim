@@ -19,7 +19,7 @@
     if (addressList != nil) {
         for (AddressEntity *address in addressList) {
             BOOL isDefault = address.isDefault && [address.isDefault isEqualToNumber:@YES];
-            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":isDefault ? @100 : @80, @"data": address}];
+            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":isDefault ? @110 : @90, @"data": address}];
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
@@ -39,7 +39,7 @@
     //是否默认
     if (isDefault) {
         UILabel *defaultLabel = [self makeCellLabel:@"默认"];
-        defaultLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT weight:1.0];
+        defaultLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT weight:1.0];
         [cell addSubview:defaultLabel];
         
         [defaultLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -97,7 +97,7 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
-    label.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     return label;
 }
 

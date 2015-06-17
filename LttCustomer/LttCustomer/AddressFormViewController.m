@@ -74,7 +74,7 @@
     AppAddressPicker *addressPicker = [[AppAddressPicker alloc] init];
     addressPicker.delegate = self;
     
-    [ActionSheetCustomPicker showPickerWithTitle:@"请选择地区" delegate:addressPicker showCancelButton:YES origin:addressFormView];
+    [ActionSheetCustomPicker showPickerWithTitle:nil delegate:addressPicker showCancelButton:YES origin:addressFormView];
 }
 
 - (void)actionStreet
