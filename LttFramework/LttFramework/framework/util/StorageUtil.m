@@ -40,23 +40,29 @@ static StorageUtil *sharedStorage = nil;
     return storage;
 }
 
+//整理字典数据，去掉NSNull和nil，使其可以保存至NSUserDefaults
+- (NSDictionary *) prepareDictionary: (NSDictionary *) dictionary
+{
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+    
+    if (dictionary) {
+        for (id key in dictionary) {
+            id value = [dictionary objectForKey:key];
+            if (value != nil && value != [NSNull null]) {
+                [mutableDictionary setObject:value forKey:key];
+            }
+        }
+    }
+    
+    return [NSDictionary dictionaryWithDictionary:mutableDictionary];
+}
+
 - (void) setUser: (UserEntity *) user
 {
     if (user) {
-        //解决NSUserDefaults不能存储null的问题
-        UserEntity *userCopy = [[UserEntity alloc] init];
-        userCopy.id = user.id ? user.id : @0;
-        userCopy.name = user.name ? user.name : @"";
-        userCopy.mobile = user.mobile ? user.mobile : @"";
-        userCopy.token = user.token ? user.token : @"";
-        userCopy.password = user.password ? user.password : @"";
-        userCopy.type = user.type ? user.type : @"";
-        userCopy.nickname = user.nickname ? user.nickname : @"";
-        userCopy.sex = user.sex ? user.sex : @0;
-        userCopy.avatar = user.avatar ? user.avatar : @"";
-        
-        NSDictionary *userDict = [userCopy toDictionary];
-        userCopy = nil;
+        //解决NSUserDefaults不能存储nsnull和nil的问题
+        NSDictionary *userDict = [user toDictionary];
+        userDict = [self prepareDictionary:userDict];
         
         [storage setObject:userDict forKey:@"user"];
         [storage synchronize];
@@ -79,17 +85,6 @@ static StorageUtil *sharedStorage = nil;
     
     UserEntity *user = [[UserEntity alloc] init];
     [user fromDictionary:userDict];
-    
-    //还原NSUserDefaults空值为null
-    if (user.id == nil || [@0 isEqualToNumber:user.id]) user.id = nil;
-    if ([@"" isEqualToString:user.name]) user.name = nil;
-    if ([@"" isEqualToString:user.mobile]) user.mobile = nil;
-    if ([@"" isEqualToString:user.token]) user.token = nil;
-    if ([@"" isEqualToString:user.password]) user.password = nil;
-    if ([@"" isEqualToString:user.type]) user.type = nil;
-    if ([@"" isEqualToString:user.nickname]) user.nickname = nil;
-    if (user.sex == nil || [@0 isEqualToNumber:user.sex]) user.sex = nil;
-    if ([@"" isEqualToString:user.avatar]) user.avatar = nil;
     
     NSLog(@"get user: %@", [user toDictionary]);
     return user;

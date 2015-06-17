@@ -48,7 +48,7 @@
     user.token = @"token";
     user.type = USER_TYPE_MEMBER;
     user.nickname = @"勇哥";
-    user.sex = @1;
+    user.sex = nil;
     user.avatar = nil;
     
     [[StorageUtil sharedStorage] setUser:user];

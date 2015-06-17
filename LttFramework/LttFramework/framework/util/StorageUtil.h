@@ -15,6 +15,9 @@
 
 - (NSUserDefaults *) storage;
 
+//整理字典数据，去掉NSNull和nil，使其可以保存至NSUserDefaults
+- (NSDictionary *) prepareDictionary: (NSDictionary *) dictionary;
+
 - (void) setUser: (UserEntity *) user;
 
 - (UserEntity *) getUser;

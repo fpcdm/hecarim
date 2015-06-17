@@ -97,7 +97,7 @@
             
             //添加属性值，nil转换为NSNull
             id value = [self performSelector:destMethodSelector];
-            if(value == nil) {
+            if (value == nil) {
                 [valueArray addObject:[NSNull null]];
             } else {
                 [valueArray addObject:value];
