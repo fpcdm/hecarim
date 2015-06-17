@@ -29,6 +29,7 @@
 //系统配置
 #import "UIColor+Hex.h"
 #import "NSString+trim.h"
+#import "UITextView+Placeholder.h"
 /********>>>加载环境配置********/
 
 

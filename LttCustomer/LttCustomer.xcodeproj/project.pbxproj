@@ -32,6 +32,7 @@
 		2F66838F1AF9ED8E00D430D0 /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F66838E1AF9ED8E00D430D0 /* ModelEntity.m */; };
 		2F6683921AF9F9AE00D430D0 /* IntentionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6683911AF9F9AE00D430D0 /* IntentionEntity.m */; };
 		2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F699B4B1AF8C41600E42816 /* BrandEntity.m */; };
+		2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */; };
 		2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD751B1D5E9500797799 /* BaseEntity.m */; };
 		2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD7E1B1D5F6D00797799 /* BaseView.m */; };
 		2F7A56E01B09C11700D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56DF1B09C11700D12500 /* Foundation.framework */; };
@@ -216,6 +217,8 @@
 		2F6683911AF9F9AE00D430D0 /* IntentionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionEntity.m; sourceTree = "<group>"; };
 		2F699B4A1AF8C41600E42816 /* BrandEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandEntity.h; sourceTree = "<group>"; };
 		2F699B4B1AF8C41600E42816 /* BrandEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandEntity.m; sourceTree = "<group>"; };
+		2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2F74CD741B1D5E9500797799 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
 		2F74CD751B1D5E9500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD7D1B1D5F6D00797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
@@ -773,6 +776,8 @@
 				2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */,
 				2F9000081B1D8B7A0040D97B /* UIViewController+Ltt.h */,
 				2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */,
+				2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */,
+				2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1587,6 +1592,7 @@
 				2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FED7D9A1B1EA2D300306A11 /* UIButton+WebCache.m in Sources */,
 				2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */,
+				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F90010E1B1D9D550040D97B /* Reachability.m in Sources */,
 				2F089D7D1B2ECF23002A0EA5 /* AddressView.m in Sources */,
 				2F9001111B1D9D550040D97B /* REFrostedViewController.m in Sources */,

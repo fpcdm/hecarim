@@ -14,6 +14,7 @@
 		2F5D29511B1EEC2000A99AC5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29501B1EEC2000A99AC5 /* CFNetwork.framework */; };
 		2F5D29DC1B1EFDB800A99AC5 /* StorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D29DB1B1EFDB800A99AC5 /* StorageUtil.m */; };
 		2F5D29DF1B1EFDD500A99AC5 /* RestKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D29DE1B1EFDD500A99AC5 /* RestKitUtil.m */; };
+		2F6D3DFA1B310EE4007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */; };
 		2F74CD731B1D5E2500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD721B1D5E2500797799 /* BaseEntity.m */; };
 		2F74CD7C1B1D5EF300797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD7B1B1D5EF300797799 /* BaseView.m */; };
 		2F74CDBF1B1D80A700797799 /* CRToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CDB21B1D80A700797799 /* CRToast.m */; };
@@ -244,6 +245,8 @@
 		2F5D29DB1B1EFDB800A99AC5 /* StorageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageUtil.m; sourceTree = "<group>"; };
 		2F5D29DD1B1EFDD500A99AC5 /* RestKitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKitUtil.h; sourceTree = "<group>"; };
 		2F5D29DE1B1EFDD500A99AC5 /* RestKitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKitUtil.m; sourceTree = "<group>"; };
+		2F6D3DF81B310EE4007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2F74CD711B1D5E2500797799 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
 		2F74CD721B1D5E2500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD7A1B1D5EF300797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
@@ -845,6 +848,8 @@
 				2F800AEE1B1D5059006189EF /* NSString+trim.m */,
 				2F800AEF1B1D5059006189EF /* UIColor+Hex.h */,
 				2F800AF01B1D5059006189EF /* UIColor+Hex.m */,
+				2F6D3DF81B310EE4007A4159 /* UITextView+Placeholder.h */,
+				2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */,
 				2F9000031B1D84D80040D97B /* UIViewController+Ltt.h */,
 				2F9000041B1D84F00040D97B /* UIViewController+Ltt.m */,
 			);
@@ -1305,6 +1310,7 @@
 				2F800AF21B1D5059006189EF /* UIColor+Hex.m in Sources */,
 				2FCAF86A1B2022C300F3B084 /* NotificationUtil.m in Sources */,
 				2F74CDEB1B1D833200797799 /* MASViewAttribute.m in Sources */,
+				2F6D3DFA1B310EE4007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F9000C91B1D98790040D97B /* UIImage+REFrostedViewController.m in Sources */,
 				2FED7DE91B1EA71A00306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F74CD7C1B1D5EF300797799 /* BaseView.m in Sources */,

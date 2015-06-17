@@ -8,8 +8,9 @@
 
 #import "AddressFormView.h"
 #import "AddressEntity.h"
+#import "TPKeyboardAvoidingTableView.h"
 
-@interface AddressFormView ()
+@interface AddressFormView () <UITextViewDelegate>
 
 @end
 
@@ -56,6 +57,14 @@
 }
 
 #pragma mark - TableView
+//初始化TableView
+-(UITableView *)loadTableView
+{
+    TPKeyboardAvoidingTableView *tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:[self bounds] style:UITableViewStyleGrouped];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT];
+    return tableView;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return section == 0 ? HEIGHT_TABLE_MARGIN_DEFAULT : HEIGHT_TABLE_MARGIN_ZERO;
@@ -104,21 +113,32 @@
 
 - (UITableViewCell *)cellAddress:(UITableViewCell *)cell
 {
+    addressView.placeholder = @"详细地址";
+    addressView.delegate = self;
     addressView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [cell addSubview:addressView];
-    
-    //占位符用来定位
-    cell.textLabel.text = @" ";
     
     UIView *superview = cell;
     [addressView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(superview.mas_top);
         make.bottom.equalTo(superview.mas_bottom);
-        make.left.equalTo(cell.textLabel.mas_left);
+        make.left.equalTo(superview.mas_left).offset(10);
         make.right.equalTo(superview.mas_right);
     }];
     
     return cell;
+}
+
+#pragma mark - TextView
+//回车关闭键盘
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Action
