@@ -12,7 +12,7 @@
 
 @property (retain, nonatomic) NSNumber *id;
 
-@property (assign, nonatomic) BOOL isDefault;
+@property (assign, nonatomic) NSNumber *isDefault;
 
 @property (retain, nonatomic) NSString *name;
 

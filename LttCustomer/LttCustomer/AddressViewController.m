@@ -50,7 +50,7 @@
     
     AddressEntity *address = [[AddressEntity alloc] init];
     address.id = @1;
-    address.isDefault = YES;
+    address.isDefault = @YES;
     address.name = @"吴勇";
     address.mobile = @"18875001455";
     address.provinceId = @1;
@@ -66,7 +66,7 @@
     
     AddressEntity *address2 = [[AddressEntity alloc] init];
     address2.id = @2;
-    address2.isDefault = NO;
+    address2.isDefault = @NO;
     address2.name = @"某某";
     address2.mobile = @"13333333333";
     address2.provinceId = @1;

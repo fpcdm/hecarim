@@ -10,6 +10,10 @@
 
 @protocol AddressFormViewDelegate <NSObject>
 
+@required
+- (void)actionArea;
+- (void)actionStreet;
+
 @end
 
 @interface AddressFormView : AppTableView

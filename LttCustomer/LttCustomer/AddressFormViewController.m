@@ -49,9 +49,11 @@
     [addressFormView setData:@"address" value:self.address];
     [addressFormView renderData];
     
+    /*
     AreaActionSheetPickerPickerDelegate *delg = [[AreaActionSheetPickerPickerDelegate alloc] init];
     
     [ActionSheetCustomPicker showPickerWithTitle:@"请选择地区" delegate:delg showCancelButton:NO origin:barButtonItem];
+     */
     
     /*
     ActionStringDoneBlock done = ^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
@@ -73,6 +75,24 @@
     //@todo 保存
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)actionArea
+{
+    
+}
+
+- (void)actionStreet
+{
+    //获取街道列表
+    NSArray *streets = @[@"街道1", @"街道2", @"街道3"];
+    
+    //选择街道
+    [ActionSheetStringPicker showPickerWithTitle:nil rows:streets initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue){
+        //@todo 设置街道id
+        self.address.streetName = selectedValue;
+        [addressFormView renderData];
+    } cancelBlock:^(ActionSheetStringPicker *picker){} origin:[UIView new]];
 }
 
 @end

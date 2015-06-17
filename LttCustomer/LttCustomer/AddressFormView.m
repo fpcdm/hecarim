@@ -48,8 +48,8 @@
                       @[
                         @{@"id" : @"name", @"type" : @"custom", @"view" : @"cellName:"},
                         @{@"id" : @"mobile", @"type" : @"custom", @"view" : @"cellMobile:"},
-                        @{@"id" : @"area", @"type" : @"normal", @"text": area, @"font": [NSNumber numberWithFloat:SIZE_MIDDLE_TEXT]},
-                        @{@"id" : @"street", @"type" : @"action", @"text": street, @"font": [NSNumber numberWithFloat:SIZE_MIDDLE_TEXT]},
+                        @{@"id" : @"area", @"type" : @"normal", @"action": @"actionArea", @"text": area, @"font": [NSNumber numberWithFloat:SIZE_MIDDLE_TEXT]},
+                        @{@"id" : @"street", @"type" : @"action", @"action" : @"actionStreet", @"text": street, @"font": [NSNumber numberWithFloat:SIZE_MIDDLE_TEXT]},
                         @{@"id" : @"addres", @"type" : @"custom", @"view" : @"cellAddress:", @"height": @80},
                         ],
                       nil];
@@ -142,5 +142,14 @@
 }
 
 #pragma mark - Action
+- (void)actionArea
+{
+    [self.delegate actionArea];
+}
+
+- (void)actionStreet
+{
+    [self.delegate actionStreet];
+}
 
 @end

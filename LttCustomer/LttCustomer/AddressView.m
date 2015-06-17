@@ -18,7 +18,8 @@
     
     if (addressList != nil) {
         for (AddressEntity *address in addressList) {
-            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":address.isDefault ? @100 : @80, @"data": address}];
+            BOOL isDefault = address.isDefault && [address.isDefault isEqualToNumber:@YES];
+            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":isDefault ? @100 : @80, @"data": address}];
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
@@ -28,6 +29,7 @@
 {
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
     AddressEntity *address = [cellData objectForKey:@"data"];
+    BOOL isDefault = address.isDefault && [address.isDefault isEqualToNumber:@YES];
     
     //间距配置
     int padding = 10;
@@ -35,7 +37,7 @@
     UIView *superview = cell;
     
     //是否默认
-    if (address.isDefault) {
+    if (isDefault) {
         UILabel *defaultLabel = [self makeCellLabel:@"默认"];
         defaultLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT weight:1.0];
         [cell addSubview:defaultLabel];
@@ -51,7 +53,7 @@
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(address.isDefault ? paddingDefault : padding);
+        make.top.equalTo(superview.mas_top).offset(isDefault ? paddingDefault : padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         
     }];
@@ -61,7 +63,7 @@
     [cell addSubview:mobileLabel];
     
     [mobileLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(address.isDefault ? paddingDefault : padding);
+        make.top.equalTo(superview.mas_top).offset(isDefault ? paddingDefault : padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
     }];
