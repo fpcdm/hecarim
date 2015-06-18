@@ -43,12 +43,21 @@
 
 - (void)setData: (NSString *)key value:(id)value
 {
+    //自动替换nil为NSNull
+    if (value == nil) {
+        value = [NSNull null];
+    }
     [viewData setObject:value forKey:key];
 }
 
 - (id)getData:(NSString *)key
 {
-    return [viewData objectForKey:key];
+    //自动还原NSNull为nil
+    id value = [viewData objectForKey:key];
+    if (value == [NSNull null]) {
+        value = nil;
+    }
+    return value;
 }
 
 //子类重写

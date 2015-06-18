@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "ProfileView.h"
+#import "ProfileNicknameViewController.h"
 
 @interface ProfileViewController () <ProfileViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -32,6 +33,7 @@
 
 - (void)viewDidLoad
 {
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"个人资料";
@@ -130,7 +132,22 @@
 
 - (void)actionNickname
 {
+    ProfileNicknameViewController *viewController = [[ProfileNicknameViewController alloc] init];
     
+    //初始化昵称
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    viewController.nickname = user.nickname;
+    viewController.callbackBlock = ^(id object){
+        //保存昵称
+        UserEntity *user = [[StorageUtil sharedStorage] getUser];
+        user.nickname = (NSString *) object;
+        [[StorageUtil sharedStorage] setUser:user];
+        
+        [profileView setData:@"user" value:user];
+        [profileView renderData];
+    };
+    
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionAvatar

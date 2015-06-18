@@ -48,7 +48,7 @@
                       @[
                         @{@"id" : @"name", @"type" : @"custom", @"view" : @"cellName:"},
                         @{@"id" : @"mobile", @"type" : @"custom", @"view" : @"cellMobile:"},
-                        @{@"id" : @"area", @"type" : @"normal", @"action": @"actionArea", @"text": area},
+                        @{@"id" : @"area", @"type" : @"action", @"action": @"actionArea", @"text": area},
                         @{@"id" : @"street", @"type" : @"action", @"action" : @"actionStreet", @"text": street},
                         @{@"id" : @"addres", @"type" : @"custom", @"view" : @"cellAddress:", @"height": @80},
                         ],

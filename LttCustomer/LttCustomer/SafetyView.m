@@ -21,7 +21,7 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"mobile", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"手机号码", @"style" : @"value1", @"detail" : mobile},
+                        @{@"id" : @"mobile", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"手机号码", @"style" : @"value1", @"detail" : mobile},
                         ],
                       @[
                         @{@"id" : @"password", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"修改登陆密码"},
