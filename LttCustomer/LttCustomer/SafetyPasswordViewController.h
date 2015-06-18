@@ -1,5 +1,5 @@
 //
-//  ProfileNicknameViewController.h
+//  SafetyPasswordViewController.h
 //  LttCustomer
 //
 //  Created by wuyong on 15/6/18.
@@ -8,8 +8,6 @@
 
 #import "AppUserViewController.h"
 
-@interface ProfileNicknameViewController : AppUserViewController
-
-@property (nonatomic, retain) NSString *nickname;
+@interface SafetyPasswordViewController : AppUserViewController
 
 @end

@@ -15,11 +15,12 @@
 @end
 
 @implementation AddressFormView
-{
-    UITextField *nameField;
-    UITextField *mobileField;
-    UITextView *addressView;
-}
+
+@synthesize nameField;
+
+@synthesize mobileField;
+
+@synthesize addressView;
 
 - (id)init
 {

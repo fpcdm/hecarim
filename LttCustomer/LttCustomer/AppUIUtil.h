@@ -25,4 +25,6 @@
 
 + (UIButton *)makeButton:(NSString *)title font:(CGFloat)font;
 
++ (UITextField *) makeTextField;
+
 @end

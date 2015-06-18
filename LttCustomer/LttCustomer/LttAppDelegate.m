@@ -63,16 +63,19 @@
     HomeViewController *firstViewController = [[HomeViewController alloc] init];
     UINavigationController *firstNavigationController = [[UINavigationController alloc] initWithRootViewController:firstViewController];
     firstNavigationController.title = @"首页";
+    firstNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
     
     //2
     UIViewController *secondViewController = [[UIViewController alloc] init];
     UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
     secondNavigationController.title = @"发现";
+    secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
     
     //3
     UIViewController *thirdViewController = [[UIViewController alloc] init];
     UINavigationController *thirdNavigationController = [[UINavigationController alloc] initWithRootViewController:thirdViewController];
     thirdNavigationController.title = @"服务单";
+    thirdNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
     
     //4
     AccountViewController *forthViewController = [[AccountViewController alloc] init];
@@ -86,6 +89,7 @@
         forthNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     }
     forthNavigationController.title = @"账户";
+    forthNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
     
     //TabBar
     UITabBarController *tabBarController = [[UITabBarController alloc] init];

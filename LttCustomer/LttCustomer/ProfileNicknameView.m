@@ -18,14 +18,9 @@
     self = [super init];
     if (!self) return nil;
     
-    //修正闪烁
-    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
     //输入框
-    textField = [[UITextField alloc] init];
+    textField = [AppUIUtil makeTextField];
     textField.placeholder = @"昵称";
-    textField.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
-    textField.layer.cornerRadius = 3.0;
     [self addSubview:textField];
     
     UIView *superview = self;

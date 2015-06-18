@@ -75,4 +75,20 @@
     return button;
 }
 
++ (UITextField *) makeTextField
+{
+    UITextField *textField = [[UITextField alloc] init];
+    textField.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    textField.layer.cornerRadius = 3.0;
+    
+    //设置内左边距
+    CGRect frame = [textField frame];
+    frame.size.width = 7.0f;
+    UIView *leftView = [[UIView alloc] initWithFrame:frame];
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    textField.leftView = leftView;
+    
+    return textField;
+}
+
 @end

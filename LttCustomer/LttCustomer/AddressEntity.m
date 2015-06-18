@@ -14,7 +14,7 @@
 
 - (NSString *)areaName
 {
-    NSString *areaName = [NSString stringWithFormat:@"%@ %@ %@", self.provinceName, self.cityName, self.countyName];
+    NSString *areaName = [NSString stringWithFormat:@"%@ %@ %@", self.provinceName ? self.provinceName : @"", self.cityName ? self.cityName : @"", self.countyName ? self.cityName : @""];
     return areaName;
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DEF1B329EC100938BD6 /* CTCheckbox.m */; };
 		2F5D29491B1EEBE700A99AC5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */; };
 		2F5D294B1B1EEBFA00A99AC5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294A1B1EEBFA00A99AC5 /* Security.framework */; };
 		2F5D294D1B1EEC0500A99AC5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294C1B1EEC0500A99AC5 /* CoreData.framework */; };
@@ -148,6 +149,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F473DEE1B329EC100938BD6 /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
+		2F473DEF1B329EC100938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
 		2F5D28DE1B1EEBA900A99AC5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2F5D28DF1B1EEBA900A99AC5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		2F5D28E01B1EEBA900A99AC5 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
@@ -560,6 +563,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F473DED1B329EC000938BD6 /* CTCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				2F473DEE1B329EC100938BD6 /* CTCheckbox.h */,
+				2F473DEF1B329EC100938BD6 /* CTCheckbox.m */,
+			);
+			path = CTCheckbox;
+			sourceTree = "<group>";
+		};
 		2F5D28DB1B1EEBA900A99AC5 /* RestKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1041,6 +1053,7 @@
 		2F800AEB1B1D500B006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F473DED1B329EC000938BD6 /* CTCheckbox */,
 				2F6D3E601B312884007A4159 /* ActionSheetPicker */,
 				2F6D3E731B312884007A4159 /* MJRefresh */,
 				2F5D28DB1B1EEBA900A99AC5 /* RestKit */,
@@ -1471,6 +1484,7 @@
 				2F74CDEE1B1D833200797799 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F6D3EB31B312884007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F9000CF1B1D98790040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */,
 				2F6D3EA81B312884007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F6D3EB01B312884007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F6D3EB11B312884007A4159 /* MJRefreshBackNormalFooter.m in Sources */,

@@ -20,10 +20,10 @@
 
 @property (retain, nonatomic) id<AddressFormViewDelegate> delegate;
 
-@property (weak, nonatomic) UITextField *nameField;
+@property (retain, nonatomic) UITextField *nameField;
 
-@property (weak, nonatomic) UITextField *mobileField;
+@property (retain, nonatomic) UITextField *mobileField;
 
-@property (weak, nonatomic) UITextView *addressView;
+@property (retain, nonatomic) UITextView *addressView;
 
 @end

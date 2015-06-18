@@ -10,6 +10,9 @@
 
 @protocol SafetyViewDelegate <NSObject>
 
+@required
+- (void)actionPassword;
+
 @end
 
 @interface SafetyView : AppTableView

@@ -41,7 +41,7 @@
     //是否默认
     if (isDefault) {
         UILabel *defaultLabel = [self makeCellLabel:@"默认"];
-        defaultLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT weight:1.0];
+        defaultLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
         [cell addSubview:defaultLabel];
         
         [defaultLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -71,7 +71,7 @@
     }];
     
     //区域
-    NSString *areaText = [NSString stringWithFormat:@"%@ %@", [address areaName], address.streetName];
+    NSString *areaText = [NSString stringWithFormat:@"%@ %@", [address areaName], address.streetName ? address.streetName : @""];
     UILabel *areaLabel = [self makeCellLabel:areaText];
     [cell addSubview:areaLabel];
     

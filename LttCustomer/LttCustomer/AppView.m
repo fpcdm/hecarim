@@ -10,4 +10,15 @@
 
 @implementation AppView
 
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    //修正闪烁
+    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    
+    return self;
+}
+
 @end

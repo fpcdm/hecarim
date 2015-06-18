@@ -25,6 +25,11 @@
 		2F39E3161B2990650064CA28 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39E3151B2990650064CA28 /* ProfileViewController.m */; };
 		2F473DE31B3255E500938BD6 /* ProfileNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DE21B3255E500938BD6 /* ProfileNicknameViewController.m */; };
 		2F473DE61B32562100938BD6 /* ProfileNicknameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DE51B32562100938BD6 /* ProfileNicknameView.m */; };
+		2F473DE91B32778100938BD6 /* SafetyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DE81B32778100938BD6 /* SafetyPasswordViewController.m */; };
+		2F473DEC1B3277D800938BD6 /* SafetyPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DEB1B3277D800938BD6 /* SafetyPasswordView.m */; };
+		2F473DF41B329ED700938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DF31B329ED700938BD6 /* CTCheckbox.m */; };
+		2F473DF61B32AD7500938BD6 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F473DF51B32AD7500938BD6 /* tabbar@2x.png */; };
+		2F473DF81B32AE0300938BD6 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F473DF71B32AE0300938BD6 /* tabbar.png */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F54CB3A1AFB3E0C00295A8D /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F54CB391AFB3E0C00295A8D /* OrderEntity.m */; };
 		2F54CB3D1AFB3F0300295A8D /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F54CB3C1AFB3F0300295A8D /* GoodsEntity.m */; };
@@ -221,6 +226,14 @@
 		2F473DE21B3255E500938BD6 /* ProfileNicknameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNicknameViewController.m; sourceTree = "<group>"; };
 		2F473DE41B32562100938BD6 /* ProfileNicknameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNicknameView.h; sourceTree = "<group>"; };
 		2F473DE51B32562100938BD6 /* ProfileNicknameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNicknameView.m; sourceTree = "<group>"; };
+		2F473DE71B32778100938BD6 /* SafetyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyPasswordViewController.h; sourceTree = "<group>"; };
+		2F473DE81B32778100938BD6 /* SafetyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyPasswordViewController.m; sourceTree = "<group>"; };
+		2F473DEA1B3277D800938BD6 /* SafetyPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyPasswordView.h; sourceTree = "<group>"; };
+		2F473DEB1B3277D800938BD6 /* SafetyPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyPasswordView.m; sourceTree = "<group>"; };
+		2F473DF21B329ED700938BD6 /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
+		2F473DF31B329ED700938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
+		2F473DF51B32AD7500938BD6 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
+		2F473DF71B32AE0300938BD6 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F54CB381AFB3E0C00295A8D /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
 		2F54CB391AFB3E0C00295A8D /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
@@ -673,6 +686,8 @@
 				2F473DE51B32562100938BD6 /* ProfileNicknameView.m */,
 				2F089D751B2EC999002A0EA5 /* SafetyView.h */,
 				2F089D761B2EC999002A0EA5 /* SafetyView.m */,
+				2F473DEA1B3277D800938BD6 /* SafetyPasswordView.h */,
+				2F473DEB1B3277D800938BD6 /* SafetyPasswordView.m */,
 				2F089D7B1B2ECF0F002A0EA5 /* AddressView.h */,
 				2F089D7C1B2ECF23002A0EA5 /* AddressView.m */,
 				2F06312A1B30023B00AA8A94 /* AddressFormView.h */,
@@ -692,6 +707,15 @@
 				2F2E0C721B2ADB58000A7C90 /* LoginView.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		2F473DF11B329ED700938BD6 /* CTCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				2F473DF21B329ED700938BD6 /* CTCheckbox.h */,
+				2F473DF31B329ED700938BD6 /* CTCheckbox.m */,
+			);
+			path = CTCheckbox;
 			sourceTree = "<group>";
 		};
 		2F628BEF1AE88FF800530B07 /* App */ = {
@@ -978,6 +1002,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F473DF11B329ED700938BD6 /* CTCheckbox */,
 				2F6D3E201B312765007A4159 /* MJRefresh */,
 				2F6D3DFE1B312164007A4159 /* ActionSheetPicker */,
 				2FCAF6C71B1FF07B00F3B084 /* RestKit */,
@@ -1117,6 +1142,8 @@
 		2F9BD19F1B269BBA00632751 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2F473DF71B32AE0300938BD6 /* tabbar.png */,
+				2F473DF51B32AD7500938BD6 /* tabbar@2x.png */,
 				2F39E3071B297ADE0064CA28 /* nopic.png */,
 			);
 			path = Images;
@@ -1135,6 +1162,8 @@
 				2F473DE21B3255E500938BD6 /* ProfileNicknameViewController.m */,
 				2F089D721B2EC957002A0EA5 /* SafetyViewController.h */,
 				2F089D731B2EC957002A0EA5 /* SafetyViewController.m */,
+				2F473DE71B32778100938BD6 /* SafetyPasswordViewController.h */,
+				2F473DE81B32778100938BD6 /* SafetyPasswordViewController.m */,
 				2F089D781B2ECE9C002A0EA5 /* AddressViewController.h */,
 				2F089D791B2ECE9C002A0EA5 /* AddressViewController.m */,
 				2FF3E6A91B2FFB3200B90045 /* AddressDetailViewController.h */,
@@ -1607,6 +1636,8 @@
 				2F6D3E5B1B312765007A4159 /* MJRefresh.bundle in Resources */,
 				2F39E3081B297ADE0064CA28 /* nopic.png in Resources */,
 				2F6683891AF9BA3F00D430D0 /* InfoPlist.strings in Resources */,
+				2F473DF81B32AE0300938BD6 /* tabbar.png in Resources */,
+				2F473DF61B32AD7500938BD6 /* tabbar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1653,6 +1684,7 @@
 				2F9001131B1D9D550040D97B /* UIView+REFrostedViewController.m in Sources */,
 				2FCAF8361B20115700F3B084 /* StorageUtil.m in Sources */,
 				2F90003F1B1D8B930040D97B /* MASViewConstraint.m in Sources */,
+				2F473DE91B32778100938BD6 /* SafetyPasswordViewController.m in Sources */,
 				2F9000361B1D8B930040D97B /* CRToastManager.m in Sources */,
 				2F9000421B1D8B930040D97B /* View+MASAdditions.m in Sources */,
 				2F66838C1AF9E32B00D430D0 /* CategoryEntity.m in Sources */,
@@ -1664,6 +1696,7 @@
 				2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */,
 				2F9000411B1D8B930040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F66838F1AF9ED8E00D430D0 /* ModelEntity.m in Sources */,
+				2F473DEC1B3277D800938BD6 /* SafetyPasswordView.m in Sources */,
 				2FD795941AE7ACC900D51FB0 /* AppViewController.m in Sources */,
 				2FED82BC1B1EDBFB00306A11 /* QRCodeGenerator.m in Sources */,
 				2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */,
@@ -1691,6 +1724,7 @@
 				2F6D3E561B312765007A4159 /* MJRefreshBackNormalFooter.m in Sources */,
 				2F473DE31B3255E500938BD6 /* ProfileNicknameViewController.m in Sources */,
 				2FCAF8AC1B20456C00F3B084 /* UserEntity.m in Sources */,
+				2F473DF41B329ED700938BD6 /* CTCheckbox.m in Sources */,
 				2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */,
 				2FED7D991B1EA2D300306A11 /* SDWebImagePrefetcher.m in Sources */,
 				2FED7D9B1B1EA2D300306A11 /* UIImage+GIF.m in Sources */,

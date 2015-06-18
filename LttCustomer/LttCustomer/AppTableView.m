@@ -19,6 +19,9 @@
     self = [super init];
     if (!self) return nil;
     
+    //修正闪烁
+    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    
     //全局背景色
     self.tableView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     self.tableView.scrollEnabled = NO;

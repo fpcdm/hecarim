@@ -24,7 +24,7 @@
                         @{@"id" : @"mobile", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"手机号码", @"style" : @"value1", @"detail" : mobile},
                         ],
                       @[
-                        @{@"id" : @"password", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"修改登陆密码"},
+                        @{@"id" : @"password", @"type" : @"action", @"action": @"actionPassword", @"image": @"", @"text" : @"修改登陆密码"},
                         ],
                       nil];
 }
@@ -33,6 +33,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return section == 0 ? HEIGHT_TABLE_MARGIN_DEFAULT : HEIGHT_TABLE_MARGIN_ZERO;
+}
+
+#pragma mark - Action
+- (void)actionPassword
+{
+    [self.delegate actionPassword];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SafetyViewController.h"
 #import "SafetyView.h"
+#import "SafetyPasswordViewController.h"
 
 @interface SafetyViewController () <SafetyViewDelegate>
 
@@ -31,9 +32,17 @@
 }
 
 - (void)viewDidLoad {
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"账户与安全";
+}
+
+#pragma mark - Action
+- (void)actionPassword
+{
+    SafetyPasswordViewController *viewController = [[SafetyPasswordViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end
