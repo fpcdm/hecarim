@@ -23,6 +23,8 @@
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
+    
+    [self.tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell

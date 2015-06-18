@@ -66,6 +66,21 @@
 {
     //@todo 保存
     
+    //添加成功设置id
+    if (!self.address.id) {
+        self.address.id = @3;
+    }
+    
+    //获取数据
+    self.address.name = addressFormView.nameField.text;
+    self.address.mobile = addressFormView.mobileField.text;
+    self.address.address = addressFormView.addressView.text;
+    
+    //执行回调
+    if (self.callbackBlock) {
+        self.callbackBlock(self.address);
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

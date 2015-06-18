@@ -15,6 +15,9 @@
     self = [super init];
     if (!self) return nil;
     
+    //修正闪烁
+    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    
     UIButton *button = [AppUIUtil makeButton:@"模拟"];
     [button addTarget:self action:@selector(actionLogin) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];

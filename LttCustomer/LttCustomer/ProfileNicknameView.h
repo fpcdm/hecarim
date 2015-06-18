@@ -8,7 +8,7 @@
 
 #import "AppView.h"
 
-@protocol ProfileNicknameDelegate <NSObject>
+@protocol ProfileNicknameViewDelegate <NSObject>
 
 @required
 - (void)actionSave:(NSString *)nickname;
@@ -17,6 +17,6 @@
 
 @interface ProfileNicknameView : AppView
 
-@property (nonatomic, retain) id<ProfileNicknameDelegate> delegate;
+@property (nonatomic, retain) id<ProfileNicknameViewDelegate> delegate;
 
 @end

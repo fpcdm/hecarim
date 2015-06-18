@@ -9,7 +9,7 @@
 #import "ProfileNicknameViewController.h"
 #import "ProfileNicknameView.h"
 
-@interface ProfileNicknameViewController () <ProfileNicknameDelegate>
+@interface ProfileNicknameViewController () <ProfileNicknameViewDelegate>
 
 @end
 

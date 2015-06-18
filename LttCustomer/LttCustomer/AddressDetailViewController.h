@@ -13,4 +13,8 @@
 
 @property (retain, nonatomic) AddressEntity *address;
 
+@property (copy) CallbackBlock deleteBlock;
+
+@property (copy) CallbackBlock defaultBlock;
+
 @end

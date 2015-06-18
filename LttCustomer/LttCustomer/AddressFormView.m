@@ -28,8 +28,13 @@
     
     //初始化组件
     nameField = [[UITextField alloc] init];
+    self.nameField = nameField;
+    
     mobileField = [[UITextField alloc] init];
+    self.mobileField = mobileField;
+    
     addressView = [[UITextView alloc] init];
+    self.addressView = addressView;
     
     return self;
 }
@@ -40,9 +45,15 @@
     NSString *area = address.provinceName ? [address areaName] : @"省，市，区";
     NSString *street = address.streetName ? address.streetName : @"街道";
     
-    nameField.text = address.name;
-    mobileField.text = address.mobile;
-    addressView.text = address.address;
+    if (!nameField.text || [nameField.text length] < 1) {
+        nameField.text = address.name;
+    }
+    if (!mobileField.text || [mobileField.text length] < 1) {
+        mobileField.text = address.mobile;
+    }
+    if (!addressView.text || [addressView.text length] < 1) {
+        addressView.text = address.address;
+    }
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[

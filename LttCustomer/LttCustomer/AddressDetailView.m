@@ -73,6 +73,7 @@
                         @{@"id" : @"address", @"type" : @"custom", @"text" : @"地址", @"data" : addressName, @"height": @60},
                         ],
                       nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark - TableView
@@ -80,40 +81,18 @@
 {
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
     
-    cell.textLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    UILabel *label = [[UILabel alloc] init];
+    label.text = [cellData objectForKey:@"data"];
+    label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    [cell addSubview:label];
     
-    NSString *id = [cellData objectForKey:@"id"];
-    
-    //地址
-    if ([@"address" isEqualToString:id]) {
-        UITextView *textView = [[UITextView alloc] init];
-        textView.editable = NO;
-        textView.text = [cellData objectForKey:@"data"];
-        textView.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
-        [cell addSubview:textView];
+    UIView *superview = cell;
+    [label mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(superview.mas_left).offset(90);
+        make.right.equalTo(superview.mas_right).offset(-10);
         
-        UIView *superview = cell;
-        [textView mas_makeConstraints:^(MASConstraintMaker *make){
-            make.left.equalTo(superview.mas_left).offset(85);
-            make.right.equalTo(superview.mas_right).offset(-10);
-            make.top.equalTo(superview.mas_top);
-            make.bottom.equalTo(superview.mas_bottom);
-        }];
-    //其它文本框
-    } else {
-        UILabel *label = [[UILabel alloc] init];
-        label.text = [cellData objectForKey:@"data"];
-        label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
-        [cell addSubview:label];
-        
-        UIView *superview = cell;
-        [label mas_makeConstraints:^(MASConstraintMaker *make){
-            make.left.equalTo(superview.mas_left).offset(90);
-            make.right.equalTo(superview.mas_right).offset(-10);
-            
-            make.centerY.equalTo(cell.textLabel.mas_centerY);
-        }];
-    }
+        make.centerY.equalTo(cell.textLabel.mas_centerY);
+    }];
     
     return cell;
 }

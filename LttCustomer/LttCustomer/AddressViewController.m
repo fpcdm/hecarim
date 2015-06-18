@@ -88,14 +88,71 @@
 - (void) actionAdd
 {
     AddressFormViewController *viewController = [[AddressFormViewController alloc] init];
+    
+    //添加回调
+    viewController.callbackBlock = ^(id object){
+        [addressList addObject:(AddressEntity *) object];
+        
+        [addressView setData:@"addressList" value:addressList];
+        [addressView renderData];
+    };
+    
     [self pushViewController:viewController animated:YES];
 }
 
 - (void) actionDetail:(AddressEntity *)address
 {
     AddressDetailViewController *viewController = [[AddressDetailViewController alloc] init];
+    
     //拷贝对象
     viewController.address = [address copy];
+    //修改回调
+    viewController.callbackBlock = ^(id object){
+        AddressEntity *newAddress = (AddressEntity *) object;
+        
+        int index = 0;
+        for (AddressEntity *address in addressList) {
+            if (newAddress.id && [address.id isEqualToNumber:newAddress.id]) {
+                [addressList replaceObjectAtIndex:index withObject:newAddress];
+                break;
+            }
+            index++;
+        }
+        
+        [addressView setData:@"addressList" value:addressList];
+        [addressView renderData];
+    };
+    //删除回调
+    viewController.deleteBlock = ^(id object){
+        AddressEntity *newAddress = (AddressEntity *) object;
+        
+        for (AddressEntity *address in addressList) {
+            if (newAddress.id && [address.id isEqualToNumber:newAddress.id]) {
+                [addressList removeObject:address];
+                break;
+            }
+        }
+        
+        [addressView setData:@"addressList" value:addressList];
+        [addressView renderData];
+    };
+    //设置默认回调
+    viewController.defaultBlock = ^(id object){
+        AddressEntity *newAddress = (AddressEntity *) object;
+        
+        //将其它设置非默认
+        for (AddressEntity *address in addressList) {
+            if (newAddress.id && [address.id isEqualToNumber:newAddress.id]) {
+                address.isDefault = @1;
+            } else {
+                address.isDefault = @0;
+            }
+        }
+        
+        [addressView setData:@"addressList" value:addressList];
+        [addressView renderData];
+    };
+    
     [self pushViewController:viewController animated:YES];
 }
 
