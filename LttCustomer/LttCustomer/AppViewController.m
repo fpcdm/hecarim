@@ -34,6 +34,8 @@
     } else {
         self.navigationItem.hidesBackButton = NO;
     }
+    
+    //@todo: 右侧首页菜单
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -56,7 +58,10 @@
     
     //状态栏颜色
     if (isIndexNavBar) {
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        //红色背景
+        //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        //白色背景
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     } else {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     }

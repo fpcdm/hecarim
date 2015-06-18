@@ -28,9 +28,17 @@
 - (void)viewDidLoad
 {
     isMenuEnabled = YES;
+    isIndexNavBar = YES;
     [super viewDidLoad];
     
-    self.navigationItem.title = @"首页";
+    self.navigationItem.title = @"两条腿";
+    
+    NSString *address = @"重庆市 渝北区 龙山街道";
+    NSNumber *count = @12;
+    
+    [homeView setData:@"address" value:address];
+    [homeView setData:@"count" value:count];
+    [homeView renderData];
 }
 
 @end

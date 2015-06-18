@@ -61,6 +61,8 @@
 //颜色配置
 //主背景
 #define COLOR_MAIN_BG @"EEEEEE"
+//高亮背景
+#define COLOR_HIGHLIGHTED_BG @"E2383B"
 //主边框
 #define COLOR_MAIN_BORDER @"D8D8D8"
 //主标题背景
@@ -68,9 +70,15 @@
 //主标题
 #define COLOR_MAIN_TITLE @"000000"
 //首页标题背景
-#define COLOR_INDEX_TITLE_BG @"E2383B"
+//红色背景
+//#define COLOR_INDEX_TITLE_BG @"E2383B"
+//白色背景
+#define COLOR_INDEX_TITLE_BG @"FFFFFF"
 //首页标题文字
-#define COLOR_INDEX_TITLE @"FFFFFF"
+//白色文字
+//#define COLOR_INDEX_TITLE @"FFFFFF"
+//红色文字
+#define COLOR_INDEX_TITLE @"E2383B"
 //文字颜色
 #define COLOR_MAIN_TEXT @"000000"
 //文字高亮
