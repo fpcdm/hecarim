@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 #import "AppExtension.h"
 #import "AppUserViewController.h"
+#import "LttNavigationController.h"
+#import "LttAppDelegate.h"
 
 @interface AppViewController ()
 
@@ -38,8 +40,19 @@
 {
     [super viewWillAppear:animated];
     
-    //隐藏TabBar
-    self.tabBarController.tabBar.hidden = [self hasTabBar] ? NO : YES;
+    //是否有左侧菜单
+    if (isMenuEnabled) {
+        //启用手势
+        [(LttNavigationController *) self.navigationController menuEnable:YES];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"]
+                                                                                 style:UIBarButtonItemStyleBordered
+                                                                                target:(LttNavigationController *)self.navigationController
+                                                                                action:@selector(showMenu)];
+    } else {
+        //禁用手势
+        [(LttNavigationController *) self.navigationController menuEnable:NO];
+    }
     
     //状态栏颜色
     if (isIndexNavBar) {
@@ -76,10 +89,6 @@
     }
 }
 
-- (BOOL) hasTabBar {
-    return NO;
-}
-
 - (void) pushViewController:(AppViewController *)viewController animated: (BOOL)animated
 {
     //需要登陆
@@ -88,13 +97,19 @@
         ![self isLogin]) {
         LoginViewController *loginViewController = [[LoginViewController alloc] init];
         loginViewController.returnController = viewController;
-        //是否显示TabBar
-        viewController.hidesBottomBarWhenPushed = [viewController hasTabBar] ? NO : YES;
         [self.navigationController pushViewController:loginViewController animated:YES];
     } else {
-        viewController.hidesBottomBarWhenPushed = [viewController hasTabBar] ? NO : YES;
         [self.navigationController pushViewController:viewController animated:YES];
     }
+}
+
+- (void) refreshMenu
+{
+    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
+    
+    REFrostedViewController *frostedViewController = (REFrostedViewController *) appDelegate.window.rootViewController;
+    MenuViewController *menuViewController = (MenuViewController *) frostedViewController.menuViewController;
+    [menuViewController refresh];
 }
 
 @end

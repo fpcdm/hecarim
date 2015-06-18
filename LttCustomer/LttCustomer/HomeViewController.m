@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "HomeView.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <HomeViewDelegate>
 
 @end
 
@@ -21,19 +21,16 @@
 - (void)loadView
 {
     homeView = [[HomeView alloc] init];
+    homeView.delegate = self;
     self.view = homeView;
 }
 
 - (void)viewDidLoad
 {
+    isMenuEnabled = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"首页";
-}
-
-- (BOOL) hasTabBar
-{
-    return YES;
 }
 
 @end

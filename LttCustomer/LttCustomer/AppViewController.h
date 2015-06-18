@@ -14,6 +14,9 @@
 
 @interface AppViewController : BaseViewController
 {
+    //是否显示菜单
+    BOOL isMenuEnabled;
+    
     //子页面是否有导航返回按钮
     BOOL hasNavBack;
     
@@ -24,11 +27,11 @@
     BOOL isIndexNavBar;
 }
 
+//刷新菜单
+- (void) refreshMenu;
+
 //是否登陆
 - (BOOL) isLogin;
-
-//是否需要TabBar
-- (BOOL) hasTabBar;
 
 //弹出控制器，自动检查登陆
 - (void) pushViewController:(AppViewController *)viewController animated: (BOOL)animated;

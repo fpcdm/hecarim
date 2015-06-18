@@ -8,6 +8,12 @@
 
 #import "AppView.h"
 
+@protocol HomeViewDelegate <NSObject>
+
+@end
+
 @interface HomeView : AppView
+
+@property (retain, nonatomic) id<HomeViewDelegate> delegate;
 
 @end

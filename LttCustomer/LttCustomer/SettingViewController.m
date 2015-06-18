@@ -57,7 +57,7 @@
     sheet = [sheet initWithTitle:@"确定清除缓存吗" delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
     
     sheet.tag = 1;
-    [sheet showFromTabBar:self.tabBarController.tabBar];
+    [sheet showInView:self.view];
 }
 
 @end

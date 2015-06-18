@@ -115,6 +115,14 @@
             
             [profileView setData:@"user" value:user];
             [profileView renderData];
+            
+            //刷新菜单
+            [self refreshMenu];
+            
+            //回调上级
+            if (self.callbackBlock) {
+                self.callbackBlock(user);
+            }
         }
     }
 }
@@ -127,7 +135,7 @@
     sheet = [sheet initWithTitle:nil delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"男" otherButtonTitles:@"女", nil];
     
     sheet.tag = 1;
-    [sheet showFromTabBar:self.tabBarController.tabBar];
+    [sheet showInView:self.view];
 }
 
 - (void)actionNickname
@@ -162,7 +170,7 @@
     }
     
     sheet.tag = 2;
-    [sheet showFromTabBar:self.tabBarController.tabBar];
+    [sheet showInView:self.view];
 }
 
 @end

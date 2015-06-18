@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "UserEntity.h"
+#import "HomeViewController.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -26,15 +27,11 @@
 }
 
 - (void)viewDidLoad {
+    isMenuEnabled = YES;
     hideBackButton = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"登陆";
-}
-
-- (BOOL) hasTabBar
-{
-    return YES;
 }
 
 #pragma mark - Action
@@ -53,9 +50,15 @@
     
     [[StorageUtil sharedStorage] setUser:user];
     
+    //刷新菜单
+    [self refreshMenu];
+    
     //是否有返回控制器
     if (self.returnController != nil) {
         [self.navigationController pushViewController:self.returnController animated:YES];
+    } else {
+        HomeViewController *viewController = [[HomeViewController alloc] init];
+        [self pushViewController:viewController animated:YES];
     }
 }
 

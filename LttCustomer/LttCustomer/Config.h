@@ -81,10 +81,6 @@
 #define COLOR_MAIN_BUTTON @"FFFFFF"
 //button 背景
 #define COLOR_MAIN_BUTTON_BG @"F15353"
-//tabbar背景
-#define COLOR_MAIN_TABBAR_BG @"F8F8F8"
-//tabbar高亮
-#define COLOR_MAIN_TARBAR_HIGHLIGHTED @"F15353"
 
 //字体配置
 //标题字体

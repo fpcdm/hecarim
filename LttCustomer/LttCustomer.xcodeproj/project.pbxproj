@@ -30,6 +30,9 @@
 		2F473DF41B329ED700938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DF31B329ED700938BD6 /* CTCheckbox.m */; };
 		2F473DF61B32AD7500938BD6 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F473DF51B32AD7500938BD6 /* tabbar@2x.png */; };
 		2F473DF81B32AE0300938BD6 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F473DF71B32AE0300938BD6 /* tabbar.png */; };
+		2F473DFE1B32BA8300938BD6 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DFB1B32BA8300938BD6 /* LttNavigationController.m */; };
+		2F473DFF1B32BA8300938BD6 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DFD1B32BA8300938BD6 /* MenuViewController.m */; };
+		2F473E011B32BC6A00938BD6 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F473E001B32BC6A00938BD6 /* menu@2x.png */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F54CB3A1AFB3E0C00295A8D /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F54CB391AFB3E0C00295A8D /* OrderEntity.m */; };
 		2F54CB3D1AFB3F0300295A8D /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F54CB3C1AFB3F0300295A8D /* GoodsEntity.m */; };
@@ -234,6 +237,11 @@
 		2F473DF31B329ED700938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
 		2F473DF51B32AD7500938BD6 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		2F473DF71B32AE0300938BD6 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
+		2F473DFA1B32BA8300938BD6 /* LttNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttNavigationController.h; sourceTree = "<group>"; };
+		2F473DFB1B32BA8300938BD6 /* LttNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttNavigationController.m; sourceTree = "<group>"; };
+		2F473DFC1B32BA8300938BD6 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		2F473DFD1B32BA8300938BD6 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		2F473E001B32BC6A00938BD6 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F54CB381AFB3E0C00295A8D /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
 		2F54CB391AFB3E0C00295A8D /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
@@ -718,6 +726,17 @@
 			path = CTCheckbox;
 			sourceTree = "<group>";
 		};
+		2F473DF91B32BA6600938BD6 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				2F473DFA1B32BA8300938BD6 /* LttNavigationController.h */,
+				2F473DFB1B32BA8300938BD6 /* LttNavigationController.m */,
+				2F473DFC1B32BA8300938BD6 /* MenuViewController.h */,
+				2F473DFD1B32BA8300938BD6 /* MenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		2F628BEF1AE88FF800530B07 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +769,7 @@
 		2F628BF21AE8902300530B07 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2F473DF91B32BA6600938BD6 /* Menu */,
 				2F9BD1A11B26E16D00632751 /* Home */,
 				2F9BD1A01B26E16300632751 /* Account */,
 			);
@@ -1142,6 +1162,7 @@
 		2F9BD19F1B269BBA00632751 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2F473E001B32BC6A00938BD6 /* menu@2x.png */,
 				2F473DF71B32AE0300938BD6 /* tabbar.png */,
 				2F473DF51B32AD7500938BD6 /* tabbar@2x.png */,
 				2F39E3071B297ADE0064CA28 /* nopic.png */,
@@ -1633,6 +1654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD795991AE7ACC900D51FB0 /* Images.xcassets in Resources */,
+				2F473E011B32BC6A00938BD6 /* menu@2x.png in Resources */,
 				2F6D3E5B1B312765007A4159 /* MJRefresh.bundle in Resources */,
 				2F39E3081B297ADE0064CA28 /* nopic.png in Resources */,
 				2F6683891AF9BA3F00D430D0 /* InfoPlist.strings in Resources */,
@@ -1717,6 +1739,7 @@
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
 				2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */,
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
+				2F473DFE1B32BA8300938BD6 /* LttNavigationController.m in Sources */,
 				2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */,
 				2F9001101B1D9D550040D97B /* REFrostedContainerViewController.m in Sources */,
 				2F6D3E151B312164007A4159 /* ActionSheetLocalePicker.m in Sources */,
@@ -1793,6 +1816,7 @@
 				2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */,
 				2F6D3E551B312765007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F6D3E4E1B312765007A4159 /* MJRefreshBackFooter.m in Sources */,
+				2F473DFF1B32BA8300938BD6 /* MenuViewController.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F6D3E5A1B312765007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2F90010E1B1D9D550040D97B /* Reachability.m in Sources */,

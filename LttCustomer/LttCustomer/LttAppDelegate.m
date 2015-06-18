@@ -8,8 +8,6 @@
 
 #import "LttAppDelegate.h"
 #import "HomeViewController.h"
-#import "AccountViewController.h"
-#import "LoginViewController.h"
 #import "BPush.h"
 #import "AppUIUtil.h"
 
@@ -44,11 +42,6 @@
                                           NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
                                           };
     
-    //全局TabBar颜色
-    UITabBar *tabBar = [UITabBar appearance];
-    tabBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TABBAR_BG];
-    tabBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TARBAR_HIGHLIGHTED];
-    
     //初始化控制器
     [self initViewController];
     
@@ -59,43 +52,19 @@
 }
 
 - (void)initViewController {
-    //1
-    HomeViewController *firstViewController = [[HomeViewController alloc] init];
-    UINavigationController *firstNavigationController = [[UINavigationController alloc] initWithRootViewController:firstViewController];
-    firstNavigationController.title = @"首页";
-    firstNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
+    UIViewController *viewController = nil;
+    viewController = [[HomeViewController alloc] init];
     
-    //2
-    UIViewController *secondViewController = [[UIViewController alloc] init];
-    UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
-    secondNavigationController.title = @"发现";
-    secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
+    LttNavigationController *navigationController = [[LttNavigationController alloc] initWithRootViewController:viewController];
+    MenuViewController *menuViewController = [[MenuViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    //3
-    UIViewController *thirdViewController = [[UIViewController alloc] init];
-    UINavigationController *thirdNavigationController = [[UINavigationController alloc] initWithRootViewController:thirdViewController];
-    thirdNavigationController.title = @"服务单";
-    thirdNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
+    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:navigationController menuViewController:menuViewController];
+    frostedViewController.direction = REFrostedViewControllerDirectionLeft;
+    frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
+    frostedViewController.liveBlur = YES;
+    frostedViewController.delegate = self;
     
-    //4
-    AccountViewController *forthViewController = [[AccountViewController alloc] init];
-    UINavigationController *forthNavigationController = nil;
-    //是否登陆
-    if ([forthViewController isLogin]) {
-        forthNavigationController = [[UINavigationController alloc] initWithRootViewController:forthViewController];
-    } else {
-        LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        loginViewController.returnController = forthViewController;
-        forthNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    }
-    forthNavigationController.title = @"账户";
-    forthNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbar"];
-    
-    //TabBar
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = [NSArray arrayWithObjects:firstNavigationController, secondNavigationController, thirdNavigationController, forthNavigationController, nil];
-    
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = frostedViewController;
     self.window.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     [self.window makeKeyAndVisible];
 }

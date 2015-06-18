@@ -28,10 +28,16 @@
     accountView = [[AccountView alloc] init];
     accountView.delegate = self;
     self.view = accountView;
+    
+    //加载数据
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    [accountView setData:@"user" value:user];
+    [accountView renderData];
 }
 
 - (void)viewDidLoad
 {
+    isMenuEnabled = YES;
     hideBackButton = YES;
     isIndexNavBar = YES;
     hasNavBack = YES;
@@ -43,21 +49,6 @@
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionSetting);
     self.navigationItem.rightBarButtonItem = barButtonItem;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    //加载数据
-    UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    [accountView setData:@"user" value:user];
-    [accountView renderData];
-}
-
-- (BOOL) hasTabBar
-{
-    return YES;
 }
 
 #pragma mark - Action
@@ -76,12 +67,24 @@
 - (void)actionProfile
 {
     ProfileViewController *viewController = [[ProfileViewController alloc] init];
+    
+    //头像回调
+    viewController.callbackBlock = ^(id object){
+        //加载数据
+        UserEntity *user = [[StorageUtil sharedStorage] getUser];
+        [accountView setData:@"user" value:user];
+        [accountView renderData];
+    };
+    
     [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionLogout
 {
     [[StorageUtil sharedStorage] setUser:nil];
+    
+    //刷新菜单
+    [self refreshMenu];
     
     LoginViewController *viewController = [[LoginViewController alloc] init];
     viewController.returnController = [[AccountViewController alloc] init];

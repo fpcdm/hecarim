@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LttNavigationController.h"
 
-@interface LttAppDelegate : UIResponder <UIApplicationDelegate>
+@interface LttAppDelegate : UIResponder <UIApplicationDelegate, REFrostedViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
