@@ -72,7 +72,7 @@
     //地址标签
     addressLabel = [[UILabel alloc] init];
     addressLabel.textColor = [UIColor whiteColor];
-    addressLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    addressLabel.font = [UIFont boldSystemFontOfSize:18];
     [addressView addSubview:addressLabel];
     
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -122,7 +122,7 @@
     //开始文字
     UILabel *beginLabel = [[UILabel alloc] init];
     beginLabel.text = @"我们开始吧!";
-    beginLabel.font = [UIFont boldSystemFontOfSize:10];
+    beginLabel.font = [UIFont boldSystemFontOfSize:12];
     beginLabel.textAlignment = NSTextAlignmentCenter;
     beginLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
     [beginView addSubview:beginLabel];
@@ -168,7 +168,7 @@
     //即时响应
     UILabel *mobileDesc = [[UILabel alloc] init];
     mobileDesc.text = @"即时响应，两小时送货上门";
-    mobileDesc.textColor = [UIColor darkGrayColor];
+    mobileDesc.textColor = [UIColor grayColor];
     mobileDesc.font = [UIFont boldSystemFontOfSize:16];
     [mobileView addSubview:mobileDesc];
     
@@ -197,11 +197,11 @@
     [mobileView addSubview:chooseButton];
     
     [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.right.equalTo(mobileView.mas_right).offset(-15);
+        make.right.equalTo(mobileView.mas_right).offset(-12);
         make.top.equalTo(mobileView.mas_centerY).offset(2);
         
         make.height.equalTo(@50);
-        make.width.equalTo(@110);
+        make.width.equalTo(@120);
     }];
     
     UILabel *chooseLabel = [[UILabel alloc] init];
@@ -217,8 +217,8 @@
     
     UILabel *chooseDescLabel = [[UILabel alloc] init];
     chooseDescLabel.text = @"我知道要买什么手机";
-    chooseDescLabel.textColor = [UIColor colorWithHexString:@"585858"];
-    chooseDescLabel.font = [UIFont boldSystemFontOfSize:11];
+    chooseDescLabel.textColor = [UIColor grayColor];
+    chooseDescLabel.font = [UIFont boldSystemFontOfSize:12];
     [chooseButton addSubview:chooseDescLabel];
     
     [chooseDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -235,7 +235,7 @@
     
     [customerButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(mobileView.mas_left).offset(leftMargin);
-        make.right.equalTo(chooseButton.mas_left).offset(-15);
+        make.right.equalTo(chooseButton.mas_left).offset(-12);
         make.top.equalTo(chooseButton.mas_top);
         
         make.height.equalTo(@50);
@@ -255,7 +255,7 @@
     UILabel *customerDescLabel = [[UILabel alloc] init];
     customerDescLabel.text = @"我不是很懂，找客服帮我选";
     customerDescLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
-    customerDescLabel.font = [UIFont boldSystemFontOfSize:11];
+    customerDescLabel.font = [UIFont boldSystemFontOfSize:12];
     [customerButton addSubview:customerDescLabel];
     
     [customerDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -305,8 +305,8 @@
     //手机上门维修介绍
     UILabel *mobileDoorDesc = [[UILabel alloc] init];
     mobileDoorDesc.text = @"手机硬件维修，贴膜，手机系统清理，手机软件安装...";
-    mobileDoorDesc.textColor = [UIColor darkGrayColor];
-    mobileDoorDesc.font = [UIFont boldSystemFontOfSize:11];
+    mobileDoorDesc.textColor = [UIColor grayColor];
+    mobileDoorDesc.font = [UIFont boldSystemFontOfSize:12];
     [mobileDoorView addSubview:mobileDoorDesc];
     
     [mobileDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
@@ -354,8 +354,8 @@
     //电脑上门维修介绍
     UILabel *computerDoorDesc = [[UILabel alloc] init];
     computerDoorDesc.text = @"电脑维修，系统清理，软件安装...";
-    computerDoorDesc.textColor = [UIColor darkGrayColor];
-    computerDoorDesc.font = [UIFont boldSystemFontOfSize:11];
+    computerDoorDesc.textColor = [UIColor grayColor];
+    computerDoorDesc.font = [UIFont boldSystemFontOfSize:12];
     [computerDoorView addSubview:computerDoorDesc];
     
     [computerDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
@@ -384,7 +384,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.text = @"我们的信使将实时响应您的需求";
     label.textColor = [UIColor grayColor];
-    label.font = [UIFont systemFontOfSize:10];
+    label.font = [UIFont systemFontOfSize:12];
     [bottomView addSubview:label];
     
     superview = bottomView;

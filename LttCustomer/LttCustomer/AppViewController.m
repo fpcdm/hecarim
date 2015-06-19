@@ -72,6 +72,7 @@
         navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE_BG];
         navigationBar.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
         navigationBar.titleTextAttributes = @{
+                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:SIZE_TITLE_TEXT],
                                               NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_INDEX_TITLE]
                                               };
     } else {
@@ -79,6 +80,7 @@
         navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
         navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
         navigationBar.titleTextAttributes = @{
+                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:SIZE_TITLE_TEXT],
                                               NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
                                               };
     }

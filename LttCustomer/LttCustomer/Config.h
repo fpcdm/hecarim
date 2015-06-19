@@ -92,7 +92,7 @@
 
 //字体配置
 //标题字体
-#define SIZE_TITLE_TEXT 18
+#define SIZE_TITLE_TEXT 20
 //导航文字字体
 #define SIZE_BAR_TEXT 16
 //主要字体
