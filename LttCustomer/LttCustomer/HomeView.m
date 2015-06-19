@@ -152,7 +152,7 @@
     //左间距定义
     int leftMargin = 20;
     
-    //买手机
+    //买手机视图
     UIView *mobileView = [UIView new];
     [middleView addSubview:mobileView];
     
@@ -162,44 +162,31 @@
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         
-        make.height.equalTo(superview.mas_height).multipliedBy(0.46);
+        make.height.equalTo(superview.mas_height).multipliedBy(0.48);
     }];
     
-    //呼叫客服
-    UIButton *customerButton = [[UIButton alloc] init];
-    customerButton.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
-    customerButton.layer.cornerRadius = 3.0f;
-    customerButton.titleLabel.text = nil;
-    [mobileView addSubview:customerButton];
+    //即时响应
+    UILabel *mobileDesc = [[UILabel alloc] init];
+    mobileDesc.text = @"即时响应，两小时送货上门";
+    mobileDesc.textColor = [UIColor darkGrayColor];
+    mobileDesc.font = [UIFont boldSystemFontOfSize:16];
+    [mobileView addSubview:mobileDesc];
     
-    [customerButton mas_makeConstraints:^(MASConstraintMaker *make){
+    [mobileDesc mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(mobileView.mas_centerY).offset(-3);
         make.left.equalTo(mobileView.mas_left).offset(leftMargin);
-        make.bottom.equalTo(mobileView.mas_bottom).offset(-10);
-        
-        make.height.equalTo(@50);
-        make.width.equalTo(@160);
     }];
     
-    UILabel *customerLabel = [[UILabel alloc] init];
-    customerLabel.text = @"呼叫客服";
-    customerLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
-    customerLabel.font = [UIFont boldSystemFontOfSize:20];
-    [customerButton addSubview:customerLabel];
+    //买手机标题
+    UILabel *mobileTitle = [[UILabel alloc] init];
+    mobileTitle.text = @"买手机";
+    mobileTitle.textColor = [UIColor colorWithHexString:@"585858"];
+    mobileTitle.font = [UIFont boldSystemFontOfSize:24];
+    [mobileView addSubview:mobileTitle];
     
-    [customerLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(customerButton.mas_top).offset(5);
-        make.left.equalTo(customerButton.mas_left).offset(5);
-    }];
-    
-    UILabel *customerDescLabel = [[UILabel alloc] init];
-    customerDescLabel.text = @"我不是很懂，找客服帮我选";
-    customerDescLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
-    customerDescLabel.font = [UIFont boldSystemFontOfSize:11];
-    [customerButton addSubview:customerDescLabel];
-    
-    [customerDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(customerButton.mas_bottom).offset(-5);
-        make.left.equalTo(customerButton.mas_left).offset(5);
+    [mobileTitle mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(mobileDesc.mas_top).offset(-3);
+        make.left.equalTo(mobileView.mas_left).offset(leftMargin);
     }];
     
     //自己选
@@ -210,8 +197,8 @@
     [mobileView addSubview:chooseButton];
     
     [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(customerButton.mas_right).offset(15);
-        make.bottom.equalTo(mobileView.mas_bottom).offset(-10);
+        make.right.equalTo(mobileView.mas_right).offset(-15);
+        make.top.equalTo(mobileView.mas_centerY).offset(2);
         
         make.height.equalTo(@50);
         make.width.equalTo(@110);
@@ -239,6 +226,42 @@
         make.left.equalTo(chooseButton.mas_left).offset(5);
     }];
     
+    //呼叫客服
+    UIButton *customerButton = [[UIButton alloc] init];
+    customerButton.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
+    customerButton.layer.cornerRadius = 3.0f;
+    customerButton.titleLabel.text = nil;
+    [mobileView addSubview:customerButton];
+    
+    [customerButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(mobileView.mas_left).offset(leftMargin);
+        make.right.equalTo(chooseButton.mas_left).offset(-15);
+        make.top.equalTo(chooseButton.mas_top);
+        
+        make.height.equalTo(@50);
+    }];
+    
+    UILabel *customerLabel = [[UILabel alloc] init];
+    customerLabel.text = @"呼叫客服";
+    customerLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
+    customerLabel.font = [UIFont boldSystemFontOfSize:20];
+    [customerButton addSubview:customerLabel];
+    
+    [customerLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(customerButton.mas_top).offset(5);
+        make.left.equalTo(customerButton.mas_left).offset(5);
+    }];
+    
+    UILabel *customerDescLabel = [[UILabel alloc] init];
+    customerDescLabel.text = @"我不是很懂，找客服帮我选";
+    customerDescLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
+    customerDescLabel.font = [UIFont boldSystemFontOfSize:11];
+    [customerButton addSubview:customerDescLabel];
+    
+    [customerDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(customerButton.mas_bottom).offset(-5);
+        make.left.equalTo(customerButton.mas_left).offset(5);
+    }];
     
     //间隔
     UIView *sepView = [[UIView alloc] init];
@@ -262,7 +285,7 @@
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         
-        make.height.equalTo(superview.mas_height).multipliedBy(0.27);
+        make.height.equalTo(superview.mas_height).multipliedBy(0.26);
     }];
     
     //手机上门维修
@@ -311,7 +334,7 @@
     [computerDoorView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(mobileDoorView.mas_bottom);
         
-        make.height.equalTo(superview.mas_height).multipliedBy(0.27);
+        make.height.equalTo(superview.mas_height).multipliedBy(0.26);
     }];
     
     //电脑上门维修

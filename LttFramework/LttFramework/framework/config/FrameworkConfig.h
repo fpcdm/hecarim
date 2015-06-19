@@ -105,6 +105,8 @@
 #define IS_IOS8_PLUS (IOS_VERSION >= 8.0 ? YES : NO)
 // 判断是否大于等于ios7
 #define IS_IOS7_PLUS (IOS_VERSION >= 7.0 ? YES : NO)
+// 是否大于等于iPhone5(屏幕尺寸)
+#define IS_IPHONE5_PLUS (SCREEN_HEIGHT >= 568.0 ? YES : NO)
 
 #pragma mark - 加载公用文件
 //加载日志插件
