@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     hideBackButton = YES;
     isIndexNavBar = YES;
+    isMenuEnabled = YES;
     [super viewDidLoad];
     
     //解决闪烁

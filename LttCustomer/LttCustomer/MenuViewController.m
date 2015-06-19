@@ -79,7 +79,7 @@
     } else {
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeViewController"],
-                    @[@"服务单", @"HomeViewController"],
+                    @[@"服务单", @"IntentionListViewController"],
                     @[@"账户", @"AccountViewController"],
                     nil];
         
