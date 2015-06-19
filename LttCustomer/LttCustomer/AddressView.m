@@ -24,6 +24,7 @@
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
     
+    self.tableView.scrollEnabled = YES;
     [self.tableView reloadData];
 }
 

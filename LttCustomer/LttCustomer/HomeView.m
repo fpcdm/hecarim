@@ -12,6 +12,10 @@
 {
     UILabel *addressLabel;
     UILabel *infoLabel;
+    
+    UIView *topView;
+    UIView *middleView;
+    UIView *bottomView;
 }
 
 - (id)init
@@ -22,9 +26,14 @@
     //背景颜色
     self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
     
-    //顶部
+    //顶部视图
     [self topView];
     
+    //底部视图
+    [self bottomView];
+    
+    //中部视图
+    [self middleView];
     
     return self;
 }
@@ -32,7 +41,7 @@
 - (void) topView
 {
     //顶部视图
-    UIView *topView = [[UIView alloc] init];
+    topView = [[UIView alloc] init];
     topView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
     [self addSubview:topView];
     
@@ -82,6 +91,20 @@
         make.left.equalTo(addressView.mas_left).offset(10);
     }];
     
+    //标记图片
+    UIImageView *pointView = [[UIImageView alloc] init];
+    pointView.image = [UIImage imageNamed:@"point"];
+    pointView.contentMode = UIViewContentModeScaleAspectFit;
+    [addressView addSubview:pointView];
+    
+    [pointView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(addressView.mas_right).offset(-8);
+        make.centerY.equalTo(addressView.mas_centerY);
+        
+        make.width.equalTo(@18);
+        make.height.equalTo(@30);
+    }];
+    
     //开始视图
     UIView *beginView = [[UIView alloc] init];
     beginView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
@@ -109,6 +132,255 @@
         make.bottom.equalTo(beginView.mas_bottom);
         make.left.equalTo(beginView.mas_left);
         make.right.equalTo(beginView.mas_right);
+    }];
+}
+
+//中部视图
+- (void)middleView
+{
+    middleView = [UIView new];
+    [self addSubview:middleView];
+    
+    UIView *superview = self;
+    [middleView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(topView.mas_bottom);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(bottomView.mas_top);
+    }];
+    
+    //左间距定义
+    int leftMargin = 20;
+    
+    //买手机
+    UIView *mobileView = [UIView new];
+    [middleView addSubview:mobileView];
+    
+    superview = middleView;
+    [mobileView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        
+        make.height.equalTo(superview.mas_height).multipliedBy(0.46);
+    }];
+    
+    //呼叫客服
+    UIButton *customerButton = [[UIButton alloc] init];
+    customerButton.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
+    customerButton.layer.cornerRadius = 3.0f;
+    customerButton.titleLabel.text = nil;
+    [mobileView addSubview:customerButton];
+    
+    [customerButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(mobileView.mas_left).offset(leftMargin);
+        make.bottom.equalTo(mobileView.mas_bottom).offset(-10);
+        
+        make.height.equalTo(@50);
+        make.width.equalTo(@160);
+    }];
+    
+    UILabel *customerLabel = [[UILabel alloc] init];
+    customerLabel.text = @"呼叫客服";
+    customerLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
+    customerLabel.font = [UIFont boldSystemFontOfSize:20];
+    [customerButton addSubview:customerLabel];
+    
+    [customerLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(customerButton.mas_top).offset(5);
+        make.left.equalTo(customerButton.mas_left).offset(5);
+    }];
+    
+    UILabel *customerDescLabel = [[UILabel alloc] init];
+    customerDescLabel.text = @"我不是很懂，找客服帮我选";
+    customerDescLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
+    customerDescLabel.font = [UIFont boldSystemFontOfSize:11];
+    [customerButton addSubview:customerDescLabel];
+    
+    [customerDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(customerButton.mas_bottom).offset(-5);
+        make.left.equalTo(customerButton.mas_left).offset(5);
+    }];
+    
+    //自己选
+    UIButton *chooseButton = [[UIButton alloc] init];
+    chooseButton.layer.backgroundColor = [UIColor colorWithHexString:@"DDDDDD"].CGColor;
+    chooseButton.layer.cornerRadius = 3.0f;
+    chooseButton.titleLabel.text = nil;
+    [mobileView addSubview:chooseButton];
+    
+    [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(customerButton.mas_right).offset(15);
+        make.bottom.equalTo(mobileView.mas_bottom).offset(-10);
+        
+        make.height.equalTo(@50);
+        make.width.equalTo(@110);
+    }];
+    
+    UILabel *chooseLabel = [[UILabel alloc] init];
+    chooseLabel.text = @"自己选";
+    chooseLabel.textColor = [UIColor colorWithHexString:@"585858"];
+    chooseLabel.font = [UIFont boldSystemFontOfSize:20];
+    [chooseButton addSubview:chooseLabel];
+    
+    [chooseLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(chooseButton.mas_top).offset(5);
+        make.left.equalTo(chooseButton.mas_left).offset(5);
+    }];
+    
+    UILabel *chooseDescLabel = [[UILabel alloc] init];
+    chooseDescLabel.text = @"我知道要买什么手机";
+    chooseDescLabel.textColor = [UIColor colorWithHexString:@"585858"];
+    chooseDescLabel.font = [UIFont boldSystemFontOfSize:11];
+    [chooseButton addSubview:chooseDescLabel];
+    
+    [chooseDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(chooseButton.mas_bottom).offset(-5);
+        make.left.equalTo(chooseButton.mas_left).offset(5);
+    }];
+    
+    
+    //间隔
+    UIView *sepView = [[UIView alloc] init];
+    sepView.backgroundColor = [UIColor colorWithHexString:@"979797"];
+    [mobileView addSubview:sepView];
+    
+    [sepView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(mobileView.mas_bottom);
+        make.left.equalTo(mobileView.mas_left).offset(leftMargin);
+        make.right.equalTo(mobileView.mas_right);
+        
+        make.height.equalTo(@1.5);
+    }];
+    
+    //手机上门
+    UIView *mobileDoorView = [[UIView alloc] init];
+    [middleView addSubview:mobileDoorView];
+    
+    [mobileDoorView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(mobileView.mas_bottom);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        
+        make.height.equalTo(superview.mas_height).multipliedBy(0.27);
+    }];
+    
+    //手机上门维修
+    UIButton *mobileDoorButton = [[UIButton alloc] init];
+    [mobileDoorButton setTitle:@"手机上门维修" forState:UIControlStateNormal];
+    [mobileDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
+    mobileDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [mobileDoorView addSubview:mobileDoorButton];
+    
+    [mobileDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(mobileDoorView.mas_centerY);
+        make.left.equalTo(mobileDoorView.mas_left).offset(leftMargin);
+        
+        make.height.equalTo(@20);
+    }];
+    
+    //手机上门维修介绍
+    UILabel *mobileDoorDesc = [[UILabel alloc] init];
+    mobileDoorDesc.text = @"手机硬件维修，贴膜，手机系统清理，手机软件安装...";
+    mobileDoorDesc.textColor = [UIColor darkGrayColor];
+    mobileDoorDesc.font = [UIFont boldSystemFontOfSize:11];
+    [mobileDoorView addSubview:mobileDoorDesc];
+    
+    [mobileDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(mobileDoorView.mas_centerY).offset(5);
+        make.left.equalTo(mobileDoorView.mas_left).offset(leftMargin);
+    }];
+    
+    //间隔
+    UIView *doorSepView = [[UIView alloc] init];
+    doorSepView.backgroundColor = [UIColor colorWithHexString:@"979797"];
+    [mobileDoorView addSubview:doorSepView];
+    
+    [doorSepView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(mobileDoorView.mas_bottom);
+        make.left.equalTo(mobileDoorView.mas_left).offset(leftMargin);
+        make.right.equalTo(mobileDoorView.mas_right);
+        
+        make.height.equalTo(@1.5);
+    }];
+    
+    //电脑上门
+    UIView *computerDoorView = [UIView new];
+    [middleView addSubview:computerDoorView];
+    
+    [computerDoorView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(mobileDoorView.mas_bottom);
+        
+        make.height.equalTo(superview.mas_height).multipliedBy(0.27);
+    }];
+    
+    //电脑上门维修
+    UIButton *computerDoorButton = [[UIButton alloc] init];
+    [computerDoorButton setTitle:@"电脑上门维修" forState:UIControlStateNormal];
+    [computerDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
+    computerDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [computerDoorView addSubview:computerDoorButton];
+    
+    [computerDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(computerDoorView.mas_centerY);
+        make.left.equalTo(computerDoorView.mas_left).offset(leftMargin);
+        
+        make.height.equalTo(@20);
+    }];
+    
+    //电脑上门维修介绍
+    UILabel *computerDoorDesc = [[UILabel alloc] init];
+    computerDoorDesc.text = @"电脑维修，系统清理，软件安装...";
+    computerDoorDesc.textColor = [UIColor darkGrayColor];
+    computerDoorDesc.font = [UIFont boldSystemFontOfSize:11];
+    [computerDoorView addSubview:computerDoorDesc];
+    
+    [computerDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(computerDoorView.mas_centerY).offset(5);
+        make.left.equalTo(computerDoorView.mas_left).offset(leftMargin);
+    }];
+}
+
+//底部视图
+- (void)bottomView
+{
+    bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    [self addSubview:bottomView];
+    
+    UIView *superview = self;
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+        
+        make.height.equalTo(@35);
+    }];
+    
+    //文本框
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"我们的信使将实时响应您的需求";
+    label.textColor = [UIColor grayColor];
+    label.font = [UIFont systemFontOfSize:10];
+    [bottomView addSubview:label];
+    
+    superview = bottomView;
+    [label mas_makeConstraints:^(MASConstraintMaker *make){
+        make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(superview.mas_left).offset(50);
+    }];
+    
+    //图标
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"top"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [bottomView addSubview:imageView];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(superview.mas_right).offset(-20);
+        make.centerY.equalTo(superview.mas_centerY);
+        
+        make.width.equalTo(@15);
     }];
 }
 
