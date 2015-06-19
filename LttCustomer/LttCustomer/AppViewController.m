@@ -103,7 +103,6 @@
         ![viewController isMemberOfClass:[LoginViewController class]] &&
         ![self isLogin]) {
         LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        loginViewController.returnController = viewController;
         [self.navigationController pushViewController:loginViewController animated:YES];
     } else {
         [self.navigationController pushViewController:viewController animated:YES];

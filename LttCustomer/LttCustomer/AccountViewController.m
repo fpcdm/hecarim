@@ -87,7 +87,6 @@
     [self refreshMenu];
     
     LoginViewController *viewController = [[LoginViewController alloc] init];
-    viewController.returnController = [[AccountViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

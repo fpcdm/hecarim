@@ -48,4 +48,12 @@
 
 @synthesize employeeMobile;
 
+@synthesize employeeAvatar;
+
+- (UIImage *) avatarImage
+{
+    UIImage *avatar = [UIImage imageNamed:@"nopic"];
+    return avatar;
+}
+
 @end

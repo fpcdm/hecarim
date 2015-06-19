@@ -116,6 +116,10 @@
 		2FBF3F6B1B281A9E00C0DC54 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6A1B281A9E00C0DC54 /* AppTableView.m */; };
 		2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */; };
 		2FBF3F771B2821AA00C0DC54 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F761B2821AA00C0DC54 /* HomeView.m */; };
+		2FC8574D1B34062B007B9771 /* IntentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8574C1B34062B007B9771 /* IntentionViewController.m */; };
+		2FC857501B341184007B9771 /* IntentionNewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8574F1B341184007B9771 /* IntentionNewView.m */; };
+		2FC857531B3411B5007B9771 /* IntentionLockedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC857521B3411B5007B9771 /* IntentionLockedView.m */; };
+		2FC857561B34154F007B9771 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC857551B34154F007B9771 /* OrderViewController.m */; };
 		2FCAF6AE1B1FEF8400F3B084 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18A11B04848B00C3D09E /* CFNetwork.framework */; };
 		2FCAF6B01B1FEFA400F3B084 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6AF1B1FEFA400F3B084 /* MobileCoreServices.framework */; };
 		2FCAF6B21B1FEFBD00F3B084 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6B11B1FEFBD00F3B084 /* CoreData.framework */; };
@@ -411,6 +415,14 @@
 		2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		2FBF3F751B2821AA00C0DC54 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		2FBF3F761B2821AA00C0DC54 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		2FC8574B1B34062B007B9771 /* IntentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionViewController.h; sourceTree = "<group>"; };
+		2FC8574C1B34062B007B9771 /* IntentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionViewController.m; sourceTree = "<group>"; };
+		2FC8574E1B341184007B9771 /* IntentionNewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionNewView.h; sourceTree = "<group>"; };
+		2FC8574F1B341184007B9771 /* IntentionNewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionNewView.m; sourceTree = "<group>"; };
+		2FC857511B3411B5007B9771 /* IntentionLockedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionLockedView.h; sourceTree = "<group>"; };
+		2FC857521B3411B5007B9771 /* IntentionLockedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionLockedView.m; sourceTree = "<group>"; };
+		2FC857541B34154F007B9771 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		2FC857551B34154F007B9771 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		2FCAF6AF1B1FEFA400F3B084 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2FCAF6B11B1FEFBD00F3B084 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2FCAF6B41B1FEFCD00F3B084 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -713,6 +725,10 @@
 				2FBF3F761B2821AA00C0DC54 /* HomeView.m */,
 				2F2E0C711B2ADB58000A7C90 /* LoginView.h */,
 				2F2E0C721B2ADB58000A7C90 /* LoginView.m */,
+				2FC8574E1B341184007B9771 /* IntentionNewView.h */,
+				2FC8574F1B341184007B9771 /* IntentionNewView.m */,
+				2FC857511B3411B5007B9771 /* IntentionLockedView.h */,
+				2FC857521B3411B5007B9771 /* IntentionLockedView.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1202,6 +1218,10 @@
 				2F628BFC1AE8940300530B07 /* HomeViewController.m */,
 				2F9BD1A51B26E31700632751 /* LoginViewController.h */,
 				2F9BD1A61B26E31700632751 /* LoginViewController.m */,
+				2FC8574B1B34062B007B9771 /* IntentionViewController.h */,
+				2FC8574C1B34062B007B9771 /* IntentionViewController.m */,
+				2FC857541B34154F007B9771 /* OrderViewController.h */,
+				2FC857551B34154F007B9771 /* OrderViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1708,6 +1728,7 @@
 				2F90003F1B1D8B930040D97B /* MASViewConstraint.m in Sources */,
 				2F473DE91B32778100938BD6 /* SafetyPasswordViewController.m in Sources */,
 				2F9000361B1D8B930040D97B /* CRToastManager.m in Sources */,
+				2FC8574D1B34062B007B9771 /* IntentionViewController.m in Sources */,
 				2F9000421B1D8B930040D97B /* View+MASAdditions.m in Sources */,
 				2F66838C1AF9E32B00D430D0 /* CategoryEntity.m in Sources */,
 				2FED7D921B1EA2D300306A11 /* NSData+ImageContentType.m in Sources */,
@@ -1737,6 +1758,7 @@
 				2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */,
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
+				2FC857561B34154F007B9771 /* OrderViewController.m in Sources */,
 				2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */,
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
 				2F473DFE1B32BA8300938BD6 /* LttNavigationController.m in Sources */,
@@ -1786,6 +1808,7 @@
 				2F39E3061B297AB60064CA28 /* AppUIUtil.m in Sources */,
 				2FED7D9F1B1EA2D300306A11 /* UIView+WebCacheOperation.m in Sources */,
 				2FE462441B27E59300780AF5 /* AppView.m in Sources */,
+				2FC857501B341184007B9771 /* IntentionNewView.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,
 				2F6D3E4F1B312765007A4159 /* MJRefreshComponent.m in Sources */,
 				2F9001121B1D9D550040D97B /* UIImage+REFrostedViewController.m in Sources */,
@@ -1820,6 +1843,7 @@
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F6D3E5A1B312765007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2F90010E1B1D9D550040D97B /* Reachability.m in Sources */,
+				2FC857531B3411B5007B9771 /* IntentionLockedView.m in Sources */,
 				2F089D7D1B2ECF23002A0EA5 /* AddressView.m in Sources */,
 				2F9001111B1D9D550040D97B /* REFrostedViewController.m in Sources */,
 				2F9001141B1D9D550040D97B /* UIViewController+REFrostedViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "HomeView.h"
+#import "IntentionViewController.h"
 
 @interface HomeViewController () <HomeViewDelegate>
 
@@ -27,8 +28,9 @@
 
 - (void)viewDidLoad
 {
-    isMenuEnabled = YES;
+    isMenuEnabled = [self isLogin];
     isIndexNavBar = YES;
+    hideBackButton = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"两条腿";
@@ -39,6 +41,18 @@
     [homeView setData:@"address" value:address];
     [homeView setData:@"count" value:count];
     [homeView renderData];
+}
+
+#pragma mark - Action
+- (void)actionIntention:(NSNumber *)type
+{
+    //@todo 创建需求
+    
+    NSNumber *intentionId = type;
+    
+    IntentionViewController *viewController = [[IntentionViewController alloc] init];
+    viewController.intentionId = intentionId;
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

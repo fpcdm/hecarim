@@ -27,14 +27,26 @@
 }
 
 - (void)viewDidLoad {
-    isMenuEnabled = YES;
-    hideBackButton = YES;
+    isMenuEnabled = NO;
+    hideBackButton = NO;
     [super viewDidLoad];
     
     self.navigationItem.title = @"登陆";
+    
+    //点击左侧返回首页
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"]
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:self
+                                                                            action:@selector(actionHome)];
 }
 
 #pragma mark - Action
+- (void)actionHome
+{
+    HomeViewController *viewController = [[HomeViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
 - (void)actionLogin
 {
     //模拟登陆
@@ -53,13 +65,8 @@
     //刷新菜单
     [self refreshMenu];
     
-    //是否有返回控制器
-    if (self.returnController != nil) {
-        [self.navigationController pushViewController:self.returnController animated:YES];
-    } else {
-        HomeViewController *viewController = [[HomeViewController alloc] init];
-        [self pushViewController:viewController animated:YES];
-    }
+    HomeViewController *viewController = [[HomeViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

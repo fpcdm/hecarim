@@ -194,6 +194,8 @@
     chooseButton.layer.backgroundColor = [UIColor colorWithHexString:@"DDDDDD"].CGColor;
     chooseButton.layer.cornerRadius = 3.0f;
     chooseButton.titleLabel.text = nil;
+    chooseButton.tag = 2;
+    [chooseButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [mobileView addSubview:chooseButton];
     
     [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -231,6 +233,8 @@
     customerButton.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
     customerButton.layer.cornerRadius = 3.0f;
     customerButton.titleLabel.text = nil;
+    customerButton.tag = 1;
+    [customerButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [mobileView addSubview:customerButton];
     
     [customerButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -293,6 +297,8 @@
     [mobileDoorButton setTitle:@"手机上门维修" forState:UIControlStateNormal];
     [mobileDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
     mobileDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    mobileDoorButton.tag = 3;
+    [mobileDoorButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [mobileDoorView addSubview:mobileDoorButton];
     
     [mobileDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -342,6 +348,8 @@
     [computerDoorButton setTitle:@"电脑上门维修" forState:UIControlStateNormal];
     [computerDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
     computerDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    computerDoorButton.tag = 4;
+    [computerDoorButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [computerDoorView addSubview:computerDoorButton];
     
     [computerDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -416,6 +424,15 @@
     addressLabel.text = address;
     infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count ? count : @0];
     
+}
+
+- (void) actionIntention: (UIButton *)sender
+{
+    //@todo 根据tag区分类型，创建需求
+    
+    
+    NSNumber *type = [NSNumber numberWithInteger:sender.tag];
+    [self.delegate actionIntention:type];
 }
 
 @end

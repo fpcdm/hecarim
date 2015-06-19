@@ -10,6 +10,9 @@
 
 @protocol HomeViewDelegate <NSObject>
 
+@required
+- (void)actionIntention: (NSNumber *) type;
+
 @end
 
 @interface HomeView : AppView

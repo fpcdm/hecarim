@@ -48,4 +48,8 @@
 
 @property (nonatomic, retain) NSString *employeeMobile;
 
+@property (nonatomic, retain) NSString *employeeAvatar;
+
+- (UIImage *)avatarImage;
+
 @end
