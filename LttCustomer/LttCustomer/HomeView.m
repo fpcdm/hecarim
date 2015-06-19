@@ -66,13 +66,13 @@
         make.left.equalTo(superview.mas_left).offset(30);
         make.right.equalTo(superview.mas_right).offset(-30);
         
-        make.height.equalTo(@50);
+        make.height.equalTo(@60);
     }];
     
     //地址标签
     addressLabel = [[UILabel alloc] init];
     addressLabel.textColor = [UIColor whiteColor];
-    addressLabel.font = [UIFont boldSystemFontOfSize:18];
+    addressLabel.font = [UIFont boldSystemFontOfSize:20];
     [addressView addSubview:addressLabel];
     
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -83,7 +83,7 @@
     //信息标签
     infoLabel = [[UILabel alloc] init];
     infoLabel.textColor = [UIColor whiteColor];
-    infoLabel.font = [UIFont boldSystemFontOfSize:SIZE_SMALL_TEXT];
+    infoLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     [addressView addSubview:infoLabel];
     
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -115,14 +115,14 @@
         make.left.equalTo(superview.mas_left).offset(20);
         make.bottom.equalTo(superview.mas_bottom).offset(3.0f);
         
-        make.width.equalTo(@85);
-        make.height.equalTo(@28);
+        make.width.equalTo(@95);
+        make.height.equalTo(@33);
     }];
     
     //开始文字
     UILabel *beginLabel = [[UILabel alloc] init];
     beginLabel.text = @"我们开始吧!";
-    beginLabel.font = [UIFont boldSystemFontOfSize:12];
+    beginLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     beginLabel.textAlignment = NSTextAlignmentCenter;
     beginLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
     [beginView addSubview:beginLabel];
@@ -169,11 +169,11 @@
     UILabel *mobileDesc = [[UILabel alloc] init];
     mobileDesc.text = @"即时响应，两小时送货上门";
     mobileDesc.textColor = [UIColor grayColor];
-    mobileDesc.font = [UIFont boldSystemFontOfSize:16];
+    mobileDesc.font = [UIFont boldSystemFontOfSize:18];
     [mobileView addSubview:mobileDesc];
     
     [mobileDesc mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(mobileView.mas_centerY).offset(-3);
+        make.bottom.equalTo(mobileView.mas_centerY).offset(-5);
         make.left.equalTo(mobileView.mas_left).offset(leftMargin);
     }];
     
@@ -181,11 +181,11 @@
     UILabel *mobileTitle = [[UILabel alloc] init];
     mobileTitle.text = @"买手机";
     mobileTitle.textColor = [UIColor colorWithHexString:@"585858"];
-    mobileTitle.font = [UIFont boldSystemFontOfSize:24];
+    mobileTitle.font = [UIFont boldSystemFontOfSize:26];
     [mobileView addSubview:mobileTitle];
     
     [mobileTitle mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(mobileDesc.mas_top).offset(-3);
+        make.bottom.equalTo(mobileDesc.mas_top).offset(-5);
         make.left.equalTo(mobileView.mas_left).offset(leftMargin);
     }];
     
@@ -198,9 +198,9 @@
     
     [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.right.equalTo(mobileView.mas_right).offset(-12);
-        make.top.equalTo(mobileView.mas_centerY).offset(2);
+        make.top.equalTo(mobileView.mas_centerY);
         
-        make.height.equalTo(@50);
+        make.height.equalTo(IS_IPHONE5_PLUS ? @60 : @50);
         make.width.equalTo(@120);
     }];
     
@@ -211,7 +211,7 @@
     [chooseButton addSubview:chooseLabel];
     
     [chooseLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(chooseButton.mas_top).offset(5);
+        make.top.equalTo(chooseButton.mas_top).offset(7);
         make.left.equalTo(chooseButton.mas_left).offset(5);
     }];
     
@@ -222,7 +222,7 @@
     [chooseButton addSubview:chooseDescLabel];
     
     [chooseDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(chooseButton.mas_bottom).offset(-5);
+        make.bottom.equalTo(chooseButton.mas_bottom).offset(-7);
         make.left.equalTo(chooseButton.mas_left).offset(5);
     }];
     
@@ -238,7 +238,7 @@
         make.right.equalTo(chooseButton.mas_left).offset(-12);
         make.top.equalTo(chooseButton.mas_top);
         
-        make.height.equalTo(@50);
+        make.height.equalTo(chooseButton.mas_height);
     }];
     
     UILabel *customerLabel = [[UILabel alloc] init];
@@ -248,7 +248,7 @@
     [customerButton addSubview:customerLabel];
     
     [customerLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(customerButton.mas_top).offset(5);
+        make.top.equalTo(customerButton.mas_top).offset(7);
         make.left.equalTo(customerButton.mas_left).offset(5);
     }];
     
@@ -259,7 +259,7 @@
     [customerButton addSubview:customerDescLabel];
     
     [customerDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(customerButton.mas_bottom).offset(-5);
+        make.bottom.equalTo(customerButton.mas_bottom).offset(-7);
         make.left.equalTo(customerButton.mas_left).offset(5);
     }];
     
@@ -292,7 +292,7 @@
     UIButton *mobileDoorButton = [[UIButton alloc] init];
     [mobileDoorButton setTitle:@"手机上门维修" forState:UIControlStateNormal];
     [mobileDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
-    mobileDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    mobileDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
     [mobileDoorView addSubview:mobileDoorButton];
     
     [mobileDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -304,9 +304,9 @@
     
     //手机上门维修介绍
     UILabel *mobileDoorDesc = [[UILabel alloc] init];
-    mobileDoorDesc.text = @"手机硬件维修，贴膜，手机系统清理，手机软件安装...";
+    mobileDoorDesc.text = @"手机维修，贴膜，系统清理，软件安装...";
     mobileDoorDesc.textColor = [UIColor grayColor];
-    mobileDoorDesc.font = [UIFont boldSystemFontOfSize:12];
+    mobileDoorDesc.font = [UIFont boldSystemFontOfSize:14];
     [mobileDoorView addSubview:mobileDoorDesc];
     
     [mobileDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
@@ -341,7 +341,7 @@
     UIButton *computerDoorButton = [[UIButton alloc] init];
     [computerDoorButton setTitle:@"电脑上门维修" forState:UIControlStateNormal];
     [computerDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
-    computerDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    computerDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
     [computerDoorView addSubview:computerDoorButton];
     
     [computerDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -355,7 +355,7 @@
     UILabel *computerDoorDesc = [[UILabel alloc] init];
     computerDoorDesc.text = @"电脑维修，系统清理，软件安装...";
     computerDoorDesc.textColor = [UIColor grayColor];
-    computerDoorDesc.font = [UIFont boldSystemFontOfSize:12];
+    computerDoorDesc.font = [UIFont boldSystemFontOfSize:14];
     [computerDoorView addSubview:computerDoorDesc];
     
     [computerDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
@@ -384,7 +384,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.text = @"我们的信使将实时响应您的需求";
     label.textColor = [UIColor grayColor];
-    label.font = [UIFont systemFontOfSize:12];
+    label.font = [UIFont systemFontOfSize:14];
     [bottomView addSubview:label];
     
     superview = bottomView;
@@ -403,7 +403,7 @@
         make.right.equalTo(superview.mas_right).offset(-20);
         make.centerY.equalTo(superview.mas_centerY);
         
-        make.width.equalTo(@15);
+        make.width.equalTo(@17);
     }];
 }
 
