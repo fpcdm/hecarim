@@ -86,13 +86,15 @@
 //文字灰色
 #define COLOR_GRAY_TEXT @"7D7D7D"
 //文字高亮
-#define COLOR_MAIN_TEXT_HIGHLIGHTED @"F15353"
+//#define COLOR_MAIN_TEXT_HIGHLIGHTED @"F15353"
+#define COLOR_MAIN_TEXT_HIGHLIGHTED @"E2383B"
 //文字背景
 #define COLOR_MAIN_TEXT_BG @"FFFFFF"
 //button 文字
 #define COLOR_MAIN_BUTTON @"FFFFFF"
 //button 背景
-#define COLOR_MAIN_BUTTON_BG @"F15353"
+//#define COLOR_MAIN_BUTTON_BG @"F15353"
+#define COLOR_MAIN_BUTTON_BG @"E2383B"
 
 //字体配置
 //标题字体

@@ -20,7 +20,7 @@
     if (!self) return nil;
     
     //删除按钮
-    UIButton *button = [AppUIUtil makeButton:@"删除" font:SIZE_BUTTON_TEXT];
+    UIButton *button = [AppUIUtil makeButton:@"删除"];
     [button addTarget:self action:@selector(actionDelete) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     

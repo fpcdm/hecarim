@@ -1,14 +1,14 @@
 //
-//  GoodsModel.m
+//  ServiceEntity.m
 //  LttCustomer
 //
-//  Created by wuyong on 15/5/7.
+//  Created by wuyong on 15/6/23.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "GoodsEntity.h"
+#import "ServiceEntity.h"
 
-@implementation GoodsEntity
+@implementation ServiceEntity
 
 @synthesize id;
 
@@ -18,7 +18,9 @@
 
 @synthesize price;
 
-@synthesize specName;
+@synthesize typeId;
+
+@synthesize typeName;
 
 - (NSNumber *) total
 {

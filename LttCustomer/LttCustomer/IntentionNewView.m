@@ -17,7 +17,7 @@
     
     UILabel *bigLabel = [UILabel new];
     bigLabel.text = @"收到";
-    bigLabel.font = [UIFont boldSystemFontOfSize:30];
+    bigLabel.font = [UIFont boldSystemFontOfSize:26];
     bigLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
     [self addSubview:bigLabel];
     

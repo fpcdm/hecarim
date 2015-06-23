@@ -8,6 +8,7 @@
 
 #import "BaseEntity.h"
 #import "GoodsEntity.h"
+#import "ServiceEntity.h"
 
 @interface OrderEntity : BaseEntity
 
@@ -32,5 +33,11 @@
 @property (nonatomic, retain) NSString *qrcode;
 
 @property (nonatomic, retain) NSArray *goods;
+
+@property (nonatomic, retain) NSArray *services;
+
+@property (nonatomic, retain) NSNumber *commentLevel;
+
+- (UIImage *) avatarImage;
 
 @end

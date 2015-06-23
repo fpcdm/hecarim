@@ -23,7 +23,7 @@
 
 + (UIButton *) makeButton: (NSString *) title;
 
-+ (UIButton *)makeButton:(NSString *)title font:(CGFloat)font;
++ (UIButton *)makeButton:(NSString *)title font:(UIFont *)font;
 
 + (UITextField *) makeTextField;
 

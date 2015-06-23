@@ -32,4 +32,14 @@
 
 @synthesize goods;
 
+@synthesize services;
+
+@synthesize commentLevel;
+
+- (UIImage *) avatarImage
+{
+    UIImage *avatar = [UIImage imageNamed:@"nopic"];
+    return avatar;
+}
+
 @end

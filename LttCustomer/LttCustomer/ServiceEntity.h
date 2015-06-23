@@ -1,14 +1,14 @@
 //
-//  GoodsModel.h
+//  ServiceEntity.h
 //  LttCustomer
 //
-//  Created by wuyong on 15/5/7.
+//  Created by wuyong on 15/6/23.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
 #import "BaseEntity.h"
 
-@interface GoodsEntity : BaseEntity
+@interface ServiceEntity : BaseEntity
 
 @property (nonatomic, retain) NSNumber *id;
 
@@ -18,7 +18,9 @@
 
 @property (nonatomic, retain) NSNumber *price;
 
-@property (nonatomic, retain) NSString *specName;
+@property (nonatomic, retain) NSNumber *typeId;
+
+@property (nonatomic, retain) NSString *typeName;
 
 - (NSNumber *) total;
 

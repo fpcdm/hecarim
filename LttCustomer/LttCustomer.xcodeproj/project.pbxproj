@@ -42,6 +42,10 @@
 		2F67B60F1B33A449005106E8 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B60E1B33A449005106E8 /* point.png */; };
 		2F67B6111B33ABE2005106E8 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B6101B33ABE2005106E8 /* top.png */; };
 		2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F699B4B1AF8C41600E42816 /* BrandEntity.m */; };
+		2F6B0C1B1B390D1F000123BF /* OrderNewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C1A1B390D1F000123BF /* OrderNewView.m */; };
+		2F6B0C1E1B390D69000123BF /* OrderReceivedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C1D1B390D69000123BF /* OrderReceivedView.m */; };
+		2F6B0C211B390DD9000123BF /* OrderSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C201B390DD9000123BF /* OrderSuccessView.m */; };
+		2F6B0C241B390FDF000123BF /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C231B390FDF000123BF /* ServiceEntity.m */; };
 		2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */; };
 		2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E001B312164007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E021B312164007A4159 /* ActionSheetCustomPicker.m */; };
@@ -265,6 +269,14 @@
 		2F67B6101B33ABE2005106E8 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		2F699B4A1AF8C41600E42816 /* BrandEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandEntity.h; sourceTree = "<group>"; };
 		2F699B4B1AF8C41600E42816 /* BrandEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandEntity.m; sourceTree = "<group>"; };
+		2F6B0C191B390D1F000123BF /* OrderNewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNewView.h; sourceTree = "<group>"; };
+		2F6B0C1A1B390D1F000123BF /* OrderNewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNewView.m; sourceTree = "<group>"; };
+		2F6B0C1C1B390D69000123BF /* OrderReceivedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderReceivedView.h; sourceTree = "<group>"; };
+		2F6B0C1D1B390D69000123BF /* OrderReceivedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderReceivedView.m; sourceTree = "<group>"; };
+		2F6B0C1F1B390DD9000123BF /* OrderSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSuccessView.h; sourceTree = "<group>"; };
+		2F6B0C201B390DD9000123BF /* OrderSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSuccessView.m; sourceTree = "<group>"; };
+		2F6B0C221B390FDF000123BF /* ServiceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceEntity.h; sourceTree = "<group>"; };
+		2F6B0C231B390FDF000123BF /* ServiceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceEntity.m; sourceTree = "<group>"; };
 		2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2F6D3DFF1B312164007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -807,6 +819,8 @@
 				2F54CB391AFB3E0C00295A8D /* OrderEntity.m */,
 				2F54CB3B1AFB3F0300295A8D /* GoodsEntity.h */,
 				2F54CB3C1AFB3F0300295A8D /* GoodsEntity.m */,
+				2F6B0C221B390FDF000123BF /* ServiceEntity.h */,
+				2F6B0C231B390FDF000123BF /* ServiceEntity.m */,
 				2F089D7E1B2ED05C002A0EA5 /* AddressEntity.h */,
 				2F089D7F1B2ED05C002A0EA5 /* AddressEntity.m */,
 			);
@@ -1243,6 +1257,12 @@
 				2FC8574F1B341184007B9771 /* IntentionNewView.m */,
 				2FC857511B3411B5007B9771 /* IntentionLockedView.h */,
 				2FC857521B3411B5007B9771 /* IntentionLockedView.m */,
+				2F6B0C191B390D1F000123BF /* OrderNewView.h */,
+				2F6B0C1A1B390D1F000123BF /* OrderNewView.m */,
+				2F6B0C1C1B390D69000123BF /* OrderReceivedView.h */,
+				2F6B0C1D1B390D69000123BF /* OrderReceivedView.m */,
+				2F6B0C1F1B390DD9000123BF /* OrderSuccessView.h */,
+				2F6B0C201B390DD9000123BF /* OrderSuccessView.m */,
 			);
 			name = Intention;
 			sourceTree = "<group>";
@@ -1719,6 +1739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F39E3131B29904C0064CA28 /* ProfileView.m in Sources */,
+				2F6B0C241B390FDF000123BF /* ServiceEntity.m in Sources */,
 				2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
 				2FED82BD1B1EDBFB00306A11 /* qrencode.c in Sources */,
@@ -1739,6 +1760,7 @@
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
 				2FED82C11B1EDBFB00306A11 /* split.c in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
+				2F6B0C1E1B390D69000123BF /* OrderReceivedView.m in Sources */,
 				2FED7D931B1EA2D300306A11 /* SDImageCache.m in Sources */,
 				2F6D3E5F1B312765007A4159 /* UIView+MJExtension.m in Sources */,
 				2F06312F1B30025600AA8A94 /* AddressDetailView.m in Sources */,
@@ -1760,6 +1782,7 @@
 				2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */,
 				2F9000411B1D8B930040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F66838F1AF9ED8E00D430D0 /* ModelEntity.m in Sources */,
+				2F6B0C1B1B390D1F000123BF /* OrderNewView.m in Sources */,
 				2F473DEC1B3277D800938BD6 /* SafetyPasswordView.m in Sources */,
 				2FD795941AE7ACC900D51FB0 /* AppViewController.m in Sources */,
 				2FED82BC1B1EDBFB00306A11 /* QRCodeGenerator.m in Sources */,
@@ -1813,6 +1836,7 @@
 				2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */,
 				2F628BFD1AE8940300530B07 /* HomeViewController.m in Sources */,
 				2F89A63C1B0ECDD80043B236 /* OrderHandler.m in Sources */,
+				2F6B0C211B390DD9000123BF /* OrderSuccessView.m in Sources */,
 				2F9BD1A41B26E19E00632751 /* AccountViewController.m in Sources */,
 				2F6D3E181B312164007A4159 /* SWActionSheet.m in Sources */,
 				2F54CB3D1AFB3F0300295A8D /* GoodsEntity.m in Sources */,
