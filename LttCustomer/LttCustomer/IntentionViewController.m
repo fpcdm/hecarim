@@ -108,6 +108,9 @@
         
         self.navigationItem.title = @"客服已收到";
         
+        //显示数据
+        [lockedView setData:@"intention" value:intention];
+        [lockedView renderData];
     } else if ([intention.status isEqualToString:INTENTION_STATUS_SUCCESS]) {
         OrderViewController *viewController = [[OrderViewController alloc] init];
         viewController.orderNo = intention.orderNo;
@@ -120,6 +123,12 @@
 - (void)actionNext
 {
     if ([intention.status isEqualToString:INTENTION_STATUS_NEW]) {
+        //停止计时器
+        if (timerUtil) {
+            [timerUtil invalidate];
+            timerUtil = nil;
+        }
+        
         intention.status = INTENTION_STATUS_LOCKED;
         [self intentionView];
     } else if ([intention.status isEqualToString:INTENTION_STATUS_LOCKED]) {
@@ -131,6 +140,12 @@
 - (void)actionCancel
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)actionMobile
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.employeeMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 
 @end

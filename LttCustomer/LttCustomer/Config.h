@@ -81,6 +81,8 @@
 #define COLOR_INDEX_TITLE @"E2383B"
 //文字颜色
 #define COLOR_MAIN_TEXT @"000000"
+//文字深色
+#define COLOR_DARK_TEXT @"585858"
 //文字灰色
 #define COLOR_GRAY_TEXT @"7D7D7D"
 //文字高亮

@@ -10,6 +10,8 @@
 
 @protocol IntentionLockedViewDelegate <NSObject>
 
+- (void)actionMobile;
+
 @end
 
 @interface IntentionLockedView : AppView

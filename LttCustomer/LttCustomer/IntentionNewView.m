@@ -23,7 +23,7 @@
     
     UIView *superview = self;
     [bigLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(50);
+        make.top.equalTo(superview.mas_top).offset(40);
         make.centerX.equalTo(superview.mas_centerX);
         
     }];
