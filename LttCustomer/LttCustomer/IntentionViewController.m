@@ -11,6 +11,7 @@
 #import "IntentionNewView.h"
 #import "IntentionLockedView.h"
 #import "OrderViewController.h"
+#import "TimerUtil.h"
 
 @interface IntentionViewController () <IntentionNewViewDelegate, IntentionLockedViewDelegate>
 
@@ -20,6 +21,8 @@
 {
     IntentionEntity *intention;
     UIView *intentionView;
+    TimerUtil *timerUtil;
+    long timer;
 }
 
 - (void)viewDidLoad {
@@ -28,13 +31,20 @@
     isMenuEnabled = YES;
     [super viewDidLoad];
     
-    //解决闪烁
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
     self.navigationItem.title = @"等待响应";
     
     //获取需求状态
     [self loadIntention];
+}
+
+//关闭计时器
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    if (timerUtil) {
+        [timerUtil invalidate];
+    }
 }
 
 - (void)loadIntention
@@ -68,6 +78,28 @@
         self.view = newView;
         
         self.navigationItem.title = @"等待响应";
+        
+        //定时器，主线程才能更新UI
+        timer = 0;
+        timerUtil = [TimerUtil repeatTimer:1 block:^{
+            DDLogDebug(@"定时器：%ld", timer);
+            long minutes = 0;
+            long seconds = 0;
+            if (timer >= 60) {
+                minutes = timer / 60;
+                seconds = timer % 60;
+            } else {
+                seconds = timer;
+            }
+            
+            NSString *minuteStr = [NSString stringWithFormat:(minutes > 9 ? @"%ld" : @"0%ld"), minutes];
+            NSString *secondStr = [NSString stringWithFormat:(seconds > 9 ? @"%ld" : @"0%ld"), seconds];
+            newView.timerLabel.text = [NSString stringWithFormat:@"%@:%@", minuteStr, secondStr];
+            
+            //计时器加1
+            timer++;
+        } queue:dispatch_get_main_queue()];
+        
     } else if ([intention.status isEqualToString:INTENTION_STATUS_LOCKED]) {
         IntentionLockedView *lockedView = [[IntentionLockedView alloc] init];
         lockedView.delegate = self;
@@ -75,6 +107,7 @@
         self.view = lockedView;
         
         self.navigationItem.title = @"客服已收到";
+        
     } else if ([intention.status isEqualToString:INTENTION_STATUS_SUCCESS]) {
         OrderViewController *viewController = [[OrderViewController alloc] init];
         viewController.orderNo = intention.orderNo;
@@ -93,6 +126,11 @@
         intention.status = INTENTION_STATUS_SUCCESS;
         [self intentionView];
     }
+}
+
+- (void)actionCancel
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

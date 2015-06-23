@@ -10,10 +10,14 @@
 
 @protocol IntentionNewViewDelegate <NSObject>
 
+- (void)actionCancel;
+
 @end
 
 @interface IntentionNewView : AppView
 
 @property (retain, nonatomic) id<IntentionNewViewDelegate> delegate;
+
+@property (retain, nonatomic) UILabel *timerLabel;
 
 @end

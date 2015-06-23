@@ -20,9 +20,6 @@
     isMenuEnabled = YES;
     [super viewDidLoad];
     
-    //解决闪烁
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
     self.navigationItem.title = @"账单确认并支付";
 }
 

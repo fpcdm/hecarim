@@ -10,7 +10,11 @@
 
 @interface TimerUtil : NSObject
 
+//默认并列队列
 + (TimerUtil *) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block;
+
+//自定义队列
++ (TimerUtil *) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block queue:(dispatch_queue_t) queue;
 
 - (void) suspend;
 
