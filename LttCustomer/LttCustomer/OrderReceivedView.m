@@ -56,6 +56,8 @@
         make.bottom.equalTo(superview.mas_bottom).offset(-5);
         make.left.equalTo(superview.mas_left).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
+        
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
     //服务人员

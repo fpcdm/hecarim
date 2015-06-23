@@ -23,21 +23,20 @@
     if (!self) return nil;
     
     UILabel *titleLabel = [UILabel new];
-    titleLabel.text = @"我们已经帮您联系到了离你最近的客服";
-    titleLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    titleLabel.text = @"我们联系到了离你最近的客服";
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     [self addSubview:titleLabel];
     
     UIView *superview = self;
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(40);
-        make.centerX.equalTo(superview.mas_centerX);
-        
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.top.equalTo(superview.mas_top).offset(20);
     }];
     
     UILabel *detailText = [UILabel new];
     detailText.text = @"稍后我们一个服务人员将联系您";
-    detailText.font = [UIFont boldSystemFontOfSize:SIZE_SMALL_TEXT];
+    detailText.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     detailText.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     [self addSubview:detailText];
     
@@ -48,7 +47,7 @@
     
     UILabel *detailText2 = [UILabel new];
     detailText2.text = @"他将和您讨论一下您的需求以及服务地点";
-    detailText2.font = [UIFont boldSystemFontOfSize:SIZE_SMALL_TEXT];
+    detailText2.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     detailText2.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     [self addSubview:detailText2];
     
@@ -64,7 +63,7 @@
     [self addSubview:aboutLabel];
     
     [aboutLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(detailText2.mas_bottom).offset(15);
+        make.top.equalTo(detailText2.mas_bottom).offset(40);
         make.left.equalTo(titleLabel.mas_left);
         
     }];
