@@ -50,10 +50,18 @@
 
 @synthesize employeeAvatar;
 
+@synthesize details;
+
 - (UIImage *) avatarImage
 {
-    UIImage *avatar = [UIImage imageNamed:@"nopic"];
+    UIImage *avatar = [UIImage imageNamed:@"support"];
     return avatar;
+}
+
+- (NSString *)statusName
+{
+    //todo
+    return @"已完成";
 }
 
 @end

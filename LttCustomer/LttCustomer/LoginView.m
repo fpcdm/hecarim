@@ -9,6 +9,11 @@
 #import "LoginView.h"
 
 @implementation LoginView
+{
+    UITextField *mobileField;
+    UITextField *passwordField;
+    UIButton *button;
+}
 
 - (id)init
 {
@@ -18,17 +23,44 @@
     //修正闪烁
     self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     
-    UIButton *button = [AppUIUtil makeButton:@"模拟"];
+    //输入框
+    mobileField = [AppUIUtil makeTextField];
+    mobileField.placeholder = @"手机号";
+    [self addSubview:mobileField];
+    
+    UIView *superview = self;
+    int padding = 10;
+    [mobileField mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top).offset(padding);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo(@40);
+    }];
+    
+    //密码
+    passwordField = [AppUIUtil makeTextField];
+    passwordField.placeholder = @"密码";
+    passwordField.secureTextEntry = YES;
+    [self addSubview:passwordField];
+    
+    [passwordField mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(mobileField.mas_bottom).offset(padding);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo(@40);
+    }];
+    
+    //按钮
+    button = [AppUIUtil makeButton:@"登陆"];
     [button addTarget:self action:@selector(actionLogin) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     
-    UIView *superview = self;
     [button mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(10);
-        make.centerX.equalTo(superview.mas_centerX);
-        
-        make.width.equalTo(@60);
-        make.height.equalTo(@30);
+        make.top.equalTo(passwordField.mas_bottom).offset(padding);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.right.equalTo(superview.mas_right).offset(-padding);
     }];
     
     return self;

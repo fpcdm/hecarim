@@ -50,6 +50,10 @@
 
 @property (nonatomic, retain) NSString *employeeAvatar;
 
+@property (nonatomic, retain) NSArray *details;
+
 - (UIImage *)avatarImage;
+
+- (NSString *)statusName;
 
 @end

@@ -38,7 +38,7 @@
 
 - (UIImage *) avatarImage
 {
-    UIImage *avatar = [UIImage imageNamed:@"nopic"];
+    UIImage *avatar = [UIImage imageNamed:@"support"];
     return avatar;
 }
 
