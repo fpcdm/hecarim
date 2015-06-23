@@ -56,4 +56,6 @@
 
 - (NSString *)statusName;
 
+- (UIColor *)statusColor;
+
 @end

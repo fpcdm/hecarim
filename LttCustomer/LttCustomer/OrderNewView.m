@@ -104,7 +104,7 @@
     UILabel *totalLabel = [[UILabel alloc] init];
     totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", [order.amount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    totalLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    totalLabel.font = [UIFont boldSystemFontOfSize:20];
     [self addSubview:totalLabel];
     
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){

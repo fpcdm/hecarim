@@ -41,6 +41,7 @@
     
     //时间
     UILabel *timeLabel = [self makeCellLabel:intention.createTime];
+    timeLabel.font = [UIFont boldSystemFontOfSize:18];
     [cell addSubview:timeLabel];
     
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -52,7 +53,7 @@
     
     //状态
     UILabel *statusLabel = [self makeCellLabel:[intention statusName]];
-    statusLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+    statusLabel.textColor = [intention statusColor];
     [cell addSubview:statusLabel];
     
     [statusLabel mas_makeConstraints:^(MASConstraintMaker *make){

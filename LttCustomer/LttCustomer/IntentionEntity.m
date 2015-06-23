@@ -64,4 +64,9 @@
     return @"已完成";
 }
 
+- (UIColor *)statusColor
+{
+    return [UIColor colorWithHexString:COLOR_DARK_TEXT];
+}
+
 @end
