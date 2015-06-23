@@ -10,6 +10,8 @@
 
 @protocol OrderNewViewDelegate <NSObject>
 
+- (void)actionPay;
+
 @end
 
 @interface OrderNewView : AppView

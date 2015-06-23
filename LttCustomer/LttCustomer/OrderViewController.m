@@ -11,6 +11,7 @@
 #import "OrderReceivedView.h"
 #import "OrderSuccessView.h"
 #import "OrderEntity.h"
+#import "HomeViewController.h"
 
 @interface OrderViewController () <OrderNewViewDelegate, OrderReceivedViewDelegate, OrderSuccessViewDelegate>
 
@@ -127,5 +128,25 @@
 }
 
 #pragma mark - Action
+- (void)actionPay
+{
+    order.status = ORDER_STATUS_RECEIVED;
+    [self orderView];
+}
+
+- (void)actionComment:(int)value
+{
+    //todo: 评分
+    
+    order.commentLevel = [NSNumber numberWithInt:value];
+    order.status = ORDER_STATUS_SUCCESS;
+    [self orderView];
+}
+
+- (void)actionHome
+{
+    HomeViewController *viewController = [[HomeViewController alloc] init];
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+}
 
 @end

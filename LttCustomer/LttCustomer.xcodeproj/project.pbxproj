@@ -46,6 +46,7 @@
 		2F6B0C1E1B390D69000123BF /* OrderReceivedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C1D1B390D69000123BF /* OrderReceivedView.m */; };
 		2F6B0C211B390DD9000123BF /* OrderSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C201B390DD9000123BF /* OrderSuccessView.m */; };
 		2F6B0C241B390FDF000123BF /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C231B390FDF000123BF /* ServiceEntity.m */; };
+		2F6B0C281B395782000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C271B395782000123BF /* AXRatingView.m */; };
 		2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */; };
 		2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E001B312164007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E021B312164007A4159 /* ActionSheetCustomPicker.m */; };
@@ -277,6 +278,8 @@
 		2F6B0C201B390DD9000123BF /* OrderSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSuccessView.m; sourceTree = "<group>"; };
 		2F6B0C221B390FDF000123BF /* ServiceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceEntity.h; sourceTree = "<group>"; };
 		2F6B0C231B390FDF000123BF /* ServiceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceEntity.m; sourceTree = "<group>"; };
+		2F6B0C261B395782000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
+		2F6B0C271B395782000123BF /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2F6D3DFF1B312164007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -860,6 +863,15 @@
 			name = Handler;
 			sourceTree = "<group>";
 		};
+		2F6B0C251B395782000123BF /* AXRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				2F6B0C261B395782000123BF /* AXRatingView.h */,
+				2F6B0C271B395782000123BF /* AXRatingView.m */,
+			);
+			path = AXRatingView;
+			sourceTree = "<group>";
+		};
 		2F6D3DFE1B312164007A4159 /* ActionSheetPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,6 +1065,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F6B0C251B395782000123BF /* AXRatingView */,
 				2F473DF11B329ED700938BD6 /* CTCheckbox */,
 				2F6D3E201B312765007A4159 /* MJRefresh */,
 				2F6D3DFE1B312164007A4159 /* ActionSheetPicker */,
@@ -1864,6 +1877,7 @@
 				2FBF3F6B1B281A9E00C0DC54 /* AppTableView.m in Sources */,
 				2F9000351B1D8B930040D97B /* CRToast.m in Sources */,
 				2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */,
+				2F6B0C281B395782000123BF /* AXRatingView.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,

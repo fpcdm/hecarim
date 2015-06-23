@@ -39,6 +39,7 @@
     
     //支付按钮
     payButton = [AppUIUtil makeButton:@"" font:[UIFont boldSystemFontOfSize:SIZE_BUTTON_TEXT]];
+    [payButton addTarget:self action:@selector(actionPay) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:payButton];
     
     [payButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -67,8 +68,14 @@
     
     float totalHeight = 0.0;
     if (goodsCount > 0) {
-        
+        totalHeight += 30 + 25 + (goodsCount * 40);
     }
+    if (servicesCount > 0) {
+        for (NSArray *services in order.services) {
+            totalHeight += 30 + 25 + ([services count] * 20);
+        }
+    }
+    totalHeight += 5;
     
     UIView *superview = self;
     [orderView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -309,6 +316,12 @@
     }];
     
     return sepratorView;
+}
+
+#pragma mark - Action
+- (void)actionPay
+{
+    [self.delegate actionPay];
 }
 
 @end

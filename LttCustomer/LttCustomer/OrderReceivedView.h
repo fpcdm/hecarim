@@ -10,6 +10,8 @@
 
 @protocol OrderReceivedViewDelegate <NSObject>
 
+- (void)actionComment:(int)value;
+
 @end
 
 @interface OrderReceivedView : AppView

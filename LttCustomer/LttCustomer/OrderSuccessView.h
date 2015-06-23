@@ -10,6 +10,8 @@
 
 @protocol OrderSuccessViewDelegate <NSObject>
 
+- (void)actionHome;
+
 @end
 
 @interface OrderSuccessView : AppView
