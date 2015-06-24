@@ -11,8 +11,6 @@
 
 @interface OrderHandler : BaseHandler
 
-- (void) queryOrders: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
-
 - (void) queryOrder: (OrderEntity *) order success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 - (void) updateOrderStatus: (OrderEntity *) order param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;

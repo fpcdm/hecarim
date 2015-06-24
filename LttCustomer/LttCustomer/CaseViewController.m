@@ -16,6 +16,7 @@
 #import "CaseSuccessView.h"
 #import "TimerUtil.h"
 #import "CaseHandler.h"
+#import "OrderHandler.h"
 #import "HomeViewController.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
@@ -62,56 +63,60 @@
 
 - (void)preloadOrder:(CallbackBlock)success failure:(CallbackBlock)failure
 {
-    //@todo 查询订单
+    //查询订单
+    NSLog(@"orderNo: %@", intention.orderNo);
     
-    order = [[OrderEntity alloc] init];
-    order.no = intention.orderNo;
-    order.amount = @9993;
-    order.buyerMobile = @"18875001455";
-    order.buyerName = @"吴勇";
-    order.sellerMobile = @"13345673333";
-    order.sellerName = @"刘亚卓";
-    order.status = CASE_STATUS_TOPAY;
-    order.commentLevel = @0;
+    OrderEntity *orderEntity = [[OrderEntity alloc] init];
+    orderEntity.no = intention.orderNo;
     
-    //订单商品
-    GoodsEntity *goods = [[GoodsEntity alloc] init];
-    goods.id = @1;
-    goods.name = @"iPhone6 Plus";
-    goods.number = @1;
-    goods.price = @5696;
-    goods.specName = @"香槟金 64G 国行";
-    
-    GoodsEntity *goods2 = [[GoodsEntity alloc] init];
-    goods2.id = @2;
-    goods2.name = @"iPhone5S";
-    goods2.number = @1;
-    goods2.price = @4200;
-    goods2.specName = @"土豪金 16G 国行";
-    
-    order.goods = @[goods, goods2];
-    
-    //订单服务
-    ServiceEntity *service = [[ServiceEntity alloc] init];
-    service.id = @1;
-    service.name = @"贴膜";
-    service.number = @1;
-    service.price = @48;
-    service.typeId = @3;
-    service.typeName = @"手机上门服务";
-    
-    ServiceEntity *service2 = [[ServiceEntity alloc] init];
-    service2.id = @2;
-    service2.name = @"刷系统";
-    service2.number = @1;
-    service2.price = @49;
-    service2.typeId = @3;
-    service2.typeName = @"手机上门服务";
-    NSArray *services = @[service, service2];
-    //服务分组
-    order.services = @[services];
-    
-    success(nil);
+    //调用接口
+    OrderHandler *orderHandler = [[OrderHandler alloc] init];
+    [orderHandler queryOrder:orderEntity success:^(NSArray *result){
+        newOrder = [result firstObject];
+        
+        //订单商品
+        GoodsEntity *goods = [[GoodsEntity alloc] init];
+        goods.id = @1;
+        goods.name = @"iPhone6 Plus";
+        goods.number = @1;
+        goods.price = @5696;
+        goods.specName = @"香槟金 64G 国行";
+        
+        GoodsEntity *goods2 = [[GoodsEntity alloc] init];
+        goods2.id = @2;
+        goods2.name = @"iPhone5S";
+        goods2.number = @1;
+        goods2.price = @4200;
+        goods2.specName = @"土豪金 16G 国行";
+        
+        newOrder.goods = @[goods, goods2];
+        
+        //订单服务
+        ServiceEntity *service = [[ServiceEntity alloc] init];
+        service.id = @1;
+        service.name = @"贴膜";
+        service.number = @1;
+        service.price = @48;
+        service.typeId = @3;
+        service.typeName = @"手机上门服务";
+        
+        ServiceEntity *service2 = [[ServiceEntity alloc] init];
+        service2.id = @2;
+        service2.name = @"刷系统";
+        service2.number = @1;
+        service2.price = @49;
+        service2.typeId = @3;
+        service2.typeName = @"手机上门服务";
+        NSArray *services = @[service, service2];
+        //服务分组
+        newOrder.services = @[services];
+        
+        NSLog(@"订单数据：%@", [newOrder toDictionary]);
+        
+        success(nil);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
 }
 
 - (void)viewDidLoad {

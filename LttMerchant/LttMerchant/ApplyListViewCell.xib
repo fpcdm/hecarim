@@ -14,10 +14,10 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9p-hc-boj" id="sCX-qY-dNc">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品牌：苹果  型号：iPhone6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54B-lW-X0n">
-                        <rect key="frame" x="8" y="8" width="327" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG6-tc-6mx">
+                        <rect key="frame" x="8" y="23" width="327" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-SG-M8G">
@@ -31,26 +31,14 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG6-tc-6mx">
-                        <rect key="frame" x="8" y="37" width="327" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="8TX-SG-M8G" firstAttribute="top" secondItem="jG6-tc-6mx" secondAttribute="bottom" constant="17" id="0eS-K4-4JN"/>
                     <constraint firstItem="8TX-SG-M8G" firstAttribute="bottom" secondItem="sCX-qY-dNc" secondAttribute="bottomMargin" id="3kR-nf-AYg"/>
-                    <constraint firstItem="54B-lW-X0n" firstAttribute="leading" secondItem="sCX-qY-dNc" secondAttribute="leadingMargin" id="7d2-8t-OPx"/>
-                    <constraint firstItem="jG6-tc-6mx" firstAttribute="top" secondItem="sCX-qY-dNc" secondAttribute="topMargin" constant="29" id="8eW-fd-hiC"/>
-                    <constraint firstItem="54B-lW-X0n" firstAttribute="top" secondItem="sCX-qY-dNc" secondAttribute="topMargin" id="8g3-Fz-fTf"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="jG6-tc-6mx" secondAttribute="bottom" constant="33" id="Aah-kd-ax7"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="jG6-tc-6mx" secondAttribute="trailing" constant="-23" id="PQ2-1V-47N"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="54B-lW-X0n" secondAttribute="trailing" constant="-23" id="ROf-cb-6is"/>
-                    <constraint firstAttribute="centerX" secondItem="jG6-tc-6mx" secondAttribute="centerX" constant="-11.5" id="VU6-jY-jdy"/>
-                    <constraint firstItem="jG6-tc-6mx" firstAttribute="leading" secondItem="sCX-qY-dNc" secondAttribute="leadingMargin" id="cgD-JN-vYG"/>
-                    <constraint firstAttribute="centerX" secondItem="54B-lW-X0n" secondAttribute="centerX" constant="-11.5" id="xCL-Mr-F1Q"/>
+                    <constraint firstItem="jG6-tc-6mx" firstAttribute="top" secondItem="sCX-qY-dNc" secondAttribute="topMargin" constant="15" id="MgK-Of-JFZ"/>
+                    <constraint firstItem="jG6-tc-6mx" firstAttribute="leading" secondItem="sCX-qY-dNc" secondAttribute="leadingMargin" constant="-7" id="Zmy-2K-kHX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jG6-tc-6mx" secondAttribute="trailing" constant="-30" id="hOR-1R-CFp"/>
                     <constraint firstItem="8TX-SG-M8G" firstAttribute="trailing" secondItem="sCX-qY-dNc" secondAttribute="trailingMargin" id="xPA-PV-g8m"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="54B-lW-X0n" secondAttribute="bottom" constant="62" id="yMO-PI-BAl"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="506" y="305"/>

@@ -34,9 +34,6 @@
 		2F4E69441B3AB91900F4E425 /* CaseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69431B3AB91900F4E425 /* CaseListView.m */; };
 		2F4E69471B3AB93300F4E425 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69461B3AB93300F4E425 /* CaseListViewController.m */; };
 		2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69491B3AB95F00F4E425 /* BaseTableView.m */; };
-		2F52A6CB1AF204A7003E2664 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */; };
-		2F52A6CD1AF204BD003E2664 /* OrderListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */; };
-		2F52A6CF1AF204C8003E2664 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CE1AF204C8003E2664 /* OrderListViewController.xib */; };
 		2F52A6D81AF20995003E2664 /* ApplyListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6D71AF20995003E2664 /* ApplyListViewCell.xib */; };
 		2F52A6DB1AF20CAC003E2664 /* ApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52A6DA1AF20CAC003E2664 /* ApplyDetailViewController.m */; };
 		2F52A6DD1AF20CCB003E2664 /* ApplyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6DC1AF20CCB003E2664 /* ApplyDetailViewController.xib */; };
@@ -241,10 +238,6 @@
 		2F4E69461B3AB93300F4E425 /* CaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListViewController.m; sourceTree = "<group>"; };
 		2F4E69481B3AB95F00F4E425 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		2F4E69491B3AB95F00F4E425 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
-		2F52A6C91AF204A7003E2664 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
-		2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
-		2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListViewCell.xib; sourceTree = "<group>"; };
-		2F52A6CE1AF204C8003E2664 /* OrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListViewController.xib; sourceTree = "<group>"; };
 		2F52A6D71AF20995003E2664 /* ApplyListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApplyListViewCell.xib; sourceTree = "<group>"; };
 		2F52A6D91AF20CAC003E2664 /* ApplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyDetailViewController.h; sourceTree = "<group>"; };
 		2F52A6DA1AF20CAC003E2664 /* ApplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyDetailViewController.m; sourceTree = "<group>"; };
@@ -776,8 +769,6 @@
 				2F52D1191AEF8AD50003D7C2 /* LoginViewController.m */,
 				2F52D1141AEF8AD50003D7C2 /* HomeViewController.h */,
 				2F52D1151AEF8AD50003D7C2 /* HomeViewController.m */,
-				2F52A6C91AF204A7003E2664 /* OrderListViewController.h */,
-				2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */,
 				2F52A6D91AF20CAC003E2664 /* ApplyDetailViewController.h */,
 				2F52A6DA1AF20CAC003E2664 /* ApplyDetailViewController.m */,
 				2F52A6DE1AF20E46003E2664 /* OrderFormViewController.h */,
@@ -796,11 +787,9 @@
 				2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */,
 				2F52D10D1AEF8ABD0003D7C2 /* HomeViewController.xib */,
 				2F52D10F1AEF8ABD0003D7C2 /* LoginViewController.xib */,
-				2F52A6CE1AF204C8003E2664 /* OrderListViewController.xib */,
 				2F52A6DC1AF20CCB003E2664 /* ApplyDetailViewController.xib */,
 				2F52A6E11AF20E86003E2664 /* OrderFormViewController.xib */,
 				2F52A6E61AF20F03003E2664 /* OrderDetailViewController.xib */,
-				2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */,
 				2F52A6D71AF20995003E2664 /* ApplyListViewCell.xib */,
 				2F4E69421B3AB91900F4E425 /* CaseListView.h */,
 				2F4E69431B3AB91900F4E425 /* CaseListView.m */,
@@ -1664,12 +1653,10 @@
 				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
 				2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */,
 				2F2F22721B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
-				2F52A6CF1AF204C8003E2664 /* OrderListViewController.xib in Resources */,
 				2F2F226C1B3A52FE00428742 /* NotificationBackgroundErrorIcon.png in Resources */,
 				2F2F22771B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				2F7074731AFC52DE00A1242A /* icon.png in Resources */,
 				2F2F22711B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png in Resources */,
-				2F52A6CD1AF204BD003E2664 /* OrderListViewCell.xib in Resources */,
 				2FED82861B1ED69000306A11 /* zbar-helpicons.png in Resources */,
 				2F2F226F1B3A52FE00428742 /* NotificationBackgroundMessage@2x.png in Resources */,
 				2F2F22751B3A52FE00428742 /* NotificationBackgroundWarning@2x.png in Resources */,
@@ -1766,7 +1753,6 @@
 				2F52A6E01AF20E46003E2664 /* OrderFormViewController.m in Sources */,
 				2F7074591AFC4F8100A1242A /* ModelEntity.m in Sources */,
 				2F4E69441B3AB91900F4E425 /* CaseListView.m in Sources */,
-				2F52A6CB1AF204A7003E2664 /* OrderListViewController.m in Sources */,
 				2F6D3F091B3128CC007A4159 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2F9000801B1D91470040D97B /* View+MASAdditions.m in Sources */,
 				2F90007E1B1D91470040D97B /* NSArray+MASAdditions.m in Sources */,

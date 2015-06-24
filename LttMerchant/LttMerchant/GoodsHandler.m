@@ -34,7 +34,7 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ModelEntity class] mappingParam:@{@"model_id": @"id", @"model_name": @"name"} keyPath:@"list"];
     
-    NSString *restPath = [sharedClient formatPath:@"goods/brand_model/:id" object:brand];
+    NSString *restPath = [sharedClient formatPath:@"model/brand_model/:id" object:brand];
     [sharedClient getObject:brand path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
@@ -51,7 +51,7 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[GoodsEntity class] mappingParam:@{@"goods_id": @"id", @"goods_name": @"name", @"price_list":@"priceList", @"spec_list":@"specList"} keyPath:@"list"];
     
-    NSString *restPath = [sharedClient formatPath:@"goods/model_goods/:id" object:model];
+    NSString *restPath = [sharedClient formatPath:@"merchandise/list_by_model/:id" object:model];
     [sharedClient getObject:model path:restPath param:nil success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         

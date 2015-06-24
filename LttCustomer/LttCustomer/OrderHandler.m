@@ -10,29 +10,11 @@
 
 @implementation OrderHandler
 
-- (void) queryOrders:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    //调用接口
-    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"order_no": @"no", @"create_time": @"createTime", @"amount": @"amount", @"buyer_mobile":@"buyerMobile", @"buyer_name": @"buyerName", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"update_time":@"updateTime", @"goods":@"goods",@"order_status":@"status"} keyPath:@"list"];
-    
-    NSString *restPath = @"member/orders";
-    [sharedClient getObject:[OrderEntity new] path:restPath param:param success:^(NSArray *result){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        success(result);
-    } failure:^(ErrorEntity *error){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        failure(error);
-    }];
-}
-
 - (void) queryOrder:(OrderEntity *)order success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goods",@"update_time":@"updateTime"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goods",@"services":@"services",@"update_time":@"updateTime"}];
     
     NSString *restPath = [sharedClient formatPath:@"order/info/:no" object:order];
     [sharedClient getObject:order path:restPath param:nil success:^(NSArray *result){
