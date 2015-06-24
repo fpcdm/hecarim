@@ -194,7 +194,7 @@
     chooseButton.layer.backgroundColor = [UIColor colorWithHexString:@"DDDDDD"].CGColor;
     chooseButton.layer.cornerRadius = 3.0f;
     chooseButton.titleLabel.text = nil;
-    //[chooseButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
+    //[chooseButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [mobileView addSubview:chooseButton];
     
     [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -233,7 +233,7 @@
     customerButton.layer.cornerRadius = 3.0f;
     customerButton.titleLabel.text = nil;
     customerButton.tag = LTT_TYPE_MOBILE;
-    [customerButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
+    [customerButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [mobileView addSubview:customerButton];
     
     [customerButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -297,7 +297,7 @@
     [mobileDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
     mobileDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
     mobileDoorButton.tag = LTT_TYPE_MOBILEDOOR;
-    [mobileDoorButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
+    [mobileDoorButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [mobileDoorView addSubview:mobileDoorButton];
     
     [mobileDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -348,7 +348,7 @@
     [computerDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
     computerDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
     computerDoorButton.tag = LTT_TYPE_COMPUTERDOOR;
-    [computerDoorButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
+    [computerDoorButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [computerDoorView addSubview:computerDoorButton];
     
     [computerDoorButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -425,13 +425,10 @@
     
 }
 
-- (void) actionIntention: (UIButton *)sender
+- (void) actionCase: (UIButton *)sender
 {
-    //@todo 根据tag区分类型，创建需求
-    
-    
     NSNumber *type = [NSNumber numberWithInteger:sender.tag];
-    [self.delegate actionIntention:type];
+    [self.delegate actionCase:type];
 }
 
 @end

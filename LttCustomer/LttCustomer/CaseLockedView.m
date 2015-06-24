@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "IntentionLockedView.h"
-#import "IntentionEntity.h"
+#import "CaseLockedView.h"
+#import "CaseEntity.h"
 
-@implementation IntentionLockedView
+@implementation CaseLockedView
 {
     UILabel *aboutLabel;
     UIImageView *imageView;
@@ -130,7 +130,7 @@
 #pragma mark - RenderData
 - (void)renderData
 {
-    IntentionEntity *intention = [self getData:@"intention"];
+    CaseEntity *intention = [self getData:@"intention"];
     
     imageView.image = [intention avatarImage];
     nameLabel.text = intention.employeeName;

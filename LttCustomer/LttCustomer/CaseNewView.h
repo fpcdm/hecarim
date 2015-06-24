@@ -8,15 +8,15 @@
 
 #import "AppView.h"
 
-@protocol IntentionNewViewDelegate <NSObject>
+@protocol CaseNewViewDelegate <NSObject>
 
 - (void)actionCancel;
 
 @end
 
-@interface IntentionNewView : AppView
+@interface CaseNewView : AppView
 
-@property (retain, nonatomic) id<IntentionNewViewDelegate> delegate;
+@property (retain, nonatomic) id<CaseNewViewDelegate> delegate;
 
 @property (retain, nonatomic) UILabel *timerLabel;
 

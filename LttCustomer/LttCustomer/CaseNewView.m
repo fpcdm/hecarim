@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "IntentionNewView.h"
+#import "CaseNewView.h"
 
-@implementation IntentionNewView
+@implementation CaseNewView
 
 - (id)init
 {

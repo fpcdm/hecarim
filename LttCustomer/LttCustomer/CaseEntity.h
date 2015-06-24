@@ -8,9 +8,11 @@
 
 #import "BaseEntity.h"
 
-@interface IntentionEntity : BaseEntity
+@interface CaseEntity : BaseEntity
 
 @property (nonatomic, retain) NSNumber *id;
+
+@property (nonatomic, retain) NSString *no;
 
 @property (nonatomic, retain) NSString *location;
 
@@ -49,5 +51,9 @@
 - (NSString *)statusName;
 
 - (UIColor *)statusColor;
+
+- (BOOL) isFail;
+
+- (BOOL) hasOrder;
 
 @end

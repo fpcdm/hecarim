@@ -1,5 +1,5 @@
 //
-//  IntentionViewController.h
+//  IntentionListViewController.h
 //  LttCustomer
 //
 //  Created by wuyong on 15/6/19.
@@ -8,8 +8,6 @@
 
 #import "AppUserViewController.h"
 
-@interface IntentionViewController : AppUserViewController
-
-@property (retain, nonatomic) NSNumber *intentionId;
+@interface CaseListViewController : AppUserViewController
 
 @end

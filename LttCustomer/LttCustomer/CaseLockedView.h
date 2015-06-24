@@ -8,14 +8,14 @@
 
 #import "AppView.h"
 
-@protocol IntentionLockedViewDelegate <NSObject>
+@protocol CaseLockedViewDelegate <NSObject>
 
 - (void)actionMobile;
 
 @end
 
-@interface IntentionLockedView : AppView
+@interface CaseLockedView : AppView
 
-@property (retain, nonatomic) id<IntentionLockedViewDelegate> delegate;
+@property (retain, nonatomic) id<CaseLockedViewDelegate> delegate;
 
 @end

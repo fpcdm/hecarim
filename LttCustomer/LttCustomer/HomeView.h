@@ -11,7 +11,7 @@
 @protocol HomeViewDelegate <NSObject>
 
 @required
-- (void)actionIntention: (NSNumber *) type;
+- (void)actionCase: (NSNumber *) type;
 
 @end
 

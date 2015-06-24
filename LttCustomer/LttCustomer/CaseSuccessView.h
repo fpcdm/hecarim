@@ -8,14 +8,14 @@
 
 #import "AppView.h"
 
-@protocol OrderSuccessViewDelegate <NSObject>
+@protocol CaseSuccessViewDelegate <NSObject>
 
 - (void)actionHome;
 
 @end
 
-@interface OrderSuccessView : AppView
+@interface CaseSuccessView : AppView
 
-@property (retain,nonatomic) id<OrderSuccessViewDelegate> delegate;
+@property (retain,nonatomic) id<CaseSuccessViewDelegate> delegate;
 
 @end

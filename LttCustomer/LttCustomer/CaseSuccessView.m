@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "OrderSuccessView.h"
+#import "CaseSuccessView.h"
 #import "AXRatingView.h"
 #import "OrderEntity.h"
 
-@implementation OrderSuccessView
+@implementation CaseSuccessView
 {
     UIImageView *imageView;
     AXRatingView *ratingView;

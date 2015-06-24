@@ -8,9 +8,10 @@
 
 #import "HomeViewController.h"
 #import "HomeView.h"
-#import "IntentionViewController.h"
-#import "IntentionEntity.h"
-#import "IntentionHandler.h"
+#import "CaseViewController.h"
+#import "LoginViewController.h"
+#import "CaseEntity.h"
+#import "CaseHandler.h"
 
 @interface HomeViewController () <HomeViewDelegate>
 
@@ -46,23 +47,32 @@
 }
 
 #pragma mark - Action
-- (void)actionIntention:(NSNumber *)type
+- (void)actionCase:(NSNumber *)type
 {
+    //是否登陆
+    if (![self isLogin]) {
+        LoginViewController *viewController = [[LoginViewController alloc] init];
+        [self pushViewController:viewController animated:YES];
+        return;
+    }
+    
     //获取参数
-    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.type = type;
     //@todo:gps坐标
     intentionEntity.location = @"0,0";
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
+    CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler addIntention:intentionEntity success:^(NSArray *result){
-        IntentionEntity *intention = [result firstObject];
+        CaseEntity *intention = [result firstObject];
+        
+        NSLog(@"需求id: %@", intention.id);
         
         //跳转需求详情
-        IntentionViewController *viewController = [[IntentionViewController alloc] init];
-        viewController.intentionId = intention.id;
+        CaseViewController *viewController = [[CaseViewController alloc] init];
+        viewController.caseId = intention.id;
         [self pushViewController:viewController animated:YES];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

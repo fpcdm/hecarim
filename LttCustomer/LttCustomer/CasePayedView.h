@@ -8,14 +8,14 @@
 
 #import "AppView.h"
 
-@protocol OrderReceivedViewDelegate <NSObject>
+@protocol CasePayedViewDelegate <NSObject>
 
 - (void)actionComment:(int)value;
 
 @end
 
-@interface OrderReceivedView : AppView
+@interface CasePayedView : AppView
 
-@property (retain, nonatomic) id<OrderReceivedViewDelegate> delegate;
+@property (retain, nonatomic) id<CasePayedViewDelegate> delegate;
 
 @end

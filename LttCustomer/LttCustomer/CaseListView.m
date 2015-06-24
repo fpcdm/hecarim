@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "IntentionListView.h"
+#import "CaseListView.h"
 
-@implementation IntentionListView
+@implementation CaseListView
 
 #pragma mark - RenderData
 - (void)renderData
@@ -17,7 +17,7 @@
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     
     if (intentionList != nil) {
-        for (IntentionEntity *intention in intentionList) {
+        for (CaseEntity *intention in intentionList) {
             //计算高度
             long detailCount = intention.details ? [intention.details count] : 0;
             NSNumber *height = [NSNumber numberWithFloat:(50 + detailCount * 20)];
@@ -33,7 +33,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell
 {
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
-    IntentionEntity *intention = [cellData objectForKey:@"data"];
+    CaseEntity *intention = [cellData objectForKey:@"data"];
     
     //间距配置
     int padding = 10;
@@ -98,7 +98,7 @@
 #pragma mark - Action
 - (void)actionDetail:(NSDictionary *)cellData
 {
-    IntentionEntity *intention = [cellData objectForKey:@"data"];
+    CaseEntity *intention = [cellData objectForKey:@"data"];
     
     [self.delegate actionDetail:intention];
 }
