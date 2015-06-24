@@ -511,7 +511,7 @@
     //添加商品：为了解决nsarray不传key的问题，使用nsdictionary
     NSDictionary *goodsDict = @{@"goods_id":goodsId, @"goods_num":number,@"goods_price":price,@"price_id":priceId};
     [goodsParam setObject:goodsDict forKey:@"0"];
-    postOrder.goodsParam = goodsParam;
+    postOrder.goodsParam = @{@"amount":postOrder.amount, @"list":goodsParam};
     
     //获取UserModel
     UserEntity *user = [[StorageUtil sharedStorage] getUser];

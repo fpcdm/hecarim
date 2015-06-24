@@ -67,8 +67,8 @@
     UIView *relateview = timeLabel;
     
     if (details) {
-        for (NSString *detail in details) {
-            UILabel *detailLabel = [self makeCellLabel:detail];
+        for (NSDictionary *detail in details) {
+            UILabel *detailLabel = [self makeCellLabel:[detail objectForKey:@"title"]];
             detailLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
             [cell addSubview:detailLabel];
             

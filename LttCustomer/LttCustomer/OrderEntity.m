@@ -32,6 +32,8 @@
 
 @synthesize goods;
 
+@synthesize goodsParam;
+
 @synthesize services;
 
 @synthesize commentLevel;

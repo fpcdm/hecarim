@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客户需求" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cR-Di-2xk">
-                    <rect key="frame" x="8" y="72" width="68" height="21"/>
+                    <rect key="frame" x="8" y="20" width="68" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Naj-5y-KGs"/>
                         <constraint firstAttribute="width" constant="68" id="vA8-aQ-fKo"/>
@@ -28,7 +28,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r14-Pd-txL">
-                    <rect key="frame" x="8" y="199" width="68" height="21"/>
+                    <rect key="frame" x="8" y="147" width="68" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="IQi-8s-ABB"/>
                         <constraint firstAttribute="width" constant="68" id="Rnu-LX-vOD"/>
@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Td-gS-2tr">
-                    <rect key="frame" x="34" y="228" width="180" height="30"/>
+                    <rect key="frame" x="34" y="176" width="180" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="180" id="oZj-R0-Qgk"/>
                         <constraint firstAttribute="height" constant="30" id="sm4-s4-cRR"/>
@@ -50,7 +50,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-16-fy3">
-                    <rect key="frame" x="34" y="280" width="80" height="40"/>
+                    <rect key="frame" x="34" y="228" width="80" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="9jQ-BI-pVZ"/>
                         <constraint firstAttribute="width" constant="80" id="b9n-KG-BpW"/>
@@ -64,7 +64,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaE-vi-Q8J">
-                    <rect key="frame" x="483" y="280" width="80" height="40"/>
+                    <rect key="frame" x="483" y="228" width="80" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="2op-cT-jpC"/>
                         <constraint firstAttribute="width" constant="80" id="Wev-3Y-gDq"/>
@@ -78,7 +78,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-y1-iJN">
-                    <rect key="frame" x="34" y="133" width="529" height="21"/>
+                    <rect key="frame" x="34" y="81" width="529" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="36G-0t-cKe"/>
                     </constraints>
@@ -89,7 +89,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="9cR-Di-2xk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="72" id="1b1-VX-hdK"/>
+                <constraint firstItem="9cR-Di-2xk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="1b1-VX-hdK"/>
                 <constraint firstItem="r14-Pd-txL" firstAttribute="top" secondItem="9cR-Di-2xk" secondAttribute="bottom" constant="106" id="2oD-bq-lMr"/>
                 <constraint firstItem="MqC-16-fy3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="34" id="9bD-Cp-63Y"/>
                 <constraint firstItem="RaE-vi-Q8J" firstAttribute="top" secondItem="MqC-16-fy3" secondAttribute="bottom" constant="-40" id="G94-1L-Nqj"/>

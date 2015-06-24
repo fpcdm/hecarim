@@ -34,6 +34,8 @@
 
 @property (nonatomic, retain) NSArray *goods;
 
+@property (nonatomic, retain) NSDictionary *goodsParam;
+
 @property (nonatomic, retain) NSArray *services;
 
 @property (nonatomic, retain) NSNumber *commentLevel;

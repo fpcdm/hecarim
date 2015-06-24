@@ -64,52 +64,57 @@
 - (void)preloadOrder:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //查询订单
-    NSLog(@"orderNo: %@", intention.orderNo);
+    NSLog(@"orderNo: %@", newIntention.orderNo);
     
     OrderEntity *orderEntity = [[OrderEntity alloc] init];
-    orderEntity.no = intention.orderNo;
+    orderEntity.no = newIntention.orderNo;
     
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler queryOrder:orderEntity success:^(NSArray *result){
         newOrder = [result firstObject];
         
-        //订单商品
-        GoodsEntity *goods = [[GoodsEntity alloc] init];
-        goods.id = @1;
-        goods.name = @"iPhone6 Plus";
-        goods.number = @1;
-        goods.price = @5696;
-        goods.specName = @"香槟金 64G 国行";
+        //解析订单商品
+        NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
+        if (newOrder.goodsParam) {
+            NSArray *goodsList = [newOrder.goodsParam objectForKey:@"list"];
+            if (goodsList && [goodsList count] > 0) {
+                for (NSDictionary *goodsItem in goodsList) {
+                    GoodsEntity *goods = [[GoodsEntity alloc] init];
+                    goods.id = [goodsItem objectForKey:@"goods_id"];
+                    goods.name = [goodsItem objectForKey:@"goods_name"];
+                    goods.number = [goodsItem objectForKey:@"goods_num"];
+                    goods.price = [goodsItem objectForKey:@"goods_price"];
+                    goods.specName = [goodsItem objectForKey:@"specs"];
+                    
+                    [goodsArray addObject:goods];
+                }
+            }
+        }
+        newOrder.goods = goodsArray;
         
-        GoodsEntity *goods2 = [[GoodsEntity alloc] init];
-        goods2.id = @2;
-        goods2.name = @"iPhone5S";
-        goods2.number = @1;
-        goods2.price = @4200;
-        goods2.specName = @"土豪金 16G 国行";
-        
-        newOrder.goods = @[goods, goods2];
-        
-        //订单服务
-        ServiceEntity *service = [[ServiceEntity alloc] init];
-        service.id = @1;
-        service.name = @"贴膜";
-        service.number = @1;
-        service.price = @48;
-        service.typeId = @3;
-        service.typeName = @"手机上门服务";
-        
-        ServiceEntity *service2 = [[ServiceEntity alloc] init];
-        service2.id = @2;
-        service2.name = @"刷系统";
-        service2.number = @1;
-        service2.price = @49;
-        service2.typeId = @3;
-        service2.typeName = @"手机上门服务";
-        NSArray *services = @[service, service2];
-        //服务分组
-        newOrder.services = @[services];
+        //解析服务
+        NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
+        if (newOrder.services && [newOrder.services count] > 0) {
+            for (NSDictionary *servicesDict in newOrder.services) {
+                NSArray *serviceList = [servicesDict objectForKey:@"list"];
+                NSString *typeName = [servicesDict objectForKey:@"remark"];
+                NSMutableArray *servicesGroup = [NSMutableArray arrayWithObjects:nil];
+                if (serviceList && [serviceList count] > 0) {
+                    for (NSDictionary *serviceItem in serviceList) {
+                        ServiceEntity *service = [[ServiceEntity alloc] init];
+                        service.name = [serviceItem objectForKey:@"detail"];
+                        service.number = @1;
+                        service.price = [serviceItem objectForKey:@"price"];
+                        service.typeName = typeName;
+                        
+                        [servicesGroup addObject:service];
+                    }
+                    [servicesArray addObject:servicesGroup];
+                }
+            }
+        }
+        newOrder.services = servicesArray;
         
         NSLog(@"订单数据：%@", [newOrder toDictionary]);
         
@@ -271,17 +276,37 @@
 
 - (void)actionPay
 {
-    order.status = CASE_STATUS_PAYED;
-    [self intentionView];
+    OrderEntity *orderModel = [[OrderEntity alloc] init];
+    orderModel.no = order.no;
+    
+    NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
+    
+    //调用接口
+    OrderHandler *orderHandler = [[OrderHandler alloc] init];
+    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+        order.status = CASE_STATUS_PAYED;
+        [self intentionView];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void)actionComment:(int)value
 {
-    //todo: 评分
+    OrderEntity *orderModel = [[OrderEntity alloc] init];
+    orderModel.no = order.no;
     
-    order.commentLevel = [NSNumber numberWithInt:value];
-    order.status = CASE_STATUS_SUCCESS;
-    [self intentionView];
+    NSDictionary *param = @{@"action": CASE_STATUS_SUCCESS};
+    
+    //调用接口
+    OrderHandler *orderHandler = [[OrderHandler alloc] init];
+    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+        order.commentLevel = [NSNumber numberWithInt:value];
+        order.status = CASE_STATUS_SUCCESS;
+        [self intentionView];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void)actionHome
