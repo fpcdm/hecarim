@@ -40,6 +40,11 @@
 }
 
 #pragma mark - Public Methods
+- (void) preload:(CallbackBlock)success failure:(CallbackBlock)failure
+{
+    success(nil);
+}
+
 - (BOOL) checkNetwork
 {
     Reachability *reach = [Reachability reachabilityForInternetConnection];

@@ -13,7 +13,4 @@
 
 @property (retain, nonatomic) NSNumber *caseId;
 
-@property (retain, nonatomic) CaseEntity *intention;
-
-
 @end

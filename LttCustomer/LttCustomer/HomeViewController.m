@@ -70,18 +70,14 @@
     [intentionHandler addIntention:intentionEntity success:^(NSArray *result){
         CaseEntity *intention = [result firstObject];
         
-        NSLog(@"需求id: %@", intention.id);
+        NSLog(@"新增需求id: %@", intention.id);
         
-        //查询需求
-        CaseHandler *intentionHandler = [[CaseHandler alloc] init];
-        [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
-            CaseEntity *intention = [result firstObject];
+        //跳转需求详情
+        CaseViewController *viewController = [[CaseViewController alloc] init];
+        viewController.caseId = intention.id;
+        [viewController preload:^(id object){
+            [self hideLoading];
             
-            NSLog(@"需求数据：%@", [intention toDictionary]);
-            
-            //跳转需求详情
-            CaseViewController *viewController = [[CaseViewController alloc] init];
-            viewController.intention = intention;
             [self pushViewController:viewController animated:YES];
         } failure:^(ErrorEntity *error){
             [self hideLoading];
