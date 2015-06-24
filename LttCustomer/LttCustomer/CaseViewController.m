@@ -25,9 +25,12 @@
 @implementation CaseViewController
 {
     CaseEntity *intention;
+    CaseEntity *newIntention;
     OrderEntity *order;
+    OrderEntity *newOrder;
     TimerUtil *timerUtil;
     long timer;
+    TimerUtil *refreshUtil;
 }
 
 //预加载数据
@@ -42,13 +45,13 @@
     //调用接口
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
-        intention = [result firstObject];
+        newIntention = [result firstObject];
         
-        NSLog(@"需求数据：%@", [intention toDictionary]);
+        NSLog(@"需求数据：%@", [newIntention toDictionary]);
         
         //是否需要查询订单
-        if ([intention hasOrder]) {
-            //[self loadOrder];
+        if ([newIntention hasOrder]) {
+            [self preloadOrder:success failure:failure];
         } else {
             success(nil);
         }
@@ -57,31 +60,7 @@
     }];
 }
 
-- (void)viewDidLoad {
-    hideBackButton = YES;
-    isIndexNavBar = YES;
-    isMenuEnabled = YES;
-    [super viewDidLoad];
-    
-    //修正闪烁
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
-    self.navigationItem.title = TIP_LOADING_MESSAGE;
-    
-    [self intentionView];
-}
-
-//关闭计时器
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    if (timerUtil) {
-        [timerUtil invalidate];
-    }
-}
-
-- (void)loadOrder
+- (void)preloadOrder:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //@todo 查询订单
     
@@ -132,8 +111,60 @@
     //服务分组
     order.services = @[services];
     
-    //根据订单加载view
+    success(nil);
+}
+
+- (void)viewDidLoad {
+    hideBackButton = YES;
+    isIndexNavBar = YES;
+    isMenuEnabled = YES;
+    [super viewDidLoad];
+    
+    //修正闪烁
+    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    
+    self.navigationItem.title = TIP_LOADING_MESSAGE;
+    
+    //显示视图
+    intention = newIntention;
+    order = newOrder;
     [self intentionView];
+    
+    //初始化定时器
+    if ([intention needRefresh]) {
+        refreshUtil = [TimerUtil repeatTimer:5.0 block:^{
+            [self preload:^(id object){
+                //状态发生改变
+                if (![newIntention.status isEqualToString:intention.status]) {
+                    intention = newIntention;
+                    order = newOrder;
+                    
+                    //是否清除定时器
+                    if (![intention needRefresh]) {
+                        [refreshUtil invalidate];
+                        refreshUtil = nil;
+                    }
+                    
+                    //修改视图
+                    [self intentionView];
+                }
+            } failure:^(id object){
+            }];
+        } queue:dispatch_get_main_queue()];
+    }
+}
+
+//关闭计时器
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    if (timerUtil) {
+        [timerUtil invalidate];
+    }
+    if (refreshUtil) {
+        [refreshUtil invalidate];
+    }
 }
 
 - (void)intentionView

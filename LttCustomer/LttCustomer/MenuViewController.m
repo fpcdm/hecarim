@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "AppExtension.h"
+#import "CaseListViewController.h"
 
 @interface MenuViewController ()
 
@@ -79,7 +80,7 @@
     } else {
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeViewController"],
-                    @[@"服务单", @"IntentionListViewController"],
+                    @[@"服务单", @"CaseListViewController"],
                     @[@"账户", @"AccountViewController"],
                     nil];
         
@@ -131,13 +132,29 @@
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
     
-    UIViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
+    AppViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
     
-    //切换viewController
-    UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
-    [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    //服务单
+    if ([viewController isMemberOfClass:[CaseListViewController class]]) {
+        [viewController preload:^(id object){
+            //切换viewController
+            UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
+            [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+            
+            [self.frostedViewController hideMenuViewController];
+        } failure:^(id object){
+            
+        }];
+    } else {
+        //切换viewController
+        UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
+        [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+        
+        [self.frostedViewController hideMenuViewController];
+        
+    }
     
-    [self.frostedViewController hideMenuViewController];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

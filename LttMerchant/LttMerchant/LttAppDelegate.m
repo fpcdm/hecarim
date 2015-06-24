@@ -87,9 +87,9 @@
     [NotificationUtil cancelLocalNotifications];
     
     //创建一个多线程，监听抢单列表
-    timer = [TimerUtil repeatTimer:SCHEDULED_TIME_INTERVAL block:^(void){
-        [self scheduledJob];
-    }];
+    //timer = [TimerUtil repeatTimer:SCHEDULED_TIME_INTERVAL block:^(void){
+    //    [self scheduledJob];
+    //}];
     
     // iOS8 下需要使用新的 API
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {

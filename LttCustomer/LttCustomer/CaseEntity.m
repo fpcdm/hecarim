@@ -84,4 +84,9 @@
     return [CASE_STATUS_TOPAY isEqualToString:self.status] || [CASE_STATUS_PAYED isEqualToString:self.status] || [CASE_STATUS_SUCCESS isEqualToString:self.status];
 }
 
+- (BOOL) needRefresh
+{
+    return [CASE_STATUS_NEW isEqualToString:self.status] || [CASE_STATUS_LOCKED isEqualToString:self.status] || [CASE_STATUS_CONFIRMED isEqualToString:self.status];
+}
+
 @end

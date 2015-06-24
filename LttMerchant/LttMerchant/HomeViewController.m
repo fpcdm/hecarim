@@ -34,7 +34,7 @@
     [self initView];
     
     //检测未完成的需求
-    [self checkIntention: YES];
+    //[self checkIntention: YES];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -166,7 +166,7 @@
 - (void) doIntention: (UIButton *) sender
 {
     //是否已经抢到过
-    if (![self checkIntention:NO]) return;
+    //if (![self checkIntention:NO]) return;
     
     currentIntention = (IntentionEntity *) [self.tableData objectAtIndex:sender.tag];
     
