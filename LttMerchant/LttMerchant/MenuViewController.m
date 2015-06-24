@@ -9,7 +9,8 @@
 #import "MenuViewController.h"
 #import "LttNavigationController.h"
 #import "HomeViewController.h"
-#import "AppStorageUtil.h"
+#import "AppExtension.h"
+#import "CaseListViewController.h"
 
 @interface MenuViewController ()
 
@@ -80,7 +81,7 @@
     } else {
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeViewController"],
-                    @[@"我的订单", @"OrderListViewController"],
+                    @[@"服务单", @"CaseListViewController"],
                     @[@"退出", @"LoginViewController", @"logout"],
                     nil];
         
@@ -145,13 +146,27 @@
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
     
-    UIViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
+    AppViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
     
-    //切换viewController
-    UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
-    [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-    
-    [self.frostedViewController hideMenuViewController];
+    //服务单
+    if ([viewController isMemberOfClass:[CaseListViewController class]]) {
+        [viewController preload:^(id object){
+            //切换viewController
+            UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
+            [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+            
+            [self.frostedViewController hideMenuViewController];
+        } failure:^(id object){
+            
+        }];
+    } else {
+        //切换viewController
+        UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
+        [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+        
+        [self.frostedViewController hideMenuViewController];
+        
+    }
     
     //退出事件
     if ([menu count] > 2) {

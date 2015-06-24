@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Config.h"
-#import "AppStorageUtil.h"
+#import "AppExtension.h"
 #import "RestKitUtil.h"
 #import "ValidateUtil.h"
 #import "MBProgressHUD.h"

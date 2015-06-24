@@ -28,6 +28,12 @@
 		2F2F227C1B3A52FE00428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22671B3A52FE00428742 /* TSMessage.m */; };
 		2F2F227D1B3A52FE00428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22691B3A52FE00428742 /* TSMessageView.m */; };
 		2F4E69351B3AB3F500F4E425 /* IntentionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69341B3AB3F500F4E425 /* IntentionEntity.m */; };
+		2F4E693E1B3AB8F200F4E425 /* AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69371B3AB8F200F4E425 /* AppView.m */; };
+		2F4E693F1B3AB8F200F4E425 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69391B3AB8F200F4E425 /* AppTableView.m */; };
+		2F4E69411B3AB8F200F4E425 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E693D1B3AB8F200F4E425 /* AppExtension.m */; };
+		2F4E69441B3AB91900F4E425 /* CaseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69431B3AB91900F4E425 /* CaseListView.m */; };
+		2F4E69471B3AB93300F4E425 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69461B3AB93300F4E425 /* CaseListViewController.m */; };
+		2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69491B3AB95F00F4E425 /* BaseTableView.m */; };
 		2F52A6CB1AF204A7003E2664 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */; };
 		2F52A6CD1AF204BD003E2664 /* OrderListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */; };
 		2F52A6CF1AF204C8003E2664 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CE1AF204C8003E2664 /* OrderListViewController.xib */; };
@@ -147,7 +153,6 @@
 		2FCAF8621B201FF000F3B084 /* StorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF85C1B201FF000F3B084 /* StorageUtil.m */; };
 		2FCAF8631B201FF000F3B084 /* TimerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF85E1B201FF000F3B084 /* TimerUtil.m */; };
 		2FCAF8641B201FF000F3B084 /* ValidateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8601B201FF000F3B084 /* ValidateUtil.m */; };
-		2FCAF8671B20207C00F3B084 /* AppStorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8661B20207C00F3B084 /* AppStorageUtil.m */; };
 		2FCAF86D1B20251800F3B084 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF86C1B20251800F3B084 /* NotificationUtil.m */; };
 		2FCAF8911B20407C00F3B084 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8901B20407C00F3B084 /* BaseViewController.m */; };
 		2FCAF8A31B20453E00F3B084 /* ErrorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8A01B20453E00F3B084 /* ErrorEntity.m */; };
@@ -224,6 +229,18 @@
 		2F2F22691B3A52FE00428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
 		2F4E69331B3AB3F500F4E425 /* IntentionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionEntity.h; sourceTree = "<group>"; };
 		2F4E69341B3AB3F500F4E425 /* IntentionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionEntity.m; sourceTree = "<group>"; };
+		2F4E69361B3AB8F200F4E425 /* AppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppView.h; sourceTree = "<group>"; };
+		2F4E69371B3AB8F200F4E425 /* AppView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppView.m; sourceTree = "<group>"; };
+		2F4E69381B3AB8F200F4E425 /* AppTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTableView.h; sourceTree = "<group>"; };
+		2F4E69391B3AB8F200F4E425 /* AppTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableView.m; sourceTree = "<group>"; };
+		2F4E693C1B3AB8F200F4E425 /* AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppExtension.h; sourceTree = "<group>"; };
+		2F4E693D1B3AB8F200F4E425 /* AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppExtension.m; sourceTree = "<group>"; };
+		2F4E69421B3AB91900F4E425 /* CaseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListView.h; sourceTree = "<group>"; };
+		2F4E69431B3AB91900F4E425 /* CaseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListView.m; sourceTree = "<group>"; };
+		2F4E69451B3AB93300F4E425 /* CaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListViewController.h; sourceTree = "<group>"; };
+		2F4E69461B3AB93300F4E425 /* CaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListViewController.m; sourceTree = "<group>"; };
+		2F4E69481B3AB95F00F4E425 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		2F4E69491B3AB95F00F4E425 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		2F52A6C91AF204A7003E2664 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
 		2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
 		2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListViewCell.xib; sourceTree = "<group>"; };
@@ -534,8 +551,6 @@
 		2FCAF85E1B201FF000F3B084 /* TimerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerUtil.m; sourceTree = "<group>"; };
 		2FCAF85F1B201FF000F3B084 /* ValidateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateUtil.h; sourceTree = "<group>"; };
 		2FCAF8601B201FF000F3B084 /* ValidateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateUtil.m; sourceTree = "<group>"; };
-		2FCAF8651B20206F00F3B084 /* AppStorageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStorageUtil.h; sourceTree = "<group>"; };
-		2FCAF8661B20207C00F3B084 /* AppStorageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStorageUtil.m; sourceTree = "<group>"; };
 		2FCAF86B1B20251800F3B084 /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
 		2FCAF86C1B20251800F3B084 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtil.m; sourceTree = "<group>"; };
 		2FCAF88F1B20407C00F3B084 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -769,6 +784,8 @@
 				2F52A6DF1AF20E46003E2664 /* OrderFormViewController.m */,
 				2F52A6E31AF20EEB003E2664 /* OrderDetailViewController.h */,
 				2F52A6E41AF20EEB003E2664 /* OrderDetailViewController.m */,
+				2F4E69451B3AB93300F4E425 /* CaseListViewController.h */,
+				2F4E69461B3AB93300F4E425 /* CaseListViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -785,6 +802,8 @@
 				2F52A6E61AF20F03003E2664 /* OrderDetailViewController.xib */,
 				2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */,
 				2F52A6D71AF20995003E2664 /* ApplyListViewCell.xib */,
+				2F4E69421B3AB91900F4E425 /* CaseListView.h */,
+				2F4E69431B3AB91900F4E425 /* CaseListView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -998,6 +1017,8 @@
 		2F800B041B1D529F006189EF /* core */ = {
 			isa = PBXGroup;
 			children = (
+				2F4E69481B3AB95F00F4E425 /* BaseTableView.h */,
+				2F4E69491B3AB95F00F4E425 /* BaseTableView.m */,
 				2F74CD801B1D5F8100797799 /* BaseView.h */,
 				2F74CD811B1D5F8100797799 /* BaseView.m */,
 				2F74CD771B1D5EB500797799 /* BaseEntity.h */,
@@ -1289,8 +1310,12 @@
 		2FCAF8931B20437800F3B084 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2FCAF8651B20206F00F3B084 /* AppStorageUtil.h */,
-				2FCAF8661B20207C00F3B084 /* AppStorageUtil.m */,
+				2F4E69361B3AB8F200F4E425 /* AppView.h */,
+				2F4E69371B3AB8F200F4E425 /* AppView.m */,
+				2F4E69381B3AB8F200F4E425 /* AppTableView.h */,
+				2F4E69391B3AB8F200F4E425 /* AppTableView.m */,
+				2F4E693C1B3AB8F200F4E425 /* AppExtension.h */,
+				2F4E693D1B3AB8F200F4E425 /* AppExtension.m */,
 				2F70742D1AFC4F4E00A1242A /* AppViewController.h */,
 				2F70742E1AFC4F4E00A1242A /* AppViewController.m */,
 				2F70742F1AFC4F4E00A1242A /* AppTableViewController.h */,
@@ -1697,6 +1722,7 @@
 				2FCAF8641B201FF000F3B084 /* ValidateUtil.m in Sources */,
 				2F6D3F0A1B3128CC007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
 				2F90015A1B1D9D680040D97B /* REFrostedViewController.m in Sources */,
+				2F4E693F1B3AB8F200F4E425 /* AppTableView.m in Sources */,
 				2FCAF8621B201FF000F3B084 /* StorageUtil.m in Sources */,
 				2F6D3F0B1B3128CC007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F90015C1B1D9D680040D97B /* UIView+REFrostedViewController.m in Sources */,
@@ -1722,6 +1748,7 @@
 				2F9000811B1D91470040D97B /* MBProgressHUD.m in Sources */,
 				2F6D3F031B3128CC007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2FCAF8A31B20453E00F3B084 /* ErrorEntity.m in Sources */,
+				2F4E69411B3AB8F200F4E425 /* AppExtension.m in Sources */,
 				2F90015D1B1D9D680040D97B /* UIViewController+REFrostedViewController.m in Sources */,
 				2F70745B1AFC4F8100A1242A /* OrderEntity.m in Sources */,
 				2F9001591B1D9D680040D97B /* REFrostedContainerViewController.m in Sources */,
@@ -1738,6 +1765,7 @@
 				2F6D3F081B3128CC007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2F52A6E01AF20E46003E2664 /* OrderFormViewController.m in Sources */,
 				2F7074591AFC4F8100A1242A /* ModelEntity.m in Sources */,
+				2F4E69441B3AB91900F4E425 /* CaseListView.m in Sources */,
 				2F52A6CB1AF204A7003E2664 /* OrderListViewController.m in Sources */,
 				2F6D3F091B3128CC007A4159 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2F9000801B1D91470040D97B /* View+MASAdditions.m in Sources */,
@@ -1773,15 +1801,17 @@
 				2FED7DC01B1EA2E100306A11 /* SDWebImageCompat.m in Sources */,
 				2F90007F1B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F6D3F0D1B3128CC007A4159 /* MJRefreshBackStateFooter.m in Sources */,
+				2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */,
 				2FED7DC81B1EA2E100306A11 /* UIImage+MultiFormat.m in Sources */,
 				2F6D3F141B3128CC007A4159 /* UIScrollView+MJRefresh.m in Sources */,
 				2FED7DC31B1EA2E100306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2F6D3EFC1B3128CC007A4159 /* ActionSheetCustomPicker.m in Sources */,
+				2F4E69471B3AB93300F4E425 /* CaseListViewController.m in Sources */,
 				2F52A6DB1AF20CAC003E2664 /* ApplyDetailViewController.m in Sources */,
+				2F4E693E1B3AB8F200F4E425 /* AppView.m in Sources */,
 				2F6D3F071B3128CC007A4159 /* MJRefreshHeader.m in Sources */,
 				2FED7E2F1B1EA87800306A11 /* DDASLLogger.m in Sources */,
 				2F7074561AFC4F8100A1242A /* BrandEntity.m in Sources */,
-				2FCAF8671B20207C00F3B084 /* AppStorageUtil.m in Sources */,
 				2FED7DC21B1EA2E100306A11 /* SDWebImageDownloader.m in Sources */,
 				2FED7E311B1EA87800306A11 /* DDLog.m in Sources */,
 				2F800B101B1D529F006189EF /* README.md in Sources */,
