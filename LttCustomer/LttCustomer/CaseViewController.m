@@ -281,12 +281,20 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
-        order.status = CASE_STATUS_PAYED;
+        NSLog(@"修改状态成功");
+        [self hideLoading];
+        
+        intention.status = CASE_STATUS_PAYED;
         [self intentionView];
     } failure:^(ErrorEntity *error){
+        NSLog(@"修改状态失败");
+        [self hideLoading];
+        
         [self showError:error.message];
     }];
 }
@@ -298,13 +306,18 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_SUCCESS};
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+        [self hideLoading];
+        
         order.commentLevel = [NSNumber numberWithInt:value];
-        order.status = CASE_STATUS_SUCCESS;
+        intention.status = CASE_STATUS_SUCCESS;
         [self intentionView];
     } failure:^(ErrorEntity *error){
+        [self hideLoading];
         [self showError:error.message];
     }];
 }

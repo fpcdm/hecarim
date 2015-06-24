@@ -11,6 +11,7 @@
 #import "IntentionEntity.h"
 #import "IntentionHandler.h"
 #import "ApplyDetailViewController.h"
+#import "OrderDetailViewController.h"
 
 @interface CaseListViewController () <CaseListViewDelegate>
 
@@ -62,11 +63,18 @@
     //失败不让跳转
     if ([intention isFail]) return;
     
-    ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
-    viewController.intentionId = intention.id;
-    [viewController preload:^(id object){
+    //显示需求
+    if (![intention hasOrder]) {
+        ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
+        viewController.intentionId = intention.id;
         [self.navigationController pushViewController:viewController animated:YES];
-    } failure:^(id object){}];
+    //显示订单
+    } else {
+        OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
+        viewController.orderNo = intention.orderNo;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    
 }
 
 @end
