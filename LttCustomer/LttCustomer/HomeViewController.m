@@ -64,17 +64,33 @@
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler addIntention:intentionEntity success:^(NSArray *result){
         CaseEntity *intention = [result firstObject];
         
         NSLog(@"需求id: %@", intention.id);
         
-        //跳转需求详情
-        CaseViewController *viewController = [[CaseViewController alloc] init];
-        viewController.caseId = intention.id;
-        [self pushViewController:viewController animated:YES];
+        //查询需求
+        CaseHandler *intentionHandler = [[CaseHandler alloc] init];
+        [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
+            CaseEntity *intention = [result firstObject];
+            
+            NSLog(@"需求数据：%@", [intention toDictionary]);
+            
+            //跳转需求详情
+            CaseViewController *viewController = [[CaseViewController alloc] init];
+            viewController.intention = intention;
+            [self pushViewController:viewController animated:YES];
+        } failure:^(ErrorEntity *error){
+            [self hideLoading];
+            
+            [self showError:error.message];
+        }];
     } failure:^(ErrorEntity *error){
+        [self hideLoading];
+        
         [self showError:error.message];
     }];
 }

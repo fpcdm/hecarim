@@ -33,7 +33,7 @@
 #define NSLog(...) DDLogVerbose(__VA_ARGS__);
 
 //接口服务器根地址
-#define LTT_REST_SERVER @"http://10.0.0.2/"
+#define LTT_REST_SERVER @"http://api.web.dm/"
 
 //接口服务器是否为RAP
 #define LTT_REST_RAP NO

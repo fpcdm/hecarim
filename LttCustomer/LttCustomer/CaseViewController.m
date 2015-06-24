@@ -24,11 +24,12 @@
 
 @implementation CaseViewController
 {
-    CaseEntity *intention;
     OrderEntity *order;
     TimerUtil *timerUtil;
     long timer;
 }
+
+@synthesize intention;
 
 - (void)viewDidLoad {
     hideBackButton = YES;
@@ -42,7 +43,8 @@
     self.navigationItem.title = TIP_LOADING_MESSAGE;
     
     //获取需求状态
-    [self loadIntention];
+    [self intentionView];
+    //[self loadIntention];
 }
 
 //关闭计时器
@@ -63,9 +65,13 @@
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //调用接口
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
+        [self hideLoading];
+        
         intention = [result firstObject];
         
         NSLog(@"需求数据：%@", [intention toDictionary]);
@@ -78,6 +84,8 @@
             [self intentionView];
         }
     } failure:^(ErrorEntity *error){
+        [self hideLoading];
+        
         [self showError:error.message];
     }];
 }

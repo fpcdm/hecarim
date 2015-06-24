@@ -7,9 +7,13 @@
 //
 
 #import "AppUserViewController.h"
+#import "CaseEntity.h"
 
 @interface CaseViewController : AppUserViewController
 
 @property (retain, nonatomic) NSNumber *caseId;
+
+@property (retain, nonatomic) CaseEntity *intention;
+
 
 @end
