@@ -82,8 +82,8 @@
     self.remarkLabel.text = [@"留言：" stringByAppendingString:(intention.remark ? intention.remark : @"未填写")];
     self.remarkLabel.hidden = NO;
     
-    NSString *employeeText = (intention.employeeName ? [intention.employeeName stringByAppendingString:@"  "] : @"");
-    employeeText = [employeeText stringByAppendingString:(intention.employeeMobile ? intention.employeeMobile : @"")];
+    NSString *employeeText = (intention.userName ? [intention.userName stringByAppendingString:@"  "] : @"");
+    employeeText = [employeeText stringByAppendingString:(intention.userMobile ? intention.userMobile : @"")];
     [self.employeeButton setTitle:employeeText forState:UIControlStateNormal];
 }
 
