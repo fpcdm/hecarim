@@ -53,11 +53,6 @@
 {
     user.type = USER_TYPE_MEMBER;
     
-    [self showSuccess:@"ddd" callback:^{
-        NSLog(@"dd");
-    }];
-    return;
-    
     //参数检查
     if (![ValidateUtil isRequired:user.mobile]) {
         [self showError:ERROR_MOBILE_REQUIRED];
@@ -71,8 +66,6 @@
         [self showError:ERROR_PASSWORD_REQUIRED];
         return;
     }
-    
-    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
@@ -97,8 +90,6 @@
         [self pushViewController:viewController animated:YES];
         
     } failure:^(ErrorEntity *error){
-        [self hideLoading];
-        
         [self showError:error.message];
     }];
 }

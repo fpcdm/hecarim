@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "HomeView.h"
 #import "IntentionViewController.h"
+#import "IntentionEntity.h"
+#import "IntentionHandler.h"
 
 @interface HomeViewController () <HomeViewDelegate>
 
@@ -46,13 +48,25 @@
 #pragma mark - Action
 - (void)actionIntention:(NSNumber *)type
 {
-    //@todo 创建需求
+    //获取参数
+    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
+    intentionEntity.type = type;
+    //@todo:gps坐标
+    intentionEntity.location = @"0,0";
     
-    NSNumber *intentionId = type;
+    NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
-    IntentionViewController *viewController = [[IntentionViewController alloc] init];
-    viewController.intentionId = intentionId;
-    [self pushViewController:viewController animated:YES];
+    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
+    [intentionHandler addIntention:intentionEntity success:^(NSArray *result){
+        IntentionEntity *intention = [result firstObject];
+        
+        //跳转需求详情
+        IntentionViewController *viewController = [[IntentionViewController alloc] init];
+        viewController.intentionId = intention.id;
+        [self pushViewController:viewController animated:YES];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 @end

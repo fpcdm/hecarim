@@ -12,17 +12,9 @@
 
 @synthesize id;
 
-@synthesize brandId;
-
-@synthesize brandName;
-
-@synthesize categoryId;
+@synthesize type;
 
 @synthesize location;
-
-@synthesize modelId;
-
-@synthesize modelName;
 
 @synthesize remark;
 
