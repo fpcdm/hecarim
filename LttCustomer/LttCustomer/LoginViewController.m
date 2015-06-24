@@ -10,6 +10,8 @@
 #import "LoginView.h"
 #import "UserEntity.h"
 #import "HomeViewController.h"
+#import "ValidateUtil.h"
+#import "UserHandler.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -47,26 +49,58 @@
     [self pushViewController:viewController animated:YES];
 }
 
-- (void)actionLogin
+- (void)actionLogin:(UserEntity *)user
 {
-    //模拟登陆
-    UserEntity *user = [[UserEntity alloc] init];
-    user.id = @1;
-    user.name = @"大勇";
-    user.mobile = @"18875001455";
-    user.token = @"token";
     user.type = USER_TYPE_MEMBER;
-    user.nickname = @"勇哥";
-    user.sex = nil;
-    user.avatar = nil;
     
-    [[StorageUtil sharedStorage] setUser:user];
+    [self showSuccess:@"ddd" callback:^{
+        NSLog(@"dd");
+    }];
+    return;
     
-    //刷新菜单
-    [self refreshMenu];
+    //参数检查
+    if (![ValidateUtil isRequired:user.mobile]) {
+        [self showError:ERROR_MOBILE_REQUIRED];
+        return;
+    }
+    if (![ValidateUtil isMobile:user.mobile]) {
+        [self showError:ERROR_MOBILE_FORMAT];
+        return;
+    }
+    if (![ValidateUtil isRequired:user.password]) {
+        [self showError:ERROR_PASSWORD_REQUIRED];
+        return;
+    }
     
-    HomeViewController *viewController = [[HomeViewController alloc] init];
-    [self pushViewController:viewController animated:YES];
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //登录接口调用
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler loginWithUser:user success:^(NSArray *result){
+        //赋值并释放资源
+        UserEntity *apiUser = [result firstObject];
+        user.id = apiUser.id;
+        user.name = apiUser.name;
+        user.token = apiUser.token;
+        apiUser = nil;
+        
+        //清空密码
+        user.password = nil;
+        
+        //保存数据
+        [[StorageUtil sharedStorage] setUser:user];
+        
+        //刷新菜单
+        [self refreshMenu];
+        
+        HomeViewController *viewController = [[HomeViewController alloc] init];
+        [self pushViewController:viewController animated:YES];
+        
+    } failure:^(ErrorEntity *error){
+        [self hideLoading];
+        
+        [self showError:error.message];
+    }];
 }
 
 @end

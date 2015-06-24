@@ -7,11 +7,12 @@
 //
 
 #import "AppView.h"
+#import "UserEntity.h"
 
 @protocol LoginViewDelegate <NSObject>
 
 @required
-- (void)actionLogin;
+- (void)actionLogin:(UserEntity *)user;
 
 @end
 

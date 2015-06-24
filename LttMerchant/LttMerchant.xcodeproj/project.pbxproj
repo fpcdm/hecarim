@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2F226A1B3A52FE00428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22521B3A52FE00428742 /* NotificationBackgroundError.png */; };
+		2F2F226B1B3A52FE00428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22531B3A52FE00428742 /* NotificationBackgroundError@2x.png */; };
+		2F2F226C1B3A52FE00428742 /* NotificationBackgroundErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22541B3A52FE00428742 /* NotificationBackgroundErrorIcon.png */; };
+		2F2F226D1B3A52FE00428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22551B3A52FE00428742 /* NotificationBackgroundErrorIcon@2x.png */; };
+		2F2F226E1B3A52FE00428742 /* NotificationBackgroundMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22561B3A52FE00428742 /* NotificationBackgroundMessage.png */; };
+		2F2F226F1B3A52FE00428742 /* NotificationBackgroundMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22571B3A52FE00428742 /* NotificationBackgroundMessage@2x.png */; };
+		2F2F22701B3A52FE00428742 /* NotificationBackgroundSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22581B3A52FE00428742 /* NotificationBackgroundSuccess.png */; };
+		2F2F22711B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22591B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png */; };
+		2F2F22721B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F225A1B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png */; };
+		2F2F22731B3A52FE00428742 /* NotificationBackgroundSuccessIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F225B1B3A52FE00428742 /* NotificationBackgroundSuccessIcon@2x.png */; };
+		2F2F22741B3A52FE00428742 /* NotificationBackgroundWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F225C1B3A52FE00428742 /* NotificationBackgroundWarning.png */; };
+		2F2F22751B3A52FE00428742 /* NotificationBackgroundWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F225D1B3A52FE00428742 /* NotificationBackgroundWarning@2x.png */; };
+		2F2F22761B3A52FE00428742 /* NotificationBackgroundWarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F225E1B3A52FE00428742 /* NotificationBackgroundWarningIcon.png */; };
+		2F2F22771B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F225F1B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png */; };
+		2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22601B3A52FE00428742 /* NotificationButtonBackground.png */; };
+		2F2F22791B3A52FE00428742 /* NotificationButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22611B3A52FE00428742 /* NotificationButtonBackground@2x.png */; };
+		2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22621B3A52FE00428742 /* TSMessagesDefaultDesign.json */; };
+		2F2F227B1B3A52FE00428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22651B3A52FE00428742 /* TSBlurView.m */; };
+		2F2F227C1B3A52FE00428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22671B3A52FE00428742 /* TSMessage.m */; };
+		2F2F227D1B3A52FE00428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22691B3A52FE00428742 /* TSMessageView.m */; };
 		2F52A6CB1AF204A7003E2664 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */; };
 		2F52A6CD1AF204BD003E2664 /* OrderListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */; };
 		2F52A6CF1AF204C8003E2664 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CE1AF204C8003E2664 /* OrderListViewController.xib */; };
@@ -89,11 +109,6 @@
 		2F89A64A1B0ED6CB0043B236 /* IntentionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A6451B0ED6CB0043B236 /* IntentionHandler.m */; };
 		2F89A64B1B0ED6CB0043B236 /* OrderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A6471B0ED6CB0043B236 /* OrderHandler.m */; };
 		2F9000481B1D91380040D97B /* UIViewController+Ltt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000471B1D91380040D97B /* UIViewController+Ltt.m */; };
-		2F9000731B1D91470040D97B /* CRToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90004B1B1D91470040D97B /* CRToast.m */; };
-		2F9000741B1D91470040D97B /* CRToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90004E1B1D91470040D97B /* CRToastManager.m */; };
-		2F9000751B1D91470040D97B /* CRToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000501B1D91470040D97B /* CRToastView.m */; };
-		2F9000761B1D91470040D97B /* CRToastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000521B1D91470040D97B /* CRToastViewController.m */; };
-		2F9000771B1D91470040D97B /* CRToastWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000541B1D91470040D97B /* CRToastWindow.m */; };
 		2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000571B1D91470040D97B /* MASCompositeConstraint.m */; };
 		2F9000791B1D91470040D97B /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90005A1B1D91470040D97B /* MASConstraint.m */; };
 		2F90007A1B1D91470040D97B /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90005C1B1D91470040D97B /* MASConstraintMaker.m */; };
@@ -104,7 +119,6 @@
 		2F90007F1B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000691B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		2F9000801B1D91470040D97B /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90006B1B1D91470040D97B /* View+MASAdditions.m */; };
 		2F9000811B1D91470040D97B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90006F1B1D91470040D97B /* MBProgressHUD.m */; };
-		2F9000821B1D91470040D97B /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000721B1D91470040D97B /* UIView+Toast.m */; };
 		2F9001571B1D9D680040D97B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001341B1D9D680040D97B /* Reachability.m */; };
 		2F9001581B1D9D680040D97B /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001371B1D9D680040D97B /* RECommonFunctions.m */; };
 		2F9001591B1D9D680040D97B /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001391B1D9D680040D97B /* REFrostedContainerViewController.m */; };
@@ -185,6 +199,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F2F22521B3A52FE00428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
+		2F2F22531B3A52FE00428742 /* NotificationBackgroundError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundError@2x.png"; sourceTree = "<group>"; };
+		2F2F22541B3A52FE00428742 /* NotificationBackgroundErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundErrorIcon.png; sourceTree = "<group>"; };
+		2F2F22551B3A52FE00428742 /* NotificationBackgroundErrorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundErrorIcon@2x.png"; sourceTree = "<group>"; };
+		2F2F22561B3A52FE00428742 /* NotificationBackgroundMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundMessage.png; sourceTree = "<group>"; };
+		2F2F22571B3A52FE00428742 /* NotificationBackgroundMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundMessage@2x.png"; sourceTree = "<group>"; };
+		2F2F22581B3A52FE00428742 /* NotificationBackgroundSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundSuccess.png; sourceTree = "<group>"; };
+		2F2F22591B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundSuccess@2x.png"; sourceTree = "<group>"; };
+		2F2F225A1B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundSuccessIcon.png; sourceTree = "<group>"; };
+		2F2F225B1B3A52FE00428742 /* NotificationBackgroundSuccessIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundSuccessIcon@2x.png"; sourceTree = "<group>"; };
+		2F2F225C1B3A52FE00428742 /* NotificationBackgroundWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundWarning.png; sourceTree = "<group>"; };
+		2F2F225D1B3A52FE00428742 /* NotificationBackgroundWarning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundWarning@2x.png"; sourceTree = "<group>"; };
+		2F2F225E1B3A52FE00428742 /* NotificationBackgroundWarningIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundWarningIcon.png; sourceTree = "<group>"; };
+		2F2F225F1B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundWarningIcon@2x.png"; sourceTree = "<group>"; };
+		2F2F22601B3A52FE00428742 /* NotificationButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationButtonBackground.png; sourceTree = "<group>"; };
+		2F2F22611B3A52FE00428742 /* NotificationButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationButtonBackground@2x.png"; sourceTree = "<group>"; };
+		2F2F22621B3A52FE00428742 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
+		2F2F22641B3A52FE00428742 /* TSBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSBlurView.h; sourceTree = "<group>"; };
+		2F2F22651B3A52FE00428742 /* TSBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSBlurView.m; sourceTree = "<group>"; };
+		2F2F22661B3A52FE00428742 /* TSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessage.h; sourceTree = "<group>"; };
+		2F2F22671B3A52FE00428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
+		2F2F22681B3A52FE00428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
+		2F2F22691B3A52FE00428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
 		2F52A6C91AF204A7003E2664 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
 		2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
 		2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListViewCell.xib; sourceTree = "<group>"; };
@@ -327,17 +364,6 @@
 		2F9000451B1D91260040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
 		2F9000461B1D91380040D97B /* UIViewController+Ltt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ltt.h"; sourceTree = "<group>"; };
 		2F9000471B1D91380040D97B /* UIViewController+Ltt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Ltt.m"; sourceTree = "<group>"; };
-		2F90004A1B1D91470040D97B /* CRToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToast.h; sourceTree = "<group>"; };
-		2F90004B1B1D91470040D97B /* CRToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToast.m; sourceTree = "<group>"; };
-		2F90004C1B1D91470040D97B /* CRToastLayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToastLayoutHelpers.h; sourceTree = "<group>"; };
-		2F90004D1B1D91470040D97B /* CRToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToastManager.h; sourceTree = "<group>"; };
-		2F90004E1B1D91470040D97B /* CRToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToastManager.m; sourceTree = "<group>"; };
-		2F90004F1B1D91470040D97B /* CRToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToastView.h; sourceTree = "<group>"; };
-		2F9000501B1D91470040D97B /* CRToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToastView.m; sourceTree = "<group>"; };
-		2F9000511B1D91470040D97B /* CRToastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToastViewController.h; sourceTree = "<group>"; };
-		2F9000521B1D91470040D97B /* CRToastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToastViewController.m; sourceTree = "<group>"; };
-		2F9000531B1D91470040D97B /* CRToastWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToastWindow.h; sourceTree = "<group>"; };
-		2F9000541B1D91470040D97B /* CRToastWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToastWindow.m; sourceTree = "<group>"; };
 		2F9000561B1D91470040D97B /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		2F9000571B1D91470040D97B /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		2F9000581B1D91470040D97B /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -363,8 +389,6 @@
 		2F90006C1B1D91470040D97B /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		2F90006E1B1D91470040D97B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2F90006F1B1D91470040D97B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		2F9000711B1D91470040D97B /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
-		2F9000721B1D91470040D97B /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		2F9001331B1D9D680040D97B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2F9001341B1D9D680040D97B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2F9001361B1D9D680040D97B /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
@@ -653,6 +677,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F2F22501B3A52FE00428742 /* TSMessages */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F22511B3A52FE00428742 /* Assets */,
+				2F2F22631B3A52FE00428742 /* Classes */,
+			);
+			path = TSMessages;
+			sourceTree = "<group>";
+		};
+		2F2F22511B3A52FE00428742 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F22521B3A52FE00428742 /* NotificationBackgroundError.png */,
+				2F2F22531B3A52FE00428742 /* NotificationBackgroundError@2x.png */,
+				2F2F22541B3A52FE00428742 /* NotificationBackgroundErrorIcon.png */,
+				2F2F22551B3A52FE00428742 /* NotificationBackgroundErrorIcon@2x.png */,
+				2F2F22561B3A52FE00428742 /* NotificationBackgroundMessage.png */,
+				2F2F22571B3A52FE00428742 /* NotificationBackgroundMessage@2x.png */,
+				2F2F22581B3A52FE00428742 /* NotificationBackgroundSuccess.png */,
+				2F2F22591B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png */,
+				2F2F225A1B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png */,
+				2F2F225B1B3A52FE00428742 /* NotificationBackgroundSuccessIcon@2x.png */,
+				2F2F225C1B3A52FE00428742 /* NotificationBackgroundWarning.png */,
+				2F2F225D1B3A52FE00428742 /* NotificationBackgroundWarning@2x.png */,
+				2F2F225E1B3A52FE00428742 /* NotificationBackgroundWarningIcon.png */,
+				2F2F225F1B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png */,
+				2F2F22601B3A52FE00428742 /* NotificationButtonBackground.png */,
+				2F2F22611B3A52FE00428742 /* NotificationButtonBackground@2x.png */,
+				2F2F22621B3A52FE00428742 /* TSMessagesDefaultDesign.json */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2F2F22631B3A52FE00428742 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F22641B3A52FE00428742 /* TSBlurView.h */,
+				2F2F22651B3A52FE00428742 /* TSBlurView.m */,
+				2F2F22661B3A52FE00428742 /* TSMessage.h */,
+				2F2F22671B3A52FE00428742 /* TSMessage.m */,
+				2F2F22681B3A52FE00428742 /* TSMessageView.h */,
+				2F2F22691B3A52FE00428742 /* TSMessageView.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		2F52D1031AEF8A880003D7C2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +1043,7 @@
 		2F800B0D1B1D529F006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F2F22501B3A52FE00428742 /* TSMessages */,
 				2F6D3EBB1B3128CC007A4159 /* ActionSheetPicker */,
 				2F6D3ECE1B3128CC007A4159 /* MJRefresh */,
 				2FCAF7381B1FF1AF00F3B084 /* RestKit */,
@@ -982,10 +1053,8 @@
 				2F9001321B1D9D680040D97B /* Reachability */,
 				2F9001351B1D9D680040D97B /* REFrostedViewController */,
 				2F9001421B1D9D680040D97B /* TPKeyboardAvoiding */,
-				2F9000491B1D91470040D97B /* CRToast */,
 				2F9000551B1D91470040D97B /* Masonry */,
 				2F90006D1B1D91470040D97B /* MBProgressHUD */,
-				2F9000701B1D91470040D97B /* Toast */,
 				2F800B191B1D5CA2006189EF /* BPush */,
 			);
 			path = vender;
@@ -998,24 +1067,6 @@
 				2F800B1A1B1D5CA2006189EF /* BPush.h */,
 			);
 			path = BPush;
-			sourceTree = "<group>";
-		};
-		2F9000491B1D91470040D97B /* CRToast */ = {
-			isa = PBXGroup;
-			children = (
-				2F90004A1B1D91470040D97B /* CRToast.h */,
-				2F90004B1B1D91470040D97B /* CRToast.m */,
-				2F90004C1B1D91470040D97B /* CRToastLayoutHelpers.h */,
-				2F90004D1B1D91470040D97B /* CRToastManager.h */,
-				2F90004E1B1D91470040D97B /* CRToastManager.m */,
-				2F90004F1B1D91470040D97B /* CRToastView.h */,
-				2F9000501B1D91470040D97B /* CRToastView.m */,
-				2F9000511B1D91470040D97B /* CRToastViewController.h */,
-				2F9000521B1D91470040D97B /* CRToastViewController.m */,
-				2F9000531B1D91470040D97B /* CRToastWindow.h */,
-				2F9000541B1D91470040D97B /* CRToastWindow.m */,
-			);
-			path = CRToast;
 			sourceTree = "<group>";
 		};
 		2F9000551B1D91470040D97B /* Masonry */ = {
@@ -1055,15 +1106,6 @@
 				2F90006F1B1D91470040D97B /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		2F9000701B1D91470040D97B /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				2F9000711B1D91470040D97B /* UIView+Toast.h */,
-				2F9000721B1D91470040D97B /* UIView+Toast.m */,
-			);
-			path = Toast;
 			sourceTree = "<group>";
 		};
 		2F9001321B1D9D680040D97B /* Reachability */ = {
@@ -1594,15 +1636,27 @@
 				2F52A6D81AF20995003E2664 /* ApplyListViewCell.xib in Resources */,
 				2F52A6DD1AF20CCB003E2664 /* ApplyDetailViewController.xib in Resources */,
 				2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */,
+				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
+				2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */,
+				2F2F22721B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
 				2F52A6CF1AF204C8003E2664 /* OrderListViewController.xib in Resources */,
+				2F2F226C1B3A52FE00428742 /* NotificationBackgroundErrorIcon.png in Resources */,
+				2F2F22771B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				2F7074731AFC52DE00A1242A /* icon.png in Resources */,
+				2F2F22711B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png in Resources */,
 				2F52A6CD1AF204BD003E2664 /* OrderListViewCell.xib in Resources */,
 				2FED82861B1ED69000306A11 /* zbar-helpicons.png in Resources */,
+				2F2F226F1B3A52FE00428742 /* NotificationBackgroundMessage@2x.png in Resources */,
+				2F2F22751B3A52FE00428742 /* NotificationBackgroundWarning@2x.png in Resources */,
 				2F7074721AFC52DE00A1242A /* button.png in Resources */,
+				2F2F226A1B3A52FE00428742 /* NotificationBackgroundError.png in Resources */,
+				2F2F22791B3A52FE00428742 /* NotificationButtonBackground@2x.png in Resources */,
 				2FED82841B1ED69000306A11 /* zbar-back.png in Resources */,
+				2F2F22741B3A52FE00428742 /* NotificationBackgroundWarning.png in Resources */,
 				2FD795CB1AE7ADD300D51FB0 /* Images.xcassets in Resources */,
 				2F52A6E21AF20E86003E2664 /* OrderFormViewController.xib in Resources */,
 				2F7074801AFC5CFE00A1242A /* alert@2x.png in Resources */,
+				2F2F226B1B3A52FE00428742 /* NotificationBackgroundError@2x.png in Resources */,
 				2F52D1101AEF8ABD0003D7C2 /* LaunchScreen.xib in Resources */,
 				2F52A6E71AF20F03003E2664 /* OrderDetailViewController.xib in Resources */,
 				2FED82871B1ED69000306A11 /* zbar-samples.png in Resources */,
@@ -1611,11 +1665,16 @@
 				2F70746A1AFC52DE00A1242A /* alert.png in Resources */,
 				2F7074711AFC52DE00A1242A /* button_gray.png in Resources */,
 				2F52D10A1AEF8A9B0003D7C2 /* startup.png in Resources */,
+				2F2F22761B3A52FE00428742 /* NotificationBackgroundWarningIcon.png in Resources */,
 				2F52D1131AEF8ABD0003D7C2 /* LoginViewController.xib in Resources */,
 				2F7074701AFC52DE00A1242A /* voice.png in Resources */,
 				2F70747F1AFC5CFE00A1242A /* alert_ok@2x.png in Resources */,
+				2F2F226D1B3A52FE00428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				2FED82851B1ED69000306A11 /* zbar-help.html in Resources */,
 				2F6B8FD11B01A8F0005F273F /* menu@2x.png in Resources */,
+				2F2F226E1B3A52FE00428742 /* NotificationBackgroundMessage.png in Resources */,
+				2F2F22731B3A52FE00428742 /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
+				2F2F22701B3A52FE00428742 /* NotificationBackgroundSuccess.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1646,7 +1705,6 @@
 				2F5BECEA1AFDF7DF00F828DB /* specEntity.m in Sources */,
 				2F90007B1B1D91470040D97B /* MASLayoutConstraint.m in Sources */,
 				2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */,
-				2F9000741B1D91470040D97B /* CRToastManager.m in Sources */,
 				2F9000791B1D91470040D97B /* MASConstraint.m in Sources */,
 				2F6D3F051B3128CC007A4159 /* MJRefreshComponent.m in Sources */,
 				2F6D3EFE1B3128CC007A4159 /* ActionSheetDistancePicker.m in Sources */,
@@ -1669,14 +1727,11 @@
 				2F70745B1AFC4F8100A1242A /* OrderEntity.m in Sources */,
 				2F9001591B1D9D680040D97B /* REFrostedContainerViewController.m in Sources */,
 				2F90007D1B1D91470040D97B /* MASViewConstraint.m in Sources */,
-				2F9000771B1D91470040D97B /* CRToastWindow.m in Sources */,
 				2F89A64A1B0ED6CB0043B236 /* IntentionHandler.m in Sources */,
 				2F6D3F061B3128CC007A4159 /* MJRefreshFooter.m in Sources */,
 				2F89A64B1B0ED6CB0043B236 /* OrderHandler.m in Sources */,
 				2F6D3F0C1B3128CC007A4159 /* MJRefreshBackNormalFooter.m in Sources */,
 				2FED7E331B1EA87900306A11 /* DDContextFilterLogFormatter.m in Sources */,
-				2F9000731B1D91470040D97B /* CRToast.m in Sources */,
-				2F9000761B1D91470040D97B /* CRToastViewController.m in Sources */,
 				2FED7DBE1B1EA2E100306A11 /* NSData+ImageContentType.m in Sources */,
 				2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */,
 				2F52D1021AEF8A150003D7C2 /* MenuViewController.m in Sources */,
@@ -1703,8 +1758,8 @@
 				2F89A6491B0ED6CB0043B236 /* GoodsHandler.m in Sources */,
 				2FED7DC91B1EA2E100306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2FED7DCB1B1EA2E100306A11 /* UIView+WebCacheOperation.m in Sources */,
+				2F2F227B1B3A52FE00428742 /* TSBlurView.m in Sources */,
 				2FED7DBF1B1EA2E100306A11 /* SDImageCache.m in Sources */,
-				2F9000821B1D91470040D97B /* UIView+Toast.m in Sources */,
 				2FED7DC61B1EA2E100306A11 /* UIButton+WebCache.m in Sources */,
 				2FED7DC71B1EA2E100306A11 /* UIImage+GIF.m in Sources */,
 				2FCAF8911B20407C00F3B084 /* BaseViewController.m in Sources */,
@@ -1716,7 +1771,6 @@
 				2F6D3F041B3128CC007A4159 /* MJRefreshBackFooter.m in Sources */,
 				2F6D3F0E1B3128CC007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2FED7DC01B1EA2E100306A11 /* SDWebImageCompat.m in Sources */,
-				2F9000751B1D91470040D97B /* CRToastView.m in Sources */,
 				2F90007F1B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F6D3F0D1B3128CC007A4159 /* MJRefreshBackStateFooter.m in Sources */,
 				2FED7DC81B1EA2E100306A11 /* UIImage+MultiFormat.m in Sources */,
@@ -1734,6 +1788,8 @@
 				2FED7E2D1B1EA87800306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */,
 				2FED7E321B1EA87800306A11 /* DDTTYLogger.m in Sources */,
+				2F2F227C1B3A52FE00428742 /* TSMessage.m in Sources */,
+				2F2F227D1B3A52FE00428742 /* TSMessageView.m in Sources */,
 				2F90015E1B1D9D680040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2F9001611B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2F6D3F021B3128CC007A4159 /* SWActionSheet.m in Sources */,

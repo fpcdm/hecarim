@@ -41,6 +41,14 @@
 //客服电话
 #define LTT_CUSTOMER_SERVICE @"400-820-5555"
 
+//需求类型
+//买手机
+#define LTT_TYPE_MOBILE 1
+//手机上门
+#define LTT_TYPE_MOBILEDOOR 2
+//电脑上门
+#define LTT_TYPE_COMPUTERDOOR 3
+
 //需求状态
 #define INTENTION_STATUS_NEW @"new"
 #define INTENTION_STATUS_LOCKED @"locked"
@@ -58,7 +66,7 @@
 #define ORDER_STATUS_SUCCESS @"success"
 #define ORDER_STATUS_FAIL @"fail"
 
-//颜色配置
+//颜色配置：@todo优化
 //主背景
 #define COLOR_MAIN_BG @"EEEEEE"
 //高亮背景
@@ -96,7 +104,7 @@
 //#define COLOR_MAIN_BUTTON_BG @"F15353"
 #define COLOR_MAIN_BUTTON_BG @"E2383B"
 
-//字体配置
+//字体配置:@todo 优化
 //标题字体
 #define SIZE_TITLE_TEXT 20
 //导航文字字体
@@ -117,6 +125,19 @@
 #define HEIGHT_MIDDLE_BUTTON 45
 //大按钮高度
 #define HEIGHT_MAIN_BUTTON 45
+
+//消息配置
+#define ERROR_MOBILE_REQUIRED @"请填写手机号哦~亲！"
+#define ERROR_MOBILE_FORMAT @"手机号不正确哦~亲！"
+#define ERROR_PASSWORD_REQUIRED @"请填写密码哦~亲！"
+
+#define TIP_LOADING_MESSAGE @"加载中"
+#define TIP_LOADING_SUCCESS @"加载完成"
+#define TIP_LOADING_FAILURE @"加载失败"
+
+#define TIP_REQUEST_MESSAGE @"请求中"
+#define TIP_REQUEST_SUCCESS @"请求成功"
+#define TIP_REQUEST_FAILURE @"请求失败"
 /********<<<公用配置********/
 
 

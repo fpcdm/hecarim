@@ -60,9 +60,6 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
-//是否使用Toast弹出框，默认CRToast
-#define DIALOG_TYPE_TOAST NO
-
 //定义弹出框停留时间
 #define DIALOG_SHOW_TIME 2.0
 

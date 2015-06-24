@@ -25,6 +25,7 @@
     
     //输入框
     mobileField = [AppUIUtil makeTextField];
+    mobileField.keyboardType = UIKeyboardTypeNumberPad;
     mobileField.placeholder = @"手机号";
     [self addSubview:mobileField];
     
@@ -70,7 +71,12 @@
 
 - (void)actionLogin
 {
-    [self.delegate actionLogin];
+    //记录用户信息
+    UserEntity *user = [[UserEntity alloc] init];
+    user.mobile = mobileField.text;
+    user.password = passwordField.text;
+    
+    [self.delegate actionLogin:user];
 }
 
 @end

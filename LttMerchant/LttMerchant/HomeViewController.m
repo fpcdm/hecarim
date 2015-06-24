@@ -113,17 +113,21 @@
     NSNumber *intentionId = [[StorageUtil sharedStorage] getIntention];
     if (intentionId) {
         if (jump) {
-            [self showSuccess:LocalString(@"TIP_INTENTION_LAST") callback:^(){
-                ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
-                viewController.intentionId = intentionId;
-                
-                [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-            }];
+            [self showSuccess:LocalString(@"TIP_INTENTION_LAST")];
+            [self performSelector:@selector(checkCallback) withObject:intentionId afterDelay:DIALOG_SHOW_TIME];
         }
         return NO;
     } else {
         return YES;
     }
+}
+
+- (void) checkCallback:(NSNumber *)intentionId
+{
+    ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
+    viewController.intentionId = intentionId;
+    
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

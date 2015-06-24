@@ -194,8 +194,7 @@
     chooseButton.layer.backgroundColor = [UIColor colorWithHexString:@"DDDDDD"].CGColor;
     chooseButton.layer.cornerRadius = 3.0f;
     chooseButton.titleLabel.text = nil;
-    chooseButton.tag = 2;
-    [chooseButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
+    //[chooseButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [mobileView addSubview:chooseButton];
     
     [chooseButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -233,7 +232,7 @@
     customerButton.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
     customerButton.layer.cornerRadius = 3.0f;
     customerButton.titleLabel.text = nil;
-    customerButton.tag = 1;
+    customerButton.tag = LTT_TYPE_MOBILE;
     [customerButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [mobileView addSubview:customerButton];
     
@@ -297,7 +296,7 @@
     [mobileDoorButton setTitle:@"手机上门维修" forState:UIControlStateNormal];
     [mobileDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
     mobileDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-    mobileDoorButton.tag = 3;
+    mobileDoorButton.tag = LTT_TYPE_MOBILEDOOR;
     [mobileDoorButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [mobileDoorView addSubview:mobileDoorButton];
     
@@ -348,7 +347,7 @@
     [computerDoorButton setTitle:@"电脑上门维修" forState:UIControlStateNormal];
     [computerDoorButton setTitleColor:[UIColor colorWithHexString:@"585858"] forState:UIControlStateNormal];
     computerDoorButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-    computerDoorButton.tag = 4;
+    computerDoorButton.tag = LTT_TYPE_COMPUTERDOOR;
     [computerDoorButton addTarget:self action:@selector(actionIntention:) forControlEvents:UIControlEventTouchUpInside];
     [computerDoorView addSubview:computerDoorButton];
     
