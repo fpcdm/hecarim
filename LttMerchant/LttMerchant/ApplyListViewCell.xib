@@ -16,15 +16,17 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG6-tc-6mx">
                         <rect key="frame" x="8" y="23" width="327" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="cRy-5J-W2h"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-SG-M8G">
+                    <button opaque="NO" tag="103" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-SG-M8G">
                         <rect key="frame" x="252" y="61" width="60" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Grw-9h-zIW"/>
-                            <constraint firstAttribute="width" constant="60" id="ljv-ng-chB"/>
+                            <constraint firstAttribute="width" constant="60" id="WDa-N3-Rb5"/>
                         </constraints>
                         <state key="normal" title="抢 单" backgroundImage="button.png">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,12 +35,12 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8TX-SG-M8G" firstAttribute="top" secondItem="jG6-tc-6mx" secondAttribute="bottom" constant="17" id="0eS-K4-4JN"/>
-                    <constraint firstItem="8TX-SG-M8G" firstAttribute="bottom" secondItem="sCX-qY-dNc" secondAttribute="bottomMargin" id="3kR-nf-AYg"/>
-                    <constraint firstItem="jG6-tc-6mx" firstAttribute="top" secondItem="sCX-qY-dNc" secondAttribute="topMargin" constant="15" id="MgK-Of-JFZ"/>
-                    <constraint firstItem="jG6-tc-6mx" firstAttribute="leading" secondItem="sCX-qY-dNc" secondAttribute="leadingMargin" constant="-7" id="Zmy-2K-kHX"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="jG6-tc-6mx" secondAttribute="trailing" constant="-30" id="hOR-1R-CFp"/>
-                    <constraint firstItem="8TX-SG-M8G" firstAttribute="trailing" secondItem="sCX-qY-dNc" secondAttribute="trailingMargin" id="xPA-PV-g8m"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="8TX-SG-M8G" secondAttribute="trailing" constant="-7" id="0P6-Ik-h5J"/>
+                    <constraint firstItem="8TX-SG-M8G" firstAttribute="top" secondItem="jG6-tc-6mx" secondAttribute="bottom" constant="17" id="Iop-kj-a37"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jG6-tc-6mx" secondAttribute="trailing" constant="-30" id="M3W-L7-kFs"/>
+                    <constraint firstItem="jG6-tc-6mx" firstAttribute="leading" secondItem="sCX-qY-dNc" secondAttribute="leadingMargin" constant="-7" id="cbY-TI-6Sw"/>
+                    <constraint firstItem="8TX-SG-M8G" firstAttribute="bottom" secondItem="sCX-qY-dNc" secondAttribute="bottomMargin" id="j2J-Ee-v4W"/>
+                    <constraint firstItem="jG6-tc-6mx" firstAttribute="top" secondItem="sCX-qY-dNc" secondAttribute="topMargin" constant="15" id="yBl-Pb-aQJ"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="506" y="305"/>
