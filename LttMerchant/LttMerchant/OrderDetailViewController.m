@@ -73,22 +73,27 @@
 
 - (void) initOrder
 {
-    NSString *employeeText = (order.sellerName ? [order.sellerName stringByAppendingString:@" "] : @"");
-    employeeText = [employeeText stringByAppendingString:order.sellerMobile];
+    NSString *employeeText = (order.buyerName ? [order.buyerName stringByAppendingString:@"  "] : @"");
+    employeeText = [employeeText stringByAppendingString:order.buyerMobile];
     [self.employeeButton setTitle:employeeText forState:UIControlStateNormal];
     self.employeeButton.hidden = NO;
     
     NSString *goodsText = @"";
     GoodsEntity *goodsModel = [[GoodsEntity alloc] init];
-    for (NSDictionary *goods in order.goods) {
-        //转换为商品Model
-        goodsModel.id = [goods objectForKey:@"goods_id"];
-        goodsModel.name = [goods objectForKey:@"goods_name"];
-        goodsModel.number = [goods objectForKey:@"goods_num"];
-        goodsModel.price = [goods objectForKey:@"goods_price"];
-        
-        NSNumber *total = [goodsModel total];
-        goodsText = [goodsText stringByAppendingFormat:@"%@：%@ x %@ = %@元\n", goodsModel.name, goodsModel.price, goodsModel.number, total];
+    if (order.goodsParam) {
+        NSArray *goodsList = [order.goodsParam objectForKey:@"list"];
+        if (goodsList && [goodsList count] > 0) {
+            for (NSDictionary *goods in goodsList) {
+                //转换为商品Model
+                goodsModel.id = [goods objectForKey:@"goods_id"];
+                goodsModel.name = [goods objectForKey:@"goods_name"];
+                goodsModel.number = [goods objectForKey:@"goods_num"];
+                goodsModel.price = [goods objectForKey:@"goods_price"];
+                
+                NSNumber *total = [goodsModel total];
+                goodsText = [goodsText stringByAppendingFormat:@"%@：%@ x %@ = %@元\n", goodsModel.name, goodsModel.price, goodsModel.number, total];
+            }
+        }
     }
     self.goodsTextView.text = goodsText;
     self.goodsTextView.editable = NO;
@@ -126,7 +131,7 @@
 
 -(void) statusReceived
 {
-    self.qrcodeView.hidden = NO;
+    self.qrcodeView.hidden = YES;
     self.finishView.hidden = YES;
 }
 

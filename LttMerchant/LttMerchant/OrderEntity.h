@@ -43,6 +43,6 @@
 
 @property (nonatomic, retain) NSNumber *intentionId;
 
-@property (nonatomic, retain) id goodsParam;
+@property (nonatomic, retain) NSDictionary *goodsParam;
 
 @end
