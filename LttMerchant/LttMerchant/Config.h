@@ -43,22 +43,23 @@
 //用户登录类型
 #define USER_TYPE_MERCHANT @"merchant"
 
+//需求类型
+//买手机
+#define LTT_TYPE_MOBILE 1
+//手机上门
+#define LTT_TYPE_MOBILEDOOR 2
+//电脑上门
+#define LTT_TYPE_COMPUTERDOOR 3
+
 //需求状态
-#define INTENTION_STATUS_NEW @"new"
-#define INTENTION_STATUS_LOCKED @"locked"
-#define INTENTION_STATUS_SUCCESS @"success"
-#define INTENTION_STATUS_FAIL @"fail"
-
-//响应状态
-#define RESPONSE_STATUS_NEW @"new"
-#define RESPONSE_STATUS_SUCCESS @"success"
-#define RESPONSE_STATUS_FAIL @"fail"
-
-//订单状态
-#define ORDER_STATUS_NEW @"new"
-#define ORDER_STATUS_RECEIVED @"received"
-#define ORDER_STATUS_SUCCESS @"success"
-#define ORDER_STATUS_FAIL @"fail"
+#define CASE_STATUS_NEW @"new"
+#define CASE_STATUS_LOCKED @"locked"
+#define CASE_STATUS_CONFIRMED @"confirmed"
+#define CASE_STATUS_TOPAY @"wait_pay"
+#define CASE_STATUS_PAYED @"payed"
+#define CASE_STATUS_SUCCESS @"success"
+#define CASE_STATUS_MEMBER_CANCEL @"member_cancel"
+#define CASE_STATUS_MERCHANT_CANCEL @"merchant_cancel"
 /********<<<公用配置********/
 
 

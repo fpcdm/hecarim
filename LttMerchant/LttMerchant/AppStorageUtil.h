@@ -10,8 +10,4 @@
 
 @interface StorageUtil (App)
 
-- (void) setIntention: (NSNumber *) intentionId;
-
-- (NSNumber *) getIntention;
-
 @end

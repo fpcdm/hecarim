@@ -32,9 +32,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ApplyListViewCell" bundle:nil] forCellReuseIdentifier:@"ApplyListViewCell"];
     
     [self initView];
-    
-    //检测未完成的需求
-    //[self checkIntention: YES];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -108,20 +105,6 @@
     }];
 }
 
-- (BOOL) checkIntention: (BOOL) jump
-{
-    NSNumber *intentionId = [[StorageUtil sharedStorage] getIntention];
-    if (intentionId) {
-        if (jump) {
-            [self showSuccess:LocalString(@"TIP_INTENTION_LAST")];
-            [self performSelector:@selector(checkCallback) withObject:intentionId afterDelay:DIALOG_SHOW_TIME];
-        }
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
 - (void) checkCallback:(NSNumber *)intentionId
 {
     ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
@@ -145,11 +128,6 @@
     }
     
     IntentionEntity *intention = [self.tableData objectAtIndex:[indexPath row]];
-    
-    UILabel *brandLabel = (UILabel *) [cell viewWithTag:101];
-    NSString *brandName = (intention.brandName ? intention.brandName : @"未填写");
-    NSString *modelName = (intention.modelName ? intention.modelName : @"未填写");
-    brandLabel.text = [NSString stringWithFormat:@"品牌：%@  型号：%@", brandName, modelName];
     
     UILabel *remarkLabel = (UILabel *) [cell viewWithTag:102];
     NSString *remark = (intention.remark ? intention.remark : @"未填写");
@@ -177,9 +155,6 @@
     IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
     [intentionHandler competeIntention:currentIntention success:^(NSArray *result){
         [self loadingSuccess:LocalString(@"TIP_CHALLENGE_SUCCESS")];
-        
-        //保存最新的需求id到本地，关应用后再打开显示该页面
-        [[StorageUtil sharedStorage] setIntention:currentIntention.id];
         
         [self performSelector:@selector(success:) withObject:currentIntention afterDelay:1];
     } failure:^(ErrorEntity *error){

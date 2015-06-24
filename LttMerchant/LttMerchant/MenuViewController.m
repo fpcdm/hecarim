@@ -103,7 +103,6 @@
     user = [[StorageUtil sharedStorage] getUser];
     if (user != nil) {
         [[StorageUtil sharedStorage] setUser:nil];
-        [[StorageUtil sharedStorage] setIntention:nil];
         user = nil;
         
         //刷新菜单

@@ -39,6 +39,8 @@
 
 @property (nonatomic, retain) NSArray *goods;
 
+@property (nonatomic, retain) NSArray *services;
+
 @property (nonatomic, retain) NSNumber *intentionId;
 
 @property (nonatomic, retain) id goodsParam;

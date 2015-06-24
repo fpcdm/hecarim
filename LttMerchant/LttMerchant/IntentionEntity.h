@@ -12,19 +12,13 @@
 
 @property (nonatomic, retain) NSNumber *id;
 
-@property (nonatomic, retain) NSNumber *brandId;
-
-@property (nonatomic, retain) NSString *brandName;
-
-@property (nonatomic, retain) NSNumber *categoryId;
+@property (nonatomic, retain) NSString *no;
 
 @property (nonatomic, retain) NSString *location;
 
-@property (nonatomic, retain) NSNumber *modelId;
-
-@property (nonatomic, retain) NSString *modelName;
-
 @property (nonatomic, retain) NSString *remark;
+
+@property (nonatomic, retain) NSNumber *type;
 
 @property (nonatomic, retain) NSString *status;
 
@@ -47,5 +41,19 @@
 @property (nonatomic, retain) NSString *employeeName;
 
 @property (nonatomic, retain) NSString *employeeMobile;
+
+@property (nonatomic, retain) NSString *employeeAvatar;
+
+@property (nonatomic, retain) NSArray *details;
+
+- (NSString *)statusName;
+
+- (UIColor *)statusColor;
+
+- (BOOL) isFail;
+
+- (BOOL) hasOrder;
+
+- (BOOL) needRefresh;
 
 @end

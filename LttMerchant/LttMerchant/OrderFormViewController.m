@@ -119,7 +119,7 @@
         [self hideLoading];
         
         intention = [result firstObject];
-        categoryId = intention.categoryId;
+        categoryId = @1;
         
         [self initData];
     } failure:^(ErrorEntity *error){
@@ -540,12 +540,6 @@
         OrderHandler *orderHandler = [[OrderHandler alloc] init];
         [orderHandler addOrder:postOrder success:^(NSArray *result){
             [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS")];
-            
-            //删除过期需求本地存储
-            NSNumber *localIntention = [[StorageUtil sharedStorage] getIntention];
-            if (localIntention && [localIntention isEqualToNumber:self.intentionId]) {
-                [[StorageUtil sharedStorage] setIntention:nil];
-            }
             
             OrderEntity *resOrder = [result firstObject];
             [self performSelector:@selector(success:) withObject:resOrder afterDelay:1];

@@ -18,6 +18,8 @@
 
 - (void) queryIntention: (IntentionEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+- (void) queryUserIntentions: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 //弃单
 - (void) giveupIntention: (IntentionEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 

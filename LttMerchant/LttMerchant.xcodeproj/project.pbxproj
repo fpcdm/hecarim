@@ -27,6 +27,7 @@
 		2F2F227B1B3A52FE00428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22651B3A52FE00428742 /* TSBlurView.m */; };
 		2F2F227C1B3A52FE00428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22671B3A52FE00428742 /* TSMessage.m */; };
 		2F2F227D1B3A52FE00428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22691B3A52FE00428742 /* TSMessageView.m */; };
+		2F4E69351B3AB3F500F4E425 /* IntentionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69341B3AB3F500F4E425 /* IntentionEntity.m */; };
 		2F52A6CB1AF204A7003E2664 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */; };
 		2F52A6CD1AF204BD003E2664 /* OrderListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */; };
 		2F52A6CF1AF204C8003E2664 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52A6CE1AF204C8003E2664 /* OrderListViewController.xib */; };
@@ -81,7 +82,6 @@
 		2F7074561AFC4F8100A1242A /* BrandEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7074481AFC4F8100A1242A /* BrandEntity.m */; };
 		2F7074581AFC4F8100A1242A /* CategoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70744C1AFC4F8100A1242A /* CategoryEntity.m */; };
 		2F7074591AFC4F8100A1242A /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70744E1AFC4F8100A1242A /* ModelEntity.m */; };
-		2F70745A1AFC4F8100A1242A /* IntentionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7074501AFC4F8100A1242A /* IntentionEntity.m */; };
 		2F70745B1AFC4F8100A1242A /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7074521AFC4F8100A1242A /* OrderEntity.m */; };
 		2F70745C1AFC4F8100A1242A /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7074541AFC4F8100A1242A /* GoodsEntity.m */; };
 		2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F70745D1AFC529900A1242A /* InfoPlist.strings */; };
@@ -222,6 +222,8 @@
 		2F2F22671B3A52FE00428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2F2F22681B3A52FE00428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2F2F22691B3A52FE00428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2F4E69331B3AB3F500F4E425 /* IntentionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionEntity.h; sourceTree = "<group>"; };
+		2F4E69341B3AB3F500F4E425 /* IntentionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionEntity.m; sourceTree = "<group>"; };
 		2F52A6C91AF204A7003E2664 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
 		2F52A6CA1AF204A7003E2664 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
 		2F52A6CC1AF204BD003E2664 /* OrderListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListViewCell.xib; sourceTree = "<group>"; };
@@ -324,8 +326,6 @@
 		2F70744C1AFC4F8100A1242A /* CategoryEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryEntity.m; sourceTree = "<group>"; };
 		2F70744D1AFC4F8100A1242A /* ModelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEntity.h; sourceTree = "<group>"; };
 		2F70744E1AFC4F8100A1242A /* ModelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEntity.m; sourceTree = "<group>"; };
-		2F70744F1AFC4F8100A1242A /* IntentionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionEntity.h; sourceTree = "<group>"; };
-		2F7074501AFC4F8100A1242A /* IntentionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionEntity.m; sourceTree = "<group>"; };
 		2F7074511AFC4F8100A1242A /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
 		2F7074521AFC4F8100A1242A /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
 		2F7074531AFC4F8100A1242A /* GoodsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsEntity.h; sourceTree = "<group>"; };
@@ -792,14 +792,14 @@
 		2F628C051AE89BF500530B07 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2F4E69331B3AB3F500F4E425 /* IntentionEntity.h */,
+				2F4E69341B3AB3F500F4E425 /* IntentionEntity.m */,
 				2F7074471AFC4F8100A1242A /* BrandEntity.h */,
 				2F7074481AFC4F8100A1242A /* BrandEntity.m */,
 				2F70744B1AFC4F8100A1242A /* CategoryEntity.h */,
 				2F70744C1AFC4F8100A1242A /* CategoryEntity.m */,
 				2F70744D1AFC4F8100A1242A /* ModelEntity.h */,
 				2F70744E1AFC4F8100A1242A /* ModelEntity.m */,
-				2F70744F1AFC4F8100A1242A /* IntentionEntity.h */,
-				2F7074501AFC4F8100A1242A /* IntentionEntity.m */,
 				2F7074511AFC4F8100A1242A /* OrderEntity.h */,
 				2F7074521AFC4F8100A1242A /* OrderEntity.m */,
 				2F7074531AFC4F8100A1242A /* GoodsEntity.h */,
@@ -1723,7 +1723,6 @@
 				2F6D3F031B3128CC007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2FCAF8A31B20453E00F3B084 /* ErrorEntity.m in Sources */,
 				2F90015D1B1D9D680040D97B /* UIViewController+REFrostedViewController.m in Sources */,
-				2F70745A1AFC4F8100A1242A /* IntentionEntity.m in Sources */,
 				2F70745B1AFC4F8100A1242A /* OrderEntity.m in Sources */,
 				2F9001591B1D9D680040D97B /* REFrostedContainerViewController.m in Sources */,
 				2F90007D1B1D91470040D97B /* MASViewConstraint.m in Sources */,
@@ -1762,6 +1761,7 @@
 				2FED7DBF1B1EA2E100306A11 /* SDImageCache.m in Sources */,
 				2FED7DC61B1EA2E100306A11 /* UIButton+WebCache.m in Sources */,
 				2FED7DC71B1EA2E100306A11 /* UIImage+GIF.m in Sources */,
+				2F4E69351B3AB3F500F4E425 /* IntentionEntity.m in Sources */,
 				2FCAF8911B20407C00F3B084 /* BaseViewController.m in Sources */,
 				2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2F7074381AFC4F4E00A1242A /* AppTableViewController.m in Sources */,

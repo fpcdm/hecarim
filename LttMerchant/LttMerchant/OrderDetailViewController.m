@@ -106,11 +106,11 @@
 {
     //根据状态不同操作不同
     NSLog(@"order status: %@", order.status);
-    if ([ORDER_STATUS_NEW isEqualToString:order.status]) {
+    if ([CASE_STATUS_CONFIRMED isEqualToString:order.status]) {
         [self statusNew];
-    } else if ([ORDER_STATUS_RECEIVED isEqualToString:order.status]) {
+    } else if ([CASE_STATUS_PAYED isEqualToString:order.status] || [CASE_STATUS_TOPAY isEqualToString:order.status]) {
         [self statusReceived];
-    } else if ([ORDER_STATUS_SUCCESS isEqualToString:order.status]) {
+    } else if ([CASE_STATUS_SUCCESS isEqualToString:order.status]) {
         [self statusSuccess];
     } else {
         [self statusFail];

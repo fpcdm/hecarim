@@ -36,6 +36,8 @@
 
 @synthesize goods;
 
+@synthesize services;
+
 @synthesize goodsParam;
 
 @end

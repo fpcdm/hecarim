@@ -61,8 +61,8 @@
         intention = [result firstObject];
         
         //仅当lock时进入此页面
-        intention.status = INTENTION_STATUS_LOCKED;
-        if ([INTENTION_STATUS_LOCKED isEqualToString:intention.status]) {
+        intention.status = CASE_STATUS_LOCKED;
+        if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
             [self initIntention];
         } else {
             [self intentionOverdue];
@@ -75,11 +75,9 @@
 
 - (void) initIntention
 {
-    self.brandLabel.text = [@"品牌：" stringByAppendingString:(intention.brandName ? intention.brandName : @"未填写")];
-    self.brandLabel.hidden = NO;
+    self.brandLabel.hidden = YES;
     
-    self.modelLabel.text = [@"型号：" stringByAppendingString:(intention.modelName ? intention.modelName : @"未填写")];
-    self.modelLabel.hidden = NO;
+    self.modelLabel.hidden = YES;
     
     self.remarkLabel.text = [@"留言：" stringByAppendingString:(intention.remark ? intention.remark : @"未填写")];
     self.remarkLabel.hidden = NO;
@@ -109,12 +107,6 @@
     
     [hud show:YES];
     
-    //删除过期需求本地存储
-    NSNumber *localIntention = [[StorageUtil sharedStorage] getIntention];
-    if (localIntention && [localIntention isEqualToNumber:self.intentionId]) {
-        [[StorageUtil sharedStorage] setIntention:nil];
-    }
-    
     [self performSelector:@selector(showFail) withObject:nil afterDelay:2];
 }
 
@@ -131,12 +123,6 @@
     IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
     [intentionHandler giveupIntention:intention success:^(NSArray *result){
         [self hideLoading];
-        
-        //删除过期需求本地存储
-        NSNumber *localIntention = [[StorageUtil sharedStorage] getIntention];
-        if (localIntention && [localIntention isEqualToNumber:self.intentionId]) {
-            [[StorageUtil sharedStorage] setIntention:nil];
-        }
         
         //跳转首页
         HomeViewController *viewController = [[HomeViewController alloc] init];

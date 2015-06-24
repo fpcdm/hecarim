@@ -10,30 +10,4 @@
 
 @implementation StorageUtil (App)
 
-- (void) setIntention: (NSNumber *) intentionId
-{
-    if (intentionId) {
-        [[self storage] setObject:intentionId forKey:@"intention"];
-        [[self storage] synchronize];
-    
-        NSLog(@"set intention: %@", intentionId);
-    } else {
-        [[self storage] removeObjectForKey:@"intention"];
-        [[self storage] synchronize];
-        
-        NSLog(@"delete intention: %@", intentionId);
-    }
-}
-
-- (NSNumber *) getIntention
-{
-    NSNumber *intentionId = (NSNumber *) [[self storage] objectForKey:@"intention"];
-    if (!intentionId) {
-        return nil;
-    }
-    
-    NSLog(@"get intention: %@", intentionId);
-    return intentionId;
-}
-
 @end
