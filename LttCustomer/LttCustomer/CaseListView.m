@@ -66,11 +66,6 @@
     NSArray *details = intention.details;
     UIView *relateview = timeLabel;
     
-    //没有详情取备注
-    if ((!details || [details count] < 1) && intention.remark) {
-        details = @[@{@"detail": intention.remark}];
-    }
-    
     if (details) {
         for (NSDictionary *detail in details) {
             UILabel *detailLabel = [self makeCellLabel:[detail objectForKey:@"title"]];

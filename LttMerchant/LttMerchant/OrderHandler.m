@@ -14,7 +14,7 @@
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goodsParam",@"update_time":@"updateTime"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goodsParam",@"update_time":@"updateTime",@"services":@"services"}];
     
     NSString *restPath = [sharedClient formatPath:@"order/info/:no" object:order];
     [sharedClient getObject:order path:restPath param:nil success:^(NSArray *result){
@@ -31,7 +31,7 @@
 - (void) addOrder:(OrderEntity *)order success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[OrderEntity class] mappingParam:@{@"amount": @"amount", @"buyerAddress": @"buyer_address", @"buyerId": @"buyer_id", @"buyerMobile": @"buyer_mobile", @"goodsParam" :@"goods", @"sellerId":@"seller_id",@"sellerMobile":@"seller_mobile",@"intentionId":@"intention_id"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[OrderEntity class] mappingParam:@{@"amount": @"amount", @"buyerAddress": @"buyer_address", @"buyerId": @"buyer_id", @"buyerMobile": @"buyer_mobile", @"goodsParam" :@"goods", @"sellerId":@"seller_id",@"sellerMobile":@"seller_mobile",@"intentionId":@"intention_id",@"servicesParam":@"services"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"order_no": @"no"}];
     
     [sharedClient putObject:order path:@"order/info" param:nil success:^(NSArray *result){

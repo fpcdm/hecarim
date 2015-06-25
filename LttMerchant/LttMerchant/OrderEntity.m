@@ -40,4 +40,6 @@
 
 @synthesize goodsParam;
 
+@synthesize servicesParam;
+
 @end

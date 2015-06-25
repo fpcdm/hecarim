@@ -43,6 +43,8 @@
 
 @synthesize brandSegment, modelSegment, specLabel1, specSegment1, specLabel2, specSegment2, specLabel3, specSegment3, priceLabel, numberField, amountLabel, modelEmptyLabel, specEmptyLabel;
 
+@synthesize mobileServiceName, mobileServicePrice, computerServiceName, computerServicePrice;
+
 @synthesize intentionId;
 
 @synthesize orderNo;
@@ -119,7 +121,7 @@
         [self hideLoading];
         
         intention = [result firstObject];
-        categoryId = @1;
+        categoryId = LTT_CATEGORY_MOBILE;
         
         [self initData];
     } failure:^(ErrorEntity *error){
@@ -501,9 +503,12 @@
     
     NSNumber *number = [NSNumber numberWithInteger:[numberField.text integerValue]];
     
+    NSNumber *goodsAmount = @0;
+    NSNumber *servicesAmount = @0;
+    
     //收集参数
     OrderEntity *postOrder = [[OrderEntity alloc] init];
-    postOrder.amount = [NSNumber numberWithDouble:([price doubleValue] * [number doubleValue])];
+    goodsAmount = [NSNumber numberWithDouble:([price doubleValue] * [number doubleValue])];
     postOrder.buyerAddress = @"";
     
     //只添加一个商品
@@ -511,7 +516,36 @@
     //添加商品：为了解决nsarray不传key的问题，使用nsdictionary
     NSDictionary *goodsDict = @{@"goods_id":goodsId, @"goods_num":number,@"goods_price":price,@"price_id":priceId};
     [goodsParam setObject:goodsDict forKey:@"0"];
-    postOrder.goodsParam = @{@"amount":postOrder.amount, @"list":goodsParam};
+    postOrder.goodsParam = @{@"amount":goodsAmount, @"list":goodsParam};
+    
+    //添加服务
+    NSDictionary *servicesParam = [[NSDictionary alloc] init];
+    //手机上门，仅支持一个
+    if ([mobileServiceName.text length] > 0 && [mobileServicePrice.text length] > 0) {
+        if (![ValidateUtil isPositiveInteger:mobileServicePrice.text]) {
+            [self showError:@"手机上门价格不正确"];
+            return;
+        }
+        
+        NSNumber *mobileAmount = [NSNumber numberWithInteger:[mobileServicePrice.text integerValue]];
+        servicesAmount = [NSNumber numberWithDouble:([servicesAmount doubleValue] + [mobileAmount doubleValue])];
+        NSDictionary *mobileService = @{
+                                        @"amount": mobileAmount,
+                                        @"type": [NSNumber numberWithInt:LTT_TYPE_MOBILEDOOR],
+                                        @"list": @{
+                                                @"0":@{
+                                                    @"detail": mobileServiceName.text,
+                                                    @"price": mobileAmount,
+                                                    },
+                                                },
+                                        };
+        servicesParam = mobileService;
+    }
+    postOrder.servicesParam = servicesParam;
+    
+    //价格
+    NSNumber *totalAmount = [NSNumber numberWithDouble:([goodsAmount doubleValue] + [servicesAmount doubleValue])];
+    postOrder.amount = totalAmount;
     
     //获取UserModel
     UserEntity *user = [[StorageUtil sharedStorage] getUser];

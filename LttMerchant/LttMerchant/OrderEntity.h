@@ -45,4 +45,6 @@
 
 @property (nonatomic, retain) NSDictionary *goodsParam;
 
+@property (nonatomic, retain) NSDictionary *servicesParam;
+
 @end

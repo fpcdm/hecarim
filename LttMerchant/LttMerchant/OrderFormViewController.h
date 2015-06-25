@@ -39,6 +39,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *specEmptyLabel;
 
+@property (weak, nonatomic) IBOutlet UITextField *mobileServiceName;
+
+@property (weak, nonatomic) IBOutlet UITextField *mobileServicePrice;
+
+@property (weak, nonatomic) IBOutlet UITextField *computerServiceName;
+
+@property (weak, nonatomic) IBOutlet UITextField *computerServicePrice;
+
 - (IBAction)orderSubmitAction:(id)sender;
 
 @property (nonatomic, retain) NSNumber *intentionId;

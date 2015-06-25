@@ -80,6 +80,7 @@
     self.employeeButton.hidden = NO;
     
     NSString *goodsText = @"";
+    //商品
     GoodsEntity *goodsModel = [[GoodsEntity alloc] init];
     if (order.goodsParam) {
         NSArray *goodsList = [order.goodsParam objectForKey:@"list"];
@@ -96,13 +97,25 @@
             }
         }
     }
+    //服务
+    if (order.services && [order.services count] > 0) {
+        NSDictionary *servicesDict = [order.services objectAtIndex:0];
+        NSArray *servicesList = servicesDict ? [servicesDict objectForKey:@"list"] : @[];
+        if (servicesList && [servicesList count] > 0) {
+            goodsText = [goodsText stringByAppendingFormat:@"\n%@\n\n", [servicesDict objectForKey:@"remark"]];
+            for (NSDictionary *service in servicesList) {
+                NSString *serviceName = [service objectForKey:@"detail"];
+                NSString *servicePrice = [service objectForKey:@"price"];
+                goodsText = [goodsText stringByAppendingFormat:@"%@：%@元\n", serviceName, servicePrice];
+            }
+        }
+    }
+    //总价
+    goodsText = [goodsText stringByAppendingFormat:@"\n合计：%@元", order.amount];
+    
     self.goodsTextView.text = goodsText;
     self.goodsTextView.editable = NO;
     self.goodsTextView.hidden = NO;
-    //禁用滚动
-    if ([order.goods count] < 4) {
-        self.goodsTextView.scrollEnabled = NO;
-    }
     
     //根据状态处理
     [self checkStatus];
