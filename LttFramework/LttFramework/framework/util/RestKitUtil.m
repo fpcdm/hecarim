@@ -221,12 +221,15 @@ static RestKitUtil *sharedClient = nil;
     
     NSLog(@"failure: %li %@", errorModel.code, errorModel.message);
     
-    //未登录自动清除用户信息
-    if (errorModel.code == ERROR_CODE_NOLOGIN) {
-        [[StorageUtil sharedStorage] setUser:nil];
+    //全局错误钩子
+    BOOL errorChain = YES;
+    if (self.globalErrorBlock) {
+        errorChain = self.globalErrorBlock(errorModel);
     }
     
-    callback(errorModel);
+    if (errorChain && callback) {
+        callback(errorModel);
+    }
 }
 
 #pragma mark - Test Methods

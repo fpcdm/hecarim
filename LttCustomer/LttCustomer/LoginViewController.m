@@ -42,6 +42,16 @@
                                                                             action:@selector(actionHome)];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //显示消息
+    if (self.tokenExpired) {
+        [self showError:ERROR_TOKEN_EXPIRED];
+    }
+}
+
 #pragma mark - Action
 - (void)actionHome
 {

@@ -10,7 +10,13 @@
 #import "RestKit.h"
 #import "ErrorEntity.h"
 
+//全局错误代码块：可统一处理错误事件，如未登录等
+//返回YES代表继续执行自定义错误事件，NO则中断
+typedef BOOL (^RestKitGlobalErrorBlock)(ErrorEntity *error);
+
 @interface RestKitUtil : NSObject
+
+@property (copy) RestKitGlobalErrorBlock globalErrorBlock;
 
 + (RestKitUtil *) sharedClient;
 

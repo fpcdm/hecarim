@@ -10,4 +10,6 @@
 
 @interface LoginViewController : AppViewController
 
+@property (assign, nonatomic) BOOL tokenExpired;
+
 @end
