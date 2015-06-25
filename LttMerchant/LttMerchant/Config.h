@@ -51,6 +51,9 @@
 //电脑上门
 #define LTT_TYPE_COMPUTERDOOR 3
 
+//用户TOKEN过期
+#define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
+
 //需求状态
 #define CASE_STATUS_NEW @"new"
 #define CASE_STATUS_LOCKED @"locked"

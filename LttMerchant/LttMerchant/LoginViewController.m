@@ -24,9 +24,22 @@
     //禁用菜单
     isMenuDisabled = YES;
     
+    //不显示返回
+    self.navigationItem.hidesBackButton = YES;
+    
     [super viewDidLoad];
     
     self.title = @"登陆";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //显示消息
+    if (self.tokenExpired) {
+        [self showError:ERROR_TOKEN_EXPIRED];
+    }
 }
 
 #pragma mark - Action

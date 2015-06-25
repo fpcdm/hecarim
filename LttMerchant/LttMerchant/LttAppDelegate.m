@@ -69,6 +69,24 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    //接口错误未登录时跳转登陆界面
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    sharedClient.globalErrorBlock = ^(ErrorEntity *error){
+        //跳转登陆
+        if (error.code == ERROR_CODE_NOLOGIN) {
+            [frostedViewController hideMenuViewController];
+            
+            //清除用户信息
+            [[StorageUtil sharedStorage] setUser:nil];
+            
+            LoginViewController *loginViewController = [[LoginViewController alloc] init];
+            loginViewController.tokenExpired = YES;
+            [navigationController pushViewController:loginViewController animated:YES];
+            return NO;
+        }
+        return YES;
+    };
+    
     //初始化坐标为0
     lastCoordinate = CLLocationCoordinate2DMake(0, 0);
     
