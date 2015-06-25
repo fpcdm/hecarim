@@ -15,17 +15,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UserHandler.h"
 
-static CLLocationManager *locationManager = nil;
-
 @interface HomeViewController () <HomeViewDelegate, CLLocationManagerDelegate>
 
 @end
 
 @implementation HomeViewController
 {
+    CLLocationManager *locationManager;
+    NSDate *lastDate;
+    
     HomeView *homeView;
     UserHandler *userHandler;
-    NSDate *lastDate;
 }
 
 - (void)loadView
@@ -37,8 +37,8 @@ static CLLocationManager *locationManager = nil;
 
 - (void)viewDidLoad
 {
-    isMenuEnabled = [self isLogin];
     isIndexNavBar = YES;
+    isMenuEnabled = [self isLogin];
     hideBackButton = YES;
     [super viewDidLoad];
     
@@ -52,6 +52,8 @@ static CLLocationManager *locationManager = nil;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     if (locationManager) {
         [locationManager startUpdatingLocation];
         NSLog(@"start gps");
@@ -60,6 +62,8 @@ static CLLocationManager *locationManager = nil;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     if (locationManager) {
         [locationManager stopUpdatingLocation];
         NSLog(@"stop gps");
@@ -94,12 +98,13 @@ static CLLocationManager *locationManager = nil;
         LocationEntity *location = [result firstObject];
         
         //获取位置
-        [homeView setData:@"address" value:location.address];
-        [homeView renderData];
-        
-        lastDate = [NSDate date];
+        if (location.address && [location.address length] > 0) {
+            [homeView setData:@"address" value:location.address];
+            [homeView renderData];
+            
+            lastDate = [NSDate date];
+        }
     } failure:^(ErrorEntity *error){
-        lastDate = [NSDate date];
     }];
 }
 

@@ -423,14 +423,10 @@
 - (void) renderData
 {
     NSString *address = [self getData:@"address"];
-    if (address != nil && [address length] > 0) {
-        addressLabel.text = address;
-    }
+    addressLabel.text = address;
     
     NSNumber *count = [self getData:@"count"];
-    if (count != nil) {
-        infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count ? count : @0];
-    }
+    infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count ? count : @0];
 }
 
 - (void) actionCase: (UIButton *)sender

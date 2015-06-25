@@ -1949,7 +1949,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3c24ff9d-a771-4d9b-a9d0-d1e116d90b84";
 			};
 			name = Debug;
 		};
@@ -1977,7 +1977,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3c24ff9d-a771-4d9b-a9d0-d1e116d90b84";
 			};
 			name = Release;
 		};
