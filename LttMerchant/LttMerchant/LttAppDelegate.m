@@ -156,7 +156,7 @@
     REFrostedViewController *frostedViewController = (REFrostedViewController *) self.window.rootViewController;
     LttNavigationController *navigationController = (LttNavigationController *) frostedViewController.contentViewController;
     UIViewController *viewController = [navigationController.viewControllers objectAtIndex:0];
-    [viewController showNotification:alertBody];
+    [viewController showMessage:alertBody];
     
     //执行回调
     [NotificationUtil receiveLocalNotification:notification];

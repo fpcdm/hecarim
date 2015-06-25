@@ -64,6 +64,7 @@
 		2F6683921AF9F9AE00D430D0 /* CaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6683911AF9F9AE00D430D0 /* CaseEntity.m */; };
 		2F67B60D1B33A437005106E8 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B60C1B33A437005106E8 /* menu@2x.png */; };
 		2F67B6111B33ABE2005106E8 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B6101B33ABE2005106E8 /* top.png */; };
+		2F693E0B1B3BB61300CFB8F4 /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */; };
 		2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F699B4B1AF8C41600E42816 /* BrandEntity.m */; };
 		2F6B0C1B1B390D1F000123BF /* CaseTopayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C1A1B390D1F000123BF /* CaseTopayView.m */; };
 		2F6B0C1E1B390D69000123BF /* CasePayedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C1D1B390D69000123BF /* CasePayedView.m */; };
@@ -311,6 +312,8 @@
 		2F6683911AF9F9AE00D430D0 /* CaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEntity.m; sourceTree = "<group>"; };
 		2F67B60C1B33A437005106E8 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		2F67B6101B33ABE2005106E8 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
+		2F693E091B3BB61300CFB8F4 /* LocationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationEntity.h; sourceTree = "<group>"; };
+		2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationEntity.m; sourceTree = "<group>"; };
 		2F699B4A1AF8C41600E42816 /* BrandEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandEntity.h; sourceTree = "<group>"; };
 		2F699B4B1AF8C41600E42816 /* BrandEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandEntity.m; sourceTree = "<group>"; };
 		2F6B0C191B390D1F000123BF /* CaseTopayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTopayView.h; sourceTree = "<group>"; };
@@ -900,6 +903,8 @@
 				2F6B0C231B390FDF000123BF /* ServiceEntity.m */,
 				2F089D7E1B2ED05C002A0EA5 /* AddressEntity.h */,
 				2F089D7F1B2ED05C002A0EA5 /* AddressEntity.m */,
+				2F693E091B3BB61300CFB8F4 /* LocationEntity.h */,
+				2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -1923,6 +1928,7 @@
 				2F6D3E581B312765007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */,
 				2FBF3F771B2821AA00C0DC54 /* HomeView.m in Sources */,
+				2F693E0B1B3BB61300CFB8F4 /* LocationEntity.m in Sources */,
 				2FF3E6A81B2FFB1B00B90045 /* AddressFormViewController.m in Sources */,
 				2F90003E1B1D8B930040D97B /* MASViewAttribute.m in Sources */,
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,

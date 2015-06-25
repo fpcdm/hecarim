@@ -85,6 +85,13 @@
     NSString *employeeText = (intention.userName ? [intention.userName stringByAppendingString:@"  "] : @"");
     employeeText = [employeeText stringByAppendingString:(intention.userMobile ? intention.userMobile : @"")];
     [self.employeeButton setTitle:employeeText forState:UIControlStateNormal];
+    [self.employeeButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)actionMobile
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.userMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 
 //需求已过期

@@ -71,6 +71,7 @@
     
     //地址标签
     addressLabel = [[UILabel alloc] init];
+    addressLabel.text = @"正在定位";
     addressLabel.textColor = [UIColor whiteColor];
     addressLabel.font = [UIFont boldSystemFontOfSize:20];
     [addressView addSubview:addressLabel];
@@ -95,6 +96,10 @@
     UIImageView *pointView = [[UIImageView alloc] init];
     pointView.image = [UIImage imageNamed:@"point"];
     pointView.contentMode = UIViewContentModeScaleAspectFit;
+    pointView.userInteractionEnabled = YES;
+    //点击事件
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGps)];
+    [pointView addGestureRecognizer:singleTap];
     [addressView addSubview:pointView];
     
     [pointView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -418,17 +423,25 @@
 - (void) renderData
 {
     NSString *address = [self getData:@"address"];
+    if (address != nil && [address length] > 0) {
+        addressLabel.text = address;
+    }
+    
     NSNumber *count = [self getData:@"count"];
-    
-    addressLabel.text = address;
-    infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count ? count : @0];
-    
+    if (count != nil) {
+        infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count ? count : @0];
+    }
 }
 
 - (void) actionCase: (UIButton *)sender
 {
     NSNumber *type = [NSNumber numberWithInteger:sender.tag];
     [self.delegate actionCase:type];
+}
+
+- (void)actionGps
+{
+    [self.delegate actionGps];
 }
 
 @end

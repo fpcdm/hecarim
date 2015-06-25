@@ -76,6 +76,7 @@
     NSString *employeeText = (order.buyerName ? [order.buyerName stringByAppendingString:@"  "] : @"");
     employeeText = [employeeText stringByAppendingString:order.buyerMobile];
     [self.employeeButton setTitle:employeeText forState:UIControlStateNormal];
+    [self.employeeButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
     self.employeeButton.hidden = NO;
     
     NSString *goodsText = @"";
@@ -211,6 +212,12 @@
         [self hideLoading];
         [self showError:error.message];
     }];
+}
+
+- (void)actionMobile
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", order.buyerMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 
 @end

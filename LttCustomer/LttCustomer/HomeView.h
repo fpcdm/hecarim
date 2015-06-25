@@ -12,6 +12,7 @@
 
 @required
 - (void)actionCase: (NSNumber *) type;
+- (void)actionGps;
 
 @end
 

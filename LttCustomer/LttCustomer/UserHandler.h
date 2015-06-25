@@ -8,6 +8,7 @@
 
 #import "BaseHandler.h"
 #import "UserEntity.h"
+#import "LocationEntity.h"
 
 @interface UserHandler : BaseHandler
 
@@ -19,5 +20,14 @@
  *  @param failure 失败回调
  */
 - (void) loginWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  查询用户位置
+ *
+ *  @param param 参数
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryLocation: (LocationEntity *) location success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end

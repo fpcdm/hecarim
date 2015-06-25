@@ -12,14 +12,20 @@
 #import "LoginViewController.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
+#import <CoreLocation/CoreLocation.h>
+#import "UserHandler.h"
 
-@interface HomeViewController () <HomeViewDelegate>
+static CLLocationManager *locationManager = nil;
+
+@interface HomeViewController () <HomeViewDelegate, CLLocationManagerDelegate>
 
 @end
 
 @implementation HomeViewController
 {
     HomeView *homeView;
+    UserHandler *userHandler;
+    NSDate *lastDate;
 }
 
 - (void)loadView
@@ -38,15 +44,93 @@
     
     self.navigationItem.title = @"两条腿";
     
-    NSString *address = @"重庆市 渝北区 龙山街道";
-    NSNumber *count = @12;
+    [self actionGps];
     
-    [homeView setData:@"address" value:address];
-    [homeView setData:@"count" value:count];
+    //todo: 服务人数
+    [homeView setData:@"count" value:@12];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (locationManager) {
+        [locationManager startUpdatingLocation];
+        NSLog(@"start gps");
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if (locationManager) {
+        [locationManager stopUpdatingLocation];
+        NSLog(@"stop gps");
+    }
+}
+
+#pragma mark - GPS
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    
+    //请求间隔: 5S
+    if (lastDate && lastDate != nil) {
+        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:lastDate];
+        if (interval < 5.0) {
+            return;
+        }
+    }
+    
+    //gps坐标
+    CLLocationCoordinate2D lastCoordinate = [newLocation coordinate];
+    
+    NSLog(@"gps success: 经度: %lf 纬度: %lf", lastCoordinate.longitude, lastCoordinate.latitude);
+    
+    //查询位置
+    LocationEntity *locationEntity = [[LocationEntity alloc] init];
+    locationEntity.longitude = [NSNumber numberWithFloat:lastCoordinate.longitude];
+    locationEntity.latitude = [NSNumber numberWithFloat:lastCoordinate.latitude];
+    
+    if (!userHandler) userHandler = [[UserHandler alloc] init];
+    [userHandler queryLocation:locationEntity success:^(NSArray *result){
+        LocationEntity *location = [result firstObject];
+        
+        //获取位置
+        [homeView setData:@"address" value:location.address];
+        [homeView renderData];
+        
+        lastDate = [NSDate date];
+    } failure:^(ErrorEntity *error){
+        lastDate = [NSDate date];
+    }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    NSString *errorMsg = ([error code] == kCLErrorDenied) ? @"定位失败" : @"定位失败";
+    NSLog(@"gps error:%@", errorMsg);
+    
+    [homeView setData:@"address" value:errorMsg];
     [homeView renderData];
 }
 
 #pragma mark - Action
+- (void)actionGps
+{
+    //初始化GPS
+    if (!locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.distanceFilter = 10;
+        locationManager.delegate = self;
+        if (IS_IOS8_PLUS) {
+            [locationManager requestWhenInUseAuthorization];
+        }
+    }
+    
+    [locationManager startUpdatingLocation];
+    NSLog(@"start gps");
+}
+
 - (void)actionCase:(NSNumber *)type
 {
     //是否登陆
