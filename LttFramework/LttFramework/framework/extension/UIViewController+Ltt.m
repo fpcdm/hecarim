@@ -19,36 +19,59 @@ static MBProgressHUD *loading = nil;
 
 - (void) showError: (NSString *) message
 {
-    [TSMessage showNotificationInViewController:self
-                                          title:message
-                                       subtitle:nil
-                                          image:nil
-                                           type:TSMessageNotificationTypeError
-                                       duration:DIALOG_SHOW_TIME
-                                       callback:nil
-                                    buttonTitle:nil
-                                 buttonCallback:nil
-                                     atPosition:TSMessageNotificationPositionTop
-                           canBeDismissedByUser:YES];
+    [self showDialog:message type:TSMessageNotificationTypeError callback:nil];
+}
+
+- (void) showWarning:(NSString *) message
+{
+    [self showDialog:message type:TSMessageNotificationTypeWarning callback:nil];
+}
+
+- (void) showMessage:(NSString *) message
+{
+    [self showDialog:message type:TSMessageNotificationTypeMessage callback:nil];
 }
 
 - (void) showSuccess: (NSString *) message
 {
+    [self showDialog:message type:TSMessageNotificationTypeSuccess callback:nil];
+}
+
+- (void) showSuccess:(NSString *)message callback:(void (^)())callback
+{
+    [self showDialog:message type:TSMessageNotificationTypeSuccess callback:callback];
+}
+
+- (void) showDialog: (NSString *)message type: (TSMessageNotificationType) type callback:(void (^)())callback
+{
+    [self hideLoading];
+    
     [TSMessage showNotificationInViewController:self
                                           title:message
                                        subtitle:nil
                                           image:nil
-                                           type:TSMessageNotificationTypeSuccess
-                                       duration:DIALOG_SHOW_TIME
+                                           type:type
+                                       duration:callback ? TSMessageNotificationDurationEndless : DIALOG_SHOW_TIME
                                        callback:nil
                                     buttonTitle:nil
                                  buttonCallback:nil
                                      atPosition:TSMessageNotificationPositionTop
-                           canBeDismissedByUser:YES];
+                           canBeDismissedByUser:callback ? NO : YES];
+    
+    if (callback) {
+        [self performSelector:@selector(showDialogCallback:) withObject:callback afterDelay:DIALOG_SHOW_TIME];
+    }
+}
+
+- (void) showDialogCallback:(void (^)())callback
+{
+    [TSMessage dismissActiveNotificationWithCompletion:callback];
 }
 
 - (void) showLoading: (NSString *) message
 {
+    [self hideLoading];
+    
     loading = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:loading];
     
@@ -59,33 +82,35 @@ static MBProgressHUD *loading = nil;
 
 - (void) loadingSuccess: (NSString *) message
 {
+    [self loadingSuccess:message callback:nil];
+}
+
+- (void) loadingSuccess:(NSString *)message callback:(void (^)())callback
+{
     loading.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success"]];
     loading.mode = MBProgressHUDModeCustomView;
     
     loading.labelText = message;
     
     [loading show:YES];
+    
+    if (callback) {
+        [self performSelector:@selector(loadingSuccessCallback:) withObject:callback afterDelay:LOADING_SUCCESS_TIME];
+    }
+}
+
+- (void)loadingSuccessCallback:(void (^)())callback
+{
+    [self hideLoading];
+    callback();
 }
 
 - (void) hideLoading
 {
-    [loading hide:NO];
-    loading = nil;
-}
-
-- (void) showNotification:(NSString *)message
-{
-    [TSMessage showNotificationInViewController:self
-                                          title:message
-                                       subtitle:nil
-                                          image:nil
-                                           type:TSMessageNotificationTypeMessage
-                                       duration:DIALOG_SHOW_TIME
-                                       callback:nil
-                                    buttonTitle:nil
-                                 buttonCallback:nil
-                                     atPosition:TSMessageNotificationPositionTop
-                           canBeDismissedByUser:YES];
+    if (loading) {
+        [loading hide:NO];
+        loading = nil;
+    }
 }
 
 @end

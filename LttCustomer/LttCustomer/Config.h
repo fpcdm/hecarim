@@ -123,6 +123,7 @@
 #define ERROR_MOBILE_REQUIRED @"请填写手机号哦~亲！"
 #define ERROR_MOBILE_FORMAT @"手机号不正确哦~亲！"
 #define ERROR_PASSWORD_REQUIRED @"请填写密码哦~亲！"
+#define ERROR_COMMENT_REQUIRED @"请选择评价星级哦~亲！"
 
 #define TIP_LOADING_MESSAGE @"加载中"
 #define TIP_LOADING_SUCCESS @"加载完成"

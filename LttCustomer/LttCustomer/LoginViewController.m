@@ -67,27 +67,31 @@
         return;
     }
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler loginWithUser:user success:^(NSArray *result){
-        //赋值并释放资源
-        UserEntity *apiUser = [result firstObject];
-        user.id = apiUser.id;
-        user.name = apiUser.name;
-        user.token = apiUser.token;
-        apiUser = nil;
-        
-        //清空密码
-        user.password = nil;
-        
-        //保存数据
-        [[StorageUtil sharedStorage] setUser:user];
-        
-        //刷新菜单
-        [self refreshMenu];
-        
-        HomeViewController *viewController = [[HomeViewController alloc] init];
-        [self pushViewController:viewController animated:YES];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            //赋值并释放资源
+            UserEntity *apiUser = [result firstObject];
+            user.id = apiUser.id;
+            user.name = apiUser.name;
+            user.token = apiUser.token;
+            apiUser = nil;
+            
+            //清空密码
+            user.password = nil;
+            
+            //保存数据
+            [[StorageUtil sharedStorage] setUser:user];
+            
+            //刷新菜单
+            [self refreshMenu];
+            
+            HomeViewController *viewController = [[HomeViewController alloc] init];
+            [self pushViewController:viewController animated:YES];
+        }];
         
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

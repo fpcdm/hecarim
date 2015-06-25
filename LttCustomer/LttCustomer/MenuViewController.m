@@ -143,7 +143,6 @@
             
             [self.frostedViewController hideMenuViewController];
         } failure:^(id object){
-            
         }];
     } else {
         //切换viewController
@@ -151,10 +150,7 @@
         [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
         
         [self.frostedViewController hideMenuViewController];
-        
     }
-    
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

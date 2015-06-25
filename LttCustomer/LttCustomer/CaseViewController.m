@@ -259,10 +259,14 @@
     
     NSLog(@"取消需求: %@", intentionEntity.id);
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler cancelIntention:intentionEntity success:^(NSArray *result){
-        //取消成功
-        [self.navigationController popViewControllerAnimated:YES];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            //取消成功
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -286,21 +290,22 @@
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
-        NSLog(@"修改状态成功");
-        [self hideLoading];
-        
-        intention.status = CASE_STATUS_PAYED;
-        [self intentionView];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            intention.status = CASE_STATUS_PAYED;
+            [self intentionView];
+        }];
     } failure:^(ErrorEntity *error){
-        NSLog(@"修改状态失败");
-        [self hideLoading];
-        
         [self showError:error.message];
     }];
 }
 
 - (void)actionComment:(int)value
 {
+    if (value < 1) {
+        [self showError:ERROR_COMMENT_REQUIRED];
+        return;
+    }
+    
     OrderEntity *orderModel = [[OrderEntity alloc] init];
     orderModel.no = order.no;
     
@@ -311,13 +316,12 @@
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
-        [self hideLoading];
-        
-        order.commentLevel = [NSNumber numberWithInt:value];
-        intention.status = CASE_STATUS_SUCCESS;
-        [self intentionView];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            order.commentLevel = [NSNumber numberWithInt:value];
+            intention.status = CASE_STATUS_SUCCESS;
+            [self intentionView];
+        }];
     } failure:^(ErrorEntity *error){
-        [self hideLoading];
         [self showError:error.message];
     }];
 }

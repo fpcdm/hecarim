@@ -76,17 +76,13 @@
         CaseViewController *viewController = [[CaseViewController alloc] init];
         viewController.caseId = intention.id;
         [viewController preload:^(id object){
-            [self hideLoading];
-            
-            [self pushViewController:viewController animated:YES];
+            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                [self pushViewController:viewController animated:YES];
+            }];
         } failure:^(ErrorEntity *error){
-            [self hideLoading];
-            
             [self showError:error.message];
         }];
     } failure:^(ErrorEntity *error){
-        [self hideLoading];
-        
         [self showError:error.message];
     }];
 }

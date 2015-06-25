@@ -48,7 +48,7 @@
     }];
     
     //按钮
-    UIButton *button = [AppUIUtil makeButton:@"提交评论" font:[UIFont boldSystemFontOfSize:SIZE_BUTTON_TEXT]];
+    UIButton *button = [AppUIUtil makeButton:@"提交评价" font:[UIFont boldSystemFontOfSize:SIZE_BUTTON_TEXT]];
     [button addTarget:self action:@selector(actionComment) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     

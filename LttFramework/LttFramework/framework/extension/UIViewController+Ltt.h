@@ -11,10 +11,14 @@
 @interface UIViewController (Ltt)
 
 - (void) showError: (NSString *) message;
+- (void) showMessage: (NSString *) message;
+- (void) showWarning: (NSString *) message;
 - (void) showSuccess: (NSString *) message;
+- (void) showSuccess: (NSString *) message callback:(void(^)()) callback;
+
 - (void) showLoading: (NSString *) message;
 - (void) loadingSuccess: (NSString *) message;
+- (void) loadingSuccess: (NSString *) message callback:(void(^)()) callback;
 - (void) hideLoading;
-- (void) showNotification: (NSString *) message;
 
 @end;
