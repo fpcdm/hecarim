@@ -10,7 +10,7 @@
 
 @interface AreaEntity : BaseEntity
 
-@property (retain, nonatomic) NSString *code;
+@property (retain, nonatomic) NSNumber *code;
 
 @property (retain, nonatomic) NSString *name;
 

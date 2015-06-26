@@ -13,4 +13,6 @@
 
 @property (retain, nonatomic) AddressEntity *address;
 
+@property (retain, nonatomic) NSNumber *isDefault;
+
 @end

@@ -70,7 +70,7 @@
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
-    NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"cases/:id" object:intention];
+    NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"cases/info/:id" object:intention];
     [sharedClient deleteObject:intention path:restPath param:nil success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){

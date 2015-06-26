@@ -11,6 +11,7 @@
 #import "AddressEntity.h"
 #import "AddressDetailViewController.h"
 #import "AddressFormViewController.h"
+#import "UserHandler.h"
 
 @interface AddressViewController () <AddressViewDelegate>
 
@@ -40,54 +41,40 @@
     barButtonItem.action = @selector(actionAdd);
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
-    [self loadData];
+    //加载数据
+    [self loadData:^(id object){
+        [addressView setData:@"addressList" value:addressList];
+        [addressView renderData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
-- (void) loadData
+- (void) loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //初始化数据
     addressList = [[NSMutableArray alloc] initWithObjects:nil];
     
-    AddressEntity *address = [[AddressEntity alloc] init];
-    address.id = @1;
-    address.isDefault = @YES;
-    address.name = @"吴勇";
-    address.mobile = @"18875001455";
-    address.provinceId = @1;
-    address.cityId = @2;
-    address.countyId = @3;
-    address.streetId = @4;
-    address.provinceName = @"重庆";
-    address.cityName = @"重庆市";
-    address.countyName = @"渝北区";
-    address.streetName = @"龙山街道";
-    address.address = @"龙山大道111号龙湖紫都星座B座1608";
-    [addressList addObject:address];
-    
-    AddressEntity *address2 = [[AddressEntity alloc] init];
-    address2.id = @2;
-    address2.isDefault = @NO;
-    address2.name = @"某某";
-    address2.mobile = @"13333333333";
-    address2.provinceId = @1;
-    address2.cityId = @2;
-    address2.countyId = @3;
-    address2.streetId = @4;
-    address2.provinceName = @"重庆";
-    address2.cityName = @"重庆市";
-    address2.countyName = @"渝北区";
-    address2.streetName = @"龙山街道";
-    address2.address = @"龙山大道111号龙湖紫都星座B座1608";
-    [addressList addObject:address2];
-    
-    [addressView setData:@"addressList" value:addressList];
-    [addressView renderData];
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler queryUserAddresses:nil success:^(NSArray *result){
+        for (AddressEntity *address in result) {
+            [addressList addObject:address];
+        }
+        success(nil);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
 }
 
 #pragma mark - Action
 - (void) actionAdd
 {
     AddressFormViewController *viewController = [[AddressFormViewController alloc] init];
+    
+    //是否默认
+    if (!addressList || [addressList count] < 1) {
+        viewController.isDefault = @1;
+    }
     
     //添加回调
     viewController.callbackBlock = ^(id object){

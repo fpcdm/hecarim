@@ -34,8 +34,8 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AreaEntity class] mappingParam:@{@"area_code": @"code", @"area_name": @"name"}];
     
-    NSDictionary *param = @{@"parent_code": area.code ? area.code : @0};
-    [sharedClient getObject:[AreaEntity new] path:@"area/children" param:param success:^(NSArray *result){
+    NSString *restPath = [sharedClient formatPath:@"area/children/:code" object:area];
+    [sharedClient getObject:[AreaEntity new] path:restPath param:nil success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);

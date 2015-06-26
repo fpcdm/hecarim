@@ -9,6 +9,7 @@
 #import "AddressDetailViewController.h"
 #import "AddressDetailView.h"
 #import "AddressFormViewController.h"
+#import "UserHandler.h"
 
 @interface AddressDetailViewController () <AddressDetailViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
 
@@ -53,12 +54,17 @@
         {
             if (buttonIndex == 1) return;
             
-            //回调父级
-            if (self.deleteBlock) {
-                self.deleteBlock(self.address);
-            }
-            
-            [self.navigationController popViewControllerAnimated:YES];
+            UserHandler *userHandler = [[UserHandler alloc] init];
+            [userHandler deleteAddress:[address copy] success:^(NSArray *result){
+                //回调父级
+                if (self.deleteBlock) {
+                    self.deleteBlock(self.address);
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
         }
             break;
         default:
@@ -70,8 +76,6 @@
 //删除地址
 - (void) actionDelete
 {
-    //@todo: 删除地址
-    
     UIActionSheet *sheet = [UIActionSheet alloc];
     
     sheet = [sheet initWithTitle:@"确定删除吗" delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
@@ -83,15 +87,21 @@
 //设为默认地址
 - (void) actionDefault
 {
-    //@todo: 设置默认
+    AddressEntity *requestAddress = [address copy];
+    requestAddress.isDefault = @1;
     
-    //回调父级
-    self.address.isDefault = @1;
-    if (self.defaultBlock) {
-        self.defaultBlock(self.address);
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler editAddress:requestAddress success:^(NSArray *result){
+        //回调父级
+        self.address.isDefault = @1;
+        if (self.defaultBlock) {
+            self.defaultBlock(self.address);
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 //编辑页面

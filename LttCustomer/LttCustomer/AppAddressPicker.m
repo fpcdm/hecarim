@@ -7,88 +7,109 @@
 //
 
 #import "AppAddressPicker.h"
+#import "HelperHandler.h"
 
 @implementation AppAddressPicker
-
+{
+    HelperHandler *helperHandler;
+    AreaEntity *requestArea;
+}
 
 - (id)init
 {
     if (self = [super init]) {
-        //@todo: 初始化数据，动态获取
         
-        _provinces = @[
-                       @{
-                           @"state": @"四川",
-                           @"cities": @[
-                                   @{
-                                       @"city": @"资阳",
-                                       @"areas": @[
-                                               @"小院",
-                                               @"东峰",
-                                               ],
-                                       },
-                                   @{
-                                       @"city": @"成都",
-                                       @"areas": @[
-                                               @"地区1",
-                                               @"地区2",
-                                               ],
-                                       }
-                                   ],
-                           },
-                       @{
-                           @"state": @"重庆",
-                           @"cities": @[
-                                   @{
-                                       @"city": @"重庆",
-                                       @"areas": @[
-                                               @"渝北",
-                                               @"北部新区",
-                                               ],
-                                       },
-                                   @{
-                                       @"city": @"璧山",
-                                       @"areas": @[
-                                               @"地区1",
-                                               @"地区2",
-                                               ],
-                                       }
-                                   ],
-                           },
-                       ];
-        _cities = [[_provinces objectAtIndex:0] objectForKey:@"cities"];
-        _areas = [[_cities objectAtIndex:0] objectForKey:@"areas"];
+        _provinces = @[];
+        _cities = @[];
+        _areas = @[];
         
-        self.selectedProvince=[[_provinces objectAtIndex:0] objectForKey:@"state"];
-        if ([_cities count]>0) {
-            self.selectedCity=[[_cities objectAtIndex:0] objectForKey:@"city"];
-        }
-        if ([_areas count]>0) {
-            self.selectedAreas=[_areas objectAtIndex:0];
-        }
-
+        _address = [[AddressEntity alloc] init];
+        helperHandler = [[HelperHandler alloc] init];
+        
     }
     return self;
 }
-/////////////////////////////////////////////////////////////////////////
+
+- (void)loadData:(void (^)()) callback
+{
+    //查询省列表
+    requestArea = [[AreaEntity alloc] init];
+    requestArea.code = @0;
+    
+    [helperHandler queryAreas:requestArea success:^(NSArray *result){
+        _provinces = result;
+        
+        NSLog(@"省列表：");
+        for (AreaEntity *area in _provinces) {
+            NSLog(@"%@", [area toDictionary]);
+        }
+        
+        [self loadCities:[_provinces objectAtIndex:0] callback:callback];
+    } failure:^(ErrorEntity *error){
+    }];
+}
+
+- (void)loadCities:(AreaEntity *) province callback: (void (^)()) callback
+{
+    //获取选中省
+    requestArea = province;
+    _address.provinceId = requestArea.code;
+    _address.provinceName = requestArea.name;
+    
+    //查询市列表
+    [helperHandler queryAreas:requestArea success:^(NSArray *result){
+        _cities = result;
+        
+        NSLog(@"市列表：");
+        for (AreaEntity *area in _cities) {
+            NSLog(@"%@", [area toDictionary]);
+        }
+        
+        [self loadAreas:[_cities objectAtIndex:0] callback:callback];
+    } failure:^(ErrorEntity *error){
+    }];
+}
+
+- (void)loadAreas:(AreaEntity *) city callback: (void (^)()) callback
+{
+    //获取选中区
+    requestArea = city;
+    _address.cityId = requestArea.code;
+    _address.cityName = requestArea.name;
+    
+    //查询市列表
+    [helperHandler queryAreas:requestArea success:^(NSArray *result){
+        _areas = result;
+        
+        NSLog(@"县列表：");
+        for (AreaEntity *area in _areas) {
+            NSLog(@"%@", [area toDictionary]);
+        }
+        
+        //获取选中县
+        requestArea = [_areas objectAtIndex:0];
+        if (requestArea) {
+            _address.countyId = requestArea.code;
+            _address.countyName = requestArea.name;
+        }
+        
+        callback();
+    } failure:^(ErrorEntity *error){
+    }];
+}
+
 #pragma mark - ActionSheetCustomPickerDelegate Optional's
-/////////////////////////////////////////////////////////////////////////
 - (void)configurePickerView:(UIPickerView *)pickerView
 {
-    // Override default and hide selection indicator
     pickerView.showsSelectionIndicator = NO;
 }
 
 - (void)actionSheetPickerDidSucceed:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin
 {
-    //@todo: 操作
-    [self.delegate pickFinish:self.selectedProvince city:self.selectedCity area:self.selectedAreas];
+    [self.delegate pickFinish:_address];
 }
 
-/////////////////////////////////////////////////////////////////////////
 #pragma mark - UIPickerViewDataSource Implementation
-/////////////////////////////////////////////////////////////////////////
-
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 3;
@@ -105,38 +126,43 @@
     return 0;
 }
 
-/////////////////////////////////////////////////////////////////////////
 #pragma mark UIPickerViewDelegate Implementation
-/////////////////////////////////////////////////////////////////////////
-
-// returns width of column and height of row for each component.
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
-    
     return 100.0f;
 }
-/*- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
- {
- return
- }
- */
-// these methods return either a plain UIString, or a view (e.g UILabel) to display the row for the component.
-// for the view versions, we cache any hidden and thus unused views and pass them back for reuse.
-// If you return back a different object, the old one will be released. the view will be centered in the row rect
+
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+    AreaEntity *area = nil;
     switch (component) {
         case 0:
-            return [[_provinces objectAtIndex:row] objectForKey:@"state"];
-            break;
-        case 1:
-            return [[_cities objectAtIndex:row] objectForKey:@"city"];
-            break;
-        case 2:
-            if ([_areas count] > 0) {
-                return [_areas objectAtIndex:row];
+        {
+            if ([_provinces count] > 0) {
+                area = [_provinces objectAtIndex:row];
+                return area.name;
                 break;
             }
+        }
+            break;
+        case 1:
+        {
+            if ([_cities count] > 0) {
+                area = [_cities objectAtIndex:row];
+                return area.name;
+                break;
+            }
+        }
+            break;
+        case 2:
+        {
+            if ([_areas count] > 0) {
+                area = [_areas objectAtIndex:row];
+                return area.name;
+                break;
+            }
+        }
+            break;
         default:
             return  @"";
             break;
@@ -144,48 +170,43 @@
     return nil;
 }
 
-/////////////////////////////////////////////////////////////////////////
-
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"Row %i selected in component %i", row, component);
     switch (component) {
         case 0:
-            _cities = [[_provinces objectAtIndex:row] objectForKey:@"cities"];
-            [pickerView selectRow:0 inComponent:1 animated:YES];
-            [pickerView reloadComponent:1];
-            
-            self.selectedProvince=[[_provinces objectAtIndex:row] objectForKey:@"state"];
-            _areas = [[_cities objectAtIndex:0] objectForKey:@"areas"];
-            [pickerView selectRow:0 inComponent:1 animated:YES];
-            [pickerView reloadComponent:2];
-            if ([_cities count]>0) {
-                self.selectedCity=[[_cities objectAtIndex:0] objectForKey:@"city"];
-            }
-            if ([_areas count]>0) {
-                self.selectedAreas=[_areas objectAtIndex:0];
-            }
-
+        {
+            //获取选中省
+            requestArea = [_provinces objectAtIndex:row];
+            [self loadCities:requestArea callback:^{
+                [pickerView selectRow:0 inComponent:1 animated:YES];
+                [pickerView reloadComponent:1];
+                
+                [pickerView selectRow:0 inComponent:2 animated:YES];
+                [pickerView reloadComponent:2];
+            }];
+        }
             break;
         case 1:
-            _areas = [[_cities objectAtIndex:row] objectForKey:@"areas"];
-            self.selectedCity=[[_cities objectAtIndex:row] objectForKey:@"city"];
-            [pickerView  selectRow:0 inComponent:2 animated:YES];
-            [pickerView reloadComponent:2];
-            if ([_areas count]>0) {
-                 self.selectedAreas=[_areas objectAtIndex:0];
-            }
-           
+        {
+            //获取选中区
+            requestArea = [_cities objectAtIndex:row];
+            [self loadAreas:requestArea callback:^{
+                [pickerView  selectRow:0 inComponent:2 animated:YES];
+                [pickerView reloadComponent:2];
+            }];
+        }
             break;
         case 2:
-            self.selectedAreas=[_areas objectAtIndex:row];
+        {
+            //获取选中县
+            requestArea = [_areas objectAtIndex:row];
+            _address.countyId = requestArea.code;
+            _address.countyName = requestArea.name;
+        }
             break;
         default:
             break;
     }
 }
-
-
-
 
 @end

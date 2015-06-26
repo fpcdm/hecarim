@@ -26,19 +26,48 @@
 
 @synthesize sex;
 
-@synthesize sexAlias;
-
 @synthesize avatar;
+
+- (NSString *)sexAlias
+{
+    if (self.sex != nil) {
+        if ([@1 isEqualToNumber:self.sex]) {
+            return @"boy";
+        } else if ([@2 isEqualToNumber:self.sex]) {
+            return @"girl";
+        }
+    }
+    return @"";
+}
+
+- (void)setSexAlias:(NSString *)sexAlias
+{
+    if (sexAlias) {
+        if ([@"boy" isEqualToString:sexAlias]) {
+            
+        } else if ([@"girl" isEqualToString:sexAlias]) {
+            
+        }
+    }
+    if (!sexAlias || [sexAlias length] < 1) {
+        self.sex = @0;
+    } else if ([@"boy" isEqualToString:sexAlias]) {
+        self.sex = @1;
+    } else if ([@"girl" isEqualToString:sexAlias]) {
+        self.sex = @2;
+    }
+}
 
 - (NSString *)sexName
 {
-    if (self.sex == nil || [@0 isEqualToNumber:self.sex]) {
-        return @"";
-    } else if ([@1 isEqualToNumber:self.sex]) {
-        return @"男";
-    } else {
-        return @"女";
+    if (self.sex != nil) {
+        if ([@1 isEqualToNumber:self.sex]) {
+            return @"男";
+        } else if ([@2 isEqualToNumber:self.sex]) {
+            return @"女";
+        }
     }
+    return @"";
 }
 
 @end

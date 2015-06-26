@@ -88,6 +88,8 @@
             user.id = apiUser.id;
             user.name = apiUser.name;
             user.token = apiUser.token;
+            user.nickname = apiUser.nickname;
+            user.sexAlias = apiUser.sexAlias;
             apiUser = nil;
             
             //清空密码
