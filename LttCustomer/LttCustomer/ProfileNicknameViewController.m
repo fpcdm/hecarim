@@ -8,6 +8,7 @@
 
 #import "ProfileNicknameViewController.h"
 #import "ProfileNicknameView.h"
+#import "UserHandler.h"
 
 @interface ProfileNicknameViewController () <ProfileNicknameViewDelegate>
 
@@ -37,12 +38,33 @@
 #pragma mark - Action
 - (void)actionSave:(NSString *)nickname
 {
-    //执行回调
-    if (self.callbackBlock) {
-        self.callbackBlock(nickname);
+    if (!nickname || [nickname length] < 1) {
+        [self showError:@"请填写昵称"];
+        return;
     }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    UserEntity *requestUser = [[UserEntity alloc] init];
+    requestUser.nickname = nickname;
+    
+    UserEntity *currentUser = [[StorageUtil sharedStorage] getUser];
+    if (currentUser) {
+        requestUser.sex = currentUser.sex;
+        requestUser.id = currentUser.id;
+    }
+    
+    NSLog(@"用户数据：%@", [requestUser toDictionary]);
+    
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler editUser:requestUser success:^(NSArray *result){
+        //执行回调
+        if (self.callbackBlock) {
+            self.callbackBlock(nickname);
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 @end

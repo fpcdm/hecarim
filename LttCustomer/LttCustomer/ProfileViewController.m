@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "ProfileView.h"
 #import "ProfileNicknameViewController.h"
+#import "UserHandler.h"
 
 @interface ProfileViewController () <ProfileViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -49,12 +50,30 @@
         {
             if (buttonIndex == 2) return;
             
-            UserEntity *user = [[StorageUtil sharedStorage] getUser];
-            user.sex = [NSNumber numberWithInt:(buttonIndex == 0 ? 1 : 2)];
-            [[StorageUtil sharedStorage] setUser:user];
+            NSNumber *sex = [NSNumber numberWithInt:(buttonIndex == 0 ? 1 : 2)];
+            
+            UserEntity *requestUser = [[UserEntity alloc] init];
+            requestUser.sex = sex;
+            
+            UserEntity *currentUser = [[StorageUtil sharedStorage] getUser];
+            if (currentUser) {
+                requestUser.nickname = currentUser.nickname;
+                requestUser.id = currentUser.id;
+            }
+            
+            NSLog(@"用户数据：%@", [requestUser toDictionary]);
+            
+            UserHandler *userHandler = [[UserHandler alloc] init];
+            [userHandler editUser:requestUser success:^(NSArray *result){
+                UserEntity *user = [[StorageUtil sharedStorage] getUser];
+                user.sex = [NSNumber numberWithInt:(buttonIndex == 0 ? 1 : 2)];
+                [[StorageUtil sharedStorage] setUser:user];
                 
-            [profileView setData:@"user" value:user];
-            [profileView renderData];
+                [profileView setData:@"user" value:user];
+                [profileView renderData];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
         }
             break;
         //头像
