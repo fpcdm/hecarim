@@ -25,6 +25,9 @@
     
     //是否是首页导航栏(背景高亮)
     BOOL isIndexNavBar;
+    
+    //是否显示加载视图
+    BOOL showLoadingView;
 }
 
 //刷新菜单

@@ -151,6 +151,7 @@
 		2FED82601B1ED60900306A11 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED825F1B1ED60900306A11 /* CoreMedia.framework */; };
 		2FED82621B1ED61000306A11 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED82611B1ED61000306A11 /* CoreVideo.framework */; };
 		2FED82641B1ED62100306A11 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED82631B1ED62100306A11 /* libiconv.dylib */; };
+		2FF12BE61B3CEA0B00A81705 /* BaseLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BE51B3CEA0B00A81705 /* BaseLoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -552,6 +553,8 @@
 		2FED825F1B1ED60900306A11 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2FED82611B1ED61000306A11 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2FED82631B1ED62100306A11 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		2FF12BE41B3CEA0B00A81705 /* BaseLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoadingView.h; sourceTree = "<group>"; };
+		2FF12BE51B3CEA0B00A81705 /* BaseLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1063,6 +1066,8 @@
 				2F74CD721B1D5E2500797799 /* BaseEntity.m */,
 				2F74CD7A1B1D5EF300797799 /* BaseView.h */,
 				2F74CD7B1B1D5EF300797799 /* BaseView.m */,
+				2FF12BE41B3CEA0B00A81705 /* BaseLoadingView.h */,
+				2FF12BE51B3CEA0B00A81705 /* BaseLoadingView.m */,
 				2FBF3F6F1B281CB400C0DC54 /* BaseTableView.h */,
 				2FBF3F701B281CB400C0DC54 /* BaseTableView.m */,
 				2FCAF8801B202E4700F3B084 /* BaseViewController.h */,
@@ -1548,6 +1553,7 @@
 				2FED7D691B1EA21200306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2FED7DEF1B1EA71A00306A11 /* DDContextFilterLogFormatter.m in Sources */,
 				2F6D3EA71B312884007A4159 /* SWActionSheet.m in Sources */,
+				2FF12BE61B3CEA0B00A81705 /* BaseLoadingView.m in Sources */,
 				2F2F22AC1B3A577900428742 /* TSMessage.m in Sources */,
 				2F9000CC1B1D98790040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2F6D3EAB1B312884007A4159 /* MJRefreshFooter.m in Sources */,

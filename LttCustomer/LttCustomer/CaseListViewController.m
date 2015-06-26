@@ -22,7 +22,30 @@
     NSMutableArray *intentionList;
 }
 
-- (void)preload:(CallbackBlock)success failure:(CallbackBlock)failure
+- (void)loadView
+{
+    listView = [[CaseListView alloc] init];
+    listView.delegate = self;
+    self.view = listView;
+}
+
+- (void)viewDidLoad {
+    isIndexNavBar = YES;
+    isMenuEnabled = YES;
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"我的服务单";
+    
+    //加载数据
+    [self loadData:^(id object){
+        [listView setData:@"intentionList" value:intentionList];
+        [listView renderData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+- (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //初始化数据
     intentionList = [[NSMutableArray alloc] initWithObjects:nil];
@@ -45,24 +68,6 @@
     }];
 }
 
-- (void)loadView
-{
-    listView = [[CaseListView alloc] init];
-    listView.delegate = self;
-    self.view = listView;
-}
-
-- (void)viewDidLoad {
-    isIndexNavBar = YES;
-    isMenuEnabled = YES;
-    [super viewDidLoad];
-    
-    self.navigationItem.title = @"我的服务单";
-    
-    [listView setData:@"intentionList" value:intentionList];
-    [listView renderData];
-}
-
 #pragma mark - Action
 - (void)actionDetail:(CaseEntity *)intention
 {
@@ -71,9 +76,7 @@
     
     CaseViewController *viewController = [[CaseViewController alloc] init];
     viewController.caseId = intention.id;
-    [viewController preload:^(id object){
-        [self pushViewController:viewController animated:YES];
-    } failure:^(id object){}];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

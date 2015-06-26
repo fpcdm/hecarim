@@ -18,6 +18,7 @@
 #import "CaseHandler.h"
 #import "OrderHandler.h"
 #import "HomeViewController.h"
+#import "AppLoadingView.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
@@ -34,8 +35,74 @@
     TimerUtil *refreshUtil;
 }
 
-//预加载数据
-- (void)preload:(CallbackBlock)success failure:(CallbackBlock)failure
+- (void)loadView
+{
+    showLoadingView = YES;
+    [super loadView];
+}
+
+- (void)viewDidLoad {
+    hideBackButton = YES;
+    isIndexNavBar = YES;
+    isMenuEnabled = YES;
+    [super viewDidLoad];
+    
+    self.navigationItem.title = TIP_LOADING_MESSAGE;
+}
+
+//查询订单状态切换视图
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self loadData:^(id object){
+        //显示视图
+        intention = newIntention;
+        order = newOrder;
+        [self intentionView];
+        
+        //初始化定时器
+        if ([intention needRefresh]) {
+            refreshUtil = [TimerUtil repeatTimer:5.0 block:^{
+                [self loadData:^(id object){
+                    //状态发生改变
+                    if (![newIntention.status isEqualToString:intention.status]) {
+                        intention = newIntention;
+                        order = newOrder;
+                        
+                        //是否清除定时器
+                        if (![intention needRefresh]) {
+                            [refreshUtil invalidate];
+                            refreshUtil = nil;
+                        }
+                        
+                        //修改视图
+                        [self intentionView];
+                    }
+                } failure:^(id object){
+                }];
+            } queue:dispatch_get_main_queue()];
+        }
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+//关闭计时器
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    if (timerUtil) {
+        [timerUtil invalidate];
+    }
+    if (refreshUtil) {
+        [refreshUtil invalidate];
+    }
+}
+
+//加载需求数据
+- (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //查询需求
     NSLog(@"intentionId: %@", self.caseId);
@@ -52,7 +119,7 @@
         
         //是否需要查询订单
         if ([newIntention hasOrder]) {
-            [self preloadOrder:success failure:failure];
+            [self loadOrderData:success failure:failure];
         } else {
             success(nil);
         }
@@ -61,7 +128,8 @@
     }];
 }
 
-- (void)preloadOrder:(CallbackBlock)success failure:(CallbackBlock)failure
+//加载订单数据
+- (void)loadOrderData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //查询订单
     NSLog(@"orderNo: %@", newIntention.orderNo);
@@ -124,59 +192,7 @@
     }];
 }
 
-- (void)viewDidLoad {
-    hideBackButton = YES;
-    isIndexNavBar = YES;
-    isMenuEnabled = YES;
-    [super viewDidLoad];
-    
-    //修正闪烁
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
-    self.navigationItem.title = TIP_LOADING_MESSAGE;
-    
-    //显示视图
-    intention = newIntention;
-    order = newOrder;
-    [self intentionView];
-    
-    //初始化定时器
-    if ([intention needRefresh]) {
-        refreshUtil = [TimerUtil repeatTimer:5.0 block:^{
-            [self preload:^(id object){
-                //状态发生改变
-                if (![newIntention.status isEqualToString:intention.status]) {
-                    intention = newIntention;
-                    order = newOrder;
-                    
-                    //是否清除定时器
-                    if (![intention needRefresh]) {
-                        [refreshUtil invalidate];
-                        refreshUtil = nil;
-                    }
-                    
-                    //修改视图
-                    [self intentionView];
-                }
-            } failure:^(id object){
-            }];
-        } queue:dispatch_get_main_queue()];
-    }
-}
-
-//关闭计时器
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    if (timerUtil) {
-        [timerUtil invalidate];
-    }
-    if (refreshUtil) {
-        [refreshUtil invalidate];
-    }
-}
-
+//根据状态切换视图
 - (void)intentionView
 {
     if ([intention.status isEqualToString:CASE_STATUS_NEW]) {

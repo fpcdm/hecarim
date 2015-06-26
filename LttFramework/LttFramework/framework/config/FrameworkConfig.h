@@ -91,6 +91,7 @@
 #define ERROR_MESSAGE_NETWORK @"网络连接失败"
 #define ERROR_MESSAGE_API @"接口调用失败"
 #define ERROR_MESSAGE_JSON @"接口数据错误"
+#define MESSAGE_VIEW_LOADING @"加载中"
 /********<<<公用配置********/
 
 

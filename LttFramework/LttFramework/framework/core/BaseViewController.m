@@ -40,7 +40,7 @@
 }
 
 #pragma mark - Public Methods
-- (void) preload:(CallbackBlock)success failure:(CallbackBlock)failure
+- (void) loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     success(nil);
 }

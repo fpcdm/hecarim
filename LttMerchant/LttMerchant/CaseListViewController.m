@@ -23,7 +23,7 @@
     NSMutableArray *intentionList;
 }
 
-- (void)preload:(CallbackBlock)success failure:(CallbackBlock)failure
+- (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //初始化数据
     intentionList = [[NSMutableArray alloc] initWithObjects:nil];
@@ -58,8 +58,13 @@
     
     self.navigationItem.title = @"我的服务单";
     
-    [listView setData:@"intentionList" value:intentionList];
-    [listView renderData];
+    //加载数据
+    [self loadData:^(id object){
+        [listView setData:@"intentionList" value:intentionList];
+        [listView renderData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action

@@ -205,6 +205,8 @@
 		2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B41B1EDBFB00306A11 /* qrspec.c */; };
 		2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B61B1EDBFB00306A11 /* rscode.c */; };
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
+		2FF12BE31B3CE1F800A81705 /* AppLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BE21B3CE1F800A81705 /* AppLoadingView.m */; };
+		2FF12BE91B3CF35100A81705 /* BaseLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BE81B3CF35100A81705 /* BaseLoadingView.m */; };
 		2FF3E6A81B2FFB1B00B90045 /* AddressFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3E6A71B2FFB1B00B90045 /* AddressFormViewController.m */; };
 		2FF3E6AB1B2FFB3200B90045 /* AddressDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3E6AA1B2FFB3200B90045 /* AddressDetailViewController.m */; };
 		2FF8F72D1B2EAE6F00689C33 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */; };
@@ -694,6 +696,10 @@
 		2FED82B71B1EDBFB00306A11 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		2FED82B81B1EDBFB00306A11 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		2FED82B91B1EDBFB00306A11 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		2FF12BE11B3CE1F800A81705 /* AppLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLoadingView.h; sourceTree = "<group>"; };
+		2FF12BE21B3CE1F800A81705 /* AppLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoadingView.m; sourceTree = "<group>"; };
+		2FF12BE71B3CF35100A81705 /* BaseLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoadingView.h; sourceTree = "<group>"; };
+		2FF12BE81B3CF35100A81705 /* BaseLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoadingView.m; sourceTree = "<group>"; };
 		2FF39DAE1AEB7E6900077790 /* Config_product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
 		2FF39DAF1AEB7E8400077790 /* Config_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2FF3E6A61B2FFB1B00B90045 /* AddressFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressFormViewController.h; sourceTree = "<group>"; };
@@ -1095,6 +1101,8 @@
 		2F800AF51B1D50EE006189EF /* core */ = {
 			isa = PBXGroup;
 			children = (
+				2FF12BE71B3CF35100A81705 /* BaseLoadingView.h */,
+				2FF12BE81B3CF35100A81705 /* BaseLoadingView.m */,
 				2F74CD7D1B1D5F6D00797799 /* BaseView.h */,
 				2F74CD7E1B1D5F6D00797799 /* BaseView.m */,
 				2FBF3F6C1B281CA400C0DC54 /* BaseTableView.h */,
@@ -1485,6 +1493,8 @@
 				2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */,
 				2F6D3E191B312446007A4159 /* AppAddressPicker.h */,
 				2F6D3E1A1B312446007A4159 /* AppAddressPicker.m */,
+				2FF12BE11B3CE1F800A81705 /* AppLoadingView.h */,
+				2FF12BE21B3CE1F800A81705 /* AppLoadingView.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1939,6 +1949,7 @@
 				2FE462441B27E59300780AF5 /* AppView.m in Sources */,
 				2FC857501B341184007B9771 /* CaseNewView.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,
+				2FF12BE91B3CF35100A81705 /* BaseLoadingView.m in Sources */,
 				2F6D3E4F1B312765007A4159 /* MJRefreshComponent.m in Sources */,
 				2F9001121B1D9D550040D97B /* UIImage+REFrostedViewController.m in Sources */,
 				2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */,
@@ -1946,6 +1957,7 @@
 				2FBF3F6B1B281A9E00C0DC54 /* AppTableView.m in Sources */,
 				2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */,
 				2F6B0C281B395782000123BF /* AXRatingView.m in Sources */,
+				2FF12BE31B3CE1F800A81705 /* AppLoadingView.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,
@@ -2109,7 +2121,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f41685e2-4b47-4b9e-8dee-2dfb8240ce74";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2142,7 +2154,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f41685e2-4b47-4b9e-8dee-2dfb8240ce74";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

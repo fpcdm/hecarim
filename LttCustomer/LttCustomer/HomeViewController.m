@@ -164,12 +164,8 @@
         //跳转需求详情
         CaseViewController *viewController = [[CaseViewController alloc] init];
         viewController.caseId = intention.id;
-        [viewController preload:^(id object){
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-                [self pushViewController:viewController animated:YES];
-            }];
-        } failure:^(ErrorEntity *error){
-            [self showError:error.message];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self pushViewController:viewController animated:YES];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

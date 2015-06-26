@@ -134,23 +134,11 @@
     
     AppViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
     
-    //服务单
-    if ([viewController isMemberOfClass:[CaseListViewController class]]) {
-        [viewController preload:^(id object){
-            //切换viewController
-            UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
-            [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-            
-            [self.frostedViewController hideMenuViewController];
-        } failure:^(id object){
-        }];
-    } else {
-        //切换viewController
-        UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
-        [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-        
-        [self.frostedViewController hideMenuViewController];
-    }
+    //切换viewController
+    UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
+    [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    
+    [self.frostedViewController hideMenuViewController];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

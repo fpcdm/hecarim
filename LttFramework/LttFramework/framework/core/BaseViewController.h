@@ -20,6 +20,7 @@ typedef void (^CallbackBlock)(id object);
 
 - (BOOL) checkNetwork;
 
-- (void) preload: (CallbackBlock) success failure: (CallbackBlock) failure;
+//加载数据，完成后执行回调
+- (void) loadData: (CallbackBlock) success failure: (CallbackBlock) failure;
 
 @end
