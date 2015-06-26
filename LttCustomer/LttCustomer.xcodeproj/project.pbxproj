@@ -207,6 +207,8 @@
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
 		2FF12BE31B3CE1F800A81705 /* AppLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BE21B3CE1F800A81705 /* AppLoadingView.m */; };
 		2FF12BE91B3CF35100A81705 /* BaseLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BE81B3CF35100A81705 /* BaseLoadingView.m */; };
+		2FF12BEF1B3D058300A81705 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BEE1B3D058300A81705 /* HelperHandler.m */; };
+		2FF12BF21B3D23F300A81705 /* AreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12BF11B3D23F300A81705 /* AreaEntity.m */; };
 		2FF3E6A81B2FFB1B00B90045 /* AddressFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3E6A71B2FFB1B00B90045 /* AddressFormViewController.m */; };
 		2FF3E6AB1B2FFB3200B90045 /* AddressDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3E6AA1B2FFB3200B90045 /* AddressDetailViewController.m */; };
 		2FF8F72D1B2EAE6F00689C33 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8F72C1B2EAE6F00689C33 /* AppExtension.m */; };
@@ -700,6 +702,10 @@
 		2FF12BE21B3CE1F800A81705 /* AppLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoadingView.m; sourceTree = "<group>"; };
 		2FF12BE71B3CF35100A81705 /* BaseLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoadingView.h; sourceTree = "<group>"; };
 		2FF12BE81B3CF35100A81705 /* BaseLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoadingView.m; sourceTree = "<group>"; };
+		2FF12BED1B3D058300A81705 /* HelperHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperHandler.h; sourceTree = "<group>"; };
+		2FF12BEE1B3D058300A81705 /* HelperHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperHandler.m; sourceTree = "<group>"; };
+		2FF12BF01B3D23F300A81705 /* AreaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaEntity.h; sourceTree = "<group>"; };
+		2FF12BF11B3D23F300A81705 /* AreaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaEntity.m; sourceTree = "<group>"; };
 		2FF39DAE1AEB7E6900077790 /* Config_product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
 		2FF39DAF1AEB7E8400077790 /* Config_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2FF3E6A61B2FFB1B00B90045 /* AddressFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressFormViewController.h; sourceTree = "<group>"; };
@@ -911,6 +917,8 @@
 				2F089D7F1B2ED05C002A0EA5 /* AddressEntity.m */,
 				2F693E091B3BB61300CFB8F4 /* LocationEntity.h */,
 				2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */,
+				2FF12BF01B3D23F300A81705 /* AreaEntity.h */,
+				2FF12BF11B3D23F300A81705 /* AreaEntity.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -944,6 +952,8 @@
 				2F89A6381B0ECDA40043B236 /* CaseHandler.m */,
 				2F89A63A1B0ECDD80043B236 /* OrderHandler.h */,
 				2F89A63B1B0ECDD80043B236 /* OrderHandler.m */,
+				2FF12BED1B3D058300A81705 /* HelperHandler.h */,
+				2FF12BEE1B3D058300A81705 /* HelperHandler.m */,
 			);
 			name = Handler;
 			sourceTree = "<group>";
@@ -1889,6 +1899,7 @@
 				2F6D3E161B312164007A4159 /* ActionSheetStringPicker.m in Sources */,
 				2F06312C1B30023B00AA8A94 /* AddressFormView.m in Sources */,
 				2FED7D9D1B1EA2D300306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
+				2FF12BEF1B3D058300A81705 /* HelperHandler.m in Sources */,
 				2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2FED7D9C1B1EA2D300306A11 /* UIImage+MultiFormat.m in Sources */,
 				2FED7D951B1EA2D300306A11 /* SDWebImageDecoder.m in Sources */,
@@ -1915,6 +1926,7 @@
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2F089D801B2ED05C002A0EA5 /* AddressEntity.m in Sources */,
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
+				2FF12BF21B3D23F300A81705 /* AreaEntity.m in Sources */,
 				2F2F224E1B3A4D0300428742 /* TSMessage.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2F6D3E5C1B312765007A4159 /* MJRefreshConst.m in Sources */,

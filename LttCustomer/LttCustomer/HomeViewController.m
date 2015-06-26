@@ -13,7 +13,7 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UserHandler.h"
+#import "HelperHandler.h"
 
 @interface HomeViewController () <HomeViewDelegate, CLLocationManagerDelegate>
 
@@ -25,7 +25,7 @@
     NSDate *lastDate;
     
     HomeView *homeView;
-    UserHandler *userHandler;
+    HelperHandler *helperHandler;
 }
 
 - (void)loadView
@@ -93,8 +93,8 @@
     locationEntity.longitude = [NSNumber numberWithFloat:lastCoordinate.longitude];
     locationEntity.latitude = [NSNumber numberWithFloat:lastCoordinate.latitude];
     
-    if (!userHandler) userHandler = [[UserHandler alloc] init];
-    [userHandler queryLocation:locationEntity success:^(NSArray *result){
+    if (!helperHandler) helperHandler = [[HelperHandler alloc] init];
+    [helperHandler queryLocation:locationEntity success:^(NSArray *result){
         LocationEntity *location = [result firstObject];
         
         //获取位置

@@ -8,7 +8,7 @@
 
 #import "BaseHandler.h"
 #import "UserEntity.h"
-#import "LocationEntity.h"
+#import "AddressEntity.h"
 
 @interface UserHandler : BaseHandler
 
@@ -22,12 +22,68 @@
 - (void) loginWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
- *  查询用户位置
+ *  新增收货地址
  *
- *  @param param 参数
  *  @param success 成功回调
  *  @param failure 失败回调
  */
-- (void) queryLocation: (LocationEntity *) location success: (SuccessBlock) success failure: (FailedBlock) failure;
+- (void) addAddress: (AddressEntity *) address success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  编辑收货地址
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) editAddress: (AddressEntity *) address success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  收货地址详情
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryAddress: (AddressEntity *) address success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  删除收货地址
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) deleteAddress: (AddressEntity *) address success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  收货地址列表
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryUserAddresses: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  修改用户资料
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) editUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  用户提交反馈
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) addSuggestion: (NSString *) suggestion success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  修改登陆密码
+ *
+ *  @param password 新密码
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) changePassword: (UserEntity *) user password: (NSString *) password success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end

@@ -14,7 +14,7 @@
 {
     //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id", @"user_truename":@"name", @"user_token":@"token"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id", @"user_truename":@"name", @"user_token":@"token", @"user_nickname":@"nickname",@"sex": @"sexAlias"}];
     
     [sharedClient getObject:user path:@"user/passport" param:nil success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
@@ -27,20 +27,131 @@
     }];
 }
 
-- (void)queryLocation:(LocationEntity *)location success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void)addAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[LocationEntity class] mappingParam:@{@"address": @"address"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"isDefault": @"is_default", @"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id"}];
     
-    NSDictionary *param = @{@"lat":location.latitude, @"lon":location.longitude};
-    [sharedClient getObject:[LocationEntity new] path:@"location/address" param:param success:^(NSArray *result){
+    [sharedClient putObject:address path:@"member/address" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void)editAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"isDefault": @"is_default", @"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
+    
+    NSString *restPath = [sharedClient formatPath:@"member/address/:id" object:address];
+    [sharedClient postObject:address path:restPath param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void)deleteAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"member/address/:id" object:address];
+    [sharedClient deleteObject:address path:restPath param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void)queryAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"areaId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"}];
+    
+    NSString *restPath = [sharedClient formatPath:@"member/address/:id" object:address];
+    [sharedClient getObject:address path:restPath param:nil success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);
     } failure:^(ErrorEntity *error){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
+        failure(error);
+    }];
+}
+
+- (void) queryUserAddresses:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"areaId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"} keyPath:@"list"];
+    
+    NSString *restPath = @"member/addresses";
+    [sharedClient getObject:[AddressEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) editUser:(UserEntity *)user success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[UserEntity class] mappingParam:@{@"nickname": @"nickname", @"sexAlias": @"sex"}];
+    
+    NSString *restPath = [sharedClient formatPath:@"member/info/:id" object:user];
+    [sharedClient postObject:user path:restPath param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) changePassword:(UserEntity *)user password:(NSString *)password success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{@"newpass":(password ? password : @""), @"password":(user.password ? user.password : @""), @"type":@"modify"};
+    
+    NSString *restPath = [sharedClient formatPath:@"user/passport/:id" object:user];
+    [sharedClient postObject:[UserEntity new] path:restPath param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void)addSuggestion:(NSString *)suggestion success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{@"contents":(suggestion ? suggestion : @"")};
+    
+    [sharedClient putObject:[UserEntity new] path:@"member/suggestion" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
         failure(error);
     }];
     

@@ -26,6 +26,10 @@
 
 @property (nonatomic, retain) NSNumber *sex;
 
+@property (nonatomic, retain) NSString *sexAlias;
+
 @property (nonatomic, retain) NSString *avatar;
+
+- (NSString *) sexName;
 
 @end

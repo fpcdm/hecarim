@@ -19,6 +19,4 @@
 
 - (UIImage *) avatarImage;
 
-- (NSString *) sexName;
-
 @end
