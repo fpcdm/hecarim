@@ -27,9 +27,6 @@
     addressDetailView = [[AddressDetailView alloc] init];
     addressDetailView.delegate = self;
     self.view = addressDetailView;
-    
-    [addressDetailView setData:@"address" value:self.address];
-    [addressDetailView renderData];
 }
 
 - (void)viewDidLoad {
@@ -42,6 +39,21 @@
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionEdit);
     self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+    //加载地址数据
+    AddressEntity *requestAddress = [[AddressEntity alloc] init];
+    requestAddress.id = self.address.id;
+    
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler queryAddress:requestAddress success:^(NSArray *result){
+        AddressEntity *resultAddress = [result firstObject];
+        self.address = resultAddress;
+        
+        [addressDetailView setData:@"address" value:self.address];
+        [addressDetailView renderData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Sheet

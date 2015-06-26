@@ -80,7 +80,7 @@
 - (void)queryAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"areaId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"countyId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"}];
     
     NSString *restPath = [sharedClient formatPath:@"member/address/:id" object:address];
     [sharedClient getObject:address path:restPath param:nil success:^(NSArray *result){
@@ -97,7 +97,7 @@
 - (void) queryUserAddresses:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"areaId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"} keyPath:@"list"];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"countyId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"} keyPath:@"list"];
     
     NSString *restPath = @"member/addresses";
     [sharedClient getObject:[AddressEntity new] path:restPath param:param success:^(NSArray *result){
