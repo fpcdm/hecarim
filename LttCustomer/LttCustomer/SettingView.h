@@ -12,6 +12,8 @@
 
 - (void)actionClear;
 
+- (void)actionAbout;
+
 @end
 
 @interface SettingView : AppTableView

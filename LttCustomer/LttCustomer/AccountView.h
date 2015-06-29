@@ -22,6 +22,8 @@
 
 - (void)actionAddress;
 
+- (void)actionSuggestion;
+
 @end
 
 @interface AccountView : AppTableView

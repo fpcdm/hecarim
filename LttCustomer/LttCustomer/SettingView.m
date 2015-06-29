@@ -24,7 +24,7 @@
                         @{@"id" : @"clear", @"type" : @"normal", @"action": @"actionClear", @"image": @"", @"text" : @"清除本地缓存", @"style":@"value1", @"detail" : @"0.0M"},
                         ],
                       @[
-                        @{@"id" : @"about", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"关于手机两条腿"},
+                        @{@"id" : @"about", @"type" : @"action", @"action": @"actionAbout", @"image": @"", @"text" : @"关于手机两条腿"},
                         ],
                       nil];
     
@@ -41,6 +41,11 @@
 - (void)actionClear
 {
     [self.delegate actionClear];
+}
+
+- (void)actionAbout
+{
+    [self.delegate actionAbout];
 }
 
 @end

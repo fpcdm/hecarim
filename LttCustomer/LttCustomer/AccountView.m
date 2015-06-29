@@ -33,7 +33,7 @@
                         @{@"id" : @"safety", @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全"},
                         ],
                       @[
-                        @{@"id" : @"feedback", @"type" : @"action", @"action": @"", @"image": @"", @"text" : @"意见反馈"},
+                        @{@"id" : @"feedback", @"type" : @"action", @"action": @"actionSuggestion", @"image": @"", @"text" : @"意见反馈"},
                         @{@"id" : @"contact", @"type" : @"custom", @"action": @"actionContact:", @"image": @"", @"text" : @"客服电话", @"style": @"value1", @"detail": LTT_CUSTOMER_SERVICE},
                         ],
                       nil];
@@ -127,6 +127,11 @@
 - (void)actionAddress
 {
     [self.delegate actionAddress];
+}
+
+- (void)actionSuggestion
+{
+    [self.delegate actionSuggestion];
 }
 
 @end

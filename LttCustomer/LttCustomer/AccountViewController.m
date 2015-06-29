@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "SafetyViewController.h"
 #import "AddressViewController.h"
+#import "SuggestionViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -99,6 +100,12 @@
 - (void)actionAddress
 {
     AddressViewController *viewController = [[AddressViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionSuggestion
+{
+    SuggestionViewController *viewController = [[SuggestionViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

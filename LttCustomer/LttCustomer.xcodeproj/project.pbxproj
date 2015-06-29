@@ -109,6 +109,10 @@
 		2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF81B1D50EE006189EF /* NSString+trim.m */; };
 		2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */; };
 		2F800B011B1D50EE006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFB1B1D50EE006189EF /* README.md */; };
+		2F818C0A1B40ED2E00AB3EFD /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C091B40ED2E00AB3EFD /* SuggestionView.m */; };
+		2F818C0D1B40F07B00AB3EFD /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C0C1B40F07B00AB3EFD /* SuggestionViewController.m */; };
+		2F818C101B411D6900AB3EFD /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C0F1B411D6900AB3EFD /* AboutView.m */; };
+		2F818C131B411E5D00AB3EFD /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C121B411E5D00AB3EFD /* AboutViewController.m */; };
 		2F89A6361B0EC8E80043B236 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A6351B0EC8E80043B236 /* GoodsHandler.m */; };
 		2F89A6391B0ECDA40043B236 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A6381B0ECDA40043B236 /* CaseHandler.m */; };
 		2F89A63C1B0ECDD80043B236 /* OrderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A63B1B0ECDD80043B236 /* OrderHandler.m */; };
@@ -402,6 +406,14 @@
 		2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800AFB1B1D50EE006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2F800B161B1D5C56006189EF /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		2F818C081B40ED2000AB3EFD /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
+		2F818C091B40ED2E00AB3EFD /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
+		2F818C0B1B40F07B00AB3EFD /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
+		2F818C0C1B40F07B00AB3EFD /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
+		2F818C0E1B411D6900AB3EFD /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
+		2F818C0F1B411D6900AB3EFD /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
+		2F818C111B411E5D00AB3EFD /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		2F818C121B411E5D00AB3EFD /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		2F89A6341B0EC8E80043B236 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
 		2F89A6351B0EC8E80043B236 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
 		2F89A6371B0ECDA40043B236 /* CaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseHandler.h; sourceTree = "<group>"; };
@@ -807,10 +819,14 @@
 				2FE462401B27E4F700780AF5 /* AccountView.m */,
 				2F39E30E1B2983F10064CA28 /* SettingView.h */,
 				2F39E30F1B2983F10064CA28 /* SettingView.m */,
+				2F818C0E1B411D6900AB3EFD /* AboutView.h */,
+				2F818C0F1B411D6900AB3EFD /* AboutView.m */,
 				2F39E3111B2990420064CA28 /* ProfileView.h */,
 				2F39E3121B29904C0064CA28 /* ProfileView.m */,
 				2F473DE41B32562100938BD6 /* ProfileNicknameView.h */,
 				2F473DE51B32562100938BD6 /* ProfileNicknameView.m */,
+				2F818C081B40ED2000AB3EFD /* SuggestionView.h */,
+				2F818C091B40ED2E00AB3EFD /* SuggestionView.m */,
 				2F089D751B2EC999002A0EA5 /* SafetyView.h */,
 				2F089D761B2EC999002A0EA5 /* SafetyView.m */,
 				2F473DEA1B3277D800938BD6 /* SafetyPasswordView.h */,
@@ -1292,6 +1308,8 @@
 				2F9BD1A31B26E19E00632751 /* AccountViewController.m */,
 				2F39E3091B2983300064CA28 /* SettingViewController.h */,
 				2F39E30A1B2983300064CA28 /* SettingViewController.m */,
+				2F818C111B411E5D00AB3EFD /* AboutViewController.h */,
+				2F818C121B411E5D00AB3EFD /* AboutViewController.m */,
 				2F39E3141B29905B0064CA28 /* ProfileViewController.h */,
 				2F39E3151B2990650064CA28 /* ProfileViewController.m */,
 				2F473DE11B3255E500938BD6 /* ProfileNicknameViewController.h */,
@@ -1306,6 +1324,8 @@
 				2FF3E6AA1B2FFB3200B90045 /* AddressDetailViewController.m */,
 				2FF3E6A61B2FFB1B00B90045 /* AddressFormViewController.h */,
 				2FF3E6A71B2FFB1B00B90045 /* AddressFormViewController.m */,
+				2F818C0B1B40F07B00AB3EFD /* SuggestionViewController.h */,
+				2F818C0C1B40F07B00AB3EFD /* SuggestionViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -1868,6 +1888,7 @@
 				2FED7D931B1EA2D300306A11 /* SDImageCache.m in Sources */,
 				2F6D3E5F1B312765007A4159 /* UIView+MJExtension.m in Sources */,
 				2F06312F1B30025600AA8A94 /* AddressDetailView.m in Sources */,
+				2F818C101B411D6900AB3EFD /* AboutView.m in Sources */,
 				2F9001151B1D9D550040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2FED7E0F1B1EA79300306A11 /* DDLog.m in Sources */,
 				2F9001131B1D9D550040D97B /* UIView+REFrostedViewController.m in Sources */,
@@ -1908,6 +1929,7 @@
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
 				2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */,
+				2F818C0A1B40ED2E00AB3EFD /* SuggestionView.m in Sources */,
 				2FC8575B1B341A82007B9771 /* CaseListViewController.m in Sources */,
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
 				2F473DFE1B32BA8300938BD6 /* LttNavigationController.m in Sources */,
@@ -1967,6 +1989,7 @@
 				2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */,
 				2FED7D971B1EA2D300306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2FBF3F6B1B281A9E00C0DC54 /* AppTableView.m in Sources */,
+				2F818C131B411E5D00AB3EFD /* AboutViewController.m in Sources */,
 				2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */,
 				2F6B0C281B395782000123BF /* AXRatingView.m in Sources */,
 				2FF12BE31B3CE1F800A81705 /* AppLoadingView.m in Sources */,
@@ -1998,6 +2021,7 @@
 				2F6D3E5A1B312765007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2F90010E1B1D9D550040D97B /* Reachability.m in Sources */,
 				2FC857531B3411B5007B9771 /* CaseLockedView.m in Sources */,
+				2F818C0D1B40F07B00AB3EFD /* SuggestionViewController.m in Sources */,
 				2F089D7D1B2ECF23002A0EA5 /* AddressView.m in Sources */,
 				2F9001111B1D9D550040D97B /* REFrostedViewController.m in Sources */,
 				2F9001141B1D9D550040D97B /* UIViewController+REFrostedViewController.m in Sources */,

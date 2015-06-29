@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "SettingView.h"
+#import "AboutViewController.h"
 
 @interface SettingViewController () <SettingViewDelegate, UIActionSheetDelegate>
 
@@ -27,6 +28,7 @@
 
 - (void)viewDidLoad
 {
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"设置";
@@ -58,6 +60,12 @@
     
     sheet.tag = 1;
     [sheet showInView:self.view];
+}
+
+- (void)actionAbout
+{
+    AboutViewController *viewController = [[AboutViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end
