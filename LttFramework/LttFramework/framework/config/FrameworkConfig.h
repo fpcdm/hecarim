@@ -30,7 +30,9 @@
 #define LOG_LEVEL_DEF DDLogLevelAll
 
 //开发调试函数
+#if TARGET_IPHONE_SIMULATOR
 #define NSLog(...) DDLogVerbose(__VA_ARGS__);
+#endif
 
 //接口服务器根地址
 #define LTT_REST_SERVER @"http://api.web.dm/"

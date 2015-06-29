@@ -8,12 +8,11 @@
 
 #import "LttAppDelegate.h"
 #import "HomeViewController.h"
-#import "BPush.h"
 #import "AppUIUtil.h"
 #import "RestKitUtil.h"
 #import "LoginViewController.h"
 
-@interface LttAppDelegate () /*<BPushDelegate>*/
+@interface LttAppDelegate ()
 
 @end
 
@@ -47,8 +46,8 @@
     //初始化控制器
     [self initViewController];
     
-    //初始化百度推送
-    //[self initBPush:launchOptions];
+    //初始化推送
+    [self initPush:launchOptions];
     
     return YES;
 }
@@ -104,8 +103,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-/*
-- (void)initBPush:(NSDictionary *)launchOptions {
+- (void)initPush:(NSDictionary *)launchOptions {
     // iOS8 下需要使用新的 API
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         UIUserNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
@@ -117,17 +115,14 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
     }
     
-    // 在 App 启动时注册百度云推送服务，需要提供 Apikey
-    [BPush registerChannel:launchOptions apiKey:BAIDU_PUSH_APIKEY pushMode:BPushModeDevelopment isDebug:YES];
-    
-    // 设置 BPush 的回调
-    [BPush setDelegate:self];
+    //查询DEVICE_TOKEN
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"DEVICE_TOKEN"];
+    NSLog(@"deviceToken: %@", deviceToken);
     
     // App 是用户点击推送消息启动
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
         NSLog(@"从消息启动:%@",userInfo);
-        [BPush handleNotification:userInfo];
     }
 }
 
@@ -147,11 +142,14 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [BPush registerDeviceToken:deviceToken];
-    [BPush bindChannel];
-    
     // 打印到日志
     NSLog(@"Register use deviceToken : %@", deviceToken);
+    
+    //测试记录token
+    if (deviceToken) {
+        [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:@"DEVICE_TOKEN"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 // 当 DeviceToken 获取失败时，系统会回调此方法
@@ -162,17 +160,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    // App 收到推送的通知
-    [BPush handleNotification:userInfo];
-    
     NSLog(@"Received Remote Notification::\n%@", userInfo);
 }
-
-#pragma mark Push Delegate
-- (void)onMethod:(NSString*)method response:(NSDictionary*)data
-{
-    NSLog(@"Method: %@\n%@", method, data);
-}
-*/
 
 @end
