@@ -163,7 +163,7 @@ static RestKitUtil *sharedClient = nil;
         [dictParam setDictionary:[(BaseEntity*) object toDictionary]];
     }
     if (param) {
-        [dictParam setDictionary:param];
+        [dictParam addEntriesFromDictionary:param];
     }
     
     return dictParam;

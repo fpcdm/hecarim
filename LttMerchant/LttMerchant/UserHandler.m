@@ -16,7 +16,10 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id", @"user_truename":@"name", @"user_token":@"token"}];
     
-    [sharedClient getObject:user path:@"user/passport" param:nil success:^(NSArray *result){
+    //映射device_id和device_type
+    NSDictionary *param = @{@"device_id":user.deviceId, @"device_type":user.deviceType};
+    
+    [sharedClient getObject:user path:@"user/passport" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);

@@ -28,6 +28,10 @@
 
 @synthesize avatar;
 
+@synthesize deviceId;
+
+@synthesize deviceType;
+
 - (NSString *)sexAlias
 {
     if (self.sex != nil) {

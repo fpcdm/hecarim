@@ -12,6 +12,7 @@
 #import "HomeViewController.h"
 #import "ValidateUtil.h"
 #import "UserHandler.h"
+#import "AppExtension.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -62,6 +63,8 @@
 - (void)actionLogin:(UserEntity *)user
 {
     user.type = USER_TYPE_MEMBER;
+    user.deviceType = @"ios";
+    user.deviceId = [[[StorageUtil sharedStorage] storage] objectForKey:@"DEVICE_ID"];
     
     //参数检查
     if (![ValidateUtil isRequired:user.mobile]) {

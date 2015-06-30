@@ -30,6 +30,10 @@
 
 @property (nonatomic, retain) NSString *avatar;
 
+@property (nonatomic, retain) NSString *deviceId;
+
+@property (nonatomic, retain) NSString *deviceType;
+
 - (NSString *) sexName;
 
 @end
