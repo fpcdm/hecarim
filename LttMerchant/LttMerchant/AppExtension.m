@@ -16,15 +16,4 @@
 //UserEntity分类
 @implementation UserEntity (App)
 
-- (NSString *)sexName
-{
-    if (self.sex == nil || [@0 isEqualToNumber:self.sex]) {
-        return @"";
-    } else if ([@1 isEqualToNumber:self.sex]) {
-        return @"男";
-    } else {
-        return @"女";
-    }
-}
-
 @end

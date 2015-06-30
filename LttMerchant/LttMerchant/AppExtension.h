@@ -17,6 +17,4 @@
 //UserEntity分类
 @interface UserEntity (App)
 
-- (NSString *) sexName;
-
 @end
