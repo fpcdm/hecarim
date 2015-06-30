@@ -138,6 +138,7 @@
 		2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FD1B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		2F967D0D1B423B1A00CD365B /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F967D0C1B423B1A00CD365B /* DeviceEntity.m */; };
 		2F9BD1A41B26E19E00632751 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A31B26E19E00632751 /* AccountViewController.m */; };
 		2F9BD1A71B26E31700632751 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A61B26E31700632751 /* LoginViewController.m */; };
 		2FBF3F6B1B281A9E00C0DC54 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6A1B281A9E00C0DC54 /* AppTableView.m */; };
@@ -160,7 +161,6 @@
 		2FCAF6C01B1FF00900F3B084 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED7DCC1B1EA31D00306A11 /* ImageIO.framework */; };
 		2FCAF6C21B1FF01400F3B084 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6C11B1FF01400F3B084 /* Accelerate.framework */; };
 		2FCAF6C41B1FF02100F3B084 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6C31B1FF02100F3B084 /* CoreGraphics.framework */; };
-		2FCAF6C61B1FF06A00F3B084 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6C51B1FF06A00F3B084 /* libBPush.a */; };
 		2FCAF7331B1FF07B00F3B084 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7321B1FF07B00F3B084 /* libRestKit.a */; };
 		2FCAF8351B20115700F3B084 /* RestKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF82E1B20115700F3B084 /* RestKitUtil.m */; };
 		2FCAF8361B20115700F3B084 /* StorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8301B20115700F3B084 /* StorageUtil.m */; };
@@ -405,7 +405,6 @@
 		2F800AF91B1D50EE006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800AFB1B1D50EE006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2F800B161B1D5C56006189EF /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
 		2F818C081B40ED2000AB3EFD /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
 		2F818C091B40ED2E00AB3EFD /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
 		2F818C0B1B40F07B00AB3EFD /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
@@ -470,6 +469,8 @@
 		2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001001B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		2F967D0B1B423B1A00CD365B /* DeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEntity.h; sourceTree = "<group>"; };
+		2F967D0C1B423B1A00CD365B /* DeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEntity.m; sourceTree = "<group>"; };
 		2F9BD1A21B26E19E00632751 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		2F9BD1A31B26E19E00632751 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		2F9BD1A51B26E31700632751 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -498,7 +499,6 @@
 		2FCAF6BE1B1FF00200F3B084 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2FCAF6C11B1FF01400F3B084 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2FCAF6C31B1FF02100F3B084 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2FCAF6C51B1FF06A00F3B084 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
 		2FCAF6CA1B1FF07B00F3B084 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2FCAF6CB1B1FF07B00F3B084 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		2FCAF6CC1B1FF07B00F3B084 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
@@ -735,7 +735,6 @@
 			files = (
 				2FCAF6C41B1FF02100F3B084 /* CoreGraphics.framework in Frameworks */,
 				2FCAF6C21B1FF01400F3B084 /* Accelerate.framework in Frameworks */,
-				2FCAF6C61B1FF06A00F3B084 /* libBPush.a in Frameworks */,
 				2FCAF6C01B1FF00900F3B084 /* ImageIO.framework in Frameworks */,
 				2FCAF6BF1B1FF00200F3B084 /* AVFoundation.framework in Frameworks */,
 				2FCAF6BD1B1FEFFB00F3B084 /* CoreMedia.framework in Frameworks */,
@@ -935,6 +934,8 @@
 				2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */,
 				2FF12BF01B3D23F300A81705 /* AreaEntity.h */,
 				2FF12BF11B3D23F300A81705 /* AreaEntity.m */,
+				2F967D0B1B423B1A00CD365B /* DeviceEntity.h */,
+				2F967D0C1B423B1A00CD365B /* DeviceEntity.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -1192,18 +1193,8 @@
 				2F9000F91B1D9D550040D97B /* TPKeyboardAvoiding */,
 				2F9000171B1D8B930040D97B /* Masonry */,
 				2F90002F1B1D8B930040D97B /* MBProgressHUD */,
-				2F800B151B1D5C56006189EF /* BPush */,
 			);
 			path = vender;
-			sourceTree = "<group>";
-		};
-		2F800B151B1D5C56006189EF /* BPush */ = {
-			isa = PBXGroup;
-			children = (
-				2FCAF6C51B1FF06A00F3B084 /* libBPush.a */,
-				2F800B161B1D5C56006189EF /* BPush.h */,
-			);
-			path = BPush;
 			sourceTree = "<group>";
 		};
 		2F9000171B1D8B930040D97B /* Masonry */ = {
@@ -2001,6 +1992,7 @@
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F2F224D1B3A4D0300428742 /* TSBlurView.m in Sources */,
+				2F967D0D1B423B1A00CD365B /* DeviceEntity.m in Sources */,
 				2FED82BE1B1EDBFB00306A11 /* qrinput.c in Sources */,
 				2F89A6391B0ECDA40043B236 /* CaseHandler.m in Sources */,
 				2F54CB3A1AFB3E0C00295A8D /* OrderEntity.m in Sources */,

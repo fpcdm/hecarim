@@ -27,4 +27,24 @@
     }];
 }
 
+- (void)addDevice:(DeviceEntity *)device success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[DeviceEntity class] mappingParam:@{@"app": @"app", @"token": @"device_token", @"type": @"device_type"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[DeviceEntity class] mappingParam:@{@"device_id": @"id"}];
+    
+    [sharedClient putObject:device path:@"base/device" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 @end

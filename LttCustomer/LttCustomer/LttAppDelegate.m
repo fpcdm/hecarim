@@ -11,6 +11,8 @@
 #import "AppUIUtil.h"
 #import "RestKitUtil.h"
 #import "LoginViewController.h"
+#import "DeviceEntity.h"
+#import "UserHandler.h"
 
 @interface LttAppDelegate ()
 
@@ -115,10 +117,6 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
     }
     
-    //查询DEVICE_TOKEN
-    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"DEVICE_TOKEN"];
-    NSLog(@"deviceToken: %@", deviceToken);
-    
     // App 是用户点击推送消息启动
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
@@ -142,13 +140,32 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    // 打印到日志
-    NSLog(@"Register use deviceToken : %@", deviceToken);
+    NSString *deviceTokenStr = [NSString stringWithFormat:@"%@", deviceToken];
+    deviceTokenStr = [deviceTokenStr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    //测试记录token
-    if (deviceToken) {
-        [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:@"DEVICE_TOKEN"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    // 打印到日志
+    NSLog(@"Register use deviceToken : %@", deviceTokenStr);
+    
+    // 记录设备token
+    if (deviceTokenStr && [deviceTokenStr length] > 0) {
+        //新增设备接口
+        DeviceEntity *device = [[DeviceEntity alloc] init];
+        device.app = USER_TYPE_MEMBER;
+        device.token = deviceTokenStr;
+        device.type = @"ios";
+        
+        NSLog(@"注册device: %@", [device toDictionary]);
+        
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler addDevice:device success:^(NSArray *result){
+            DeviceEntity *resultDevice = [result firstObject];
+            
+            NSLog(@"注册device成功：%@", resultDevice.id);
+        } failure:^(ErrorEntity *error){
+            NSLog(@"注册device失败：%@", error.message);
+            
+        }];
     }
 }
 

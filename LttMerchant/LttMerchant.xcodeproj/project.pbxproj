@@ -133,7 +133,7 @@
 		2F90015F1B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001461B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001611B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
-		2FCAF7351B1FF19900F3B084 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7341B1FF19900F3B084 /* libBPush.a */; };
+		2F967D201B4276FA00CD365B /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F967D1F1B4276FA00CD365B /* DeviceEntity.m */; };
 		2FCAF7A41B1FF1B000F3B084 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A31B1FF1B000F3B084 /* libRestKit.a */; };
 		2FCAF7A61B1FF25D00F3B084 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A51B1FF25D00F3B084 /* QuartzCore.framework */; };
 		2FCAF7A81B1FF26900F3B084 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A71B1FF26900F3B084 /* CoreGraphics.framework */; };
@@ -362,7 +362,6 @@
 		2F800B081B1D529F006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800B091B1D529F006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800B0A1B1D529F006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2F800B1A1B1D5CA2006189EF /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
 		2F89A6401B0ED6CB0043B236 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F89A6411B0ED6CB0043B236 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		2F89A6421B0ED6CB0043B236 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
@@ -421,7 +420,8 @@
 		2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001491B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		2FCAF7341B1FF19900F3B084 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		2F967D1E1B4276FA00CD365B /* DeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEntity.h; sourceTree = "<group>"; };
+		2F967D1F1B4276FA00CD365B /* DeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEntity.m; sourceTree = "<group>"; };
 		2FCAF73B1B1FF1AF00F3B084 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2FCAF73C1B1FF1AF00F3B084 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		2FCAF73D1B1FF1AF00F3B084 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
@@ -671,7 +671,6 @@
 				2F52D0F21AEF74EA0003D7C2 /* CoreLocation.framework in Frameworks */,
 				2FCAF7A41B1FF1B000F3B084 /* libRestKit.a in Frameworks */,
 				2F7A56EA1B09D51A00D12500 /* libz.dylib in Frameworks */,
-				2FCAF7351B1FF19900F3B084 /* libBPush.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +813,8 @@
 				2F7074541AFC4F8100A1242A /* GoodsEntity.m */,
 				2F5BECE81AFDF7DF00F828DB /* specEntity.h */,
 				2F5BECE91AFDF7DF00F828DB /* specEntity.m */,
+				2F967D1E1B4276FA00CD365B /* DeviceEntity.h */,
+				2F967D1F1B4276FA00CD365B /* DeviceEntity.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -1065,18 +1066,8 @@
 				2F9001421B1D9D680040D97B /* TPKeyboardAvoiding */,
 				2F9000551B1D91470040D97B /* Masonry */,
 				2F90006D1B1D91470040D97B /* MBProgressHUD */,
-				2F800B191B1D5CA2006189EF /* BPush */,
 			);
 			path = vender;
-			sourceTree = "<group>";
-		};
-		2F800B191B1D5CA2006189EF /* BPush */ = {
-			isa = PBXGroup;
-			children = (
-				2FCAF7341B1FF19900F3B084 /* libBPush.a */,
-				2F800B1A1B1D5CA2006189EF /* BPush.h */,
-			);
-			path = BPush;
 			sourceTree = "<group>";
 		};
 		2F9000551B1D91470040D97B /* Masonry */ = {
@@ -1790,6 +1781,7 @@
 				2F6D3F0D1B3128CC007A4159 /* MJRefreshBackStateFooter.m in Sources */,
 				2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */,
 				2FED7DC81B1EA2E100306A11 /* UIImage+MultiFormat.m in Sources */,
+				2F967D201B4276FA00CD365B /* DeviceEntity.m in Sources */,
 				2F6D3F141B3128CC007A4159 /* UIScrollView+MJRefresh.m in Sources */,
 				2FED7DC31B1EA2E100306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2F6D3EFC1B3128CC007A4159 /* ActionSheetCustomPicker.m in Sources */,

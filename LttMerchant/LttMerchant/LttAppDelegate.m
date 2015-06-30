@@ -15,10 +15,10 @@
 #import "IntentionEntity.h"
 #import "TimerUtil.h"
 #import "NotificationUtil.h"
-#import "BPush.h"
 #import "IntentionHandler.h"
+#import "UserHandler.h"
 
-@interface LttAppDelegate () <BPushDelegate>
+@interface LttAppDelegate ()
 
 @end
 
@@ -109,29 +109,8 @@
     //    [self scheduledJob];
     //}];
     
-    // iOS8 下需要使用新的 API
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        UIUserNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    }else {
-        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
-    }
-    
-    // 在 App 启动时注册百度云推送服务，需要提供 Apikey
-    [BPush registerChannel:launchOptions apiKey:BAIDU_PUSH_APIKEY pushMode:BPushModeDevelopment isDebug:YES];
-    
-    // 设置 BPush 的回调
-    [BPush setDelegate:self];
-    
-    // App 是用户点击推送消息启动
-    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (userInfo) {
-        NSLog(@"从消息启动:%@",userInfo);
-        [BPush handleNotification:userInfo];
-    }
+    //初始化推送
+    [self initPush:launchOptions];
     
     return YES;
 }
@@ -180,6 +159,25 @@
     [NotificationUtil receiveLocalNotification:notification];
 }
 
+- (void)initPush:(NSDictionary *)launchOptions {
+    // iOS8 下需要使用新的 API
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        UIUserNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }else {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    }
+    
+    // App 是用户点击推送消息启动
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (userInfo) {
+        NSLog(@"从消息启动:%@",userInfo);
+    }
+}
+
 // 在 iOS8 系统中，还需要添加这个方法。通过新的 API 注册推送服务
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
@@ -196,11 +194,33 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [BPush registerDeviceToken:deviceToken];
-    [BPush bindChannel];
+    NSString *deviceTokenStr = [NSString stringWithFormat:@"%@", deviceToken];
+    deviceTokenStr = [deviceTokenStr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     // 打印到日志
-    NSLog(@"Register use deviceToken : %@", deviceToken);
+    NSLog(@"Register use deviceToken : %@", deviceTokenStr);
+    
+    // 记录设备token
+    if (deviceTokenStr && [deviceTokenStr length] > 0) {
+        //新增设备接口
+        DeviceEntity *device = [[DeviceEntity alloc] init];
+        device.app = USER_TYPE_MERCHANT;
+        device.token = deviceTokenStr;
+        device.type = @"ios";
+        
+        NSLog(@"注册device: %@", [device toDictionary]);
+        
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler addDevice:device success:^(NSArray *result){
+            DeviceEntity *resultDevice = [result firstObject];
+            
+            NSLog(@"注册device成功：%@", resultDevice.id);
+        } failure:^(ErrorEntity *error){
+            NSLog(@"注册device失败：%@", error.message);
+            
+        }];
+    }
 }
 
 // 当 DeviceToken 获取失败时，系统会回调此方法
@@ -211,16 +231,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    // App 收到推送的通知
-    [BPush handleNotification:userInfo];
-    
     NSLog(@"Received Remote Notification::\n%@", userInfo);
-}
-
-#pragma mark Push Delegate
-- (void)onMethod:(NSString*)method response:(NSDictionary*)data
-{
-    NSLog(@"Method: %@\n%@", method, data);
 }
 
 - (void)frostedViewController:(REFrostedViewController *)frostedViewController didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer

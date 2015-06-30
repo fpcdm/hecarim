@@ -8,6 +8,7 @@
 
 #import "BaseHandler.h"
 #import "UserEntity.h"
+#import "DeviceEntity.h"
 
 @interface UserHandler : BaseHandler
 
@@ -19,5 +20,13 @@
  *  @param failure 失败回调
  */
 - (void) loginWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  新增设备接口
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) addDevice: (DeviceEntity *) device success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end
