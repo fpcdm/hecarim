@@ -17,7 +17,7 @@
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id", @"user_truename":@"name", @"user_token":@"token", @"user_nickname":@"nickname",@"sex": @"sexAlias"}];
     
     //映射device_id和device_type
-    NSDictionary *param = @{@"device_id":user.deviceId, @"device_type":user.deviceType};
+    NSDictionary *param = @{@"device_id":user.deviceId ? user.deviceId : @"", @"device_type":user.deviceType ? user.deviceType : @""};
     
     [sharedClient getObject:user path:@"user/passport" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
