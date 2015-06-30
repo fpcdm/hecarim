@@ -43,4 +43,7 @@ Carthage/Build
 
 # Custom
 .DS_Store
+xcuserdata
+*.xcuserdatad
+UserInterfaceState.xcuserstate
 
