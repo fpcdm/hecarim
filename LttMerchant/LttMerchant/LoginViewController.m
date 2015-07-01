@@ -50,7 +50,7 @@
     user.password = passwordTextField.text;
     user.type = USER_TYPE_MERCHANT;
     user.deviceType = @"ios";
-    user.deviceId = [[[StorageUtil sharedStorage] storage] objectForKey:@"DEVICE_ID"];
+    user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
     
     //参数检查
     if (![ValidateUtil isRequired:user.mobile]) {

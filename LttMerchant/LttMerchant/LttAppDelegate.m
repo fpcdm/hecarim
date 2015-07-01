@@ -218,7 +218,7 @@
             NSLog(@"注册device成功：%@", resultDevice.id);
             
             //保存设备ID
-            [[[StorageUtil sharedStorage] storage] setObject:resultDevice.id forKey:@"DEVICE_ID"];
+            [[StorageUtil sharedStorage] setDeviceId:resultDevice.id];
         } failure:^(ErrorEntity *error){
             NSLog(@"注册device失败：%@", error.message);
             

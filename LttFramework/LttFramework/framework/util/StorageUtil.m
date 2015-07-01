@@ -90,4 +90,56 @@ static StorageUtil *sharedStorage = nil;
     return user;
 }
 
+- (void) setRemoteNotification:(NSDictionary *)notification
+{
+    if (notification) {
+        [self.storage setObject:notification forKey:@"remote_notification"];
+        [self.storage synchronize];
+        
+        NSLog(@"set remote notification: %@", notification);
+    } else {
+        [self.storage removeObjectForKey:@"remote_notification"];
+        [self.storage synchronize];
+        
+        NSLog(@"delete remote notification");
+    }
+}
+
+- (NSDictionary *) getRemoteNotification
+{
+    NSDictionary *notification = (NSDictionary *) [self.storage objectForKey:@"remote_notification"];
+    if (!notification) {
+        return nil;
+    }
+    
+    NSLog(@"get remote notification: %@", notification);
+    return notification;
+}
+
+- (void) setDeviceId:(NSString *)deviceId
+{
+    if (deviceId) {
+        [self.storage setObject:deviceId forKey:@"device_id"];
+        [self.storage synchronize];
+        
+        NSLog(@"set device_id: %@", deviceId);
+    } else {
+        [self.storage removeObjectForKey:@"device_id"];
+        [self.storage synchronize];
+        
+        NSLog(@"delete device_id");
+    }
+}
+
+- (NSString *) getDeviceId
+{
+    NSString *deviceId = (NSString *) [self.storage objectForKey:@"device_id"];
+    if (!deviceId) {
+        return nil;
+    }
+    
+    NSLog(@"get device_id: %@", deviceId);
+    return deviceId;
+}
+
 @end

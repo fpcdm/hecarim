@@ -64,7 +64,7 @@
 {
     user.type = USER_TYPE_MEMBER;
     user.deviceType = @"ios";
-    user.deviceId = [[[StorageUtil sharedStorage] storage] objectForKey:@"DEVICE_ID"];
+    user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
     
     //参数检查
     if (![ValidateUtil isRequired:user.mobile]) {

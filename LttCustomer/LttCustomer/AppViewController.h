@@ -28,7 +28,13 @@
     
     //是否显示加载视图
     BOOL showLoadingView;
+    
+    //是否隐藏远程通知提示
+    BOOL hideRemoteNotification;
 }
+
+//检查远程通知
+- (void) checkRemoteNotification;
 
 //刷新菜单
 - (void) refreshMenu;

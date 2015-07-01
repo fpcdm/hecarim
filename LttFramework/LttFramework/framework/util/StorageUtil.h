@@ -22,4 +22,12 @@
 
 - (UserEntity *) getUser;
 
+- (void) setRemoteNotification: (NSDictionary *)notification;
+
+- (NSDictionary *) getRemoteNotification;
+
+- (void) setDeviceId: (NSString *) deviceId;
+
+- (NSString *) getDeviceId;
+
 @end
