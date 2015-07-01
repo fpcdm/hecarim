@@ -99,6 +99,26 @@
     }
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //检查远程通知
+    if (!hideRemoteNotification) {
+        [self checkRemoteNotification];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //隐藏远程通知
+    if (!hideRemoteNotification) {
+        [self hideDialog];
+    }
+}
+
 - (BOOL) isLogin
 {
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
@@ -129,6 +149,13 @@
     REFrostedViewController *frostedViewController = (REFrostedViewController *) appDelegate.window.rootViewController;
     MenuViewController *menuViewController = (MenuViewController *) frostedViewController.menuViewController;
     [menuViewController refresh];
+}
+
+- (void) checkRemoteNotification
+{
+    [self showNotification:@"新消息" callback:^{
+        [self hideDialog];
+    }];
 }
 
 @end

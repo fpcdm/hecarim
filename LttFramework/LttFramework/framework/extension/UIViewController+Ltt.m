@@ -17,57 +17,70 @@ static MBProgressHUD *loading = nil;
 
 @implementation UIViewController (Ltt)
 
+//dialog
 - (void) showError: (NSString *) message
 {
-    [self showDialog:message type:TSMessageNotificationTypeError callback:nil];
+    [self showDialog:message type:TSMessageNotificationTypeError callback:nil buttonTitle:nil buttonCallback:nil];
 }
 
 - (void) showWarning:(NSString *) message
 {
-    [self showDialog:message type:TSMessageNotificationTypeWarning callback:nil];
+    [self showDialog:message type:TSMessageNotificationTypeWarning callback:nil buttonTitle:nil buttonCallback:nil];
 }
 
 - (void) showMessage:(NSString *) message
 {
-    [self showDialog:message type:TSMessageNotificationTypeMessage callback:nil];
+    [self showDialog:message type:TSMessageNotificationTypeMessage callback:nil buttonTitle:nil buttonCallback:nil];
 }
 
 - (void) showSuccess: (NSString *) message
 {
-    [self showDialog:message type:TSMessageNotificationTypeSuccess callback:nil];
+    [self showDialog:message type:TSMessageNotificationTypeSuccess callback:nil buttonTitle:nil buttonCallback:nil];
 }
 
 - (void) showSuccess:(NSString *)message callback:(void (^)())callback
 {
-    [self showDialog:message type:TSMessageNotificationTypeSuccess callback:callback];
+    [self showDialog:message type:TSMessageNotificationTypeSuccess callback:callback buttonTitle:nil buttonCallback:nil];
 }
 
-- (void) showDialog: (NSString *)message type: (TSMessageNotificationType) type callback:(void (^)())callback
+- (void) showNotification:(NSString *)message callback:(void (^)())callback
+{
+    [self showDialog:message type:TSMessageNotificationTypeMessage callback:nil buttonTitle:@"查看" buttonCallback:callback];
+}
+
+- (void) showDialog: (NSString *)message type: (TSMessageNotificationType) type callback:(void (^)())callback buttonTitle: (NSString *) buttonTitle buttonCallback: (void (^)())buttonCallback
 {
     [self hideLoading];
+    [self hideDialog];
     
     [TSMessage showNotificationInViewController:self
                                           title:message
                                        subtitle:nil
                                           image:nil
                                            type:type
-                                       duration:callback ? TSMessageNotificationDurationEndless : DIALOG_SHOW_TIME
+                                       duration:(callback || buttonCallback) ? TSMessageNotificationDurationEndless : DIALOG_SHOW_TIME
                                        callback:nil
-                                    buttonTitle:nil
-                                 buttonCallback:nil
+                                    buttonTitle:buttonTitle
+                                 buttonCallback:buttonCallback
                                      atPosition:TSMessageNotificationPositionTop
                            canBeDismissedByUser:callback ? NO : YES];
     
     if (callback) {
-        [self performSelector:@selector(showDialogCallback:) withObject:callback afterDelay:DIALOG_SHOW_TIME];
+        [self performSelector:@selector(hideDialog:) withObject:callback afterDelay:DIALOG_SHOW_TIME];
     }
 }
 
-- (void) showDialogCallback:(void (^)())callback
+- (void) hideDialog:(void (^)())callback
 {
     [TSMessage dismissActiveNotificationWithCompletion:callback];
 }
 
+- (void) hideDialog
+{
+    [self hideDialog:nil];
+}
+
+//loading
 - (void) showLoading: (NSString *) message
 {
     [self hideLoading];

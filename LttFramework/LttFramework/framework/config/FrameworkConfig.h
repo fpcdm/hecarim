@@ -52,7 +52,7 @@
 #define NSLog(...)
 
 //接口服务器根地址
-#define LTT_REST_SERVER @"http://api.web.dm/"
+#define LTT_REST_SERVER @"http://115.29.54.118:8080/"
 
 //接口服务器是否为RAP
 #define LTT_REST_RAP NO
