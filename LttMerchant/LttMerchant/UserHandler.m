@@ -30,6 +30,18 @@
     }];
 }
 
+- (void)logoutWithUser:(UserEntity *)user success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    [sharedClient deleteObject:[UserEntity new] path:@"user/passport" param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 - (void)addDevice:(DeviceEntity *)device success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //登录接口调用

@@ -134,6 +134,7 @@
 		2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001611B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		2F967D201B4276FA00CD365B /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F967D1F1B4276FA00CD365B /* DeviceEntity.m */; };
+		2FA467661B43EC2700B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467651B43EC2700B2186F /* AudioToolbox.framework */; };
 		2FCAF7A41B1FF1B000F3B084 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A31B1FF1B000F3B084 /* libRestKit.a */; };
 		2FCAF7A61B1FF25D00F3B084 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A51B1FF25D00F3B084 /* QuartzCore.framework */; };
 		2FCAF7A81B1FF26900F3B084 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A71B1FF26900F3B084 /* CoreGraphics.framework */; };
@@ -422,6 +423,7 @@
 		2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		2F967D1E1B4276FA00CD365B /* DeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEntity.h; sourceTree = "<group>"; };
 		2F967D1F1B4276FA00CD365B /* DeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEntity.m; sourceTree = "<group>"; };
+		2FA467651B43EC2700B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2FCAF73B1B1FF1AF00F3B084 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2FCAF73C1B1FF1AF00F3B084 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		2FCAF73D1B1FF1AF00F3B084 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA467661B43EC2700B2186F /* AudioToolbox.framework in Frameworks */,
 				2FCAF7B41B1FF30700F3B084 /* libxml2.dylib in Frameworks */,
 				2FCAF7B21B1FF2EE00F3B084 /* Security.framework in Frameworks */,
 				2FCAF81C1B1FF95B00F3B084 /* libzbar.a in Frameworks */,
@@ -1527,6 +1530,7 @@
 		FCBA9D374EBF06A96A88C00D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FA467651B43EC2700B2186F /* AudioToolbox.framework */,
 				2FCAF7B31B1FF30700F3B084 /* libxml2.dylib */,
 				2FCAF7B01B1FF2E200F3B084 /* CoreData.framework */,
 				2FCAF7AE1B1FF2DB00F3B084 /* MobileCoreServices.framework */,

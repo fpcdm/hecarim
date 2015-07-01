@@ -13,12 +13,17 @@
 #import "LoginViewController.h"
 #import "DeviceEntity.h"
 #import "UserHandler.h"
+#import "NotificationUtil.h"
 
 @interface LttAppDelegate ()
 
 @end
 
 @implementation LttAppDelegate
+{
+    REFrostedViewController *frostedViewController;
+    LttNavigationController *navigationController;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -58,10 +63,10 @@
     UIViewController *viewController = nil;
     viewController = [[HomeViewController alloc] init];
     
-    LttNavigationController *navigationController = [[LttNavigationController alloc] initWithRootViewController:viewController];
+    navigationController = [[LttNavigationController alloc] initWithRootViewController:viewController];
     MenuViewController *menuViewController = [[MenuViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:navigationController menuViewController:menuViewController];
+    frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:navigationController menuViewController:menuViewController];
     frostedViewController.direction = REFrostedViewControllerDirectionLeft;
     frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
     frostedViewController.liveBlur = YES;
@@ -121,6 +126,8 @@
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
         NSLog(@"从消息启动:%@",userInfo);
+        
+        [self handleRemoteNotification:userInfo];
     }
 }
 
@@ -134,6 +141,8 @@
 {
     // 打印到日志
     NSLog(@"background: %@", userInfo);
+    
+    [self handleRemoteNotification:userInfo];
     
     completionHandler(UIBackgroundFetchResultNewData);
 }
@@ -181,6 +190,21 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"Received Remote Notification::\n%@", userInfo);
+    
+    [self handleRemoteNotification:userInfo];
+}
+
+// 处理远程通知
+- (void)handleRemoteNotification: (NSDictionary *)userInfo
+{
+    // 保存数据
+    [NotificationUtil receiveRemoteNotification:userInfo];
+    
+    // 显示通知弹出层
+    UIViewController *viewController = [navigationController.viewControllers lastObject];
+    if (viewController && [viewController isKindOfClass:[AppViewController class]]) {
+        [(AppViewController *) viewController checkRemoteNotification];
+    }
 }
 
 @end

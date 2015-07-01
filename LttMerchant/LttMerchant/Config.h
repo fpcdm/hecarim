@@ -37,9 +37,6 @@
 //定时器刷新时间
 #define SCHEDULED_TIME_INTERVAL 5
 
-//本地通知KEY
-#define SCHEDULED_USERINFO_KEY @"refreshIntention"
-
 //用户登录类型
 #define USER_TYPE_MERCHANT @"merchant"
 

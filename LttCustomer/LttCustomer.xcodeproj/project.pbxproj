@@ -141,6 +141,7 @@
 		2F967D0D1B423B1A00CD365B /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F967D0C1B423B1A00CD365B /* DeviceEntity.m */; };
 		2F9BD1A41B26E19E00632751 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A31B26E19E00632751 /* AccountViewController.m */; };
 		2F9BD1A71B26E31700632751 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A61B26E31700632751 /* LoginViewController.m */; };
+		2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467631B43DA6500B2186F /* AudioToolbox.framework */; };
 		2FBF3F6B1B281A9E00C0DC54 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6A1B281A9E00C0DC54 /* AppTableView.m */; };
 		2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */; };
 		2FBF3F771B2821AA00C0DC54 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F761B2821AA00C0DC54 /* HomeView.m */; };
@@ -475,6 +476,7 @@
 		2F9BD1A31B26E19E00632751 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		2F9BD1A51B26E31700632751 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2F9BD1A61B26E31700632751 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2FA467631B43DA6500B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2FBF3F691B281A9E00C0DC54 /* AppTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTableView.h; sourceTree = "<group>"; };
 		2FBF3F6A1B281A9E00C0DC54 /* AppTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableView.m; sourceTree = "<group>"; };
 		2FBF3F6C1B281CA400C0DC54 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */,
 				2FCAF6C41B1FF02100F3B084 /* CoreGraphics.framework in Frameworks */,
 				2FCAF6C21B1FF01400F3B084 /* Accelerate.framework in Frameworks */,
 				2FCAF6C01B1FF00900F3B084 /* ImageIO.framework in Frameworks */,
@@ -1702,6 +1705,7 @@
 		9CB345F8FF6391BAA4D3F5E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FA467631B43DA6500B2186F /* AudioToolbox.framework */,
 				2FCAF6C31B1FF02100F3B084 /* CoreGraphics.framework */,
 				2FCAF6C11B1FF01400F3B084 /* Accelerate.framework */,
 				2FCAF6BE1B1FF00200F3B084 /* AVFoundation.framework */,

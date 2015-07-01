@@ -13,6 +13,8 @@
 #import "LttNavigationController.h"
 #import "LttAppDelegate.h"
 #import "AppLoadingView.h"
+#import "NotificationUtil.h"
+#import "CaseViewController.h"
 
 @interface AppViewController ()
 
@@ -159,9 +161,47 @@
     //已登录
     NSDictionary *remoteNotification = [[StorageUtil sharedStorage] getRemoteNotification];
     if (remoteNotification) {
-        [self showNotification:@"新消息" callback:^{
-            [self hideDialog];
-        }];
+        NSDictionary *aps = [remoteNotification objectForKey:@"aps"];
+        NSDictionary *action = [remoteNotification objectForKey:@"action"];
+        
+        //显示消息
+        if (aps) {
+            NSString *message = [aps objectForKey:@"alert"];
+            [self showNotification:message callback:^{
+                if (action) {
+                    NSString *type = [action objectForKey:@"type"];
+                    NSString *data = [action objectForKey:@"data"];
+                    
+                    //根据类型处理事件
+                    if (type) {
+                        [self handleRemoteNotification:type data:data];
+                    }
+                }
+                
+                //取消消息
+                [NotificationUtil cancelRemoteNotifications];
+                
+                //隐藏弹出框
+                [self hideDialog];
+            }];
+        }
+    }
+}
+
+//根据类型处理远程通知
+- (void) handleRemoteNotification:(NSString *) type data: (NSString *) data
+{
+    if ([@"CASE_LOCKED" isEqualToString:type] ||
+        [@"CASE_MERCHANT_CANCEL" isEqualToString:type] ||
+        [@"CASE_WAIT_PAY" isEqualToString:type]) {
+        //跳转详情页面
+        if (data) {
+            NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
+            
+            CaseViewController *viewController = [[CaseViewController alloc] init];
+            viewController.caseId = caseId;
+            [self pushViewController:viewController animated:YES];
+        }
     }
 }
 

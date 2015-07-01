@@ -7,6 +7,8 @@
 //
 
 #import "NotificationUtil.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import "StorageUtil.h"
 
 @implementation NotificationUtil
 
@@ -60,5 +62,27 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
+
+// 收到远程消息
++ (void) receiveRemoteNotification:(NSDictionary *)userInfo
+{
+    // 保存数据
+    [[StorageUtil sharedStorage] setRemoteNotification:userInfo];
+    
+    // 震动并播放声音
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    AudioServicesPlaySystemSound(1007);
+}
+
+// 取消所有远程消息
++ (void) cancelRemoteNotifications
+{
+    // 清除数据
+    [[StorageUtil sharedStorage] setRemoteNotification:nil];
+    
+    // 清空计数
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
 
 @end

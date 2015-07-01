@@ -11,6 +11,7 @@
 #import "HomeViewController.h"
 #import "AppExtension.h"
 #import "CaseListViewController.h"
+#import "UserHandler.h"
 
 @interface MenuViewController ()
 
@@ -103,11 +104,18 @@
     //已登录退出登陆
     user = [[StorageUtil sharedStorage] getUser];
     if (user != nil) {
-        [[StorageUtil sharedStorage] setUser:nil];
-        user = nil;
-        
-        //刷新菜单
-        [self refresh];
+        //退出接口
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler logoutWithUser:user success:^(NSArray *result){
+            [[StorageUtil sharedStorage] setUser:nil];
+            user = nil;
+            [[StorageUtil sharedStorage] setRemoteNotification:nil];
+            
+            //刷新菜单
+            [self refresh];
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
     }
 }
 

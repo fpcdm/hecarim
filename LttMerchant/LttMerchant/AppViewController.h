@@ -21,9 +21,15 @@
     
     //左侧菜单是否为返回
     BOOL isMenuBack;
+    
+    //是否隐藏远程通知提示
+    BOOL hideRemoteNotification;
 }
 
+//检查远程通知
+- (void) checkRemoteNotification;
 - (BOOL) checkLogin;
+- (BOOL) isLogin;
 - (void) refreshMenu;
 
 @end
