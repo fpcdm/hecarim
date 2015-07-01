@@ -23,6 +23,15 @@
 - (void) loginWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
+ *  退出
+ *
+ *  @param user    用户
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) logoutWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
  *  新增收货地址
  *
  *  @param success 成功回调

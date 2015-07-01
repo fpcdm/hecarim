@@ -153,9 +153,16 @@
 
 - (void) checkRemoteNotification
 {
-    [self showNotification:@"新消息" callback:^{
-        [self hideDialog];
-    }];
+    //未登录不检查
+    if (![self isLogin]) return;
+    
+    //已登录
+    NSDictionary *remoteNotification = [[StorageUtil sharedStorage] getRemoteNotification];
+    if (remoteNotification) {
+        [self showNotification:@"新消息" callback:^{
+            [self hideDialog];
+        }];
+    }
 }
 
 @end

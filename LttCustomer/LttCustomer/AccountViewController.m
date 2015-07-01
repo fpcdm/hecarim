@@ -14,6 +14,7 @@
 #import "SafetyViewController.h"
 #import "AddressViewController.h"
 #import "SuggestionViewController.h"
+#import "UserHandler.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -82,13 +83,22 @@
 
 - (void)actionLogout
 {
-    [[StorageUtil sharedStorage] setUser:nil];
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
     
-    //刷新菜单
-    [self refreshMenu];
-    
-    LoginViewController *viewController = [[LoginViewController alloc] init];
-    [self pushViewController:viewController animated:YES];
+    //退出接口
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler logoutWithUser:user success:^(NSArray *result){
+        [[StorageUtil sharedStorage] setUser:nil];
+        [[StorageUtil sharedStorage] setRemoteNotification:nil];
+        
+        //刷新菜单
+        [self refreshMenu];
+        
+        LoginViewController *viewController = [[LoginViewController alloc] init];
+        [self pushViewController:viewController animated:YES];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void)actionSafety

@@ -1921,8 +1921,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.lttok.LttMerchant";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.lttok.LttMerchant";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yong wu (LXC4BKLMNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yong wu (LXC4BKLMNS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMerchant/LttMerchant.pch;
 				HEADER_SEARCH_PATHS = (
@@ -1950,8 +1950,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.lttok.LttMerchant";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.lttok.LttMerchant";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yong wu (LXC4BKLMNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yong wu (LXC4BKLMNS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMerchant/LttMerchant.pch;
 				HEADER_SEARCH_PATHS = (
