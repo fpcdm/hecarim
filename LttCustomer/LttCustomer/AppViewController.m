@@ -13,7 +13,6 @@
 #import "LttNavigationController.h"
 #import "LttAppDelegate.h"
 #import "AppLoadingView.h"
-#import "NotificationUtil.h"
 #import "CaseViewController.h"
 #import "CaseListViewController.h"
 

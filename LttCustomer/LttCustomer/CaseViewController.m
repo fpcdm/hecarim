@@ -235,9 +235,42 @@
         NSString *statusName = [intention statusName];
         self.navigationItem.title = statusName;
         
-        [self showError:@"该需求状态已过期，跳转中"];
         [self performSelector:@selector(actionHome) withObject:nil afterDelay:DIALOG_SHOW_TIME];
     }
+}
+
+#pragma mark - RemoteNotification
+//处理远程通知钩子（当前需求时自动切换页面）
+- (void) handleRemoteNotification:(NSString *)message type:(NSString *)type data:(NSString *)data
+{
+    //仅当当前需求时自动切换页面
+    BOOL isCurrentCase = NO;
+    if ([@"CASE_LOCKED" isEqualToString:type] ||
+        [@"CASE_WAIT_PAY" isEqualToString:type] ||
+        [@"CASE_MERCHANT_CANCEL" isEqualToString:type]) {
+        if (data && [self.caseId isEqualToNumber:[NSNumber numberWithInteger:[data integerValue]]]) {
+            isCurrentCase = YES;
+        }
+    }
+    
+    //非当前需求默认方式
+    if (!isCurrentCase) {
+        [super handleRemoteNotification:message type:type data:data];
+        return;
+    }
+    
+    //显示消息
+    [self showMessage:message];
+    
+    //取消消息
+    [NotificationUtil cancelRemoteNotifications];
+    
+    //需求状态变化
+    [self loadData:^(id object){
+        [self intentionView];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action
