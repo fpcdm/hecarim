@@ -12,7 +12,7 @@
 #import "REFrostedViewController.h"
 #import "MenuViewController.h"
 #import "NotificationUtil.h"
-#import "CaseListViewController.h"
+#import "HomeViewController.h"
 #import "ApplyDetailViewController.h"
 #import "OrderDetailViewController.h"
 
@@ -147,7 +147,7 @@
 {
     //新增需求
     if ([@"CASE_CREATED" isEqualToString:type]) {
-        CaseListViewController *viewController = [[CaseListViewController alloc] init];
+        HomeViewController *viewController = [[HomeViewController alloc] init];
         [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
     //已支付，已完成
     } else if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {

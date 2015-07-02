@@ -18,8 +18,6 @@
 
 @implementation HomeViewController
 {
-    NSTimer *timer;
-    
     //抢单数据缓存，防止定时器清空正在抢的数据
     IntentionEntity *currentIntention;
 }
@@ -32,49 +30,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ApplyListViewCell" bundle:nil] forCellReuseIdentifier:@"ApplyListViewCell"];
     
     [self initView];
-}
-
-- (void) viewDidDisappear:(BOOL)animated
-{
-    //释放定时器
-    [self clearTimer];
-    
-    [super viewDidDisappear:animated];
-}
-
-
-
-- (void) setTimer
-{
-    timer = [NSTimer scheduledTimerWithTimeInterval: SCHEDULED_TIME_INTERVAL
-                                             target: self
-                                           selector: @selector(handleTimer:)
-                                           userInfo: nil
-                                            repeats: YES];
-}
-
-- (void) clearTimer
-{
-    if (timer && [timer isValid]) {
-        [timer invalidate];
-    }
-}
-
-- (void) handleTimer: (NSTimer *) timer
-{
-    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
-    NSDictionary *param = @{@"location":[NSString stringWithFormat:@"%f,%f", appDelegate.lastCoordinate.longitude, appDelegate.lastCoordinate.latitude]};
-    
-    //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler queryIntentions:param success:^(NSArray *result){
-        //刷新表格
-        self.tableData = [NSMutableArray arrayWithArray:result];
-        [self.tableView reloadData];
-        
-        //无数据提示
-        [self showEmpty:@"暂无可抢的订单"];
-    } failure:^(ErrorEntity *error){}];
 }
 
 //加载数据
@@ -96,21 +51,10 @@
         
         //无数据提示
         [self showEmpty:@"暂无可抢的订单"];
-        
-        //定时器
-        [self setTimer];
     } failure:^(ErrorEntity *error){
         [self hideLoading];
         [self showError:error.message];
     }];
-}
-
-- (void) checkCallback:(NSNumber *)intentionId
-{
-    ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
-    viewController.intentionId = intentionId;
-    
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,9 +87,6 @@
 //抢单
 - (void) doIntention: (UIButton *) sender
 {
-    //是否已经抢到过
-    //if (![self checkIntention:NO]) return;
-    
     currentIntention = (IntentionEntity *) [self.tableData objectAtIndex:sender.tag];
     
     //开始抢单
