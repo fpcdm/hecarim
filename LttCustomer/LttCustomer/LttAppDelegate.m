@@ -85,6 +85,7 @@
             
             //清除用户信息
             [[StorageUtil sharedStorage] setUser:nil];
+            [[StorageUtil sharedStorage] setRemoteNotification:nil];
             
             LoginViewController *loginViewController = [[LoginViewController alloc] init];
             loginViewController.tokenExpired = YES;
@@ -217,10 +218,12 @@
     // 保存数据
     [NotificationUtil receiveRemoteNotification:userInfo state:state];
     
-    // 显示通知弹出层
-    UIViewController *viewController = [navigationController.viewControllers lastObject];
-    if (viewController && [viewController isKindOfClass:[AppViewController class]]) {
-        [(AppViewController *) viewController checkRemoteNotification];
+    // 应用活动时及时检查通知
+    if (state == UIApplicationStateActive) {
+        UIViewController *viewController = [navigationController.viewControllers lastObject];
+        if (viewController && [viewController isKindOfClass:[AppViewController class]]) {
+            [(AppViewController *) viewController checkRemoteNotification];
+        }
     }
 }
 

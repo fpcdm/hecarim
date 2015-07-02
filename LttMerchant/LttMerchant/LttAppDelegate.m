@@ -233,10 +233,12 @@
     // 保存数据
     [NotificationUtil receiveRemoteNotification:userInfo state:state];
     
-    // 显示通知弹出层
-    UIViewController *viewController = [navigationController.viewControllers lastObject];
-    if (viewController && [viewController respondsToSelector:@selector(checkRemoteNotification)]) {
-        [(AppViewController *) viewController checkRemoteNotification];
+    // 应用活动时及时检查通知
+    if (state == UIApplicationStateActive) {
+        UIViewController *viewController = [navigationController.viewControllers lastObject];
+        if (viewController && [viewController respondsToSelector:@selector(checkRemoteNotification)]) {
+            [(AppViewController *) viewController checkRemoteNotification];
+        }
     }
 }
 
