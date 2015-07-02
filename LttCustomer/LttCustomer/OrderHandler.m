@@ -14,7 +14,7 @@
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goodsParam",@"services":@"services",@"update_time":@"updateTime"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goodsParam",@"services":@"services",@"update_time":@"updateTime", @"rate_star":@"commentLevel"}];
     
     NSString *restPath = [sharedClient formatPath:@"order/info/:no" object:order];
     [sharedClient getObject:order path:restPath param:nil success:^(NSArray *result){
@@ -37,6 +37,23 @@
     [sharedClient postObject:order path:restPath param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) addOrderEvaluation:(OrderEntity *)order success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[OrderEntity class] mappingParam:@{@"no": @"case_no", @"commentLevel": @"rate_star"}];
+    
+    [sharedClient putObject:order path:@"member/evaluation" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
         failure(error);
     }];
 }

@@ -15,6 +15,9 @@
 
 - (void) updateOrderStatus: (OrderEntity *) order param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//提交评价
+- (void) addOrderEvaluation: (OrderEntity *) order success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 - (void) queryOrderQrcode: (OrderEntity *) order success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end

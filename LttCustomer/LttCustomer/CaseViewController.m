@@ -331,14 +331,13 @@
     
     OrderEntity *orderModel = [[OrderEntity alloc] init];
     orderModel.no = order.no;
-    
-    NSDictionary *param = @{@"action": CASE_STATUS_SUCCESS};
+    orderModel.commentLevel = [NSNumber numberWithInt:value];
     
     [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+    [orderHandler addOrderEvaluation:orderModel success:^(NSArray *result){
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             order.commentLevel = [NSNumber numberWithInt:value];
             intention.status = CASE_STATUS_SUCCESS;
