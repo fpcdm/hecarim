@@ -75,7 +75,8 @@
     
     UILabel *remarkLabel = (UILabel *) [cell viewWithTag:102];
     NSString *remark = (intention.remark ? intention.remark : @"未填写");
-    remarkLabel.text = [NSString stringWithFormat:@"留言：%@", remark];
+    NSString *createTime = intention.createTime ? [NSString stringWithFormat:@"%@", [intention.createTime substringFromIndex:5]] : @"";
+    remarkLabel.text = [NSString stringWithFormat:@"留言：%@    %@", remark, createTime];
     
     UIButton *detailButton = (UIButton *) [cell viewWithTag:103];
     detailButton.tag = [indexPath row];

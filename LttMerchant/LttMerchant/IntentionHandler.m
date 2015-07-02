@@ -14,7 +14,7 @@
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[IntentionEntity class] mappingParam:@{@"remark": @"remark", @"intention_id":@"id"} keyPath:@"list"];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[IntentionEntity class] mappingParam:@{@"remark": @"remark", @"intention_id":@"id", @"create_time": @"createTime"} keyPath:@"list"];
     
     NSString *restPath = @"employee/intentions";
     [sharedClient getObject:[IntentionEntity new] path:restPath param:param success:^(NSArray *result){
