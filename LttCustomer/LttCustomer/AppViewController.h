@@ -36,8 +36,8 @@
 //检查远程通知
 - (void) checkRemoteNotification;
 
-//远程通知钩子（默认顶部弹出）
-- (void) handleRemoteNotification:(NSString *) type data: (NSString *) data;
+//处理远程通知钩子（默认顶部弹出框）
+- (void) handleRemoteNotification:(NSString *) message type: (NSString *) type data: (NSString *) data;
 
 //刷新菜单
 - (void) refreshMenu;

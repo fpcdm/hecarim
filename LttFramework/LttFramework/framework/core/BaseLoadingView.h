@@ -10,4 +10,6 @@
 
 @interface BaseLoadingView : BaseView
 
+- (void) hide;
+
 @end

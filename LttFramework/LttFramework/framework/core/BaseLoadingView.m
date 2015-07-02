@@ -25,10 +25,17 @@
     return self;
 }
 
+- (void) hide
+{
+    if (loading) {
+        [loading hide:NO];
+        loading = nil;
+    }
+}
+
 - (void)dealloc
 {
-    [loading hide:NO];
-    loading = nil;
+    [self hide];
 }
 
 @end

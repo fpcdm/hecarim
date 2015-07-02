@@ -15,6 +15,7 @@
 #import "AppLoadingView.h"
 #import "NotificationUtil.h"
 #import "CaseViewController.h"
+#import "CaseListViewController.h"
 
 @interface AppViewController ()
 
@@ -178,44 +179,46 @@
         NSDictionary *action = [remoteNotification objectForKey:@"action"];
         
         //显示消息
-        if (aps) {
+        if (aps && action) {
             NSString *message = [aps objectForKey:@"alert"];
-            [self showNotification:message callback:^{
-                if (action) {
-                    NSString *type = [action objectForKey:@"type"];
-                    NSString *data = [action objectForKey:@"data"];
-                    
-                    //根据类型处理事件
-                    if (type) {
-                        [self handleRemoteNotification:type data:data];
-                    }
-                }
-                
-                //取消消息
-                [NotificationUtil cancelRemoteNotifications];
-                
-                //隐藏弹出框
-                [self hideDialog];
-            }];
+            NSString *type = [action objectForKey:@"type"];
+            NSString *data = [action objectForKey:@"data"];
+            
+            //根据类型处理远程通知
+            if (message && type) {
+                [self handleRemoteNotification:message type:type data:data];
+            }
         }
     }
 }
 
-//根据类型处理远程通知
-- (void) handleRemoteNotification:(NSString *) type data: (NSString *) data
+//处理远程通知钩子（默认顶部弹出框）
+- (void) handleRemoteNotification:(NSString *)message type:(NSString *)type data:(NSString *)data
 {
-    if ([@"CASE_LOCKED" isEqualToString:type] ||
-        [@"CASE_MERCHANT_CANCEL" isEqualToString:type] ||
-        [@"CASE_WAIT_PAY" isEqualToString:type]) {
-        //跳转详情页面
-        if (data) {
-            NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
-            
-            CaseViewController *viewController = [[CaseViewController alloc] init];
-            viewController.caseId = caseId;
+    [self showNotification:message callback:^{
+        //取消消息
+        [NotificationUtil cancelRemoteNotifications];
+        
+        //根据需求类型处理
+        if ([@"CASE_LOCKED" isEqualToString:type] ||
+            [@"CASE_WAIT_PAY" isEqualToString:type]) {
+            //跳转详情页面
+            if (data) {
+                NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
+                
+                CaseViewController *viewController = [[CaseViewController alloc] init];
+                viewController.caseId = caseId;
+                [self toggleViewController:viewController animated:YES];
+            }
+        } else if ([@"CASE_MERCHANT_CANCEL" isEqualToString:type]) {
+            //跳转服务单
+            CaseListViewController *viewController = [[CaseListViewController alloc] init];
             [self toggleViewController:viewController animated:YES];
         }
-    }
+        
+        //隐藏弹出框
+        [self hideDialog];
+    }];
 }
 
 @end

@@ -18,6 +18,7 @@
 #import "CaseHandler.h"
 #import "OrderHandler.h"
 #import "HomeViewController.h"
+#import "AppLoadingView.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
@@ -230,6 +231,12 @@
         //显示数据
         [successView setData:@"order" value:order];
         [successView renderData];
+    } else {
+        NSString *statusName = [intention statusName];
+        self.navigationItem.title = statusName;
+        
+        [self showError:@"该需求状态已过期，跳转中"];
+        [self performSelector:@selector(actionHome) withObject:nil afterDelay:DIALOG_SHOW_TIME];
     }
 }
 

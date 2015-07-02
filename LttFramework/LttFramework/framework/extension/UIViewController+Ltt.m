@@ -45,7 +45,7 @@ static MBProgressHUD *loading = nil;
 
 - (void) showNotification:(NSString *)message callback:(void (^)())callback
 {
-    [self showDialog:message type:TSMessageNotificationTypeMessage callback:nil buttonTitle:@"查看" buttonCallback:callback];
+    [self showDialog:message type:TSMessageNotificationTypeMessage callback:nil buttonTitle:@" 查 看 " buttonCallback:callback];
 }
 
 - (void) showDialog: (NSString *)message type: (TSMessageNotificationType) type callback:(void (^)())callback buttonTitle: (NSString *) buttonTitle buttonCallback: (void (^)())buttonCallback
@@ -63,7 +63,7 @@ static MBProgressHUD *loading = nil;
                                     buttonTitle:buttonTitle
                                  buttonCallback:buttonCallback
                                      atPosition:TSMessageNotificationPositionTop
-                           canBeDismissedByUser:callback ? NO : YES];
+                           canBeDismissedByUser:(callback || buttonCallback) ? NO : YES];
     
     if (callback) {
         [self performSelector:@selector(hideDialog:) withObject:callback afterDelay:DIALOG_SHOW_TIME];
