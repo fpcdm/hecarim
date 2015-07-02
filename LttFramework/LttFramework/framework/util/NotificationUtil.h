@@ -17,7 +17,7 @@
 
 + (void) cancelLocalNotifications;
 
-+ (void) receiveRemoteNotification: (NSDictionary *)userInfo;
++ (void) receiveRemoteNotification: (NSDictionary *)userInfo state: (UIApplicationState) state;
 
 + (void) cancelRemoteNotifications;
 
