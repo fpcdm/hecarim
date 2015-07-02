@@ -144,6 +144,19 @@
     }
 }
 
+- (void) toggleViewController: (AppViewController *)viewController animated: (BOOL)animated
+{
+    //需要登陆
+    if ([viewController isKindOfClass:[AppUserViewController class]] &&
+        ![viewController isMemberOfClass:[LoginViewController class]] &&
+        ![self isLogin]) {
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        [self.navigationController setViewControllers:[NSArray arrayWithObject:loginViewController] animated:YES];
+    } else {
+        [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    }
+}
+
 - (void) refreshMenu
 {
     LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
@@ -200,7 +213,7 @@
             
             CaseViewController *viewController = [[CaseViewController alloc] init];
             viewController.caseId = caseId;
-            [self pushViewController:viewController animated:YES];
+            [self toggleViewController:viewController animated:YES];
         }
     }
 }

@@ -28,6 +28,8 @@
 
 //检查远程通知
 - (void) checkRemoteNotification;
+//根据类型处理远程通知
+- (void) handleRemoteNotification:(NSString *) type data: (NSString *) data;
 - (BOOL) checkLogin;
 - (BOOL) isLogin;
 - (void) refreshMenu;

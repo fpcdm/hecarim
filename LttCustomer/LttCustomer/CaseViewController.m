@@ -18,7 +18,6 @@
 #import "CaseHandler.h"
 #import "OrderHandler.h"
 #import "HomeViewController.h"
-#import "AppLoadingView.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
@@ -27,12 +26,9 @@
 @implementation CaseViewController
 {
     CaseEntity *intention;
-    CaseEntity *newIntention;
     OrderEntity *order;
-    OrderEntity *newOrder;
     TimerUtil *timerUtil;
     long timer;
-    TimerUtil *refreshUtil;
 }
 
 - (void)loadView
@@ -56,33 +52,7 @@
     [super viewDidAppear:animated];
     
     [self loadData:^(id object){
-        //显示视图
-        intention = newIntention;
-        order = newOrder;
         [self intentionView];
-        
-        //初始化定时器
-        if ([intention needRefresh]) {
-            refreshUtil = [TimerUtil repeatTimer:5.0 block:^{
-                [self loadData:^(id object){
-                    //状态发生改变
-                    if (![newIntention.status isEqualToString:intention.status]) {
-                        intention = newIntention;
-                        order = newOrder;
-                        
-                        //是否清除定时器
-                        if (![intention needRefresh]) {
-                            [refreshUtil invalidate];
-                            refreshUtil = nil;
-                        }
-                        
-                        //修改视图
-                        [self intentionView];
-                    }
-                } failure:^(id object){
-                }];
-            } queue:dispatch_get_main_queue()];
-        }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -95,9 +65,6 @@
     
     if (timerUtil) {
         [timerUtil invalidate];
-    }
-    if (refreshUtil) {
-        [refreshUtil invalidate];
     }
 }
 
@@ -113,12 +80,12 @@
     //调用接口
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
-        newIntention = [result firstObject];
+        intention = [result firstObject];
         
-        NSLog(@"需求数据：%@", [newIntention toDictionary]);
+        NSLog(@"需求数据：%@", [intention toDictionary]);
         
         //是否需要查询订单
-        if ([newIntention hasOrder]) {
+        if ([intention hasOrder]) {
             [self loadOrderData:success failure:failure];
         } else {
             success(nil);
@@ -132,20 +99,20 @@
 - (void)loadOrderData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //查询订单
-    NSLog(@"orderNo: %@", newIntention.orderNo);
+    NSLog(@"orderNo: %@", intention.orderNo);
     
     OrderEntity *orderEntity = [[OrderEntity alloc] init];
-    orderEntity.no = newIntention.orderNo;
+    orderEntity.no = intention.orderNo;
     
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler queryOrder:orderEntity success:^(NSArray *result){
-        newOrder = [result firstObject];
+        order = [result firstObject];
         
         //解析订单商品
         NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
-        if (newOrder.goodsParam) {
-            NSArray *goodsList = [newOrder.goodsParam objectForKey:@"list"];
+        if (order.goodsParam) {
+            NSArray *goodsList = [order.goodsParam objectForKey:@"list"];
             if (goodsList && [goodsList count] > 0) {
                 for (NSDictionary *goodsItem in goodsList) {
                     GoodsEntity *goods = [[GoodsEntity alloc] init];
@@ -159,12 +126,12 @@
                 }
             }
         }
-        newOrder.goods = goodsArray;
+        order.goods = goodsArray;
         
         //解析服务
         NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
-        if (newOrder.services && [newOrder.services count] > 0) {
-            for (NSDictionary *servicesDict in newOrder.services) {
+        if (order.services && [order.services count] > 0) {
+            for (NSDictionary *servicesDict in order.services) {
                 NSArray *serviceList = [servicesDict objectForKey:@"list"];
                 NSString *typeName = [servicesDict objectForKey:@"remark"];
                 NSMutableArray *servicesGroup = [NSMutableArray arrayWithObjects:nil];
@@ -182,9 +149,9 @@
                 }
             }
         }
-        newOrder.services = servicesArray;
+        order.services = servicesArray;
         
-        NSLog(@"订单数据：%@", [newOrder toDictionary]);
+        NSLog(@"订单数据：%@", [order toDictionary]);
         
         success(nil);
     } failure:^(ErrorEntity *error){
@@ -345,7 +312,7 @@
 - (void)actionHome
 {
     HomeViewController *viewController = [[HomeViewController alloc] init];
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    [self toggleViewController:viewController animated:YES];
 }
 
 @end

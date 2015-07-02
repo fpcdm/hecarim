@@ -56,6 +56,4 @@
 
 - (BOOL) hasOrder;
 
-- (BOOL) needRefresh;
-
 @end

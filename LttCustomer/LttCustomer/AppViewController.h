@@ -36,6 +36,9 @@
 //检查远程通知
 - (void) checkRemoteNotification;
 
+//远程通知钩子（默认顶部弹出）
+- (void) handleRemoteNotification:(NSString *) type data: (NSString *) data;
+
 //刷新菜单
 - (void) refreshMenu;
 
@@ -44,6 +47,9 @@
 
 //弹出控制器，自动检查登陆
 - (void) pushViewController:(AppViewController *)viewController animated: (BOOL)animated;
+
+//切换控制器，自动检查登陆
+- (void) toggleViewController:(AppViewController *)viewController animated: (BOOL)animated;
 
 @end
 

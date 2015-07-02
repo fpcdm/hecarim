@@ -218,7 +218,7 @@
     
     // 显示通知弹出层
     UIViewController *viewController = [navigationController.viewControllers lastObject];
-    if (viewController && [viewController isKindOfClass:[AppViewController class]]) {
+    if (viewController && [viewController respondsToSelector:@selector(checkRemoteNotification)]) {
         [(AppViewController *) viewController checkRemoteNotification];
     }
 }

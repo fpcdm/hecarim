@@ -148,14 +148,14 @@
     //新增需求
     if ([@"CASE_CREATED" isEqualToString:type]) {
         CaseListViewController *viewController = [[CaseListViewController alloc] init];
-        [self.navigationController pushViewController:viewController animated:YES];
+        [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
     //已支付，已完成
     } else if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {
         //跳转详情页面
         if (data) {
             OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
             viewController.orderNo = data;
-            [self.navigationController pushViewController:viewController animated:YES];
+            [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
         }
     }
 }
