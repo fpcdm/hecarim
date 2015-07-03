@@ -20,6 +20,8 @@ typedef BOOL (^RestKitGlobalErrorBlock)(ErrorEntity *error);
 
 + (RestKitUtil *) sharedClient;
 
+- (void) setClientType: (NSString *) clientType;
+
 - (NSString *) formatPath: (NSString *) path  object: (id) object;
 
 - (RKRequestDescriptor *) addRequestDescriptor: (Class) objectClass mappingParam: (id) param;

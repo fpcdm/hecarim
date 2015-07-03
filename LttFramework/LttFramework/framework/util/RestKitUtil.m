@@ -16,6 +16,7 @@ static RestKitUtil *sharedClient = nil;
 @implementation RestKitUtil
 {
     RKObjectManager *manager;
+    NSString *client;
 }
 
 #pragma mark - Static Methods
@@ -40,6 +41,11 @@ static RestKitUtil *sharedClient = nil;
 }
 
 #pragma mark - Public Methods
+- (void) setClientType:(NSString *)clientType;
+{
+    client = clientType;
+}
+
 - (NSString *) formatPath: (NSString *) path  object: (id) object
 {
     NSString *resultPath = RKPathFromPatternWithObject(path, object);
@@ -180,11 +186,13 @@ static RestKitUtil *sharedClient = nil;
 //添加token和user_type
 - (void) addHeader
 {
+    //客户端类型
+    [manager.HTTPClient setDefaultHeader:@"Client" value:client];
+    
     //获取token
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     if (user) {
         [manager.HTTPClient setDefaultHeader:@"Token" value:user.token];
-        [manager.HTTPClient setDefaultHeader:@"User-Type" value:user.type];
     }
 }
 

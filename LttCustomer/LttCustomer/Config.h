@@ -35,6 +35,9 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
+//客户端类型
+#define LTT_CLIENT_TYPE @"MC"
+
 //用户登录类型
 #define USER_TYPE_MEMBER @"member"
 

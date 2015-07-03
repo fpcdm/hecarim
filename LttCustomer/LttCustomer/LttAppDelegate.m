@@ -50,6 +50,9 @@
                                           NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
                                           };
     
+    //初始化客户端类型
+    [[RestKitUtil sharedClient] setClientType:LTT_CLIENT_TYPE];
+    
     //初始化控制器
     [self initViewController];
     

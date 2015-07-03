@@ -37,6 +37,9 @@
 //定时器刷新时间
 #define SCHEDULED_TIME_INTERVAL 5
 
+//客户端类型
+#define LTT_CLIENT_TYPE @"MM"
+
 //用户登录类型
 #define USER_TYPE_MERCHANT @"merchant"
 

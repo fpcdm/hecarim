@@ -45,6 +45,9 @@
     }
 #endif
     
+    //初始化客户端类型
+    [[RestKitUtil sharedClient] setClientType:LTT_CLIENT_TYPE];
+    
     UIViewController *viewController = nil;
     //是否登录
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
