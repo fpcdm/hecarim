@@ -100,6 +100,7 @@
 		2F6D3E5D1B312765007A4159 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E481B312765007A4159 /* UIScrollView+MJExtension.m */; };
 		2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E4A1B312765007A4159 /* UIScrollView+MJRefresh.m */; };
 		2F6D3E5F1B312765007A4159 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E4C1B312765007A4159 /* UIView+MJExtension.m */; };
+		2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F7057FC1B4665F3000DBEB8 /* Images.xcassets */; };
 		2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD751B1D5E9500797799 /* BaseEntity.m */; };
 		2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD7E1B1D5F6D00797799 /* BaseView.m */; };
 		2F7A56E01B09C11700D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56DF1B09C11700D12500 /* Foundation.framework */; };
@@ -175,7 +176,6 @@
 		2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7958D1AE7ACC900D51FB0 /* main.m */; };
 		2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795901AE7ACC900D51FB0 /* LttAppDelegate.m */; };
 		2FD795941AE7ACC900D51FB0 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795931AE7ACC900D51FB0 /* AppViewController.m */; };
-		2FD795991AE7ACC900D51FB0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FD795981AE7ACC900D51FB0 /* Images.xcassets */; };
 		2FD795A81AE7ACC900D51FB0 /* LttCustomerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795A71AE7ACC900D51FB0 /* LttCustomerTests.m */; };
 		2FE462411B27E4F700780AF5 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE462401B27E4F700780AF5 /* AccountView.m */; };
 		2FE462441B27E59300780AF5 /* AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE462431B27E59300780AF5 /* AppView.m */; };
@@ -395,6 +395,7 @@
 		2F6D3E4A1B312765007A4159 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2F6D3E4B1B312765007A4159 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2F6D3E4C1B312765007A4159 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		2F7057FC1B4665F3000DBEB8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2F74CD741B1D5E9500797799 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
 		2F74CD751B1D5E9500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD7D1B1D5F6D00797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
@@ -635,7 +636,6 @@
 		2FD795901AE7ACC900D51FB0 /* LttAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LttAppDelegate.m; sourceTree = "<group>"; };
 		2FD795921AE7ACC900D51FB0 /* AppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
 		2FD795931AE7ACC900D51FB0 /* AppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
-		2FD795981AE7ACC900D51FB0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FD795A11AE7ACC900D51FB0 /* LttCustomerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LttCustomerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD795A61AE7ACC900D51FB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FD795A71AE7ACC900D51FB0 /* LttCustomerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LttCustomerTests.m; sourceTree = "<group>"; };
@@ -1579,7 +1579,7 @@
 		2FD7958B1AE7ACC900D51FB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2FD795981AE7ACC900D51FB0 /* Images.xcassets */,
+				2F7057FC1B4665F3000DBEB8 /* Images.xcassets */,
 				2FD7958C1AE7ACC900D51FB0 /* Info.plist */,
 				2F6683881AF9BA3F00D430D0 /* InfoPlist.strings */,
 				2F6611461B0C697C0008D500 /* LttCustomer.pch */,
@@ -1818,9 +1818,9 @@
 				2F2F223D1B3A4D0300428742 /* NotificationBackgroundErrorIcon.png in Resources */,
 				2F2F223E1B3A4D0300428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				2F2F22421B3A4D0300428742 /* NotificationBackgroundSuccess@2x.png in Resources */,
+				2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */,
 				2F2F223C1B3A4D0300428742 /* NotificationBackgroundError@2x.png in Resources */,
 				2F2F22411B3A4D0300428742 /* NotificationBackgroundSuccess.png in Resources */,
-				2FD795991AE7ACC900D51FB0 /* Images.xcassets in Resources */,
 				2F67B60D1B33A437005106E8 /* menu@2x.png in Resources */,
 				2F2F22461B3A4D0300428742 /* NotificationBackgroundWarning@2x.png in Resources */,
 				2F2F22431B3A4D0300428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
@@ -2129,7 +2129,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yong wu (LXC4BKLMNS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yong wu (LXC4BKLMNS)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2162,7 +2161,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yong wu (LXC4BKLMNS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yong wu (LXC4BKLMNS)";
 				FRAMEWORK_SEARCH_PATHS = (
