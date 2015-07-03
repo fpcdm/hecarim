@@ -57,7 +57,7 @@
     [self initViewController];
     
     //初始化推送
-    [self initPush:application launchOptions:launchOptions];
+    [self initPush:launchOptions];
     
     return YES;
 }
@@ -114,7 +114,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-- (void)initPush:(UIApplication *)application launchOptions:(NSDictionary *)launchOptions {
+- (void)initPush:(NSDictionary *)launchOptions {
     // iOS8 下需要使用新的 API
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         UIUserNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
@@ -131,7 +131,7 @@
     if (userInfo) {
         NSLog(@"从消息启动:%@",userInfo);
         
-        [self handleRemoteNotification:userInfo state:application.applicationState];
+        [self handleRemoteNotification:userInfo];
     }
 }
 
@@ -146,7 +146,7 @@
     // 打印到日志
     NSLog(@"background: %@", userInfo);
     
-    [self handleRemoteNotification:userInfo state:application.applicationState];
+    [self handleRemoteNotification:userInfo];
     
     completionHandler(UIBackgroundFetchResultNewData);
 }
@@ -194,38 +194,20 @@
 {
     NSLog(@"Received Remote Notification::\n%@", userInfo);
     
-    [self handleRemoteNotification:userInfo state:application.applicationState];
+    [self handleRemoteNotification:userInfo];
 }
 
 // 处理远程通知
-- (void)handleRemoteNotification: (NSDictionary *)userInfo state: (UIApplicationState) state
+- (void)handleRemoteNotification: (NSDictionary *)userInfo
 {
-    //打印状态
-    NSString *stateStr = nil;
-    switch (state) {
-        case UIApplicationStateActive:
-            stateStr = @"active";
-            break;
-        case UIApplicationStateBackground:
-            stateStr = @"background";
-            break;
-        case UIApplicationStateInactive:
-            stateStr = @"inactive";
-            break;
-        default:
-            break;
-    }
-    NSLog(@"application state: %@", stateStr);
-    
     // 保存数据
-    [NotificationUtil receiveRemoteNotification:userInfo state:state];
+    [NotificationUtil receiveRemoteNotification:userInfo];
     
-    // 应用活动时及时检查通知
-    if (state == UIApplicationStateActive) {
-        UIViewController *viewController = [navigationController.viewControllers lastObject];
-        if (viewController && [viewController isKindOfClass:[AppViewController class]]) {
-            [(AppViewController *) viewController checkRemoteNotification];
-        }
+    // 及时检查通知
+    UIViewController *viewController = [navigationController.viewControllers lastObject];
+    if (viewController && [viewController isViewLoaded] &&
+        [viewController isKindOfClass:[AppViewController class]]) {
+        [(AppViewController *) viewController checkRemoteNotification];
     }
 }
 

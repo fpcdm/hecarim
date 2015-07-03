@@ -64,17 +64,13 @@
 }
 
 // 收到远程消息
-+ (void) receiveRemoteNotification:(NSDictionary *)userInfo state:(UIApplicationState)state
++ (void) receiveRemoteNotification:(NSDictionary *)userInfo
 {
     // 保存数据
     [[StorageUtil sharedStorage] setRemoteNotification:userInfo];
     
-    // state为active时播放声音
-    if (state == UIApplicationStateActive) {
-        AudioServicesPlaySystemSound(1007);
-    }
-    
-    // 震动
+    // 播放声音并震动
+    AudioServicesPlaySystemSound(1007);
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
