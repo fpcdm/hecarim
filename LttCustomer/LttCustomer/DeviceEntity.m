@@ -10,6 +10,6 @@
 
 @implementation DeviceEntity
 
-@synthesize id, token, type, app;
+@synthesize id, token, type;
 
 @end

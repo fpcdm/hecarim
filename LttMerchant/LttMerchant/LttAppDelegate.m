@@ -179,7 +179,6 @@
     if (deviceTokenStr && [deviceTokenStr length] > 0) {
         //新增设备接口
         DeviceEntity *device = [[DeviceEntity alloc] init];
-        device.app = USER_TYPE_MERCHANT;
         device.token = deviceTokenStr;
         device.type = @"ios";
         

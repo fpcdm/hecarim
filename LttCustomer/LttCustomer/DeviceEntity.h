@@ -16,6 +16,4 @@
 
 @property (nonatomic, retain) NSString *type;
 
-@property (nonatomic, retain) NSString *app;
-
 @end
