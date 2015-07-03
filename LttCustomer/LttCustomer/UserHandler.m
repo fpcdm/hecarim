@@ -46,7 +46,7 @@
 {
     //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"isDefault": @"is_default", @"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id"}];
     
     [sharedClient putObject:address path:@"member/address" param:nil success:^(NSArray *result){
@@ -65,7 +65,7 @@
 - (void)editAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"isDefault": @"is_default", @"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
     
     NSString *restPath = [sharedClient formatPath:@"member/address/:id" object:address];
     [sharedClient postObject:address path:restPath param:nil success:^(NSArray *result){
@@ -75,6 +75,18 @@
     } failure:^(ErrorEntity *error){
         [sharedClient removeRequestDescriptor:requestDescriptor];
         
+        failure(error);
+    }];
+}
+
+- (void) setDefaultAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [sharedClient formatPath:@"member/defaultaddress/:id" object:address];
+    [sharedClient postObject:address path:restPath param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
         failure(error);
     }];
 }

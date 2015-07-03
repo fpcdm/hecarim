@@ -103,7 +103,7 @@
     requestAddress.isDefault = @1;
     
     UserHandler *userHandler = [[UserHandler alloc] init];
-    [userHandler editAddress:requestAddress success:^(NSArray *result){
+    [userHandler setDefaultAddress:requestAddress success:^(NSArray *result){
         //回调父级
         self.address.isDefault = @1;
         if (self.defaultBlock) {

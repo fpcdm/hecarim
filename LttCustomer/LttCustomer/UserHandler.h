@@ -48,6 +48,14 @@
 - (void) editAddress: (AddressEntity *) address success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
+ *  设置默认收货地址
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) setDefaultAddress: (AddressEntity *) address success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
  *  收货地址详情
  *
  *  @param success 成功回调
