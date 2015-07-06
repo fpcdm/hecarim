@@ -17,6 +17,7 @@
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
 		2F10A7301B3974C0009C6C58 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F10A72F1B3974C0009C6C58 /* support.png */; };
 		2F10A7331B397718009C6C58 /* CaseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10A7321B397718009C6C58 /* CaseListView.m */; };
+		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */; };
 		2F2E0C731B2ADB58000A7C90 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C721B2ADB58000A7C90 /* LoginView.m */; };
 		2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */; };
@@ -249,6 +250,8 @@
 		2F10A72F1B3974C0009C6C58 /* support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = support.png; sourceTree = "<group>"; };
 		2F10A7311B397718009C6C58 /* CaseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListView.h; sourceTree = "<group>"; };
 		2F10A7321B397718009C6C58 /* CaseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListView.m; sourceTree = "<group>"; };
+		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
+		2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		2F2E0C6E1B2ACBEF000A7C90 /* AppUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserViewController.h; sourceTree = "<group>"; };
 		2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserViewController.m; sourceTree = "<group>"; };
 		2F2E0C711B2ADB58000A7C90 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -1158,6 +1161,8 @@
 				2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */,
 				2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */,
 				2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */,
+				2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */,
+				2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1860,6 +1865,7 @@
 			files = (
 				2F39E3131B29904C0064CA28 /* ProfileView.m in Sources */,
 				2F6B0C241B390FDF000123BF /* ServiceEntity.m in Sources */,
+				2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */,
 				2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
 				2FED82BD1B1EDBFB00306A11 /* qrencode.c in Sources */,
