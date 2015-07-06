@@ -44,6 +44,9 @@
 //客服电话
 #define LTT_CUSTOMER_SERVICE @"400-820-5555"
 
+//用户心跳时间
+#define USER_HEARTBEAT_INTERVAL 5.0
+
 //需求类型
 //买手机
 #define LTT_TYPE_MOBILE 1

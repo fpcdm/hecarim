@@ -25,6 +25,9 @@
     LttNavigationController *navigationController;
 }
 
+//最新位置
+@synthesize locationManager, location;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -58,6 +61,9 @@
     
     //初始化推送
     [self initPush:launchOptions];
+    
+    //初始化gps
+    [self initLocationManager];
     
     return YES;
 }
@@ -208,6 +214,57 @@
     if (viewController && [viewController isViewLoaded] &&
         [viewController isKindOfClass:[AppViewController class]]) {
         [(AppViewController *) viewController checkRemoteNotification];
+    }
+}
+
+/**
+ *  初始化GPS
+ */
+- (void) initLocationManager
+{
+    //初始化坐标为0
+    location = CLLocationCoordinate2DMake(0, 0);
+    
+    //初始化GPS
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = 10;
+    locationManager.delegate = self;
+    if (IS_IOS8_PLUS) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    [locationManager startUpdatingLocation];
+    NSLog(@"start gps");
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    
+    //更新位置
+    location = [newLocation coordinate];
+    
+    NSLog(@"gps success: 经度: %lf 纬度: %lf", location.longitude, location.latitude);
+    
+    //调用位置钩子
+    if (self.locationDelegate) {
+        [self.locationDelegate updateLocationSuccess:location];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    NSString *errorMsg = ([error code] == kCLErrorDenied) ? @"访问被拒绝" : @"获取地理位置失败";
+    NSLog(@"gps error:%@", errorMsg);
+    
+    //调用位置钩子
+    ErrorEntity *errorEntity = [[ErrorEntity alloc] init];
+    errorEntity.code = error.code;
+    errorEntity.message = error.description;
+    
+    if (self.locationDelegate) {
+        [self.locationDelegate updateLocationError:errorEntity];
     }
 }
 

@@ -13,6 +13,7 @@
 #import "ValidateUtil.h"
 #import "UserHandler.h"
 #import "AppExtension.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -32,15 +33,16 @@
 - (void)viewDidLoad {
     isMenuEnabled = NO;
     hideBackButton = NO;
+    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"登陆";
     
-    //点击左侧返回首页
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"]
+    //跳转注册
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注册"
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:self
-                                                                            action:@selector(actionHome)];
+                                                                            action:@selector(actionRegister)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,9 +56,9 @@
 }
 
 #pragma mark - Action
-- (void)actionHome
+- (void)actionRegister
 {
-    HomeViewController *viewController = [[HomeViewController alloc] init];
+    RegisterViewController *viewController = [[RegisterViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 
