@@ -7,15 +7,39 @@
 //
 
 #import "CaseListView.h"
+#import "MJRefresh.h"
 
 @implementation CaseListView
+
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    //允许滚动
+    self.tableView.scrollEnabled = YES;
+    
+    // 上拉加载更多
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(actionLoad)];
+    [footer setTitle:@"加载更多服务单" forState:MJRefreshStateIdle];
+    [footer setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"暂无更多服务单" forState:MJRefreshStateNoMoreData];
+    self.tableView.footer = footer;
+    //开始加载
+    [footer beginRefreshing];
+    
+    return self;
+}
 
 #pragma mark - RenderData
 - (void)renderData
 {
+    //结束加载
+    [self.tableView.footer endRefreshing];
+    
+    //显示数据
     NSMutableArray *intentionList = [self getData:@"intentionList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
-    
     if (intentionList != nil) {
         for (CaseEntity *intention in intentionList) {
             //计算高度
@@ -25,9 +49,13 @@
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
-    
-    self.tableView.scrollEnabled = YES;
     [self.tableView reloadData];
+    
+    //无更多数据
+    NSNumber *noMoreData = [self getData:@"noMoreData"];
+    if (noMoreData && [@1 isEqualToNumber:noMoreData]) {
+        [self.tableView.footer noticeNoMoreData];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell
@@ -96,6 +124,11 @@
 }
 
 #pragma mark - Action
+- (void)actionLoad
+{
+    [self.delegate actionLoad];
+}
+
 - (void)actionDetail:(NSDictionary *)cellData
 {
     CaseEntity *intention = [cellData objectForKey:@"data"];

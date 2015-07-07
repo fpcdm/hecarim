@@ -35,14 +35,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"我的服务单";
-    
-    //加载数据
-    [self loadData:^(id object){
-        [listView setData:@"intentionList" value:intentionList];
-        [listView renderData];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
 }
 
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
@@ -69,6 +61,18 @@
 }
 
 #pragma mark - Action
+- (void)actionLoad
+{
+    //加载数据
+    [self loadData:^(id object){
+        [listView setData:@"intentionList" value:intentionList];
+        [listView setData:@"noMoreData" value:@1];
+        [listView renderData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
 - (void)actionDetail:(CaseEntity *)intention
 {
     //失败不让跳转

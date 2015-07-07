@@ -944,7 +944,7 @@
 			isa = PBXGroup;
 			children = (
 				2F473DF91B32BA6600938BD6 /* Menu */,
-				2FC857571B341A11007B9771 /* Intention */,
+				2FC857571B341A11007B9771 /* Case */,
 				2F9BD1A11B26E16D00632751 /* Home */,
 				2F9BD1A01B26E16300632751 /* Account */,
 			);
@@ -984,7 +984,7 @@
 			isa = PBXGroup;
 			children = (
 				2F39E30D1B2983BF0064CA28 /* Home */,
-				2FC857581B341A5D007B9771 /* Intention */,
+				2FC857581B341A5D007B9771 /* Case */,
 				2F39E30C1B2983B80064CA28 /* Account */,
 			);
 			name = View;
@@ -1380,7 +1380,7 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		2FC857571B341A11007B9771 /* Intention */ = {
+		2FC857571B341A11007B9771 /* Case */ = {
 			isa = PBXGroup;
 			children = (
 				2FC8574B1B34062B007B9771 /* CaseViewController.h */,
@@ -1388,10 +1388,10 @@
 				2FC857591B341A82007B9771 /* CaseListViewController.h */,
 				2FC8575A1B341A82007B9771 /* CaseListViewController.m */,
 			);
-			name = Intention;
+			name = Case;
 			sourceTree = "<group>";
 		};
-		2FC857581B341A5D007B9771 /* Intention */ = {
+		2FC857581B341A5D007B9771 /* Case */ = {
 			isa = PBXGroup;
 			children = (
 				2FC8574E1B341184007B9771 /* CaseNewView.h */,
@@ -1407,7 +1407,7 @@
 				2F10A7311B397718009C6C58 /* CaseListView.h */,
 				2F10A7321B397718009C6C58 /* CaseListView.m */,
 			);
-			name = Intention;
+			name = Case;
 			sourceTree = "<group>";
 		};
 		2FCAF6C71B1FF07B00F3B084 /* RestKit */ = {

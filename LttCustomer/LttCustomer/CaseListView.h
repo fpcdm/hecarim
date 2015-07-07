@@ -11,6 +11,7 @@
 
 @protocol CaseListViewDelegate <NSObject>
 
+- (void)actionLoad;
 - (void)actionDetail:(CaseEntity *)intention;
 
 @end

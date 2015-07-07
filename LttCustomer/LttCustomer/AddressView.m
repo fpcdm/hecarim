@@ -18,8 +18,7 @@
     
     if (addressList != nil) {
         for (AddressEntity *address in addressList) {
-            BOOL isDefault = address.isDefault && [address.isDefault isEqualToNumber:@YES];
-            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":isDefault ? @110 : @90, @"data": address}];
+            [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":@90, @"data": address}];
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
@@ -36,13 +35,14 @@
     
     //间距配置
     int padding = 10;
-    int paddingDefault = 30;
     UIView *superview = cell;
+    UILabel *defaultLabel = nil;
     
     //是否默认
     if (isDefault) {
-        UILabel *defaultLabel = [self makeCellLabel:@"默认"];
+        defaultLabel = [self makeCellLabel:@"[默认]"];
         defaultLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+        defaultLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
         [cell addSubview:defaultLabel];
         
         [defaultLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -56,8 +56,12 @@
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(isDefault ? paddingDefault : padding);
-        make.left.equalTo(superview.mas_left).offset(padding);
+        make.top.equalTo(superview.mas_top).offset(padding);
+        if (isDefault) {
+            make.left.equalTo(defaultLabel.mas_right);
+        } else {
+            make.left.equalTo(superview.mas_left).offset(padding);
+        }
         
     }];
     
@@ -66,7 +70,7 @@
     [cell addSubview:mobileLabel];
     
     [mobileLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(isDefault ? paddingDefault : padding);
+        make.top.equalTo(superview.mas_top).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
     }];
