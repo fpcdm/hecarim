@@ -14,6 +14,7 @@
 #import "UserHandler.h"
 #import "AppExtension.h"
 #import "RegisterViewController.h"
+#import "UIViewController+BackButtonHandler.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -53,6 +54,14 @@
     if (self.tokenExpired) {
         [self showError:ERROR_TOKEN_EXPIRED];
     }
+}
+
+//修改返回按钮事件
+- (BOOL) navigationShouldPopOnBackButton
+{
+    HomeViewController *viewController = [[HomeViewController alloc] init];
+    [self toggleViewController:viewController animated:YES];
+    return YES;
 }
 
 #pragma mark - Action
@@ -107,7 +116,7 @@
             [self refreshMenu];
             
             HomeViewController *viewController = [[HomeViewController alloc] init];
-            [self pushViewController:viewController animated:YES];
+            [self toggleViewController:viewController animated:YES];
         }];
         
     } failure:^(ErrorEntity *error){

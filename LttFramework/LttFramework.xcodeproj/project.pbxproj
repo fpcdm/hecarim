@@ -37,6 +37,8 @@
 		2F5D29DF1B1EFDD500A99AC5 /* RestKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D29DE1B1EFDD500A99AC5 /* RestKitUtil.m */; };
 		2F67969E1B4B67FE00E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F67969D1B4B67FE00E0F774 /* LocationUtil.m */; };
 		2F6796A01B4B687F00E0F774 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F67969F1B4B687F00E0F774 /* CoreLocation.framework */; };
+		2F6796A61B4B7D5200E0F774 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A51B4B7D5200E0F774 /* UIImageView+PlayGIF.m */; };
+		2F6796A91B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A81B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m */; };
 		2F6B0C2C1B395798000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C2B1B395798000123BF /* AXRatingView.m */; };
 		2F6D3DFA1B310EE4007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */; };
 		2F6D3EA01B312884007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E621B312884007A4159 /* AbstractActionSheetPicker.m */; };
@@ -307,6 +309,10 @@
 		2F67969C1B4B67FE00E0F774 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
 		2F67969D1B4B67FE00E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F67969F1B4B687F00E0F774 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2F6796A41B4B7D5200E0F774 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
+		2F6796A51B4B7D5200E0F774 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
+		2F6796A71B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		2F6796A81B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		2F6B0C2A1B395798000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		2F6B0C2B1B395798000123BF /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		2F6D3DF81B310EE4007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
@@ -1096,6 +1102,10 @@
 				2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */,
 				2F9000031B1D84D80040D97B /* UIViewController+Ltt.h */,
 				2F9000041B1D84F00040D97B /* UIViewController+Ltt.m */,
+				2F6796A71B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.h */,
+				2F6796A81B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m */,
+				2F6796A41B4B7D5200E0F774 /* UIImageView+PlayGIF.h */,
+				2F6796A51B4B7D5200E0F774 /* UIImageView+PlayGIF.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1535,6 +1545,7 @@
 				2FED7DEE1B1EA71A00306A11 /* DDTTYLogger.m in Sources */,
 				2FCAF7C71B1FF40D00F3B084 /* mask.c in Sources */,
 				2F74CDE91B1D833200797799 /* MASConstraintMaker.m in Sources */,
+				2F6796A91B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2F6D3EAD1B312884007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2FCAF7C91B1FF40D00F3B084 /* qrencode.c in Sources */,
 				2FCAF8821B202E4700F3B084 /* BaseViewController.m in Sources */,
@@ -1569,6 +1580,7 @@
 				2FCAF7CA1B1FF40D00F3B084 /* qrinput.c in Sources */,
 				2F9000CA1B1D98790040D97B /* UIView+REFrostedViewController.m in Sources */,
 				2F74CDEE1B1D833200797799 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2F6796A61B4B7D5200E0F774 /* UIImageView+PlayGIF.m in Sources */,
 				2F6D3EB31B312884007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F9000CF1B1D98790040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */,
