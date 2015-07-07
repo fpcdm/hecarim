@@ -47,6 +47,9 @@
 //用户心跳时间
 #define USER_HEARTBEAT_INTERVAL 10.0
 
+//默认每页数量
+#define LTT_PAGESIZE_DEFAULT 10
+
 //需求类型
 //买手机
 #define LTT_TYPE_MOBILE 1

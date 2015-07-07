@@ -37,13 +37,13 @@
         make.left.equalTo(superview.mas_left).offset(-0.5);
         make.right.equalTo(superview.mas_right).offset(0.5);
         
-        make.height.equalTo(@80);
+        make.height.equalTo(@100);
     }];
     
     //账户
     UILabel *accountLabel = [UILabel new];
     accountLabel.text = @"账户";
-    accountLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    accountLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [inputView addSubview:accountLabel];
     
     superview = inputView;
@@ -51,15 +51,15 @@
         make.left.equalTo(superview.mas_left).offset(20);
         make.top.equalTo(superview.mas_top).offset(padding);
         
-        make.height.equalTo(@20);
-        make.width.equalTo(@30);
+        make.height.equalTo(@30);
+        make.width.equalTo(@40);
     }];
     
     //手机号输入框
     mobileField = [AppUIUtil makeTextField];
     mobileField.keyboardType = UIKeyboardTypePhonePad;
     mobileField.placeholder = @"请输入手机号";
-    mobileField.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    mobileField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [inputView addSubview:mobileField];
     
     [mobileField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -67,7 +67,7 @@
         make.left.equalTo(accountLabel.mas_right);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo(@20);
+        make.height.equalTo(@30);
     }];
     
     //间隔
@@ -86,7 +86,7 @@
     //密码
     UILabel *passwordLabel = [UILabel new];
     passwordLabel.text = @"密码";
-    passwordLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    passwordLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [inputView addSubview:passwordLabel];
     
     [passwordLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -101,7 +101,7 @@
     passwordField = [AppUIUtil makeTextField];
     passwordField.placeholder = @"请输入密码";
     passwordField.secureTextEntry = YES;
-    passwordField.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    passwordField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [inputView addSubview:passwordField];
     
     [passwordField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -109,7 +109,7 @@
         make.left.equalTo(mobileField.mas_left);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo(@20);
+        make.height.equalTo(@30);
     }];
     
     //按钮
