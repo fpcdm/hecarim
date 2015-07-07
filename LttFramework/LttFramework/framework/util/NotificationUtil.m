@@ -66,7 +66,8 @@
 // 收到远程消息
 + (void) receiveRemoteNotification:(NSDictionary *)userInfo
 {
-    // 保存数据
+    // 整理并保存数据
+    userInfo = [[StorageUtil sharedStorage] prepareDictionary:userInfo];
     [[StorageUtil sharedStorage] setRemoteNotification:userInfo];
     
     // 播放声音并震动
