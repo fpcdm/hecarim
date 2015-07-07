@@ -13,15 +13,16 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "HelperHandler.h"
-#import "LttAppDelegate.h"
+#import "LocationUtil.h"
 
-@interface HomeViewController () <HomeViewDelegate, LttLocationDelegate>
+@interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
 @end
 
 @implementation HomeViewController
 {
     //控制接口间隔
+    LocationUtil *locationUtil;
     NSDate *lastDate;
     
     HomeView *homeView;
@@ -35,12 +36,6 @@
     self.view = homeView;
 }
 
-- (LttAppDelegate *) appDelegate
-{
-    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
-    return appDelegate;
-}
-
 - (void)viewDidLoad
 {
     isIndexNavBar = YES;
@@ -51,18 +46,30 @@
     
     self.navigationItem.title = @"两条腿";
     
-    //初始化位置代理
-    [self appDelegate].locationDelegate = self;
-    
-    //刷新位置
-    [self actionGps];
+    //设置位置代理
+    locationUtil = [LocationUtil sharedInstance];
+    locationUtil.delegate = self;
     
     //todo: 服务人数
     [homeView setData:@"count" value:@12];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [locationUtil startUpdate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [locationUtil stopUpdate];
+}
+
 #pragma mark - GPS
-- (void) updateLocationSuccess:(CLLocationCoordinate2D)location
+- (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
     //请求间隔: 5S
     if (lastDate && lastDate != nil) {
@@ -72,12 +79,10 @@
         }
     }
     
-    NSLog(@"更新位置: 经度: %lf 纬度: %lf", location.longitude, location.latitude);
-    
     //查询位置
     LocationEntity *locationEntity = [[LocationEntity alloc] init];
-    locationEntity.longitude = [NSNumber numberWithFloat:location.longitude];
-    locationEntity.latitude = [NSNumber numberWithFloat:location.latitude];
+    locationEntity.longitude = [NSNumber numberWithFloat:position.longitude];
+    locationEntity.latitude = [NSNumber numberWithFloat:position.latitude];
     
     if (!helperHandler) helperHandler = [[HelperHandler alloc] init];
     [helperHandler queryLocation:locationEntity success:^(NSArray *result){
@@ -94,7 +99,7 @@
     }];
 }
 
-- (void)updateLocationError:(ErrorEntity *)error
+- (void)updateLocationError:(NSError *)error
 {
     [homeView setData:@"address" value:@"定位失败"];
     [homeView renderData];
@@ -103,11 +108,7 @@
 #pragma mark - Action
 - (void)actionGps
 {
-    CLLocationManager *locationManager = [self appDelegate].locationManager;
-    
-    [locationManager stopUpdatingLocation];
-    [locationManager startUpdatingLocation];
-    NSLog(@"refresh gps");
+    [locationUtil restartUpdate];
 }
 
 - (void)actionCase:(NSNumber *)type
@@ -124,8 +125,8 @@
     intentionEntity.type = type;
     
     //获取gps坐标
-    CLLocationCoordinate2D location = [self appDelegate].location;
-    intentionEntity.location = [NSString stringWithFormat:@"%f,%f", location.longitude, location.latitude];
+    CLLocationCoordinate2D position = [locationUtil position];
+    intentionEntity.location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     

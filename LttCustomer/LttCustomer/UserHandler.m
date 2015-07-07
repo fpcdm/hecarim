@@ -42,9 +42,19 @@
     }];
 }
 
+- (void)updateHeartbeat:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    [sharedClient postObject:user path:@"user/heartbeat" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 - (void)addAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
 {
-    //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[AddressEntity class] mappingParam:@{@"provinceId": @"province_code", @"cityId": @"city_code", @"countyId":@"area_code", @"streetId": @"street_code", @"mobile":@"mobile", @"name":@"truename", @"address":@"address"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id"}];

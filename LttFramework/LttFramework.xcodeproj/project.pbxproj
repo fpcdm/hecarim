@@ -35,6 +35,8 @@
 		2F5D29511B1EEC2000A99AC5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29501B1EEC2000A99AC5 /* CFNetwork.framework */; };
 		2F5D29DC1B1EFDB800A99AC5 /* StorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D29DB1B1EFDB800A99AC5 /* StorageUtil.m */; };
 		2F5D29DF1B1EFDD500A99AC5 /* RestKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D29DE1B1EFDD500A99AC5 /* RestKitUtil.m */; };
+		2F67969E1B4B67FE00E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F67969D1B4B67FE00E0F774 /* LocationUtil.m */; };
+		2F6796A01B4B687F00E0F774 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F67969F1B4B687F00E0F774 /* CoreLocation.framework */; };
 		2F6B0C2C1B395798000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C2B1B395798000123BF /* AXRatingView.m */; };
 		2F6D3DFA1B310EE4007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */; };
 		2F6D3EA01B312884007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E621B312884007A4159 /* AbstractActionSheetPicker.m */; };
@@ -302,6 +304,9 @@
 		2F5D29DB1B1EFDB800A99AC5 /* StorageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageUtil.m; sourceTree = "<group>"; };
 		2F5D29DD1B1EFDD500A99AC5 /* RestKitUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKitUtil.h; sourceTree = "<group>"; };
 		2F5D29DE1B1EFDD500A99AC5 /* RestKitUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKitUtil.m; sourceTree = "<group>"; };
+		2F67969C1B4B67FE00E0F774 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
+		2F67969D1B4B67FE00E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
+		2F67969F1B4B687F00E0F774 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F6B0C2A1B395798000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		2F6B0C2B1B395798000123BF /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		2F6D3DF81B310EE4007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
@@ -562,6 +567,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6796A01B4B687F00E0F774 /* CoreLocation.framework in Frameworks */,
 				2FCAF8B21B20498400F3B084 /* libz.dylib in Frameworks */,
 				2F5D29511B1EEC2000A99AC5 /* CFNetwork.framework in Frameworks */,
 				2F5D294F1B1EEC1100A99AC5 /* MobileCoreServices.framework in Frameworks */,
@@ -913,6 +919,7 @@
 		2F74CDC91B1D819A00797799 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F67969F1B4B687F00E0F774 /* CoreLocation.framework */,
 				2FCAF8B11B20498400F3B084 /* libz.dylib */,
 				2F5D29501B1EEC2000A99AC5 /* CFNetwork.framework */,
 				2F5D294E1B1EEC1100A99AC5 /* MobileCoreServices.framework */,
@@ -1106,6 +1113,8 @@
 				2FCAF8281B20058F00F3B084 /* TimerUtil.m */,
 				2FCAF8681B2022C300F3B084 /* NotificationUtil.h */,
 				2FCAF8691B2022C300F3B084 /* NotificationUtil.m */,
+				2F67969C1B4B67FE00E0F774 /* LocationUtil.h */,
+				2F67969D1B4B67FE00E0F774 /* LocationUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1576,6 +1585,7 @@
 				2FED7DED1B1EA71A00306A11 /* DDLog.m in Sources */,
 				2F6D3EAC1B312884007A4159 /* MJRefreshHeader.m in Sources */,
 				2F8009FE1B1D46DD006189EF /* AppDelegate.m in Sources */,
+				2F67969E1B4B67FE00E0F774 /* LocationUtil.m in Sources */,
 				2FBF3F711B281CB400C0DC54 /* BaseTableView.m in Sources */,
 				2F6B0C2C1B395798000123BF /* AXRatingView.m in Sources */,
 				2F6D3EBA1B312884007A4159 /* UIView+MJExtension.m in Sources */,
