@@ -55,10 +55,10 @@
 - (NSString *)statusName
 {
     NSDictionary *names = @{
-                            CASE_STATUS_NEW:@"新建",
-                            CASE_STATUS_LOCKED:@"已抢单",
-                            CASE_STATUS_CONFIRMED:@"已确认",
-                            CASE_STATUS_TOPAY:@"待付款",
+                            CASE_STATUS_NEW:@"派单中",
+                            CASE_STATUS_LOCKED:@"已派单",
+                            CASE_STATUS_CONFIRMED:@"服务中",
+                            CASE_STATUS_TOPAY:@"未付款",
                             CASE_STATUS_PAYED:@"已付款",
                             CASE_STATUS_SUCCESS:@"已完成",
                             CASE_STATUS_MEMBER_CANCEL:@"已取消",
@@ -71,7 +71,21 @@
 
 - (UIColor *)statusColor
 {
-    return [UIColor colorWithHexString:COLOR_DARK_TEXT];
+    if ([CASE_STATUS_NEW isEqualToString:self.status]) {
+        return [UIColor colorWithHexString:@"FFA54D"];
+    } else if ([CASE_STATUS_LOCKED isEqualToString:self.status]) {
+        return [UIColor colorWithHexString:@"FFA54D"];
+    } else if ([CASE_STATUS_CONFIRMED isEqualToString:self.status]) {
+        return [UIColor colorWithHexString:@"FFA54D"];
+    } else if ([CASE_STATUS_TOPAY isEqualToString:self.status]) {
+        return [UIColor redColor];
+    } else if ([CASE_STATUS_PAYED isEqualToString:self.status]) {
+        return [UIColor colorWithHexString:@"4DD14D"];
+    } else if ([CASE_STATUS_SUCCESS isEqualToString:self.status]) {
+        return [UIColor colorWithHexString:@"4DD14D"];
+    } else {
+        return [UIColor lightGrayColor];
+    }
 }
 
 - (BOOL) isFail

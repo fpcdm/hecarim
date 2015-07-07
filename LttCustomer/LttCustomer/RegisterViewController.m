@@ -7,6 +7,11 @@
 //
 
 #import "RegisterViewController.h"
+#import "RegisterMobileView.h"
+#import "RegisterExistView.h"
+#import "RegisterCodeView.h"
+#import "RegisterPasswordView.h"
+#import "RegisterSuccessView.h"
 
 @interface RegisterViewController ()
 

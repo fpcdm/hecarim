@@ -71,7 +71,7 @@
 //高亮背景
 #define COLOR_HIGHLIGHTED_BG @"E2383B"
 //主边框
-#define COLOR_MAIN_BORDER @"D8D8D8"
+#define COLOR_MAIN_BORDER @"B2B2B2"
 //主标题背景
 #define COLOR_MAIN_TITLE_BG @"F8F8F8"
 //主标题

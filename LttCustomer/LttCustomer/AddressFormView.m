@@ -107,7 +107,7 @@
 {
     mobileField.placeholder = @"手机号码";
     mobileField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
-    mobileField.keyboardType = UIKeyboardTypeNumberPad;
+    mobileField.keyboardType = UIKeyboardTypePhonePad;
     [cell addSubview:mobileField];
     
     //占位符用来定位

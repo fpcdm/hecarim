@@ -66,6 +66,11 @@
 		2F6683921AF9F9AE00D430D0 /* CaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6683911AF9F9AE00D430D0 /* CaseEntity.m */; };
 		2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A21B4B70B900E0F774 /* LocationUtil.m */; };
 		2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */; };
+		2F6796BB1B4BB74900E0F774 /* RegisterMobileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796BA1B4BB74900E0F774 /* RegisterMobileView.m */; };
+		2F6796BE1B4BB78100E0F774 /* RegisterExistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796BD1B4BB78100E0F774 /* RegisterExistView.m */; };
+		2F6796C11B4BB7B600E0F774 /* RegisterSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796C01B4BB7B600E0F774 /* RegisterSuccessView.m */; };
+		2F6796C41B4BB80200E0F774 /* RegisterCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796C31B4BB80200E0F774 /* RegisterCodeView.m */; };
+		2F6796C71B4BB82000E0F774 /* RegisterPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */; };
 		2F67B60D1B33A437005106E8 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B60C1B33A437005106E8 /* menu@2x.png */; };
 		2F67B6111B33ABE2005106E8 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B6101B33ABE2005106E8 /* top.png */; };
 		2F693E0B1B3BB61300CFB8F4 /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */; };
@@ -331,6 +336,16 @@
 		2F6796A21B4B70B900E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F6796AA1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		2F6796B91B4BB74900E0F774 /* RegisterMobileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterMobileView.h; sourceTree = "<group>"; };
+		2F6796BA1B4BB74900E0F774 /* RegisterMobileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterMobileView.m; sourceTree = "<group>"; };
+		2F6796BC1B4BB78100E0F774 /* RegisterExistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterExistView.h; sourceTree = "<group>"; };
+		2F6796BD1B4BB78100E0F774 /* RegisterExistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterExistView.m; sourceTree = "<group>"; };
+		2F6796BF1B4BB7B600E0F774 /* RegisterSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSuccessView.h; sourceTree = "<group>"; };
+		2F6796C01B4BB7B600E0F774 /* RegisterSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSuccessView.m; sourceTree = "<group>"; };
+		2F6796C21B4BB80200E0F774 /* RegisterCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterCodeView.h; sourceTree = "<group>"; };
+		2F6796C31B4BB80200E0F774 /* RegisterCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterCodeView.m; sourceTree = "<group>"; };
+		2F6796C51B4BB82000E0F774 /* RegisterPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPasswordView.h; sourceTree = "<group>"; };
+		2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPasswordView.m; sourceTree = "<group>"; };
 		2F67B60C1B33A437005106E8 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		2F67B6101B33ABE2005106E8 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		2F693E091B3BB61300CFB8F4 /* LocationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationEntity.h; sourceTree = "<group>"; };
@@ -862,6 +877,16 @@
 				2FBF3F761B2821AA00C0DC54 /* HomeView.m */,
 				2F2E0C711B2ADB58000A7C90 /* LoginView.h */,
 				2F2E0C721B2ADB58000A7C90 /* LoginView.m */,
+				2F6796B91B4BB74900E0F774 /* RegisterMobileView.h */,
+				2F6796BA1B4BB74900E0F774 /* RegisterMobileView.m */,
+				2F6796BC1B4BB78100E0F774 /* RegisterExistView.h */,
+				2F6796BD1B4BB78100E0F774 /* RegisterExistView.m */,
+				2F6796BF1B4BB7B600E0F774 /* RegisterSuccessView.h */,
+				2F6796C01B4BB7B600E0F774 /* RegisterSuccessView.m */,
+				2F6796C21B4BB80200E0F774 /* RegisterCodeView.h */,
+				2F6796C31B4BB80200E0F774 /* RegisterCodeView.m */,
+				2F6796C51B4BB82000E0F774 /* RegisterPasswordView.h */,
+				2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1893,6 +1918,7 @@
 				2F6D3E591B312765007A4159 /* MJRefreshNormalHeader.m in Sources */,
 				2F089D741B2EC957002A0EA5 /* SafetyViewController.m in Sources */,
 				2F89A6361B0EC8E80043B236 /* GoodsHandler.m in Sources */,
+				2F6796BB1B4BB74900E0F774 /* RegisterMobileView.m in Sources */,
 				2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */,
 				2F6D3E531B312765007A4159 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2F6D3E521B312765007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -1946,6 +1972,7 @@
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
 				2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */,
+				2F6796C11B4BB7B600E0F774 /* RegisterSuccessView.m in Sources */,
 				2F818C0A1B40ED2E00AB3EFD /* SuggestionView.m in Sources */,
 				2FC8575B1B341A82007B9771 /* CaseListViewController.m in Sources */,
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
@@ -1970,6 +1997,7 @@
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2F6D3E5C1B312765007A4159 /* MJRefreshConst.m in Sources */,
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
+				2F6796C41B4BB80200E0F774 /* RegisterCodeView.m in Sources */,
 				2FF3E6AB1B2FFB3200B90045 /* AddressDetailViewController.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
 				2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */,
@@ -2011,6 +2039,7 @@
 				2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */,
 				2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */,
 				2F6B0C281B395782000123BF /* AXRatingView.m in Sources */,
+				2F6796C71B4BB82000E0F774 /* RegisterPasswordView.m in Sources */,
 				2FF12BE31B3CE1F800A81705 /* AppLoadingView.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
@@ -2030,6 +2059,7 @@
 				2F089D7A1B2ECE9C002A0EA5 /* AddressViewController.m in Sources */,
 				2FED82BB1B1EDBFB00306A11 /* mask.c in Sources */,
 				2FCAF88E1B203E6100F3B084 /* BaseViewController.m in Sources */,
+				2F6796BE1B4BB78100E0F774 /* RegisterExistView.m in Sources */,
 				2F6D3E171B312164007A4159 /* DistancePickerView.m in Sources */,
 				2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FED7D9A1B1EA2D300306A11 /* UIButton+WebCache.m in Sources */,
