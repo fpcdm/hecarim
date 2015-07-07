@@ -8,16 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
-#import <CoreLocation/CoreLocation.h>
 #import "Config.h"
 
-@interface LttAppDelegate : UIResponder <UIApplicationDelegate, REFrostedViewControllerDelegate, CLLocationManagerDelegate>
+@interface LttAppDelegate : UIResponder <UIApplicationDelegate, REFrostedViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (retain, nonatomic) CLLocationManager *locationManager;
-
-@property(readonly, nonatomic) CLLocationCoordinate2D lastCoordinate;
 
 @end
 

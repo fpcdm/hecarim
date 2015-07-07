@@ -52,6 +52,10 @@
 		2F52D11C1AEF8AD50003D7C2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D1191AEF8AD50003D7C2 /* LoginViewController.m */; };
 		2F52D11F1AEF8AFC0003D7C2 /* LttAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */; };
 		2F5BECEA1AFDF7DF00F828DB /* specEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5BECE91AFDF7DF00F828DB /* specEntity.m */; };
+		2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */; };
+		2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B01B4B84BD00E0F774 /* UITextView+Placeholder.m */; };
+		2F6796B51B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B21B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m */; };
+		2F6796B81B4B84CF00E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B71B4B84CF00E0F774 /* LocationUtil.m */; };
 		2F6B8FD11B01A8F0005F273F /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B8FD01B01A8F0005F273F /* menu@2x.png */; };
 		2F6D3EFB1B3128CC007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EBD1B3128CC007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3EFC1B3128CC007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EBF1B3128CC007A4159 /* ActionSheetCustomPicker.m */; };
@@ -270,6 +274,14 @@
 		2F5BECE81AFDF7DF00F828DB /* specEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specEntity.h; sourceTree = "<group>"; };
 		2F5BECE91AFDF7DF00F828DB /* specEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = specEntity.m; sourceTree = "<group>"; };
 		2F6611471B0C6B890008D500 /* LttMerchant.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttMerchant.pch; sourceTree = "<group>"; };
+		2F6796AD1B4B84BD00E0F774 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
+		2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
+		2F6796AF1B4B84BD00E0F774 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		2F6796B01B4B84BD00E0F774 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
+		2F6796B11B4B84BD00E0F774 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		2F6796B21B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		2F6796B61B4B84CF00E0F774 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
+		2F6796B71B4B84CF00E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F6B8FD01B01A8F0005F273F /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		2F6D3EBC1B3128CC007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 		2F6D3EBD1B3128CC007A4159 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
@@ -1033,6 +1045,12 @@
 				2F800B091B1D529F006189EF /* UIColor+Hex.m */,
 				2F9000461B1D91380040D97B /* UIViewController+Ltt.h */,
 				2F9000471B1D91380040D97B /* UIViewController+Ltt.m */,
+				2F6796AD1B4B84BD00E0F774 /* UIImageView+PlayGIF.h */,
+				2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */,
+				2F6796AF1B4B84BD00E0F774 /* UITextView+Placeholder.h */,
+				2F6796B01B4B84BD00E0F774 /* UITextView+Placeholder.m */,
+				2F6796B11B4B84BD00E0F774 /* UIViewController+BackButtonHandler.h */,
+				2F6796B21B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1050,6 +1068,8 @@
 				2FCAF8601B201FF000F3B084 /* ValidateUtil.m */,
 				2FCAF86B1B20251800F3B084 /* NotificationUtil.h */,
 				2FCAF86C1B20251800F3B084 /* NotificationUtil.m */,
+				2F6796B61B4B84CF00E0F774 /* LocationUtil.h */,
+				2F6796B71B4B84CF00E0F774 /* LocationUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1701,6 +1721,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F52A6E51AF20EEB003E2664 /* OrderDetailViewController.m in Sources */,
+				2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */,
 				2F6D3F101B3128CC007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2FCAF8641B201FF000F3B084 /* ValidateUtil.m in Sources */,
 				2F6D3F0A1B3128CC007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1709,6 +1730,7 @@
 				2FCAF8621B201FF000F3B084 /* StorageUtil.m in Sources */,
 				2F6D3F0B1B3128CC007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F90015C1B1D9D680040D97B /* UIView+REFrostedViewController.m in Sources */,
+				2F6796B51B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2FED7DCA1B1EA2E100306A11 /* UIImageView+WebCache.m in Sources */,
 				2F7074581AFC4F8100A1242A /* CategoryEntity.m in Sources */,
 				2F5BECEA1AFDF7DF00F828DB /* specEntity.m in Sources */,
@@ -1721,6 +1743,7 @@
 				2F90015F1B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2FED7DC11B1EA2E100306A11 /* SDWebImageDecoder.m in Sources */,
 				2F90007C1B1D91470040D97B /* MASViewAttribute.m in Sources */,
+				2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */,
 				2F89A6481B0ED6CB0043B236 /* UserHandler.m in Sources */,
 				2F52D11C1AEF8AD50003D7C2 /* LoginViewController.m in Sources */,
 				2F6D3EFF1B3128CC007A4159 /* ActionSheetLocalePicker.m in Sources */,
@@ -1812,6 +1835,7 @@
 				2F6D3EFD1B3128CC007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2FCAF8511B201FD100F3B084 /* BaseHandler.m in Sources */,
 				2F74CD821B1D5F8100797799 /* BaseView.m in Sources */,
+				2F6796B81B4B84CF00E0F774 /* LocationUtil.m in Sources */,
 				2F9000481B1D91380040D97B /* UIViewController+Ltt.m in Sources */,
 				2F6D3F0F1B3128CC007A4159 /* MJRefreshNormalHeader.m in Sources */,
 				2F9001581B1D9D680040D97B /* RECommonFunctions.m in Sources */,

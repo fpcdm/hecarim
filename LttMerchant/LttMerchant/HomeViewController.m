@@ -9,8 +9,8 @@
 #import "HomeViewController.h"
 #import "ApplyDetailViewController.h"
 #import "IntentionEntity.h"
-#import "LttAppDelegate.h"
 #import "IntentionHandler.h"
+#import "LocationUtil.h"
 
 @interface HomeViewController ()
 
@@ -37,8 +37,8 @@
 {
     [self showLoading:LocalString(@"TIP_LOADING_MESSAGE")];
     
-    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
-    NSDictionary *param = @{@"location":[NSString stringWithFormat:@"%f,%f", appDelegate.lastCoordinate.longitude, appDelegate.lastCoordinate.latitude]};
+    CLLocationCoordinate2D position = [[LocationUtil sharedInstance] position];
+    NSDictionary *param = @{@"location":[NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude]};
     
     //调用接口
     IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];

@@ -16,6 +16,8 @@
 #import "NotificationUtil.h"
 #import "IntentionHandler.h"
 #import "UserHandler.h"
+#import "LocationUtil.h"
+#import "TimerUtil.h"
 
 @interface LttAppDelegate ()
 
@@ -25,9 +27,10 @@
 {
     REFrostedViewController *frostedViewController;
     LttNavigationController *navigationController;
+    
+    TimerUtil *heartbeatTimer;
+    LocationUtil *locationUtil;
 }
-
-@synthesize locationManager, lastCoordinate;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -88,22 +91,11 @@
         return YES;
     };
     
-    //初始化坐标为0
-    lastCoordinate = CLLocationCoordinate2DMake(0, 0);
-    
-    //初始化GPS
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = 10;
-    locationManager.delegate = self;
-    if (IS_IOS8_PLUS) {
-        [locationManager requestWhenInUseAuthorization];
-    }
-    [locationManager startUpdatingLocation];
-    NSLog(@"start gps");
-    
     //初始化推送
     [self initPush:application launchOptions:launchOptions];
+    
+    //初始化用户心跳
+    [self initHeartbeat];
     
     return YES;
 }
@@ -226,25 +218,35 @@
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-    
-    //更新位置
-    lastCoordinate = [newLocation coordinate];
-    
-    NSLog(@"gps success: 经度: %lf 纬度: %lf", lastCoordinate.longitude, lastCoordinate.latitude);
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error
+/**
+ *  初始化心跳
+ */
+- (void) initHeartbeat
 {
-    //重置位置
-    lastCoordinate.longitude = 0;
-    lastCoordinate.latitude = 0;
+    //初始化GPS
+    locationUtil = [LocationUtil sharedInstance];
+    [locationUtil startUpdate];
     
-    NSString *errorMsg = ([error code] == kCLErrorDenied) ? @"访问被拒绝" : @"获取地理位置失败";
-    NSLog(@"gps error:%@", errorMsg);
+    //初始化定时器
+    heartbeatTimer = [TimerUtil repeatTimer:USER_HEARTBEAT_INTERVAL block:^{
+        //用户是否登陆
+        UserEntity *user = [[StorageUtil sharedStorage] getUser];
+        if (user) {
+            NSLog(@"更新用户心跳");
+            
+            //获取gps位置
+            CLLocationCoordinate2D position = [locationUtil position];
+            NSString *location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
+            NSDictionary *param = @{@"position": location};
+            
+            UserHandler *userHandler = [[UserHandler alloc] init];
+            [userHandler updateHeartbeat:user param:param success:^(NSArray *result){
+                NSLog(@"更新用户心跳成功");
+            } failure:^(ErrorEntity *error){
+                NSLog(@"更新用户心跳失败");
+            }];
+        }
+    }];
 }
 
 @end
