@@ -89,24 +89,21 @@
         //获取位置
         if (location.address && [location.address length] > 0) {
             [homeView setData:@"address" value:location.address];
-            [homeView renderData];
-            
-            lastDate = [NSDate date];
         }
-    } failure:^(ErrorEntity *error){
-    }];
-    
-    //查询信使数量
-    [helperHandler queryServiceNumber:locationEntity success:^(NSArray *result){
-        LocationEntity *location = [result firstObject];
         
-        //获取位置
-        if (location.serviceNumber) {
-            [homeView setData:@"count" value:location.serviceNumber];
-            [homeView renderData];
+        //查询信使数量
+        [helperHandler queryServiceNumber:locationEntity success:^(NSArray *result){
+            LocationEntity *location = [result firstObject];
             
-            lastDate = [NSDate date];
-        }
+            //获取位置
+            if (location.serviceNumber) {
+                [homeView setData:@"count" value:location.serviceNumber];
+                [homeView renderData];
+                
+                lastDate = [NSDate date];
+            }
+        } failure:^(ErrorEntity *error){
+        }];
     } failure:^(ErrorEntity *error){
     }];
 }
