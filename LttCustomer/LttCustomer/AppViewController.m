@@ -37,11 +37,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //子页面是否有导航返回按钮
-    if (hasNavBack) {
-        UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:@""];
-        self.navigationItem.backBarButtonItem = backButtonItem;
-    }
+    //子页面导航返回按钮
+    UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:@""];
+    self.navigationItem.backBarButtonItem = backButtonItem;
     
     //当前页面是否隐藏返回按钮
     if (hideBackButton) {
@@ -49,8 +47,6 @@
     } else {
         self.navigationItem.hidesBackButton = NO;
     }
-    
-    //@todo: 右侧首页菜单
 }
 
 - (void) viewWillAppear:(BOOL)animated

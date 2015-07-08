@@ -34,7 +34,6 @@
 
 - (void)viewDidLoad
 {
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"个人资料";

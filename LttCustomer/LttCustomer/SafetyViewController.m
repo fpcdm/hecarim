@@ -32,7 +32,6 @@
 }
 
 - (void)viewDidLoad {
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"账户与安全";

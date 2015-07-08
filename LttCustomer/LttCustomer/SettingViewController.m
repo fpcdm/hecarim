@@ -28,7 +28,6 @@
 
 - (void)viewDidLoad
 {
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"设置";

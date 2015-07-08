@@ -31,7 +31,6 @@
 }
 
 - (void)viewDidLoad {
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"管理我的地址";

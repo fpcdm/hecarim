@@ -34,7 +34,6 @@
 - (void)viewDidLoad {
     isMenuEnabled = NO;
     hideBackButton = NO;
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"登陆";

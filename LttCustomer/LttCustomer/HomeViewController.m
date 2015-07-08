@@ -41,7 +41,6 @@
     isIndexNavBar = YES;
     isMenuEnabled = [self isLogin];
     hideBackButton = YES;
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"两条腿";

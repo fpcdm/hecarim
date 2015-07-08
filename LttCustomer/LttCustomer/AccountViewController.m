@@ -42,7 +42,6 @@
     isMenuEnabled = YES;
     hideBackButton = YES;
     isIndexNavBar = YES;
-    hasNavBack = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"账户";

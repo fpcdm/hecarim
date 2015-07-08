@@ -17,6 +17,7 @@
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
 		2F10A7301B3974C0009C6C58 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F10A72F1B3974C0009C6C58 /* support.png */; };
 		2F10A7331B397718009C6C58 /* CaseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10A7321B397718009C6C58 /* CaseListView.m */; };
+		2F2599971B4D21140029F1D2 /* RegisterActivateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2599961B4D21140029F1D2 /* RegisterActivateView.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F266CA31B4A378C00FD31F6 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266CA21B4A378C00FD31F6 /* RegisterViewController.m */; };
 		2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */; };
@@ -258,6 +259,8 @@
 		2F10A72F1B3974C0009C6C58 /* support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = support.png; sourceTree = "<group>"; };
 		2F10A7311B397718009C6C58 /* CaseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListView.h; sourceTree = "<group>"; };
 		2F10A7321B397718009C6C58 /* CaseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListView.m; sourceTree = "<group>"; };
+		2F2599951B4D21140029F1D2 /* RegisterActivateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterActivateView.h; sourceTree = "<group>"; };
+		2F2599961B4D21140029F1D2 /* RegisterActivateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterActivateView.m; sourceTree = "<group>"; };
 		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		2F266CA11B4A378C00FD31F6 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -887,6 +890,8 @@
 				2F6796C31B4BB80200E0F774 /* RegisterCodeView.m */,
 				2F6796C51B4BB82000E0F774 /* RegisterPasswordView.h */,
 				2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */,
+				2F2599951B4D21140029F1D2 /* RegisterActivateView.h */,
+				2F2599961B4D21140029F1D2 /* RegisterActivateView.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -2045,6 +2050,7 @@
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,
 				2F6D3E1B1B312446007A4159 /* AppAddressPicker.m in Sources */,
+				2F2599971B4D21140029F1D2 /* RegisterActivateView.m in Sources */,
 				2F089D771B2EC999002A0EA5 /* SafetyView.m in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,

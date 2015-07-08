@@ -18,9 +18,6 @@
     //是否显示菜单
     BOOL isMenuEnabled;
     
-    //子页面是否有导航返回按钮
-    BOOL hasNavBack;
-    
     //当前页面是否隐藏返回按钮
     BOOL hideBackButton;
     

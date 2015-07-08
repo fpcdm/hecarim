@@ -8,6 +8,14 @@
 
 #import "AppView.h"
 
+@protocol RegisterMobileViewDelegate <NSObject>
+
+- (void) actionCheckMobile:(NSString *)mobile;
+
+@end
+
 @interface RegisterMobileView : AppView
+
+@property (retain, nonatomic) id<RegisterMobileViewDelegate> delegate;
 
 @end
