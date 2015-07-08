@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2599931B4D06480029F1D2 /* BaseLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2599901B4D06480029F1D2 /* BaseLoadingView.m */; };
+		2F2599941B4D06480029F1D2 /* BaseRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2599921B4D06480029F1D2 /* BaseRefreshTableView.m */; };
 		2F2F226A1B3A52FE00428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22521B3A52FE00428742 /* NotificationBackgroundError.png */; };
 		2F2F226B1B3A52FE00428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22531B3A52FE00428742 /* NotificationBackgroundError@2x.png */; };
 		2F2F226C1B3A52FE00428742 /* NotificationBackgroundErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22541B3A52FE00428742 /* NotificationBackgroundErrorIcon.png */; };
@@ -206,6 +208,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F25998F1B4D06480029F1D2 /* BaseLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoadingView.h; sourceTree = "<group>"; };
+		2F2599901B4D06480029F1D2 /* BaseLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoadingView.m; sourceTree = "<group>"; };
+		2F2599911B4D06480029F1D2 /* BaseRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRefreshTableView.h; sourceTree = "<group>"; };
+		2F2599921B4D06480029F1D2 /* BaseRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRefreshTableView.m; sourceTree = "<group>"; };
 		2F2F22521B3A52FE00428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
 		2F2F22531B3A52FE00428742 /* NotificationBackgroundError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundError@2x.png"; sourceTree = "<group>"; };
 		2F2F22541B3A52FE00428742 /* NotificationBackgroundErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundErrorIcon.png; sourceTree = "<group>"; };
@@ -1022,10 +1028,14 @@
 		2F800B041B1D529F006189EF /* core */ = {
 			isa = PBXGroup;
 			children = (
-				2F4E69481B3AB95F00F4E425 /* BaseTableView.h */,
-				2F4E69491B3AB95F00F4E425 /* BaseTableView.m */,
 				2F74CD801B1D5F8100797799 /* BaseView.h */,
 				2F74CD811B1D5F8100797799 /* BaseView.m */,
+				2F25998F1B4D06480029F1D2 /* BaseLoadingView.h */,
+				2F2599901B4D06480029F1D2 /* BaseLoadingView.m */,
+				2F4E69481B3AB95F00F4E425 /* BaseTableView.h */,
+				2F4E69491B3AB95F00F4E425 /* BaseTableView.m */,
+				2F2599911B4D06480029F1D2 /* BaseRefreshTableView.h */,
+				2F2599921B4D06480029F1D2 /* BaseRefreshTableView.m */,
 				2F74CD771B1D5EB500797799 /* BaseEntity.h */,
 				2F74CD781B1D5EB500797799 /* BaseEntity.m */,
 				2FCAF84F1B201FD100F3B084 /* BaseHandler.h */,
@@ -1722,6 +1732,7 @@
 			files = (
 				2F52A6E51AF20EEB003E2664 /* OrderDetailViewController.m in Sources */,
 				2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */,
+				2F2599931B4D06480029F1D2 /* BaseLoadingView.m in Sources */,
 				2F6D3F101B3128CC007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2FCAF8641B201FF000F3B084 /* ValidateUtil.m in Sources */,
 				2F6D3F0A1B3128CC007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1820,6 +1831,7 @@
 				2F7074561AFC4F8100A1242A /* BrandEntity.m in Sources */,
 				2FED7DC21B1EA2E100306A11 /* SDWebImageDownloader.m in Sources */,
 				2FED7E311B1EA87800306A11 /* DDLog.m in Sources */,
+				2F2599941B4D06480029F1D2 /* BaseRefreshTableView.m in Sources */,
 				2F800B101B1D529F006189EF /* README.md in Sources */,
 				2FED7E2D1B1EA87800306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */,

@@ -71,6 +71,11 @@
     tableFooterView.frame = CGRectMake(0, 0, 0, 0);
     self.tableView.tableFooterView = tableFooterView;
     
+    //自定义表格视图钩子，子类可以实现(不会影响别的子类)，也可以利用类分类实现(会影响别的子类)
+    if ([self respondsToSelector:@selector(customTableView)]) {
+        [self performSelector:@selector(customTableView)];
+    }
+    
     return self;
 }
 

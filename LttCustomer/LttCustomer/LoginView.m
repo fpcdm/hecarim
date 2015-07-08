@@ -20,9 +20,6 @@
     self = [super init];
     if (!self) return nil;
     
-    //修正闪烁
-    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
     //输入视图
     UIView *inputView = [UIView new];
     inputView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;

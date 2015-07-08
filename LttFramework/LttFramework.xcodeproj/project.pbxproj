@@ -28,6 +28,7 @@
 		2F2F22AC1B3A577900428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22971B3A577900428742 /* TSMessage.m */; };
 		2F2F22AD1B3A577900428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22991B3A577900428742 /* TSMessageView.m */; };
 		2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DEF1B329EC100938BD6 /* CTCheckbox.m */; };
+		2F4E1A441B4CB5F900F5CF9E /* BaseRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E1A431B4CB5F900F5CF9E /* BaseRefreshTableView.m */; };
 		2F5D29491B1EEBE700A99AC5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */; };
 		2F5D294B1B1EEBFA00A99AC5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294A1B1EEBFA00A99AC5 /* Security.framework */; };
 		2F5D294D1B1EEC0500A99AC5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294C1B1EEC0500A99AC5 /* CoreData.framework */; };
@@ -194,6 +195,8 @@
 		2F2F22991B3A577900428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
 		2F473DEE1B329EC100938BD6 /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
 		2F473DEF1B329EC100938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
+		2F4E1A421B4CB5F900F5CF9E /* BaseRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRefreshTableView.h; sourceTree = "<group>"; };
+		2F4E1A431B4CB5F900F5CF9E /* BaseRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRefreshTableView.m; sourceTree = "<group>"; };
 		2F5D28DE1B1EEBA900A99AC5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2F5D28DF1B1EEBA900A99AC5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		2F5D28E01B1EEBA900A99AC5 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
@@ -1083,6 +1086,8 @@
 				2FF12BE51B3CEA0B00A81705 /* BaseLoadingView.m */,
 				2FBF3F6F1B281CB400C0DC54 /* BaseTableView.h */,
 				2FBF3F701B281CB400C0DC54 /* BaseTableView.m */,
+				2F4E1A421B4CB5F900F5CF9E /* BaseRefreshTableView.h */,
+				2F4E1A431B4CB5F900F5CF9E /* BaseRefreshTableView.m */,
 				2FCAF8801B202E4700F3B084 /* BaseViewController.h */,
 				2FCAF8811B202E4700F3B084 /* BaseViewController.m */,
 				2FCAF82A1B200FBE00F3B084 /* BaseHandler.h */,
@@ -1534,6 +1539,7 @@
 				2FED7D661B1EA21200306A11 /* SDWebImageCompat.m in Sources */,
 				2FCAF89B1B2044F700F3B084 /* ErrorEntity.m in Sources */,
 				2FCAF7C61B1FF40D00F3B084 /* bitstream.c in Sources */,
+				2F4E1A441B4CB5F900F5CF9E /* BaseRefreshTableView.m in Sources */,
 				2F9000C51B1D98790040D97B /* Reachability.m in Sources */,
 				2F74CDE71B1D833200797799 /* MASCompositeConstraint.m in Sources */,
 				2FED7D641B1EA21200306A11 /* NSData+ImageContentType.m in Sources */,

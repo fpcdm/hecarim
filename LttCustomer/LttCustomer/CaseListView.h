@@ -11,12 +11,12 @@
 
 @protocol CaseListViewDelegate <NSObject>
 
-- (void)actionLoad;
+- (void)actionLoad:(RefreshCompletionHandler)completionHandler;
 - (void)actionDetail:(CaseEntity *)intention;
 
 @end
 
-@interface CaseListView : AppTableView
+@interface CaseListView : AppRefreshTableView
 
 @property (retain, nonatomic) id<CaseListViewDelegate> delegate;
 

@@ -8,17 +8,20 @@
 
 #import "AppView.h"
 
-@implementation AppView
+@implementation BaseView (App)
 
-- (id)init
+- (void) customView
 {
-    self = [super init];
-    if (!self) return nil;
-    
     //修正闪烁
     self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    
-    return self;
 }
+
+@end
+
+@implementation AppView
+
+@end
+
+@implementation AppLoadingView
 
 @end

@@ -22,6 +22,11 @@
         viewData = [[NSMutableDictionary alloc] init];
     }
     
+    //自定义视图钩子，子类可以实现(不会影响别的子类)，也可以利用类分类实现(会影响别的子类)
+    if ([self respondsToSelector:@selector(customView)]) {
+        [self performSelector:@selector(customView)];
+    }
+    
     return self;
 }
 

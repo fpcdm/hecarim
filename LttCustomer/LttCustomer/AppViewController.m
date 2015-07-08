@@ -12,9 +12,9 @@
 #import "AppUserViewController.h"
 #import "LttNavigationController.h"
 #import "LttAppDelegate.h"
-#import "AppLoadingView.h"
 #import "CaseViewController.h"
 #import "CaseListViewController.h"
+#import "AppView.h"
 
 @interface AppViewController ()
 

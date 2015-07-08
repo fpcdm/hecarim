@@ -73,14 +73,17 @@
 }
 
 #pragma mark - Action
-- (void)actionLoad
+- (void)actionLoad:(RefreshCompletionHandler)completionHandler
 {
     //加载数据
     [self loadData:^(id object){
+        completionHandler(hasMore ? YES : NO);
+        
         [listView setData:@"intentionList" value:intentionList];
-        [listView setData:@"noMoreData" value:(hasMore ? @0 : @1)];
         [listView renderData];
     } failure:^(ErrorEntity *error){
+        completionHandler(YES);
+        
         [self showError:error.message];
     }];
 }

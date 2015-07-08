@@ -18,7 +18,6 @@
 #import "CaseHandler.h"
 #import "OrderHandler.h"
 #import "HomeViewController.h"
-#import "AppLoadingView.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
