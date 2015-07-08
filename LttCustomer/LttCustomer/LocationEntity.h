@@ -16,4 +16,6 @@
 
 @property (retain, nonatomic) NSString *address;
 
+@property (retain, nonatomic) NSNumber *serviceNumber;
+
 @end

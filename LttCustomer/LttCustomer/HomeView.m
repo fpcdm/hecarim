@@ -426,7 +426,11 @@
     addressLabel.text = address;
     
     NSNumber *count = [self getData:@"count"];
-    infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count ? count : @0];
+    if (!count || [@-1 isEqualToNumber:count]) {
+        infoLabel.text = @"";
+    } else {
+        infoLabel.text = [NSString stringWithFormat:@"有%@个信使等待为您服务", count];
+    }
 }
 
 - (void) actionCase: (UIButton *)sender

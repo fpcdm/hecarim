@@ -49,9 +49,6 @@
     //设置位置代理
     locationUtil = [LocationUtil sharedInstance];
     locationUtil.delegate = self;
-    
-    //todo: 服务人数
-    [homeView setData:@"count" value:@12];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,12 +76,13 @@
         }
     }
     
+    if (!helperHandler) helperHandler = [[HelperHandler alloc] init];
+    
     //查询位置
     LocationEntity *locationEntity = [[LocationEntity alloc] init];
     locationEntity.longitude = [NSNumber numberWithFloat:position.longitude];
     locationEntity.latitude = [NSNumber numberWithFloat:position.latitude];
     
-    if (!helperHandler) helperHandler = [[HelperHandler alloc] init];
     [helperHandler queryLocation:locationEntity success:^(NSArray *result){
         LocationEntity *location = [result firstObject];
         
@@ -97,11 +95,26 @@
         }
     } failure:^(ErrorEntity *error){
     }];
+    
+    //查询信使数量
+    [helperHandler queryServiceNumber:locationEntity success:^(NSArray *result){
+        LocationEntity *location = [result firstObject];
+        
+        //获取位置
+        if (location.serviceNumber) {
+            [homeView setData:@"count" value:location.serviceNumber];
+            [homeView renderData];
+            
+            lastDate = [NSDate date];
+        }
+    } failure:^(ErrorEntity *error){
+    }];
 }
 
 - (void)updateLocationError:(NSError *)error
 {
     [homeView setData:@"address" value:@"定位失败"];
+    [homeView setData:@"count" value:@-1];
     [homeView renderData];
 }
 

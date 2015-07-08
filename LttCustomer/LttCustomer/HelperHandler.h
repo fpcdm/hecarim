@@ -15,11 +15,20 @@
 /**
  *  查询用户位置
  *
- *  @param param 参数
+ *  @param location GPS坐标
  *  @param success 成功回调
  *  @param failure 失败回调
  */
 - (void) queryLocation: (LocationEntity *) location success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  查询服务人员数量
+ *
+ *  @param location GPS坐标
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryServiceNumber: (LocationEntity *) location success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
  *  查询地区列表
