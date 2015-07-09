@@ -14,22 +14,23 @@
 #import "RegisterSuccessView.h"
 #import "ValidateUtil.h"
 #import "UserHandler.h"
+#import "UIViewController+BackButtonHandler.h"
 
-@interface RegisterViewController () <RegisterMobileViewDelegate>
+@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate, RegisterSuccessViewDelegate>
 
 @end
 
 @implementation RegisterViewController
 {
-    UIView *registerView;
+    NSString *mobile;
+    NSString *mobileStatus;
+    NSString *code;
+    NSString *password;
 }
 
 - (void)loadView
 {
-    RegisterMobileView *mobileView = [[RegisterMobileView alloc] init];
-    mobileView.delegate = self;
-    registerView = mobileView;
-    self.view = mobileView;
+    self.view = [self mobileInputView];
 }
 
 - (void)viewDidLoad {
@@ -38,32 +39,93 @@
     self.navigationItem.title = @"注册";
 }
 
+#pragma mark - View
+- (UIView *) mobileInputView
+{
+    RegisterMobileView *currentView = [[RegisterMobileView alloc] init];
+    currentView.delegate = self;
+    self.navigationItem.title = @"注册";
+    return currentView;
+}
+
+- (UIView *) mobileExistView
+{
+    RegisterExistView *currentView = [[RegisterExistView alloc] init];
+    currentView.delegate = self;
+    self.navigationItem.title = @"注册";
+    return currentView;
+}
+
+- (UIView *) mobileCodeView
+{
+    RegisterCodeView *currentView = [[RegisterCodeView alloc] init];
+    currentView.delegate = self;
+    self.navigationItem.title = @"注册";
+    return currentView;
+}
+
+- (UIView *) mobilePasswordView
+{
+    RegisterPasswordView *currentView = [[RegisterPasswordView alloc] init];
+    currentView.delegate = self;
+    self.navigationItem.title = @"设置登陆密码";
+    return currentView;
+}
+
+- (UIView *) mobileSuccessView
+{
+    RegisterSuccessView *currentView = [[RegisterSuccessView alloc] init];
+    currentView.delegate = self;
+    self.navigationItem.title = @"注册成功";
+    return currentView;
+}
+
+#pragma mark - Back
+- (BOOL) navigationShouldPopOnBackButton
+{
+    if ([self.view isMemberOfClass:[RegisterMobileView class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([self.view isMemberOfClass:[RegisterExistView class]]) {
+        [self popView:[self mobileInputView] animated:YES completion:nil];
+    } else if ([self.view isMemberOfClass:[RegisterCodeView class]]) {
+        [self popView:[self mobileInputView] animated:YES completion:nil];
+    } else if ([self.view isMemberOfClass:[RegisterPasswordView class]]) {
+        [self popView:[self mobileCodeView] animated:YES completion:nil];
+    } else if ([self.view isMemberOfClass:[RegisterSuccessView class]]) {
+        [self popView:[self mobilePasswordView] animated:YES completion:nil];
+    }
+    return NO;
+}
+
 #pragma mark - Action
-- (void) actionCheckMobile:(NSString *)mobile
+- (void) actionCheckMobile:(NSString *)inputMobile
 {
     //参数检查
-    if (![ValidateUtil isRequired:mobile]) {
+    if (![ValidateUtil isRequired:inputMobile]) {
         [self showError:ERROR_MOBILE_REQUIRED];
         return;
     }
-    if (![ValidateUtil isMobile:mobile]) {
+    if (![ValidateUtil isMobile:inputMobile]) {
         [self showError:ERROR_MOBILE_FORMAT];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
-    
     //登录接口调用
-    /*
     UserHandler *userHandler = [[UserHandler alloc] init];
-    [userHandler loginWithUser:nil success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+    [userHandler checkMobile:inputMobile success:^(NSArray *result){
+        ResultEntity *checkResult = [result firstObject];
             
-        }];
+        mobile = inputMobile;
+        mobileStatus = checkResult.data;
+        NSLog(@"check mobile result: %@", checkResult.data);
+        if ([@"registered" isEqualToString:mobileStatus]) {
+            [self pushView:[self mobileExistView] animated:YES completion:nil];
+        } else {
+            [self pushView:[self mobileCodeView] animated:YES completion:nil];
+        }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
-    */
 }
 
 @end

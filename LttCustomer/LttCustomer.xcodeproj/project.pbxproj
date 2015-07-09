@@ -17,11 +17,13 @@
 		2F0D0B521B0DDDE9008C7F24 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0B511B0DDDE9008C7F24 /* UserHandler.m */; };
 		2F10A7301B3974C0009C6C58 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F10A72F1B3974C0009C6C58 /* support.png */; };
 		2F10A7331B397718009C6C58 /* CaseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10A7321B397718009C6C58 /* CaseListView.m */; };
-		2F2599971B4D21140029F1D2 /* RegisterActivateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2599961B4D21140029F1D2 /* RegisterActivateView.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F266CA31B4A378C00FD31F6 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266CA21B4A378C00FD31F6 /* RegisterViewController.m */; };
 		2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */; };
 		2F2E0C731B2ADB58000A7C90 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E0C721B2ADB58000A7C90 /* LoginView.m */; };
+		2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F281B4E064800575271 /* ResultEntity.m */; };
+		2F2E8F2D1B4E1E5C00575271 /* registerSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2E8F2B1B4E1E5C00575271 /* registerSuccess.png */; };
+		2F2E8F331B4E5A2000575271 /* registerExist.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2E8F321B4E5A2000575271 /* registerExist.png */; };
 		2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */; };
 		2F2F223C1B3A4D0300428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22221B3A4D0300428742 /* NotificationBackgroundError@2x.png */; };
 		2F2F223D1B3A4D0300428742 /* NotificationBackgroundErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22231B3A4D0300428742 /* NotificationBackgroundErrorIcon.png */; };
@@ -259,8 +261,6 @@
 		2F10A72F1B3974C0009C6C58 /* support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = support.png; sourceTree = "<group>"; };
 		2F10A7311B397718009C6C58 /* CaseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListView.h; sourceTree = "<group>"; };
 		2F10A7321B397718009C6C58 /* CaseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListView.m; sourceTree = "<group>"; };
-		2F2599951B4D21140029F1D2 /* RegisterActivateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterActivateView.h; sourceTree = "<group>"; };
-		2F2599961B4D21140029F1D2 /* RegisterActivateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterActivateView.m; sourceTree = "<group>"; };
 		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		2F266CA11B4A378C00FD31F6 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -269,6 +269,10 @@
 		2F2E0C6F1B2ACBEF000A7C90 /* AppUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserViewController.m; sourceTree = "<group>"; };
 		2F2E0C711B2ADB58000A7C90 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		2F2E0C721B2ADB58000A7C90 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		2F2E8F271B4E064800575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
+		2F2E8F281B4E064800575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
+		2F2E8F2B1B4E1E5C00575271 /* registerSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registerSuccess.png; sourceTree = "<group>"; };
+		2F2E8F321B4E5A2000575271 /* registerExist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registerExist.png; sourceTree = "<group>"; };
 		2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
 		2F2F22221B3A4D0300428742 /* NotificationBackgroundError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundError@2x.png"; sourceTree = "<group>"; };
 		2F2F22231B3A4D0300428742 /* NotificationBackgroundErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundErrorIcon.png; sourceTree = "<group>"; };
@@ -890,8 +894,6 @@
 				2F6796C31B4BB80200E0F774 /* RegisterCodeView.m */,
 				2F6796C51B4BB82000E0F774 /* RegisterPasswordView.h */,
 				2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */,
-				2F2599951B4D21140029F1D2 /* RegisterActivateView.h */,
-				2F2599961B4D21140029F1D2 /* RegisterActivateView.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1335,6 +1337,8 @@
 		2F9BD19F1B269BBA00632751 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2F2E8F321B4E5A2000575271 /* registerExist.png */,
+				2F2E8F2B1B4E1E5C00575271 /* registerSuccess.png */,
 				2F2F227E1B3A571100428742 /* success.png */,
 				2F5202321B39844F00495062 /* point.png */,
 				2F10A72F1B3974C0009C6C58 /* support.png */,
@@ -1588,6 +1592,8 @@
 				2FCAF8A81B20456C00F3B084 /* ErrorEntity.m */,
 				2FCAF8A91B20456C00F3B084 /* UserEntity.h */,
 				2FCAF8AA1B20456C00F3B084 /* UserEntity.m */,
+				2F2E8F271B4E064800575271 /* ResultEntity.h */,
+				2F2E8F281B4E064800575271 /* ResultEntity.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1882,6 +1888,7 @@
 				2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */,
 				2F2F22471B3A4D0300428742 /* NotificationBackgroundWarningIcon.png in Resources */,
 				2F10A7301B3974C0009C6C58 /* support.png in Resources */,
+				2F2E8F2D1B4E1E5C00575271 /* registerSuccess.png in Resources */,
 				2F39E3081B297ADE0064CA28 /* nopic.png in Resources */,
 				2F2F22401B3A4D0300428742 /* NotificationBackgroundMessage@2x.png in Resources */,
 				2F2F224B1B3A4D0300428742 /* TSMessagesDefaultDesign.json in Resources */,
@@ -1891,6 +1898,7 @@
 				2F67B6111B33ABE2005106E8 /* top.png in Resources */,
 				2F5202331B39844F00495062 /* point.png in Resources */,
 				2F6683891AF9BA3F00D430D0 /* InfoPlist.strings in Resources */,
+				2F2E8F331B4E5A2000575271 /* registerExist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2019,6 +2027,7 @@
 				2F9BD1A41B26E19E00632751 /* AccountViewController.m in Sources */,
 				2F6D3E181B312164007A4159 /* SWActionSheet.m in Sources */,
 				2F54CB3D1AFB3F0300295A8D /* GoodsEntity.m in Sources */,
+				2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */,
 				2F6D3E5D1B312765007A4159 /* UIScrollView+MJExtension.m in Sources */,
 				2F9000431B1D8B930040D97B /* MBProgressHUD.m in Sources */,
 				2F6D3E581B312765007A4159 /* MJRefreshGifHeader.m in Sources */,
@@ -2050,7 +2059,6 @@
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,
 				2F6D3E1B1B312446007A4159 /* AppAddressPicker.m in Sources */,
-				2F2599971B4D21140029F1D2 /* RegisterActivateView.m in Sources */,
 				2F089D771B2EC999002A0EA5 /* SafetyView.m in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,

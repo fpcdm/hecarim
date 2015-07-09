@@ -8,6 +8,12 @@
 
 #import "AppView.h"
 
+@protocol RegisterExistViewDelegate <NSObject>
+
+@end
+
 @interface RegisterExistView : AppView
+
+@property (retain, nonatomic) id<RegisterExistViewDelegate> delegate;
 
 @end

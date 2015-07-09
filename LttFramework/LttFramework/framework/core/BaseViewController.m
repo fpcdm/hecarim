@@ -75,4 +75,58 @@
     return result;
 }
 
+//切换视图,类似push效果
+- (void) pushView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion
+{
+    if (animated) {
+        [UIView animateWithDuration:0.1f
+                         animations:^{
+                            self.view.frame = CGRectMake(-self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             self.view = view;
+                             self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                             [UIView animateWithDuration:0.2f
+                                              animations:^{
+                                                  self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                                              }
+                                              completion:^(BOOL finished){
+                                                  if (completion) completion();
+                                              }
+                              ];
+                         }
+         ];
+    } else {
+        self.view = view;
+        if (completion) completion();
+    }
+}
+
+//切换视图,类似pop效果
+- (void) popView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion
+{
+    if (animated) {
+        [UIView animateWithDuration:0.1f
+                         animations:^{
+                             self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             self.view = view;
+                             self.view.frame = CGRectMake(-self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                             [UIView animateWithDuration:0.2f
+                                              animations:^{
+                                                  self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                                              }
+                                              completion:^(BOOL finished){
+                                                  if (completion) completion();
+                                              }
+                              ];
+                         }
+         ];
+    } else {
+        self.view = view;
+        if (completion) completion();
+    }
+}
+
 @end

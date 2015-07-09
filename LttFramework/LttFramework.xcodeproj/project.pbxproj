@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2E8F261B4E052900575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F251B4E052900575271 /* ResultEntity.m */; };
 		2F2F229A1B3A577900428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22821B3A577900428742 /* NotificationBackgroundError.png */; };
 		2F2F229B1B3A577900428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22831B3A577900428742 /* NotificationBackgroundError@2x.png */; };
 		2F2F229C1B3A577900428742 /* NotificationBackgroundErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22841B3A577900428742 /* NotificationBackgroundErrorIcon.png */; };
@@ -170,6 +171,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F2E8F241B4E052900575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
+		2F2E8F251B4E052900575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F2F22821B3A577900428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
 		2F2F22831B3A577900428742 /* NotificationBackgroundError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundError@2x.png"; sourceTree = "<group>"; };
 		2F2F22841B3A577900428742 /* NotificationBackgroundErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundErrorIcon.png; sourceTree = "<group>"; };
@@ -1300,6 +1303,8 @@
 			children = (
 				2FCAF8971B2044F700F3B084 /* ErrorEntity.h */,
 				2FCAF8981B2044F700F3B084 /* ErrorEntity.m */,
+				2F2E8F241B4E052900575271 /* ResultEntity.h */,
+				2F2E8F251B4E052900575271 /* ResultEntity.m */,
 				2FCAF8991B2044F700F3B084 /* UserEntity.h */,
 				2FCAF89A1B2044F700F3B084 /* UserEntity.m */,
 			);
@@ -1598,6 +1603,7 @@
 				2FED7D6A1B1EA21200306A11 /* SDWebImageManager.m in Sources */,
 				2FCAF82C1B200FBE00F3B084 /* BaseHandler.m in Sources */,
 				2FED7D6B1B1EA21200306A11 /* SDWebImagePrefetcher.m in Sources */,
+				2F2E8F261B4E052900575271 /* ResultEntity.m in Sources */,
 				2FED7DEB1B1EA71A00306A11 /* DDASLLogger.m in Sources */,
 				2F6D3EB71B312884007A4159 /* MJRefreshConst.m in Sources */,
 				2FED7DED1B1EA71A00306A11 /* DDLog.m in Sources */,

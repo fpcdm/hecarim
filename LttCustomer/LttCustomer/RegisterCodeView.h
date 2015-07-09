@@ -8,6 +8,12 @@
 
 #import "AppView.h"
 
+@protocol RegisterCodeViewDelegate <NSObject>
+
+@end
+
 @interface RegisterCodeView : AppView
+
+@property (retain, nonatomic) id<RegisterCodeViewDelegate> delegate;
 
 @end

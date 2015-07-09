@@ -8,6 +8,12 @@
 
 #import "AppView.h"
 
+@protocol RegisterPasswordViewDelegate <NSObject>
+
+@end
+
 @interface RegisterPasswordView : AppView
+
+@property (retain, nonatomic) id<RegisterPasswordViewDelegate> delegate;
 
 @end

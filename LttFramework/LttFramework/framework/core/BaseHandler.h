@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RestKitUtil.h"
+#import "ResultEntity.h"
 
 /**
  *  Handler处理成功时调用的Block

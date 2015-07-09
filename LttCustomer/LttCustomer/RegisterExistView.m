@@ -10,12 +10,26 @@
 
 @implementation RegisterExistView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    //图片
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"nopic"];
+    [self addSubview:imageView];
+    
+    UIView *superview = self;
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top).offset(70);
+        make.centerX.equalTo(superview.mas_centerX);
+        
+        make.width.equalTo(@50);
+        make.height.equalTo(@40);
+    }];
+    
+    return self;
 }
-*/
 
 @end

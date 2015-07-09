@@ -23,4 +23,10 @@ typedef void (^CallbackBlock)(id object);
 //加载数据，完成后执行回调
 - (void) loadData: (CallbackBlock) success failure: (CallbackBlock) failure;
 
+//切换self.view视图,类似push效果
+- (void) pushView: (UIView *) view animated: (BOOL) animated completion: (void (^)())completion;
+
+//切换self.view视图,类似pop效果
+- (void) popView: (UIView *) view animated: (BOOL) animated completion: (void (^)()) completion;
+
 @end

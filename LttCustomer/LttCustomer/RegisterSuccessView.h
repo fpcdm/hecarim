@@ -8,6 +8,12 @@
 
 #import "AppView.h"
 
+@protocol RegisterSuccessViewDelegate <NSObject>
+
+@end
+
 @interface RegisterSuccessView : AppView
+
+@property (retain, nonatomic) id<RegisterSuccessViewDelegate> delegate;
 
 @end
