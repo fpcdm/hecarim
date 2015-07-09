@@ -38,4 +38,23 @@
  */
 - (void) queryAreas: (AreaEntity *) area success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  发送验证码
+ *
+ *  @param mobile 手机号
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) sendMobileCode: (NSString *) mobile success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  验证短信验证码
+ *
+ *  @param mobile 手机号
+ *  @param code 验证码
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) verifyMobileCode: (NSString *) mobile code: (NSString *) code success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 @end

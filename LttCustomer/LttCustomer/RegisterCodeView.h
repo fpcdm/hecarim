@@ -10,8 +10,7 @@
 
 @protocol RegisterCodeViewDelegate <NSObject>
 
-- (void) checkButton: (UIButton *) button;
-- (void) actionSend: (UIButton *) sender;
+- (void) actionSend;
 - (void) actionVerifyCode: (NSString *)code;
 
 @end
@@ -19,5 +18,7 @@
 @interface RegisterCodeView : AppView
 
 @property (retain, nonatomic) id<RegisterCodeViewDelegate> delegate;
+
+@property (retain, nonatomic) UIButton *sendButton;
 
 @end

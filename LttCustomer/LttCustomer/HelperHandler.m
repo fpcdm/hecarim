@@ -65,4 +65,30 @@
     }];
 }
 
+- (void) sendMobileCode:(NSString *)mobile success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [NSString stringWithFormat:@"sendSmsCode/%@", mobile];
+    [sharedClient getObject:[ResultEntity new] path:restPath param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) verifyMobileCode:(NSString *)mobile code:(NSString *)code success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{@"code": (code ? code : @"")};
+    
+    NSString *restPath = [NSString stringWithFormat:@"verifySmsCode/%@", mobile];
+    [sharedClient postObject:[ResultEntity new] path:restPath param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 @end

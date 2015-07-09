@@ -32,6 +32,15 @@
 - (void) logoutWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
+ *  注册用户
+ *
+ *  @param user    用户
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) registerWithUser: (UserEntity *) user success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
  *  更新用户心跳
  *
  *  @param user    用户

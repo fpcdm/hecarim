@@ -67,10 +67,10 @@
 #pragma mark - GPS
 - (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
-    //请求间隔: 5S
+    //位置刷新请求间隔
     if (lastDate && lastDate != nil) {
         NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:lastDate];
-        if (interval < 5.0) {
+        if (interval < USER_LOCATION_INTERVAL) {
             return;
         }
     }

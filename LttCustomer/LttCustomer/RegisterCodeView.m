@@ -12,8 +12,9 @@
 {
     UILabel *tipLabel;
     UITextField *codeField;
-    UIButton *sendButton;
 }
+
+@synthesize sendButton;
 
 - (id)init
 {
@@ -36,7 +37,7 @@
     sendButton = [[UIButton alloc] init];
     [sendButton setTitle:@"重新获取" forState:UIControlStateNormal];
     [sendButton setTitleColor:[UIColor colorWithHexString:COLOR_MAIN_TEXT] forState:UIControlStateNormal];
-    [sendButton addTarget:self action:@selector(actionSend:) forControlEvents:UIControlEventTouchUpInside];
+    [sendButton addTarget:self action:@selector(actionSend) forControlEvents:UIControlEventTouchUpInside];
     sendButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     sendButton.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     sendButton.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
@@ -51,9 +52,6 @@
         make.height.equalTo(@35);
         make.width.equalTo(@100);
     }];
-    
-    //检查按钮状态
-    [self checkButton:sendButton];
     
     //输入视图
     UIView *inputView = [UIView new];
@@ -149,14 +147,9 @@
 }
 
 #pragma mark - Action
-- (void)checkButton: (UIButton *) button
+- (void)actionSend
 {
-    [self.delegate checkButton:button];
-}
-
-- (void)actionSend: (UIButton *) sender
-{
-    [self.delegate actionSend:sender];
+    [self.delegate actionSend];
 }
 
 - (void)actionVerifyCode

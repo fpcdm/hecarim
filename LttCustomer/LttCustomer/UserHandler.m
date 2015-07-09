@@ -42,6 +42,22 @@
     }];
 }
 
+- (void) registerWithUser:(UserEntity *)user success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[UserEntity class] mappingParam:@{@"mobile": @"mobile", @"password": @"password"}];
+    
+    [sharedClient putObject:user path:@"user/member" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void)updateHeartbeat:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
