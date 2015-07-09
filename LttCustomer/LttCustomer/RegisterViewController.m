@@ -15,6 +15,8 @@
 #import "ValidateUtil.h"
 #import "UserHandler.h"
 #import "UIViewController+BackButtonHandler.h"
+#import "UserHandler.h"
+#import "HomeViewController.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate, RegisterSuccessViewDelegate>
 
@@ -40,7 +42,7 @@
 }
 
 #pragma mark - View
-- (UIView *) mobileInputView
+- (RegisterMobileView *) mobileInputView
 {
     RegisterMobileView *currentView = [[RegisterMobileView alloc] init];
     currentView.delegate = self;
@@ -48,7 +50,7 @@
     return currentView;
 }
 
-- (UIView *) mobileExistView
+- (RegisterExistView *) mobileExistView
 {
     RegisterExistView *currentView = [[RegisterExistView alloc] init];
     currentView.delegate = self;
@@ -56,7 +58,7 @@
     return currentView;
 }
 
-- (UIView *) mobileCodeView
+- (RegisterCodeView *) mobileCodeView
 {
     RegisterCodeView *currentView = [[RegisterCodeView alloc] init];
     currentView.delegate = self;
@@ -64,7 +66,7 @@
     return currentView;
 }
 
-- (UIView *) mobilePasswordView
+- (RegisterPasswordView *) mobilePasswordView
 {
     RegisterPasswordView *currentView = [[RegisterPasswordView alloc] init];
     currentView.delegate = self;
@@ -72,7 +74,7 @@
     return currentView;
 }
 
-- (UIView *) mobileSuccessView
+- (RegisterSuccessView *) mobileSuccessView
 {
     RegisterSuccessView *currentView = [[RegisterSuccessView alloc] init];
     currentView.delegate = self;
@@ -119,13 +121,50 @@
         mobileStatus = checkResult.data;
         NSLog(@"check mobile result: %@", checkResult.data);
         if ([@"registered" isEqualToString:mobileStatus]) {
-            [self pushView:[self mobileExistView] animated:YES completion:nil];
+            RegisterExistView *existView = [self mobileExistView];
+            [self pushView:existView animated:YES completion:^{
+                [existView setData:@"mobile" value:mobile];
+                [existView renderData];
+            }];
         } else {
-            [self pushView:[self mobileCodeView] animated:YES completion:nil];
+            RegisterCodeView *codeView = [self mobileCodeView];
+            [self pushView:codeView animated:YES completion:^{
+                [codeView setData:@"mobile" value:mobile];
+                [codeView renderData];
+            }];
         }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+- (void) actionLogin
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) actionAutoLogin
+{
+}
+
+- (void) checkButton:(UIButton *)button
+{
+    
+}
+
+- (void) actionSend:(UIButton *)sender
+{
+    
+}
+
+- (void) actionVerifyCode:(NSString *)code
+{
+    [self pushView:[self mobilePasswordView] animated:YES completion:nil];
+}
+
+- (void) actionRegister:(NSString *)password
+{
+    [self pushView:[self mobileSuccessView] animated:YES completion:nil];
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @protocol RegisterPasswordViewDelegate <NSObject>
 
+- (void) actionRegister: (NSString *) password;
+
 @end
 
 @interface RegisterPasswordView : AppView

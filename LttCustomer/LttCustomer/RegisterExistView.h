@@ -10,6 +10,8 @@
 
 @protocol RegisterExistViewDelegate <NSObject>
 
+- (void) actionLogin;
+
 @end
 
 @interface RegisterExistView : AppView
