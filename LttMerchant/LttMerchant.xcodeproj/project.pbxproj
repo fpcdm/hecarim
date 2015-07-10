@@ -54,6 +54,7 @@
 		2F52D11C1AEF8AD50003D7C2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D1191AEF8AD50003D7C2 /* LoginViewController.m */; };
 		2F52D11F1AEF8AFC0003D7C2 /* LttAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */; };
 		2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5533FC1B4F656200B98CA4 /* ResultEntity.m */; };
+		2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */; };
 		2F5BECEA1AFDF7DF00F828DB /* specEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5BECE91AFDF7DF00F828DB /* specEntity.m */; };
 		2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */; };
 		2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B01B4B84BD00E0F774 /* UITextView+Placeholder.m */; };
@@ -280,6 +281,7 @@
 		2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttAppDelegate.m; sourceTree = "<group>"; };
 		2F5533FB1B4F656200B98CA4 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F5533FC1B4F656200B98CA4 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
+		2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2F5BECE81AFDF7DF00F828DB /* specEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specEntity.h; sourceTree = "<group>"; };
 		2F5BECE91AFDF7DF00F828DB /* specEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = specEntity.m; sourceTree = "<group>"; };
 		2F6611471B0C6B890008D500 /* LttMerchant.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttMerchant.pch; sourceTree = "<group>"; };
@@ -1399,6 +1401,7 @@
 			isa = PBXGroup;
 			children = (
 				2FD795CA1AE7ADD300D51FB0 /* Images.xcassets */,
+				2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */,
 				2FD795BE1AE7ADD300D51FB0 /* Info.plist */,
 				2F70745D1AFC529900A1242A /* InfoPlist.strings */,
 				2F6611471B0C6B890008D500 /* LttMerchant.pch */,
@@ -1676,6 +1679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F70746B1AFC52DE00A1242A /* alert_ok.png in Resources */,
+				2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */,
 				2F70746F1AFC52DE00A1242A /* success.png in Resources */,
 				2F6D3F111B3128CC007A4159 /* MJRefresh.bundle in Resources */,
 				2F52A6D81AF20995003E2664 /* ApplyListViewCell.xib in Resources */,
