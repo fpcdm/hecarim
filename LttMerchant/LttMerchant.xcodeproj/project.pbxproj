@@ -53,6 +53,7 @@
 		2F52D11A1AEF8AD50003D7C2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D1151AEF8AD50003D7C2 /* HomeViewController.m */; };
 		2F52D11C1AEF8AD50003D7C2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D1191AEF8AD50003D7C2 /* LoginViewController.m */; };
 		2F52D11F1AEF8AFC0003D7C2 /* LttAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */; };
+		2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5533FC1B4F656200B98CA4 /* ResultEntity.m */; };
 		2F5BECEA1AFDF7DF00F828DB /* specEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5BECE91AFDF7DF00F828DB /* specEntity.m */; };
 		2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */; };
 		2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B01B4B84BD00E0F774 /* UITextView+Placeholder.m */; };
@@ -277,6 +278,8 @@
 		2F52D1191AEF8AD50003D7C2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2F52D11D1AEF8AFC0003D7C2 /* LttAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttAppDelegate.h; sourceTree = "<group>"; };
 		2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttAppDelegate.m; sourceTree = "<group>"; };
+		2F5533FB1B4F656200B98CA4 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
+		2F5533FC1B4F656200B98CA4 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F5BECE81AFDF7DF00F828DB /* specEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specEntity.h; sourceTree = "<group>"; };
 		2F5BECE91AFDF7DF00F828DB /* specEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = specEntity.m; sourceTree = "<group>"; };
 		2F6611471B0C6B890008D500 /* LttMerchant.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttMerchant.pch; sourceTree = "<group>"; };
@@ -1352,6 +1355,8 @@
 				2FCAF8A01B20453E00F3B084 /* ErrorEntity.m */,
 				2FCAF8A11B20453E00F3B084 /* UserEntity.h */,
 				2FCAF8A21B20453E00F3B084 /* UserEntity.m */,
+				2F5533FB1B4F656200B98CA4 /* ResultEntity.h */,
+				2F5533FC1B4F656200B98CA4 /* ResultEntity.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1843,6 +1848,7 @@
 				2F6D3F021B3128CC007A4159 /* SWActionSheet.m in Sources */,
 				2F6D3EFB1B3128CC007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F52D11A1AEF8AD50003D7C2 /* HomeViewController.m in Sources */,
+				2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */,
 				2F9001571B1D9D680040D97B /* Reachability.m in Sources */,
 				2F6D3EFD1B3128CC007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2FCAF8511B201FD100F3B084 /* BaseHandler.m in Sources */,
