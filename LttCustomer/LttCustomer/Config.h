@@ -35,6 +35,9 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
+//AppStoreId配置
+#define LTT_APPSTORE_ID @"1015321197"
+
 //客户端类型
 #define LTT_CLIENT_TYPE @"MC"
 

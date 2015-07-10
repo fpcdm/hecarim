@@ -34,7 +34,8 @@
 #pragma mark - Action
 - (void)actionScore
 {
-    
+    NSString *scoreUrl = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", LTT_APPSTORE_ID];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:scoreUrl]];
 }
 
 @end
