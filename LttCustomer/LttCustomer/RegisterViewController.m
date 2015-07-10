@@ -99,14 +99,17 @@
 {
     int timeLeft = [self getSmsTimeLeft];
     if (timeLeft == -1) {
-        //todo: 发送短信
-        NSLog(@"给手机号%@发送短信：%@", mobile, [NSDate date]);
-        [[StorageUtil sharedStorage] setSmsTime:[NSDate date]];
-        
-        success(nil);
+        HelperHandler *helperHandler = [[HelperHandler alloc] init];
+        [helperHandler sendMobileCode:mobile success:^(NSArray *result){
+            NSLog(@"给手机号%@发送短信：%@", mobile, [NSDate date]);
+            [[StorageUtil sharedStorage] setSmsTime:[NSDate date]];
+            success(nil);
+        } failure:^(ErrorEntity *error){
+            failure(error);
+        }];
     } else {
         ErrorEntity *error = [[ErrorEntity alloc] init];
-        error.message = @"发送短信效验码不能太频繁";
+        error.message = [NSString stringWithFormat:@"%d秒后才能再次发送", timeLeft];
         failure(error);
     }
 }
@@ -232,6 +235,7 @@
                 [self sendSms:^(id object){
                     [self checkButton];
                 } failure:^(ErrorEntity *error){
+                    [self checkButton];
                     [self showError:error.message];
                 }];
             }];
@@ -248,6 +252,39 @@
 
 - (void) actionAutoLogin
 {
+    UserEntity *user = [[UserEntity alloc] init];
+    user.mobile = mobile;
+    user.password = password;
+    user.type = USER_TYPE_MEMBER;
+    user.deviceType = @"ios";
+    user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
+    
+    //登录接口调用
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler loginWithUser:user success:^(NSArray *result){
+        //赋值并释放资源
+        UserEntity *apiUser = [result firstObject];
+        user.id = apiUser.id;
+        user.name = apiUser.name;
+        user.token = apiUser.token;
+        user.nickname = apiUser.nickname;
+        user.sexAlias = apiUser.sexAlias;
+        apiUser = nil;
+        
+        //清空密码
+        user.password = nil;
+        
+        //保存数据
+        [[StorageUtil sharedStorage] setUser:user];
+        
+        //刷新菜单
+        [self refreshMenu];
+        
+        HomeViewController *viewController = [[HomeViewController alloc] init];
+        [self toggleViewController:viewController animated:YES];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void) actionSend
@@ -262,18 +299,53 @@
     [self sendSms:^(id object){
         [self checkButton];
     } failure:^(ErrorEntity *error){
+        [self checkButton];
         [self showError:error.message];
     }];
 }
 
 - (void) actionVerifyCode:(NSString *)code
 {
-    [self pushView:[self mobilePasswordView] animated:YES completion:nil];
+    if (![ValidateUtil isRequired:code]) {
+        [self showError:ERROR_MOBILECODE_REQUIRED];
+        return;
+    }
+    
+    HelperHandler *helperHandler = [[HelperHandler alloc] init];
+    [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
+        [self pushView:[self mobilePasswordView] animated:YES completion:nil];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
-- (void) actionRegister:(NSString *)password
+- (void) actionRegister:(NSString *)inputPassword
 {
-    [self pushView:[self mobileSuccessView] animated:YES completion:nil];
+    inputPassword = [inputPassword trim];
+    if (![ValidateUtil isRequired:inputPassword]) {
+        [self showError:ERROR_PASSWORD_REQUIRED];
+        return;
+    }
+    
+    if (![ValidateUtil isLengthBetween:inputPassword from:6 to:20]) {
+        [self showError:ERROR_PASSWORD_LENGTH];
+        return;
+    }
+    
+    //保存密码供自动登录使用
+    password = inputPassword;
+    
+    //注册用户
+    UserEntity *user = [[UserEntity alloc] init];
+    user.mobile = mobile;
+    user.password = password;
+    
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler registerWithUser:user success:^(NSArray *result){
+        [self pushView:[self mobileSuccessView] animated:YES completion:nil];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 @end

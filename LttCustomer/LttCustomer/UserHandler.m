@@ -46,13 +46,16 @@
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[UserEntity class] mappingParam:@{@"mobile": @"mobile", @"password": @"password"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id"}];
     
     [sharedClient putObject:user path:@"user/member" param:nil success:^(NSArray *result){
         [sharedClient removeRequestDescriptor:requestDescriptor];
+        [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);
     } failure:^(ErrorEntity *error){
         [sharedClient removeRequestDescriptor:requestDescriptor];
+        [sharedClient removeResponseDescriptor:responseDescriptor];
         
         failure(error);
     }];

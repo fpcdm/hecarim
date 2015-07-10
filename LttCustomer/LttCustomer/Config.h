@@ -51,7 +51,7 @@
 #define USER_LOCATION_INTERVAL 5.0
 
 //短信验证码发送间隔
-#define USER_SMS_INTERVAL 60
+#define USER_SMS_INTERVAL 30
 
 //默认每页数量
 #define LTT_PAGESIZE_DEFAULT 10
@@ -138,7 +138,9 @@
 #define ERROR_MOBILE_REQUIRED @"请填写手机号哦~亲！"
 #define ERROR_MOBILE_FORMAT @"手机号不正确哦~亲！"
 #define ERROR_PASSWORD_REQUIRED @"请填写密码哦~亲！"
+#define ERROR_PASSWORD_LENGTH @"密码长度不正确哦~亲！"
 #define ERROR_COMMENT_REQUIRED @"请选择评价星级哦~亲！"
+#define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
 #define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
 
 #define TIP_LOADING_MESSAGE @"加载中"

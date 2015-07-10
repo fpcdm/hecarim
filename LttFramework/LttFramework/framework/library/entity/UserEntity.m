@@ -46,13 +46,6 @@
 
 - (void)setSexAlias:(NSString *)sexAlias
 {
-    if (sexAlias) {
-        if ([@"boy" isEqualToString:sexAlias]) {
-            
-        } else if ([@"girl" isEqualToString:sexAlias]) {
-            
-        }
-    }
     if (!sexAlias || [sexAlias length] < 1) {
         self.sex = @0;
     } else if ([@"boy" isEqualToString:sexAlias]) {
