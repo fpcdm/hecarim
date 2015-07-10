@@ -100,7 +100,7 @@
     UserEntity *user = [self getData:@"user"];
     
     imageView.image = [user avatarImage];
-    nameLabel.text = user.name;
+    nameLabel.text = [user displayName];
 }
 
 #pragma mark - Action

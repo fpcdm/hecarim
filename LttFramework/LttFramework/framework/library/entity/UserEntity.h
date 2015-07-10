@@ -36,4 +36,6 @@
 
 - (NSString *) sexName;
 
+- (NSString *) displayName;
+
 @end

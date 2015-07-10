@@ -84,7 +84,7 @@
                     @[@"账户", @"AccountViewController"],
                     nil];
         
-        userNameLabel.text = user.name ? user.name : (user.nickname ? user.nickname : user.mobile);
+        userNameLabel.text = [user displayName];
         [userNameLabel sizeToFit];
         userImageView.image = [user avatarImage];
     }

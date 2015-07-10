@@ -171,6 +171,14 @@
         
         [profileView setData:@"user" value:user];
         [profileView renderData];
+        
+        //刷新菜单
+        [self refreshMenu];
+        
+        //回调上级
+        if (self.callbackBlock) {
+            self.callbackBlock(user);
+        }
     };
     
     [self pushViewController:viewController animated:YES];

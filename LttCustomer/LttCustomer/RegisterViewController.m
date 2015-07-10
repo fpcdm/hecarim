@@ -27,7 +27,6 @@
 {
     NSString *mobile;
     NSString *mobileStatus;
-    NSString *code;
     NSString *password;
     
     UIButton *sendButton;
@@ -210,36 +209,40 @@
         return;
     }
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler checkMobile:inputMobile success:^(NSArray *result){
-        ResultEntity *checkResult = [result firstObject];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            ResultEntity *checkResult = [result firstObject];
             
-        mobile = inputMobile;
-        mobileStatus = checkResult.data;
-        NSLog(@"check mobile result: %@", checkResult.data);
-        if ([@"registered" isEqualToString:mobileStatus]) {
-            RegisterExistView *existView = [self mobileExistView];
-            [self pushView:existView animated:YES completion:^{
-                [existView setData:@"mobile" value:mobile];
-                [existView renderData];
-            }];
-        } else {
-            RegisterCodeView *codeView = [self mobileCodeView];
-            [self pushView:codeView animated:YES completion:^{
-                [codeView setData:@"mobile" value:mobile];
-                [codeView renderData];
-                
-                //发送短信验证码
-                sendButton = codeView.sendButton;
-                [self sendSms:^(id object){
-                    [self checkButton];
-                } failure:^(ErrorEntity *error){
-                    [self checkButton];
-                    [self showError:error.message];
+            mobile = inputMobile;
+            mobileStatus = checkResult.data;
+            NSLog(@"check mobile result: %@", checkResult.data);
+            if ([@"registered" isEqualToString:mobileStatus]) {
+                RegisterExistView *existView = [self mobileExistView];
+                [self pushView:existView animated:YES completion:^{
+                    [existView setData:@"mobile" value:mobile];
+                    [existView renderData];
                 }];
-            }];
-        }
+            } else {
+                RegisterCodeView *codeView = [self mobileCodeView];
+                [self pushView:codeView animated:YES completion:^{
+                    [codeView setData:@"mobile" value:mobile];
+                    [codeView renderData];
+                    
+                    //发送短信验证码
+                    sendButton = codeView.sendButton;
+                    [self sendSms:^(id object){
+                        [self checkButton];
+                    } failure:^(ErrorEntity *error){
+                        [self checkButton];
+                        [self showError:error.message];
+                    }];
+                }];
+            }
+        }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -259,29 +262,33 @@
     user.deviceType = @"ios";
     user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
     
+    [self showLoading:TIP_LOADING_MESSAGE];
+    
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler loginWithUser:user success:^(NSArray *result){
-        //赋值并释放资源
-        UserEntity *apiUser = [result firstObject];
-        user.id = apiUser.id;
-        user.name = apiUser.name;
-        user.token = apiUser.token;
-        user.nickname = apiUser.nickname;
-        user.sexAlias = apiUser.sexAlias;
-        apiUser = nil;
-        
-        //清空密码
-        user.password = nil;
-        
-        //保存数据
-        [[StorageUtil sharedStorage] setUser:user];
-        
-        //刷新菜单
-        [self refreshMenu];
-        
-        HomeViewController *viewController = [[HomeViewController alloc] init];
-        [self toggleViewController:viewController animated:YES];
+        [self loadingSuccess:TIP_LOADING_SUCCESS callback:^{
+            //赋值并释放资源
+            UserEntity *apiUser = [result firstObject];
+            user.id = apiUser.id;
+            user.name = apiUser.name;
+            user.token = apiUser.token;
+            user.nickname = apiUser.nickname;
+            user.sexAlias = apiUser.sexAlias;
+            apiUser = nil;
+            
+            //清空密码
+            user.password = nil;
+            
+            //保存数据
+            [[StorageUtil sharedStorage] setUser:user];
+            
+            //刷新菜单
+            [self refreshMenu];
+            
+            HomeViewController *viewController = [[HomeViewController alloc] init];
+            [self toggleViewController:viewController animated:YES];
+        }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -311,9 +318,13 @@
         return;
     }
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
-        [self pushView:[self mobilePasswordView] animated:YES completion:nil];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self pushView:[self mobilePasswordView] animated:YES completion:nil];
+        }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -332,6 +343,8 @@
         return;
     }
     
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //保存密码供自动登录使用
     password = inputPassword;
     
@@ -342,7 +355,9 @@
     
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler registerWithUser:user success:^(NSArray *result){
-        [self pushView:[self mobileSuccessView] animated:YES completion:nil];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self pushView:[self mobileSuccessView] animated:YES completion:nil];
+        }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];

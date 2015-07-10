@@ -54,7 +54,7 @@
 #define USER_LOCATION_INTERVAL 5.0
 
 //短信验证码发送间隔
-#define USER_SMS_INTERVAL 30
+#define USER_SMS_INTERVAL 60
 
 //默认每页数量
 #define LTT_PAGESIZE_DEFAULT 10

@@ -67,4 +67,15 @@
     return @"";
 }
 
+- (NSString *)displayName
+{
+    if (self.name && [self.name length] > 0) {
+        return self.name;
+    } else if (self.nickname && [self.nickname length] > 0) {
+        return self.nickname;
+    } else {
+        return @"";
+    }
+}
+
 @end
