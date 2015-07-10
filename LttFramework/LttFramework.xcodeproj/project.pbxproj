@@ -30,6 +30,7 @@
 		2F2F22AD1B3A577900428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22991B3A577900428742 /* TSMessageView.m */; };
 		2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DEF1B329EC100938BD6 /* CTCheckbox.m */; };
 		2F4E1A441B4CB5F900F5CF9E /* BaseRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E1A431B4CB5F900F5CF9E /* BaseRefreshTableView.m */; };
+		2F55340E1B4FC41A00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55340D1B4FC41A00B98CA4 /* FileEntity.m */; };
 		2F5D29491B1EEBE700A99AC5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */; };
 		2F5D294B1B1EEBFA00A99AC5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294A1B1EEBFA00A99AC5 /* Security.framework */; };
 		2F5D294D1B1EEC0500A99AC5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294C1B1EEC0500A99AC5 /* CoreData.framework */; };
@@ -200,6 +201,8 @@
 		2F473DEF1B329EC100938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
 		2F4E1A421B4CB5F900F5CF9E /* BaseRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRefreshTableView.h; sourceTree = "<group>"; };
 		2F4E1A431B4CB5F900F5CF9E /* BaseRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRefreshTableView.m; sourceTree = "<group>"; };
+		2F55340C1B4FC41900B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
+		2F55340D1B4FC41A00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
 		2F5D28DE1B1EEBA900A99AC5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2F5D28DF1B1EEBA900A99AC5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		2F5D28E01B1EEBA900A99AC5 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
@@ -1307,6 +1310,8 @@
 				2F2E8F251B4E052900575271 /* ResultEntity.m */,
 				2FCAF8991B2044F700F3B084 /* UserEntity.h */,
 				2FCAF89A1B2044F700F3B084 /* UserEntity.m */,
+				2F55340C1B4FC41900B98CA4 /* FileEntity.h */,
+				2F55340D1B4FC41A00B98CA4 /* FileEntity.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1580,6 +1585,7 @@
 				2FCAF7C81B1FF40D00F3B084 /* QRCodeGenerator.m in Sources */,
 				2FED7DF01B1EA71A00306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FED7D711B1EA21200306A11 /* UIView+WebCacheOperation.m in Sources */,
+				2F55340E1B4FC41A00B98CA4 /* FileEntity.m in Sources */,
 				2F6D3EA01B312884007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2FED7D691B1EA21200306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2FED7DEF1B1EA71A00306A11 /* DDContextFilterLogFormatter.m in Sources */,

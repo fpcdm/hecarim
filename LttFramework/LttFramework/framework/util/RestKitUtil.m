@@ -159,6 +159,29 @@ static RestKitUtil *sharedClient = nil;
     }];
 }
 
+- (void) postFile:(FileEntity *)file path:(NSString *)path param:(NSDictionary *)param success:(RestKitSuccessBlock)success failure:(RestKitErrorBlock)failure
+{
+    NSMutableURLRequest *request = [manager multipartFormRequestWithObject:file
+                                                                    method:RKRequestMethodPOST
+                                                                      path:path
+                                                                parameters:param
+                                                 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                                     [formData appendPartWithFileData:file.data
+                                                                                 name:file.field
+                                                                             fileName:file.name
+                                                                             mimeType:file.mime];
+                                   }];
+    
+    RKObjectRequestOperation *operation = [manager objectRequestOperationWithRequest:request
+                                                                             success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
+                                                                                 [self success:operation result:result callback:success];
+                                                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                                 [self failure:operation error:error callback:failure];
+                                          }];
+    
+    [manager enqueueObjectRequestOperation:operation];
+}
+
 #pragma mark - Private Methods
 //手工合并参数，解决RestKit使用GET和DELETE时不会自动合并参数，导致参数传递不过去的问题
 - (NSDictionary *) mergeObject: (id) object withParam: (NSDictionary *) param
