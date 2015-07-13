@@ -14,14 +14,13 @@
 
 @implementation ProfileView
 {
-    UIImage *userAvatar;
+    UserEntity *user;
 }
 
 #pragma mark - RenderData
 - (void) renderData
 {
-    UserEntity *user = [self getData:@"user"];
-    userAvatar = [user avatarImage];
+    user = [self getData:@"user"];
     NSString *userNickname = user.nickname ? user.nickname : @"";
     NSString *userSexName = [user sexName];
     userSexName = userSexName ? userSexName : @"";
@@ -50,7 +49,7 @@
     //photo
     if ([@"photo" isEqualToString:id]) {
         UIImageView *imageView = [UIImageView new];
-        imageView.image = userAvatar;
+        [user avatarView:imageView];
         [cell addSubview:imageView];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

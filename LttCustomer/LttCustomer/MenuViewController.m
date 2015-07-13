@@ -86,7 +86,7 @@
         
         userNameLabel.text = [user displayName];
         [userNameLabel sizeToFit];
-        userImageView.image = [user avatarImage];
+        [user avatarView:userImageView];
     }
 }
 

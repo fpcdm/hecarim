@@ -26,6 +26,8 @@
 
 @property (nonatomic, retain) NSString *sellerName;
 
+@property (nonatomic, retain) NSString *sellerAvatar;
+
 @property (nonatomic, retain) NSString *updateTime;
 
 @property (nonatomic, retain) NSString *status;
@@ -40,6 +42,6 @@
 
 @property (nonatomic, retain) NSNumber *commentLevel;
 
-- (UIImage *) avatarImage;
+- (void) avatarView: (UIImageView *)view;
 
 @end

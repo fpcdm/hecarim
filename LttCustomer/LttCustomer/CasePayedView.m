@@ -121,7 +121,7 @@
 {
     OrderEntity *order = [self getData:@"order"];
     
-    imageView.image = [order avatarImage];
+    [order avatarView:imageView];
 }
 
 #pragma mark - Action

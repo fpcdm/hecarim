@@ -46,7 +46,7 @@
 
 @property (nonatomic, retain) NSArray *details;
 
-- (UIImage *)avatarImage;
+- (void) avatarView: (UIImageView *)view;
 
 - (NSString *)statusName;
 

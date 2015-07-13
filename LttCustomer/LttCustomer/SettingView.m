@@ -14,21 +14,28 @@
 
 @implementation SettingView
 
-- (id)init
+- (void)renderData
 {
-    self = [super init];
-    if (!self) return nil;
+    NSNumber *cacheSize = [self getData:@"cacheSize"];
+    float tmpSize = cacheSize ? [cacheSize floatValue] : 0;
+    
+    NSString *sizeText = nil;
+    float fileSize = tmpSize / 1024.0;
+    if (fileSize > 1024.0) {
+        sizeText = [NSString stringWithFormat:@"%.2fM", fileSize / 1024.0];
+    } else {
+        sizeText = [NSString stringWithFormat:@"%.2fK", fileSize];
+    }
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"clear", @"type" : @"normal", @"action": @"actionClear", @"image": @"", @"text" : @"清除本地缓存", @"style":@"value1", @"detail" : @"0.0M"},
+                        @{@"id" : @"clear", @"type" : @"normal", @"action": @"actionClear", @"image": @"", @"text" : @"清除本地缓存", @"style":@"value1", @"detail" : sizeText},
                         ],
                       @[
                         @{@"id" : @"about", @"type" : @"action", @"action": @"actionAbout", @"image": @"", @"text" : @"关于手机两条腿"},
                         ],
                       nil];
-    
-    return self;
+    [self.tableView reloadData];
 }
 
 #pragma mark - TableView

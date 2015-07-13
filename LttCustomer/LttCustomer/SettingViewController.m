@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "SettingView.h"
 #import "AboutViewController.h"
+#import "SDImageCache.h"
 
 @interface SettingViewController () <SettingViewDelegate, UIActionSheetDelegate>
 
@@ -31,6 +32,11 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"设置";
+    
+    NSUInteger cacheSize = [[SDImageCache sharedImageCache] getSize];
+    NSLog(@"缓存大小: %ld", cacheSize);
+    [settingView setData:@"cacheSize" value:[NSNumber numberWithInteger:cacheSize]];
+    [settingView renderData];
 }
 
 #pragma mark - Sheet
@@ -42,7 +48,12 @@
     switch (buttonIndex) {
             //确定
         case 0:
-            DDLogDebug(@"todo: delegate 清除缓存");
+            //清除缓存
+            [[SDImageCache sharedImageCache] clearDisk];
+            
+            //刷新视图
+            [settingView setData:@"cacheSize" value:@0];
+            [settingView renderData];
             break;
             //取消
         default:

@@ -7,6 +7,7 @@
 //
 
 #import "CaseEntity.h"
+#import "UIImageView+WebCache.h"
 
 @implementation CaseEntity
 
@@ -46,10 +47,14 @@
 
 @synthesize details;
 
-- (UIImage *) avatarImage
+- (void) avatarView: (UIImageView *)view
 {
-    UIImage *avatar = [UIImage imageNamed:@"support"];
-    return avatar;
+    if (self.employeeAvatar && [self.employeeAvatar length] > 0) {
+        NSLog(@"加载头像缓存：%@", self.employeeAvatar);
+        [view sd_setImageWithURL:[NSURL URLWithString:self.employeeAvatar] placeholderImage:[UIImage imageNamed:@"support"]];
+    } else {
+        view.image = [UIImage imageNamed:@"support"];
+    }
 }
 
 - (NSString *)statusName

@@ -110,25 +110,24 @@
 {
     [self dismissViewControllerAnimated:YES completion: ^(void){}];
     
-    //todo: 保存并上传头像
-    
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    //头像路径
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *imagePath = [NSString stringWithFormat:@"%@/avatar.jpg", documentPath];
-    if ([fileManager fileExistsAtPath:imagePath]) {
-        NSError *error;
-        [fileManager removeItemAtPath:imagePath error:&error];
-    }
-    if (![fileManager fileExistsAtPath:imagePath]) {
-        NSData *imageData = UIImageJPEGRepresentation(image, 1);
-        BOOL status = [imageData writeToFile:imagePath atomically:YES];
-        if (status) {
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //上传头像
+    FileEntity *avatarEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
+    avatarEntity.field = @"file";
+    avatarEntity.name = @"avatar.jpg";
+    
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler uploadAvatar:avatarEntity success:^(NSArray *result){
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            FileEntity *imageEntity = [result firstObject];
+            NSLog(@"头像上传成功：%@", imageEntity.url);
+            
             //保存头像
             UserEntity *user = [[StorageUtil sharedStorage] getUser];
-            user.avatar = imagePath;
+            user.avatar = imageEntity.url;
             [[StorageUtil sharedStorage] setUser:user];
             
             [profileView setData:@"user" value:user];
@@ -141,8 +140,11 @@
             if (self.callbackBlock) {
                 self.callbackBlock(user);
             }
-        }
-    }
+        }];
+    } failure:^(ErrorEntity *error){
+        NSLog(@"头像上传失败：%@", error.message);
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action

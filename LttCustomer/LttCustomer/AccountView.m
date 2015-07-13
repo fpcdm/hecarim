@@ -99,7 +99,7 @@
 {
     UserEntity *user = [self getData:@"user"];
     
-    imageView.image = [user avatarImage];
+    [user avatarView:imageView];
     nameLabel.text = [user displayName];
 }
 

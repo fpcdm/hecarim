@@ -275,6 +275,7 @@
             user.token = apiUser.token;
             user.nickname = apiUser.nickname;
             user.sexAlias = apiUser.sexAlias;
+            user.avatar = apiUser.avatar;
             apiUser = nil;
             
             //清空密码

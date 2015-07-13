@@ -14,7 +14,7 @@
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"goods":@"goodsParam",@"services":@"services",@"update_time":@"updateTime", @"rate_star":@"commentLevel"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[OrderEntity class] mappingParam:@{@"buyer_mobile": @"buyerMobile", @"buyer_name": @"buyerName", @"order_amount": @"amount", @"order_no":@"no", @"order_status": @"status", @"seller_mobile":@"sellerMobile", @"seller_name":@"sellerName", @"seller_avatar": @"sellerAvatar", @"goods":@"goodsParam",@"services":@"services",@"update_time":@"updateTime", @"rate_star":@"commentLevel"}];
     
     NSString *restPath = [sharedClient formatPath:@"order/info/:no" object:order];
     [sharedClient getObject:order path:restPath param:nil success:^(NSArray *result){

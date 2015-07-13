@@ -132,7 +132,7 @@
 {
     CaseEntity *intention = [self getData:@"intention"];
     
-    imageView.image = [intention avatarImage];
+    [intention avatarView:imageView];
     nameLabel.text = intention.employeeName;
     [mobileButton setTitle:[NSString stringWithFormat:@"联系电话：%@", intention.employeeMobile] forState:UIControlStateNormal];
 }

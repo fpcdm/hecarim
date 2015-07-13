@@ -122,7 +122,7 @@
 {
     OrderEntity *order = [self getData:@"order"];
     
-    imageView.image = [order avatarImage];
+    [order avatarView:imageView];
     ratingView.value = [order.commentLevel floatValue];
 }
 

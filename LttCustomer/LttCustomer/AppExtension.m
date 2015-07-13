@@ -7,6 +7,7 @@
 //
 
 #import "AppExtension.h"
+#import "UIImageView+WebCache.h"
 
 //StorageUtil分类
 @implementation StorageUtil (App)
@@ -42,16 +43,14 @@
 //UserEntity分类
 @implementation UserEntity (App)
 
-- (UIImage *)avatarImage
+- (void) avatarView:(UIImageView *)view
 {
-    UIImage *image = nil;
-    if (self.avatar && [[NSFileManager defaultManager] fileExistsAtPath:self.avatar]) {
-        image = [UIImage imageWithContentsOfFile:self.avatar];
+    if (self.avatar && [self.avatar length] > 0) {
+        NSLog(@"加载头像缓存：%@", self.avatar);
+        [view sd_setImageWithURL:[NSURL URLWithString:self.avatar] placeholderImage:[UIImage imageNamed:@"nopic"]];
     } else {
-        //返回默认头像
-        image = [UIImage imageNamed:@"nopic"];
+        view.image = [UIImage imageNamed:@"nopic"];
     }
-    return image;
 }
 
 @end
