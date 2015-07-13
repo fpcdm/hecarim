@@ -33,6 +33,10 @@
 
 - (instancetype) initWithImage: (UIImage *) image;
 
+- (instancetype) initWithImage: (UIImage *) image compression: (CGFloat) compression;
+
+- (void) setImage:(UIImage *)image compression: (CGFloat) compression;
+
 - (void) setImage:(UIImage *)image;
 
 - (UIImage *) image;

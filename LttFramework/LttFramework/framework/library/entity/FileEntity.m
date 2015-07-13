@@ -36,14 +36,19 @@
     return self;
 }
 
-- (instancetype) initWithImage:(UIImage *)image
+- (instancetype) initWithImage:(UIImage *)image compression:(CGFloat)compression
 {
     self = [super init];
     if (!self) return nil;
     
-    [self setImage:image];
+    [self setImage:image compression:compression];
     
     return self;
+}
+
+- (instancetype) initWithImage:(UIImage *)image
+{
+    return [self initWithImage:image compression:1.0];
 }
 
 - (instancetype) initWithPath:(NSString *)filePath
@@ -57,9 +62,15 @@
     return self;
 }
 
+- (void) setImage:(UIImage *)image compression:(CGFloat)compression
+{
+    self.data = UIImageJPEGRepresentation(image, compression);
+    self.mime = @"image/jpeg";
+}
+
 - (void) setImage:(UIImage *)image
 {
-    self.data = UIImageJPEGRepresentation(image, 1.0);
+    [self setImage:image compression:1.0];
 }
 
 - (UIImage *) image

@@ -250,4 +250,22 @@
     }];
 }
 
+- (void) uploadAvatar:(FileEntity *)avatar success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[FileEntity class] mappingParam:@{@"image_url": @"url"}];
+    
+    [sharedClient postFile:avatar path:@"user/avatar" param:nil success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+    
+}
+
 @end

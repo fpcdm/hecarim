@@ -140,4 +140,13 @@
  */
 - (void) checkMobile: (NSString *) mobile success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  上传头像
+ *
+ *  @param avatar  头像
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) uploadAvatar: (FileEntity *) avatar success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 @end
