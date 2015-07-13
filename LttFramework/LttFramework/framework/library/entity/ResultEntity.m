@@ -16,4 +16,27 @@
 
 @synthesize data;
 
+- (instancetype) initWithCode:(NSInteger)resultCode info:(NSString *)resultInfo data:(id)resultData
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.code = resultCode;
+    self.info = resultInfo;
+    self.data = resultData;
+    
+    return self;
+}
+
+- (instancetype) initWithInfo:(NSString *)resultInfo data:(id)resultData
+{
+    return [self initWithCode:0 info:resultInfo data:resultData];
+}
+
+- (instancetype) initWithData:(id)resultData
+{
+    return [self initWithCode:0 info:nil data:resultData];
+    
+}
+
 @end

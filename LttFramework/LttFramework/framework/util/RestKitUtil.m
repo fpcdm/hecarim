@@ -161,6 +161,9 @@ static RestKitUtil *sharedClient = nil;
 
 - (void) postFile:(FileEntity *)file path:(NSString *)path param:(NSDictionary *)param success:(RestKitSuccessBlock)success failure:(RestKitErrorBlock)failure
 {
+    path = [self fixPath:path with:@"/post"];
+    
+    [self addHeader];
     NSMutableURLRequest *request = [manager multipartFormRequestWithObject:file
                                                                     method:RKRequestMethodPOST
                                                                       path:path

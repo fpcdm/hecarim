@@ -16,4 +16,10 @@
 
 @property (retain, nonatomic) id data;
 
+- (instancetype) initWithCode: (NSInteger) code info: (NSString *) info data: (id) data;
+
+- (instancetype) initWithInfo: (NSString *) info data: (id) data;
+
+- (instancetype) initWithData: (id) data;
+
 @end

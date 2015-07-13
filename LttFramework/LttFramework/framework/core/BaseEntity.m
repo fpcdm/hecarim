@@ -30,6 +30,17 @@
     return [self copyWithZone:zone];
 }
 
+//从字典初始化
+- (instancetype) initWithDictionary: (NSDictionary *) dict
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    [self fromDictionary:dict];
+    
+    return self;
+}
+
 //字典转换为实体对象
 - (void) fromDictionary: (NSDictionary *) dict
 {

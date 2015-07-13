@@ -24,12 +24,45 @@
 
 @synthesize remark;
 
-- (void) fromImage:(UIImage *)image
+@synthesize path;
+
+- (instancetype) initWithData:(NSData *)fileData
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.data = fileData;
+    
+    return self;
+}
+
+- (instancetype) initWithImage:(UIImage *)image
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    [self setImage:image];
+    
+    return self;
+}
+
+- (instancetype) initWithPath:(NSString *)filePath
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.data = [NSData dataWithContentsOfFile:filePath];
+    self.path = filePath;
+    
+    return self;
+}
+
+- (void) setImage:(UIImage *)image
 {
     self.data = UIImageJPEGRepresentation(image, 1.0);
 }
 
-- (UIImage *) toImage
+- (UIImage *) image
 {
     return [UIImage imageWithData:self.data];
 }

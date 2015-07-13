@@ -25,8 +25,16 @@
 
 @property (retain, nonatomic) NSString *mime;
 
-- (void) fromImage: (UIImage *) image;
+@property (retain, nonatomic) NSString *path;
 
-- (UIImage *) toImage;
+- (instancetype) initWithData: (NSData *) data;
+
+- (instancetype) initWithPath: (NSString *) path;
+
+- (instancetype) initWithImage: (UIImage *) image;
+
+- (void) setImage:(UIImage *)image;
+
+- (UIImage *) image;
 
 @end

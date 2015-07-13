@@ -14,4 +14,10 @@
 
 @property (nonatomic, retain) NSString *message;
 
+- (instancetype) initWithError: (NSError *) error;
+
+- (instancetype) initWithCode: (NSInteger) code message: (NSString *) message;
+
+- (instancetype) initWithMessage: (NSString *) message;
+
 @end

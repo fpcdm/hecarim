@@ -11,6 +11,9 @@
 //注意：BaseEntity子类不要用简单数据类型，如BOOL等，否则无法转字典，建议使用可以转化为NSDictionary的类型
 @interface BaseEntity : NSObject <NSCopying, NSMutableCopying>
 
+//从字典初始化
+- (instancetype) initWithDictionary: (NSDictionary *) dict;
+
 //字典转换为实体对象
 - (void) fromDictionary: (NSDictionary *) dict;
 
