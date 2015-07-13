@@ -19,7 +19,7 @@
 #import "LocationUtil.h"
 #import "TimerUtil.h"
 
-@interface LttAppDelegate ()
+@interface LttAppDelegate () <LocationUtilDelegate>
 
 @end
 
@@ -30,6 +30,7 @@
     
     TimerUtil *heartbeatTimer;
     LocationUtil *locationUtil;
+    NSDate *lastLocationDate;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -225,10 +226,22 @@
 {
     //初始化GPS
     locationUtil = [LocationUtil sharedInstance];
-    [locationUtil startUpdate];
+    locationUtil.delegate = self;
     
     //初始化定时器
     heartbeatTimer = [TimerUtil repeatTimer:USER_HEARTBEAT_INTERVAL block:^{
+        //检查GPS刷新间隔
+        NSTimeInterval timeInterval = [TimerUtil timeInterval:lastLocationDate];
+        if (timeInterval > 0 && timeInterval < (USER_LOCATION_INTERVAL - 1)) {
+            NSLog(@"未到GPS刷新时间");
+        } else {
+            //记录刷新时间
+            lastLocationDate = [NSDate date];
+            
+            //刷新一次gps
+            [locationUtil startUpdate];
+        }
+        
         //用户是否登陆
         UserEntity *user = [[StorageUtil sharedStorage] getUser];
         if (user) {
@@ -247,6 +260,19 @@
             }];
         }
     }];
+}
+
+#pragma mark - GPS
+- (void) updateLocationSuccess:(CLLocationCoordinate2D)position
+{
+    //停止监听GPS
+    [locationUtil stopUpdate];
+}
+
+- (void)updateLocationError:(NSError *)error
+{
+    //停止监听GPS
+    [locationUtil stopUpdate];
 }
 
 @end

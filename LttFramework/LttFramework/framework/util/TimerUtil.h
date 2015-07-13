@@ -10,6 +10,9 @@
 
 @interface TimerUtil : NSObject
 
+//计算离当前时间的间隔
++ (NSTimeInterval) timeInterval: (NSDate *) time;
+
 //默认并列队列
 + (TimerUtil *) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block;
 
@@ -20,7 +23,7 @@
 
 - (void) resume;
 
-- (void)invalidate;
+- (void) invalidate;
 
 + (void) test;
 

@@ -20,6 +20,11 @@
 
 @implementation TimerUtil
 
++ (NSTimeInterval) timeInterval: (NSDate *) time
+{
+    return time ? [[NSDate date] timeIntervalSinceDate:time] : 0;
+}
+
 + (TimerUtil *) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block
 {
     //默认并行主队列
@@ -67,7 +72,7 @@
     }
 }
 
-- (void)invalidate {
+- (void) invalidate {
     if (self.source) {
         dispatch_source_cancel(self.source);
         self.source = nil;

@@ -14,6 +14,12 @@
 #import "CaseHandler.h"
 #import "HelperHandler.h"
 #import "LocationUtil.h"
+#import "TimerUtil.h"
+
+//GPS数据缓存，优化GPS耗电
+static NSString *lastAddress = nil;
+static NSNumber *lastService = nil;
+static NSDate   *lastDate    = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
@@ -21,12 +27,8 @@
 
 @implementation HomeViewController
 {
-    //控制接口间隔
-    LocationUtil *locationUtil;
-    NSDate *lastDate;
-    
     HomeView *homeView;
-    HelperHandler *helperHandler;
+    TimerUtil *gpsTimer;
 }
 
 - (void)loadView
@@ -45,49 +47,71 @@
     
     self.navigationItem.title = @"两条腿";
     
-    //设置位置代理
-    locationUtil = [LocationUtil sharedInstance];
-    locationUtil.delegate = self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [locationUtil startUpdate];
+    //设置定时器
+    [self setTimer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [locationUtil stopUpdate];
+    //释放定时器
+    if (gpsTimer) {
+        [gpsTimer invalidate];
+        gpsTimer = nil;
+    }
+}
+
+//渲染视图
+- (void) renderView
+{
+    [homeView setData:@"address" value:lastAddress ? lastAddress : @"定位失败"];
+    [homeView setData:@"count" value:lastService ? lastService : @-1];
+    [homeView renderData];
+}
+
+- (void) setTimer
+{
+    //定时器间隔：1分钟，GPS刷新间隔：5-6分钟，因为手工GPS会重置最后刷新时间
+    gpsTimer = [TimerUtil repeatTimer:(USER_LOCATION_INTERVAL / 5) block:^{
+        //检查GPS刷新间隔
+        NSTimeInterval timeInterval = [TimerUtil timeInterval:lastDate];
+        if (timeInterval > 0 && timeInterval < (USER_LOCATION_INTERVAL - 1)) {
+            NSLog(@"未到GPS刷新时间");
+            
+            //加载缓存数据视图
+            [self renderView];
+            return;
+        }
+        
+        //记录刷新时间
+        lastDate = [NSDate date];
+        
+        //设置位置代理
+        [LocationUtil sharedInstance].delegate = self;
+        //刷新一次gps
+        [[LocationUtil sharedInstance] startUpdate];
+    } queue:dispatch_get_main_queue()];
 }
 
 #pragma mark - GPS
 - (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
-    //位置刷新请求间隔
-    if (lastDate && lastDate != nil) {
-        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:lastDate];
-        if (interval < USER_LOCATION_INTERVAL) {
-            return;
-        }
-    }
-    
-    if (!helperHandler) helperHandler = [[HelperHandler alloc] init];
+    //停止监听GPS
+    [[LocationUtil sharedInstance] stopUpdate];
     
     //查询位置
     LocationEntity *locationEntity = [[LocationEntity alloc] init];
     locationEntity.longitude = [NSNumber numberWithFloat:position.longitude];
     locationEntity.latitude = [NSNumber numberWithFloat:position.latitude];
     
+    HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler queryLocation:locationEntity success:^(NSArray *result){
         LocationEntity *location = [result firstObject];
         
         //获取位置
         if (location.address && [location.address length] > 0) {
-            [homeView setData:@"address" value:location.address];
+            lastAddress = location.address;
         }
         
         //查询信使数量
@@ -96,28 +120,44 @@
             
             //获取位置
             if (location.serviceNumber) {
-                [homeView setData:@"count" value:location.serviceNumber];
-                [homeView renderData];
-                
-                lastDate = [NSDate date];
+                lastService = location.serviceNumber;
             }
+            
+            //刷新视图
+            [self renderView];
         } failure:^(ErrorEntity *error){
+            //刷新视图
+            [self renderView];
         }];
     } failure:^(ErrorEntity *error){
+        //刷新视图
+        [self renderView];
     }];
 }
 
 - (void)updateLocationError:(NSError *)error
 {
-    [homeView setData:@"address" value:@"定位失败"];
-    [homeView setData:@"count" value:@-1];
-    [homeView renderData];
+    //停止监听GPS
+    [[LocationUtil sharedInstance] stopUpdate];
+    
+    //重置数据
+    lastAddress = nil;
+    lastService = nil;
+    
+    //刷新视图
+    [self renderView];
 }
 
 #pragma mark - Action
 - (void)actionGps
 {
-    [locationUtil restartUpdate];
+    //记录刷新时间
+    lastDate = [NSDate date];
+    
+    //设置位置代理
+    [LocationUtil sharedInstance].delegate = self;
+    //刷新GPS
+    [[LocationUtil sharedInstance] restartUpdate];
 }
 
 - (void)actionCase:(NSNumber *)type
@@ -134,7 +174,7 @@
     intentionEntity.type = type;
     
     //获取gps坐标
-    CLLocationCoordinate2D position = [locationUtil position];
+    CLLocationCoordinate2D position = [[LocationUtil sharedInstance] position];
     intentionEntity.location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);

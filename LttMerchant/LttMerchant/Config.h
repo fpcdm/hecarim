@@ -34,11 +34,11 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
-//定时器刷新时间
-#define SCHEDULED_TIME_INTERVAL 5
-
 //用户心跳间隔
-#define USER_HEARTBEAT_INTERVAL 10.0
+#define USER_HEARTBEAT_INTERVAL 60.0
+
+//刷新位置间隔
+#define USER_LOCATION_INTERVAL 300.0
 
 //客户端类型
 #define LTT_CLIENT_TYPE @"MM"
