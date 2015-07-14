@@ -128,6 +128,8 @@
 		2F818C0D1B40F07B00AB3EFD /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C0C1B40F07B00AB3EFD /* SuggestionViewController.m */; };
 		2F818C101B411D6900AB3EFD /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C0F1B411D6900AB3EFD /* AboutView.m */; };
 		2F818C131B411E5D00AB3EFD /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F818C121B411E5D00AB3EFD /* AboutViewController.m */; };
+		2F88B2A11B5510590078D861 /* CaseFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F88B2A01B5510590078D861 /* CaseFormView.m */; };
+		2F88B2A41B55113C0078D861 /* CaseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F88B2A31B55113C0078D861 /* CaseFormViewController.m */; };
 		2F89A6361B0EC8E80043B236 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A6351B0EC8E80043B236 /* GoodsHandler.m */; };
 		2F89A6391B0ECDA40043B236 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A6381B0ECDA40043B236 /* CaseHandler.m */; };
 		2F89A63C1B0ECDD80043B236 /* OrderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89A63B1B0ECDD80043B236 /* OrderHandler.m */; };
@@ -454,6 +456,10 @@
 		2F818C0F1B411D6900AB3EFD /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		2F818C111B411E5D00AB3EFD /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		2F818C121B411E5D00AB3EFD /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		2F88B29F1B5510590078D861 /* CaseFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseFormView.h; sourceTree = "<group>"; };
+		2F88B2A01B5510590078D861 /* CaseFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseFormView.m; sourceTree = "<group>"; };
+		2F88B2A21B55113C0078D861 /* CaseFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseFormViewController.h; sourceTree = "<group>"; };
+		2F88B2A31B55113C0078D861 /* CaseFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseFormViewController.m; sourceTree = "<group>"; };
 		2F89A6341B0EC8E80043B236 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
 		2F89A6351B0EC8E80043B236 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
 		2F89A6371B0ECDA40043B236 /* CaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseHandler.h; sourceTree = "<group>"; };
@@ -1397,6 +1403,8 @@
 		2FC857571B341A11007B9771 /* Case */ = {
 			isa = PBXGroup;
 			children = (
+				2F88B2A21B55113C0078D861 /* CaseFormViewController.h */,
+				2F88B2A31B55113C0078D861 /* CaseFormViewController.m */,
 				2FC8574B1B34062B007B9771 /* CaseViewController.h */,
 				2FC8574C1B34062B007B9771 /* CaseViewController.m */,
 				2FC857591B341A82007B9771 /* CaseListViewController.h */,
@@ -1410,6 +1418,8 @@
 			children = (
 				2FC8574E1B341184007B9771 /* CaseNewView.h */,
 				2FC8574F1B341184007B9771 /* CaseNewView.m */,
+				2F88B29F1B5510590078D861 /* CaseFormView.h */,
+				2F88B2A01B5510590078D861 /* CaseFormView.m */,
 				2FC857511B3411B5007B9771 /* CaseLockedView.h */,
 				2FC857521B3411B5007B9771 /* CaseLockedView.m */,
 				2F6B0C191B390D1F000123BF /* CaseTopayView.h */,
@@ -1971,6 +1981,7 @@
 				2FD795941AE7ACC900D51FB0 /* AppViewController.m in Sources */,
 				2FED82BC1B1EDBFB00306A11 /* QRCodeGenerator.m in Sources */,
 				2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */,
+				2F88B2A41B55113C0078D861 /* CaseFormViewController.m in Sources */,
 				2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */,
 				2FED7E0B1B1EA79300306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F6D3E541B312765007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1989,6 +2000,7 @@
 				2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */,
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
+				2F88B2A11B5510590078D861 /* CaseFormView.m in Sources */,
 				2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */,
 				2F6796C11B4BB7B600E0F774 /* RegisterSuccessView.m in Sources */,
 				2F818C0A1B40ED2E00AB3EFD /* SuggestionView.m in Sources */,

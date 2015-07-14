@@ -17,6 +17,8 @@
 
 @synthesize type;
 
+@synthesize address;
+
 @synthesize location;
 
 @synthesize remark;

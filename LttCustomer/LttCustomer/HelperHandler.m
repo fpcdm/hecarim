@@ -14,7 +14,7 @@
 {
     //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[LocationEntity class] mappingParam:@{@"address": @"address"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[LocationEntity class] mappingParam:@{@"address": @"address", @"detail_address":@"detailAddress"}];
     
     NSDictionary *param = @{@"lat":location.latitude, @"lon":location.longitude};
     [sharedClient getObject:[LocationEntity new] path:@"location/address" param:param success:^(NSArray *result){

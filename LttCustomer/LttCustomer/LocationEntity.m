@@ -16,6 +16,8 @@
 
 @synthesize address;
 
+@synthesize detailAddress;
+
 @synthesize serviceNumber;
 
 @end

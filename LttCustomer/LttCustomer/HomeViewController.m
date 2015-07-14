@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "HomeView.h"
-#import "CaseViewController.h"
+#import "CaseFormViewController.h"
 #import "LoginViewController.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
@@ -18,6 +18,7 @@
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
+static NSString *detailAddress = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate    = nil;
 
@@ -112,6 +113,7 @@ static NSDate   *lastDate    = nil;
         //获取位置
         if (location.address && [location.address length] > 0) {
             lastAddress = location.address;
+            detailAddress = location.detailAddress;
         }
         
         //查询信使数量
@@ -172,6 +174,7 @@ static NSDate   *lastDate    = nil;
     //获取参数
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.type = type;
+    intentionEntity.address = detailAddress;
     
     //获取gps坐标
     CLLocationCoordinate2D position = [[LocationUtil sharedInstance] position];
@@ -179,23 +182,10 @@ static NSDate   *lastDate    = nil;
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
-    
-    CaseHandler *intentionHandler = [[CaseHandler alloc] init];
-    [intentionHandler addIntention:intentionEntity success:^(NSArray *result){
-        CaseEntity *intention = [result firstObject];
-        
-        NSLog(@"新增需求id: %@", intention.id);
-        
-        //跳转需求详情
-        CaseViewController *viewController = [[CaseViewController alloc] init];
-        viewController.caseId = intention.id;
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            [self pushViewController:viewController animated:YES];
-        }];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
+    //跳转表单页面
+    CaseFormViewController *viewController = [[CaseFormViewController alloc] init];
+    viewController.caseEntity = intentionEntity;
+    [self pushViewController:viewController animated:YES];
 }
 
 @end
