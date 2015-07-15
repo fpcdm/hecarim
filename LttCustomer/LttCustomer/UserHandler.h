@@ -99,6 +99,14 @@
 - (void) queryUserAddresses: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
+ *  获取默认收货地址
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryUserDefaultAddress: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
  *  修改用户资料
  *
  *  @param success 成功回调

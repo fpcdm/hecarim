@@ -167,6 +167,27 @@
     }];
 }
 
+- (void) queryUserDefaultAddress:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    [self queryUserAddresses:param success:^(NSArray *result){
+        //过滤默认收货地址
+        if ([result count] > 0) {
+            AddressEntity *defaultAddress = nil;
+            for (AddressEntity *address in result) {
+                if (address.isDefault && [address.isDefault isEqualToNumber:@1]) {
+                    defaultAddress = address;
+                    break;
+                }
+            }
+            
+            //返回默认收货地址
+            result = defaultAddress ? @[defaultAddress] : @[];
+        }
+        
+        success(result);
+    } failure:failure];
+}
+
 - (void) editUser:(UserEntity *)user success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];

@@ -13,7 +13,7 @@
 - (void) addIntention:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"type": @"type", @"remark": @"remark", @"location": @"location"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"type": @"type", @"remark": @"remark", @"location": @"location", @"address": @"address", @"addressId": @"address_id"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:@{@"intention_id": @"id"}];
     
     [sharedClient putObject:intention path:@"cases/info" param:nil success:^(NSArray *result){

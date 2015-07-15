@@ -12,6 +12,8 @@
 #import "CaseHandler.h"
 #import "AddressSelectorViewController.h"
 #import "AddressEntity.h"
+#import "ValidateUtil.h"
+#import "UserHandler.h"
 
 @interface CaseFormViewController () <CaseFormViewDelegate>
 
@@ -36,6 +38,43 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"呼叫客服";
+    
+    //查询默认收货地址
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
+        if ([result count] > 0) {
+            AddressEntity *address = [result firstObject];
+            [self addressView:address];
+        } else {
+            [self addressView:nil];
+        }
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+- (void) addressView: (AddressEntity *) address
+{
+    //地址存在
+    if (address) {
+        [formView setData:@"name" value:address.name];
+        [formView setData:@"mobile" value:address.mobile];
+        NSString *detailAddress = [NSString stringWithFormat:@"%@%@%@%@%@", address.provinceName, address.cityName, address.countyName, address.streetName, address.address];
+        [formView setData:@"address" value:detailAddress];
+        [formView renderData];
+        
+        caseEntity.addressId = address.id;
+        caseEntity.address = nil;
+    } else {
+        UserEntity *user = [[StorageUtil sharedStorage] getUser];
+        
+        [formView setData:@"name" value:[user displayName]];
+        [formView setData:@"mobile" value:user.mobile];
+        [formView setData:@"address" value:caseEntity.address];
+        [formView renderData];
+        
+        caseEntity.addressId = nil;
+    }
 }
 
 #pragma mark - Action
@@ -44,6 +83,8 @@
     AddressSelectorViewController *viewController = [[AddressSelectorViewController alloc] init];
     viewController.callbackBlock = ^(AddressEntity *address){
         NSLog(@"选择的地址：%@", [address toDictionary]);
+        
+        [self addressView:address];
     };
     
     [self pushViewController:viewController animated:YES];
@@ -51,6 +92,14 @@
 
 - (void) actionSubmit:(NSString *)remark
 {
+    //参数检查
+    if ((!caseEntity.addressId || [caseEntity.addressId isEqualToNumber:@0]) &&
+        ![ValidateUtil isRequired:caseEntity.address]
+        ) {
+        [self showError:@"请先选择服务地址哦~亲！"];
+        return;
+    }
+    
     //获取参数
     caseEntity.remark = remark;
     
