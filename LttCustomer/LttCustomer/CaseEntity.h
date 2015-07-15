@@ -16,6 +16,8 @@
 
 @property (nonatomic, retain) NSString *address;
 
+@property (nonatomic, retain) NSNumber *addressId;
+
 @property (nonatomic, retain) NSString *location;
 
 @property (nonatomic, retain) NSString *remark;

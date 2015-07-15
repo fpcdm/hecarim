@@ -156,6 +156,10 @@
 		2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		2F9222D21B55EDCA00F656A8 /* CaseConfirmedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9222D11B55EDCA00F656A8 /* CaseConfirmedView.m */; };
+		2F9222D51B56342800F656A8 /* AddressSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9222D41B56342800F656A8 /* AddressSelectorViewController.m */; };
+		2F9222D81B56348C00F656A8 /* AddressSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9222D71B56348C00F656A8 /* AddressSelectorView.m */; };
+		2F9222DA1B5635D600F656A8 /* caseAddress.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9222D91B5635D600F656A8 /* caseAddress.png */; };
+		2F9222DC1B5635DC00F656A8 /* caseVoice.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9222DB1B5635DC00F656A8 /* caseVoice.png */; };
 		2F967D0D1B423B1A00CD365B /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F967D0C1B423B1A00CD365B /* DeviceEntity.m */; };
 		2F9BD1A41B26E19E00632751 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A31B26E19E00632751 /* AccountViewController.m */; };
 		2F9BD1A71B26E31700632751 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A61B26E31700632751 /* LoginViewController.m */; };
@@ -519,6 +523,12 @@
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		2F9222D01B55EDCA00F656A8 /* CaseConfirmedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseConfirmedView.h; sourceTree = "<group>"; };
 		2F9222D11B55EDCA00F656A8 /* CaseConfirmedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseConfirmedView.m; sourceTree = "<group>"; };
+		2F9222D31B56338500F656A8 /* AddressSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSelectorViewController.h; sourceTree = "<group>"; };
+		2F9222D41B56342800F656A8 /* AddressSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSelectorViewController.m; sourceTree = "<group>"; };
+		2F9222D61B56347E00F656A8 /* AddressSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSelectorView.h; sourceTree = "<group>"; };
+		2F9222D71B56348C00F656A8 /* AddressSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSelectorView.m; sourceTree = "<group>"; };
+		2F9222D91B5635D600F656A8 /* caseAddress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caseAddress.png; sourceTree = "<group>"; };
+		2F9222DB1B5635DC00F656A8 /* caseVoice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caseVoice.png; sourceTree = "<group>"; };
 		2F967D0B1B423B1A00CD365B /* DeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEntity.h; sourceTree = "<group>"; };
 		2F967D0C1B423B1A00CD365B /* DeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEntity.m; sourceTree = "<group>"; };
 		2F9BD1A21B26E19E00632751 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
@@ -1351,6 +1361,8 @@
 			children = (
 				2F2E8F321B4E5A2000575271 /* registerExist.png */,
 				2F2E8F2B1B4E1E5C00575271 /* registerSuccess.png */,
+				2F9222D91B5635D600F656A8 /* caseAddress.png */,
+				2F9222DB1B5635DC00F656A8 /* caseVoice.png */,
 				2F2F227E1B3A571100428742 /* success.png */,
 				2F5202321B39844F00495062 /* point.png */,
 				2F10A72F1B3974C0009C6C58 /* support.png */,
@@ -1408,6 +1420,8 @@
 			children = (
 				2F88B2A21B55113C0078D861 /* CaseFormViewController.h */,
 				2F88B2A31B55113C0078D861 /* CaseFormViewController.m */,
+				2F9222D31B56338500F656A8 /* AddressSelectorViewController.h */,
+				2F9222D41B56342800F656A8 /* AddressSelectorViewController.m */,
 				2FC8574B1B34062B007B9771 /* CaseViewController.h */,
 				2FC8574C1B34062B007B9771 /* CaseViewController.m */,
 				2FC857591B341A82007B9771 /* CaseListViewController.h */,
@@ -1419,10 +1433,12 @@
 		2FC857581B341A5D007B9771 /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				2FC8574E1B341184007B9771 /* CaseNewView.h */,
-				2FC8574F1B341184007B9771 /* CaseNewView.m */,
 				2F88B29F1B5510590078D861 /* CaseFormView.h */,
 				2F88B2A01B5510590078D861 /* CaseFormView.m */,
+				2F9222D61B56347E00F656A8 /* AddressSelectorView.h */,
+				2F9222D71B56348C00F656A8 /* AddressSelectorView.m */,
+				2FC8574E1B341184007B9771 /* CaseNewView.h */,
+				2FC8574F1B341184007B9771 /* CaseNewView.m */,
 				2FC857511B3411B5007B9771 /* CaseLockedView.h */,
 				2FC857521B3411B5007B9771 /* CaseLockedView.m */,
 				2F9222D01B55EDCA00F656A8 /* CaseConfirmedView.h */,
@@ -1907,7 +1923,9 @@
 				2F2F223F1B3A4D0300428742 /* NotificationBackgroundMessage.png in Resources */,
 				2F2F227F1B3A571100428742 /* success.png in Resources */,
 				2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */,
+				2F9222DA1B5635D600F656A8 /* caseAddress.png in Resources */,
 				2F2F22471B3A4D0300428742 /* NotificationBackgroundWarningIcon.png in Resources */,
+				2F9222DC1B5635DC00F656A8 /* caseVoice.png in Resources */,
 				2F10A7301B3974C0009C6C58 /* support.png in Resources */,
 				2F2E8F2D1B4E1E5C00575271 /* registerSuccess.png in Resources */,
 				2F2F22401B3A4D0300428742 /* NotificationBackgroundMessage@2x.png in Resources */,
@@ -2055,6 +2073,7 @@
 				2F9000431B1D8B930040D97B /* MBProgressHUD.m in Sources */,
 				2F6D3E581B312765007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */,
+				2F9222D81B56348C00F656A8 /* AddressSelectorView.m in Sources */,
 				2FBF3F771B2821AA00C0DC54 /* HomeView.m in Sources */,
 				2F693E0B1B3BB61300CFB8F4 /* LocationEntity.m in Sources */,
 				2FF3E6A81B2FFB1B00B90045 /* AddressFormViewController.m in Sources */,
@@ -2078,6 +2097,7 @@
 				2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */,
 				2F6B0C281B395782000123BF /* AXRatingView.m in Sources */,
 				2F6796C71B4BB82000E0F774 /* RegisterPasswordView.m in Sources */,
+				2F9222D51B56342800F656A8 /* AddressSelectorViewController.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F2E0C701B2ACBEF000A7C90 /* AppUserViewController.m in Sources */,

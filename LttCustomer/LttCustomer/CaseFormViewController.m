@@ -10,6 +10,8 @@
 #import "CaseFormView.h"
 #import "CaseViewController.h"
 #import "CaseHandler.h"
+#import "AddressSelectorViewController.h"
+#import "AddressEntity.h"
 
 @interface CaseFormViewController () <CaseFormViewDelegate>
 
@@ -37,6 +39,16 @@
 }
 
 #pragma mark - Action
+- (void) actionAddress
+{
+    AddressSelectorViewController *viewController = [[AddressSelectorViewController alloc] init];
+    viewController.callbackBlock = ^(AddressEntity *address){
+        NSLog(@"选择的地址：%@", [address toDictionary]);
+    };
+    
+    [self pushViewController:viewController animated:YES];
+}
+
 - (void) actionSubmit:(NSString *)remark
 {
     //获取参数

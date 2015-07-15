@@ -343,6 +343,8 @@
     
     [computerDoorView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(mobileDoorView.mas_bottom);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
         
         make.height.equalTo(superview.mas_height).multipliedBy(0.26);
     }];

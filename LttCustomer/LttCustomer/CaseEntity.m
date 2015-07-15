@@ -19,6 +19,8 @@
 
 @synthesize address;
 
+@synthesize addressId;
+
 @synthesize location;
 
 @synthesize remark;

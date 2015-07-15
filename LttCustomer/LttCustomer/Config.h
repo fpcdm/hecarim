@@ -133,7 +133,7 @@
 
 //按钮配置
 //中按钮高度
-#define HEIGHT_MIDDLE_BUTTON 45
+#define HEIGHT_MIDDLE_BUTTON 35
 //大按钮高度
 #define HEIGHT_MAIN_BUTTON 45
 
