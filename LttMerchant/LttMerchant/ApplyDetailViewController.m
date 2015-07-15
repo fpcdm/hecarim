@@ -12,6 +12,8 @@
 #import "OrderFormViewController.h"
 #import "HomeViewController.h"
 #import "IntentionHandler.h"
+#import "OrderEntity.h"
+#import "OrderHandler.h"
 
 @interface ApplyDetailViewController () <MBProgressHUDDelegate>
 
@@ -23,7 +25,7 @@
     MBProgressHUD *hud;
 }
 
-@synthesize brandLabel, modelLabel, remarkLabel, employeeButton;
+@synthesize brandLabel, modelLabel, remarkLabel, employeeButton, submitButton;
 
 @synthesize intentionId;
 
@@ -60,9 +62,8 @@
         
         intention = [result firstObject];
         
-        //仅当lock时进入此页面
-        intention.status = CASE_STATUS_LOCKED;
-        if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
+        //仅当lock和confirmed时进入此页面
+        if ([CASE_STATUS_LOCKED isEqualToString:intention.status] || [CASE_STATUS_CONFIRMED isEqualToString:intention.status]) {
             [self initIntention];
         } else {
             [self intentionOverdue];
@@ -86,6 +87,16 @@
     employeeText = [employeeText stringByAppendingString:(intention.userMobile ? intention.userMobile : @"")];
     [self.employeeButton setTitle:employeeText forState:UIControlStateNormal];
     [self.employeeButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
+    
+    //修改按钮
+    NSLog(@"需求状态: %@", intention.status);
+    if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
+        [submitButton setTitle:@"开始服务" forState: UIControlStateNormal];
+        [submitButton addTarget:self action:@selector(actionServiceStart:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [submitButton setTitle:@"服务完成" forState: UIControlStateNormal];
+        [submitButton addTarget:self action:@selector(actionCreateOrder:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void)actionMobile
@@ -141,7 +152,26 @@
     }];
 }
 
-- (IBAction)createSubmitAction:(id)sender {
+- (void)actionServiceStart:(id)sender {
+    OrderEntity *orderModel = [[OrderEntity alloc] init];
+    orderModel.no = intention.orderNo;
+    
+    NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
+    
+    //调用接口
+    OrderHandler *orderHandler = [[OrderHandler alloc] init];
+    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+        intention.status = CASE_STATUS_CONFIRMED;
+        
+        [submitButton setTitle:@"服务完成" forState: UIControlStateNormal];
+        [submitButton removeTarget:self action:@selector(actionServiceStart:) forControlEvents:UIControlEventTouchUpInside];
+        [submitButton addTarget:self action:@selector(actionCreateOrder:) forControlEvents:UIControlEventTouchUpInside];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+- (void)actionCreateOrder:(id)sender {
     //跳转需求详情
     OrderFormViewController *viewController = [[OrderFormViewController alloc] init];
     viewController.intentionId = intention.id;

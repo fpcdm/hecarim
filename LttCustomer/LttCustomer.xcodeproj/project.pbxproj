@@ -155,6 +155,7 @@
 		2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FD1B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		2F9222D21B55EDCA00F656A8 /* CaseConfirmedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9222D11B55EDCA00F656A8 /* CaseConfirmedView.m */; };
 		2F967D0D1B423B1A00CD365B /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F967D0C1B423B1A00CD365B /* DeviceEntity.m */; };
 		2F9BD1A41B26E19E00632751 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A31B26E19E00632751 /* AccountViewController.m */; };
 		2F9BD1A71B26E31700632751 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BD1A61B26E31700632751 /* LoginViewController.m */; };
@@ -516,6 +517,8 @@
 		2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001001B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		2F9222D01B55EDCA00F656A8 /* CaseConfirmedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseConfirmedView.h; sourceTree = "<group>"; };
+		2F9222D11B55EDCA00F656A8 /* CaseConfirmedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseConfirmedView.m; sourceTree = "<group>"; };
 		2F967D0B1B423B1A00CD365B /* DeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEntity.h; sourceTree = "<group>"; };
 		2F967D0C1B423B1A00CD365B /* DeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEntity.m; sourceTree = "<group>"; };
 		2F9BD1A21B26E19E00632751 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
@@ -1422,6 +1425,8 @@
 				2F88B2A01B5510590078D861 /* CaseFormView.m */,
 				2FC857511B3411B5007B9771 /* CaseLockedView.h */,
 				2FC857521B3411B5007B9771 /* CaseLockedView.m */,
+				2F9222D01B55EDCA00F656A8 /* CaseConfirmedView.h */,
+				2F9222D11B55EDCA00F656A8 /* CaseConfirmedView.m */,
 				2F6B0C191B390D1F000123BF /* CaseTopayView.h */,
 				2F6B0C1A1B390D1F000123BF /* CaseTopayView.m */,
 				2F6B0C1C1B390D69000123BF /* CasePayedView.h */,
@@ -2020,6 +2025,7 @@
 				2FED7D9B1B1EA2D300306A11 /* UIImage+GIF.m in Sources */,
 				2FED7E101B1EA79300306A11 /* DDTTYLogger.m in Sources */,
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2F9222D21B55EDCA00F656A8 /* CaseConfirmedView.m in Sources */,
 				2F089D801B2ED05C002A0EA5 /* AddressEntity.m in Sources */,
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
 				2FF12BF21B3D23F300A81705 /* AreaEntity.m in Sources */,

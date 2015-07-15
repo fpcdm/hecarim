@@ -11,6 +11,7 @@
 #import "OrderEntity.h"
 #import "CaseNewView.h"
 #import "CaseLockedView.h"
+#import "CaseConfirmedView.h"
 #import "CaseTopayView.h"
 #import "CasePayedView.h"
 #import "CaseSuccessView.h"
@@ -19,7 +20,7 @@
 #import "OrderHandler.h"
 #import "HomeViewController.h"
 
-@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
+@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
 @end
 
@@ -189,7 +190,7 @@
             //计时器加1
             timer++;
         } queue:dispatch_get_main_queue()];
-    } else if ([intention.status isEqualToString:CASE_STATUS_LOCKED] || [intention.status isEqualToString:CASE_STATUS_CONFIRMED]) {
+    } else if ([intention.status isEqualToString:CASE_STATUS_LOCKED]) {
         CaseLockedView *lockedView = [[CaseLockedView alloc] init];
         lockedView.delegate = self;
         self.view = lockedView;
@@ -199,12 +200,22 @@
         //显示数据
         [lockedView setData:@"intention" value:intention];
         [lockedView renderData];
+    } else if ([intention.status isEqualToString:CASE_STATUS_CONFIRMED]) {
+        CaseConfirmedView *confirmedView = [[CaseConfirmedView alloc] init];
+        confirmedView.delegate = self;
+        self.view = confirmedView;
+        
+        self.navigationItem.title = @"服务开始了";
+        
+        //显示数据
+        [confirmedView setData:@"intention" value:intention];
+        [confirmedView renderData];
     } else if ([intention.status isEqualToString:CASE_STATUS_TOPAY]) {
         CaseTopayView *topayView = [[CaseTopayView alloc] init];
         topayView.delegate = self;
         self.view = topayView;
         
-        self.navigationItem.title = @"账单确认并支付";
+        self.navigationItem.title = @"订单确认";
         
         //显示数据
         [topayView setData:@"order" value:order];
@@ -245,6 +256,7 @@
     //仅当当前需求时自动切换页面
     BOOL isCurrentCase = NO;
     if ([@"CASE_LOCKED" isEqualToString:type] ||
+        [@"CASE_CONFIRMED" isEqualToString:type] ||
         [@"CASE_WAIT_PAY" isEqualToString:type] ||
         [@"CASE_MERCHANT_CANCEL" isEqualToString:type]) {
         if (data && [self.caseId isEqualToNumber:[NSNumber numberWithInteger:[data integerValue]]]) {
@@ -297,6 +309,12 @@
 - (void)actionMobile
 {
     NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.employeeMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
+- (void)actionComplain
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", LTT_CUSTOMER_SERVICE];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 

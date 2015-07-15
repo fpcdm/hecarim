@@ -46,6 +46,8 @@
 
 @property (nonatomic, retain) NSString *employeeAvatar;
 
+@property (nonatomic, retain) NSString *mapUrl;
+
 @property (nonatomic, retain) NSArray *details;
 
 - (void) avatarView: (UIImageView *)view;

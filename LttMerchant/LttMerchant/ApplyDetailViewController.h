@@ -18,9 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *employeeButton;
 
-- (IBAction)cancelSubmitAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
-- (IBAction)createSubmitAction:(id)sender;
+- (IBAction)cancelSubmitAction:(id)sender;
 
 @property (nonatomic, retain) NSNumber *intentionId;
 

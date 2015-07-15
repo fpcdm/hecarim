@@ -196,6 +196,7 @@
         
         //根据需求类型处理
         if ([@"CASE_LOCKED" isEqualToString:type] ||
+            [@"CASE_CONFIRMED" isEqualToString:type] ||
             [@"CASE_WAIT_PAY" isEqualToString:type]) {
             //跳转详情页面
             if (data) {

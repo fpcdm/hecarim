@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="employeeButton" destination="1Td-gS-2tr" id="3gf-Dg-vRP"/>
                 <outlet property="remarkLabel" destination="ltx-y1-iJN" id="Z6f-Pw-YyA"/>
+                <outlet property="submitButton" destination="RaE-vi-Q8J" id="wkF-NY-9tg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="om4-dR-Bl1"/>
             </connections>
         </placeholder>
@@ -73,9 +74,6 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="createSubmitAction:" destination="-1" eventType="touchUpInside" id="vR2-Qb-k3l"/>
-                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-y1-iJN">
                     <rect key="frame" x="34" y="81" width="529" height="21"/>

@@ -64,6 +64,19 @@
     }];
 }
 
+- (void) updateOrderStatus:(OrderEntity *)order param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [sharedClient formatPath:@"order/status/:no" object:order];
+    [sharedClient postObject:order path:restPath param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 - (void) confirmOrder:(OrderEntity *)order param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口

@@ -47,6 +47,8 @@
 
 @synthesize employeeAvatar;
 
+@synthesize mapUrl;
+
 @synthesize details;
 
 - (void) avatarView: (UIImageView *)view

@@ -17,6 +17,8 @@
 
 - (void) updateOrder: (OrderEntity *) order success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+- (void) updateOrderStatus: (OrderEntity *) order param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 - (void) confirmOrder: (OrderEntity *) order param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end
