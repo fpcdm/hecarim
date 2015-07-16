@@ -9,12 +9,18 @@
 #import "CaseConfirmedView.h"
 #import "CaseEntity.h"
 
+@interface CaseConfirmedView () <UIWebViewDelegate>
+
+@end
+
 @implementation CaseConfirmedView
 {
     UIWebView *mapWebView;
     UIImageView *avatarView;
     UILabel *nameLabel;
     UIButton *mobileButton;
+    
+    UIActivityIndicatorView *indicatorView;
 }
 
 - (id)init
@@ -25,6 +31,9 @@
     //地图视图
     mapWebView = [[UIWebView alloc] init];
     mapWebView.scrollView.bounces = NO;
+    mapWebView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    mapWebView.opaque = NO;
+    mapWebView.delegate = self;
     [self addSubview:mapWebView];
     
     UIView *superview = self;
@@ -33,6 +42,19 @@
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom).offset(-100);
+    }];
+    
+    //加载中
+    indicatorView = [[UIActivityIndicatorView alloc] init];
+    indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self addSubview:indicatorView];
+    
+    [indicatorView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(mapWebView.mas_centerX);
+        make.centerY.equalTo(mapWebView.mas_centerY);
+        
+        make.height.equalTo(@40);
+        make.width.equalTo(@40);
     }];
     
     //客服信息
@@ -126,6 +148,20 @@
     nameLabel.text = intention.employeeName;
     [mobileButton setTitle:intention.employeeMobile forState:UIControlStateNormal];
     [mobileButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - WebView
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [indicatorView startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [indicatorView stopAnimating];
+    [indicatorView removeFromSuperview];
+    
+    mapWebView.opaque = YES;
 }
 
 #pragma mark - Action

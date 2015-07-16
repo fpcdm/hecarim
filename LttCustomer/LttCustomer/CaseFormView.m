@@ -8,13 +8,13 @@
 
 #import "CaseFormView.h"
 
-@interface CaseFormView () <UITextFieldDelegate>
+@interface CaseFormView () <UITextViewDelegate>
 
 @end
 
 @implementation CaseFormView
 {
-    UITextField *remarkField;
+    UITextView *remarkTextView;
     UILabel *contactLabel;
     UITextView *addressTextView;
 }
@@ -29,7 +29,7 @@
                         @{@"id" : @"address", @"type" : @"custom", @"view": @"cellAddress:", @"action": @"actionAddress", @"height":@90},
                         ],
                       @[
-                        @{@"id" : @"remark", @"type" : @"custom", @"view": @"cellRemark:"},
+                        @{@"id" : @"remark", @"type" : @"custom", @"view": @"cellRemark:", @"height":@75},
                         ],
                       nil];
     
@@ -45,7 +45,7 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MIDDLE_BUTTON]);
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
     return self;
@@ -141,30 +141,42 @@
     }];
     
     //输入框
-    remarkField = [AppUIUtil makeTextField];
-    remarkField.placeholder = @"给客服留言";
-    remarkField.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
-    remarkField.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
-    remarkField.layer.borderWidth = 0.5f;
-    remarkField.delegate = self;
-    [cell addSubview:remarkField];
+    remarkTextView = [[UITextView alloc] init];
+    remarkTextView.placeholder = @"给客服留言";
+    remarkTextView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    remarkTextView.layer.cornerRadius = 3.0;
+    remarkTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    remarkTextView.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    remarkTextView.layer.borderWidth = 0.5f;
+    remarkTextView.delegate = self;
+    [cell addSubview:remarkTextView];
     
-    [remarkField mas_makeConstraints:^(MASConstraintMaker *make){
+    [remarkTextView mas_makeConstraints:^(MASConstraintMaker *make){
         make.centerY.equalTo(superview.mas_centerY);
         make.left.equalTo(imageView.mas_right).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-10);
         
-        make.height.equalTo(@35);
+        make.height.equalTo(@65);
     }];
+    
+    //关闭键盘Toolbar
+    UIToolbar *keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 35)];
+    [keyboardToolbar setBarStyle:UIBarStyleDefault];
+    
+    UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyboard)];
+    NSArray *buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
+    
+    [keyboardToolbar setItems:buttonsArray];
+    [remarkTextView setInputAccessoryView:keyboardToolbar];
     
     return cell;
 }
 
-#pragma mark - TextField
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+#pragma mark - TextView
+- (void)dismissKeyboard
 {
-    [textField resignFirstResponder];
-    return YES;
+    [remarkTextView resignFirstResponder];
 }
 
 #pragma mark - Action
@@ -175,7 +187,7 @@
 
 - (void) actionSubmit
 {
-    [self.delegate actionSubmit:@""];
+    [self.delegate actionSubmit:remarkTextView.text];
 }
 
 @end
