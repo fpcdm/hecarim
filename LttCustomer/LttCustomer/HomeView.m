@@ -8,6 +8,10 @@
 
 #import "HomeView.h"
 
+@interface HomeView () <UIGestureRecognizerDelegate>
+
+@end
+
 @implementation HomeView
 {
     UILabel *addressLabel;
@@ -317,6 +321,9 @@
     mobileDoorDesc.text = @"手机维修，贴膜，系统清理，软件安装...";
     mobileDoorDesc.textColor = [UIColor grayColor];
     mobileDoorDesc.font = [UIFont boldSystemFontOfSize:14];
+    mobileDoorDesc.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionCaseMobile)];
+    [mobileDoorDesc addGestureRecognizer:singleTap];
     [mobileDoorView addSubview:mobileDoorDesc];
     
     [mobileDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
@@ -370,6 +377,9 @@
     computerDoorDesc.text = @"电脑维修，系统清理，软件安装...";
     computerDoorDesc.textColor = [UIColor grayColor];
     computerDoorDesc.font = [UIFont boldSystemFontOfSize:14];
+    computerDoorDesc.userInteractionEnabled = YES;
+    UITapGestureRecognizer *computerSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionCaseComputer)];
+    [computerDoorDesc addGestureRecognizer:computerSingleTap];
     [computerDoorView addSubview:computerDoorDesc];
     
     [computerDoorDesc mas_makeConstraints:^(MASConstraintMaker *make){
@@ -438,6 +448,18 @@
 - (void) actionCase: (UIButton *)sender
 {
     NSNumber *type = [NSNumber numberWithInteger:sender.tag];
+    [self.delegate actionCase:type];
+}
+
+- (void) actionCaseMobile
+{
+    NSNumber *type = [NSNumber numberWithInteger:LTT_TYPE_MOBILEDOOR];
+    [self.delegate actionCase:type];
+}
+
+- (void) actionCaseComputer
+{
+    NSNumber *type = [NSNumber numberWithInteger:LTT_TYPE_COMPUTERDOOR];
     [self.delegate actionCase:type];
 }
 

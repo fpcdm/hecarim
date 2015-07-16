@@ -24,6 +24,7 @@
     
     //地图视图
     mapWebView = [[UIWebView alloc] init];
+    mapWebView.scrollView.bounces = NO;
     [self addSubview:mapWebView];
     
     UIView *superview = self;

@@ -8,6 +8,10 @@
 
 #import "CaseFormView.h"
 
+@interface CaseFormView () <UITextFieldDelegate>
+
+@end
+
 @implementation CaseFormView
 {
     UITextField *remarkField;
@@ -105,6 +109,7 @@
     addressTextView.editable = NO;
     addressTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     addressTextView.scrollEnabled = NO;
+    addressTextView.userInteractionEnabled = NO;
     [cell addSubview:addressTextView];
     
     [addressTextView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -141,6 +146,7 @@
     remarkField.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     remarkField.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
     remarkField.layer.borderWidth = 0.5f;
+    remarkField.delegate = self;
     [cell addSubview:remarkField];
     
     [remarkField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -152,6 +158,13 @@
     }];
     
     return cell;
+}
+
+#pragma mark - TextField
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Action
