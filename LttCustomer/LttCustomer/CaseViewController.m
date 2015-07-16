@@ -67,6 +67,17 @@
     if (timerUtil) {
         [timerUtil invalidate];
     }
+    
+    //停止地图
+    [self stopMap];
+}
+
+//停止地图
+- (void) stopMap
+{
+    if ([self.view isMemberOfClass:[CaseConfirmedView class]]) {
+        [(CaseConfirmedView *)self.view stopMap];
+    }
 }
 
 //加载需求数据
@@ -211,6 +222,9 @@
         [confirmedView setData:@"intention" value:intention];
         [confirmedView renderData];
     } else if ([intention.status isEqualToString:CASE_STATUS_TOPAY]) {
+        //停止地图
+        [self stopMap];
+        
         CaseTopayView *topayView = [[CaseTopayView alloc] init];
         topayView.delegate = self;
         self.view = topayView;

@@ -158,14 +158,18 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
     
+    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    
     //调用接口
     OrderHandler *orderHandler = [[OrderHandler alloc] init];
     [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
-        intention.status = CASE_STATUS_CONFIRMED;
-        
-        [submitButton setTitle:@"服务完成" forState: UIControlStateNormal];
-        [submitButton removeTarget:self action:@selector(actionServiceStart:) forControlEvents:UIControlEventTouchUpInside];
-        [submitButton addTarget:self action:@selector(actionCreateOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+            intention.status = CASE_STATUS_CONFIRMED;
+            
+            [submitButton setTitle:@"服务完成" forState: UIControlStateNormal];
+            [submitButton removeTarget:self action:@selector(actionServiceStart:) forControlEvents:UIControlEventTouchUpInside];
+            [submitButton addTarget:self action:@selector(actionCreateOrder:) forControlEvents:UIControlEventTouchUpInside];
+        }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];

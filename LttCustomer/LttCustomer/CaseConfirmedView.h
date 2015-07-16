@@ -19,4 +19,6 @@
 
 @property (retain, nonatomic) id<CaseConfirmedViewDelegate> delegate;
 
+- (void) stopMap;
+
 @end

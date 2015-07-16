@@ -133,6 +133,16 @@
     return self;
 }
 
+- (void) stopMap
+{
+    if (mapWebView) {
+        [mapWebView stopLoading];
+        mapWebView.delegate = nil;
+        [mapWebView removeFromSuperview];
+        mapWebView = nil;
+    }
+}
+
 #pragma mark - RenderData
 - (void)renderData
 {
