@@ -58,10 +58,20 @@
     if (!name) name = @"";
     NSString *mobile = [self getData:@"mobile"];
     NSString *address = [self getData:@"address"];
-    if (!address) address = @"请选择服务地址";
     
+    //显示联系人
     contactLabel.text = [NSString stringWithFormat:@"服务联系人：%@  %@", name, mobile];
-    addressTextView.text = [NSString stringWithFormat:@"服务地址：%@", address];
+    
+    //是否有地址
+    if (address) {
+        contactLabel.hidden = NO;
+        addressTextView.text = [NSString stringWithFormat:@"服务地址：%@", address];
+        addressTextView.textColor = [UIColor blackColor];
+    } else {
+        contactLabel.hidden = YES;
+        addressTextView.text = @"请选择服务地址";
+        addressTextView.textColor = [UIColor redColor];
+    }
 }
 
 #pragma mark - TableView
