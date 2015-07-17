@@ -46,7 +46,10 @@
     
     //全局导航栏颜色
     UINavigationBar *navigationBar = [UINavigationBar appearance];
-    navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+    //iOS6兼容
+    if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+    }
     navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
     navigationBar.titleTextAttributes = @{
                                           NSFontAttributeName:[UIFont systemFontOfSize:SIZE_TITLE_TEXT],

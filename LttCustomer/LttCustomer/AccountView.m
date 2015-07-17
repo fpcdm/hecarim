@@ -57,6 +57,9 @@
     imageView = [[UIImageView alloc] init];
     nameLabel = [[UILabel alloc] init];
     
+    //解决iOS7按钮移动
+    [self.tableView reloadData];
+    
     return self;
 }
 

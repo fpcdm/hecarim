@@ -80,7 +80,9 @@
     //导航栏高亮，返回时保留
     if (isIndexNavBar) {
         UINavigationBar *navigationBar = self.navigationController.navigationBar;
-        navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE_BG];
+        if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+            navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE_BG];
+        }
         navigationBar.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
         navigationBar.titleTextAttributes = @{
                                               NSFontAttributeName: [UIFont boldSystemFontOfSize:SIZE_TITLE_TEXT],
@@ -88,7 +90,9 @@
                                               };
     } else {
         UINavigationBar *navigationBar = self.navigationController.navigationBar;
-        navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+        if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+            navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+        }
         navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
         navigationBar.titleTextAttributes = @{
                                               NSFontAttributeName: [UIFont boldSystemFontOfSize:SIZE_TITLE_TEXT],
