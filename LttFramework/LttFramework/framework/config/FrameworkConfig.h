@@ -102,14 +102,26 @@
 #define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
-// 判断ios系统版本
+// 判断ios系统版本，不能用于宏判断
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 // 判断是否大于等于ios8
 #define IS_IOS8_PLUS (IOS_VERSION >= 8.0 ? YES : NO)
 // 判断是否大于等于ios7
 #define IS_IOS7_PLUS (IOS_VERSION >= 7.0 ? YES : NO)
+// 判断是否大于等于ios6
+#define IS_IOS6_PLUS (IOS_VERSION >= 6.0 ? YES : NO)
 // 是否大于等于iPhone5(屏幕尺寸)
 #define IS_IPHONE5_PLUS (SCREEN_HEIGHT >= 568.0 ? YES : NO)
+
+//判断SDK版本
+#ifndef __IPHONE_6_0
+#error "SDK版本过低，必须IOS SDK 6.0以上"
+#endif
+
+//修正ios6表格数据异常
+#ifndef __IPHONE_7_0
+#import "UITableViewCell+AutoLayoutFix.h"
+#endif
 
 #pragma mark - 加载公用文件
 //加载日志插件

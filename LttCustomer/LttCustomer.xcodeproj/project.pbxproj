@@ -78,6 +78,7 @@
 		2F6796C71B4BB82000E0F774 /* RegisterPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */; };
 		2F67B60D1B33A437005106E8 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B60C1B33A437005106E8 /* menu@2x.png */; };
 		2F67B6111B33ABE2005106E8 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F67B6101B33ABE2005106E8 /* top.png */; };
+		2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
 		2F693E0B1B3BB61300CFB8F4 /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */; };
 		2F699B4C1AF8C41600E42816 /* BrandEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F699B4B1AF8C41600E42816 /* BrandEntity.m */; };
 		2F6B0C1B1B390D1F000123BF /* CaseTopayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C1A1B390D1F000123BF /* CaseTopayView.m */; };
@@ -367,6 +368,8 @@
 		2F6796C61B4BB82000E0F774 /* RegisterPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPasswordView.m; sourceTree = "<group>"; };
 		2F67B60C1B33A437005106E8 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		2F67B6101B33ABE2005106E8 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
+		2F6910A21B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+AutoLayoutFix.h"; sourceTree = "<group>"; };
+		2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
 		2F693E091B3BB61300CFB8F4 /* LocationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationEntity.h; sourceTree = "<group>"; };
 		2F693E0A1B3BB61300CFB8F4 /* LocationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationEntity.m; sourceTree = "<group>"; };
 		2F699B4A1AF8C41600E42816 /* BrandEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandEntity.h; sourceTree = "<group>"; };
@@ -1230,6 +1233,8 @@
 				2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */,
 				2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */,
 				2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */,
+				2F6910A21B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.h */,
+				2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -2054,6 +2059,7 @@
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2F6796C41B4BB80200E0F774 /* RegisterCodeView.m in Sources */,
 				2FF3E6AB1B2FFB3200B90045 /* AddressDetailViewController.m in Sources */,
+				2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
 				2F39E30B1B2983300064CA28 /* SettingViewController.m in Sources */,
 				2F6D3E131B312164007A4159 /* ActionSheetDatePicker.m in Sources */,

@@ -38,7 +38,8 @@
     [super viewDidLoad];
     
     //子页面导航返回按钮
-    UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:@""];
+    NSString *backButtonTitle = IS_IOS7_PLUS ? @"" : @"返回";
+    UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:backButtonTitle];
     self.navigationItem.backBarButtonItem = backButtonItem;
     
     //当前页面是否隐藏返回按钮
