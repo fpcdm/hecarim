@@ -33,8 +33,6 @@
                         ],
                       nil];
     
-    [self.tableView reloadData];
-    
     //呼叫按钮
     UIButton *button = [AppUIUtil makeButton:@"呼叫"];
     [button addTarget:self action:@selector(actionSubmit) forControlEvents:UIControlEventTouchUpInside];
@@ -49,6 +47,8 @@
         
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
+    
+    [self.tableView reloadData];
     
     return self;
 }

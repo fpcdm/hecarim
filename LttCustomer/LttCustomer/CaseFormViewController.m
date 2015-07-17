@@ -64,7 +64,6 @@
         [formView renderData];
         
         caseEntity.addressId = address.id;
-        caseEntity.address = nil;
     } else {
         UserEntity *user = [[StorageUtil sharedStorage] getUser];
         
