@@ -92,6 +92,7 @@
     
     //服务联系人
     contactLabel = [[UILabel alloc] init];
+    contactLabel.backgroundColor = [UIColor clearColor];
     contactLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [cell addSubview:contactLabel];
     
@@ -107,6 +108,7 @@
     //服务地址
     addressTextView = [[UITextView alloc] init];
     addressTextView.editable = NO;
+    addressTextView.backgroundColor = [UIColor clearColor];
     addressTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     addressTextView.scrollEnabled = NO;
     addressTextView.userInteractionEnabled = NO;

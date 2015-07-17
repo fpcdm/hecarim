@@ -110,6 +110,8 @@
 #define IS_IOS7_PLUS (IOS_VERSION >= 7.0 ? YES : NO)
 // 判断是否大于等于ios6
 #define IS_IOS6_PLUS (IOS_VERSION >= 6.0 ? YES : NO)
+// 判断是否是ios6系统
+#define IS_IOS6 (IOS_VERSION >= 6.0 && IOS_VERSION < 7.0 ? YES : NO)
 // 是否大于等于iPhone5(屏幕尺寸)
 #define IS_IPHONE5_PLUS (SCREEN_HEIGHT >= 568.0 ? YES : NO)
 

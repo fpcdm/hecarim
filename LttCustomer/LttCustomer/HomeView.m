@@ -76,6 +76,7 @@
     //地址标签
     addressLabel = [[UILabel alloc] init];
     addressLabel.text = @"正在定位";
+    addressLabel.backgroundColor = [UIColor clearColor];
     addressLabel.textColor = [UIColor whiteColor];
     addressLabel.font = [UIFont boldSystemFontOfSize:20];
     [addressView addSubview:addressLabel];
@@ -87,6 +88,7 @@
     
     //信息标签
     infoLabel = [[UILabel alloc] init];
+    infoLabel.backgroundColor = [UIColor clearColor];
     infoLabel.textColor = [UIColor whiteColor];
     infoLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     [addressView addSubview:infoLabel];
@@ -216,6 +218,7 @@
     
     UILabel *chooseLabel = [[UILabel alloc] init];
     chooseLabel.text = @"自己选";
+    chooseLabel.backgroundColor = [UIColor clearColor];
     chooseLabel.textColor = [UIColor colorWithHexString:@"585858"];
     chooseLabel.font = [UIFont boldSystemFontOfSize:20];
     [chooseButton addSubview:chooseLabel];
@@ -226,6 +229,7 @@
     }];
     
     UILabel *chooseDescLabel = [[UILabel alloc] init];
+    chooseDescLabel.backgroundColor = [UIColor clearColor];
     chooseDescLabel.text = @"我知道要买什么手机";
     chooseDescLabel.textColor = [UIColor grayColor];
     chooseDescLabel.font = [UIFont boldSystemFontOfSize:12];
@@ -255,6 +259,7 @@
     
     UILabel *customerLabel = [[UILabel alloc] init];
     customerLabel.text = @"呼叫客服";
+    customerLabel.backgroundColor = [UIColor clearColor];
     customerLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
     customerLabel.font = [UIFont boldSystemFontOfSize:20];
     [customerButton addSubview:customerLabel];
@@ -266,6 +271,7 @@
     
     UILabel *customerDescLabel = [[UILabel alloc] init];
     customerDescLabel.text = @"我不是很懂，找客服帮我选";
+    customerDescLabel.backgroundColor = [UIColor clearColor];
     customerDescLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
     customerDescLabel.font = [UIFont boldSystemFontOfSize:12];
     [customerButton addSubview:customerDescLabel];
@@ -407,6 +413,7 @@
     //文本框
     UILabel *label = [[UILabel alloc] init];
     label.text = @"我们的信使将实时响应您的需求";
+    label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor grayColor];
     label.font = [UIFont systemFontOfSize:14];
     [bottomView addSubview:label];

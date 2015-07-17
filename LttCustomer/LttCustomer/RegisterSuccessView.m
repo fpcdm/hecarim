@@ -34,6 +34,7 @@
     UILabel *successLabel = [[UILabel alloc] init];
     successLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     successLabel.text = @"恭喜您注册成为两条腿会员！";
+    successLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:successLabel];
     
     [successLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -48,6 +49,7 @@
     [button addTarget:self action:@selector(actionHome) forControlEvents:UIControlEventTouchUpInside];
     button.backgroundColor = [UIColor whiteColor];
     button.titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    button.titleLabel.backgroundColor = [UIColor clearColor];
     button.layer.cornerRadius = 3.0f;
     button.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
     button.layer.borderWidth = 0.5f;

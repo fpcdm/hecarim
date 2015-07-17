@@ -83,6 +83,7 @@
     //注册协议
     UILabel *protocolIntro = [[UILabel alloc] init];
     protocolIntro.text = @"注册即视为同意";
+    protocolIntro.backgroundColor = [UIColor clearColor];
     protocolIntro.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     protocolIntro.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [self addSubview:protocolIntro];
@@ -95,6 +96,7 @@
     
     UILabel *protocolTitle = [[UILabel alloc] init];
     protocolTitle.text = @"两条腿平台服务协议。";
+    protocolTitle.backgroundColor = [UIColor clearColor];
     protocolTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     protocolTitle.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
     [self addSubview:protocolTitle];

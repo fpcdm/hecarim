@@ -54,8 +54,10 @@
     //默认TableView
     self.tableView = [self loadTableView];
     if (self.tableView == nil) {
-        self.tableView = [[UITableView alloc] initWithFrame:[self bounds] style:UITableViewStyleGrouped];
+        UITableViewStyle tableStyle = IS_IOS7_PLUS ? UITableViewStyleGrouped : UITableViewStylePlain;
+        self.tableView = [[UITableView alloc] initWithFrame:[self bounds] style:tableStyle];
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT];
+        self.tableView.backgroundView = nil;
     }
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

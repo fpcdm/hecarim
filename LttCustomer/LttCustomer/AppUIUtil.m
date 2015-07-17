@@ -71,6 +71,7 @@
     [button.layer setMasksToBounds:YES];
     [button.layer setCornerRadius:3.0];
     button.titleLabel.font = font;
+    button.titleLabel.backgroundColor = [UIColor clearColor];
     button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
     return button;
 }

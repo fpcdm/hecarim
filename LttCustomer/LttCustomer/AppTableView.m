@@ -24,7 +24,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    view.backgroundColor = [UIColor clearColor];
     return view;
 }
 

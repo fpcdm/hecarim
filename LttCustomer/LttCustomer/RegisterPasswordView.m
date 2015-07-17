@@ -39,6 +39,7 @@
     //登陆密码
     UILabel *passwordLabel = [UILabel new];
     passwordLabel.text = @"登陆密码";
+    passwordLabel.backgroundColor = [UIColor clearColor];
     passwordLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [inputView addSubview:passwordLabel];
     
@@ -69,6 +70,7 @@
     //密码提示
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"密码由6-20位英文字母，数字或符号组成";
+    tipLabel.backgroundColor = [UIColor clearColor];
     tipLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [self addSubview:tipLabel];
     
