@@ -72,7 +72,8 @@
 //初始化TableView
 -(UITableView *)loadTableView
 {
-    TPKeyboardAvoidingTableView *tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:[self bounds] style:UITableViewStyleGrouped];
+    UITableViewStyle tableStyle = IS_IOS7_PLUS ? UITableViewStyleGrouped : UITableViewStylePlain;
+    TPKeyboardAvoidingTableView *tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:[self bounds] style:tableStyle];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT];
     return tableView;
 }

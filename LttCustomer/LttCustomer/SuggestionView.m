@@ -45,6 +45,8 @@
         make.top.equalTo(textView.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo([NSNumber numberWithFloat:HEIGHT_MIDDLE_BUTTON]);
     }];
     
     return self;

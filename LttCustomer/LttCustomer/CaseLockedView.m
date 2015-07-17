@@ -24,6 +24,7 @@
     
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = @"我们联系到了离你最近的客服";
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     [self addSubview:titleLabel];
@@ -36,6 +37,7 @@
     
     UILabel *detailText = [UILabel new];
     detailText.text = @"稍后我们一个服务人员将联系您";
+    detailText.backgroundColor = [UIColor clearColor];
     detailText.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     detailText.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     [self addSubview:detailText];
@@ -47,6 +49,7 @@
     
     UILabel *detailText2 = [UILabel new];
     detailText2.text = @"他将和您讨论一下您的需求以及服务地点";
+    detailText2.backgroundColor = [UIColor clearColor];
     detailText2.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
     detailText2.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     [self addSubview:detailText2];
@@ -58,6 +61,7 @@
     
     aboutLabel = [UILabel new];
     aboutLabel.text = @"即将为您服务的客服：";
+    aboutLabel.backgroundColor = [UIColor clearColor];
     aboutLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
     aboutLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     [self addSubview:aboutLabel];
@@ -105,6 +109,7 @@
     
     //姓名
     nameLabel = [UILabel new];
+    nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.font = [UIFont boldSystemFontOfSize:24];
     nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     [customerView addSubview:nameLabel];
@@ -118,6 +123,7 @@
     mobileButton = [UIButton new];
     [mobileButton setTitleColor:[UIColor colorWithHexString:COLOR_GRAY_TEXT] forState:UIControlStateNormal];
     mobileButton.titleLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    mobileButton.titleLabel.backgroundColor = [UIColor clearColor];
     [mobileButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
     [customerView addSubview:mobileButton];
     

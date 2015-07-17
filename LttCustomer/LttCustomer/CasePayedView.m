@@ -24,6 +24,7 @@
     //标题
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"服务您满意吗";
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
     titleLabel.font = [UIFont boldSystemFontOfSize:26];
     [self addSubview:titleLabel];
@@ -37,6 +38,7 @@
     
     UILabel *detailLabel = [[UILabel alloc] init];
     detailLabel.text = @"为我们的服务人员做个评价吧";
+    detailLabel.backgroundColor = [UIColor clearColor];
     detailLabel.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     detailLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [self addSubview:detailLabel];

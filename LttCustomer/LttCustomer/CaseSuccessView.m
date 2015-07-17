@@ -23,6 +23,7 @@
     
     //标题
     UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.text = @"感谢您的评价";
     titleLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
     titleLabel.font = [UIFont boldSystemFontOfSize:26];
@@ -37,6 +38,7 @@
     
     UILabel *detailLabel = [[UILabel alloc] init];
     detailLabel.text = @"我们将努力把服务做得更好";
+    detailLabel.backgroundColor = [UIColor clearColor];
     detailLabel.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
     detailLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [self addSubview:detailLabel];

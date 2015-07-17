@@ -75,6 +75,8 @@
         make.top.equalTo(checkbox.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo([NSNumber numberWithFloat:HEIGHT_MIDDLE_BUTTON]);
     }];
     
     return self;
@@ -92,6 +94,7 @@
     //添加新视图
     UILabel *infoLabel = [[UILabel alloc] init];
     infoLabel.text = @"修改成功！";
+    infoLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:infoLabel];
     
     UIView *superview = self;
@@ -110,6 +113,8 @@
         make.top.equalTo(infoLabel.mas_bottom).offset(50);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo([NSNumber numberWithFloat:HEIGHT_MIDDLE_BUTTON]);
     }];
 }
 

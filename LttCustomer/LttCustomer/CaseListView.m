@@ -45,6 +45,7 @@
     
     //时间
     UILabel *timeLabel = [self makeCellLabel:intention.createTime];
+    timeLabel.backgroundColor = [UIColor clearColor];
     timeLabel.font = [UIFont boldSystemFontOfSize:18];
     [cell addSubview:timeLabel];
     
@@ -57,6 +58,7 @@
     
     //状态
     UILabel *statusLabel = [self makeCellLabel:[intention statusName]];
+    statusLabel.backgroundColor = [UIColor clearColor];
     statusLabel.textColor = [intention statusColor];
     [cell addSubview:statusLabel];
     
@@ -95,6 +97,7 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     return label;
 }

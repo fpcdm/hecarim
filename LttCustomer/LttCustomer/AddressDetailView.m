@@ -82,6 +82,7 @@
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
     
     UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor clearColor];
     label.text = [cellData objectForKey:@"data"];
     label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [cell addSubview:label];

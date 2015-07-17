@@ -82,6 +82,7 @@
         }];
         
         nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        nameLabel.backgroundColor = [UIColor clearColor];
         [cell addSubview:nameLabel];
         
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){

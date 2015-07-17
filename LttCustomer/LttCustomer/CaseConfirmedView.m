@@ -60,6 +60,7 @@
     //客服信息
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"正在为您服务的客服：";
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [self addSubview:titleLabel];
@@ -87,6 +88,7 @@
     
     //姓名
     nameLabel = [[UILabel alloc] init];
+    nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [self addSubview:nameLabel];
@@ -102,6 +104,7 @@
     mobileButton = [[UIButton alloc] init];
     [mobileButton setTitleColor:[UIColor colorWithHexString:COLOR_DARK_TEXT] forState:UIControlStateNormal];
     mobileButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    mobileButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:mobileButton];
     
     [mobileButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -116,6 +119,7 @@
     [complainButton setTitleColor:[UIColor colorWithHexString:COLOR_DARK_TEXT] forState:UIControlStateNormal];
     [complainButton addTarget:self action:@selector(actionComplain) forControlEvents:UIControlEventTouchUpInside];
     complainButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    complainButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:complainButton];
     //文字下划线
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"我要投诉"];

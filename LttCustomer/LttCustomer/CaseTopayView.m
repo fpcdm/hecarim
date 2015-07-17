@@ -26,6 +26,7 @@
     
     titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"请您确认并支付";
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
     titleLabel.font = [UIFont boldSystemFontOfSize:26];
     [self addSubview:titleLabel];
@@ -102,6 +103,7 @@
     
     //合计
     UILabel *totalLabel = [[UILabel alloc] init];
+    totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", [order.amount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont boldSystemFontOfSize:20];
@@ -122,6 +124,7 @@
     //商品标题
     UILabel *goodsTitle = [UILabel new];
     goodsTitle.text = @"商品";
+    goodsTitle.backgroundColor = [UIColor clearColor];
     goodsTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     goodsTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [orderView addSubview:goodsTitle];
@@ -146,6 +149,7 @@
         //名称
         UILabel *nameLabel = [UILabel new];
         nameLabel.text = goods.name;
+        nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
         nameLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
         [orderView addSubview:nameLabel];
@@ -159,6 +163,7 @@
         //单价
         UILabel *priceLabel = [UILabel new];
         priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [goods.price floatValue]];
+        priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
         priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
         [orderView addSubview:priceLabel];
@@ -173,6 +178,7 @@
         //规格
         UILabel *specLabel = [UILabel new];
         specLabel.text = goods.specName;
+        specLabel.backgroundColor = [UIColor clearColor];
         specLabel.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
         specLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
         [orderView addSubview:specLabel];
@@ -186,6 +192,7 @@
         
         //数量
         UILabel *numberLabel = [UILabel new];
+        numberLabel.backgroundColor = [UIColor clearColor];
         numberLabel.text = [NSString stringWithFormat:@"x%@", goods.number];
         numberLabel.textColor = [UIColor grayColor];
         numberLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
@@ -207,6 +214,7 @@
     
     //总价
     UILabel *totalLabel = [UILabel new];
+    totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.text = [NSString stringWithFormat:@"￥%.2f", goodsTotal];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
@@ -230,6 +238,7 @@
     
     //服务标题
     UILabel *servicesTitle = [UILabel new];
+    servicesTitle.backgroundColor = [UIColor clearColor];
     servicesTitle.text = service.typeName;
     servicesTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     servicesTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
@@ -253,6 +262,7 @@
         serviceTotal += [[service total] floatValue];
         //名称
         UILabel *nameLabel = [UILabel new];
+        nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.text = service.name;
         nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
         nameLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
@@ -266,6 +276,7 @@
         
         //价格
         UILabel *priceLabel = [UILabel new];
+        priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [[service total] floatValue]];
         priceLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
         priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
@@ -286,6 +297,7 @@
     
     //总价
     UILabel *totalLabel = [UILabel new];
+    totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.text = [NSString stringWithFormat:@"￥%.2f", serviceTotal];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
