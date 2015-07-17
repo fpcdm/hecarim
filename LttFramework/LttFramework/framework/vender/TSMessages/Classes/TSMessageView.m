@@ -502,7 +502,8 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
     
     currentHeight += self.borderView.frame.size.height;
     
-    self.frame = CGRectMake(0.0, self.frame.origin.y, self.frame.size.width, currentHeight);
+    //修正IOS6状态栏占20高度问题
+    self.frame = CGRectMake(0.0, self.frame.origin.y + (IS_IOS6 ? 20 : 0), self.frame.size.width, currentHeight);
     
     
     if (self.button)
