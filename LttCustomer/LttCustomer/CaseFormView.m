@@ -33,6 +33,8 @@
                         ],
                       nil];
     
+    [self.tableView reloadData];
+    
     //呼叫按钮
     UIButton *button = [AppUIUtil makeButton:@"呼叫"];
     [button addTarget:self action:@selector(actionSubmit) forControlEvents:UIControlEventTouchUpInside];

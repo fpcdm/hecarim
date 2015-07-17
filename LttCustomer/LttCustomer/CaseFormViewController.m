@@ -82,7 +82,9 @@
 {
     AddressSelectorViewController *viewController = [[AddressSelectorViewController alloc] init];
     viewController.callbackBlock = ^(AddressEntity *address){
-        NSLog(@"选择的地址：%@", [address toDictionary]);
+        if (address) {
+            NSLog(@"选择的地址：%@", [address toDictionary]);
+        }
         
         [self addressView:address];
     };

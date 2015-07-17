@@ -7,6 +7,7 @@
 //
 
 #import "AppUserViewController.h"
+#import "AddressEntity.h"
 
 @interface AddressSelectorViewController : AppUserViewController
 

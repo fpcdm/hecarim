@@ -10,6 +10,34 @@
 
 @implementation AddressSelectorView
 
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.tableData = [[NSMutableArray alloc] init];
+    
+    //退出按钮
+    UIButton *button = [AppUIUtil makeButton:@"使用当前位置"];
+    [button addTarget:self action:@selector(actionSelectedPosition) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+    
+    UIView *superview = self;
+    int padding = 10;
+    [button mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.tableView.tableFooterView.mas_bottom);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
+    }];
+    
+    //解决iOS7按钮移动
+    [self.tableView reloadData];
+    
+    return self;
+}
+
 #pragma mark - RenderData
 - (void)renderData
 {
@@ -116,6 +144,11 @@
     AddressEntity *address = [cellData objectForKey:@"data"];
     
     [self.delegate actionSelected:address];
+}
+
+- (void)actionSelectedPosition
+{
+    [self.delegate actionSelected:nil];
 }
 
 @end
