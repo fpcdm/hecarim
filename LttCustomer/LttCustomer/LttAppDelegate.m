@@ -141,6 +141,9 @@
         NSLog(@"从消息启动:%@",userInfo);
         
         [self handleRemoteNotification:userInfo];
+        
+        //取消消息计数
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     }
 }
 
