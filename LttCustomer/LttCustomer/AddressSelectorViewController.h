@@ -11,4 +11,6 @@
 
 @interface AddressSelectorViewController : AppUserViewController
 
+@property (nonatomic, retain) AddressEntity *currentAddress;
+
 @end

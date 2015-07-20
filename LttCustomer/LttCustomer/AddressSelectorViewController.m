@@ -22,6 +22,8 @@
     NSMutableArray *addressList;
 }
 
+@synthesize currentAddress;
+
 - (void)loadView
 {
     addressView = [[AddressSelectorView alloc] init];
@@ -48,6 +50,7 @@
     //加载数据
     [self loadData:^(id object){
         [addressView setData:@"addressList" value:addressList];
+        [addressView setData:@"currentAddress" value:currentAddress];
         [addressView renderData];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

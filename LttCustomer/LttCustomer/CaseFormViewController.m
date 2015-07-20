@@ -46,7 +46,7 @@
             AddressEntity *address = [result firstObject];
             [self addressView:address];
         } else {
-            [self addressView:nil];
+            [self addressView:[self currentAddress]];
         }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -56,7 +56,7 @@
 - (void) addressView: (AddressEntity *) address
 {
     //地址存在
-    if (address) {
+    if (address && address.id) {
         [formView setData:@"name" value:address.name];
         [formView setData:@"mobile" value:address.mobile];
         NSString *detailAddress = [NSString stringWithFormat:@"%@%@%@%@%@", address.provinceName, address.cityName, address.countyName, address.streetName, address.address];
@@ -65,25 +65,34 @@
         
         caseEntity.addressId = address.id;
     } else {
-        UserEntity *user = [[StorageUtil sharedStorage] getUser];
-        
-        [formView setData:@"name" value:[user displayName]];
-        [formView setData:@"mobile" value:user.mobile];
-        [formView setData:@"address" value:caseEntity.address];
+        [formView setData:@"name" value:address.name];
+        [formView setData:@"mobile" value:address.mobile];
+        [formView setData:@"address" value:address.address];
         [formView renderData];
         
         caseEntity.addressId = nil;
     }
 }
 
+- (AddressEntity *) currentAddress
+{
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    
+    AddressEntity *currentAddress = [[AddressEntity alloc] init];
+    currentAddress.name = [user displayName];
+    currentAddress.mobile = user.mobile;
+    currentAddress.address = caseEntity.address;
+    return currentAddress;
+}
+
 #pragma mark - Action
 - (void) actionAddress
 {
     AddressSelectorViewController *viewController = [[AddressSelectorViewController alloc] init];
+    //获取当前地址
+    viewController.currentAddress = [self currentAddress];
     viewController.callbackBlock = ^(AddressEntity *address){
-        if (address) {
-            NSLog(@"选择的地址：%@", [address toDictionary]);
-        }
+        NSLog(@"选择的地址：%@", [address toDictionary]);
         
         [self addressView:address];
     };

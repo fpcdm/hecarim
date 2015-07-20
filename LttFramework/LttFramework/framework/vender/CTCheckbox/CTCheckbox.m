@@ -209,15 +209,6 @@ static const float CTCheckboxDefaultSideLength = 20.0;
     CGFloat textLabelOriginX = self.checkboxSideLength + 5.0;
     CGSize textLabelMaxSize = CGSizeMake(CGRectGetWidth(self.bounds) - textLabelOriginX, CGRectGetHeight(self.bounds));
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-#define MB_MULTILINE_TEXTSIZE(text, font, maxSize, mode) [text length] > 0 ? [text \
-boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \
-attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
-#else
-#define MB_MULTILINE_TEXTSIZE(text, font, maxSize, mode) [text length] > 0 ? [text \
-sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
-#endif
-    
     CGSize textLabelSize = CGSizeMake(0, 0);
     if ([self.textLabel.text respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
         CGRect r = [self.textLabel.text boundingRectWithSize:textLabelMaxSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName:self.textLabel.font} context:nil];
