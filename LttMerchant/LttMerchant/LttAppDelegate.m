@@ -49,6 +49,17 @@
     }
 #endif
     
+    //全局导航栏颜色
+    UINavigationBar *navigationBar = [UINavigationBar appearance];
+    if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        navigationBar.barTintColor = COLOR_MAIN_WHITE;
+    }
+    navigationBar.tintColor = COLOR_MAIN_BLACK;
+    navigationBar.titleTextAttributes = @{
+                                          NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                          NSForegroundColorAttributeName: COLOR_MAIN_BLACK
+                                          };
+    
     //初始化客户端类型
     [[RestKitUtil sharedClient] setClientType:LTT_CLIENT_TYPE];
     

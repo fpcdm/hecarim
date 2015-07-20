@@ -120,8 +120,7 @@
     //跳转需求详情
     ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
     viewController.intentionId = intention.id;
-    
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:NO];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

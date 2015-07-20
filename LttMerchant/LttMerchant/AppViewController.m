@@ -8,12 +8,13 @@
 
 #import "AppViewController.h"
 #import "LttNavigationController.h"
+#import "AppExtension.h"
 #import "LoginViewController.h"
 #import "REFrostedViewController.h"
 #import "MenuViewController.h"
 #import "NotificationUtil.h"
 #import "HomeViewController.h"
-#import "ApplyDetailViewController.h"
+#import "AppView.h"
 #import "OrderDetailViewController.h"
 
 @interface AppViewController ()
@@ -25,36 +26,69 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //添加背景色，解决闪烁
-    self.view.backgroundColor = [UIColor whiteColor];
+    //子页面导航返回按钮
+    NSString *backButtonTitle = IS_IOS7_PLUS ? @"" : @"返回";
+    UIBarButtonItem *backButtonItem = [AppUIUtil makeBarButtonItem:backButtonTitle];
+    self.navigationItem.backBarButtonItem = backButtonItem;
     
-    //禁用菜单
-    if (isMenuDisabled) {
-        //禁用手势
-        [(LttNavigationController *) self.navigationController menuEnable:NO];
-        
-        self.navigationItem.leftBarButtonItem = nil;
-    //左侧为返回
-    } else if (isMenuBack) {
-        //禁用手势
-        [(LttNavigationController *) self.navigationController menuEnable:NO];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
-    //显示菜单
+    //当前页面是否隐藏返回按钮
+    if (hideBackButton) {
+        self.navigationItem.hidesBackButton = YES;
     } else {
-        //启用手势
-        [(LttNavigationController *) self.navigationController menuEnable:YES];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"]
-                                                                                 style:UIBarButtonItemStyleBordered
-                                                                                target:(LttNavigationController *)self.navigationController
-                                                                                action:@selector(showMenu)];
+        self.navigationItem.hidesBackButton = NO;
     }
 }
 
-- (void) goBack
+- (void) viewWillAppear:(BOOL)animated
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [super viewWillAppear:animated];
+    
+    //是否有左侧菜单
+    if (isMenuEnabled) {
+        //启用手势
+        [(LttNavigationController *) self.navigationController menuEnable:YES];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"]
+                                                                                 style:UIBarButtonItemStyleBordered
+                                                                                target:(LttNavigationController *)self.navigationController
+                                                                                action:@selector(showMenu)];
+    } else {
+        //禁用手势
+        [(LttNavigationController *) self.navigationController menuEnable:NO];
+    }
+    
+    //状态栏颜色
+    if (isIndexNavBar) {
+        //红色背景
+        //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        //白色背景
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    } else {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    }
+    
+    //导航栏高亮，返回时保留
+    if (isIndexNavBar) {
+        UINavigationBar *navigationBar = self.navigationController.navigationBar;
+        if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+            navigationBar.barTintColor = COLOR_MAIN_BLUE;
+        }
+        navigationBar.tintColor = COLOR_MAIN_WHITE;
+        navigationBar.titleTextAttributes = @{
+                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+                                              NSForegroundColorAttributeName: COLOR_MAIN_WHITE
+                                              };
+    } else {
+        UINavigationBar *navigationBar = self.navigationController.navigationBar;
+        if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+            navigationBar.barTintColor = COLOR_MAIN_WHITE;
+        }
+        navigationBar.tintColor = COLOR_MAIN_BLACK;
+        navigationBar.titleTextAttributes = @{
+                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+                                              NSForegroundColorAttributeName: COLOR_MAIN_BLACK
+                                              };
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -88,16 +122,14 @@
     }
 }
 
-- (BOOL) checkLogin
+- (void) pushViewController:(UIViewController *)viewController animated: (BOOL)animated
 {
-    //已登录
-    BOOL isLogin = [self isLogin];
-    if (isLogin) return YES;
-    
-    //跳转登陆
-    LoginViewController *viewController = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void) toggleViewController: (UIViewController *)viewController animated: (BOOL)animated
+{
     [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-    return NO;
 }
 
 - (void) refreshMenu

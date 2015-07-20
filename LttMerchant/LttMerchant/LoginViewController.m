@@ -7,29 +7,34 @@
 //
 
 #import "LoginViewController.h"
+#import "LoginView.h"
+#import "UserEntity.h"
+#import "ValidateUtil.h"
+#import "AppExtension.h"
 #import "HomeViewController.h"
 #import "UserHandler.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <LoginViewDelegate>
 
 @end
 
 @implementation LoginViewController
+{
+    LoginView *loginView;
+}
 
-@synthesize mobileTextField;
-
-@synthesize passwordTextField;
+- (void)loadView {
+    loginView = [[LoginView alloc] init];
+    loginView.delegate = self;
+    self.view = loginView;
+}
 
 - (void)viewDidLoad {
-    //禁用菜单
-    isMenuDisabled = YES;
-    
-    //不显示返回
-    self.navigationItem.hidesBackButton = YES;
-    
+    isMenuEnabled = NO;
+    hideBackButton = NO;
     [super viewDidLoad];
     
-    self.title = @"登陆";
+    self.navigationItem.title = @"两条腿工作台登陆";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,66 +48,58 @@
 }
 
 #pragma mark - Action
-- (IBAction)loginSubmitAction:(id)sender {
-    //记录用户信息
-    UserEntity *user = [[UserEntity alloc] init];
-    user.mobile = mobileTextField.text;
-    user.password = passwordTextField.text;
+- (void)actionLogin:(UserEntity *)user
+{
     user.type = USER_TYPE_MERCHANT;
     user.deviceType = @"ios";
     user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
     
     //参数检查
     if (![ValidateUtil isRequired:user.mobile]) {
-        [self showError:LocalString(@"ERROR_MOBILE_REQUIRED")];
+        [self showError:ERROR_MOBILE_REQUIRED];
         return;
     }
     if (![ValidateUtil isMobile:user.mobile]) {
-        [self showError:LocalString(@"ERROR_MOBILE_FORMAT")];
+        [self showError:ERROR_MOBILE_FORMAT];
         return;
     }
     if (![ValidateUtil isRequired:user.password]) {
-        [self showError:LocalString(@"ERROR_PASSWORD_REQUIRED")];
+        [self showError:ERROR_PASSWORD_REQUIRED];
         return;
     }
     
-    [self showLoading:LocalString(@"TIP_LOGIN_LOADING")];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler loginWithUser:user success:^(NSArray *result){
-        [self loadingSuccess:LocalString(@"TIP_LOGIN_SUCCESS")];
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            //赋值并释放资源
+            UserEntity *apiUser = [result firstObject];
+            user.id = apiUser.id;
+            user.name = apiUser.name;
+            user.token = apiUser.token;
+            user.nickname = apiUser.nickname;
+            user.sexAlias = apiUser.sexAlias;
+            user.avatar = apiUser.avatar;
+            apiUser = nil;
+            
+            //清空密码
+            user.password = nil;
+            
+            //保存数据
+            [[StorageUtil sharedStorage] setUser:user];
+            
+            //刷新菜单
+            [self refreshMenu];
+            
+            HomeViewController *viewController = [[HomeViewController alloc] init];
+            [self toggleViewController:viewController animated:YES];
+        }];
         
-        //赋值并释放资源
-        UserEntity *apiUser = [result firstObject];
-        user.id = apiUser.id;
-        user.name = apiUser.name;
-        user.token = apiUser.token;
-        apiUser = nil;
-        
-        //显示效果
-        [self performSelector:@selector(loginSuccess:) withObject:user afterDelay:1];
     } failure:^(ErrorEntity *error){
-        [self hideLoading];
-        
         [self showError:error.message];
     }];
-}
-
-- (void) loginSuccess: (UserEntity *) user
-{
-    //清空密码
-    user.password = nil;
-    
-    //保存数据
-    [[StorageUtil sharedStorage] setUser:user];
-    
-    //刷新菜单
-    [self refreshMenu];
-    
-    //跳转首页
-    UIViewController *viewController = [[HomeViewController alloc] init];
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
 }
 
 @end

@@ -12,10 +12,4 @@
 
 @property (assign, nonatomic) BOOL tokenExpired;
 
-@property (weak, nonatomic) IBOutlet UITextField *mobileTextField;
-
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-
-- (IBAction)loginSubmitAction:(id)sender;
-
 @end

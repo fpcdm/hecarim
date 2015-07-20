@@ -66,6 +66,46 @@
 #define CASE_STATUS_SUCCESS @"success"
 #define CASE_STATUS_MEMBER_CANCEL @"member_cancel"
 #define CASE_STATUS_MERCHANT_CANCEL @"merchant_cancel"
+
+//颜色配置
+#define COLOR_MAIN_BG [UIColor colorWithHexString:@"EEEEEE"]
+#define COLOR_MAIN_BUTTON_BG [UIColor colorWithHexString:@"0199FF"]
+#define COLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"]
+#define COLOR_MAIN_WHITE [UIColor whiteColor]
+#define COLOR_MAIN_BLACK [UIColor blackColor]
+#define COLOR_MAIN_DARK [UIColor colorWithHexString:@"585858"]
+#define COLOR_MAIN_GRAY [UIColor colorWithHexString:@"7D7D7D"]
+#define COLOR_MAIN_BLUE [UIColor colorWithHexString:@"0199FF"]
+#define CGCOLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"].CGColor
+#define CGCOLOR_MAIN_WHITE [UIColor whiteColor].CGColor
+
+//尺寸配置
+#define FONT_MAIN [UIFont systemFontOfSize:16]
+#define FONT_MIDDLE [UIFont systemFontOfSize:14]
+#define FONT_SMALL [UIFont systemFontOfSize:12]
+
+//按钮配置
+//中按钮高度
+#define HEIGHT_MIDDLE_BUTTON 35
+//大按钮高度
+#define HEIGHT_MAIN_BUTTON 45
+
+//消息配置
+#define ERROR_MOBILE_REQUIRED @"请填写手机号哦~亲！"
+#define ERROR_MOBILE_FORMAT @"手机号不正确哦~亲！"
+#define ERROR_PASSWORD_REQUIRED @"请填写密码哦~亲！"
+#define ERROR_PASSWORD_LENGTH @"密码长度不正确哦~亲！"
+#define ERROR_COMMENT_REQUIRED @"请选择评价星级哦~亲！"
+#define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
+#define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
+
+#define TIP_LOADING_MESSAGE @"加载中"
+#define TIP_LOADING_SUCCESS @"加载完成"
+#define TIP_LOADING_FAILURE @"加载失败"
+
+#define TIP_REQUEST_MESSAGE @"请求中"
+#define TIP_REQUEST_SUCCESS @"请求成功"
+#define TIP_REQUEST_FAILURE @"请求失败"
 /********<<<公用配置********/
 
 

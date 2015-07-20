@@ -17,4 +17,7 @@
 //UserEntity分类
 @interface UserEntity (App)
 
+//头像绑定view显示（图片缓存预加载）
+- (void) avatarView: (UIImageView *) view;
+
 @end

@@ -54,6 +54,8 @@
 }
 
 - (void)viewDidLoad {
+    isMenuEnabled = YES;
+    isIndexNavBar = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"我的服务单";

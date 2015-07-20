@@ -16,11 +16,14 @@
 
 @interface AppViewController : BaseViewController
 {
-    //是否禁用菜单
-    BOOL isMenuDisabled;
+    //是否显示菜单
+    BOOL isMenuEnabled;
     
-    //左侧菜单是否为返回
-    BOOL isMenuBack;
+    //当前页面是否隐藏返回按钮
+    BOOL hideBackButton;
+    
+    //是否是首页导航栏(背景高亮)
+    BOOL isIndexNavBar;
     
     //是否隐藏远程通知提示
     BOOL hideRemoteNotification;
@@ -32,11 +35,15 @@
 //处理远程通知钩子（默认顶部弹出框）
 - (void) handleRemoteNotification:(NSString *) message type: (NSString *) type data: (NSString *) data;
 
-- (BOOL) checkLogin;
-
 - (BOOL) isLogin;
 
 - (void) refreshMenu;
+
+//弹出控制器
+- (void) pushViewController:(UIViewController *)viewController animated: (BOOL)animated;
+
+//切换控制器
+- (void) toggleViewController:(UIViewController *)viewController animated: (BOOL)animated;
 
 @end
 

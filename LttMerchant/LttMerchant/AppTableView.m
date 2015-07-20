@@ -8,25 +8,28 @@
 
 #import "AppTableView.h"
 
-@interface AppTableView ()
+@implementation BaseTableView (App)
+
+- (void) customTableView
+{
+    //全局背景色
+    self.tableView.backgroundColor = COLOR_MAIN_BG;
+    self.tableView.scrollEnabled = NO;
+}
 
 @end
 
 @implementation AppTableView
 
-- (id)init
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    self = [super init];
-    if (!self) return nil;
-    
-    //修正闪烁
-    self.backgroundColor = [UIColor whiteColor];
-    
-    //全局背景色
-    self.tableView.backgroundColor = [UIColor whiteColor];
-    self.tableView.scrollEnabled = NO;
-    
-    return self;
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
+
+@end
+
+@implementation AppRefreshTableView
 
 @end

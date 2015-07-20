@@ -30,12 +30,12 @@
     
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.opaque = NO;
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
         userImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        userImageView.image = [UIImage imageNamed:@"icon.png"];
+        userImageView.image = [UIImage imageNamed:@"nopic.png"];
         userImageView.layer.masksToBounds = YES;
         userImageView.layer.cornerRadius = 50.0;
         userImageView.layer.borderColor = [UIColor whiteColor].CGColor;
