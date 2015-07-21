@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LttAppDelegate.h"
 
+#import "Samurai.h"
+#import "Samurai_WebCore.h"
+
 int main(int argc, char * argv[]) {
     @autoreleasepool {
+        [[SamuraiWatcher sharedInstance] watch:@(__FILE__)];
+        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([LttAppDelegate class]));
     }
 }

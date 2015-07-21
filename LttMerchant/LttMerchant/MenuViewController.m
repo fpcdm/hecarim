@@ -8,7 +8,7 @@
 
 #import "MenuViewController.h"
 #import "LttNavigationController.h"
-#import "HomeViewController.h"
+#import "CaseNewViewController.h"
 #import "AppExtension.h"
 #import "CaseListViewController.h"
 #import "UserHandler.h"

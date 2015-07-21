@@ -1,12 +1,12 @@
 //
-//  BaseViewController.m
-//  LttCustomer
+//  AppActivity.m
+//  LttMerchant
 //
-//  Created by wuyong on 15/4/22.
+//  Created by wuyong on 15/7/21.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "AppActivity.h"
 #import "LttNavigationController.h"
 #import "AppExtension.h"
 #import "LoginViewController.h"
@@ -17,11 +17,11 @@
 #import "AppView.h"
 #import "OrderDetailViewController.h"
 
-@interface AppViewController ()
+@interface AppActivity ()
 
 @end
 
-@implementation AppViewController
+@implementation AppActivity
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +37,20 @@
     } else {
         self.navigationItem.hidesBackButton = NO;
     }
+    
+    //加载模板
+    NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
+    [self loadViewTemplate:viewPath];
+}
+
+- (void) dealloc
+{
+    [self unloadViewTemplate];
+}
+
+- (NSString *)templateName
+{
+    return nil;
 }
 
 - (void) viewWillAppear:(BOOL)animated

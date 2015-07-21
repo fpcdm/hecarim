@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E0640C13-5EA2-4676-B369-BEB66C007966</string>
 	<key>IDESourceControlProjectName</key>
-	<string>LttMerchant</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C50FF166AD5A0F6FCC5E5781CC16F539A71955CC</key>
 		<string>https://github.com/fpcdm/hecarim.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LttMerchant/LttMerchant.xcodeproj</string>
+	<string>LttMerchant/LttMerchant.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C50FF166AD5A0F6FCC5E5781CC16F539A71955CC</key>

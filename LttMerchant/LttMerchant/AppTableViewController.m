@@ -11,7 +11,7 @@
 #import "NotificationUtil.h"
 #import "OrderDetailViewController.h"
 #import "ApplyDetailViewController.h"
-#import "HomeViewController.h"
+#import "CaseNewViewController.h"
 
 @interface AppTableViewController ()
 
@@ -146,7 +146,7 @@
         
         //根据需求类型处理
         if ([@"CASE_CREATED" isEqualToString:type]) {
-            HomeViewController *viewController = [[HomeViewController alloc] init];
+            CaseNewViewController *viewController = [[CaseNewViewController alloc] init];
             [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
             //已支付，已完成
         } else if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {

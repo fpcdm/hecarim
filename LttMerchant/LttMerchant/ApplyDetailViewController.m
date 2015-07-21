@@ -10,7 +10,7 @@
 #import "IntentionEntity.h"
 #import "OrderDetailViewController.h"
 #import "OrderFormViewController.h"
-#import "HomeViewController.h"
+#import "CaseNewViewController.h"
 #import "IntentionHandler.h"
 #import "OrderEntity.h"
 #import "OrderHandler.h"
@@ -130,7 +130,7 @@
 
 - (void) showFail
 {
-    HomeViewController *viewController = [[HomeViewController alloc] init];
+    CaseNewViewController *viewController = [[CaseNewViewController alloc] init];
     [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
 }
 
@@ -143,7 +143,7 @@
         [self hideLoading];
         
         //跳转首页
-        HomeViewController *viewController = [[HomeViewController alloc] init];
+        CaseNewViewController *viewController = [[CaseNewViewController alloc] init];
         [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
     } failure:^(ErrorEntity *error){
         [self hideLoading];
