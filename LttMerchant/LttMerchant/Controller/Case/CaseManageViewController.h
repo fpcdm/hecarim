@@ -8,6 +8,6 @@
 
 #import "AppViewController.h"
 
-@interface CaseListViewController : AppViewController
+@interface CaseManageViewController : AppViewController
 
 @end

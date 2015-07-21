@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+
+<html class="no-js no-scroll" lang="">
+    
+    <head>
+        
+        <title>服务单管理</title>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+        
+        <style type="text/css">
+            
+        .head {
+            width: 100%;
+            height: 30px;
+        }
+        
+        .head-button {
+            border: 0px;
+            color: black;
+            width: 20%;
+            margin: 0px;
+            padding: 5px 0px 5px 0px;
+            height: 20px;
+        }
+        
+        .list {
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .list-item {
+            display: block;
+            width: 100%;
+            height: 130px;
+        }
+        
+        .item-title {
+            height: 20px;
+        }
+        
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div class="head border-top border-bottom bg-white">
+            <button onclick="@selector(actionCasesNew:)" class="head-button inline-block">待接单</button>
+            <button onclick="@selector(actionCasesLocked:)" class="head-button inline-block">已接单</button>
+            <button onclick="@selector(actionCasesInService:)" class="head-button inline-block">服务中</button>
+            <button onclick="@selector(actionCasesServiced:)" class="head-button inline-block">已完成</button>
+            <button onclick="@selector(actionCasesFinished:)" class="head-button inline-block">已结束</button>
+        </div>
+        
+        <RefreshCollectionView id="list" name="list" class="list" columns="1" is-vertical>
+            
+            <UICollectionViewCell name="cases" class="list-item bg-white margin-top-10 border-top border-bottom" is-row onclick="@selector(actionCaseDetail:)">
+                
+                <div class="item-title font-16 padding-left-10 padding-top-10 width-1">
+                    <label>编号: </label><label class="font-bold" name="no"></label>
+                    <label class="absolute right-10" name="status"></label>
+                </div>
+                
+                <div class="padding-left-10 margin-top-5">
+                    <label name="time" class="color-gray font-14"></label>
+                </div>
+                
+                <div class="padding-left-10 margin-top-5">
+                    <label class="color-dark font-14">客户联系方式：</label>
+                </div>
+                
+                <div class="padding-left-10 margin-top-5">
+                    <label name="name" class="color-dark font-14"></label>
+                    <label class="color-dark font-14">（</label>
+                    <label name="mobile" class="color-dark font-14"></label>
+                    <label class="color-dark font-14">）</label>
+                </div>
+                
+                <div class="line margin-left-10 margin-top-5"></div>
+                
+            </UICollectionViewCell>
+            
+        </RefreshCollectionView>
+        
+    </body>
+    
+</html>

@@ -40,6 +40,9 @@
 //刷新位置间隔
 #define USER_LOCATION_INTERVAL 300.0
 
+//默认每页数量
+#define LTT_PAGESIZE_DEFAULT 10
+
 //客户端类型
 #define LTT_CLIENT_TYPE @"MM"
 

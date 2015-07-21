@@ -141,10 +141,10 @@
         NSLog(@"从消息启动:%@",userInfo);
         
         [self handleRemoteNotification:userInfo];
-        
-        //取消消息计数
-        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     }
+    
+    //启动后清空消息计数
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 // 在 iOS8 系统中，还需要添加这个方法。通过新的 API 注册推送服务

@@ -7,7 +7,7 @@
 //
 
 #import "HomeActivity.h"
-#import "CaseListViewController.h"
+#import "CaseListActivity.h"
 
 @interface HomeActivity ()
 
@@ -49,7 +49,7 @@
 #pragma mark - Action
 - (void)actionCaseList: (SamuraiSignal *) signal
 {
-    CaseListViewController *viewController = [[CaseListViewController alloc] init];
+    CaseListActivity *viewController = [[CaseListActivity alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

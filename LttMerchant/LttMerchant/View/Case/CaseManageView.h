@@ -9,14 +9,14 @@
 #import "AppTableView.h"
 #import "IntentionEntity.h"
 
-@protocol CaseListViewDelegate <NSObject>
+@protocol CaseManageViewDelegate <NSObject>
 
 - (void)actionDetail:(IntentionEntity *)intention;
 
 @end
 
-@interface CaseListView : AppTableView
+@interface CaseManageView : AppTableView
 
-@property (retain, nonatomic) id<CaseListViewDelegate> delegate;
+@property (retain, nonatomic) id<CaseManageViewDelegate> delegate;
 
 @end

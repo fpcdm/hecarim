@@ -6,20 +6,20 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseListViewController.h"
-#import "CaseListView.h"
+#import "CaseManageViewController.h"
+#import "CaseManageView.h"
 #import "IntentionEntity.h"
 #import "IntentionHandler.h"
 #import "ApplyDetailViewController.h"
 #import "OrderDetailViewController.h"
 
-@interface CaseListViewController () <CaseListViewDelegate>
+@interface CaseManageViewController () <CaseManageViewDelegate>
 
 @end
 
-@implementation CaseListViewController
+@implementation CaseManageViewController
 {
-    CaseListView *listView;
+    CaseManageView *listView;
     NSMutableArray *intentionList;
 }
 
@@ -48,7 +48,7 @@
 
 - (void)loadView
 {
-    listView = [[CaseListView alloc] init];
+    listView = [[CaseManageView alloc] init];
     listView.delegate = self;
     self.view = listView;
 }

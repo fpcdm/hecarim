@@ -10,7 +10,7 @@
 #import "LttNavigationController.h"
 #import "CaseNewViewController.h"
 #import "AppExtension.h"
-#import "CaseListViewController.h"
+#import "CaseManageViewController.h"
 #import "UserHandler.h"
 
 @interface MenuViewController ()
@@ -82,7 +82,8 @@
     } else {
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeActivity"],
-                    @[@"服务单", @"CaseListViewController"],
+                    @[@"待接单", @"CaseNewViewController"],
+                    @[@"服务单", @"CaseManageViewController"],
                     @[@"退出", @"LoginViewController", @"logout"],
                     nil];
         

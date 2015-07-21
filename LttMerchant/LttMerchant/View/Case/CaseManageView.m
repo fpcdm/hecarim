@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseListView.h"
+#import "CaseManageView.h"
 
-@implementation CaseListView
+@implementation CaseManageView
 
 #pragma mark - RenderData
 - (void)renderData
