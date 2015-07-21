@@ -7,7 +7,7 @@
 //
 
 #import "CaseListActivity.h"
-#import "RefreshCollectionView.h"
+#import "MJRefreshTableView.h"
 #import "IntentionEntity.h"
 #import "IntentionHandler.h"
 #import "ApplyDetailViewController.h"
@@ -15,7 +15,7 @@
 
 @interface CaseListActivity ()
 
-@property (nonatomic, strong) RefreshCollectionView *list;
+@property (nonatomic, strong) MJRefreshTableView *list;
 
 @end
 
@@ -38,7 +38,11 @@
     page = 0;
     hasMore = YES;
     
-    self.onSignal( RefreshCollectionView.eventLoadMore, ^{
+    self.onSignal( MJRefreshTableView.eventPullToRefresh, ^{
+        [self refresh];
+    });
+    
+    self.onSignal( MJRefreshTableView.eventLoadMore, ^{
         [self loadMore];
     });
 }
@@ -87,7 +91,7 @@
 
 - (void)onTemplateLoaded
 {
-    [self refresh];
+    [_list startLoading];
 }
 
 - (void)onTemplateFailed
@@ -151,11 +155,7 @@
     
     [_list reloadData];
     
-    if (hasMore) {
-        
-    } else {
-        [_list stopLoading];
-    }
+    [_list stopLoading:hasMore];
 }
 
 #pragma mark -
