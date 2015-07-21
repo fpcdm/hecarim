@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F16E5551B5DE6D0007947D0 /* AppActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5541B5DE6D0007947D0 /* AppActivity.m */; };
+		2F16E55A1B5DEDCD007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5591B5DEDCD007947D0 /* HomeActivity.m */; };
 		2F2599931B4D06480029F1D2 /* BaseLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2599901B4D06480029F1D2 /* BaseLoadingView.m */; };
 		2F2599941B4D06480029F1D2 /* BaseRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2599921B4D06480029F1D2 /* BaseRefreshTableView.m */; };
 		2F2F226A1B3A52FE00428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22521B3A52FE00428742 /* NotificationBackgroundError.png */; };
@@ -487,7 +488,6 @@
 		2FD795C01AE7ADD300D51FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795BF1AE7ADD300D51FB0 /* main.m */; };
 		2FD795CB1AE7ADD300D51FB0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FD795CA1AE7ADD300D51FB0 /* Images.xcassets */; };
 		2FD795DA1AE7ADD300D51FB0 /* LttMerchantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795D91AE7ADD300D51FB0 /* LttMerchantTests.m */; };
-		2FD8F0231B5DD92600AF0329 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8F0221B5DD92600AF0329 /* HomeViewController.m */; };
 		2FD8F0391B5DDAD000AF0329 /* EMMarkupProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8F0271B5DDAD000AF0329 /* EMMarkupProperty.m */; };
 		2FD8F03A1B5DDAD000AF0329 /* EMStringLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8F0291B5DDAD000AF0329 /* EMStringLabel.m */; };
 		2FD8F03B1B5DDAD000AF0329 /* EMStringStylingConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD8F02B1B5DDAD000AF0329 /* EMStringStylingConfiguration.m */; };
@@ -540,6 +540,8 @@
 /* Begin PBXFileReference section */
 		2F16E5531B5DE6D0007947D0 /* AppActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppActivity.h; sourceTree = "<group>"; };
 		2F16E5541B5DE6D0007947D0 /* AppActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppActivity.m; sourceTree = "<group>"; };
+		2F16E5581B5DEDCD007947D0 /* HomeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeActivity.h; sourceTree = "<group>"; };
+		2F16E5591B5DEDCD007947D0 /* HomeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeActivity.m; sourceTree = "<group>"; };
 		2F25998F1B4D06480029F1D2 /* BaseLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoadingView.h; sourceTree = "<group>"; };
 		2F2599901B4D06480029F1D2 /* BaseLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoadingView.m; sourceTree = "<group>"; };
 		2F2599911B4D06480029F1D2 /* BaseRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRefreshTableView.h; sourceTree = "<group>"; };
@@ -1560,8 +1562,6 @@
 		2FD795D31AE7ADD300D51FB0 /* LttMerchantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LttMerchantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD795D81AE7ADD300D51FB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FD795D91AE7ADD300D51FB0 /* LttMerchantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LttMerchantTests.m; sourceTree = "<group>"; };
-		2FD8F0211B5DD92600AF0329 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		2FD8F0221B5DD92600AF0329 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2FD8F0261B5DDAD000AF0329 /* EMMarkupProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMarkupProperty.h; sourceTree = "<group>"; };
 		2FD8F0271B5DDAD000AF0329 /* EMMarkupProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMarkupProperty.m; sourceTree = "<group>"; };
 		2FD8F0281B5DDAD000AF0329 /* EMStringLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMStringLabel.h; sourceTree = "<group>"; };
@@ -1695,6 +1695,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F16E5571B5DEDCD007947D0 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2F16E5581B5DEDCD007947D0 /* HomeActivity.h */,
+				2F16E5591B5DEDCD007947D0 /* HomeActivity.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		2F2F22501B3A52FE00428742 /* TSMessages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1774,8 +1783,6 @@
 				2F52D0FD1AEF8A150003D7C2 /* LttNavigationController.m */,
 				2F52D0FE1AEF8A150003D7C2 /* MenuViewController.h */,
 				2F52D0FF1AEF8A150003D7C2 /* MenuViewController.m */,
-				2FD8F0211B5DD92600AF0329 /* HomeViewController.h */,
-				2FD8F0221B5DD92600AF0329 /* HomeViewController.m */,
 				2F52D1181AEF8AD50003D7C2 /* LoginViewController.h */,
 				2F52D1191AEF8AD50003D7C2 /* LoginViewController.m */,
 				2F52D1141AEF8AD50003D7C2 /* CaseNewViewController.h */,
@@ -3429,6 +3436,7 @@
 				2F628C071AE89C0400530B07 /* Library */,
 				2F628C041AE89BEE00530B07 /* View */,
 				2F628C031AE89BE200530B07 /* Controller */,
+				2F16E5571B5DEDCD007947D0 /* Activity */,
 				2F628C011AE89B8400530B07 /* Resource */,
 				2FD795BD1AE7ADD300D51FB0 /* Supporting Files */,
 				2F8BC2641B5CE07300B7D8B8 /* www */,
@@ -3850,6 +3858,7 @@
 				2F8BC5E81B5CE1E400B7D8B8 /* Samurai_ViewTemplate.m in Sources */,
 				2F8BC5991B5CE1E400B7D8B8 /* Samurai_Thread.m in Sources */,
 				2F8BC6841B5CE1E400B7D8B8 /* HtmlElement_Dl.m in Sources */,
+				2F16E55A1B5DEDCD007947D0 /* HomeActivity.m in Sources */,
 				2F90015C1B1D9D680040D97B /* UIView+REFrostedViewController.m in Sources */,
 				2F6796B51B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2F8BC6D61B5CE1E400B7D8B8 /* Samurai_HtmlNumberEm.m in Sources */,
@@ -3989,7 +3998,6 @@
 				2F8BC6A51B5CE1E400B7D8B8 /* HtmlElement_Ol.m in Sources */,
 				2F8BC5E01B5CE1E400B7D8B8 /* Samurai_RenderObject.m in Sources */,
 				2F52A6E01AF20E46003E2664 /* OrderFormViewController.m in Sources */,
-				2FD8F0231B5DD92600AF0329 /* HomeViewController.m in Sources */,
 				2F8BC59C1B5CE1E400B7D8B8 /* Samurai_Validator.m in Sources */,
 				2F8BC61A1B5CE1E400B7D8B8 /* ServiceGridsWindow.m in Sources */,
 				2F8BC5B01B5CE1E400B7D8B8 /* Samurai_ServiceInstance.m in Sources */,

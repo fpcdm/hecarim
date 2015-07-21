@@ -8,6 +8,6 @@
 
 #import "AppActivity.h"
 
-@interface HomeViewController : AppActivity
+@interface HomeActivity : AppActivity
 
 @end

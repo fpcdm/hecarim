@@ -71,7 +71,7 @@
     //未登录
     if (!user) {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeViewController"],
+                    @[@"首页", @"HomeActivity"],
                     @[@"登陆", @"LoginViewController"],
                     nil];
         
@@ -81,7 +81,7 @@
         //已登录
     } else {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeViewController"],
+                    @[@"首页", @"HomeActivity"],
                     @[@"服务单", @"CaseListViewController"],
                     @[@"退出", @"LoginViewController", @"logout"],
                     nil];

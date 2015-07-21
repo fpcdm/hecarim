@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "HomeActivity.h"
 #import "CaseListViewController.h"
 
-@interface HomeViewController ()
+@interface HomeActivity ()
 
 @end
 
-@implementation HomeViewController
+@implementation HomeActivity
 
 - (void)viewDidLoad
 {

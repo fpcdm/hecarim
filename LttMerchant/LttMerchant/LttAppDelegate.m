@@ -10,7 +10,7 @@
 #import "LttNavigationController.h"
 #import "MenuViewController.h"
 #import "LoginViewController.h"
-#import "HomeViewController.h"
+#import "HomeActivity.h"
 #import "AppExtension.h"
 #import "IntentionEntity.h"
 #import "NotificationUtil.h"
@@ -69,7 +69,7 @@
     if (!user) {
         viewController = [[LoginViewController alloc] init];
     } else {
-        viewController = [[HomeViewController alloc] init];
+        viewController = [[HomeActivity alloc] init];
     }
     
     navigationController = [[LttNavigationController alloc] initWithRootViewController:viewController];

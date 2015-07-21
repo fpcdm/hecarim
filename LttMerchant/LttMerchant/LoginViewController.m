@@ -11,7 +11,7 @@
 #import "UserEntity.h"
 #import "ValidateUtil.h"
 #import "AppExtension.h"
-#import "HomeViewController.h"
+#import "HomeActivity.h"
 #import "UserHandler.h"
 
 @interface LoginViewController () <LoginViewDelegate>
@@ -93,7 +93,7 @@
             //刷新菜单
             [self refreshMenu];
             
-            HomeViewController *viewController = [[HomeViewController alloc] init];
+            HomeActivity *viewController = [[HomeActivity alloc] init];
             [self toggleViewController:viewController animated:YES];
         }];
         
