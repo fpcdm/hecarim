@@ -21,7 +21,3 @@
 @implementation AppView
 
 @end
-
-@implementation AppLoadingView
-
-@end

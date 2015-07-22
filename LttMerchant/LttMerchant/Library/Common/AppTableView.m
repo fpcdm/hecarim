@@ -29,7 +29,3 @@
 }
 
 @end
-
-@implementation AppRefreshTableView
-
-@end

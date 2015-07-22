@@ -19,6 +19,7 @@
 #import "CaseHandler.h"
 #import "OrderHandler.h"
 #import "HomeViewController.h"
+#import "UIView+Loading.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
@@ -34,8 +35,9 @@
 
 - (void)loadView
 {
-    showLoadingView = YES;
     [super loadView];
+    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    [self.view showLoading];
 }
 
 - (void)viewDidLoad {

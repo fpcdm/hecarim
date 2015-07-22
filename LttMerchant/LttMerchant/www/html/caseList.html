@@ -63,9 +63,9 @@
             <button onclick="@selector(actionCasesFinished:)" class="head-button inline-block">已结束</button>
         </div>
         
-        <MJRefreshTableView id="list" name="list" class="list" is-vertical>
+        <MJRefreshCollectionView id="list" name="list" class="list bg-main" columns="1" is-vertical>
             
-            <UITableViewCell name="cases" class="list-item bg-white margin-top-10 border-top border-bottom" is-row onclick="@selector(actionCaseDetail:)">
+            <UICollectionViewCell name="cases" class="list-item bg-white margin-top-10 border-top border-bottom" is-row onclick="@selector(actionCaseDetail:)">
                 
                 <div class="item-title font-16 padding-left-10 padding-top-10 width-1">
                     <label>编号: </label><label class="font-bold" name="no"></label>
@@ -89,9 +89,9 @@
                 
                 <div class="line margin-left-10 margin-top-5"></div>
                 
-            </UITableViewCell>
+            </UICollectionViewCell>
             
-        </MJRefreshTableView>
+        </MJRefreshCollectionView>
         
     </body>
     

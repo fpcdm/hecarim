@@ -73,16 +73,16 @@
 }
 
 #pragma mark - Action
-- (void)actionLoad:(RefreshCompletionHandler)completionHandler
+- (void)actionLoad:(UITableView *)tableView
 {
     //加载数据
     [self loadData:^(id object){
-        completionHandler(hasMore ? YES : NO);
+        [tableView stopLoading:hasMore ? YES : NO];
         
         [listView setData:@"intentionList" value:intentionList];
         [listView renderData];
     } failure:^(ErrorEntity *error){
-        completionHandler(YES);
+        [tableView stopLoading:YES];
         
         [self showError:error.message];
     }];

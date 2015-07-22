@@ -10,10 +10,18 @@
 
 @implementation CaseListView
 
-//开启下拉加载更多
-- (BOOL) dropToRefresh
+@synthesize delegate;
+
+- (id) init
 {
-    return YES;
+    self = [super init];
+    if (!self) return nil;
+    
+    self.tableView.scrollEnabled = YES;
+    [self.tableView setLoadingFooter:self action:@selector(actionLoad)];
+    [self.tableView startLoading];
+    
+    return self;
 }
 
 #pragma mark - RenderData
@@ -102,13 +110,12 @@
     return label;
 }
 
-#pragma mark - Refresh
-- (void) dropRefresh:(RefreshCompletionHandler)completionHandler
+#pragma mark - Action
+- (void)actionLoad
 {
-    [self.delegate actionLoad:completionHandler];
+    [self.delegate actionLoad:self.tableView];
 }
 
-#pragma mark - Action
 - (void)actionDetail:(NSDictionary *)cellData
 {
     CaseEntity *intention = [cellData objectForKey:@"data"];

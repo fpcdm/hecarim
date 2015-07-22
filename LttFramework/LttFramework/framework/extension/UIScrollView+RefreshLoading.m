@@ -1,44 +1,39 @@
 //
-//  MJRefreshTableView.m
-//  LttMerchant
+//  UIScrollView+RefreshLoading.m
+//  LttCustomer
 //
-//  Created by wuyong on 15/7/21.
+//  Created by wuyong on 15/5/5.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "MJRefreshTableView.h"
+#import "UIScrollView+RefreshLoading.h"
 #import "MJRefresh.h"
 
-@implementation MJRefreshTableView
+@implementation UIScrollView (RefreshLoading)
 
-@def_signal( eventPullToRefresh );
-@def_signal( eventLoadMore );
-
-- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
+- (void) setRefreshHeader:(id)target action:(SEL)action
 {
-    self = [super initWithFrame:frame style:style];
-    if (!self) return nil;
-    
     //下拉刷新
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(actionPullRefresh)];
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:target refreshingAction:action];
     header.autoChangeAlpha = YES;
     header.lastUpdatedTimeLabel.hidden = YES;
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStateIdle];
     [header setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
     [header setTitle:@"正在刷新..." forState:MJRefreshStateRefreshing];
     self.header = header;
-    
+}
+
+- (void) setLoadingFooter:(id)target action:(SEL)action
+{
     //上拉加载
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(actionDropRefresh)];
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:target refreshingAction:action];
     [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
     [footer setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
     [footer setTitle:@"暂无更多数据" forState:MJRefreshStateNoMoreData];
     self.footer = footer;
-    
-    return self;
 }
 
-- (void)startRefreshing
+- (void)startRefresh
 {
     [self.header beginRefreshing];
 }
@@ -48,23 +43,17 @@
     [self.footer beginRefreshing];
 }
 
-- (void) stopLoading:(BOOL)hasMore
+- (void) stopRefresh
 {
     [self.header endRefreshing];
+}
+
+- (void) stopLoading:(BOOL)hasMore
+{
     [self.footer endRefreshing];
     if (!hasMore) {
         [self.footer noticeNoMoreData];
     }
-}
-
-- (void) actionPullRefresh
-{
-    [self sendSignal:self.eventPullToRefresh];
-}
-
-- (void) actionDropRefresh
-{
-    [self sendSignal:self.eventLoadMore];
 }
 
 @end

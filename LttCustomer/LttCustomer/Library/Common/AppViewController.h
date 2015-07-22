@@ -24,9 +24,6 @@
     //是否是首页导航栏(背景高亮)
     BOOL isIndexNavBar;
     
-    //是否显示加载视图
-    BOOL showLoadingView;
-    
     //是否隐藏远程通知提示
     BOOL hideRemoteNotification;
 }

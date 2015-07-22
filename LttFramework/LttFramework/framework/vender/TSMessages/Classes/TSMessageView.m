@@ -8,6 +8,7 @@
 
 #import "TSMessageView.h"
 #import "UIColor+Hex.h"
+#import "FrameworkConfig.h"
 #import "TSBlurView.h"
 #import "TSMessage.h"
 

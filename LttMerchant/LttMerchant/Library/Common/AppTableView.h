@@ -8,7 +8,6 @@
 
 #import "AppView.h"
 #import "BaseTableView.h"
-#import "BaseRefreshTableView.h"
 
 @interface BaseTableView (App)
 
@@ -17,9 +16,5 @@
 @end
 
 @interface AppTableView : BaseTableView
-
-@end
-
-@interface AppRefreshTableView : BaseRefreshTableView
 
 @end

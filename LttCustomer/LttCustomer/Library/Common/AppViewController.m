@@ -22,18 +22,6 @@
 
 @implementation AppViewController
 
-- (void)loadView
-{
-    //显示加载视图
-    if (showLoadingView) {
-        AppLoadingView *loadingView = [[AppLoadingView alloc] init];
-        self.view = loadingView;
-    //默认视图
-    } else {
-        [super loadView];
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     

@@ -7,7 +7,6 @@
 //
 
 #import "BaseView.h"
-#import "BaseLoadingView.h"
 #import "Config.h"
 #import "AppUIUtil.h"
 #import "AppExtension.h"
@@ -20,9 +19,5 @@
 @end
 
 @interface AppView : BaseView
-
-@end
-
-@interface AppLoadingView : BaseLoadingView
 
 @end

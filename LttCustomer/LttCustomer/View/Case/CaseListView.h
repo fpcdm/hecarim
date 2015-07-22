@@ -8,15 +8,16 @@
 
 #import "AppTableView.h"
 #import "CaseEntity.h"
+#import "UIScrollView+RefreshLoading.h"
 
 @protocol CaseListViewDelegate <NSObject>
 
-- (void)actionLoad:(RefreshCompletionHandler)completionHandler;
+- (void)actionLoad:(UITableView *)tableView;
 - (void)actionDetail:(CaseEntity *)intention;
 
 @end
 
-@interface CaseListView : AppRefreshTableView
+@interface CaseListView : AppTableView
 
 @property (retain, nonatomic) id<CaseListViewDelegate> delegate;
 
