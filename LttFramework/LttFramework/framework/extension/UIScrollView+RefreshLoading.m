@@ -11,7 +11,35 @@
 
 @implementation UIScrollView (RefreshLoading)
 
-- (void) setRefreshHeader:(id)target action:(SEL)action
+#pragma mark - NoDataView
+static const char RefreshLoadingEmptyViewKey = '\0';
+- (void)setEmptyView:(UIView *)emptyView
+{
+    if (emptyView != self.emptyView) {
+        // 删除旧的，添加新的
+        if (self.emptyView) {
+            [self.emptyView removeFromSuperview];
+        }
+        // 默认隐藏
+        if (emptyView) {
+            emptyView.hidden = YES;
+            [self addSubview:emptyView];
+        }
+        
+        // 存储新的
+        [self willChangeValueForKey:@"noDataView"]; // KVO
+        objc_setAssociatedObject(self, &RefreshLoadingEmptyViewKey, emptyView, OBJC_ASSOCIATION_ASSIGN);
+        [self didChangeValueForKey:@"noDataView"]; // KVO
+    }
+}
+
+- (UIView *)emptyView
+{
+    return objc_getAssociatedObject(self, &RefreshLoadingEmptyViewKey);
+}
+
+#pragma mark - RefreshLoading
+- (void) setRefreshingHeader:(id)target action:(SEL)action
 {
     //下拉刷新
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:target refreshingAction:action];
@@ -33,7 +61,7 @@
     self.footer = footer;
 }
 
-- (void)startRefresh
+- (void)startRefreshing
 {
     [self.header beginRefreshing];
 }
@@ -43,16 +71,46 @@
     [self.footer beginRefreshing];
 }
 
-- (void) stopRefresh
+- (void) stopRefreshLoading
 {
-    [self.header endRefreshing];
+    if (self.header && [self.header isRefreshing]) {
+        [self.header endRefreshing];
+    }
+    if (self.footer && [self.footer isRefreshing]) {
+        [self.footer endRefreshing];
+    }
 }
 
-- (void) stopLoading:(BOOL)hasMore
+- (void) setRefreshLoadingState:(RefreshLoadingState)state
 {
-    [self.footer endRefreshing];
-    if (!hasMore) {
-        [self.footer noticeNoMoreData];
+    switch (state) {
+        case RefreshLoadingStateNoData:
+        {
+            [self.footer noticeNoMoreData];
+            if (self.emptyView) {
+                self.footer.hidden = YES;
+                self.emptyView.hidden = NO;
+            }
+        }
+            break;
+        case RefreshLoadingStateNoMoreData:
+        {
+            [self.footer noticeNoMoreData];
+            if (self.emptyView) {
+                self.emptyView.hidden = YES;
+                self.footer.hidden = NO;
+            }
+        }
+            break;
+        default:
+        {
+            [self.footer resetNoMoreData];
+            if (self.emptyView) {
+                self.emptyView.hidden = YES;
+                self.footer.hidden = NO;
+            }
+        }
+            break;
     }
 }
 

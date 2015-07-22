@@ -157,3 +157,7 @@ img, image {
     height: 0.5px;
     background-color: #b2b2b2;
 }
+
+.hide {
+    display: none;
+}

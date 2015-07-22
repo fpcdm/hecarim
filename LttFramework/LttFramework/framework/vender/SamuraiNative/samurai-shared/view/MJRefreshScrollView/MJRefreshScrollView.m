@@ -14,9 +14,9 @@
 @def_signal( eventPullToRefresh );
 @def_signal( eventLoadMore );
 
-- (void) loadRefreshHeader
+- (void) loadRefreshingHeader
 {
-    [self setRefreshHeader:self action:@selector(actionPullToRefresh)];
+    [self setRefreshingHeader:self action:@selector(actionPullToRefresh)];
 }
 
 - (void) loadLoadingFooter

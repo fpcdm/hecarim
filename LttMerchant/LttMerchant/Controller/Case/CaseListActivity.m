@@ -12,10 +12,12 @@
 #import "IntentionHandler.h"
 #import "ApplyDetailViewController.h"
 #import "OrderDetailViewController.h"
+#import "Masonry.h"
 
 @interface CaseListActivity ()
 
 @property (nonatomic, strong) MJRefreshCollectionView *list;
+@property (nonatomic, strong) UIButton *defaultButton;
 
 @end
 
@@ -26,17 +28,13 @@
     //当前页数
     int page;
     BOOL hasMore;
-    NSString *status;
+    NSString *currentStatus;
+    UIButton *currentButton;
 }
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     [super viewDidLoad];
-    
-    //默认值
-    caseList = [[NSMutableArray alloc] initWithObjects:nil];
-    page = 0;
-    hasMore = YES;
     
     self.onSignal( MJRefreshCollectionView.eventPullToRefresh, ^{
         [self refresh];
@@ -78,11 +76,6 @@
     return @"caseList.html";
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [self relayout];
-}
-
 #pragma mark -
 
 - (void)onTemplateLoading
@@ -91,9 +84,30 @@
 
 - (void)onTemplateLoaded
 {
-    [_list loadRefreshHeader];
+    [_list loadRefreshingHeader];
     [_list loadLoadingFooter];
-    [_list startLoading];
+    
+    //空视图
+    [self initEmptyView];
+    
+    //默认加载待接单
+    [self actionCaseList:_defaultButton status:CASE_STATUS_NEW];
+}
+
+- (void) initEmptyView
+{
+    UIView *emptyView = [[UIView alloc] init];
+    emptyView.backgroundColor = COLOR_MAIN_WHITE;
+    _list.emptyView = emptyView;
+    
+    UIView *superview = _list;
+    [emptyView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top).offset(100);
+        make.centerX.equalTo(superview.mas_centerX);
+        
+        make.width.equalTo(@80);
+        make.height.equalTo(@80);
+    }];
 }
 
 - (void)onTemplateFailed
@@ -116,8 +130,22 @@
     hasMore = YES;
     
     [self loadData:^(id object){
+        [_list stopRefreshLoading];
+        
+        //测试
+        if ([currentStatus isEqualToString:CASE_STATUS_NEW]) {
+            caseList = [NSMutableArray array];
+            hasMore = NO;
+        } else if ([currentStatus isEqualToString:CASE_STATUS_LOCKED]) {
+            IntentionEntity *intention = [caseList objectAtIndex:0];
+            caseList = [[NSMutableArray alloc] initWithObjects:intention, nil];
+            hasMore = NO;
+        }
+        
         [self reloadData];
     } failure:^(ErrorEntity *error){
+        [_list stopRefreshLoading];
+        
         [self showError:error.message];
     }];
 }
@@ -126,8 +154,22 @@
 - (void)loadMore
 {
     [self loadData:^(id object){
+        [_list stopRefreshLoading];
+        
+        //测试
+        if ([currentStatus isEqualToString:CASE_STATUS_NEW]) {
+            caseList = [NSMutableArray array];
+            hasMore = NO;
+        } else if ([currentStatus isEqualToString:CASE_STATUS_LOCKED]) {
+            IntentionEntity *intention = [caseList objectAtIndex:0];
+            caseList = [[NSMutableArray alloc] initWithObjects:intention, nil];
+            hasMore = NO;
+        }
+        
         [self reloadData];
     } failure:^(ErrorEntity *error){
+        [_list stopRefreshLoading];
+        
         [self showError:error.message];
     }];
 }
@@ -157,11 +199,75 @@
     
     [_list reloadData];
     
-    [_list stopLoading:hasMore];
+    //根据数据切换刷新状态
+    if (hasMore) {
+        [_list setRefreshLoadingState:RefreshLoadingStateMoreData];
+    } else if ([caseList count] < 1) {
+        [_list setRefreshLoadingState:RefreshLoadingStateNoData];
+    } else {
+        [_list setRefreshLoadingState:RefreshLoadingStateNoMoreData];
+    }
 }
 
-#pragma mark -
+#pragma mark - 需求列表
+- (void)actionCasesNew: (SamuraiSignal *)signal
+{
+    [self actionCaseList:signal.source status:CASE_STATUS_NEW];
+}
 
+- (void)actionCasesLocked: (SamuraiSignal *)signal
+{
+    [self actionCaseList:signal.source status:CASE_STATUS_LOCKED];
+}
+
+- (void)actionCasesInService: (SamuraiSignal *)signal
+{
+    [self actionCaseList:signal.source status:CASE_STATUS_CONFIRMED];
+}
+
+- (void)actionCasesServiced: (SamuraiSignal *)signal
+{
+    [self actionCaseList:signal.source status:CASE_STATUS_TOPAY];
+}
+
+- (void)actionCasesFinished: (SamuraiSignal *)signal
+{
+    [self actionCaseList:signal.source status:@"finished"];
+}
+
+- (void)actionCaseList:(UIButton *)button status: (NSString *) status
+{
+    //清空之前的选中
+    if (currentButton) {
+        currentButton.style.color = makeColor(COLOR_MAIN_BLACK);
+        [currentButton restyle];
+    }
+    
+    //新的选中
+    button.style.color = makeColor(COLOR_MAIN_GRAY);
+    [button restyle];
+    currentStatus = status;
+    currentButton = button;
+    
+    //清空之前的数据
+    if (caseList && [caseList count] > 0) {
+        caseList = [[NSMutableArray alloc] initWithObjects:nil];
+        [self reloadData];
+    }
+    
+    //还原数据
+    caseList = [[NSMutableArray alloc] initWithObjects:nil];
+    page = 0;
+    hasMore = YES;
+    
+    //加载数据
+    [_list setRefreshLoadingState:RefreshLoadingStateMoreData];
+    [_list startLoading];
+}
+
+#pragma mark - 需求操作
+
+#pragma mark - 需求详情
 - (void)actionCaseDetail: (SamuraiSignal *)signal
 {
     //获取数据

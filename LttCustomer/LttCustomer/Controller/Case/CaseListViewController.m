@@ -77,12 +77,15 @@
 {
     //加载数据
     [self loadData:^(id object){
-        [tableView stopLoading:hasMore ? YES : NO];
+        [tableView stopRefreshLoading];
+        if (!hasMore) {
+            [tableView setRefreshLoadingState:RefreshLoadingStateNoMoreData];
+        }
         
         [listView setData:@"intentionList" value:intentionList];
         [listView renderData];
     } failure:^(ErrorEntity *error){
-        [tableView stopLoading:YES];
+        [tableView stopRefreshLoading];
         
         [self showError:error.message];
     }];

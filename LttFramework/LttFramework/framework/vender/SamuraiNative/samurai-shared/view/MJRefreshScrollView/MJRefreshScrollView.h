@@ -15,7 +15,7 @@
 
 @signal( eventLoadMore );
 
-- (void) loadRefreshHeader;
+- (void) loadRefreshingHeader;
 
 - (void) loadLoadingFooter;
 
