@@ -10,13 +10,13 @@
 
 @implementation IntentionHandler
 
-- (void) queryIntentions:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void) queryCases:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[IntentionEntity class] mappingParam:@{@"remark": @"remark", @"intention_id":@"id", @"create_time": @"createTime"} keyPath:@"list"];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[IntentionEntity class] mappingParam:@{@"case_id": @"id", @"case_no": @"orderNo", @"create_time": @"createTime", @"status":@"status", @"contact": @"userName", @"contact_mobile":@"userMobile"} keyPath:@"list"];
     
-    NSString *restPath = @"employee/intentions";
+    NSString *restPath = @"employee/cases";
     [sharedClient getObject:[IntentionEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
@@ -54,24 +54,6 @@
     
     NSString *restPath = [sharedClient formatPath:@"cases/info/:id" object:intention];
     [sharedClient getObject:intention path:restPath param:nil success:^(NSArray *result){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        success(result);
-    } failure:^(ErrorEntity *error){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        failure(error);
-    }];
-}
-
-- (void) queryUserIntentions:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    //调用接口
-    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[IntentionEntity class] mappingParam:@{@"case_id": @"id", @"case_no": @"orderNo", @"create_time": @"createTime", @"status":@"status", @"detail": @"details", @"remark":@"remark"} keyPath:@"list"];
-    
-    NSString *restPath = @"cases/list";
-    [sharedClient getObject:[IntentionEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);

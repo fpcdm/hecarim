@@ -8,9 +8,8 @@
 
 #import "MenuViewController.h"
 #import "LttNavigationController.h"
-#import "CaseNewViewController.h"
 #import "AppExtension.h"
-#import "CaseManageViewController.h"
+#import "CaseListActivity.h"
 #import "UserHandler.h"
 
 @interface MenuViewController ()
@@ -82,8 +81,7 @@
     } else {
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeActivity"],
-                    @[@"待接单", @"CaseNewViewController"],
-                    @[@"服务单", @"CaseManageViewController"],
+                    @[@"服务单", @"CaseListActivity"],
                     @[@"退出", @"LoginViewController", @"logout"],
                     nil];
         
@@ -155,7 +153,7 @@
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
     
-    AppViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
+    UIViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
     
     //切换viewController
     UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;

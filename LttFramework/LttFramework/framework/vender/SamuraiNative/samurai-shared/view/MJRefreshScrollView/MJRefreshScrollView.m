@@ -7,7 +7,6 @@
 //
 
 #import "MJRefreshScrollView.h"
-#import "MJRefresh.h"
 
 @implementation UIScrollView (MJRefreshSamurai)
 
@@ -33,21 +32,5 @@
 {
     [self sendSignal:self.eventLoadMore];
 }
-
-@end
-
-@implementation MJRefreshScrollView
-
-@end
-
-@implementation MJRefreshTableView
-
-@end
-
-@implementation MJRefreshCollectionView
-
-@end
-
-@implementation MJRefreshWebView
 
 @end

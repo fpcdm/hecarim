@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F16E69D1B5DF84B007947D0 /* ApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6551B5DF84B007947D0 /* ApplyDetailViewController.m */; };
-		2F16E69E1B5DF84B007947D0 /* CaseManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6571B5DF84B007947D0 /* CaseManageViewController.m */; };
-		2F16E69F1B5DF84B007947D0 /* CaseNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6591B5DF84B007947D0 /* CaseNewViewController.m */; };
 		2F16E6A01B5DF84B007947D0 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E65B1B5DF84B007947D0 /* OrderDetailViewController.m */; };
 		2F16E6A11B5DF84B007947D0 /* OrderFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */; };
 		2F16E6A21B5DF84B007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6601B5DF84B007947D0 /* HomeActivity.m */; };
@@ -19,7 +17,6 @@
 		2F16E6A61B5DF84B007947D0 /* AppActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E66A1B5DF84B007947D0 /* AppActivity.m */; };
 		2F16E6A71B5DF84B007947D0 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E66C1B5DF84B007947D0 /* AppExtension.m */; };
 		2F16E6A81B5DF84B007947D0 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E66E1B5DF84B007947D0 /* AppTableView.m */; };
-		2F16E6A91B5DF84B007947D0 /* AppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6701B5DF84B007947D0 /* AppTableViewController.m */; };
 		2F16E6AA1B5DF84B007947D0 /* AppUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6721B5DF84B007947D0 /* AppUIUtil.m */; };
 		2F16E6AB1B5DF84B007947D0 /* AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6741B5DF84B007947D0 /* AppView.m */; };
 		2F16E6AC1B5DF84B007947D0 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6761B5DF84B007947D0 /* AppViewController.m */; };
@@ -37,8 +34,6 @@
 		2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6901B5DF84B007947D0 /* UserHandler.m */; };
 		2F16E6B91B5DF84B007947D0 /* ApplyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6931B5DF84B007947D0 /* ApplyDetailViewController.xib */; };
 		2F16E6BA1B5DF84B007947D0 /* ApplyListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6941B5DF84B007947D0 /* ApplyListViewCell.xib */; };
-		2F16E6BB1B5DF84B007947D0 /* CaseManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6961B5DF84B007947D0 /* CaseManageView.m */; };
-		2F16E6BC1B5DF84B007947D0 /* CaseNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6971B5DF84B007947D0 /* CaseNewViewController.xib */; };
 		2F16E6BD1B5DF84B007947D0 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6981B5DF84B007947D0 /* OrderDetailViewController.xib */; };
 		2F16E6BE1B5DF84B007947D0 /* OrderFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */; };
 		2F16E6BF1B5DF84B007947D0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E69C1B5DF84B007947D0 /* LoginView.m */; };
@@ -83,6 +78,7 @@
 		2F52D0F21AEF74EA0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0F11AEF74EA0003D7C2 /* CoreLocation.framework */; };
 		2F52D1101AEF8ABD0003D7C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */; };
 		2F52D11F1AEF8AFC0003D7C2 /* LttAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */; };
+		2F5330541B6083B100D4DD05 /* CaseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5330531B6083B100D4DD05 /* CaseListCell.m */; };
 		2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5533FC1B4F656200B98CA4 /* ResultEntity.m */; };
 		2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */; };
 		2F5534141B4FCD5F00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534131B4FCD5F00B98CA4 /* FileEntity.m */; };
@@ -544,10 +540,6 @@
 		2F16E6511B5DF84B007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
 		2F16E6541B5DF84B007947D0 /* ApplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyDetailViewController.h; sourceTree = "<group>"; };
 		2F16E6551B5DF84B007947D0 /* ApplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyDetailViewController.m; sourceTree = "<group>"; };
-		2F16E6561B5DF84B007947D0 /* CaseManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseManageViewController.h; sourceTree = "<group>"; };
-		2F16E6571B5DF84B007947D0 /* CaseManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseManageViewController.m; sourceTree = "<group>"; };
-		2F16E6581B5DF84B007947D0 /* CaseNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseNewViewController.h; sourceTree = "<group>"; };
-		2F16E6591B5DF84B007947D0 /* CaseNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseNewViewController.m; sourceTree = "<group>"; };
 		2F16E65A1B5DF84B007947D0 /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		2F16E65B1B5DF84B007947D0 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		2F16E65C1B5DF84B007947D0 /* OrderFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFormViewController.h; sourceTree = "<group>"; };
@@ -566,8 +558,6 @@
 		2F16E66C1B5DF84B007947D0 /* AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppExtension.m; sourceTree = "<group>"; };
 		2F16E66D1B5DF84B007947D0 /* AppTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTableView.h; sourceTree = "<group>"; };
 		2F16E66E1B5DF84B007947D0 /* AppTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableView.m; sourceTree = "<group>"; };
-		2F16E66F1B5DF84B007947D0 /* AppTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTableViewController.h; sourceTree = "<group>"; };
-		2F16E6701B5DF84B007947D0 /* AppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableViewController.m; sourceTree = "<group>"; };
 		2F16E6711B5DF84B007947D0 /* AppUIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUIUtil.h; sourceTree = "<group>"; };
 		2F16E6721B5DF84B007947D0 /* AppUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUIUtil.m; sourceTree = "<group>"; };
 		2F16E6731B5DF84B007947D0 /* AppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppView.h; sourceTree = "<group>"; };
@@ -600,9 +590,6 @@
 		2F16E6901B5DF84B007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		2F16E6931B5DF84B007947D0 /* ApplyDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApplyDetailViewController.xib; sourceTree = "<group>"; };
 		2F16E6941B5DF84B007947D0 /* ApplyListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApplyListViewCell.xib; sourceTree = "<group>"; };
-		2F16E6951B5DF84B007947D0 /* CaseManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseManageView.h; sourceTree = "<group>"; };
-		2F16E6961B5DF84B007947D0 /* CaseManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseManageView.m; sourceTree = "<group>"; };
-		2F16E6971B5DF84B007947D0 /* CaseNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseNewViewController.xib; sourceTree = "<group>"; };
 		2F16E6981B5DF84B007947D0 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderFormViewController.xib; sourceTree = "<group>"; };
 		2F16E69B1B5DF84B007947D0 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -671,6 +658,8 @@
 		2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		2F52D11D1AEF8AFC0003D7C2 /* LttAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttAppDelegate.h; sourceTree = "<group>"; };
 		2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttAppDelegate.m; sourceTree = "<group>"; };
+		2F5330521B6083B100D4DD05 /* CaseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListCell.h; sourceTree = "<group>"; };
+		2F5330531B6083B100D4DD05 /* CaseListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListCell.m; sourceTree = "<group>"; };
 		2F5533FB1B4F656200B98CA4 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F5533FC1B4F656200B98CA4 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1734,10 +1723,6 @@
 			children = (
 				2F16E6541B5DF84B007947D0 /* ApplyDetailViewController.h */,
 				2F16E6551B5DF84B007947D0 /* ApplyDetailViewController.m */,
-				2F16E6561B5DF84B007947D0 /* CaseManageViewController.h */,
-				2F16E6571B5DF84B007947D0 /* CaseManageViewController.m */,
-				2F16E6581B5DF84B007947D0 /* CaseNewViewController.h */,
-				2F16E6591B5DF84B007947D0 /* CaseNewViewController.m */,
 				2F16E65A1B5DF84B007947D0 /* OrderDetailViewController.h */,
 				2F16E65B1B5DF84B007947D0 /* OrderDetailViewController.m */,
 				2F16E65C1B5DF84B007947D0 /* OrderFormViewController.h */,
@@ -1782,8 +1767,6 @@
 				2F16E66C1B5DF84B007947D0 /* AppExtension.m */,
 				2F16E66D1B5DF84B007947D0 /* AppTableView.h */,
 				2F16E66E1B5DF84B007947D0 /* AppTableView.m */,
-				2F16E66F1B5DF84B007947D0 /* AppTableViewController.h */,
-				2F16E6701B5DF84B007947D0 /* AppTableViewController.m */,
 				2F16E6711B5DF84B007947D0 /* AppUIUtil.h */,
 				2F16E6721B5DF84B007947D0 /* AppUIUtil.m */,
 				2F16E6731B5DF84B007947D0 /* AppView.h */,
@@ -1846,11 +1829,10 @@
 			children = (
 				2F16E6931B5DF84B007947D0 /* ApplyDetailViewController.xib */,
 				2F16E6941B5DF84B007947D0 /* ApplyListViewCell.xib */,
-				2F16E6951B5DF84B007947D0 /* CaseManageView.h */,
-				2F16E6961B5DF84B007947D0 /* CaseManageView.m */,
-				2F16E6971B5DF84B007947D0 /* CaseNewViewController.xib */,
 				2F16E6981B5DF84B007947D0 /* OrderDetailViewController.xib */,
 				2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */,
+				2F5330521B6083B100D4DD05 /* CaseListCell.h */,
+				2F5330531B6083B100D4DD05 /* CaseListCell.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -3863,7 +3845,6 @@
 			files = (
 				2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */,
 				2F16E6BE1B5DF84B007947D0 /* OrderFormViewController.xib in Resources */,
-				2F16E6BC1B5DF84B007947D0 /* CaseNewViewController.xib in Resources */,
 				2F6D3F111B3128CC007A4159 /* MJRefresh.bundle in Resources */,
 				2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */,
 				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
@@ -4066,7 +4047,6 @@
 				2F8BC5881B5CE1E400B7D8B8 /* NSDictionary+Extension.m in Sources */,
 				2F8BC5841B5CE1E400B7D8B8 /* NSArray+Extension.m in Sources */,
 				2F8BC5EF1B5CE1E400B7D8B8 /* Samurai_Vendor.m in Sources */,
-				2F16E6A91B5DF84B007947D0 /* AppTableViewController.m in Sources */,
 				2F8BC6191B5CE1E400B7D8B8 /* ServiceGrids.m in Sources */,
 				2F8BC5E61B5CE1E400B7D8B8 /* Samurai_Tree.m in Sources */,
 				2F90007D1B1D91470040D97B /* MASViewConstraint.m in Sources */,
@@ -4119,7 +4099,6 @@
 				2F8BC69C1B5CE1E400B7D8B8 /* HtmlElement_Input_Reset.m in Sources */,
 				2F8BC5FB1B5CE1E400B7D8B8 /* attribute.c in Sources */,
 				2F90007E1B1D91470040D97B /* NSArray+MASAdditions.m in Sources */,
-				2F16E69E1B5DF84B007947D0 /* CaseManageViewController.m in Sources */,
 				2F52D11F1AEF8AFC0003D7C2 /* LttAppDelegate.m in Sources */,
 				2F8BC6BA1B5CE1E400B7D8B8 /* HtmlText.m in Sources */,
 				2F8BC5C01B5CE1E400B7D8B8 /* Samurai_UILabel.m in Sources */,
@@ -4145,6 +4124,7 @@
 				2F8BC6651B5CE1E400B7D8B8 /* UIButton+Html.m in Sources */,
 				2FED7E351B1EA87900306A11 /* DDMultiFormatter.m in Sources */,
 				2F8BC6631B5CE1E400B7D8B8 /* Samurai_HtmlDomNode.m in Sources */,
+				2F5330541B6083B100D4DD05 /* CaseListCell.m in Sources */,
 				2F8BC6151B5CE1E400B7D8B8 /* ServiceGestureViewClick.m in Sources */,
 				2F16E7021B5E1DC6007947D0 /* UIScrollView+INSPullToRefresh.m in Sources */,
 				2F8BC5ED1B5CE1E400B7D8B8 /* Samurai_App.m in Sources */,
@@ -4234,7 +4214,6 @@
 				2F16E6A11B5DF84B007947D0 /* OrderFormViewController.m in Sources */,
 				2F8BC6011B5CE1E400B7D8B8 /* tag.c in Sources */,
 				2F8BC61F1B5CE1E400B7D8B8 /* JBChartView.m in Sources */,
-				2F16E6BB1B5DF84B007947D0 /* CaseManageView.m in Sources */,
 				2F8BC6A71B5CE1E400B7D8B8 /* HtmlElement_P.m in Sources */,
 				2FED7DC01B1EA2E100306A11 /* SDWebImageCompat.m in Sources */,
 				2F16E6F41B5E1DC6007947D0 /* AutoCoding.m in Sources */,
@@ -4264,7 +4243,6 @@
 				2F8BC6241B5CE1E400B7D8B8 /* ServiceMonitorMemoryModel.m in Sources */,
 				2F8BC6CD1B5CE1E400B7D8B8 /* Samurai_HtmlStyleObject.m in Sources */,
 				2F8BC5811B5CE1E400B7D8B8 /* Samurai_Config.m in Sources */,
-				2F16E69F1B5DF84B007947D0 /* CaseNewViewController.m in Sources */,
 				2F8BC6991B5CE1E400B7D8B8 /* HtmlElement_Input_Image.m in Sources */,
 				2F8BC58F1B5CE1E400B7D8B8 /* Samurai_Debug.m in Sources */,
 				2F8BC6121B5CE1E400B7D8B8 /* ServiceGestureHook.m in Sources */,

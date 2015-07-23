@@ -12,11 +12,11 @@
 #import "IntentionHandler.h"
 #import "ApplyDetailViewController.h"
 #import "OrderDetailViewController.h"
-#import "Masonry.h"
+#import "AppView.h"
 
 @interface CaseListActivity ()
 
-@property (nonatomic, strong) MJRefreshCollectionView *list;
+@property (nonatomic, strong) UICollectionView *list;
 @property (nonatomic, strong) UIButton *defaultButton;
 
 @end
@@ -36,13 +36,24 @@
     isIndexNavBar = YES;
     [super viewDidLoad];
     
-    self.onSignal( MJRefreshCollectionView.eventPullToRefresh, ^{
+    self.onSignal( UICollectionView.eventPullToRefresh, ^{
         [self refresh];
     });
     
-    self.onSignal( MJRefreshCollectionView.eventLoadMore, ^{
+    self.onSignal( UICollectionView.eventLoadMore, ^{
         [self loadMore];
     });
+}
+
+//自动刷新服务单
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (currentStatus && currentButton) {
+        [self actionCaseList:currentButton status:currentStatus];
+    //默认加载待接单
+    } else {
+        [self actionCaseList:_defaultButton status:CASE_STATUS_NEW];
+    }
 }
 
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
@@ -51,8 +62,13 @@
     page++;
     
     IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    NSDictionary *param = @{@"page":[NSNumber numberWithInt:page], @"pagesize":[NSNumber numberWithInt:LTT_PAGESIZE_DEFAULT]};
-    [intentionHandler queryUserIntentions:param success:^(NSArray *result){
+    NSDictionary *param = @{@"page":[NSNumber numberWithInt:page],
+                            @"pagesize":[NSNumber numberWithInt:LTT_PAGESIZE_DEFAULT],
+                            @"status": currentStatus
+                            };
+    NSLog(@"request param: %@", param);
+    
+    [intentionHandler queryCases:param success:^(NSArray *result){
         for (IntentionEntity *intention in result) {
             //没有详情取备注
             if ((!intention.details || [intention.details count] < 1) && intention.remark) {
@@ -76,6 +92,11 @@
     return @"caseList.html";
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [self relayout];
+}
+
 #pragma mark -
 
 - (void)onTemplateLoading
@@ -87,17 +108,9 @@
     [_list loadRefreshingHeader];
     [_list loadLoadingFooter];
     
-    //空视图
-    [self initEmptyView];
-    
-    //默认加载待接单
-    [self actionCaseList:_defaultButton status:CASE_STATUS_NEW];
-}
-
-- (void) initEmptyView
-{
+    //初始化空视图
     UIView *emptyView = [[UIView alloc] init];
-    emptyView.backgroundColor = COLOR_MAIN_WHITE;
+    emptyView.backgroundColor = COLOR_MAIN_BG;
     _list.emptyView = emptyView;
     
     UIView *superview = _list;
@@ -105,8 +118,34 @@
         make.top.equalTo(superview.mas_top).offset(100);
         make.centerX.equalTo(superview.mas_centerX);
         
+        make.width.equalTo(@120);
+        make.height.equalTo(@120);
+    }];
+    
+    UIImageView *emptyImage = [[UIImageView alloc] init];
+    emptyImage.image = [UIImage imageNamed:@"nopic"];
+    [emptyView addSubview:emptyImage];
+    
+    superview = emptyView;
+    [emptyImage mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top);
+        make.centerX.equalTo(superview.mas_centerX);
+        
         make.width.equalTo(@80);
         make.height.equalTo(@80);
+    }];
+    
+    UILabel *emptyLabel = [[UILabel alloc] init];
+    emptyLabel.font = [UIFont systemFontOfSize:18];
+    emptyLabel.backgroundColor = [UIColor clearColor];
+    emptyLabel.text = @"你还没有相关订单";
+    [emptyView addSubview:emptyLabel];
+    
+    [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(emptyImage.mas_bottom).offset(20);
+        make.centerX.equalTo(superview.mas_centerX);
+        
+        make.height.equalTo(@20);
     }];
 }
 
@@ -132,16 +171,6 @@
     [self loadData:^(id object){
         [_list stopRefreshLoading];
         
-        //测试
-        if ([currentStatus isEqualToString:CASE_STATUS_NEW]) {
-            caseList = [NSMutableArray array];
-            hasMore = NO;
-        } else if ([currentStatus isEqualToString:CASE_STATUS_LOCKED]) {
-            IntentionEntity *intention = [caseList objectAtIndex:0];
-            caseList = [[NSMutableArray alloc] initWithObjects:intention, nil];
-            hasMore = NO;
-        }
-        
         [self reloadData];
     } failure:^(ErrorEntity *error){
         [_list stopRefreshLoading];
@@ -155,16 +184,6 @@
 {
     [self loadData:^(id object){
         [_list stopRefreshLoading];
-        
-        //测试
-        if ([currentStatus isEqualToString:CASE_STATUS_NEW]) {
-            caseList = [NSMutableArray array];
-            hasMore = NO;
-        } else if ([currentStatus isEqualToString:CASE_STATUS_LOCKED]) {
-            IntentionEntity *intention = [caseList objectAtIndex:0];
-            caseList = [[NSMutableArray alloc] initWithObjects:intention, nil];
-            hasMore = NO;
-        }
         
         [self reloadData];
     } failure:^(ErrorEntity *error){
@@ -183,11 +202,13 @@
                                        
                                        for (IntentionEntity *intention in caseList) {
                                            [cases addObject: @{
-                                                               @"no": @"123435",
-                                                               @"status": [intention statusName],
-                                                               @"time": @"2015-06-30",
-                                                               @"name": @"姓名",
-                                                               @"mobile": @"18875001455"
+                                                               @"no": intention.orderNo,
+                                                               @"status": intention.status,
+                                                               @"statusName": [intention statusName],
+                                                               @"statusColor": [intention statusColor],
+                                                               @"time": intention.createTime,
+                                                               @"name": intention.userName,
+                                                               @"mobile": intention.userMobile
                                                                }];
                                            
                                        }
@@ -266,6 +287,28 @@
 }
 
 #pragma mark - 需求操作
+//抢单
+- (void) actionCompeteCase: (SamuraiSignal *)signal
+{
+    //获取数据
+    IntentionEntity *intention = [caseList objectAtIndex:signal.sourceIndexPath.row];
+    
+    //开始抢单
+    [self showLoading:LocalString(@"TIP_CHALLENGE_START")];
+    
+    //调用接口
+    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
+    [intentionHandler competeIntention:intention success:^(NSArray *result){
+        [self loadingSuccess:LocalString(@"TIP_CHALLENGE_SUCCESS") callback:^{
+            //跳转需求详情
+            ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
+            viewController.intentionId = intention.id;
+            [self.navigationController pushViewController:viewController animated:YES];
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
+    }];
+}
 
 #pragma mark - 需求详情
 - (void)actionCaseDetail: (SamuraiSignal *)signal
@@ -275,6 +318,9 @@
     
     //失败不让跳转
     if ([intention isFail]) return;
+    
+    //抢单没有详情
+    if ([CASE_STATUS_NEW isEqualToString:intention.status]) return;
     
     //显示需求
     if (![intention hasOrder]) {

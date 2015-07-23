@@ -56,7 +56,7 @@
                             CASE_STATUS_PAYED:@"已付款",
                             CASE_STATUS_SUCCESS:@"已完成",
                             CASE_STATUS_MEMBER_CANCEL:@"已取消",
-                            CASE_STATUS_MERCHANT_CANCEL:@"商家已取消"
+                            CASE_STATUS_MERCHANT_CANCEL:@"已取消"
                             };
     
     NSString *name = [names objectForKey:self.status];

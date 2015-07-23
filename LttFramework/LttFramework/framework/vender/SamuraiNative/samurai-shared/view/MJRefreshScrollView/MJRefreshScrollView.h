@@ -20,19 +20,3 @@
 - (void) loadLoadingFooter;
 
 @end
-
-@interface MJRefreshScrollView: UIScrollView
-
-@end
-
-@interface MJRefreshTableView : UITableView
-
-@end
-
-@interface MJRefreshCollectionView : UICollectionView
-
-@end
-
-@interface MJRefreshWebView: UIWebView
-
-@end

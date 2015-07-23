@@ -42,11 +42,28 @@
         .list-item {
             display: block;
             width: 100%;
-            height: 130px;
+            height: 110px;
+            margin-top: 10px;
         }
         
         .item-title {
             height: 20px;
+        }
+        
+        .item-no {
+            width: 180px;
+        }
+        
+        .compete-button {
+            position:absolute;
+            right: 10px;
+            bottom: 10px;
+            background-color: #ff8e04;
+            border: 0px;
+            border-radius: 3px;
+            width: 40px;
+            height: 20px;
+            font-size: 15px;
         }
         
         </style>
@@ -63,13 +80,13 @@
             <button onclick="@selector(actionCasesFinished:)" class="head-button inline-block">已结束</button>
         </div>
         
-        <MJRefreshCollectionView id="list" name="list" class="list bg-main" columns="1" is-vertical>
+        <UICollectionView id="list" name="list" class="list bg-main" columns="1" is-vertical>
             
-            <UICollectionViewCell name="cases" class="list-item bg-white margin-top-10 border-top border-bottom" is-row onclick="@selector(actionCaseDetail:)">
+            <CaseListCell name="cases" class="list-item bg-white border-top border-bottom" is-row onclick="@selector(actionCaseDetail:)">
                 
                 <div class="item-title font-16 padding-left-10 padding-top-10 width-1">
-                    <label>编号: </label><label class="font-bold" name="no"></label>
-                    <label class="absolute right-10" name="status"></label>
+                    <label>编号: </label><label class="item-no font-bold" name="no"></label>
+                    <label id="statusLabel" class="absolute right-10" name="statusName"></label>
                 </div>
                 
                 <div class="padding-left-10 margin-top-5">
@@ -87,11 +104,11 @@
                     <label class="color-dark font-14">）</label>
                 </div>
                 
-                <div class="line margin-left-10 margin-top-5"></div>
+                <button id="competeButton" onclick="@selector(actionCompeteCase:)" class="compete-button">抢单</button>
                 
-            </UICollectionViewCell>
+            </CaseListCell>
             
-        </MJRefreshCollectionView>
+        </UICollectionView>
         
     </body>
     

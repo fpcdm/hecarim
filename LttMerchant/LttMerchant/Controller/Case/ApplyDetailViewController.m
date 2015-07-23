@@ -10,10 +10,10 @@
 #import "IntentionEntity.h"
 #import "OrderDetailViewController.h"
 #import "OrderFormViewController.h"
-#import "CaseNewViewController.h"
 #import "IntentionHandler.h"
 #import "OrderEntity.h"
 #import "OrderHandler.h"
+#import "CaseListActivity.h"
 
 @interface ApplyDetailViewController () <MBProgressHUDDelegate>
 
@@ -130,8 +130,8 @@
 
 - (void) showFail
 {
-    CaseNewViewController *viewController = [[CaseNewViewController alloc] init];
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    CaseListActivity *viewController = [[CaseListActivity alloc] init];
+    [self toggleViewController:viewController animated:YES];
 }
 
 - (IBAction)cancelSubmitAction:(id)sender {
@@ -143,8 +143,8 @@
         [self hideLoading];
         
         //跳转首页
-        CaseNewViewController *viewController = [[CaseNewViewController alloc] init];
-        [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+        CaseListActivity *viewController = [[CaseListActivity alloc] init];
+        [self toggleViewController:viewController animated:YES];
     } failure:^(ErrorEntity *error){
         [self hideLoading];
         
