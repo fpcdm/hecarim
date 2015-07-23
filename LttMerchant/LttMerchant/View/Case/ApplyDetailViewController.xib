@@ -75,10 +75,10 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-y1-iJN">
-                    <rect key="frame" x="34" y="81" width="529" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言：要土豪金的！半个小时到！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-y1-iJN">
+                    <rect key="frame" x="34" y="61" width="529" height="63"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="36G-0t-cKe"/>
+                        <constraint firstAttribute="height" constant="63" id="36G-0t-cKe"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,7 +92,7 @@
                 <constraint firstItem="MqC-16-fy3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="34" id="9bD-Cp-63Y"/>
                 <constraint firstItem="RaE-vi-Q8J" firstAttribute="top" secondItem="MqC-16-fy3" secondAttribute="bottom" constant="-40" id="G94-1L-Nqj"/>
                 <constraint firstItem="ltx-y1-iJN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="34" id="HQF-RB-oEz"/>
-                <constraint firstItem="ltx-y1-iJN" firstAttribute="top" secondItem="9cR-Di-2xk" secondAttribute="bottom" constant="40" id="WOt-Zs-7Z1"/>
+                <constraint firstItem="ltx-y1-iJN" firstAttribute="top" secondItem="9cR-Di-2xk" secondAttribute="bottom" constant="20" id="WOt-Zs-7Z1"/>
                 <constraint firstItem="1Td-gS-2tr" firstAttribute="top" secondItem="r14-Pd-txL" secondAttribute="bottom" constant="8" id="X82-ni-p0W"/>
                 <constraint firstItem="r14-Pd-txL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="aLC-KN-d9u"/>
                 <constraint firstAttribute="trailing" secondItem="RaE-vi-Q8J" secondAttribute="trailing" constant="37" id="b4L-JA-sX1"/>

@@ -80,7 +80,12 @@
     
     self.modelLabel.hidden = YES;
     
-    self.remarkLabel.text = [@"留言：" stringByAppendingString:(intention.remark ? intention.remark : @"未填写")];
+    NSString *caseText = [@"需求：" stringByAppendingString:(intention.remark ? intention.remark : @"未填写")];
+    if (intention.address) {
+        caseText = [caseText stringByAppendingString:[NSString stringWithFormat:@"\n地址：%@", intention.address]];
+    }
+    
+    self.remarkLabel.text = caseText;
     self.remarkLabel.hidden = NO;
     
     NSString *employeeText = (intention.userName ? [intention.userName stringByAppendingString:@"  "] : @"");

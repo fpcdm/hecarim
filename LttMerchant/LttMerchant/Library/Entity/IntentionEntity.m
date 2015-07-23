@@ -20,6 +20,8 @@
 
 @synthesize remark;
 
+@synthesize address;
+
 @synthesize status;
 
 @synthesize createTime;

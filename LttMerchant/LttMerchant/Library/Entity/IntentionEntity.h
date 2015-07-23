@@ -18,6 +18,8 @@
 
 @property (nonatomic, retain) NSString *remark;
 
+@property (nonatomic, retain) NSString *address;
+
 @property (nonatomic, retain) NSNumber *type;
 
 @property (nonatomic, retain) NSString *status;

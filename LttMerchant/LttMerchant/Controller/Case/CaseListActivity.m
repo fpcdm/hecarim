@@ -206,7 +206,7 @@
                                                                @"status": intention.status,
                                                                @"statusName": [intention statusName],
                                                                @"statusColor": [intention statusColor],
-                                                               @"time": intention.createTime,
+                                                               @"time": [intention.createTime substringToIndex:16],
                                                                @"name": intention.userName,
                                                                @"mobile": intention.userMobile
                                                                }];
