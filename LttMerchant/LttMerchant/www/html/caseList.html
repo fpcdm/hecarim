@@ -21,6 +21,9 @@
         .head {
             width: 100%;
             height: 30px;
+            background-color: white;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
         }
         
         .head-button {
@@ -30,6 +33,7 @@
             margin: 0px;
             padding: 5px 0px 5px 0px;
             height: 20px;
+            display: inline-block;
         }
         
         .list {
@@ -37,21 +41,50 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            background-color: #eeeeee;
         }
         
-        .list-item {
+        .case-item {
             display: block;
             width: 100%;
             height: 110px;
             margin-top: 10px;
+            background-color: white;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
         }
         
         .item-title {
             height: 20px;
+            font-size: 16px;
+            padding-left: 10px;
+            padding-top: 10px;
+            width: 100%;
         }
         
         .item-no {
             width: 180px;
+            font-weight: bold;
+        }
+        
+        .item-status {
+            position: absolute;
+            right: 10px;
+        }
+        
+        .item-margin {
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        
+        .item-darktext {
+            color: #585858;
+            font-size: 14px;
+        }
+        
+        .item-graytext {
+            color: #7d7d7d;
+            font-size: 14px;
         }
         
         .compete-button {
@@ -72,36 +105,36 @@
     
     <body>
         
-        <div class="head border-top border-bottom bg-white">
-            <button id="defaultButton" onclick="@selector(actionCasesNew:)" class="head-button inline-block">待接单</button>
-            <button onclick="@selector(actionCasesLocked:)" class="head-button inline-block">已接单</button>
-            <button onclick="@selector(actionCasesInService:)" class="head-button inline-block">服务中</button>
-            <button onclick="@selector(actionCasesServiced:)" class="head-button inline-block">服务完成</button>
-            <button onclick="@selector(actionCasesFinished:)" class="head-button inline-block">已结束</button>
+        <div class="head">
+            <button id="defaultButton" onclick="@selector(actionCasesNew:)" class="head-button">待接单</button>
+            <button onclick="@selector(actionCasesLocked:)" class="head-button">已接单</button>
+            <button onclick="@selector(actionCasesInService:)" class="head-button">服务中</button>
+            <button onclick="@selector(actionCasesServiced:)" class="head-button">服务完成</button>
+            <button onclick="@selector(actionCasesFinished:)" class="head-button">已结束</button>
         </div>
         
-        <UICollectionView id="list" name="list" class="list bg-main" columns="1" is-vertical>
+        <UICollectionView id="list" name="list" class="list" columns="1" is-vertical>
             
-            <CaseListCell name="cases" class="list-item bg-white border-top border-bottom" is-row onclick="@selector(actionCaseDetail:)">
+            <CaseListCell name="cases" class="case-item" is-row onclick="@selector(actionCaseDetail:)">
                 
-                <div class="item-title font-16 padding-left-10 padding-top-10 width-1">
-                    <label>编号: </label><label class="item-no font-bold" name="no"></label>
-                    <label id="statusLabel" class="absolute right-10" name="statusName"></label>
+                <div class="item-title">
+                    <label>编号: </label><label class="item-no" name="no"></label>
+                    <label id="statusLabel" class="item-status" name="statusName"></label>
                 </div>
                 
-                <div class="padding-left-10 margin-top-5">
-                    <label name="time" class="color-gray font-14"></label>
+                <div class="item-margin item-graytext">
+                    <label name="time"></label>
                 </div>
                 
-                <div class="padding-left-10 margin-top-5">
-                    <label class="color-dark font-14">客户联系方式：</label>
+                <div class="item-margin item-darktext">
+                    <label>客户联系方式：</label>
                 </div>
                 
-                <div class="padding-left-10 margin-top-5">
-                    <label name="name" class="color-dark font-14"></label>
-                    <label class="color-dark font-14">（</label>
-                    <label name="mobile" class="color-dark font-14"></label>
-                    <label class="color-dark font-14">）</label>
+                <div class="item-margin item-darktext">
+                    <label name="name"></label>
+                    <label>（</label>
+                    <label name="mobile"></label>
+                    <label>）</label>
                 </div>
                 
                 <button id="competeButton" onclick="@selector(actionCompeteCase:)" class="compete-button">抢单</button>

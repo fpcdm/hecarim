@@ -112,43 +112,16 @@
     [_list loadLoadingFooter];
     
     //初始化空视图
-    UIView *emptyView = [[UIView alloc] init];
-    emptyView.backgroundColor = COLOR_MAIN_BG;
-    _list.emptyView = emptyView;
-    
-    UIView *superview = _list;
-    [emptyView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(100);
-        make.centerX.equalTo(superview.mas_centerX);
-        
-        make.width.equalTo(@120);
-        make.height.equalTo(@120);
-    }];
-    
-    UIImageView *emptyImage = [[UIImageView alloc] init];
-    emptyImage.image = [UIImage imageNamed:@"nopic"];
-    [emptyView addSubview:emptyImage];
-    
-    superview = emptyView;
-    [emptyImage mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
-        make.centerX.equalTo(superview.mas_centerX);
-        
-        make.width.equalTo(@80);
-        make.height.equalTo(@80);
-    }];
-    
     UILabel *emptyLabel = [[UILabel alloc] init];
     emptyLabel.font = [UIFont systemFontOfSize:18];
     emptyLabel.backgroundColor = [UIColor clearColor];
     emptyLabel.text = @"你还没有相关订单";
-    [emptyView addSubview:emptyLabel];
+    _list.emptyView = emptyLabel;
     
+    UIView *superview = _list;
     [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(emptyImage.mas_bottom).offset(20);
+        make.top.equalTo(superview.mas_top).offset(100);
         make.centerX.equalTo(superview.mas_centerX);
-        
-        make.height.equalTo(@20);
     }];
 }
 
