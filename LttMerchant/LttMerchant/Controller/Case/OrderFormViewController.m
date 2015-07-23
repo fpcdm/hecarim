@@ -52,6 +52,7 @@
 - (void)viewDidLoad {
     [self.scrollView contentSizeToFit];
     
+    isIndexNavBar = YES;
     [super viewDidLoad];
     
     if (self.orderNo != nil) {
@@ -606,8 +607,7 @@
     //跳转订单详情
     OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
     viewController.orderNo = resOrder.no;
-    
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:NO];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

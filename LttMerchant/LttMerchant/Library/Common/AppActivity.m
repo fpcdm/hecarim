@@ -195,7 +195,7 @@
             if (data) {
                 OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
                 viewController.orderNo = data;
-                [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+                [self.navigationController pushViewController:viewController animated:YES];
             }
         }
         

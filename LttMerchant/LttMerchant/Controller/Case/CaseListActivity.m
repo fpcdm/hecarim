@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
+    isMenuEnabled = YES;
     [super viewDidLoad];
     
     self.onSignal( UICollectionView.eventPullToRefresh, ^{
@@ -48,6 +49,8 @@
 //自动刷新服务单
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     if (currentStatus && currentButton) {
         [self actionCaseList:currentButton status:currentStatus];
     //默认加载待接单

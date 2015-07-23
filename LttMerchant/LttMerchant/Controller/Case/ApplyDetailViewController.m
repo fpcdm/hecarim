@@ -30,6 +30,7 @@
 @synthesize intentionId;
 
 - (void)viewDidLoad {
+    isIndexNavBar = YES;
     [super viewDidLoad];
     
     self.title = @"需求详情";
@@ -184,7 +185,6 @@
     //跳转需求详情
     OrderFormViewController *viewController = [[OrderFormViewController alloc] init];
     viewController.intentionId = intention.id;
-    
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    [self pushViewController:viewController animated:YES];
 }
 @end

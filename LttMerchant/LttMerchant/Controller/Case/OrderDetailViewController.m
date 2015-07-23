@@ -11,6 +11,8 @@
 #import "ZBarSDK.h"
 #import "OrderEntity.h"
 #import "OrderHandler.h"
+#import "UIViewController+BackButtonHandler.h"
+#import "CaseListActivity.h"
 
 @interface OrderDetailViewController () <MBProgressHUDDelegate, ZBarReaderDelegate>
 
@@ -29,11 +31,20 @@
 @synthesize orderNo;
 
 - (void)viewDidLoad {
+    isIndexNavBar = YES;
     [super viewDidLoad];
     
     self.title = @"订单详情";
     
     [self initView];
+}
+
+//修改返回按钮事件
+- (BOOL) navigationShouldPopOnBackButton
+{
+    CaseListActivity *viewController = [[CaseListActivity alloc] init];
+    [self toggleViewController:viewController animated:YES];
+    return YES;
 }
 
 - (void) initView
@@ -171,7 +182,7 @@
 - (IBAction)changeOrderAction:(id)sender {
     OrderFormViewController *viewController = [[OrderFormViewController alloc] init];
     viewController.orderNo = self.orderNo;
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    [self pushViewController:viewController animated:YES];
 }
 
 - (IBAction)qrcodeScanAction:(id)sender {
