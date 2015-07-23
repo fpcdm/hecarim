@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     isMenuEnabled = NO;
-    hideBackButton = NO;
+    hideBackButton = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"两条腿工作台登陆";
