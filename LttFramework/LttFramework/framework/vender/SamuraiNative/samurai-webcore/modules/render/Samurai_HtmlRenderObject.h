@@ -176,6 +176,9 @@ typedef enum
 
 #else	// #if __SAMURAI_DEBUG__
 
+#undef	DEBUG_RENDERER_DOM
+#define DEBUG_RENDERER_DOM( __x )
+
 #undef	DEBUG_RENDERER_LAYOUT
 #define DEBUG_RENDERER_LAYOUT( __x )
 
