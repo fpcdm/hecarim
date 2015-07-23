@@ -146,14 +146,12 @@
     //调用接口
     IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
     [intentionHandler giveupIntention:intention success:^(NSArray *result){
-        [self hideLoading];
-        
-        //跳转首页
-        CaseListActivity *viewController = [[CaseListActivity alloc] init];
-        [self toggleViewController:viewController animated:YES];
+        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+            //跳转首页
+            CaseListActivity *viewController = [[CaseListActivity alloc] init];
+            [self toggleViewController:viewController animated:YES];
+        }];
     } failure:^(ErrorEntity *error){
-        [self hideLoading];
-        
         [self showError:error.message];
     }];
 }
