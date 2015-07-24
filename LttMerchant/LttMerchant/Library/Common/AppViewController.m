@@ -8,6 +8,7 @@
 
 #import "AppViewController.h"
 #import "LttNavigationController.h"
+#import "LttAppDelegate.h"
 #import "AppExtension.h"
 #import "LoginViewController.h"
 #import "REFrostedViewController.h"
@@ -170,6 +171,9 @@
     [self showNotification:message callback:^{
         //取消消息
         [NotificationUtil cancelRemoteNotifications];
+        //清空服务器数量
+        LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
+        [appDelegate clearNotifications];
         
         //根据需求类型处理
         if ([@"CASE_CREATED" isEqualToString:type]) {

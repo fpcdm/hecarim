@@ -14,5 +14,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+//清空服务端消息数量
+- (void) clearNotifications;
+
 @end
 

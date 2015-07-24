@@ -127,6 +127,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
+- (void)clearNotifications
+{
+    NSString *deviceId = [[StorageUtil sharedStorage] getDeviceId];
+    if (deviceId && [deviceId length] > 0) {
+        DeviceEntity *device = [[DeviceEntity alloc] init];
+        device.id = deviceId;
+        
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler clearNotifications:device success:^(NSArray *result){} failure:^(ErrorEntity *error){}];
+    }
+}
+
 - (void)initPush:(UIApplication *)application launchOptions:(NSDictionary *)launchOptions {
     // iOS8 下需要使用新的 API
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
@@ -149,6 +161,7 @@
     
     //启动后清空消息计数
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [self clearNotifications];
 }
 
 // 在 iOS8 系统中，还需要添加这个方法。通过新的 API 注册推送服务

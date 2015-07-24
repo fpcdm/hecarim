@@ -73,4 +73,17 @@
     }];
 }
 
+- (void)clearNotifications:(DeviceEntity *)device success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"base/badge/:id" object:device];
+    [sharedClient deleteObject:device path:restPath param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 @end

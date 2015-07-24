@@ -48,4 +48,12 @@
  */
 - (void) addDevice: (DeviceEntity *) device success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  清空消息通知数量
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) clearNotifications: (DeviceEntity *) device success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 @end

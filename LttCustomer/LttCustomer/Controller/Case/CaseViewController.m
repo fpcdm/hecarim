@@ -20,6 +20,7 @@
 #import "OrderHandler.h"
 #import "HomeViewController.h"
 #import "UIView+Loading.h"
+#import "LttAppDelegate.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
 
@@ -291,6 +292,9 @@
     
     //取消消息
     [NotificationUtil cancelRemoteNotifications];
+    //清空服务器数量
+    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
+    [appDelegate clearNotifications];
     
     //需求状态变化
     [self loadData:^(id object){
