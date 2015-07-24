@@ -11,6 +11,6 @@
 #import "Samurai.h"
 #import "Samurai_WebCore.h"
 
-@interface CaseListCell : UICollectionViewCell
+@interface CaseListCell : UITableViewCell
 
 @end

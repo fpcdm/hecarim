@@ -16,7 +16,7 @@
 
 @interface CaseListActivity ()
 
-@property (nonatomic, strong) UICollectionView *list;
+@property (nonatomic, strong) UITableView *list;
 @property (nonatomic, strong) UIButton *defaultButton;
 
 @end
@@ -37,11 +37,11 @@
     isMenuEnabled = YES;
     [super viewDidLoad];
     
-    self.onSignal( UICollectionView.eventPullToRefresh, ^{
+    self.onSignal( UITableView.eventPullToRefresh, ^{
         [self refresh];
     });
     
-    self.onSignal( UICollectionView.eventLoadMore, ^{
+    self.onSignal( UITableView.eventLoadMore, ^{
         [self loadMore];
     });
 }

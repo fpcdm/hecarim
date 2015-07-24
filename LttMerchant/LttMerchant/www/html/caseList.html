@@ -119,7 +119,7 @@
             <button onclick="@selector(actionCasesFinished:)" class="head-button">已结束</button>
         </div>
         
-        <UICollectionView id="list" name="list" class="list" columns="1" is-vertical>
+        <UITableView id="list" name="list" class="list" columns="1" is-vertical>
             
             <CaseListCell name="cases" class="case-item" is-row onclick="@selector(actionCaseDetail:)">
                 
@@ -149,7 +149,7 @@
                 
             </CaseListCell>
             
-        </UICollectionView>
+        </UITableView>
         
     </body>
     
