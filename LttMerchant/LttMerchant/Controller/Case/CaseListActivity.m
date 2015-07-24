@@ -113,17 +113,12 @@
     [_list loadLoadingFooter];
     
     //初始化空视图
-    UILabel *emptyLabel = [[UILabel alloc] init];
+    UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 20)];
     emptyLabel.font = [UIFont systemFontOfSize:18];
     emptyLabel.backgroundColor = [UIColor clearColor];
+    emptyLabel.textAlignment = NSTextAlignmentCenter;
     emptyLabel.text = @"你还没有相关订单";
     _list.emptyView = emptyLabel;
-    
-    UIView *superview = _list;
-    [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(100);
-        make.centerX.equalTo(superview.mas_centerX);
-    }];
 }
 
 - (void)onTemplateFailed
