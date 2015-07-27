@@ -18,7 +18,7 @@
         
         <style type="text/css">
             
-        .head {
+        .list-header {
             width: 100%;
             height: 30px;
             background-color: white;
@@ -26,7 +26,7 @@
             border-bottom: 0.5px solid #b2b2b2;
         }
         
-        .head-button {
+        .header-button {
             border: 0px;
             color: black;
             width: 20%;
@@ -111,12 +111,12 @@
     
     <body>
         
-        <div class="head">
-            <button id="defaultButton" onclick="@selector(actionCasesNew:)" class="head-button">待接单</button>
-            <button onclick="@selector(actionCasesLocked:)" class="head-button">已接单</button>
-            <button onclick="@selector(actionCasesInService:)" class="head-button">服务中</button>
-            <button onclick="@selector(actionCasesServiced:)" class="head-button">服务完成</button>
-            <button onclick="@selector(actionCasesFinished:)" class="head-button">已结束</button>
+        <div class="list-header">
+            <UIButton id="defaultButton" onclick="@selector(actionCasesNew:)" class="header-button">待接单</UIButton>
+            <UIButton onclick="@selector(actionCasesLocked:)" class="header-button">已接单</UIButton>
+            <UIButton onclick="@selector(actionCasesInService:)" class="header-button">服务中</UIButton>
+            <UIButton onclick="@selector(actionCasesServiced:)" class="header-button">服务完成</UIButton>
+            <UIButton onclick="@selector(actionCasesFinished:)" class="header-button">已结束</UIButton>
         </div>
         
         <UITableView id="list" name="list" class="list" columns="1" is-vertical>
@@ -145,7 +145,7 @@
                     <label>）</label>
                 </div>
                 
-                <button id="competeButton" onclick="@selector(actionCompeteCase:)" class="compete-button">抢单</button>
+                <UIButton id="competeButton" onclick="@selector(actionCompeteCase:)" class="compete-button">抢单</UIButton>
                 
             </CaseListCell>
             
