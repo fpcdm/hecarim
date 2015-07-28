@@ -44,6 +44,10 @@
     [self loadViewTemplate:viewPath];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 - (void) dealloc
 {
     [self unloadViewTemplate];
@@ -203,6 +207,7 @@
         } else if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {
             //跳转详情页面
             if (data) {
+                //@todo: 修改data为caseId
                 OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
                 viewController.orderNo = data;
                 [self.navigationController pushViewController:viewController animated:YES];

@@ -10,4 +10,6 @@
 
 @interface CaseDetailActivity : AppActivity
 
+@property (retain, nonatomic) NSNumber *caseId;
+
 @end

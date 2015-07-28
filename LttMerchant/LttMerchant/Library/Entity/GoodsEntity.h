@@ -18,6 +18,8 @@
 
 @property (nonatomic, retain) NSNumber *price;
 
+@property (nonatomic, retain) NSString *specName;
+
 @property (nonatomic, retain) NSNumber *categoryId;
 
 @property (nonatomic, retain) NSNumber *brandId;

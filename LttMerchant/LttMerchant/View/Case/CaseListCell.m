@@ -11,7 +11,6 @@
 @interface CaseListCell ()
 
 @property (nonatomic, strong) UILabel *statusLabel;
-@property (nonatomic, strong) UIButton *competeButton;
 
 @end
 
@@ -26,16 +25,6 @@
         UIColor *statusColor = obj[@"statusColor"];
         self.statusLabel.style.color = makeColor(statusColor);
         [self.statusLabel restyle];
-        
-        //显示按钮
-        NSString *status = obj[@"status"];
-        if (status && [CASE_STATUS_NEW isEqualToString:status]) {
-            [self.competeButton style_removeClass:@"hide"];
-            [self.competeButton restyle];
-        } else {
-            [self.competeButton style_addClass:@"hide"];
-            [self.competeButton restyle];
-        }
     }
 }
 

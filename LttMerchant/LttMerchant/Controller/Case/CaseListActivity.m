@@ -10,8 +10,7 @@
 #import "MJRefreshScrollView.h"
 #import "IntentionEntity.h"
 #import "IntentionHandler.h"
-#import "ApplyDetailViewController.h"
-#import "OrderDetailViewController.h"
+#import "CaseDetailActivity.h"
 #import "AppView.h"
 
 @interface CaseListActivity ()
@@ -252,30 +251,6 @@
     [_list startLoading];
 }
 
-#pragma mark - 需求操作
-//抢单
-- (void) actionCompeteCase: (SamuraiSignal *)signal
-{
-    //获取数据
-    IntentionEntity *intention = [caseList objectAtIndex:signal.sourceIndexPath.row];
-    
-    //开始抢单
-    [self showLoading:LocalString(@"TIP_CHALLENGE_START")];
-    
-    //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler competeIntention:intention success:^(NSArray *result){
-        [self loadingSuccess:LocalString(@"TIP_CHALLENGE_SUCCESS") callback:^{
-            //跳转需求详情
-            ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
-            viewController.intentionId = intention.id;
-            [self.navigationController pushViewController:viewController animated:YES];
-        }];
-    } failure:^(ErrorEntity *error){
-        [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
-    }];
-}
-
 #pragma mark - 需求详情
 - (void)actionCaseDetail: (SamuraiSignal *)signal
 {
@@ -285,21 +260,10 @@
     //失败不让跳转
     if ([intention isFail]) return;
     
-    //抢单没有详情
-    if ([CASE_STATUS_NEW isEqualToString:intention.status]) return;
-    
     //显示需求
-    if (![intention hasOrder]) {
-        ApplyDetailViewController *viewController = [[ApplyDetailViewController alloc] init];
-        viewController.intentionId = intention.id;
-        [self.navigationController pushViewController:viewController animated:YES];
-    //显示订单
-    } else {
-        OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
-        viewController.orderNo = intention.orderNo;
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
-    
+    CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
+    viewController.caseId = intention.id;
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

@@ -118,6 +118,7 @@
 		2F6D3F141B3128CC007A4159 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EF81B3128CC007A4159 /* UIScrollView+MJRefresh.m */; };
 		2F6D3F151B3128CC007A4159 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EFA1B3128CC007A4159 /* UIView+MJExtension.m */; };
 		2F6DE5B91B676E09003178DE /* CaseDetailActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */; };
+		2F6DE5BC1B6775F9003178DE /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */; };
 		2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F70745D1AFC529900A1242A /* InfoPlist.strings */; };
 		2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD781B1D5EB500797799 /* BaseEntity.m */; };
 		2F74CD821B1D5F8100797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD811B1D5F8100797799 /* BaseView.m */; };
@@ -741,6 +742,8 @@
 		2F6D3EFA1B3128CC007A4159 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		2F6DE5B71B676E09003178DE /* CaseDetailActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailActivity.h; sourceTree = "<group>"; };
 		2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailActivity.m; sourceTree = "<group>"; };
+		2F6DE5BA1B6775F9003178DE /* ServiceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceEntity.h; sourceTree = "<group>"; };
+		2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceEntity.m; sourceTree = "<group>"; };
 		2F70745D1AFC529900A1242A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2F74CD771B1D5EB500797799 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
 		2F74CD781B1D5EB500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
@@ -1801,6 +1804,8 @@
 				2F16E6851B5DF84B007947D0 /* OrderEntity.m */,
 				2F16E6861B5DF84B007947D0 /* specEntity.h */,
 				2F16E6871B5DF84B007947D0 /* specEntity.m */,
+				2F6DE5BA1B6775F9003178DE /* ServiceEntity.h */,
+				2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -4177,6 +4182,7 @@
 				2F8BC5A91B5CE1E400B7D8B8 /* Samurai_ModelManager.m in Sources */,
 				2FED7DC91B1EA2E100306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2F8BC6861B5CE1E400B7D8B8 /* HtmlElement_Element.m in Sources */,
+				2F6DE5BC1B6775F9003178DE /* ServiceEntity.m in Sources */,
 				2FED7DCB1B1EA2E100306A11 /* UIView+WebCacheOperation.m in Sources */,
 				2F16E6A61B5DF84B007947D0 /* AppActivity.m in Sources */,
 				2F8BC5B11B5CE1E400B7D8B8 /* Samurai_ServiceLoader.m in Sources */,
