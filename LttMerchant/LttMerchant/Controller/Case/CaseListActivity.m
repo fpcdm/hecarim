@@ -95,12 +95,6 @@
     return @"caseList.html";
 }
 
-- (void)viewDidLayoutSubviews
-{
-    //自动重新布局父视图，解决最后的单元格显示不完全问题
-    [self relayout];
-}
-
 #pragma mark -
 
 - (void)onTemplateLoading

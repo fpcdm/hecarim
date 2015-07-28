@@ -115,6 +115,15 @@
 // 是否大于等于iPhone5(屏幕尺寸)
 #define IS_IPHONE5_PLUS (SCREEN_HEIGHT >= 568.0 ? YES : NO)
 
+//判断是否是模拟器
+#if TARGET_IPHONE_SIMULATOR
+#define IS_IPHONE_SIMULATOR YES
+#define IS_IPHONE_OS NO
+#else
+#define IS_IPHONE_SIMULATOR NO
+#define IS_IPHONE_OS YES
+#endif
+
 //判断SDK版本
 #ifndef __IPHONE_6_0
 #error "SDK版本过低，必须IOS SDK 6.0以上"

@@ -117,6 +117,7 @@
 		2F6D3F131B3128CC007A4159 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EF61B3128CC007A4159 /* UIScrollView+MJExtension.m */; };
 		2F6D3F141B3128CC007A4159 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EF81B3128CC007A4159 /* UIScrollView+MJRefresh.m */; };
 		2F6D3F151B3128CC007A4159 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EFA1B3128CC007A4159 /* UIView+MJExtension.m */; };
+		2F6DE5B91B676E09003178DE /* CaseDetailActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */; };
 		2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F70745D1AFC529900A1242A /* InfoPlist.strings */; };
 		2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD781B1D5EB500797799 /* BaseEntity.m */; };
 		2F74CD821B1D5F8100797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD811B1D5F8100797799 /* BaseView.m */; };
@@ -738,6 +739,8 @@
 		2F6D3EF81B3128CC007A4159 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2F6D3EF91B3128CC007A4159 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2F6D3EFA1B3128CC007A4159 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		2F6DE5B71B676E09003178DE /* CaseDetailActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailActivity.h; sourceTree = "<group>"; };
+		2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailActivity.m; sourceTree = "<group>"; };
 		2F70745D1AFC529900A1242A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2F74CD771B1D5EB500797799 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
 		2F74CD781B1D5EB500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
@@ -1729,6 +1732,8 @@
 				2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */,
 				2F16E6C01B5E1B03007947D0 /* CaseListActivity.h */,
 				2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */,
+				2F6DE5B71B676E09003178DE /* CaseDetailActivity.h */,
+				2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4061,6 +4066,7 @@
 				2F8BC5DA1B5CE1E400B7D8B8 /* Samurai_EventPinchGesture.m in Sources */,
 				2F6D3F0C1B3128CC007A4159 /* MJRefreshBackNormalFooter.m in Sources */,
 				2FED7E331B1EA87900306A11 /* DDContextFilterLogFormatter.m in Sources */,
+				2F6DE5B91B676E09003178DE /* CaseDetailActivity.m in Sources */,
 				2FED7DBE1B1EA2E100306A11 /* NSData+ImageContentType.m in Sources */,
 				2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */,
 				2F8BC5AF1B5CE1E400B7D8B8 /* Samurai_DockerWindow.m in Sources */,

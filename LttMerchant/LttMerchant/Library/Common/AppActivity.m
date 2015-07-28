@@ -54,6 +54,12 @@
     return nil;
 }
 
+- (void)viewDidLayoutSubviews
+{
+    //自动重新布局父视图，解决最后的单元格显示不完全问题
+    [self relayout];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

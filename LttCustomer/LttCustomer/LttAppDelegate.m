@@ -186,10 +186,29 @@
     NSLog(@"Register use deviceToken : %@", deviceTokenStr);
     
     // 记录设备token
-    if (deviceTokenStr && [deviceTokenStr length] > 0) {
+    [self addDevice:deviceTokenStr];
+}
+
+// 当 DeviceToken 获取失败时，系统会回调此方法
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"DeviceToken 获取失败，原因：%@",error);
+    
+    //模拟deviceToken，可以接单
+    if (IS_DEBUG && IS_IPHONE_SIMULATOR) {
+        NSString* deviceTokenStr = @"devicetokenforcustomeriphonesimulator";
+        [self addDevice:deviceTokenStr];
+    }
+}
+
+//添加设备到服务器，并记录设备id
+- (void) addDevice: (NSString *) deviceToken
+{
+    // 记录设备token
+    if (deviceToken && [deviceToken length] > 0) {
         //新增设备接口
         DeviceEntity *device = [[DeviceEntity alloc] init];
-        device.token = deviceTokenStr;
+        device.token = deviceToken;
         device.type = @"ios";
         
         NSLog(@"注册device: %@", [device toDictionary]);
@@ -207,12 +226,6 @@
             
         }];
     }
-}
-
-// 当 DeviceToken 获取失败时，系统会回调此方法
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    NSLog(@"DeviceToken 获取失败，原因：%@",error);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
