@@ -20,6 +20,10 @@
 
 @property (nonatomic, strong) UITextView *caseRemark;
 
+@property (nonatomic, strong) UITableView *goodsTable;
+
+@property (nonatomic, strong) UITableView *servicesTable;
+
 @end
 
 @implementation CaseDetailActivity
@@ -64,6 +68,8 @@
     self.caseAddress.editable = NO;
     self.caseRemark.editable = NO;
     
+    self.goodsTable.scrollEnabled = NO;
+    self.servicesTable.scrollEnabled = NO;
 }
 
 - (void)onTemplateFailed
@@ -121,6 +127,9 @@
         //解析订单商品
         NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
         if (order.goodsParam) {
+            NSNumber *goodsAmount = [order.goodsParam objectForKey:@"amount"];
+            order.goodsAmount = goodsAmount ? goodsAmount : @0.00;
+            
             NSArray *goodsList = [order.goodsParam objectForKey:@"list"];
             if (goodsList && [goodsList count] > 0) {
                 for (NSDictionary *goodsItem in goodsList) {
@@ -140,7 +149,12 @@
         //解析服务
         NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
         if (order.services && [order.services count] > 0) {
+            float servicesAmount = 0.00;
+            
             for (NSDictionary *servicesDict in order.services) {
+                NSNumber *serviceAmount = [servicesDict objectForKey:@"amount"];
+                servicesAmount += (serviceAmount ? [serviceAmount floatValue] : 0.00);
+                
                 NSArray *serviceList = [servicesDict objectForKey:@"list"];
                 NSString *typeName = [servicesDict objectForKey:@"remark"];
                 NSMutableArray *servicesGroup = [NSMutableArray arrayWithObjects:nil];
@@ -157,6 +171,8 @@
                     [servicesArray addObject:servicesGroup];
                 }
             }
+            
+            order.servicesAmount = [NSNumber numberWithFloat:servicesAmount];
         }
         order.services = servicesArray;
         
@@ -171,11 +187,13 @@
 #pragma mark - reloadData
 - (void) reloadData
 {
+    NSString *totalAmount = order && order.amount ? [NSString stringWithFormat:@"￥%@", order.amount] : @"-";
     self.viewStorage[@"case"] = @{
                                        @"no": intention.orderNo,
                                        @"status": intention.status,
                                        @"statusName": intention.statusName,
-                                       @"time": intention.createTime
+                                       @"time": intention.createTime,
+                                       @"totalAmount":totalAmount
                                        };
     
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.address ? intention.address : @"-")];
@@ -187,6 +205,72 @@
                                        @"buyerAddress": buyerAddress,
                                        @"remark": intention.remark ? intention.remark : @"-"
                                        };
+    
+    self.viewStorage[@"goods"] = @{
+                                   
+                                   @"goodsNumber": [NSNumber numberWithInteger:(order && order.goods ? [order.goods count] : 0)],
+                                   
+                                   @"goodsAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.goodsAmount ? [order.goodsAmount floatValue] : 0.00)],
+                                   
+                                   @"goodsList" : ({
+                                       NSMutableArray *goodsList = [NSMutableArray array];
+                                       
+                                       if (order && order.goods) {
+                                           for (GoodsEntity *goods in order.goods) {
+                                               [goodsList addObject:@{
+                                                                      @"name": goods.name,
+                                                                      @"number": [NSString stringWithFormat:@"x%@", goods.number],
+                                                                      @"price": [NSString stringWithFormat:@"￥%@", goods.price],
+                                                                      @"specName": goods.specName
+                                                                      }];
+                                           }
+                                       } else {
+                                           //没有商品
+                                           [goodsList addObject:@{
+                                                                  @"name": @"没有商品",
+                                                                  @"number": @"",
+                                                                  @"price": @"",
+                                                                  @"specName": @""
+                                                                  }];
+                                       }
+                                       
+                                       goodsList;
+                                   })
+                                   
+                                   };
+    
+    [self.goodsTable reloadData];
+    
+    self.viewStorage[@"services"] = @{
+                                      
+                                    @"servicesAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.servicesAmount ? [order.servicesAmount floatValue] : 0.00)],
+                                    
+                                    @"servicesList" : ({
+                                        NSMutableArray *servicesList = [NSMutableArray array];
+                                        
+                                        if (order && order.services) {
+                                            for (ServiceEntity *service in order.services) {
+                                                [servicesList addObject:@{
+                                                                       @"name": service.name,
+                                                                       @"price": [NSString stringWithFormat:@"￥%@", service.price],
+                                                                       @"typeName": service.typeName
+                                                                       }];
+                                            }
+                                        } else {
+                                            //没有服务
+                                            [servicesList addObject:@{
+                                                                      @"name": @"没有服务",
+                                                                      @"price": @"",
+                                                                      @"typeName": @""
+                                                                      }];
+                                        }
+                                        
+                                        servicesList;
+                                    })
+                                    
+                                    };
+    
+    [self.servicesTable reloadData];
     
     [self relayout];
 }
