@@ -212,10 +212,10 @@
                                    
                                    @"goodsAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.goodsAmount ? [order.goodsAmount floatValue] : 0.00)],
                                    
-                                   @"goodsList" : ({
+                                   @"goodsList": @{@"goodsItems":({
                                        NSMutableArray *goodsList = [NSMutableArray array];
                                        
-                                       if (order && order.goods) {
+                                       if (order && order.goods && [order.goods count] > 0) {
                                            for (GoodsEntity *goods in order.goods) {
                                                [goodsList addObject:@{
                                                                       @"name": goods.name,
@@ -235,7 +235,7 @@
                                        }
                                        
                                        goodsList;
-                                   })
+                                   })}
                                    
                                    };
     
@@ -245,28 +245,26 @@
                                       
                                     @"servicesAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.servicesAmount ? [order.servicesAmount floatValue] : 0.00)],
                                     
-                                    @"servicesList" : ({
+                                    @"servicesList" : @{@"servicesItems": ({
                                         NSMutableArray *servicesList = [NSMutableArray array];
                                         
-                                        if (order && order.services) {
+                                        if (order && order.services && [order.services count] > 0) {
                                             for (ServiceEntity *service in order.services) {
                                                 [servicesList addObject:@{
-                                                                       @"name": service.name,
-                                                                       @"price": [NSString stringWithFormat:@"￥%@", service.price],
-                                                                       @"typeName": service.typeName
+                                                                       @"name": service.typeName,
+                                                                       @"price": [NSString stringWithFormat:@"￥%@", service.price]
                                                                        }];
                                             }
                                         } else {
                                             //没有服务
                                             [servicesList addObject:@{
                                                                       @"name": @"没有服务",
-                                                                      @"price": @"",
-                                                                      @"typeName": @""
+                                                                      @"price": @""
                                                                       }];
                                         }
                                         
                                         servicesList;
-                                    })
+                                    })}
                                     
                                     };
     

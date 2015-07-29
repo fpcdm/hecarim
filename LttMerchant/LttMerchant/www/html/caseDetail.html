@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html class="no-js no-scroll" lang="">
+<html class="no-js" lang="">
     
     <head>
         
@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="../css/main.css"/>
         
         <style type="text/css">
+        
         .case-header {
             width: 100%;
             height: 80px;
@@ -120,6 +121,12 @@
             border-bottom: 0.5px solid #b2b2b2;
         }
         
+        .case-detail .content-right {
+            position: absolute;
+            right: 20px;
+            top: 0px;
+        }
+        
         .case-detail .table-header {
             width: 100%;
             height: 25px;
@@ -140,20 +147,47 @@
             color: black;
             border-radius: 3px;
             border: 0.5px solid #b2b2b2;
-            
-            position: absolute;
-            right: 20px;
-            top: 0px;
         }
         
-        .case-detail .table-body {
+        .table {
             border-top: 0.5px solid #b2b2b2;
+            display: block;
+            width: 100%;
+            height: 25px;
+            font-size: 14px;
+            z-index: 1;
+            background-color: white;
+            color: black;
+        }
+        
+        .table .table-item {
+            display: block;
+            width: 100%;
+            height: 25px;
+            background-color: white;
             border-bottom: 0.5px solid #b2b2b2;
         }
         
-        .case-detail .table-item {
+        .table .table-line {
             width: 100%;
-            height: 30px;
+            height: 25px;
+            padding-top: 2.5px;
+        }
+        
+        .table-goods {
+            height: 50px;
+        }
+        
+        .table-goods .table-item {
+            height: 50px;
+        }
+        
+        .table-services {
+            height: 25px;
+        }
+        
+        .table-services .table-item {
+            height: 25px;
         }
         
         .case-detail .table-footer {
@@ -161,20 +195,6 @@
             height: 20px;
             margin-top: 5px;
             margin-bottom: 5px;
-        }
-        
-        .case-detail .footer-right {
-            position: absolute;
-            right: 20px;
-            top: 0px;
-        }
-        
-        .case-detail .footer-number {
-            font-weight: bold;
-        }
-        
-        .case-detail .footer-amount {
-            font-weight: bold;
         }
         
         </style>
@@ -245,25 +265,31 @@
             
             <div class="table-header">
                 <label class="header-title">商品</label>
-                <UIButton id="editGoods" class="header-button">编辑</UIButton>
+                <UIButton id="editGoods" class="header-button content-right">编辑</UIButton>
             </div>
             
-            <UITableView id="goodsTable" class="table-body" columns="1" is-vertical>
+            <UITableView id="goodsTable" name="goodsList" class="table" columns="1" is-vertical>
                 
-                <UITableViewCell name="goodsList" class="table-item" is-row>
-                    <label name="name">-</label>
-                    
+                <UITableViewCell name="goodsItems" class="table-item" is-row>
+                    <div class="table-line">
+                        <label name="name"></label>
+                        <label class="content-right font-bold" name="price"></label>
+                    </div>
+                    <div class="table-line">
+                        <label name="specName" class="color-gray"></label>
+                        <label class="content-right color-gray" name="number"></label>
+                    </div>
                 </UITableViewCell>
                 
             </UITableView>
             
             <div class="table-footer">
-                <div class="footer-right">
+                <div class="content-right">
                     <label>共</label>
-                    <label class="footer-number" name="goodsNumber">0</label>
+                    <label class="font-bold" name="goodsNumber">0</label>
                     <label>件商品 </label>
                     <label> 小计金额：</label>
-                    <label class="footer-amount" name="goodsAmount">￥0.00</label>
+                    <label class="font-bold" name="goodsAmount">￥0.00</label>
                 </div>
             </div>
             
@@ -273,21 +299,24 @@
             
             <div class="table-header">
                 <label class="header-title">上门服务</label>
-                <UIButton id="editServices" class="header-button">编辑</UIButton>
+                <UIButton id="editServices" class="header-button content-right">编辑</UIButton>
             </div>
             
-            <UITableView id="servicesTable" class="table-body" columns="1" is-vertical>
+            <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical>
                 
-                <UITableViewCell name="servicesList" class="table-item" is-row>
-                    
+                <UITableViewCell name="servicesItems" class="table-item" is-row>
+                    <div class="table-line">
+                        <label name="name"></label>
+                        <label class="content-right font-bold" name="price"></label>
+                    </div>
                 </UITableViewCell>
                 
             </UITableView>
             
             <div class="table-footer">
-                <div class="footer-right">
+                <div class="content-right">
                     <label> 小计金额：</label>
-                    <label class="footer-amount" name="servicesAmount">￥0.00</label>
+                    <label class="font-bold" name="servicesAmount">￥0.00</label>
                 </div>
             </div>
         </div>
