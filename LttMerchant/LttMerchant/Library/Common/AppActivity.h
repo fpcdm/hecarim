@@ -31,6 +31,9 @@
     BOOL hideRemoteNotification;
 }
 
+//回调代码块(某些控制器需要回调上级控制器可以使用此方式实现)
+@property (copy) CallbackBlock callbackBlock;
+
 //检查远程通知
 - (void) checkRemoteNotification;
 

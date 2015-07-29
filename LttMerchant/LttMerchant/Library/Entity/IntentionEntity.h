@@ -18,6 +18,8 @@
 
 @property (nonatomic, retain) NSString *remark;
 
+@property (nonatomic, retain) NSString *employeeRemark;
+
 @property (nonatomic, retain) NSString *address;
 
 @property (nonatomic, retain) NSNumber *type;
@@ -31,6 +33,10 @@
 @property (nonatomic, retain) NSString *userName;
 
 @property (nonatomic, retain) NSString *userMobile;
+
+@property (nonatomic, retain) NSString *buyerName;
+
+@property (nonatomic, retain) NSString *buyerMobile;
 
 @property (nonatomic, retain) NSString *responseTime;
 

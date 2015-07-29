@@ -20,6 +20,8 @@
 
 @synthesize remark;
 
+@synthesize employeeRemark;
+
 @synthesize address;
 
 @synthesize status;
@@ -31,6 +33,10 @@
 @synthesize userName;
 
 @synthesize userMobile;
+
+@synthesize buyerName;
+
+@synthesize buyerMobile;
 
 @synthesize responseTime;
 

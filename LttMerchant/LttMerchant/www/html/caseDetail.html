@@ -17,19 +17,157 @@
         <link rel="stylesheet" type="text/css" href="../css/main.css"/>
         
         <style type="text/css">
-            .case-header {
-                width: 100%;
-                height: 80px;
-                background-color: #7984b5;
-            }
-            
+        .case-header {
+            width: 100%;
+            height: 80px;
+            background-color: #7984b5;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .case-info {
+            width: 100%;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            height: auto;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
+        }
+        
+        .item-icon {
+            position: absolute;
+            width: 50px;
+            height: 100%;
+        }
+        
+        .item-icon img {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px; 
+        }
+        
+        .item-info {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .item-info .item-line {
+            width: 100%;
+            height: 20px;
+            padding-left: 50px;
+        }
+        
+        .item-info .line-right {
+            position: absolute;
+            right: 10px;
+        }
+        
+        .item-info .line-button {
+            width: 50px;
+            height: 20px;
+            font-size: 14px;
+            background-color: white;
+            color: black;
+            border-radius: 3px;
+        }
+
+        .item-info .case-no {
+            font-weight: bold;
+            width: 100px;
+        }
+        
+        .item-info .case-time {
+            color: #cccccc;
+            font-size: 14px;
+        }
+        
+        .item-info .case-mobile {
+            border-bottom: 0.5px solid black;
+        }
+        
+        .item-info .textarea-address {
+            color: #585858;
+            font-size: 14px;
+            width: 100%;
+            border: 0px;
+            height: 40px;
+            inset-left: 36px;
+        }
+        
+        .item-info .textarea-remark {
+            margin-bottom: 10px;
+            color: #585858;
+            font-size: 14px;
+            width: 100%;
+            border: 0px;
+            height: 60px;
+            inset-left: 36px;
+        }
+        
         </style>
         
     </head>
     
     <body>
         
-        <div class="case-header">
+        <div class="case-header" name="case">
+            <div class="item-icon">
+                <img src="nopic" />
+            </div>
+            
+            <div class="item-info">
+                <div class="item-line">
+                    <label>编号：</label>
+                    <label class="case-no" name="no">-</label>
+                    <label class="line-right" name="statusName">-</label>
+                </div>
+                
+                <div class="item-line">
+                    <label class="case-time" name="time">-</label>
+                </div>
+                
+                <div class="item-line">
+                    <label>总金额：</label>
+                    <label name="totalAmount">-</label>
+                    
+                    <UIButton id="editCase" class="line-right line-button">编辑</UIButton>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="case-info" name="info">
+            <div class="item-icon">
+                <img src="nopic" />
+            </div>
+            <div class="item-info">
+                <div class="item-line">
+                    <label>下单人：</label>
+                    <label name="userName">-</label>
+                    <label>（</label>
+                    <label class="case-mobile" name="userMobile">-</label>
+                    <label>）</label>
+                </div>
+                
+                <div class="item-line margin-top-10">
+                    <label>服务联系人：</label>
+                    <label name="buyerName">-</label>
+                    <label>（</label>
+                    <label class="case-mobile" name="buyerMobile">-</label>
+                    <label>）</label>
+                </div>
+                
+                <textarea id="caseAddress" class="textarea-address" name="buyerAddress">服务地址：-</textarea>
+                
+                <div class="item-line margin-top-5">
+                    <label>客户留言：</label>
+                </div>
+                
+                <textarea id="caseRemark" class="textarea-remark" name="remark">-</textarea>
+                
+            </div>
         </div>
         
     </body>

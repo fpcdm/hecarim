@@ -12,8 +12,13 @@
 #import "IntentionHandler.h"
 #import "OrderHandler.h"
 #import "ServiceEntity.h"
+#import "UIView+Loading.h"
 
 @interface CaseDetailActivity ()
+
+@property (nonatomic, strong) UITextView *caseAddress;
+
+@property (nonatomic, strong) UITextView *caseRemark;
 
 @end
 
@@ -33,7 +38,10 @@
     [super viewDidAppear:animated];
     
     //加载数据
+    [self showLoading:TIP_LOADING_MESSAGE];
     [self loadData:^(id object){
+        [self hideLoading];
+        
         [self reloadData];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -52,6 +60,9 @@
 
 - (void)onTemplateLoaded
 {
+    //调整视图基本样式
+    self.caseAddress.editable = NO;
+    self.caseRemark.editable = NO;
     
 }
 
@@ -160,11 +171,21 @@
 #pragma mark - reloadData
 - (void) reloadData
 {
-    self.viewStorage[@"intention"] = @{
+    self.viewStorage[@"case"] = @{
                                        @"no": intention.orderNo,
                                        @"status": intention.status,
                                        @"statusName": intention.statusName,
                                        @"time": intention.createTime
+                                       };
+    
+    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.address ? intention.address : @"-")];
+    self.viewStorage[@"info"] = @{
+                                       @"userName": intention.userName ? intention.userName: @"-",
+                                       @"userMobile": intention.userMobile,
+                                       @"buyerName": intention.buyerName ? intention.buyerName : @"-",
+                                       @"buyerMobile": intention.buyerMobile ? intention.buyerMobile : @"-",
+                                       @"buyerAddress": buyerAddress,
+                                       @"remark": intention.remark ? intention.remark : @"-"
                                        };
     
     [self relayout];

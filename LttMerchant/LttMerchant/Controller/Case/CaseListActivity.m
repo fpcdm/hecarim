@@ -29,6 +29,9 @@
     BOOL hasMore;
     NSString *currentStatus;
     UIButton *currentButton;
+    
+    //返回页面是否需要刷新
+    BOOL needRefresh;
 }
 
 - (void)viewDidLoad {
@@ -51,7 +54,11 @@
     [super viewWillAppear:animated];
     
     if (currentStatus && currentButton) {
-        [self actionCaseList:currentButton status:currentStatus];
+        //返回时需要刷新
+        if (needRefresh) {
+            needRefresh = NO;
+            [self actionCaseList:currentButton status:currentStatus];
+        }
     //默认加载待接单
     } else {
         [self actionCaseList:_defaultButton status:CASE_STATUS_NEW];
@@ -172,7 +179,7 @@
                                                                @"statusName": [intention statusName],
                                                                @"statusColor": [intention statusColor],
                                                                @"time": [intention.createTime substringToIndex:16],
-                                                               @"name": intention.userName,
+                                                               @"name": intention.userName ? intention.userName : @"-",
                                                                @"mobile": intention.userMobile
                                                                }];
                                            
@@ -263,6 +270,12 @@
     //显示需求
     CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
     viewController.caseId = intention.id;
+    viewController.callbackBlock = ^(id object){
+        //标记可刷新
+        if (object && [@1 isEqualToNumber:object]) {
+            needRefresh = YES;
+        }
+    };
     [self pushViewController:viewController animated:YES];
 }
 
