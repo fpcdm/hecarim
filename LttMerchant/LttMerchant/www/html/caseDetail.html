@@ -17,6 +17,10 @@
         <link rel="stylesheet" type="text/css" href="../css/main.css"/>
         
         <style type="text/css">
+            
+        body {
+            height: auto;
+        }
         
         .case-header {
             width: 100%;
@@ -34,6 +38,7 @@
             height: auto;
             border-top: 0.5px solid #b2b2b2;
             border-bottom: 0.5px solid #b2b2b2;
+            margin-bottom: 10px;
         }
         
         .item-icon {
@@ -115,7 +120,7 @@
             background: white;
             font-size: 16px;
             color: black;
-            margin-top: 10px;
+            margin-bottom: 10px;
             padding-left: 10px;
             border-top: 0.5px solid #b2b2b2;
             border-bottom: 0.5px solid #b2b2b2;
@@ -150,14 +155,14 @@
         }
         
         .table {
-            border-top: 0.5px solid #b2b2b2;
             display: block;
             width: 100%;
-            height: 25px;
             font-size: 14px;
+            height: 25px;
             z-index: 1;
             background-color: white;
             color: black;
+            border-bottom: 0.5px solid #b2b2b2;
         }
         
         .table .table-item {
@@ -165,7 +170,7 @@
             width: 100%;
             height: 25px;
             background-color: white;
-            border-bottom: 0.5px solid #b2b2b2;
+            border-top: 0.5px solid #b2b2b2;
         }
         
         .table .table-line {
@@ -174,16 +179,8 @@
             padding-top: 2.5px;
         }
         
-        .table-goods {
-            height: 50px;
-        }
-        
         .table-goods .table-item {
             height: 50px;
-        }
-        
-        .table-services {
-            height: 25px;
         }
         
         .table-services .table-item {
@@ -320,6 +317,14 @@
                 </div>
             </div>
         </div>
+        
+        <UIButton id="competeButton" class="primary-button margin-bottom-10">接单</UIButton>
+        
+        <UIButton id="startButton" class="primary-button margin-bottom-10">开始服务</UIButton>
+        
+        <UIButton id="finishButton" class="primary-button margin-bottom-10">服务完成</UIButton>
+        
+        <UIButton id="cancelButton" class="secondary-button margin-bottom-10">取消订单</UIButton>
         
     </body>
     

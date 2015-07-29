@@ -206,16 +206,17 @@
                                        @"remark": intention.remark ? intention.remark : @"-"
                                        };
     
+    NSInteger goodsCount = order && order.goods ? [order.goods count] : 0;
     self.viewStorage[@"goods"] = @{
                                    
-                                   @"goodsNumber": [NSNumber numberWithInteger:(order && order.goods ? [order.goods count] : 0)],
+                                   @"goodsNumber": [NSNumber numberWithInteger:goodsCount],
                                    
                                    @"goodsAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.goodsAmount ? [order.goodsAmount floatValue] : 0.00)],
                                    
                                    @"goodsList": @{@"goodsItems":({
                                        NSMutableArray *goodsList = [NSMutableArray array];
                                        
-                                       if (order && order.goods && [order.goods count] > 0) {
+                                       if (goodsCount > 0) {
                                            for (GoodsEntity *goods in order.goods) {
                                                [goodsList addObject:@{
                                                                       @"name": goods.name,
@@ -239,8 +240,24 @@
                                    
                                    };
     
+    //自动切换样式并计算高度
+    if (goodsCount > 0) {
+        [self.goodsTable style_addClass:@"table-goods"];
+        [self.goodsTable restyle];
+        
+        //style_attr不生效，用选择器，下同
+        $(@"#goodsTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", goodsCount * 50]);
+    } else {
+        [self.goodsTable style_removeClass:@"table-goods"];
+        [self.goodsTable restyle];
+        
+        //style_attr不生效，用选择器，下同
+        $(@"#goodsTable").ATTR(@"height", @"25px");
+    }
+    
     [self.goodsTable reloadData];
     
+    NSInteger servicesCount = order && order.services ? [order.services count] : 0;
     self.viewStorage[@"services"] = @{
                                       
                                     @"servicesAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.servicesAmount ? [order.servicesAmount floatValue] : 0.00)],
@@ -248,7 +265,7 @@
                                     @"servicesList" : @{@"servicesItems": ({
                                         NSMutableArray *servicesList = [NSMutableArray array];
                                         
-                                        if (order && order.services && [order.services count] > 0) {
+                                        if (servicesCount > 0) {
                                             for (ServiceEntity *service in order.services) {
                                                 [servicesList addObject:@{
                                                                        @"name": service.typeName,

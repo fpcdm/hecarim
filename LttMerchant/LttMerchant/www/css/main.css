@@ -115,28 +115,80 @@ img, image {
     bottom: 10px;
 }
 
+.margin-10 {
+    margin: 10px;
+}
+
 .margin-top-5 {
     margin-top: 5px;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5px;
 }
 
 .margin-top-10 {
     margin-top: 10px;
 }
 
-.margin-top-20 {
-    margin-top: 20px;
+.margin-bottom-10 {
+    margin-bottom: 10px;
 }
 
 .margin-left-10 {
     margin-left: 10px;
 }
 
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
 .padding-top-10 {
     padding-top: 10px;
 }
 
+.padding-bottom-10 {
+    padding-bottom: 10px;
+}
+
 .padding-left-10 {
     padding-left: 10px;
+}
+
+.padding-right-10 {
+    padding-right: 10px;
+}
+
+.inset-10 {
+    inset: 10px;
+}
+
+.inset-left-10 {
+    inset-left: 10px;
+}
+
+.inset-right-10 {
+    inset-right: 10px;
+}
+
+.inset-top-10 {
+    inset-top: 10px;
+}
+
+.inset-bottom-10 {
+    inset-bottom: 10px;
 }
 
 .border {
@@ -160,4 +212,20 @@ img, image {
 
 .hide {
     display: none;
+}
+
+.primary-button, .secondary-button {
+    background-color: #0199FF;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #b2b2b2;
+    inset-left: 10px;
+    inset-right: 10px;
+}
+
+.secondary-button {
+    background-color: white;
+    color: black;
 }
