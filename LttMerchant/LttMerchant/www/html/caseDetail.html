@@ -220,7 +220,7 @@
                     <label>总金额：</label>
                     <label name="totalAmount">-</label>
                     
-                    <UIButton id="editCase" class="line-right line-button" style="visibility:hidden;">编辑</UIButton>
+                    <UIButton id="editCase" onclick="@selector(actionEditCase:)" class="line-right line-button" style="visibility:hidden;">编辑</UIButton>
                 </div>
                 
             </div>
@@ -262,7 +262,7 @@
             
             <div class="table-header">
                 <label class="header-title">商品</label>
-                <UIButton id="editGoods" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
+                <UIButton id="editGoods" onclick="@selector(actionEditGoods:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
             <UITableView id="goodsTable" name="goodsList" class="table" columns="1" is-vertical>
@@ -296,7 +296,7 @@
             
             <div class="table-header">
                 <label class="header-title">上门服务</label>
-                <UIButton id="editServices" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
+                <UIButton id="editServices" onclick="@selector(actionEditServices:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
             <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical>
@@ -318,13 +318,13 @@
             </div>
         </div>
         
-        <UIButton id="competeButton" class="primary-button case-button" style="display:none;">接单</UIButton>
+        <UIButton id="competeButton" onclick="@selector(actionCompeteCase:)" class="primary-button case-button" style="display:none;">接单</UIButton>
         
-        <UIButton id="startButton" class="primary-button case-button" style="display:none;">开始服务</UIButton>
+        <UIButton id="startButton" onclick="@selector(actionStartCase:)" class="primary-button case-button" style="display:none;">开始服务</UIButton>
         
-        <UIButton id="finishButton" class="primary-button case-button" style="display:none;">服务完成</UIButton>
+        <UIButton id="finishButton" onclick="@selector(actionFinishCase:)" class="primary-button case-button" style="display:none;">服务完成</UIButton>
         
-        <UIButton id="cancelButton" class="secondary-button case-button" style="display:none;">取消订单</UIButton>
+        <UIButton id="cancelButton" onclick="@selector(actionCancelCase:)" class="secondary-button case-button" style="display:none;">取消订单</UIButton>
         
     </body>
     

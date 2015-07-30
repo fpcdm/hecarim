@@ -12,6 +12,8 @@
 #import "IntentionHandler.h"
 #import "OrderHandler.h"
 #import "ServiceEntity.h"
+#import "CaseListActivity.h"
+#import "OrderFormViewController.h"
 #import "UIView+Loading.h"
 
 @interface CaseDetailActivity ()
@@ -30,18 +32,27 @@
 {
     IntentionEntity *intention;
     OrderEntity *order;
+    
+    //返回页面是否需要刷新
+    BOOL needRefresh;
 }
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     [super viewDidLoad];
+    
+    //第一次需要刷新
+    needRefresh = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self loadCase];
+    if (needRefresh) {
+        needRefresh = NO;
+        [self loadCase];
+    }
 }
 
 - (NSString *) templateName
@@ -56,12 +67,7 @@
 
 - (void)onTemplateLoaded
 {
-    //调整视图基本样式
-    self.caseAddress.editable = NO;
-    self.caseRemark.editable = NO;
     
-    self.goodsTable.scrollEnabled = NO;
-    self.servicesTable.scrollEnabled = NO;
 }
 
 - (void)onTemplateFailed
@@ -307,6 +313,14 @@
 //根据状态切换视图
 - (void) intentionStatusView
 {
+    //调整视图基本样式
+    self.caseAddress.editable = NO;
+    self.caseRemark.editable = NO;
+    
+    self.goodsTable.scrollEnabled = NO;
+    self.servicesTable.scrollEnabled = NO;
+    
+    //切换按钮状态
     if ([CASE_STATUS_NEW isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:NO];
         
@@ -316,6 +330,14 @@
         [self domDisplay:@"#goodsContainer" display:@"none"];
         [self domDisplay:@"#servicesContainer" display:@"none"];
         
+        [self domVisible:@"#editGoods" visible:NO];
+        [self domVisible:@"#editServices" visible:NO];
+        
+        [self domDisplay:@"#competeButton" display:@"block"];
+        [self domDisplay:@"#startButton" display:@"none"];
+        [self domDisplay:@"#finishButton" display:@"none"];
+        [self domDisplay:@"#cancelButton" display:@"none"];
+        
     } else if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
         [self domDisplay:@"#remarkContainer" display:@"block"];
@@ -323,6 +345,14 @@
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+        [self domVisible:@"#editGoods" visible:YES];
+        [self domVisible:@"#editServices" visible:YES];
+        
+        [self domDisplay:@"#competeButton" display:@"none"];
+        [self domDisplay:@"#startButton" display:@"block"];
+        [self domDisplay:@"#finishButton" display:@"none"];
+        [self domDisplay:@"#cancelButton" display:@"block"];
         
     } else if ([CASE_STATUS_CONFIRMED isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
@@ -332,6 +362,14 @@
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
         
+        [self domVisible:@"#editGoods" visible:YES];
+        [self domVisible:@"#editServices" visible:YES];
+        
+        [self domDisplay:@"#competeButton" display:@"none"];
+        [self domDisplay:@"#startButton" display:@"none"];
+        [self domDisplay:@"#finishButton" display:@"block"];
+        [self domDisplay:@"#cancelButton" display:@"block"];
+        
     } else if ([CASE_STATUS_TOPAY isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
         [self domDisplay:@"#remarkContainer" display:@"none"];
@@ -339,6 +377,14 @@
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+        [self domVisible:@"#editGoods" visible:NO];
+        [self domVisible:@"#editServices" visible:NO];
+        
+        [self domDisplay:@"#competeButton" display:@"none"];
+        [self domDisplay:@"#startButton" display:@"none"];
+        [self domDisplay:@"#finishButton" display:@"none"];
+        [self domDisplay:@"#cancelButton" display:@"none"];
         
     } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
@@ -348,6 +394,14 @@
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
         
+        [self domVisible:@"#editGoods" visible:NO];
+        [self domVisible:@"#editServices" visible:NO];
+        
+        [self domDisplay:@"#competeButton" display:@"none"];
+        [self domDisplay:@"#startButton" display:@"none"];
+        [self domDisplay:@"#finishButton" display:@"none"];
+        [self domDisplay:@"#cancelButton" display:@"none"];
+        
     } else if ([CASE_STATUS_SUCCESS isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
         [self domDisplay:@"#remarkContainer" display:@"none"];
@@ -355,6 +409,14 @@
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+        [self domVisible:@"#editGoods" visible:NO];
+        [self domVisible:@"#editServices" visible:NO];
+        
+        [self domDisplay:@"#competeButton" display:@"none"];
+        [self domDisplay:@"#startButton" display:@"none"];
+        [self domDisplay:@"#finishButton" display:@"none"];
+        [self domDisplay:@"#cancelButton" display:@"none"];
         
     }
     
@@ -377,14 +439,103 @@
     IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
     [intentionHandler competeIntention:intentionEntity success:^(NSArray *result){
         [self loadingSuccess:LocalString(@"TIP_CHALLENGE_SUCCESS") callback:^{
-            //todo: 跳转需求详情
-            CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
-            viewController.caseId = intention.id;
-            [self pushViewController:viewController animated:YES];
+            //标记列表刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            
+            //刷新需求
+            [self loadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
     }];
+}
+
+//取消需求
+- (void)actionCancelCase:(SamuraiSignal *)signal
+{
+    //获取数据
+    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
+    intentionEntity.id = self.caseId;
+    
+    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    
+    //调用接口
+    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
+    [intentionHandler giveupIntention:intentionEntity success:^(NSArray *result){
+        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+            //标记列表刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            
+            //跳转首页
+            CaseListActivity *viewController = [[CaseListActivity alloc] init];
+            [self toggleViewController:viewController animated:YES];
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+//开始服务
+- (void)actionStartCase:(SamuraiSignal *)signal
+{
+    OrderEntity *orderModel = [[OrderEntity alloc] init];
+    orderModel.no = intention.orderNo;
+    
+    NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
+    
+    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    
+    //调用接口
+    OrderHandler *orderHandler = [[OrderHandler alloc] init];
+    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+            //标记列表刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            
+            //刷新需求
+            [self loadCase];
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+//服务完成
+- (void)actionFinishCase:(SamuraiSignal *)signal
+{
+    OrderFormViewController *viewController = [[OrderFormViewController alloc] init];
+    viewController.intentionId = self.caseId;
+    viewController.callbackBlock = ^(id object) {
+        //刷新自己
+        needRefresh = YES;
+        
+        //标记列表刷新
+        if (self.callbackBlock) {
+            self.callbackBlock(@1);
+        }
+    };
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionEditCase:(SamuraiSignal *)signal
+{
+    [self actionEditGoods:signal];
+}
+
+- (void)actionEditGoods:(SamuraiSignal *)signal
+{
+    [self actionFinishCase:signal];
+}
+
+- (void)actionEditServices:(SamuraiSignal *)signal
+{
+    [self actionEditGoods:signal];
 }
 
 @end

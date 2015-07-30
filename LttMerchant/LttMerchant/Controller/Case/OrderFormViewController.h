@@ -9,7 +9,7 @@
 #import "AppActivity.h"
 #import "TPKeyboardAvoidingScrollView.h"
 
-@interface OrderFormViewController : AppActivity
+@interface OrderFormViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
 

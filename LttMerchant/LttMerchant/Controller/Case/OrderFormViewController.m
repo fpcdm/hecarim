@@ -7,7 +7,6 @@
 //
 
 #import "OrderFormViewController.h"
-#import "OrderDetailViewController.h"
 #import "BrandEntity.h"
 #import "CategoryEntity.h"
 #import "ModelEntity.h"
@@ -52,7 +51,6 @@
 - (void)viewDidLoad {
     [self.scrollView contentSizeToFit];
     
-    isIndexNavBar = YES;
     [super viewDidLoad];
     
     if (self.orderNo != nil) {
@@ -60,6 +58,11 @@
     } else {
         self.title = @"新建订单";
     }
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     //初始化view
     [self initView];
@@ -604,10 +607,12 @@
 {
     [self hideLoading];
     
+    if (self.callbackBlock) {
+        self.callbackBlock(nil);
+    }
+    
     //跳转订单详情
-    OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
-    viewController.orderNo = resOrder.no;
-    [self pushViewController:viewController animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

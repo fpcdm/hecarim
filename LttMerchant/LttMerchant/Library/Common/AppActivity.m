@@ -14,8 +14,8 @@
 #import "MenuViewController.h"
 #import "NotificationUtil.h"
 #import "CaseListActivity.h"
+#import "CaseDetailActivity.h"
 #import "AppView.h"
-#import "OrderDetailViewController.h"
 
 @interface AppActivity ()
 
@@ -84,8 +84,13 @@
 
 - (void)viewDidLayoutSubviews
 {
-    //自动重新布局父视图，解决最后的单元格显示不完全问题
-    [self relayout];
+    NSString *templateName = [self templateName];
+    if (templateName && [templateName length] > 0) {
+        //自动重新布局父视图，解决最后的单元格显示不完全问题
+        [self relayout];
+    } else {
+        [super viewDidLayoutSubviews];
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -232,8 +237,8 @@
             //跳转详情页面
             if (data) {
                 //@todo: 修改data为caseId
-                OrderDetailViewController *viewController = [[OrderDetailViewController alloc] init];
-                viewController.orderNo = data;
+                CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
+                viewController.caseId = @1;
                 [self.navigationController pushViewController:viewController animated:YES];
             }
         }
