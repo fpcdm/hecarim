@@ -218,7 +218,7 @@
                                        @"buyerName": intention.buyerName ? intention.buyerName : @"-",
                                        @"buyerMobile": intention.buyerMobile ? intention.buyerMobile : @"-",
                                        @"buyerAddress": buyerAddress,
-                                       @"remark": intention.remark && [intention.remark length] > 0 ? @"买手机的多少分手的法案的法师打发地方范德萨阿斯蒂芬\n买手机的\n买手机的\n买手机的买手机的买手机的买手机的买手机的买手机的买手机的买手机的" : @"-"
+                                       @"remark": intention.remark && [intention.remark length] > 0 ? intention.remark : @"-"
                                        };
     
     NSInteger goodsCount = order && order.goods ? [order.goods count] : 0;
