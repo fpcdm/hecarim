@@ -104,7 +104,6 @@
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
 		2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */; };
-		2F6683891AF9BA3F00D430D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F6683881AF9BA3F00D430D0 /* InfoPlist.strings */; };
 		2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A21B4B70B900E0F774 /* LocationUtil.m */; };
 		2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */; };
 		2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
@@ -169,6 +168,7 @@
 		2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FD1B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A3961B69BFDC0083365B /* InfoPlist.strings */; };
 		2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467631B43DA6500B2186F /* AudioToolbox.framework */; };
 		2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */; };
 		2FCAF6AE1B1FEF8400F3B084 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18A11B04848B00C3D09E /* CFNetwork.framework */; };
@@ -421,7 +421,6 @@
 		2F5FDDDA1B5F3E1800CBF2A7 /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
 		2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
 		2F6611461B0C697C0008D500 /* LttCustomer.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttCustomer.pch; sourceTree = "<group>"; };
-		2F6683881AF9BA3F00D430D0 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2F6796A11B4B70B900E0F774 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
 		2F6796A21B4B70B900E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F6796AA1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
@@ -550,6 +549,7 @@
 		2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001001B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		2FA0A3981B69C0000083365B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FA467631B43DA6500B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2FBF3F6C1B281CA400C0DC54 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
@@ -1057,7 +1057,7 @@
 				2FD795901AE7ACC900D51FB0 /* LttAppDelegate.m */,
 				2F7057FC1B4665F3000DBEB8 /* Images.xcassets */,
 				2F6611461B0C697C0008D500 /* LttCustomer.pch */,
-				2F6683881AF9BA3F00D430D0 /* InfoPlist.strings */,
+				2FA0A3961B69BFDC0083365B /* InfoPlist.strings */,
 				2FD7958C1AE7ACC900D51FB0 /* Info.plist */,
 				2FD7958D1AE7ACC900D51FB0 /* main.m */,
 			);
@@ -1833,6 +1833,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 2FD7957F1AE7ACC900D51FB0;
 			productRefGroup = 2FD795891AE7ACC900D51FB0 /* Products */;
@@ -1869,7 +1870,7 @@
 				2F2F224A1B3A4D0300428742 /* NotificationButtonBackground@2x.png in Resources */,
 				2F2F22441B3A4D0300428742 /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
 				2F2F22491B3A4D0300428742 /* NotificationButtonBackground.png in Resources */,
-				2F6683891AF9BA3F00D430D0 /* InfoPlist.strings in Resources */,
+				2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2087,6 +2088,17 @@
 			targetProxy = 2FD795A21AE7ACC900D51FB0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2FA0A3961B69BFDC0083365B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA0A3981B69C0000083365B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2FD795A91AE7ACC900D51FB0 /* Debug */ = {

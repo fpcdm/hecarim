@@ -119,7 +119,6 @@
 		2F6D3F151B3128CC007A4159 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EFA1B3128CC007A4159 /* UIView+MJExtension.m */; };
 		2F6DE5B91B676E09003178DE /* CaseDetailActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */; };
 		2F6DE5BC1B6775F9003178DE /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */; };
-		2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F70745D1AFC529900A1242A /* InfoPlist.strings */; };
 		2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD781B1D5EB500797799 /* BaseEntity.m */; };
 		2F74CD821B1D5F8100797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD811B1D5F8100797799 /* BaseView.m */; };
 		2F7A56EA1B09D51A00D12500 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18771B047CF600C3D09E /* libz.dylib */; };
@@ -469,6 +468,7 @@
 		2F90015F1B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001461B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001611B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		2FA0A3991B69C05B0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A39B1B69C05B0083365B /* InfoPlist.strings */; };
 		2FA467661B43EC2700B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467651B43EC2700B2186F /* AudioToolbox.framework */; };
 		2FCAF7A41B1FF1B000F3B084 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A31B1FF1B000F3B084 /* libRestKit.a */; };
 		2FCAF7A61B1FF25D00F3B084 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF7A51B1FF25D00F3B084 /* QuartzCore.framework */; };
@@ -744,7 +744,6 @@
 		2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailActivity.m; sourceTree = "<group>"; };
 		2F6DE5BA1B6775F9003178DE /* ServiceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceEntity.h; sourceTree = "<group>"; };
 		2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceEntity.m; sourceTree = "<group>"; };
-		2F70745D1AFC529900A1242A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2F74CD771B1D5EB500797799 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
 		2F74CD781B1D5EB500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD801B1D5F8100797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
@@ -1441,6 +1440,7 @@
 		2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001491B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		2FA0A39A1B69C05B0083365B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FA467651B43EC2700B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2FCAF73B1B1FF1AF00F3B084 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2FCAF73C1B1FF1AF00F3B084 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -2040,7 +2040,7 @@
 				2FD795CA1AE7ADD300D51FB0 /* Images.xcassets */,
 				2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */,
 				2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */,
-				2F70745D1AFC529900A1242A /* InfoPlist.strings */,
+				2FA0A39B1B69C05B0083365B /* InfoPlist.strings */,
 				2F6611471B0C6B890008D500 /* LttMerchant.pch */,
 				2FD795BE1AE7ADD300D51FB0 /* Info.plist */,
 				2FD795BF1AE7ADD300D51FB0 /* main.m */,
@@ -3836,6 +3836,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 2FD795B11AE7ADD300D51FB0;
 			productRefGroup = 2FD795BB1AE7ADD300D51FB0 /* Products */;
@@ -3856,7 +3857,7 @@
 				2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */,
 				2F16E6BE1B5DF84B007947D0 /* OrderFormViewController.xib in Resources */,
 				2F6D3F111B3128CC007A4159 /* MJRefresh.bundle in Resources */,
-				2F70745E1AFC529900A1242A /* InfoPlist.strings in Resources */,
+				2FA0A3991B69C05B0083365B /* InfoPlist.strings in Resources */,
 				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
 				2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */,
 				2F2F22721B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
@@ -4385,6 +4386,17 @@
 			targetProxy = 2FD795D41AE7ADD300D51FB0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2FA0A39B1B69C05B0083365B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA0A39A1B69C05B0083365B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2FD795DB1AE7ADD300D51FB0 /* Debug */ = {
