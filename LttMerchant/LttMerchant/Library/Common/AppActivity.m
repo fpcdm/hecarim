@@ -58,6 +58,25 @@
     return nil;
 }
 
+- (void) domCss:(NSString *)dom name:(NSString *)name value:(NSString *)value
+{
+    $(dom).ATTR(name, value);
+}
+
+- (void) domDisplay:(NSString *)dom display:(NSString *)display
+{
+    [self domCss:dom name:@"display" value:display];
+}
+
+- (void) domVisible:(NSString *)dom visible:(BOOL)visible
+{
+    if (visible) {
+        [self domCss:dom name:@"visibility" value:@"visible"];
+    } else {
+        [self domCss:dom name:@"visibility" value:@"hidden"];
+    }
+}
+
 - (void)viewDidLayoutSubviews
 {
     //自动重新布局父视图，解决最后的单元格显示不完全问题

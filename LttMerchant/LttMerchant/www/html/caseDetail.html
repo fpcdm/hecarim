@@ -183,10 +183,6 @@
             height: 50px;
         }
         
-        .table-services .table-item {
-            height: 25px;
-        }
-        
         .case-detail .table-footer {
             width: 100%;
             height: 20px;
@@ -194,11 +190,15 @@
             margin-bottom: 5px;
         }
         
+        .case-button {
+            margin-bottom: 10px;
+        }
+        
         </style>
         
     </head>
     
-    <body>
+    <body id="body">
         
         <div class="case-header" name="case">
             <div class="item-icon">
@@ -220,7 +220,7 @@
                     <label>总金额：</label>
                     <label name="totalAmount">-</label>
                     
-                    <UIButton id="editCase" class="line-right line-button">编辑</UIButton>
+                    <UIButton id="editCase" class="line-right line-button" style="visibility:hidden;">编辑</UIButton>
                 </div>
                 
             </div>
@@ -249,20 +249,20 @@
                 
                 <textarea id="caseAddress" class="textarea-address" name="buyerAddress">服务地址：-</textarea>
                 
-                <div class="item-line margin-top-5">
+                <div id="remarkContainer" class="item-line margin-top-5" style="display:none;">
                     <label>客户留言：</label>
                 </div>
                 
-                <textarea id="caseRemark" class="textarea-remark" name="remark">-</textarea>
+                <textarea id="caseRemark" class="textarea-remark" name="remark" style="display:none;">-</textarea>
                 
             </div>
         </div>
         
-        <div class="case-detail" name="goods">
+        <div id="goodsContainer" class="case-detail" name="goods" style="display:none;">
             
             <div class="table-header">
                 <label class="header-title">商品</label>
-                <UIButton id="editGoods" class="header-button content-right">编辑</UIButton>
+                <UIButton id="editGoods" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
             <UITableView id="goodsTable" name="goodsList" class="table" columns="1" is-vertical>
@@ -292,11 +292,11 @@
             
         </div>
         
-        <div class="case-detail" name="services">
+        <div id="servicesContainer" class="case-detail" name="services" style="display:none;">
             
             <div class="table-header">
                 <label class="header-title">上门服务</label>
-                <UIButton id="editServices" class="header-button content-right">编辑</UIButton>
+                <UIButton id="editServices" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
             <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical>
@@ -318,13 +318,13 @@
             </div>
         </div>
         
-        <UIButton id="competeButton" class="primary-button margin-bottom-10">接单</UIButton>
+        <UIButton id="competeButton" class="primary-button case-button" style="display:none;">接单</UIButton>
         
-        <UIButton id="startButton" class="primary-button margin-bottom-10">开始服务</UIButton>
+        <UIButton id="startButton" class="primary-button case-button" style="display:none;">开始服务</UIButton>
         
-        <UIButton id="finishButton" class="primary-button margin-bottom-10">服务完成</UIButton>
+        <UIButton id="finishButton" class="primary-button case-button" style="display:none;">服务完成</UIButton>
         
-        <UIButton id="cancelButton" class="secondary-button margin-bottom-10">取消订单</UIButton>
+        <UIButton id="cancelButton" class="secondary-button case-button" style="display:none;">取消订单</UIButton>
         
     </body>
     

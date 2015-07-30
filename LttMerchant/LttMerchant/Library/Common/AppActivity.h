@@ -53,4 +53,13 @@
 //视图名称
 - (NSString *) templateName;
 
+//修改选择器元素样式
+- (void) domCss: (NSString *) dom name: (NSString *) name value: (NSString *) value;
+
+//修改选择器元素display样式
+- (void) domDisplay: (NSString *) dom display: (NSString *) display;
+
+//设置选择器元素显示或隐藏（更改visibility[不会影响布局]，非display[影响布局]）
+- (void) domVisible: (NSString *) dom visible: (BOOL) visible;
+
 @end

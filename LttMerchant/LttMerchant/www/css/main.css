@@ -220,12 +220,12 @@ img, image {
     width: 100%;
     height: 40px;
     border-radius: 3px;
-    border: 1px solid #b2b2b2;
     inset-left: 10px;
     inset-right: 10px;
 }
 
 .secondary-button {
+    border: 1px solid #b2b2b2;
     background-color: white;
     color: black;
 }

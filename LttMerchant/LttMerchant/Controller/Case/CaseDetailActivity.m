@@ -41,15 +41,7 @@
 {
     [super viewDidAppear:animated];
     
-    //加载数据
-    [self showLoading:TIP_LOADING_MESSAGE];
-    [self loadData:^(id object){
-        [self hideLoading];
-        
-        [self reloadData];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
+    [self loadCase];
 }
 
 - (NSString *) templateName
@@ -83,6 +75,20 @@
 }
 
 #pragma mark - Data
+//加载需求并显示
+- (void) loadCase
+{
+    //加载数据
+    [self showLoading:TIP_LOADING_MESSAGE];
+    [self loadData:^(id object){
+        [self hideLoading];
+        
+        [self reloadData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
 //加载需求数据
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
@@ -246,13 +252,13 @@
         [self.goodsTable restyle];
         
         //style_attr不生效，用选择器，下同
-        $(@"#goodsTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", goodsCount * 50]);
+        [self domCss:@"#goodsTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", goodsCount * 50]];
     } else {
         [self.goodsTable style_removeClass:@"table-goods"];
         [self.goodsTable restyle];
         
         //style_attr不生效，用选择器，下同
-        $(@"#goodsTable").ATTR(@"height", @"25px");
+        [self domCss:@"#goodsTable" name:@"height" value:@"25px"];
     }
     
     [self.goodsTable reloadData];
@@ -285,8 +291,74 @@
                                     
                                     };
     
+    //自动切换样式并计算高度
+    if (servicesCount > 0) {
+        [self domCss:@"#servicesTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", servicesCount * 25]];
+    } else {
+        [self domCss:@"#servicesTable" name:@"height" value:@"25px"];
+    }
+    
     [self.servicesTable reloadData];
     
+    //根据需求状态切换视图显示效果
+    [self intentionStatusView];
+}
+
+//根据状态切换视图
+- (void) intentionStatusView
+{
+    if ([CASE_STATUS_NEW isEqualToString:intention.status]) {
+        [self domVisible:@"#editCase" visible:NO];
+        
+        [self domDisplay:@"#remarkContainer" display:@"block"];
+        [self domDisplay:@"#caseRemark" display:@"block"];
+        
+        [self domDisplay:@"#goodsContainer" display:@"none"];
+        [self domDisplay:@"#servicesContainer" display:@"none"];
+        
+    } else if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
+        [self domVisible:@"#editCase" visible:YES];
+        [self domDisplay:@"#remarkContainer" display:@"block"];
+        [self domDisplay:@"#caseRemark" display:@"block"];
+        
+        [self domDisplay:@"#goodsContainer" display:@"block"];
+        [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+    } else if ([CASE_STATUS_CONFIRMED isEqualToString:intention.status]) {
+        [self domVisible:@"#editCase" visible:YES];
+        [self domDisplay:@"#remarkContainer" display:@"block"];
+        [self domDisplay:@"#caseRemark" display:@"block"];
+        
+        [self domDisplay:@"#goodsContainer" display:@"block"];
+        [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+    } else if ([CASE_STATUS_TOPAY isEqualToString:intention.status]) {
+        [self domVisible:@"#editCase" visible:YES];
+        [self domDisplay:@"#remarkContainer" display:@"none"];
+        [self domDisplay:@"#caseRemark" display:@"none"];
+        
+        [self domDisplay:@"#goodsContainer" display:@"block"];
+        [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+    } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
+        [self domVisible:@"#editCase" visible:YES];
+        [self domDisplay:@"#remarkContainer" display:@"none"];
+        [self domDisplay:@"#caseRemark" display:@"none"];
+        
+        [self domDisplay:@"#goodsContainer" display:@"block"];
+        [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+    } else if ([CASE_STATUS_SUCCESS isEqualToString:intention.status]) {
+        [self domVisible:@"#editCase" visible:YES];
+        [self domDisplay:@"#remarkContainer" display:@"none"];
+        [self domDisplay:@"#caseRemark" display:@"none"];
+        
+        [self domDisplay:@"#goodsContainer" display:@"block"];
+        [self domDisplay:@"#servicesContainer" display:@"block"];
+        
+    }
+    
+    //重新布局
     [self relayout];
 }
 
