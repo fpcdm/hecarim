@@ -71,7 +71,7 @@
     if (!user) {
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeActivity"],
-                    @[@"登陆", @"LoginViewController"],
+                    @[@"登陆", @"LoginActivity"],
                     nil];
         
         userNameLabel.text = @"未登录";
@@ -82,7 +82,7 @@
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeActivity"],
                     @[@"服务单", @"CaseListActivity"],
-                    @[@"退出", @"LoginViewController", @"logout"],
+                    @[@"退出", @"LoginActivity", @"logout"],
                     nil];
         
         userNameLabel.text = user.name ? user.name : user.mobile;

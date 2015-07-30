@@ -10,7 +10,6 @@
 #import "LttNavigationController.h"
 #import "LttAppDelegate.h"
 #import "AppExtension.h"
-#import "LoginViewController.h"
 #import "REFrostedViewController.h"
 #import "MenuViewController.h"
 #import "NotificationUtil.h"
@@ -40,8 +39,11 @@
     }
     
     //加载模板
-    NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
-    [self loadViewTemplate:viewPath];
+    NSString *templateName = [self templateName];
+    if (templateName && [templateName length] > 0) {
+        NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
+        [self loadViewTemplate:viewPath];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +52,10 @@
 
 - (void) dealloc
 {
-    [self unloadViewTemplate];
+    NSString *templateName = [self templateName];
+    if (templateName && [templateName length] > 0) {
+        [self unloadViewTemplate];
+    }
 }
 
 - (NSString *)templateName

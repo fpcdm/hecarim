@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "AppActivity.h"
 
-@interface ApplyDetailViewController : AppViewController
+@interface ApplyDetailViewController : AppActivity
 
 @property (weak, nonatomic) IBOutlet UILabel *brandLabel;
 

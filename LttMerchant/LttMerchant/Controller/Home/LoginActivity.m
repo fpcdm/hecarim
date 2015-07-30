@@ -1,40 +1,32 @@
 //
-//  LoginViewController.m
+//  LoginActivity.m
 //  LttMerchant
 //
-//  Created by wuyong on 15/4/27.
+//  Created by wuyong on 15/7/30.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "LoginView.h"
+#import "LoginActivity.h"
 #import "UserEntity.h"
 #import "ValidateUtil.h"
 #import "AppExtension.h"
 #import "HomeActivity.h"
 #import "UserHandler.h"
 
-@interface LoginViewController () <LoginViewDelegate>
+@interface LoginActivity ()
+
+@property (nonatomic, strong) UITextField *mobileField;
+
+@property (nonatomic, strong) UITextField *passwordField;
 
 @end
 
-@implementation LoginViewController
-{
-    LoginView *loginView;
-}
-
-- (void)loadView {
-    loginView = [[LoginView alloc] init];
-    loginView.delegate = self;
-    self.view = loginView;
-}
+@implementation LoginActivity
 
 - (void)viewDidLoad {
     isMenuEnabled = NO;
     hideBackButton = YES;
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"两条腿工作台登陆";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -47,9 +39,39 @@
     }
 }
 
-#pragma mark - Action
-- (void)actionLogin:(UserEntity *)user
+- (NSString *) templateName {
+    return @"login.html";
+}
+
+#pragma mark -
+- (void)onTemplateLoading
 {
+}
+
+- (void)onTemplateLoaded
+{
+    self.mobileField.keyboardType = UIKeyboardTypePhonePad;
+    
+    self.passwordField.secureTextEntry = YES;
+}
+
+- (void)onTemplateFailed
+{
+    
+}
+
+- (void)onTemplateCancelled
+{
+    
+}
+
+#pragma mark - Action
+- (void)actionLogin:(SamuraiSignal *)signal
+{
+    //记录用户信息
+    UserEntity *user = [[UserEntity alloc] init];
+    user.mobile = self.mobileField.text;
+    user.password = self.passwordField.text;
     user.type = USER_TYPE_MERCHANT;
     user.deviceType = @"ios";
     user.deviceId = [[StorageUtil sharedStorage] getDeviceId];

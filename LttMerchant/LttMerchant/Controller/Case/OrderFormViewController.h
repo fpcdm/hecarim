@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "AppActivity.h"
 #import "TPKeyboardAvoidingScrollView.h"
 
-@interface OrderFormViewController : AppViewController
+@interface OrderFormViewController : AppActivity
 
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
 

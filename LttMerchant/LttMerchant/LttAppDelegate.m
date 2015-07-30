@@ -9,7 +9,7 @@
 #import "LttAppDelegate.h"
 #import "LttNavigationController.h"
 #import "MenuViewController.h"
-#import "LoginViewController.h"
+#import "LoginActivity.h"
 #import "HomeActivity.h"
 #import "AppExtension.h"
 #import "IntentionEntity.h"
@@ -67,7 +67,7 @@
     //是否登录
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     if (!user) {
-        viewController = [[LoginViewController alloc] init];
+        viewController = [[LoginActivity alloc] init];
     } else {
         viewController = [[HomeActivity alloc] init];
     }
@@ -95,7 +95,7 @@
             //清除用户信息
             [[StorageUtil sharedStorage] setUser:nil];
             
-            LoginViewController *loginViewController = [[LoginViewController alloc] init];
+            LoginActivity *loginViewController = [[LoginActivity alloc] init];
             loginViewController.tokenExpired = YES;
             [navigationController pushViewController:loginViewController animated:YES];
             return NO;
@@ -249,7 +249,7 @@
     UIViewController *viewController = [navigationController.viewControllers lastObject];
     if (viewController && [viewController isViewLoaded] &&
         [viewController respondsToSelector:@selector(checkRemoteNotification)]) {
-        [(AppViewController *) viewController checkRemoteNotification];
+        [viewController performSelector:@selector(checkRemoteNotification)];
     }
 }
 

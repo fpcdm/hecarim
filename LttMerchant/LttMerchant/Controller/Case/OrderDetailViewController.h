@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "AppActivity.h"
 
-@interface OrderDetailViewController : AppViewController
+@interface OrderDetailViewController : AppActivity
 
 @property (weak, nonatomic) IBOutlet UIView *qrcodeView;
 
