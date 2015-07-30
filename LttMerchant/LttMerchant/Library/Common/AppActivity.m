@@ -39,11 +39,8 @@
     }
     
     //加载模板
-    NSString *templateName = [self templateName];
-    if (templateName && [templateName length] > 0) {
-        NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
-        [self loadViewTemplate:viewPath];
-    }
+    NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
+    [self loadViewTemplate:viewPath];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,10 +49,7 @@
 
 - (void) dealloc
 {
-    NSString *templateName = [self templateName];
-    if (templateName && [templateName length] > 0) {
-        [self unloadViewTemplate];
-    }
+    [self unloadViewTemplate];
 }
 
 - (NSString *)templateName
@@ -84,13 +78,8 @@
 
 - (void)viewDidLayoutSubviews
 {
-    NSString *templateName = [self templateName];
-    if (templateName && [templateName length] > 0) {
-        //自动重新布局父视图，解决最后的单元格显示不完全问题
-        [self relayout];
-    } else {
-        [super viewDidLayoutSubviews];
-    }
+    //自动重新布局父视图，解决最后的单元格显示不完全问题
+    [self relayout];
 }
 
 - (void) viewWillAppear:(BOOL)animated

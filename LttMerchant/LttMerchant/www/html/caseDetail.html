@@ -94,23 +94,24 @@
             border-bottom: 0.5px solid #b2b2b2;
         }
         
-        .item-info .textarea-address {
-            color: #585858;
-            font-size: 14px;
-            width: 100%;
-            border: 0px;
-            height: 40px;
-            inset-left: 36px;
-        }
-        
-        .item-info .textarea-remark {
+        .item-info .case-address {
             margin-bottom: 10px;
             color: #585858;
             font-size: 14px;
             width: 100%;
+            height: 35px;
             border: 0px;
-            height: 60px;
-            inset-left: 36px;
+            padding-left: 50px;
+        }
+        
+        .item-info .case-remark {
+            margin-bottom: 10px;
+            color: #585858;
+            font-size: 14px;
+            width: 100%;
+            height: 52px;
+            border: 0px;
+            padding-left: 50px;
         }
         
         /* 商品和服务 */
@@ -247,13 +248,13 @@
                     <label>）</label>
                 </div>
                 
-                <textarea id="caseAddress" class="textarea-address" name="buyerAddress">服务地址：-</textarea>
+                <UIScrollView id="caseAddress" class="case-address" name="buyerAddress">服务地址：-</UIScrollView>
                 
-                <div id="remarkContainer" class="item-line margin-top-5" style="display:none;">
+                <div id="remarkTitle" class="item-line" style="display:none;">
                     <label>客户留言：</label>
                 </div>
                 
-                <textarea id="caseRemark" class="textarea-remark" name="remark" style="display:none;">-</textarea>
+                <UIScrollView id="caseRemark" class="case-remark" name="remark" style="display:none;">-</UIScrollView>
                 
             </div>
         </div>

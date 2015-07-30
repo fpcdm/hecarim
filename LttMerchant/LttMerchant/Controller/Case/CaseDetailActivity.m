@@ -18,10 +18,6 @@
 
 @interface CaseDetailActivity ()
 
-@property (nonatomic, strong) UITextView *caseAddress;
-
-@property (nonatomic, strong) UITextView *caseRemark;
-
 @property (nonatomic, strong) UITableView *goodsTable;
 
 @property (nonatomic, strong) UITableView *servicesTable;
@@ -67,7 +63,14 @@
 
 - (void)onTemplateLoaded
 {
+    //调整视图基本样式
+    self.goodsTable.scrollEnabled = NO;
+    self.servicesTable.scrollEnabled = NO;
     
+    //调整联系地址和客户留言宽度
+    NSString *contentWidth = [NSString stringWithFormat:@"%lfpx", (SCREEN_WIDTH - 60)];
+    [self domCss:@"#caseAddress" name:@"width" value:contentWidth];
+    [self domCss:@"#caseRemark" name:@"width" value:contentWidth];
 }
 
 - (void)onTemplateFailed
@@ -208,14 +211,14 @@
                                        @"totalAmount":totalAmount
                                        };
     
-    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.address ? intention.address : @"-")];
+    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.address && [intention.address length] > 0 ? intention.address : @"-")];
     self.viewStorage[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
                                        @"userMobile": intention.userMobile,
                                        @"buyerName": intention.buyerName ? intention.buyerName : @"-",
                                        @"buyerMobile": intention.buyerMobile ? intention.buyerMobile : @"-",
                                        @"buyerAddress": buyerAddress,
-                                       @"remark": intention.remark ? intention.remark : @"-"
+                                       @"remark": intention.remark && [intention.remark length] > 0 ? @"买手机的多少分手的法案的法师打发地方范德萨阿斯蒂芬\n买手机的\n买手机的\n买手机的买手机的买手机的买手机的买手机的买手机的买手机的买手机的" : @"-"
                                        };
     
     NSInteger goodsCount = order && order.goods ? [order.goods count] : 0;
@@ -313,19 +316,12 @@
 //根据状态切换视图
 - (void) intentionStatusView
 {
-    //调整视图基本样式
-    self.caseAddress.editable = NO;
-    self.caseRemark.editable = NO;
-    
-    self.goodsTable.scrollEnabled = NO;
-    self.servicesTable.scrollEnabled = NO;
-    
     //切换按钮状态
     if ([CASE_STATUS_NEW isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:NO];
         
-        [self domDisplay:@"#remarkContainer" display:@"block"];
         [self domDisplay:@"#caseRemark" display:@"block"];
+        [self domDisplay:@"#remarkTitle" display:@"block"];
         
         [self domDisplay:@"#goodsContainer" display:@"none"];
         [self domDisplay:@"#servicesContainer" display:@"none"];
@@ -340,8 +336,9 @@
         
     } else if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
-        [self domDisplay:@"#remarkContainer" display:@"block"];
+        
         [self domDisplay:@"#caseRemark" display:@"block"];
+        [self domDisplay:@"#remarkTitle" display:@"block"];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -356,8 +353,9 @@
         
     } else if ([CASE_STATUS_CONFIRMED isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
-        [self domDisplay:@"#remarkContainer" display:@"block"];
+        
         [self domDisplay:@"#caseRemark" display:@"block"];
+        [self domDisplay:@"#remarkTitle" display:@"block"];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -372,8 +370,9 @@
         
     } else if ([CASE_STATUS_TOPAY isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
-        [self domDisplay:@"#remarkContainer" display:@"none"];
+        
         [self domDisplay:@"#caseRemark" display:@"none"];
+        [self domDisplay:@"#remarkTitle" display:@"none"];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -388,8 +387,9 @@
         
     } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
-        [self domDisplay:@"#remarkContainer" display:@"none"];
+        
         [self domDisplay:@"#caseRemark" display:@"none"];
+        [self domDisplay:@"#remarkTitle" display:@"none"];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -404,8 +404,9 @@
         
     } else if ([CASE_STATUS_SUCCESS isEqualToString:intention.status]) {
         [self domVisible:@"#editCase" visible:YES];
-        [self domDisplay:@"#remarkContainer" display:@"none"];
+        
         [self domDisplay:@"#caseRemark" display:@"none"];
+        [self domDisplay:@"#remarkTitle" display:@"none"];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
