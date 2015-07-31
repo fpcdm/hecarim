@@ -93,6 +93,8 @@
         intention = [result firstObject];
         
         NSLog(@"需求数据：%@", [intention toDictionary]);
+        
+        success(nil);
     } failure:^(ErrorEntity *error){
         failure(error);
     }];
