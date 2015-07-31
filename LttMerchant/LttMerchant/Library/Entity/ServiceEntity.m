@@ -14,8 +14,6 @@
 
 @synthesize name;
 
-@synthesize number;
-
 @synthesize price;
 
 @synthesize typeId;
@@ -24,8 +22,7 @@
 
 - (NSNumber *) total
 {
-    NSNumber *total = [NSNumber numberWithDouble:([self.price doubleValue] * [self.number doubleValue])];
-    return total;
+    return self.price ? self.price : @0.00;
 }
 
 @end

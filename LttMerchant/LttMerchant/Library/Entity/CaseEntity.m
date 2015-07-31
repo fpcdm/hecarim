@@ -1,58 +1,20 @@
 //
-//  IntentionModel.m
-//  LttCustomer
+//  CaseEntity.m
+//  LttMerchant
 //
-//  Created by wuyong on 15/5/6.
+//  Created by wuyong on 15/7/31.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "IntentionEntity.h"
+#import "CaseEntity.h"
 
-@implementation IntentionEntity
+@implementation CaseEntity
 
-@synthesize id;
-
-@synthesize no;
-
-@synthesize type;
-
-@synthesize location;
-
-@synthesize remark;
-
-@synthesize employeeRemark;
-
-@synthesize address;
-
-@synthesize status;
-
-@synthesize createTime;
-
-@synthesize userId;
-
-@synthesize userName;
-
-@synthesize userMobile;
-
-@synthesize buyerName;
-
-@synthesize buyerMobile;
-
-@synthesize responseTime;
-
-@synthesize responseStatus;
-
-@synthesize orderNo;
-
-@synthesize employeeId;
-
-@synthesize employeeName;
-
-@synthesize employeeMobile;
-
-@synthesize employeeAvatar;
-
-@synthesize details;
+@synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName,
+            buyerName, buyerMobile, buyerAddress, customerRemark,
+            stuffId, stuffName, stuffMobile, stuffAvatar, stuffRemark,
+            userId, userName, userMobile, userAvatar,
+            totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 
 - (NSString *)statusName
 {
@@ -93,11 +55,6 @@
 - (BOOL) isFail
 {
     return [CASE_STATUS_MEMBER_CANCEL isEqualToString:self.status] || [CASE_STATUS_MERCHANT_CANCEL isEqualToString:self.status];
-}
-
-- (BOOL) hasOrder
-{
-    return [CASE_STATUS_TOPAY isEqualToString:self.status] || [CASE_STATUS_PAYED isEqualToString:self.status] || [CASE_STATUS_SUCCESS isEqualToString:self.status];
 }
 
 @end

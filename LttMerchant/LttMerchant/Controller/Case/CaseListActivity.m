@@ -8,8 +8,8 @@
 
 #import "CaseListActivity.h"
 #import "MJRefreshScrollView.h"
-#import "IntentionEntity.h"
-#import "IntentionHandler.h"
+#import "CaseEntity.h"
+#import "CaseHandler.h"
 #import "CaseDetailActivity.h"
 #import "AppView.h"
 
@@ -70,20 +70,15 @@
     //分页加载
     page++;
     
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"page":[NSNumber numberWithInt:page],
                             @"pagesize":[NSNumber numberWithInt:LTT_PAGESIZE_DEFAULT],
                             @"status": currentStatus
                             };
     NSLog(@"request param: %@", param);
     
-    [intentionHandler queryCases:param success:^(NSArray *result){
-        for (IntentionEntity *intention in result) {
-            //没有详情取备注
-            if ((!intention.details || [intention.details count] < 1) && intention.remark) {
-                intention.details = @[@{@"title": intention.remark}];
-            }
-            
+    [caseHandler queryCases:param success:^(NSArray *result){
+        for (CaseEntity *intention in result) {
             [caseList addObject:intention];
         }
         
@@ -172,15 +167,15 @@
                                    @"cases" : ({
                                        NSMutableArray *cases = [NSMutableArray array];
                                        
-                                       for (IntentionEntity *intention in caseList) {
+                                       for (CaseEntity *intention in caseList) {
                                            [cases addObject: @{
-                                                               @"no": intention.orderNo,
+                                                               @"no": intention.no,
                                                                @"status": intention.status,
                                                                @"statusName": [intention statusName],
                                                                @"statusColor": [intention statusColor],
                                                                @"time": [intention.createTime substringToIndex:16],
-                                                               @"name": intention.userName ? intention.userName : @"-",
-                                                               @"mobile": intention.userMobile
+                                                               @"name": intention.buyerName ? intention.buyerName : @"-",
+                                                               @"mobile": intention.buyerMobile
                                                                }];
                                            
                                        }
@@ -262,7 +257,7 @@
 - (void)actionCaseDetail: (SamuraiSignal *)signal
 {
     //获取数据
-    IntentionEntity *intention = [caseList objectAtIndex:signal.sourceIndexPath.row];
+    CaseEntity *intention = [caseList objectAtIndex:signal.sourceIndexPath.row];
     
     //失败不让跳转
     if ([intention isFail]) return;

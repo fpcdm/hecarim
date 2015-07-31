@@ -10,9 +10,9 @@
 #import "BrandEntity.h"
 #import "CategoryEntity.h"
 #import "ModelEntity.h"
-#import "IntentionEntity.h"
 #import "OrderEntity.h"
-#import "IntentionHandler.h"
+#import "CaseHandler.h"
+#import "CaseEntity.h"
 #import "GoodsHandler.h"
 #import "OrderHandler.h"
 
@@ -33,7 +33,7 @@
     NSNumber *price;
     
     //暂时只支持一个商品
-    IntentionEntity *intention;
+    CaseEntity *intention;
     OrderEntity *order;
     GoodsEntity *orderGoods;
 }
@@ -116,12 +116,12 @@
 {
     [self showLoading:LocalString(@"TIP_LOADING_MESSAGE")];
     
-    IntentionEntity *intentionModel = [[IntentionEntity alloc] init];
+    CaseEntity *intentionModel = [[CaseEntity alloc] init];
     intentionModel.id = self.intentionId;
     
     //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler queryIntention:intentionModel success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryCase:intentionModel success:^(NSArray *result){
         [self hideLoading];
         
         intention = [result firstObject];

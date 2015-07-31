@@ -7,9 +7,9 @@
 //
 
 #import "CaseEditActivity.h"
-#import "IntentionEntity.h"
+#import "CaseEntity.h"
+#import "CaseHandler.h"
 #import "OrderEntity.h"
-#import "IntentionHandler.h"
 #import "OrderHandler.h"
 #import "UITextView+Placeholder.h"
 
@@ -21,7 +21,7 @@
 
 @implementation CaseEditActivity
 {
-    IntentionEntity *intention;
+    CaseEntity *intention;
     OrderEntity *order;
 }
 
@@ -84,44 +84,15 @@
     //查询需求
     NSLog(@"intentionId: %@", self.caseId);
     
-    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
     
     //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryCase:intentionEntity success:^(NSArray *result){
         intention = [result firstObject];
         
         NSLog(@"需求数据：%@", [intention toDictionary]);
-        
-        //是否需要查询订单
-        if ([intention hasOrder]) {
-            [self loadOrderData:success failure:failure];
-        } else {
-            success(nil);
-        }
-    } failure:^(ErrorEntity *error){
-        failure(error);
-    }];
-}
-
-//加载订单数据
-- (void)loadOrderData:(CallbackBlock)success failure:(CallbackBlock)failure
-{
-    //查询订单
-    NSLog(@"orderNo: %@", intention.orderNo);
-    
-    OrderEntity *orderEntity = [[OrderEntity alloc] init];
-    orderEntity.no = intention.orderNo;
-    
-    //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler queryOrder:orderEntity success:^(NSArray *result){
-        order = [result firstObject];
-        
-        NSLog(@"订单数据：%@", [order toDictionary]);
-        
-        success(nil);
     } failure:^(ErrorEntity *error){
         failure(error);
     }];
@@ -132,7 +103,7 @@
 {
     NSString *totalAmount = order && order.amount ? [NSString stringWithFormat:@"￥%@", order.amount] : @"-";
     self.viewStorage[@"case"] = @{
-                                  @"no": intention.orderNo,
+                                  @"no": intention.no,
                                   @"status": intention.status,
                                   @"statusName": intention.statusName,
                                   @"time": intention.createTime,

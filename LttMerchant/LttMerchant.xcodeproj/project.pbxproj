@@ -11,6 +11,8 @@
 		2F0E37D41B6B215C00CFE2E6 /* ServiceListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */; };
 		2F0E37D71B6B216E00CFE2E6 /* GoodsFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */; };
 		2F0E37DA1B6B218400CFE2E6 /* ServiceFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */; };
+		2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */; };
+		2F0E37E01B6B66B100CFE2E6 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */; };
 		2F16E6A11B5DF84B007947D0 /* OrderFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */; };
 		2F16E6A21B5DF84B007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6601B5DF84B007947D0 /* HomeActivity.m */; };
 		2F16E6A41B5DF84B007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6641B5DF84B007947D0 /* LttNavigationController.m */; };
@@ -24,12 +26,10 @@
 		2F16E6AE1B5DF84B007947D0 /* CategoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67B1B5DF84B007947D0 /* CategoryEntity.m */; };
 		2F16E6AF1B5DF84B007947D0 /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67D1B5DF84B007947D0 /* DeviceEntity.m */; };
 		2F16E6B01B5DF84B007947D0 /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */; };
-		2F16E6B11B5DF84B007947D0 /* IntentionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6811B5DF84B007947D0 /* IntentionEntity.m */; };
 		2F16E6B21B5DF84B007947D0 /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6831B5DF84B007947D0 /* ModelEntity.m */; };
 		2F16E6B31B5DF84B007947D0 /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6851B5DF84B007947D0 /* OrderEntity.m */; };
 		2F16E6B41B5DF84B007947D0 /* specEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6871B5DF84B007947D0 /* specEntity.m */; };
 		2F16E6B51B5DF84B007947D0 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */; };
-		2F16E6B61B5DF84B007947D0 /* IntentionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68C1B5DF84B007947D0 /* IntentionHandler.m */; };
 		2F16E6B71B5DF84B007947D0 /* OrderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68E1B5DF84B007947D0 /* OrderHandler.m */; };
 		2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6901B5DF84B007947D0 /* UserHandler.m */; };
 		2F16E6BE1B5DF84B007947D0 /* OrderFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */; };
@@ -543,6 +543,10 @@
 		2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsFormActivity.m; sourceTree = "<group>"; };
 		2F0E37D81B6B218400CFE2E6 /* ServiceFormActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceFormActivity.h; sourceTree = "<group>"; };
 		2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFormActivity.m; sourceTree = "<group>"; };
+		2F0E37DB1B6B62E200CFE2E6 /* CaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseEntity.h; sourceTree = "<group>"; };
+		2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEntity.m; sourceTree = "<group>"; };
+		2F0E37DE1B6B66B100CFE2E6 /* CaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseHandler.h; sourceTree = "<group>"; };
+		2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseHandler.m; sourceTree = "<group>"; };
 		2F16E64F1B5DF84B007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E6501B5DF84B007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E6511B5DF84B007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -572,8 +576,6 @@
 		2F16E67D1B5DF84B007947D0 /* DeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEntity.m; sourceTree = "<group>"; };
 		2F16E67E1B5DF84B007947D0 /* GoodsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsEntity.h; sourceTree = "<group>"; };
 		2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsEntity.m; sourceTree = "<group>"; };
-		2F16E6801B5DF84B007947D0 /* IntentionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionEntity.h; sourceTree = "<group>"; };
-		2F16E6811B5DF84B007947D0 /* IntentionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionEntity.m; sourceTree = "<group>"; };
 		2F16E6821B5DF84B007947D0 /* ModelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEntity.h; sourceTree = "<group>"; };
 		2F16E6831B5DF84B007947D0 /* ModelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEntity.m; sourceTree = "<group>"; };
 		2F16E6841B5DF84B007947D0 /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
@@ -582,8 +584,6 @@
 		2F16E6871B5DF84B007947D0 /* specEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = specEntity.m; sourceTree = "<group>"; };
 		2F16E6891B5DF84B007947D0 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
 		2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
-		2F16E68B1B5DF84B007947D0 /* IntentionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentionHandler.h; sourceTree = "<group>"; };
-		2F16E68C1B5DF84B007947D0 /* IntentionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionHandler.m; sourceTree = "<group>"; };
 		2F16E68D1B5DF84B007947D0 /* OrderHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderHandler.h; sourceTree = "<group>"; };
 		2F16E68E1B5DF84B007947D0 /* OrderHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderHandler.m; sourceTree = "<group>"; };
 		2F16E68F1B5DF84B007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
@@ -1797,8 +1797,6 @@
 				2F16E67D1B5DF84B007947D0 /* DeviceEntity.m */,
 				2F16E67E1B5DF84B007947D0 /* GoodsEntity.h */,
 				2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */,
-				2F16E6801B5DF84B007947D0 /* IntentionEntity.h */,
-				2F16E6811B5DF84B007947D0 /* IntentionEntity.m */,
 				2F16E6821B5DF84B007947D0 /* ModelEntity.h */,
 				2F16E6831B5DF84B007947D0 /* ModelEntity.m */,
 				2F16E6841B5DF84B007947D0 /* OrderEntity.h */,
@@ -1807,6 +1805,8 @@
 				2F16E6871B5DF84B007947D0 /* specEntity.m */,
 				2F6DE5BA1B6775F9003178DE /* ServiceEntity.h */,
 				2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */,
+				2F0E37DB1B6B62E200CFE2E6 /* CaseEntity.h */,
+				2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1816,12 +1816,12 @@
 			children = (
 				2F16E6891B5DF84B007947D0 /* GoodsHandler.h */,
 				2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */,
-				2F16E68B1B5DF84B007947D0 /* IntentionHandler.h */,
-				2F16E68C1B5DF84B007947D0 /* IntentionHandler.m */,
 				2F16E68D1B5DF84B007947D0 /* OrderHandler.h */,
 				2F16E68E1B5DF84B007947D0 /* OrderHandler.m */,
 				2F16E68F1B5DF84B007947D0 /* UserHandler.h */,
 				2F16E6901B5DF84B007947D0 /* UserHandler.m */,
+				2F0E37DE1B6B66B100CFE2E6 /* CaseHandler.h */,
+				2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -3911,6 +3911,7 @@
 				2F8BC58B1B5CE1E400B7D8B8 /* NSMutableSet+Extension.m in Sources */,
 				2F8BC58D1B5CE1E400B7D8B8 /* NSString+Extension.m in Sources */,
 				2F90015A1B1D9D680040D97B /* REFrostedViewController.m in Sources */,
+				2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */,
 				2FCAF8621B201FF000F3B084 /* StorageUtil.m in Sources */,
 				2F8BC6A41B5CE1E400B7D8B8 /* HtmlElement_Nav.m in Sources */,
 				2F8BC5CD1B5CE1E400B7D8B8 /* Samurai_Activity.m in Sources */,
@@ -3958,7 +3959,6 @@
 				2F8BC6D11B5CE1E400B7D8B8 /* Samurai_HtmlFunction.m in Sources */,
 				2F8BC5D61B5CE1E400B7D8B8 /* Samurai_DomNode.m in Sources */,
 				2F6D3EFE1B3128CC007A4159 /* ActionSheetDistancePicker.m in Sources */,
-				2F16E6B61B5DF84B007947D0 /* IntentionHandler.m in Sources */,
 				2F8BC6581B5CE1E400B7D8B8 /* Samurai_HtmlDocument.m in Sources */,
 				2F8BC6D21B5CE1E400B7D8B8 /* Samurai_HtmlNumber.m in Sources */,
 				2F8BC6141B5CE1E400B7D8B8 /* ServiceGestureView.m in Sources */,
@@ -4038,7 +4038,6 @@
 				2F8BC5FF1B5CE1E400B7D8B8 /* string_buffer.c in Sources */,
 				2F8BC6CE1B5CE1E400B7D8B8 /* Samurai_HtmlArray.m in Sources */,
 				2F8BC5F01B5CE1E400B7D8B8 /* Samurai_Watcher.m in Sources */,
-				2F16E6B11B5DF84B007947D0 /* IntentionEntity.m in Sources */,
 				2F8BC68A1B5CE1E400B7D8B8 /* HtmlElement_H1.m in Sources */,
 				2F8BC5881B5CE1E400B7D8B8 /* NSDictionary+Extension.m in Sources */,
 				2F8BC5841B5CE1E400B7D8B8 /* NSArray+Extension.m in Sources */,
@@ -4247,6 +4246,7 @@
 				2F8BC5A51B5CE1E400B7D8B8 /* Samurai_Event.m in Sources */,
 				2F8BC6A01B5CE1E400B7D8B8 /* HtmlElement_Legend.m in Sources */,
 				2F8BC6881B5CE1E400B7D8B8 /* HtmlElement_Footer.m in Sources */,
+				2F0E37E01B6B66B100CFE2E6 /* CaseHandler.m in Sources */,
 				2F8BC5A31B5CE1E400B7D8B8 /* Samurai_SignalBus.m in Sources */,
 				2FED7DC31B1EA2E100306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2F6D3EFC1B3128CC007A4159 /* ActionSheetCustomPicker.m in Sources */,

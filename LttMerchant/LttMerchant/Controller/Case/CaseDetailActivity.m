@@ -7,10 +7,10 @@
 //
 
 #import "CaseDetailActivity.h"
-#import "IntentionEntity.h"
 #import "OrderEntity.h"
-#import "IntentionHandler.h"
 #import "OrderHandler.h"
+#import "CaseEntity.h"
+#import "CaseHandler.h"
 #import "ServiceEntity.h"
 #import "CaseListActivity.h"
 #import "CaseEditActivity.h"
@@ -27,8 +27,7 @@
 
 @implementation CaseDetailActivity
 {
-    IntentionEntity *intention;
-    OrderEntity *order;
+    CaseEntity *intention;
     
     //返回页面是否需要刷新
     BOOL needRefresh;
@@ -111,96 +110,17 @@
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //查询需求
-    NSLog(@"intentionId: %@", self.caseId);
+    NSLog(@"caseId: %@", self.caseId);
     
-    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
-    intentionEntity.id = self.caseId;
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.id = self.caseId;
     
     //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler queryIntention:intentionEntity success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryCase:caseEntity success:^(NSArray *result){
         intention = [result firstObject];
         
         NSLog(@"需求数据：%@", [intention toDictionary]);
-        
-        //是否需要查询订单
-        if ([intention hasOrder]) {
-            [self loadOrderData:success failure:failure];
-        } else {
-            success(nil);
-        }
-    } failure:^(ErrorEntity *error){
-        failure(error);
-    }];
-}
-
-//加载订单数据
-- (void)loadOrderData:(CallbackBlock)success failure:(CallbackBlock)failure
-{
-    //查询订单
-    NSLog(@"orderNo: %@", intention.orderNo);
-    
-    OrderEntity *orderEntity = [[OrderEntity alloc] init];
-    orderEntity.no = intention.orderNo;
-    
-    //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler queryOrder:orderEntity success:^(NSArray *result){
-        order = [result firstObject];
-        
-        //解析订单商品
-        NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
-        if (order.goodsParam) {
-            NSNumber *goodsAmount = [order.goodsParam objectForKey:@"amount"];
-            order.goodsAmount = goodsAmount ? goodsAmount : @0.00;
-            
-            NSArray *goodsList = [order.goodsParam objectForKey:@"list"];
-            if (goodsList && [goodsList count] > 0) {
-                for (NSDictionary *goodsItem in goodsList) {
-                    GoodsEntity *goods = [[GoodsEntity alloc] init];
-                    goods.id = [goodsItem objectForKey:@"goods_id"];
-                    goods.name = [goodsItem objectForKey:@"goods_name"];
-                    goods.number = [goodsItem objectForKey:@"goods_num"];
-                    goods.price = [goodsItem objectForKey:@"goods_price"];
-                    goods.specName = [goodsItem objectForKey:@"specs"];
-                    
-                    [goodsArray addObject:goods];
-                }
-            }
-        }
-        order.goods = goodsArray;
-        
-        //解析服务
-        NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
-        if (order.services && [order.services count] > 0) {
-            float servicesAmount = 0.00;
-            
-            for (NSDictionary *servicesDict in order.services) {
-                NSNumber *serviceAmount = [servicesDict objectForKey:@"amount"];
-                servicesAmount += (serviceAmount ? [serviceAmount floatValue] : 0.00);
-                
-                NSArray *serviceList = [servicesDict objectForKey:@"list"];
-                NSString *typeName = [servicesDict objectForKey:@"remark"];
-                NSMutableArray *servicesGroup = [NSMutableArray arrayWithObjects:nil];
-                if (serviceList && [serviceList count] > 0) {
-                    for (NSDictionary *serviceItem in serviceList) {
-                        ServiceEntity *service = [[ServiceEntity alloc] init];
-                        service.name = [serviceItem objectForKey:@"detail"];
-                        service.number = @1;
-                        service.price = [serviceItem objectForKey:@"price"];
-                        service.typeName = typeName;
-                        
-                        [servicesGroup addObject:service];
-                    }
-                    [servicesArray addObject:servicesGroup];
-                }
-            }
-            
-            order.servicesAmount = [NSNumber numberWithFloat:servicesAmount];
-        }
-        order.services = servicesArray;
-        
-        NSLog(@"订单数据：%@", [order toDictionary]);
         
         success(nil);
     } failure:^(ErrorEntity *error){
@@ -211,37 +131,37 @@
 #pragma mark - reloadData
 - (void) reloadData
 {
-    NSString *totalAmount = order && order.amount ? [NSString stringWithFormat:@"￥%@", order.amount] : @"-";
+    NSString *totalAmount = intention.totalAmount && [intention.totalAmount floatValue] > 0.0 ? [NSString stringWithFormat:@"￥%@", intention.totalAmount] : @"-";
     self.viewStorage[@"case"] = @{
-                                       @"no": intention.orderNo,
+                                       @"no": intention.no,
                                        @"status": intention.status,
                                        @"statusName": intention.statusName,
                                        @"time": intention.createTime,
                                        @"totalAmount":totalAmount
                                        };
     
-    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.address && [intention.address length] > 0 ? intention.address : @"-")];
+    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
     self.viewStorage[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
                                        @"userMobile": intention.userMobile,
                                        @"buyerName": intention.buyerName ? intention.buyerName : @"-",
                                        @"buyerMobile": intention.buyerMobile ? intention.buyerMobile : @"-",
                                        @"buyerAddress": buyerAddress,
-                                       @"remark": intention.remark && [intention.remark length] > 0 ? intention.remark : @"-"
+                                       @"remark": intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : @"-"
                                        };
     
-    NSInteger goodsCount = order && order.goods ? [order.goods count] : 0;
+    NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
     self.viewStorage[@"goods"] = @{
                                    
                                    @"goodsNumber": [NSNumber numberWithInteger:goodsCount],
                                    
-                                   @"goodsAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.goodsAmount ? [order.goodsAmount floatValue] : 0.00)],
+                                   @"goodsAmount": [NSString stringWithFormat:@"￥%.2f", (intention.goodsAmount ? [intention.goodsAmount floatValue] : 0.00)],
                                    
                                    @"goodsList": @{@"goodsItems":({
                                        NSMutableArray *goodsList = [NSMutableArray array];
                                        
                                        if (goodsCount > 0) {
-                                           for (GoodsEntity *goods in order.goods) {
+                                           for (GoodsEntity *goods in intention.goods) {
                                                [goodsList addObject:@{
                                                                       @"name": goods.name,
                                                                       @"number": [NSString stringWithFormat:@"x%@", goods.number],
@@ -281,16 +201,16 @@
     
     [self.goodsTable reloadData];
     
-    NSInteger servicesCount = order && order.services ? [order.services count] : 0;
+    NSInteger servicesCount = intention.services ? [intention.services count] : 0;
     self.viewStorage[@"services"] = @{
                                       
-                                    @"servicesAmount": [NSString stringWithFormat:@"￥%.2f", (order && order.servicesAmount ? [order.servicesAmount floatValue] : 0.00)],
+                                    @"servicesAmount": [NSString stringWithFormat:@"￥%.2f", (intention.servicesAmount ? [intention.servicesAmount floatValue] : 0.00)],
                                     
                                     @"servicesList" : @{@"servicesItems": ({
                                         NSMutableArray *servicesList = [NSMutableArray array];
                                         
                                         if (servicesCount > 0) {
-                                            for (ServiceEntity *service in order.services) {
+                                            for (ServiceEntity *service in intention.services) {
                                                 [servicesList addObject:@{
                                                                        @"name": service.typeName,
                                                                        @"price": [NSString stringWithFormat:@"￥%@", service.price]
@@ -439,15 +359,15 @@
 - (void) actionCompeteCase: (SamuraiSignal *)signal
 {
     //获取数据
-    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
     
     //开始抢单
     [self showLoading:LocalString(@"TIP_CHALLENGE_START")];
     
     //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler competeIntention:intentionEntity success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler competeCase:intentionEntity success:^(NSArray *result){
         [self loadingSuccess:LocalString(@"TIP_CHALLENGE_SUCCESS") callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
@@ -466,14 +386,14 @@
 - (void)actionCancelCase:(SamuraiSignal *)signal
 {
     //获取数据
-    IntentionEntity *intentionEntity = [[IntentionEntity alloc] init];
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
     
     [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
     
     //调用接口
-    IntentionHandler *intentionHandler = [[IntentionHandler alloc] init];
-    [intentionHandler giveupIntention:intentionEntity success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler giveupCase:intentionEntity success:^(NSArray *result){
         [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
@@ -493,7 +413,7 @@
 - (void)actionStartCase:(SamuraiSignal *)signal
 {
     OrderEntity *orderModel = [[OrderEntity alloc] init];
-    orderModel.no = intention.orderNo;
+    orderModel.no = intention.no;
     
     NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
     
@@ -520,7 +440,7 @@
 - (void)actionFinishCase:(SamuraiSignal *)signal
 {
     OrderEntity *orderModel = [[OrderEntity alloc] init];
-    orderModel.no = intention.orderNo;
+    orderModel.no = intention.no;
     
     NSDictionary *param = @{@"action": CASE_STATUS_TOPAY};
     
