@@ -73,6 +73,11 @@
             <!-- inset-top: 10px; -->
         }
         
+        .bottom-button {
+            position: absolute;
+            bottom: 10px;
+        }
+        
         </style>
         
     </head>
@@ -100,6 +105,8 @@
             </CaseListCell>
             
         </UITableView>
+        
+        <UIButton id="addButton" onclick="@selector(actionAddService:)" class="primary-button bottom-button">添加服务</UIButton>
         
     </body>
     

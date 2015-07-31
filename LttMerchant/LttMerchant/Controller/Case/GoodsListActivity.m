@@ -7,6 +7,7 @@
 //
 
 #import "GoodsListActivity.h"
+#import "GoodsFormActivity.h"
 
 @interface GoodsListActivity ()
 
@@ -22,6 +23,14 @@
 - (NSString *)templateName
 {
     return @"goodsList.html";
+}
+
+#pragma mark - Action
+- (void) actionAddGoods: (SamuraiSignal *) signal
+{
+    GoodsFormActivity *activity = [[GoodsFormActivity alloc] init];
+    activity.caseId = self.caseId;
+    [self pushViewController:activity animated:YES];
 }
 
 @end

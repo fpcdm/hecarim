@@ -7,6 +7,7 @@
 //
 
 #import "ServiceListActivity.h"
+#import "ServiceFormActivity.h"
 
 @interface ServiceListActivity ()
 
@@ -22,6 +23,14 @@
 - (NSString *)templateName
 {
     return @"serviceList.html";
+}
+
+#pragma mark - Action
+- (void) actionAddService: (SamuraiSignal *) signal
+{
+    ServiceFormActivity *activity = [[ServiceFormActivity alloc] init];
+    activity.caseId = self.caseId;
+    [self pushViewController:activity animated:YES];
 }
 
 @end
