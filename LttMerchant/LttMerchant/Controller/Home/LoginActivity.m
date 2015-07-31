@@ -50,9 +50,6 @@
 
 - (void)onTemplateLoaded
 {
-    self.mobileField.keyboardType = UIKeyboardTypePhonePad;
-    
-    self.passwordField.secureTextEntry = YES;
 }
 
 - (void)onTemplateFailed

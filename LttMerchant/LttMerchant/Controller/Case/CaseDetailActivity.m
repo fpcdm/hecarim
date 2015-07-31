@@ -13,6 +13,7 @@
 #import "OrderHandler.h"
 #import "ServiceEntity.h"
 #import "CaseListActivity.h"
+#import "CaseEditActivity.h"
 #import "OrderFormViewController.h"
 #import "UIView+Loading.h"
 
@@ -35,6 +36,14 @@
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
+    
+    //弹出时返回，跳转时显示菜单
+    if ([self.navigationController.viewControllers count] > 1) {
+        isMenuEnabled = NO;
+    } else {
+        isMenuEnabled = YES;
+    }
+    
     [super viewDidLoad];
     
     //第一次需要刷新
@@ -526,7 +535,9 @@
 
 - (void)actionEditCase:(SamuraiSignal *)signal
 {
-    [self actionEditGoods:signal];
+    CaseEditActivity *viewController = [[CaseEditActivity alloc] init];
+    viewController.caseId = self.caseId;
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionEditGoods:(SamuraiSignal *)signal

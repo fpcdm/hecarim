@@ -82,6 +82,7 @@
 		2F6796B51B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B21B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m */; };
 		2F6796B81B4B84CF00E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B71B4B84CF00E0F774 /* LocationUtil.m */; };
 		2F6910A71B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A61B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
+		2F6ADD821B6B0FDF00BFFD8B /* CaseEditActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6ADD811B6B0FDF00BFFD8B /* CaseEditActivity.m */; };
 		2F6D3EFB1B3128CC007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EBD1B3128CC007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3EFC1B3128CC007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EBF1B3128CC007A4159 /* ActionSheetCustomPicker.m */; };
 		2F6D3EFD1B3128CC007A4159 /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EC21B3128CC007A4159 /* ActionSheetDatePicker.m */; };
@@ -664,6 +665,8 @@
 		2F6796B71B4B84CF00E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F6910A51B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+AutoLayoutFix.h"; sourceTree = "<group>"; };
 		2F6910A61B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
+		2F6ADD801B6B0FDF00BFFD8B /* CaseEditActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseEditActivity.h; sourceTree = "<group>"; };
+		2F6ADD811B6B0FDF00BFFD8B /* CaseEditActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEditActivity.m; sourceTree = "<group>"; };
 		2F6D3EBC1B3128CC007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 		2F6D3EBD1B3128CC007A4159 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		2F6D3EBE1B3128CC007A4159 /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPicker.h; sourceTree = "<group>"; };
@@ -1715,6 +1718,8 @@
 				2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */,
 				2F6DE5B71B676E09003178DE /* CaseDetailActivity.h */,
 				2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */,
+				2F6ADD801B6B0FDF00BFFD8B /* CaseEditActivity.h */,
+				2F6ADD811B6B0FDF00BFFD8B /* CaseEditActivity.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4047,6 +4052,7 @@
 				2F8BC6161B5CE1E400B7D8B8 /* ServiceGestureViewPinch.m in Sources */,
 				2F8BC5D01B5CE1E400B7D8B8 /* Samurai_ActivityStackGroup.m in Sources */,
 				2F8BC6201B5CE1E400B7D8B8 /* JBLineChartView.m in Sources */,
+				2F6ADD821B6B0FDF00BFFD8B /* CaseEditActivity.m in Sources */,
 				2F8BC5BD1B5CE1E400B7D8B8 /* Samurai_UICollectionView.m in Sources */,
 				2F8BC59F1B5CE1E400B7D8B8 /* Samurai_Notification.m in Sources */,
 				2F8BC6951B5CE1E400B7D8B8 /* HtmlElement_Input_Button.m in Sources */,

@@ -220,15 +220,16 @@
         //根据需求类型处理
         if ([@"CASE_CREATED" isEqualToString:type]) {
             CaseListActivity *viewController = [[CaseListActivity alloc] init];
-            [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-            //已支付，已完成
+            [self toggleViewController:viewController animated:YES];
+        //已支付，已完成
         } else if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {
             //跳转详情页面
             if (data) {
-                //@todo: 修改data为caseId
+                NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
+                
                 CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
-                viewController.caseId = @1;
-                [self.navigationController pushViewController:viewController animated:YES];
+                viewController.caseId = caseId;
+                [self toggleViewController:viewController animated:YES];
             }
         }
         
