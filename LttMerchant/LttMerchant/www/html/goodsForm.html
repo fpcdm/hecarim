@@ -59,6 +59,92 @@
             right: 10px;
         }
         
+        /* 表单 */
+        .case-field {
+            width: 100%;
+            height: 40px;
+            margin-top: 10px;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
+            background-color: white;
+        }
+        
+        .field-category {
+            height: auto;
+        }
+        
+        .field-spec {
+            height: auto;
+        }
+        
+        .case-field .field-title {
+            position: absolute;
+            width: 100px;
+            height: 20px;
+            left: 10px;
+            top: 10px;
+            font-size: 14px;
+            border: 0px;
+        }
+        
+        .case-field .field-name {
+            margin-left: 10px;
+            margin-top: 10px;
+            width: 100px;
+            height: 20px;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .case-field .content-right {
+            position: absolute;
+            right: 10px;
+        }
+        
+        .case-field .goods-category {
+            margin-bottom: 10px;
+            font-size: 16px;
+            width: 100%;
+            height: auto;
+            border: 0px;
+            inset-left: 10px;
+            inset-right: 10px;
+        }
+        
+        .case-field .number-button {
+            border: 0.5px solid black;
+            display: inline-block;
+            height: 30px;
+            width: 25px;
+            margin-left: 2px;
+            inset-top: -5px;
+            inset-bottom: 5px;
+            text-align: center;
+        }
+        
+        .number-button .number-label {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        /* 列表 */
+        .list {
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: white;
+        }
+        
+        .list-item {
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            border-bottom: 0.5px solid #b2b2b2;
+            <!-- inset-top: 10px; -->
+        }
+        
         </style>
         
     </head>
@@ -78,6 +164,52 @@
                 </div>
             </div>
         </div>
+        
+        <div class="case-field field-category">
+            <label class="field-name">品类</label>
+            <div id="goodsCategory" class="goods-category">
+                <label class="color-gray">加载中...</label>
+            </div>
+        </div>
+        
+        <div class="case-field field-category">
+            <label class="field-name">品牌型号</label>
+            <div id="goodsModel" class="goods-category">
+                <label class="color-gray">请先选择品类</label>
+            </div>
+        </div>
+        
+        <div class="case-field field-spec">
+            <UITableView id="list" name="list" class="list" columns="1" is-vertical>
+                
+                <CaseListCell name="specs" class="list-item" is-row>
+                    
+                </CaseListCell>
+                
+            </UITableView>
+        </div>
+        
+        <div class="case-field">
+            <label class="field-title">单价</label>
+            <label class="content-right color-red">￥0.00</label>
+        </div>
+        
+        <div class="case-field">
+            <label class="field-title">购买数量</label>
+            <div class="content-right">
+                <div class="number-button">
+                    <label class="number-label">-</label>
+                </div>
+                <div class="number-button">
+                    <label class="number-label">1</label>
+                </div>
+                <div class="number-button">
+                    <label class="number-label">+</label>
+                </div>
+            </div>
+        </div>
+        
+        <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10">保存</UIButton>
         
     </body>
     

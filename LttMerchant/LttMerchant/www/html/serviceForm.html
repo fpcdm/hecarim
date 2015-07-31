@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html class="no-js no-scroll" lang="">
+<html class="no-js" lang="">
     
     <head>
         
@@ -17,6 +17,10 @@
         <link rel="stylesheet" type="text/css" href="../css/main.css"/>
         
         <style type="text/css">
+            
+        body {
+            height: auto;
+        }
             
         .case-header {
             width: 100%;
@@ -55,6 +59,62 @@
             right: 10px;
         }
         
+        .case-field {
+            width: 100%;
+            height: 40px;
+            margin-top: 10px;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
+            background-color: white;
+        }
+        
+        .field-category {
+            height: auto;
+        }
+        
+        .case-field .field-title {
+            position: absolute;
+            font-size: 14px;
+            width: 40px;
+            height: 20px;
+            left: 10px;
+            top: 10px;
+            border: 0px;
+        }
+        
+        .case-field .field-input {
+            position: absolute;
+            width: 100%;
+            font-size: 16px;
+            height: 20px;
+            border: 0px;
+            top: 10px;
+            left: 0px;
+            right: 0px;
+            color: black;
+            inset-left: 40px;
+            inset-right: 10px;
+        }
+        
+        .case-field .field-name {
+            margin-left: 10px;
+            margin-top: 10px;
+            width: 100px;
+            height: 20px;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .case-field .service-category {
+            margin-bottom: 10px;
+            font-size: 16px;
+            width: 100%;
+            height: auto;
+            border: 0px;
+            inset-left: 10px;
+            inset-right: 10px;
+        }
+        
         </style>
         
     </head>
@@ -74,6 +134,25 @@
                 </div>
             </div>
         </div>
+        
+        <div class="case-field field-category">
+            <label class="field-name">服务类别</label>
+            <div id="serviceCategory" class="service-category">
+                <label class="color-gray">加载中...</label>
+            </div>
+        </div>
+        
+        <div class="case-field">
+            <label class="field-title">价格</label>
+            <input class="field-input" id="priceField" type="text" keyboard-type="decimal" placeholder="请输入价格" />
+        </div>
+        
+        <div class="case-field">
+            <label class="field-title">备注</label>
+            <input class="field-input" id="remarkField" type="text" placeholder="请输入备注" />
+        </div>
+        
+        <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10">保存</UIButton>
         
     </body>
     

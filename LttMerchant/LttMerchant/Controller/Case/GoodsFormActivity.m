@@ -24,4 +24,12 @@
     return @"goodsForm.html";
 }
 
+#pragma mark - Action
+- (void) actionSave: (SamuraiSignal *) signal
+{
+    //todo 保存
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

@@ -46,6 +46,10 @@ img, image {
     color: black;
 }
 
+.color-red {
+    color: red;
+}
+
 .bg-white {
     background-color: white;
 }
