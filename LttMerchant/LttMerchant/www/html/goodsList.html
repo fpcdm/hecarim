@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+
+<html class="no-js no-scroll" lang="">
+    
+    <head>
+        
+        <title>商品列表</title>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+        
+        <style type="text/css">
+            
+        .case-header {
+            width: 100%;
+            height: 50px;
+            background-color: #7984b5;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .item-icon {
+            position: absolute;
+            width: 50px;
+            height: 100%;
+        }
+        
+        .item-icon img {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        
+        .item-info {
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .item-info .item-line {
+            width: 100%;
+            height: 20px;
+            padding-left: 50px;
+        }
+        
+        .item-info .line-right {
+            position: absolute;
+            right: 10px;
+        }
+        
+        /* 列表 */
+        .list {
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: #eeeeee;
+        }
+        
+        .list-item {
+            display: block;
+            width: 100%;
+            height: 120px;
+            background-color: white;
+            border-bottom: 0.5px solid #b2b2b2;
+            <!-- inset-top: 10px; -->
+        }
+        
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div class="case-header" name="case">
+            <div class="item-icon">
+                <img src="nopic" />
+            </div>
+            
+            <div class="item-info">
+                <div class="item-line">
+                    <label>编号：</label>
+                    <label class="case-no" name="no">-</label>
+                    <label class="line-right" name="statusName">-</label>
+                </div>
+            </div>
+        </div>
+        
+        <UITableView id="list" name="list" class="list" columns="1" is-vertical>
+            
+            <CaseListCell name="goods" class="list-item" is-row>
+                
+            </CaseListCell>
+            
+        </UITableView>
+        
+    </body>
+    
+</html>

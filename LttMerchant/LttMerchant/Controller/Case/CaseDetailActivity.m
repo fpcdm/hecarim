@@ -14,8 +14,8 @@
 #import "ServiceEntity.h"
 #import "CaseListActivity.h"
 #import "CaseEditActivity.h"
-#import "OrderFormViewController.h"
-#import "UIView+Loading.h"
+#import "GoodsListActivity.h"
+#import "ServiceListActivity.h"
 
 @interface CaseDetailActivity ()
 
@@ -519,18 +519,28 @@
 //服务完成
 - (void)actionFinishCase:(SamuraiSignal *)signal
 {
-    OrderFormViewController *viewController = [[OrderFormViewController alloc] init];
-    viewController.intentionId = self.caseId;
-    viewController.callbackBlock = ^(id object) {
-        //刷新自己
-        needRefresh = YES;
-        
-        //标记列表刷新
-        if (self.callbackBlock) {
-            self.callbackBlock(@1);
-        }
-    };
-    [self pushViewController:viewController animated:YES];
+    OrderEntity *orderModel = [[OrderEntity alloc] init];
+    orderModel.no = intention.orderNo;
+    
+    NSDictionary *param = @{@"action": CASE_STATUS_TOPAY};
+    
+    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    
+    //调用接口
+    OrderHandler *orderHandler = [[OrderHandler alloc] init];
+    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+            //标记列表刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            
+            //刷新需求
+            [self loadCase];
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void)actionEditCase:(SamuraiSignal *)signal
@@ -542,12 +552,16 @@
 
 - (void)actionEditGoods:(SamuraiSignal *)signal
 {
-    [self actionFinishCase:signal];
+    GoodsListActivity *viewController = [[GoodsListActivity alloc] init];
+    viewController.caseId = self.caseId;
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionEditServices:(SamuraiSignal *)signal
 {
-    [self actionEditGoods:signal];
+    ServiceListActivity *viewController = [[ServiceListActivity alloc] init];
+    viewController.caseId = self.caseId;
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0E37D11B6B214900CFE2E6 /* GoodsListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */; };
+		2F0E37D41B6B215C00CFE2E6 /* ServiceListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */; };
+		2F0E37D71B6B216E00CFE2E6 /* GoodsFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */; };
+		2F0E37DA1B6B218400CFE2E6 /* ServiceFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */; };
 		2F16E6A11B5DF84B007947D0 /* OrderFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */; };
 		2F16E6A21B5DF84B007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6601B5DF84B007947D0 /* HomeActivity.m */; };
 		2F16E6A41B5DF84B007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6641B5DF84B007947D0 /* LttNavigationController.m */; };
@@ -531,6 +535,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0E37CF1B6B214900CFE2E6 /* GoodsListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListActivity.h; sourceTree = "<group>"; };
+		2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListActivity.m; sourceTree = "<group>"; };
+		2F0E37D21B6B215C00CFE2E6 /* ServiceListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListActivity.h; sourceTree = "<group>"; };
+		2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceListActivity.m; sourceTree = "<group>"; };
+		2F0E37D51B6B216E00CFE2E6 /* GoodsFormActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsFormActivity.h; sourceTree = "<group>"; };
+		2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsFormActivity.m; sourceTree = "<group>"; };
+		2F0E37D81B6B218400CFE2E6 /* ServiceFormActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceFormActivity.h; sourceTree = "<group>"; };
+		2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFormActivity.m; sourceTree = "<group>"; };
 		2F16E64F1B5DF84B007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E6501B5DF84B007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E6511B5DF84B007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -1720,6 +1732,14 @@
 				2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */,
 				2F6ADD801B6B0FDF00BFFD8B /* CaseEditActivity.h */,
 				2F6ADD811B6B0FDF00BFFD8B /* CaseEditActivity.m */,
+				2F0E37CF1B6B214900CFE2E6 /* GoodsListActivity.h */,
+				2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */,
+				2F0E37D21B6B215C00CFE2E6 /* ServiceListActivity.h */,
+				2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */,
+				2F0E37D51B6B216E00CFE2E6 /* GoodsFormActivity.h */,
+				2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */,
+				2F0E37D81B6B218400CFE2E6 /* ServiceFormActivity.h */,
+				2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4069,6 +4089,7 @@
 				2F8BC5BE1B5CE1E400B7D8B8 /* Samurai_UICollectionViewCell.m in Sources */,
 				2F8BC6AE1B5CE1E400B7D8B8 /* HtmlElement_Sup.m in Sources */,
 				2F8BC69B1B5CE1E400B7D8B8 /* HtmlElement_Input_Radio.m in Sources */,
+				2F0E37D71B6B216E00CFE2E6 /* GoodsFormActivity.m in Sources */,
 				2F8BC5B41B5CE1E400B7D8B8 /* Signal+View.m in Sources */,
 				2F16E6B51B5DF84B007947D0 /* GoodsHandler.m in Sources */,
 				2F9000801B1D91470040D97B /* View+MASAdditions.m in Sources */,
@@ -4137,6 +4158,7 @@
 				2F8BC5B21B5CE1E400B7D8B8 /* Samurai_Service.m in Sources */,
 				2F8BC6781B5CE1E400B7D8B8 /* HtmlElement_Aside.m in Sources */,
 				2F8BC5A61B5CE1E400B7D8B8 /* Samurai_EventConfig.m in Sources */,
+				2F0E37D11B6B214900CFE2E6 /* GoodsListActivity.m in Sources */,
 				2FCAF8611B201FF000F3B084 /* RestKitUtil.m in Sources */,
 				2F8BC6001B5CE1E400B7D8B8 /* string_piece.c in Sources */,
 				2F8BC6941B5CE1E400B7D8B8 /* HtmlElement_Img.m in Sources */,
@@ -4242,7 +4264,9 @@
 				2F8BC5861B5CE1E400B7D8B8 /* NSData+Extension.m in Sources */,
 				2F8BC6C71B5CE1E400B7D8B8 /* Samurai_HtmlRenderWorklet_10Begin.m in Sources */,
 				2F8BC6D01B5CE1E400B7D8B8 /* Samurai_HtmlColor.m in Sources */,
+				2F0E37DA1B6B218400CFE2E6 /* ServiceFormActivity.m in Sources */,
 				2F8BC6211B5CE1E400B7D8B8 /* ServiceMonitor.m in Sources */,
+				2F0E37D41B6B215C00CFE2E6 /* ServiceListActivity.m in Sources */,
 				2F8BC6C01B5CE1E400B7D8B8 /* Samurai_HtmlRenderObjectText.m in Sources */,
 				2FED7DC21B1EA2E100306A11 /* SDWebImageDownloader.m in Sources */,
 				2F8BC66D1B5CE1E400B7D8B8 /* UISlider+Html.m in Sources */,
