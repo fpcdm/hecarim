@@ -12,12 +12,16 @@
 #import "BrandEntity.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
+#import "Samurai_HtmlRenderQuery.h"
 
 @interface GoodsFormActivity ()
 
 @end
 
 @implementation GoodsFormActivity
+{
+    NSArray *categoryies;
+}
 
 @synthesize intention;
 
@@ -30,7 +34,10 @@
 {
     [super viewDidAppear:animated];
     
-    [self loadCase];
+    //查询需求
+    [self loadCase:^(id object){
+        [self loadCategories];
+    }];
 }
 
 - (NSString *)templateName
@@ -38,10 +45,40 @@
     return @"goodsForm.html";
 }
 
+#pragma mark - Api
+- (void) loadCategories
+{
+    CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+    categoryEntity.id = @0;
+    categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
+    
+    GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+    [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+        categoryies = result;
+        
+        //渲染数据
+        [self reloadData];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
 #pragma mark - reloadData
 - (void) reloadData
 {
     [super reloadData];
+    
+    //品类数据
+    if ([categoryies count] > 0) {
+        $(@"#goodsCategoryEmpty").ATTR(@"display", @"none");
+        
+        //添加按钮
+        SamuraiHtmlRenderQuery *query = $(@"#defaultCategoryButton");
+        query.ATTR(@"display", @"inline-block");
+        
+        UIButton *buttonView = (UIButton *) [query firstView];
+        [buttonView setTitle:@"手机" forState:UIControlStateNormal];
+    }
     
     //重新布局
     [self relayout];

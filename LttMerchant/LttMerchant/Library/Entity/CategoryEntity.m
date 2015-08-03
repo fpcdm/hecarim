@@ -12,4 +12,8 @@
 
 @synthesize id;
 
+@synthesize name;
+
+@synthesize tradeId;
+
 @end

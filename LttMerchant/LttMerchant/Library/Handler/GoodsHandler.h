@@ -14,6 +14,8 @@
 
 @interface GoodsHandler : BaseHandler
 
+- (void) queryCategories: (CategoryEntity *) category success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 - (void) queryCategoryBrands: (CategoryEntity *) category success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 - (void) queryBrandModels: (BrandEntity *) brand param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;

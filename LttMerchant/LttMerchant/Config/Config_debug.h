@@ -14,7 +14,4 @@
 //百度推送KEY
 #define BAIDU_PUSH_APIKEY @"fNWSyqeQlYw5c0W1SmwVSEEZ"
 
-//手机分类ID
-#define LTT_CATEGORY_MOBILE @1
-
 #endif

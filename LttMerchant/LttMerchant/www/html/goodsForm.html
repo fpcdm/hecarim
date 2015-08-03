@@ -107,13 +107,22 @@
         }
         
         .case-field .goods-category {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-size: 16px;
             width: 100%;
             height: auto;
             border: 0px;
             inset-left: 10px;
             inset-right: 10px;
+        }
+        
+        .case-field .category-button {
+            margin-bottom: 5px;
+            font-size: 16px;
+            width: 50px;
+            height: 20px;
+            border: 0px;
+            color: black;
         }
         
         .case-field .number-button {
@@ -173,14 +182,15 @@
         <div class="case-field field-category">
             <label class="field-name">品类</label>
             <div id="goodsCategory" class="goods-category">
-                <label class="color-gray">加载中...</label>
+                <label id="goodsCategoryEmpty" class="color-gray">加载中...</label>
+                <UIButton id="defaultCategoryButton" class="category-button" style="display:none;">分类</UIButton>
             </div>
         </div>
         
         <div class="case-field field-category">
             <label class="field-name">品牌型号</label>
             <div id="goodsModel" class="goods-category">
-                <label class="color-gray">请先选择品类</label>
+                <label id="goodsModelEmpty" class="color-gray">请先选择品类</label>
             </div>
         </div>
         

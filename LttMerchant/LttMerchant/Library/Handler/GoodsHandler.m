@@ -10,6 +10,30 @@
 
 @implementation GoodsHandler
 
+- (void) queryCategories:(CategoryEntity *)category success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //获取品牌列表
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:@{@"category_id": @"id", @"category_name": @"name"} keyPath:@"list"];
+    
+    //转换参数
+    NSDictionary *param = @{
+                            @"parent_id": category.id ? category.id : @0,
+                            @"trade_id": category.tradeId ? category.tradeId : @0
+                            };
+    
+    NSString *restPath = @"category/categories";
+    [sharedClient getObject:category path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void) queryCategoryBrands:(CategoryEntity *)category success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //获取品牌列表
