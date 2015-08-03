@@ -27,11 +27,11 @@
                                    @"customer_remark": @"customerRemark",
                                    @"map_url": @"mapUrl",
                                    @"rate_star": @"rateStar",
-                                   @"remark": @"stuffRemark",
-                                   @"stuff_id": @"stuffId",
-                                   @"stuff_name": @"stuffName",
-                                   @"stuff_mobile": @"stuffMobile",
-                                   @"stuff_avatar": @"stuffAvatar",
+                                   @"remark": @"staffRemark",
+                                   @"staff_id": @"staffId",
+                                   @"staff_name": @"staffName",
+                                   @"staff_mobile": @"staffMobile",
+                                   @"staff_avatar": @"staffAvatar",
                                    @"type_id": @"typeId",
                                    @"type_name": @"typeName",
                                    @"user_id": @"userId",
@@ -145,6 +145,19 @@
     
     NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"employee/response/:id" object:caseEntity];
     [sharedClient deleteObject:caseEntity path:restPath param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) updateCaseStatus:(CaseEntity *)caseEntity param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/status/:id" object:caseEntity];
+    [sharedClient postObject:caseEntity path:restPath param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
         failure(error);

@@ -256,7 +256,7 @@
 
 - (void)actionMobile
 {
-    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.stuffMobile];
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.staffMobile];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 

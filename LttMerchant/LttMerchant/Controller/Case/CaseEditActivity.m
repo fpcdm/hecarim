@@ -9,8 +9,6 @@
 #import "CaseEditActivity.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
-#import "OrderEntity.h"
-#import "OrderHandler.h"
 #import "UITextView+Placeholder.h"
 
 @interface CaseEditActivity ()
@@ -22,7 +20,6 @@
 @implementation CaseEditActivity
 {
     CaseEntity *intention;
-    OrderEntity *order;
 }
 
 - (void)viewDidLoad {
@@ -103,7 +100,7 @@
 #pragma mark - reloadData
 - (void) reloadData
 {
-    NSString *totalAmount = order && order.amount ? [NSString stringWithFormat:@"￥%@", order.amount] : @"-";
+    NSString *totalAmount = intention.totalAmount ? [NSString stringWithFormat:@"￥%@", intention.totalAmount] : @"-";
     self.viewStorage[@"case"] = @{
                                   @"no": intention.no,
                                   @"status": intention.status,

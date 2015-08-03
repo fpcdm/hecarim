@@ -15,7 +15,7 @@
 
 @synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName,
 buyerName, buyerMobile, buyerAddress, customerRemark,
-stuffId, stuffName, stuffMobile, stuffAvatar, stuffRemark,
+staffId, staffName, staffMobile, staffAvatar, staffRemark,
 userId, userName, userMobile, userAvatar,
 totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 
@@ -23,9 +23,9 @@ totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesP
 
 - (void) avatarView: (UIImageView *)view
 {
-    if (self.stuffAvatar && [self.stuffAvatar length] > 0) {
-        NSLog(@"加载头像缓存：%@", self.stuffAvatar);
-        [view sd_setImageWithURL:[NSURL URLWithString:self.stuffAvatar] placeholderImage:[UIImage imageNamed:@"support"]];
+    if (self.staffAvatar && [self.staffAvatar length] > 0) {
+        NSLog(@"加载头像缓存：%@", self.staffAvatar);
+        [view sd_setImageWithURL:[NSURL URLWithString:self.staffAvatar] placeholderImage:[UIImage imageNamed:@"support"]];
     } else {
         view.image = [UIImage imageNamed:@"support"];
     }

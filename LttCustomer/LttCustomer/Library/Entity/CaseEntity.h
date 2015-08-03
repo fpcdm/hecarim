@@ -28,15 +28,15 @@
 
 @property (nonatomic, retain) NSString *customerRemark;
 
-@property (nonatomic, retain) NSNumber *stuffId;
+@property (nonatomic, retain) NSNumber *staffId;
 
-@property (nonatomic, retain) NSString *stuffName;
+@property (nonatomic, retain) NSString *staffName;
 
-@property (nonatomic, retain) NSString *stuffMobile;
+@property (nonatomic, retain) NSString *staffMobile;
 
-@property (nonatomic, retain) NSString *stuffAvatar;
+@property (nonatomic, retain) NSString *staffAvatar;
 
-@property (nonatomic, retain) NSString *stuffRemark;
+@property (nonatomic, retain) NSString *staffRemark;
 
 @property (nonatomic, retain) NSString *mapUrl;
 

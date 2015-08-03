@@ -13,7 +13,6 @@
 		2F0E37DA1B6B218400CFE2E6 /* ServiceFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */; };
 		2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */; };
 		2F0E37E01B6B66B100CFE2E6 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */; };
-		2F16E6A11B5DF84B007947D0 /* OrderFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */; };
 		2F16E6A21B5DF84B007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6601B5DF84B007947D0 /* HomeActivity.m */; };
 		2F16E6A41B5DF84B007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6641B5DF84B007947D0 /* LttNavigationController.m */; };
 		2F16E6A51B5DF84B007947D0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6661B5DF84B007947D0 /* MenuViewController.m */; };
@@ -27,12 +26,9 @@
 		2F16E6AF1B5DF84B007947D0 /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67D1B5DF84B007947D0 /* DeviceEntity.m */; };
 		2F16E6B01B5DF84B007947D0 /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */; };
 		2F16E6B21B5DF84B007947D0 /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6831B5DF84B007947D0 /* ModelEntity.m */; };
-		2F16E6B31B5DF84B007947D0 /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6851B5DF84B007947D0 /* OrderEntity.m */; };
 		2F16E6B41B5DF84B007947D0 /* specEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6871B5DF84B007947D0 /* specEntity.m */; };
 		2F16E6B51B5DF84B007947D0 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */; };
-		2F16E6B71B5DF84B007947D0 /* OrderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68E1B5DF84B007947D0 /* OrderHandler.m */; };
 		2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6901B5DF84B007947D0 /* UserHandler.m */; };
-		2F16E6BE1B5DF84B007947D0 /* OrderFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */; };
 		2F16E6C21B5E1B03007947D0 /* CaseListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */; };
 		2F16E6F41B5E1DC6007947D0 /* AutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6C71B5E1DC6007947D0 /* AutoCoding.m */; };
 		2F16E6F51B5E1DC6007947D0 /* NSObject+AutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6C91B5E1DC6007947D0 /* NSObject+AutoCoding.m */; };
@@ -550,8 +546,6 @@
 		2F16E64F1B5DF84B007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E6501B5DF84B007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E6511B5DF84B007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
-		2F16E65C1B5DF84B007947D0 /* OrderFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFormViewController.h; sourceTree = "<group>"; };
-		2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFormViewController.m; sourceTree = "<group>"; };
 		2F16E65F1B5DF84B007947D0 /* HomeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeActivity.h; sourceTree = "<group>"; };
 		2F16E6601B5DF84B007947D0 /* HomeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeActivity.m; sourceTree = "<group>"; };
 		2F16E6631B5DF84B007947D0 /* LttNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttNavigationController.h; sourceTree = "<group>"; };
@@ -578,17 +572,12 @@
 		2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsEntity.m; sourceTree = "<group>"; };
 		2F16E6821B5DF84B007947D0 /* ModelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEntity.h; sourceTree = "<group>"; };
 		2F16E6831B5DF84B007947D0 /* ModelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEntity.m; sourceTree = "<group>"; };
-		2F16E6841B5DF84B007947D0 /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
-		2F16E6851B5DF84B007947D0 /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
 		2F16E6861B5DF84B007947D0 /* specEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specEntity.h; sourceTree = "<group>"; };
 		2F16E6871B5DF84B007947D0 /* specEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = specEntity.m; sourceTree = "<group>"; };
 		2F16E6891B5DF84B007947D0 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
 		2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
-		2F16E68D1B5DF84B007947D0 /* OrderHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderHandler.h; sourceTree = "<group>"; };
-		2F16E68E1B5DF84B007947D0 /* OrderHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderHandler.m; sourceTree = "<group>"; };
 		2F16E68F1B5DF84B007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F16E6901B5DF84B007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
-		2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderFormViewController.xib; sourceTree = "<group>"; };
 		2F16E6C01B5E1B03007947D0 /* CaseListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListActivity.h; sourceTree = "<group>"; };
 		2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListActivity.m; sourceTree = "<group>"; };
 		2F16E6C61B5E1DC6007947D0 /* AutoCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCoding.h; sourceTree = "<group>"; };
@@ -1724,8 +1713,6 @@
 		2F16E6531B5DF84B007947D0 /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				2F16E65C1B5DF84B007947D0 /* OrderFormViewController.h */,
-				2F16E65D1B5DF84B007947D0 /* OrderFormViewController.m */,
 				2F16E6C01B5E1B03007947D0 /* CaseListActivity.h */,
 				2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */,
 				2F6DE5B71B676E09003178DE /* CaseDetailActivity.h */,
@@ -1799,8 +1786,6 @@
 				2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */,
 				2F16E6821B5DF84B007947D0 /* ModelEntity.h */,
 				2F16E6831B5DF84B007947D0 /* ModelEntity.m */,
-				2F16E6841B5DF84B007947D0 /* OrderEntity.h */,
-				2F16E6851B5DF84B007947D0 /* OrderEntity.m */,
 				2F16E6861B5DF84B007947D0 /* specEntity.h */,
 				2F16E6871B5DF84B007947D0 /* specEntity.m */,
 				2F6DE5BA1B6775F9003178DE /* ServiceEntity.h */,
@@ -1816,8 +1801,6 @@
 			children = (
 				2F16E6891B5DF84B007947D0 /* GoodsHandler.h */,
 				2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */,
-				2F16E68D1B5DF84B007947D0 /* OrderHandler.h */,
-				2F16E68E1B5DF84B007947D0 /* OrderHandler.m */,
 				2F16E68F1B5DF84B007947D0 /* UserHandler.h */,
 				2F16E6901B5DF84B007947D0 /* UserHandler.m */,
 				2F0E37DE1B6B66B100CFE2E6 /* CaseHandler.h */,
@@ -1837,7 +1820,6 @@
 		2F16E6921B5DF84B007947D0 /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				2F16E6991B5DF84B007947D0 /* OrderFormViewController.xib */,
 				2F5330521B6083B100D4DD05 /* CaseListCell.h */,
 				2F5330531B6083B100D4DD05 /* CaseListCell.m */,
 			);
@@ -3843,7 +3825,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */,
-				2F16E6BE1B5DF84B007947D0 /* OrderFormViewController.xib in Resources */,
 				2F6D3F111B3128CC007A4159 /* MJRefresh.bundle in Resources */,
 				2FA0A3991B69C05B0083365B /* InfoPlist.strings in Resources */,
 				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
@@ -3973,7 +3954,6 @@
 				2F16E7001B5E1DC6007947D0 /* INSInfiniteScrollBackgroundView.m in Sources */,
 				2F8BC6521B5CE1E400B7D8B8 /* Samurai_CSSParser.m in Sources */,
 				2F8BC6271B5CE1E400B7D8B8 /* ServiceTapspot.m in Sources */,
-				2F16E6B31B5DF84B007947D0 /* OrderEntity.m in Sources */,
 				2F8BC60F1B5CE1E400B7D8B8 /* ServiceBorderLayer.m in Sources */,
 				2F8BC6021B5CE1E400B7D8B8 /* tokenizer.c in Sources */,
 				2F8BC5A81B5CE1E400B7D8B8 /* Samurai_ModelInstance.m in Sources */,
@@ -4208,7 +4188,6 @@
 				2F8BC6531B5CE1E400B7D8B8 /* Samurai_CSSProtocol.m in Sources */,
 				2F6D3F0E1B3128CC007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F8BC60A1B5CE1E400B7D8B8 /* selector.c in Sources */,
-				2F16E6A11B5DF84B007947D0 /* OrderFormViewController.m in Sources */,
 				2F8BC6011B5CE1E400B7D8B8 /* tag.c in Sources */,
 				2F8BC61F1B5CE1E400B7D8B8 /* JBChartView.m in Sources */,
 				2F8BC6A71B5CE1E400B7D8B8 /* HtmlElement_P.m in Sources */,
@@ -4301,7 +4280,6 @@
 				2F8BC5961B5CE1E400B7D8B8 /* Samurai_Sandbox.m in Sources */,
 				2FED7E321B1EA87800306A11 /* DDTTYLogger.m in Sources */,
 				2F8BC6B71B5CE1E400B7D8B8 /* HtmlElement_Time.m in Sources */,
-				2F16E6B71B5DF84B007947D0 /* OrderHandler.m in Sources */,
 				2F2F227C1B3A52FE00428742 /* TSMessage.m in Sources */,
 				2F8BC6971B5CE1E400B7D8B8 /* HtmlElement_Input_File.m in Sources */,
 				2F8BC6111B5CE1E400B7D8B8 /* ServiceGesture.m in Sources */,

@@ -12,7 +12,7 @@
 
 @synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName,
             buyerName, buyerMobile, buyerAddress, customerRemark,
-            stuffId, stuffName, stuffMobile, stuffAvatar, stuffRemark,
+            staffId, staffName, staffMobile, staffAvatar, staffRemark,
             userId, userName, userMobile, userAvatar,
             totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 

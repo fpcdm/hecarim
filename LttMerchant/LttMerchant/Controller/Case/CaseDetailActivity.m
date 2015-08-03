@@ -7,8 +7,6 @@
 //
 
 #import "CaseDetailActivity.h"
-#import "OrderEntity.h"
-#import "OrderHandler.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "ServiceEntity.h"
@@ -141,13 +139,15 @@
                                        };
     
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
+    NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
+    if (!customerRemark) customerRemark = (intention.typeName && [intention.typeName length] > 0) ? intention.typeName : nil;
     self.viewStorage[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
                                        @"userMobile": intention.userMobile,
                                        @"buyerName": intention.buyerName ? intention.buyerName : @"-",
                                        @"buyerMobile": intention.buyerMobile ? intention.buyerMobile : @"-",
                                        @"buyerAddress": buyerAddress,
-                                       @"remark": intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : @"-"
+                                       @"remark": customerRemark ? customerRemark: @"-"
                                        };
     
     NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
@@ -412,16 +412,16 @@
 //开始服务
 - (void)actionStartCase:(SamuraiSignal *)signal
 {
-    OrderEntity *orderModel = [[OrderEntity alloc] init];
-    orderModel.no = intention.no;
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.id = self.caseId;
     
     NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
     
     [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
     
     //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
         [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
@@ -439,16 +439,16 @@
 //服务完成
 - (void)actionFinishCase:(SamuraiSignal *)signal
 {
-    OrderEntity *orderModel = [[OrderEntity alloc] init];
-    orderModel.no = intention.no;
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.id = self.caseId;
     
     NSDictionary *param = @{@"action": CASE_STATUS_TOPAY};
     
     [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
     
     //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
         [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
             //标记列表刷新
             if (self.callbackBlock) {

@@ -23,4 +23,6 @@
 //弃单
 - (void) giveupCase: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+- (void) updateCaseStatus: (CaseEntity *) caseEntity param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 @end

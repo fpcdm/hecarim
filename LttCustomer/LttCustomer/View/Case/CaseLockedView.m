@@ -139,8 +139,8 @@
     CaseEntity *intention = [self getData:@"intention"];
     
     [intention avatarView:imageView];
-    nameLabel.text = intention.stuffName;
-    [mobileButton setTitle:[NSString stringWithFormat:@"联系电话：%@", intention.stuffMobile] forState:UIControlStateNormal];
+    nameLabel.text = intention.staffName;
+    [mobileButton setTitle:[NSString stringWithFormat:@"联系电话：%@", intention.staffMobile] forState:UIControlStateNormal];
 }
 
 #pragma mark - Action
