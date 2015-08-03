@@ -51,9 +51,7 @@
     
     if (needRefresh) {
         needRefresh = NO;
-        [self loadCase:^(id object){
-            [self reloadData];
-        }];
+        [self loadCase];
     }
 }
 
@@ -63,10 +61,6 @@
 }
 
 #pragma mark - View
-- (void)onTemplateLoading
-{
-}
-
 - (void)onTemplateLoaded
 {
     //调整视图基本样式
@@ -79,20 +73,10 @@
     [self domCss:@"#caseRemark" name:@"width" value:contentWidth];
 }
 
-- (void)onTemplateFailed
-{
-    
-}
-
-- (void)onTemplateCancelled
-{
-    
-}
-
 #pragma mark - reloadData
 - (void) reloadData
 {
-    [self renderCaseData];
+    [super reloadData];
     
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
     NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
@@ -331,9 +315,7 @@
             }
             
             //刷新需求
-            [self loadCase:^(id object){
-                [self reloadData];
-            }];
+            [self loadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
@@ -387,9 +369,7 @@
             }
             
             //刷新需求
-            [self loadCase:^(id object){
-                [self reloadData];
-            }];
+            [self loadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -416,9 +396,7 @@
             }
             
             //刷新需求
-            [self loadCase:^(id object){
-                [self reloadData];
-            }];
+            [self loadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

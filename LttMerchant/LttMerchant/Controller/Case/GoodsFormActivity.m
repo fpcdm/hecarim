@@ -30,9 +30,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self loadCase:^(id object){
-        [self reloadData];
-    }];
+    [self loadCase];
 }
 
 - (NSString *)templateName
@@ -43,7 +41,7 @@
 #pragma mark - reloadData
 - (void) reloadData
 {
-    [self renderCaseData];
+    [super reloadData];
     
     //重新布局
     [self relayout];

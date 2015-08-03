@@ -28,9 +28,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self loadCase:^(id object){
-        [self reloadData];
-    }];
+    [self loadCase];
 }
 
 - (NSString *) templateName
@@ -39,30 +37,16 @@
 }
 
 #pragma mark - View
-- (void)onTemplateLoading
-{
-}
-
 - (void)onTemplateLoaded
 {
     //添加备注
     self.caseRemark.placeholder = @"备注";
 }
 
-- (void)onTemplateFailed
-{
-    
-}
-
-- (void)onTemplateCancelled
-{
-    
-}
-
 #pragma mark - reloadData
 - (void) reloadData
 {
-    [self renderCaseData];
+    [super reloadData];
     
     self.viewStorage[@"form"] = @{
                                   @"remark": @""

@@ -14,8 +14,35 @@
 
 @implementation CaseBaseActivity
 
+#pragma mark - View
+- (void)onTemplateLoading
+{
+}
+
+- (void)onTemplateLoaded
+{
+}
+
+- (void)onTemplateFailed
+{
+    
+}
+
+- (void)onTemplateCancelled
+{
+    
+}
+
 #pragma mark - Data
-//加载需求并显示
+//加载需求数据并重新渲染
+- (void) loadCase
+{
+    [self loadCase:^(id object){
+        [self reloadData];
+    }];
+}
+
+//加载需求数据并执行回调
 - (void) loadCase:(CallbackBlock)callback
 {
     //加载数据
@@ -43,6 +70,14 @@
 }
 
 #pragma mark - reloadData
+//子类重写，渲染数据
+- (void) reloadData
+{
+    [self renderCaseData];
+    
+    //子类继续渲染
+}
+
 //渲染需求头数据
 - (void) renderCaseData
 {
