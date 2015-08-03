@@ -6,10 +6,8 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppActivity.h"
+#import "CaseBaseActivity.h"
 
-@interface GoodsListActivity : AppActivity
-
-@property (retain, nonatomic) NSNumber *caseId;
+@interface GoodsListActivity : CaseBaseActivity
 
 @end

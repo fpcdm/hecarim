@@ -7,8 +7,6 @@
 //
 
 #import "CaseDetailActivity.h"
-#import "CaseEntity.h"
-#import "CaseHandler.h"
 #import "ServiceEntity.h"
 #import "CaseListActivity.h"
 #import "CaseEditActivity.h"
@@ -25,11 +23,11 @@
 
 @implementation CaseDetailActivity
 {
-    CaseEntity *intention;
-    
     //返回页面是否需要刷新
     BOOL needRefresh;
 }
+
+@synthesize intention;
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
@@ -53,7 +51,9 @@
     
     if (needRefresh) {
         needRefresh = NO;
-        [self loadCase];
+        [self loadCase:^(id object){
+            [self reloadData];
+        }];
     }
 }
 
@@ -89,54 +89,10 @@
     
 }
 
-#pragma mark - Data
-//加载需求并显示
-- (void) loadCase
-{
-    //加载数据
-    [self showLoading:TIP_LOADING_MESSAGE];
-    [self loadData:^(id object){
-        [self hideLoading];
-        
-        [self reloadData];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
-}
-
-//加载需求数据
-- (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
-{
-    //查询需求
-    NSLog(@"caseId: %@", self.caseId);
-    
-    CaseEntity *caseEntity = [[CaseEntity alloc] init];
-    caseEntity.id = self.caseId;
-    
-    //调用接口
-    CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    [caseHandler queryCase:caseEntity success:^(NSArray *result){
-        intention = [result firstObject];
-        
-        NSLog(@"需求数据：%@", [intention toDictionary]);
-        
-        success(nil);
-    } failure:^(ErrorEntity *error){
-        failure(error);
-    }];
-}
-
 #pragma mark - reloadData
 - (void) reloadData
 {
-    NSString *totalAmount = intention.totalAmount && [intention.totalAmount floatValue] > 0.0 ? [NSString stringWithFormat:@"￥%@", intention.totalAmount] : @"-";
-    self.viewStorage[@"case"] = @{
-                                       @"no": intention.no,
-                                       @"status": intention.status,
-                                       @"statusName": intention.statusName,
-                                       @"time": intention.createTime,
-                                       @"totalAmount":totalAmount
-                                       };
+    [self renderCaseData];
     
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
     NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
@@ -375,7 +331,9 @@
             }
             
             //刷新需求
-            [self loadCase];
+            [self loadCase:^(id object){
+                [self reloadData];
+            }];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
@@ -429,7 +387,9 @@
             }
             
             //刷新需求
-            [self loadCase];
+            [self loadCase:^(id object){
+                [self reloadData];
+            }];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -456,7 +416,9 @@
             }
             
             //刷新需求
-            [self loadCase];
+            [self loadCase:^(id object){
+                [self reloadData];
+            }];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

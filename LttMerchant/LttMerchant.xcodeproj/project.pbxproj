@@ -114,6 +114,7 @@
 		2F6DE5BC1B6775F9003178DE /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */; };
 		2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD781B1D5EB500797799 /* BaseEntity.m */; };
 		2F74CD821B1D5F8100797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD811B1D5F8100797799 /* BaseView.m */; };
+		2F74DF911B6F56F9002FAF4E /* CaseBaseActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74DF901B6F56F9002FAF4E /* CaseBaseActivity.m */; };
 		2F7A56EA1B09D51A00D12500 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18771B047CF600C3D09E /* libz.dylib */; };
 		2F7A56EB1B09D52300D12500 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD187D1B047D1800C3D09E /* SystemConfiguration.framework */; };
 		2F7A56ED1B09D52B00D12500 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */; };
@@ -732,6 +733,8 @@
 		2F74CD781B1D5EB500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD801B1D5F8100797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		2F74CD811B1D5F8100797799 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		2F74DF8F1B6F56F9002FAF4E /* CaseBaseActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseBaseActivity.h; sourceTree = "<group>"; };
+		2F74DF901B6F56F9002FAF4E /* CaseBaseActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseBaseActivity.m; sourceTree = "<group>"; };
 		2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2F7A56EE1B09D53300D12500 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F800B061B1D529F006189EF /* NSString+trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+trim.h"; sourceTree = "<group>"; };
@@ -1715,6 +1718,8 @@
 			children = (
 				2F16E6C01B5E1B03007947D0 /* CaseListActivity.h */,
 				2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */,
+				2F74DF8F1B6F56F9002FAF4E /* CaseBaseActivity.h */,
+				2F74DF901B6F56F9002FAF4E /* CaseBaseActivity.m */,
 				2F6DE5B71B676E09003178DE /* CaseDetailActivity.h */,
 				2F6DE5B81B676E09003178DE /* CaseDetailActivity.m */,
 				2F6ADD801B6B0FDF00BFFD8B /* CaseEditActivity.h */,
@@ -4300,6 +4305,7 @@
 				2F8BC5B71B5CE1E400B7D8B8 /* UIView+TemplateLoading.m in Sources */,
 				2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */,
 				2F8BC5E71B5CE1E400B7D8B8 /* Samurai_ViewCore.m in Sources */,
+				2F74DF911B6F56F9002FAF4E /* CaseBaseActivity.m in Sources */,
 				2F9001571B1D9D680040D97B /* Reachability.m in Sources */,
 				2F8BC5D41B5CE1E400B7D8B8 /* Samurai_Color.m in Sources */,
 				2F8BC6D71B5CE1E400B7D8B8 /* Samurai_HtmlNumberEx.m in Sources */,

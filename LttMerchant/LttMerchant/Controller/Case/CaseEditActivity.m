@@ -7,8 +7,6 @@
 //
 
 #import "CaseEditActivity.h"
-#import "CaseEntity.h"
-#import "CaseHandler.h"
 #import "UITextView+Placeholder.h"
 
 @interface CaseEditActivity ()
@@ -18,9 +16,8 @@
 @end
 
 @implementation CaseEditActivity
-{
-    CaseEntity *intention;
-}
+
+@synthesize intention;
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
@@ -31,7 +28,9 @@
 {
     [super viewDidAppear:animated];
     
-    [self loadCase];
+    [self loadCase:^(id object){
+        [self reloadData];
+    }];
 }
 
 - (NSString *) templateName
@@ -60,54 +59,10 @@
     
 }
 
-#pragma mark - Data
-//加载需求并显示
-- (void) loadCase
-{
-    //加载数据
-    [self showLoading:TIP_LOADING_MESSAGE];
-    [self loadData:^(id object){
-        [self hideLoading];
-        
-        [self reloadData];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
-}
-
-//加载需求数据
-- (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
-{
-    //查询需求
-    NSLog(@"intentionId: %@", self.caseId);
-    
-    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
-    intentionEntity.id = self.caseId;
-    
-    //调用接口
-    CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    [caseHandler queryCase:intentionEntity success:^(NSArray *result){
-        intention = [result firstObject];
-        
-        NSLog(@"需求数据：%@", [intention toDictionary]);
-        
-        success(nil);
-    } failure:^(ErrorEntity *error){
-        failure(error);
-    }];
-}
-
 #pragma mark - reloadData
 - (void) reloadData
 {
-    NSString *totalAmount = intention.totalAmount ? [NSString stringWithFormat:@"￥%@", intention.totalAmount] : @"-";
-    self.viewStorage[@"case"] = @{
-                                  @"no": intention.no,
-                                  @"status": intention.status,
-                                  @"statusName": intention.statusName,
-                                  @"time": intention.createTime,
-                                  @"totalAmount":totalAmount
-                                  };
+    [self renderCaseData];
     
     self.viewStorage[@"form"] = @{
                                   @"remark": @""
