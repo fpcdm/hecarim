@@ -33,8 +33,8 @@
     if (intentionList != nil) {
         for (CaseEntity *intention in intentionList) {
             //计算高度
-            long detailCount = intention.details ? [intention.details count] : 0;
-            NSNumber *height = [NSNumber numberWithFloat:(50 + detailCount * 20)];
+            NSUInteger detailCount = [[intention details] count];
+            NSNumber *height = [NSNumber numberWithFloat:(65 + detailCount * 25)];
             [tableData addObject:@{@"id" : @"intention", @"type" : @"custom", @"action": @"actionDetail:", @"height": height, @"data": intention}];
         }
     }
@@ -51,22 +51,31 @@
     int padding = 10;
     UIView *superview = cell;
     
-    //时间
-    UILabel *timeLabel = [self makeCellLabel:intention.createTime];
-    timeLabel.backgroundColor = [UIColor clearColor];
-    timeLabel.font = [UIFont boldSystemFontOfSize:18];
-    [cell addSubview:timeLabel];
+    //编号
+    UILabel *noTitleLabel = [self makeCellLabel:@"编号："];
+    [cell addSubview:noTitleLabel];
     
-    [timeLabel mas_makeConstraints:^(MASConstraintMaker *make){
+    [noTitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(superview.mas_top).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         
         make.height.equalTo(@20);
     }];
     
+    UILabel *noLabel = [self makeCellLabel:intention.no];
+    noLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    [cell addSubview:noLabel];
+    
+    [noLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top).offset(padding);
+        make.left.equalTo(noTitleLabel.mas_right);
+        
+        make.width.equalTo(@180);
+        make.height.equalTo(@20);
+    }];
+    
     //状态
     UILabel *statusLabel = [self makeCellLabel:[intention statusName]];
-    statusLabel.backgroundColor = [UIColor clearColor];
     statusLabel.textColor = [intention statusColor];
     [cell addSubview:statusLabel];
     
@@ -76,14 +85,26 @@
         
     }];
     
+    //时间
+    UILabel *timeLabel = [self makeCellLabel:intention.createTime];
+    timeLabel.textColor = [UIColor grayColor];
+    [cell addSubview:timeLabel];
+    
+    [timeLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(noTitleLabel.mas_bottom).offset(5);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        
+        make.height.equalTo(@20);
+    }];
+    
     //详情
-    NSArray *details = intention.details;
+    NSArray *details = [intention details];
     UIView *relateview = timeLabel;
     
     if (details) {
-        for (NSDictionary *detail in details) {
-            UILabel *detailLabel = [self makeCellLabel:[detail objectForKey:@"title"]];
-            detailLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+        for (NSString *detail in details) {
+            UILabel *detailLabel = [self makeCellLabel:detail];
+            detailLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
             [cell addSubview:detailLabel];
             
             [detailLabel mas_makeConstraints:^(MASConstraintMaker *make){

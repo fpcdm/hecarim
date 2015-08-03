@@ -8,7 +8,7 @@
 
 #import "CasePayedView.h"
 #import "AXRatingView.h"
-#import "OrderEntity.h"
+#import "CaseEntity.h"
 
 @implementation CasePayedView
 {
@@ -121,9 +121,9 @@
 #pragma mark - RenderData
 - (void)renderData
 {
-    OrderEntity *order = [self getData:@"order"];
+    CaseEntity *intention = [self getData:@"intention"];
     
-    [order avatarView:imageView];
+    [intention avatarView:imageView];
 }
 
 #pragma mark - Action

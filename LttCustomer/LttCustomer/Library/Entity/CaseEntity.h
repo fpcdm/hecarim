@@ -7,6 +7,8 @@
 //
 
 #import "BaseEntity.h"
+#import "GoodsEntity.h"
+#import "ServiceEntity.h"
 
 @interface CaseEntity : BaseEntity
 
@@ -14,19 +16,35 @@
 
 @property (nonatomic, retain) NSString *no;
 
-@property (nonatomic, retain) NSString *address;
-
-@property (nonatomic, retain) NSNumber *addressId;
-
-@property (nonatomic, retain) NSString *location;
-
-@property (nonatomic, retain) NSString *remark;
-
-@property (nonatomic, retain) NSNumber *type;
-
 @property (nonatomic, retain) NSString *status;
 
+@property (nonatomic, retain) NSString *buyerName;
+
+@property (nonatomic, retain) NSString *buyerMobile;
+
+@property (nonatomic, retain) NSString *buyerAddress;
+
 @property (nonatomic, retain) NSString *createTime;
+
+@property (nonatomic, retain) NSString *customerRemark;
+
+@property (nonatomic, retain) NSNumber *stuffId;
+
+@property (nonatomic, retain) NSString *stuffName;
+
+@property (nonatomic, retain) NSString *stuffMobile;
+
+@property (nonatomic, retain) NSString *stuffAvatar;
+
+@property (nonatomic, retain) NSString *stuffRemark;
+
+@property (nonatomic, retain) NSString *mapUrl;
+
+@property (nonatomic, retain) NSNumber *rateStar;
+
+@property (nonatomic, retain) NSNumber *typeId;
+
+@property (nonatomic, retain) NSString *typeName;
 
 @property (nonatomic, retain) NSNumber *userId;
 
@@ -34,23 +52,23 @@
 
 @property (nonatomic, retain) NSString *userMobile;
 
-@property (nonatomic, retain) NSString *responseTime;
+@property (nonatomic, retain) NSString *userAvatar;
 
-@property (nonatomic, retain) NSString *responseStatus;
+@property (nonatomic, retain) NSNumber *totalAmount;
 
-@property (nonatomic, retain) NSString *orderNo;
+@property (nonatomic, retain) NSNumber *goodsAmount;
 
-@property (nonatomic, retain) NSNumber *employeeId;
+@property (nonatomic, retain) NSNumber *servicesAmount;
 
-@property (nonatomic, retain) NSString *employeeName;
+@property (nonatomic, retain) NSArray *goods;
 
-@property (nonatomic, retain) NSString *employeeMobile;
+@property (nonatomic, retain) NSArray *services;
 
-@property (nonatomic, retain) NSString *employeeAvatar;
+@property (nonatomic, retain) id goodsParam;
 
-@property (nonatomic, retain) NSString *mapUrl;
+@property (nonatomic, retain) id servicesParam;
 
-@property (nonatomic, retain) NSArray *details;
+@property (nonatomic, retain) NSNumber *addressId;
 
 - (void) avatarView: (UIImageView *)view;
 
@@ -60,6 +78,7 @@
 
 - (BOOL) isFail;
 
-- (BOOL) hasOrder;
+//需求列表页的详细信息
+- (NSArray *) details;
 
 @end

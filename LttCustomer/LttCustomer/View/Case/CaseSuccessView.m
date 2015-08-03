@@ -8,7 +8,7 @@
 
 #import "CaseSuccessView.h"
 #import "AXRatingView.h"
-#import "OrderEntity.h"
+#import "CaseEntity.h"
 
 @implementation CaseSuccessView
 {
@@ -122,10 +122,10 @@
 #pragma mark - RenderData
 - (void)renderData
 {
-    OrderEntity *order = [self getData:@"order"];
+    CaseEntity *intention = [self getData:@"intention"];
     
-    [order avatarView:imageView];
-    ratingView.value = [order.commentLevel floatValue];
+    [intention avatarView:imageView];
+    ratingView.value = [intention.rateStar floatValue];
 }
 
 #pragma mark - Action

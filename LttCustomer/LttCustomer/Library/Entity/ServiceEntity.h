@@ -14,8 +14,6 @@
 
 @property (nonatomic, retain) NSString *name;
 
-@property (nonatomic, retain) NSNumber *number;
-
 @property (nonatomic, retain) NSNumber *price;
 
 @property (nonatomic, retain) NSNumber *typeId;

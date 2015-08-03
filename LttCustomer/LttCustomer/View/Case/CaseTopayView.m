@@ -7,14 +7,14 @@
 //
 
 #import "CaseTopayView.h"
-#import "OrderEntity.h"
+#import "CaseEntity.h"
 
 @implementation CaseTopayView
 {
     UILabel *titleLabel;
     UIView *orderView;
     UIButton *payButton;
-    OrderEntity *order;
+    CaseEntity *intention;
     //分隔视图
     UIView *orderSeparator;
 }
@@ -57,7 +57,7 @@
 #pragma mark - RenderData
 - (void)renderData
 {
-    order = [self getData:@"order"];
+    intention = [self getData:@"intention"];
     
     //详情容器
     orderView = [[UIView alloc] init];
@@ -66,17 +66,15 @@
     [self addSubview:orderView];
     
     //总高度计算
-    long goodsCount = order.goods ? [order.goods count] : 0;
-    long servicesCount = order.services ? [order.services count] : 0;
+    long goodsCount = intention.goods ? [intention.goods count] : 0;
+    long servicesCount = intention.services ? [intention.services count] : 0;
     
     float totalHeight = 0.0;
     if (goodsCount > 0) {
         totalHeight += 30 + 25 + (goodsCount * 40);
     }
     if (servicesCount > 0) {
-        for (NSArray *services in order.services) {
-            totalHeight += 30 + 25 + ([services count] * 20);
-        }
+        totalHeight += 30 + 25 + (servicesCount * 20);
     }
     totalHeight += 5;
     
@@ -96,15 +94,13 @@
     
     //服务
     if (servicesCount > 0) {
-        for (NSArray *services in order.services) {
-            [self renderServices:services];
-        }
+        [self renderServices:intention.services];
     }
     
     //合计
     UILabel *totalLabel = [[UILabel alloc] init];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", [order.amount floatValue]];
+    totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", [intention.totalAmount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont boldSystemFontOfSize:20];
     [self addSubview:totalLabel];
@@ -115,7 +111,7 @@
     }];
     
     //按钮
-    [payButton setTitle:[NSString stringWithFormat:@"确认并支付%.2f元", [order.amount floatValue]] forState:UIControlStateNormal];
+    [payButton setTitle:[NSString stringWithFormat:@"确认并支付%.2f元", [intention.totalAmount floatValue]] forState:UIControlStateNormal];
     
 }
 
@@ -143,9 +139,7 @@
     UIView *relateview = [self separatorView:goodsTitle];
     
     //商品列表
-    float goodsTotal = 0.0f;
-    for (GoodsEntity *goods in order.goods) {
-        goodsTotal += [[goods total] floatValue];
+    for (GoodsEntity *goods in intention.goods) {
         //名称
         UILabel *nameLabel = [UILabel new];
         nameLabel.text = goods.name;
@@ -215,7 +209,7 @@
     //总价
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.text = [NSString stringWithFormat:@"￥%.2f", goodsTotal];
+    totalLabel.text = [NSString stringWithFormat:@"￥%.2f", [intention.goodsAmount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [orderView addSubview:totalLabel];
@@ -233,13 +227,10 @@
 
 - (void)renderServices:(NSArray *)services
 {
-    //获取服务分类
-    ServiceEntity *service = [services objectAtIndex:0];
-    
     //服务标题
     UILabel *servicesTitle = [UILabel new];
     servicesTitle.backgroundColor = [UIColor clearColor];
-    servicesTitle.text = service.typeName;
+    servicesTitle.text = @"上门服务";
     servicesTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     servicesTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [orderView addSubview:servicesTitle];
@@ -257,13 +248,11 @@
     UIView *relateview = [self separatorView:servicesTitle];
     
     //服务列表
-    float serviceTotal = 0.0f;
     for (ServiceEntity *service in services) {
-        serviceTotal += [[service total] floatValue];
         //名称
         UILabel *nameLabel = [UILabel new];
         nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.text = service.name;
+        nameLabel.text = service.typeName;
         nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
         nameLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
         [orderView addSubview:nameLabel];
@@ -298,7 +287,7 @@
     //总价
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.text = [NSString stringWithFormat:@"￥%.2f", serviceTotal];
+    totalLabel.text = [NSString stringWithFormat:@"￥%.2f", [intention.servicesAmount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
     [orderView addSubview:totalLabel];

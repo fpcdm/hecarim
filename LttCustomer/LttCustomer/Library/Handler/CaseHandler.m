@@ -13,7 +13,7 @@
 - (void) addIntention:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"type": @"type", @"remark": @"remark", @"location": @"location", @"address": @"address", @"addressId": @"address_id"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"typeId": @"type", @"customerRemark": @"remark", @"buyerAddress": @"address", @"addressId": @"address_id"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:@{@"intention_id": @"id"}];
     
     [sharedClient putObject:intention path:@"cases/info" param:nil success:^(NSArray *result){
@@ -29,15 +29,48 @@
     }];
 }
 
-- (void) queryIntention:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void) queryIntention:(CaseEntity *)caseEntity success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:@{@"create_time": @"createTime", @"employee_id": @"employeeId", @"employee_mobile":@"employeeMobile", @"employee_name": @"employeeName", @"employee_avatar": @"employeeAvatar", @"intention_id":@"id", @"intention_status":@"status", @"order_no":@"orderNo", @"remark":@"remark", @"response_status": @"responseStatus", @"response_time":@"responseTime", @"user_id":@"userId", @"user_mobile":@"userMobile", @"user_name":@"userName",@"map_url":@"mapUrl"}];
     
-    NSString *restPath = [sharedClient formatPath:@"cases/info/:id" object:intention];
-    [sharedClient getObject:intention path:restPath param:nil success:^(NSArray *result){
+    NSDictionary *mappingParam = @{
+                                   @"case_amount": @"totalAmount",
+                                   @"case_id": @"id",
+                                   @"case_no": @"no",
+                                   @"case_status": @"status",
+                                   @"contact": @"buyerName",
+                                   @"contact_mobile": @"buyerMobile",
+                                   @"contact_address": @"buyerAddress",
+                                   @"create_time": @"createTime",
+                                   @"customer_remark": @"customerRemark",
+                                   @"map_url": @"mapUrl",
+                                   @"rate_star": @"rateStar",
+                                   @"remark": @"stuffRemark",
+                                   @"stuff_id": @"stuffId",
+                                   @"stuff_name": @"stuffName",
+                                   @"stuff_mobile": @"stuffMobile",
+                                   @"stuff_avatar": @"stuffAvatar",
+                                   @"type_id": @"typeId",
+                                   @"type_name": @"typeName",
+                                   @"user_id": @"userId",
+                                   @"user_name": @"userName",
+                                   @"user_mobile": @"userMobile",
+                                   @"user_avatar": @"userAvatar",
+                                   @"goods": @"goodsParam",
+                                   @"services": @"servicesParam"
+                                   };
+    
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:mappingParam];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/info/:id" object:caseEntity];
+    [sharedClient getObject:caseEntity path:restPath param:nil success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        //整理需求数据
+        for (CaseEntity *resultEntity in result) {
+            [self formatIntention:resultEntity];
+        }
         
         success(result);
     } failure:^(ErrorEntity *error){
@@ -47,15 +80,82 @@
     }];
 }
 
+//格式化需求商品和服务信息
+- (void) formatIntention: (CaseEntity *)resultEntity
+{
+    //解析订单商品
+    NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
+    if (resultEntity.goodsParam) {
+        NSNumber *goodsAmount = [resultEntity.goodsParam objectForKey:@"amount"];
+        resultEntity.goodsAmount = goodsAmount ? goodsAmount : @0.00;
+        
+        NSArray *goodsList = [resultEntity.goodsParam objectForKey:@"list"];
+        if (goodsList && [goodsList count] > 0) {
+            for (NSDictionary *goodsItem in goodsList) {
+                GoodsEntity *goods = [[GoodsEntity alloc] init];
+                goods.id = [goodsItem objectForKey:@"goods_id"];
+                goods.name = [goodsItem objectForKey:@"goods_name"];
+                goods.number = [goodsItem objectForKey:@"goods_num"];
+                goods.price = [goodsItem objectForKey:@"goods_price"];
+                id specName = [goodsItem objectForKey:@"specs"];
+                if (specName) goods.specName = specName;
+                
+                [goodsArray addObject:goods];
+            }
+        }
+    }
+    resultEntity.goods = goodsArray;
+    resultEntity.goodsParam = nil;
+    
+    //解析服务
+    NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
+    if (resultEntity.servicesParam) {
+        NSNumber *servicesAmount = [resultEntity.servicesParam objectForKey:@"amount"];
+        resultEntity.servicesAmount = servicesAmount ? servicesAmount : @0.00;
+        
+        NSArray *serviceList = [resultEntity.servicesParam objectForKey:@"list"];
+        if (serviceList && [serviceList count] > 0) {
+            for (NSDictionary *serviceItem in serviceList) {
+                ServiceEntity *service = [[ServiceEntity alloc] init];
+                service.name = [serviceItem objectForKey:@"content"];
+                service.price = [serviceItem objectForKey:@"price"];
+                service.typeName = [serviceItem objectForKey:@"category_name"];
+                
+                [servicesArray addObject:service];
+            }
+        }
+    }
+    resultEntity.services = servicesArray;
+    resultEntity.servicesParam = nil;
+}
+
 - (void) queryIntentions:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:@{@"case_id": @"id", @"case_no": @"orderNo", @"create_time": @"createTime", @"status":@"status", @"detail": @"details",@"remark":@"remark"} keyPath:@"list"];
+    
+    NSDictionary *mappingParam = @{
+                                   @"case_id": @"id",
+                                   @"case_no": @"no",
+                                   @"create_time": @"createTime",
+                                   @"status":@"status",
+                                   @"type_id": @"typeId",
+                                   @"type_name": @"typeName",
+                                   @"remark":@"stuffRemark",
+                                   @"customer_remark":@"customerRemark",
+                                   @"goods": @"goodsParam",
+                                   @"services": @"servicesParam"
+                                   };
+    
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:mappingParam keyPath:@"list"];
     
     NSString *restPath = @"cases/list";
     [sharedClient getObject:[CaseEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        for (CaseEntity *resultEntity in result) {
+            [self formatIntention:resultEntity];
+        }
         
         success(result);
     } failure:^(ErrorEntity *error){
@@ -74,6 +174,36 @@
     [sharedClient deleteObject:intention path:restPath param:nil success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) updateIntentionStatus:(CaseEntity *)intention param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/status/:id" object:intention];
+    [sharedClient postObject:intention path:restPath param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) addIntentionEvaluation:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"no": @"case_no", @"rateStar": @"rate_star"}];
+    
+    [sharedClient putObject:intention path:@"member/evaluation" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
         failure(error);
     }];
 }

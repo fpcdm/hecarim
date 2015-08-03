@@ -70,12 +70,10 @@
 		2F16E63B1B5DF162007947D0 /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E61A1B5DF162007947D0 /* GoodsEntity.m */; };
 		2F16E63C1B5DF162007947D0 /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E61C1B5DF162007947D0 /* LocationEntity.m */; };
 		2F16E63D1B5DF162007947D0 /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E61E1B5DF162007947D0 /* ModelEntity.m */; };
-		2F16E63E1B5DF162007947D0 /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6201B5DF162007947D0 /* OrderEntity.m */; };
 		2F16E63F1B5DF162007947D0 /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6221B5DF162007947D0 /* ServiceEntity.m */; };
 		2F16E6401B5DF162007947D0 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6251B5DF162007947D0 /* CaseHandler.m */; };
 		2F16E6411B5DF162007947D0 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6271B5DF162007947D0 /* GoodsHandler.m */; };
 		2F16E6421B5DF162007947D0 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6291B5DF162007947D0 /* HelperHandler.m */; };
-		2F16E6431B5DF162007947D0 /* OrderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E62B1B5DF162007947D0 /* OrderHandler.m */; };
 		2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E62D1B5DF162007947D0 /* UserHandler.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F281B4E064800575271 /* ResultEntity.m */; };
@@ -370,8 +368,6 @@
 		2F16E61C1B5DF162007947D0 /* LocationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationEntity.m; sourceTree = "<group>"; };
 		2F16E61D1B5DF162007947D0 /* ModelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEntity.h; sourceTree = "<group>"; };
 		2F16E61E1B5DF162007947D0 /* ModelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEntity.m; sourceTree = "<group>"; };
-		2F16E61F1B5DF162007947D0 /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
-		2F16E6201B5DF162007947D0 /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
 		2F16E6211B5DF162007947D0 /* ServiceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceEntity.h; sourceTree = "<group>"; };
 		2F16E6221B5DF162007947D0 /* ServiceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceEntity.m; sourceTree = "<group>"; };
 		2F16E6241B5DF162007947D0 /* CaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseHandler.h; sourceTree = "<group>"; };
@@ -380,8 +376,6 @@
 		2F16E6271B5DF162007947D0 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
 		2F16E6281B5DF162007947D0 /* HelperHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperHandler.h; sourceTree = "<group>"; };
 		2F16E6291B5DF162007947D0 /* HelperHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperHandler.m; sourceTree = "<group>"; };
-		2F16E62A1B5DF162007947D0 /* OrderHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderHandler.h; sourceTree = "<group>"; };
-		2F16E62B1B5DF162007947D0 /* OrderHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderHandler.m; sourceTree = "<group>"; };
 		2F16E62C1B5DF162007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F16E62D1B5DF162007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
@@ -1025,8 +1019,6 @@
 				2F16E61C1B5DF162007947D0 /* LocationEntity.m */,
 				2F16E61D1B5DF162007947D0 /* ModelEntity.h */,
 				2F16E61E1B5DF162007947D0 /* ModelEntity.m */,
-				2F16E61F1B5DF162007947D0 /* OrderEntity.h */,
-				2F16E6201B5DF162007947D0 /* OrderEntity.m */,
 				2F16E6211B5DF162007947D0 /* ServiceEntity.h */,
 				2F16E6221B5DF162007947D0 /* ServiceEntity.m */,
 			);
@@ -1042,8 +1034,6 @@
 				2F16E6271B5DF162007947D0 /* GoodsHandler.m */,
 				2F16E6281B5DF162007947D0 /* HelperHandler.h */,
 				2F16E6291B5DF162007947D0 /* HelperHandler.m */,
-				2F16E62A1B5DF162007947D0 /* OrderHandler.h */,
-				2F16E62B1B5DF162007947D0 /* OrderHandler.m */,
 				2F16E62C1B5DF162007947D0 /* UserHandler.h */,
 				2F16E62D1B5DF162007947D0 /* UserHandler.m */,
 			);
@@ -1889,7 +1879,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */,
-				2F16E63E1B5DF162007947D0 /* OrderEntity.m in Sources */,
 				2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2F16E63A1B5DF162007947D0 /* DeviceEntity.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
@@ -2054,7 +2043,6 @@
 				2F6D3E171B312164007A4159 /* DistancePickerView.m in Sources */,
 				2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FED7D9A1B1EA2D300306A11 /* UIButton+WebCache.m in Sources */,
-				2F16E6431B5DF162007947D0 /* OrderHandler.m in Sources */,
 				2F16E5B21B5DEFEE007947D0 /* LoginView.m in Sources */,
 				2F6D3E551B312765007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F6D3E4E1B312765007A4159 /* MJRefreshBackFooter.m in Sources */,

@@ -159,8 +159,8 @@
     
     //客服信息
     [intention avatarView:avatarView];
-    nameLabel.text = intention.employeeName;
-    [mobileButton setTitle:intention.employeeMobile forState:UIControlStateNormal];
+    nameLabel.text = intention.stuffName;
+    [mobileButton setTitle:intention.stuffMobile forState:UIControlStateNormal];
     [mobileButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
 }
 

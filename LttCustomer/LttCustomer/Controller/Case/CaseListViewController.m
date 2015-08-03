@@ -55,11 +55,6 @@
     NSDictionary *param = @{@"page":[NSNumber numberWithInt:page], @"pagesize":[NSNumber numberWithInt:LTT_PAGESIZE_DEFAULT]};
     [caseHandler queryIntentions:param success:^(NSArray *result){
         for (CaseEntity *intention in result) {
-            //没有详情取备注
-            if ((!intention.details || [intention.details count] < 1) && intention.remark) {
-                intention.details = @[@{@"title": intention.remark}];
-            }
-            
             [intentionList addObject:intention];
         }
         

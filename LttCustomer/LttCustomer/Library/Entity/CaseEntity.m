@@ -8,56 +8,24 @@
 
 #import "CaseEntity.h"
 #import "UIImageView+WebCache.h"
+#import "GoodsEntity.h"
+#import "ServiceEntity.h"
 
 @implementation CaseEntity
 
-@synthesize id;
-
-@synthesize no;
-
-@synthesize type;
-
-@synthesize address;
+@synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName,
+buyerName, buyerMobile, buyerAddress, customerRemark,
+stuffId, stuffName, stuffMobile, stuffAvatar, stuffRemark,
+userId, userName, userMobile, userAvatar,
+totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 
 @synthesize addressId;
 
-@synthesize location;
-
-@synthesize remark;
-
-@synthesize status;
-
-@synthesize createTime;
-
-@synthesize userId;
-
-@synthesize userName;
-
-@synthesize userMobile;
-
-@synthesize responseTime;
-
-@synthesize responseStatus;
-
-@synthesize orderNo;
-
-@synthesize employeeId;
-
-@synthesize employeeName;
-
-@synthesize employeeMobile;
-
-@synthesize employeeAvatar;
-
-@synthesize mapUrl;
-
-@synthesize details;
-
 - (void) avatarView: (UIImageView *)view
 {
-    if (self.employeeAvatar && [self.employeeAvatar length] > 0) {
-        NSLog(@"加载头像缓存：%@", self.employeeAvatar);
-        [view sd_setImageWithURL:[NSURL URLWithString:self.employeeAvatar] placeholderImage:[UIImage imageNamed:@"support"]];
+    if (self.stuffAvatar && [self.stuffAvatar length] > 0) {
+        NSLog(@"加载头像缓存：%@", self.stuffAvatar);
+        [view sd_setImageWithURL:[NSURL URLWithString:self.stuffAvatar] placeholderImage:[UIImage imageNamed:@"support"]];
     } else {
         view.image = [UIImage imageNamed:@"support"];
     }
@@ -73,7 +41,7 @@
                             CASE_STATUS_PAYED:@"已付款",
                             CASE_STATUS_SUCCESS:@"已完成",
                             CASE_STATUS_MEMBER_CANCEL:@"已取消",
-                            CASE_STATUS_MERCHANT_CANCEL:@"商家已取消"
+                            CASE_STATUS_MERCHANT_CANCEL:@"已取消"
                             };
     
     NSString *name = [names objectForKey:self.status];
@@ -104,9 +72,23 @@
     return [CASE_STATUS_MEMBER_CANCEL isEqualToString:self.status] || [CASE_STATUS_MERCHANT_CANCEL isEqualToString:self.status];
 }
 
-- (BOOL) hasOrder
+- (NSArray *) details
 {
-    return [CASE_STATUS_TOPAY isEqualToString:self.status] || [CASE_STATUS_PAYED isEqualToString:self.status] || [CASE_STATUS_SUCCESS isEqualToString:self.status];
+    NSMutableArray *details = [[NSMutableArray alloc] init];
+    
+    //先取商品和服务信息
+    if (self.goods && [self.goods count] > 0) {
+        for (GoodsEntity *goodsEntity in self.goods) {
+            [details addObject:goodsEntity.name];
+        }
+    }
+    if (self.services && [self.services count] > 0) {
+        for (ServiceEntity *serviceEntity in self.services) {
+            [details addObject:serviceEntity.typeName];
+        }
+    }
+    
+    return details;
 }
 
 @end

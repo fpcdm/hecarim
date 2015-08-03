@@ -19,4 +19,9 @@
 
 - (void) cancelIntention: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+- (void) updateIntentionStatus: (CaseEntity *) intention param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//提交评价
+- (void) addIntentionEvaluation: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 @end

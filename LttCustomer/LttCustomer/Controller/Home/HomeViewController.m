@@ -173,12 +173,8 @@ static NSDate   *lastDate    = nil;
     
     //获取参数
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
-    intentionEntity.type = type;
-    intentionEntity.address = detailAddress;
-    
-    //获取gps坐标
-    CLLocationCoordinate2D position = [[LocationUtil sharedInstance] position];
-    intentionEntity.location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
+    intentionEntity.typeId = type;
+    intentionEntity.buyerAddress = detailAddress;
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     

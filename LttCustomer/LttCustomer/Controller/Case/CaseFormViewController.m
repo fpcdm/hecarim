@@ -81,7 +81,7 @@
     AddressEntity *currentAddress = [[AddressEntity alloc] init];
     currentAddress.name = [user displayName];
     currentAddress.mobile = user.mobile;
-    currentAddress.address = caseEntity.address;
+    currentAddress.address = caseEntity.buyerAddress;
     return currentAddress;
 }
 
@@ -104,14 +104,14 @@
 {
     //参数检查
     if ((!caseEntity.addressId || [caseEntity.addressId isEqualToNumber:@0]) &&
-        ![ValidateUtil isRequired:caseEntity.address]
+        ![ValidateUtil isRequired:caseEntity.buyerAddress]
         ) {
         [self showError:@"请先选择服务地址哦~亲！"];
         return;
     }
     
     //获取参数
-    caseEntity.remark = remark;
+    caseEntity.customerRemark = remark;
     
     NSLog(@"intention: %@", [caseEntity toDictionary]);
     

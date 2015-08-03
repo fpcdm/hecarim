@@ -8,7 +8,6 @@
 
 #import "CaseViewController.h"
 #import "CaseEntity.h"
-#import "OrderEntity.h"
 #import "CaseNewView.h"
 #import "CaseLockedView.h"
 #import "CaseConfirmedView.h"
@@ -17,7 +16,6 @@
 #import "CaseSuccessView.h"
 #import "TimerUtil.h"
 #import "CaseHandler.h"
-#import "OrderHandler.h"
 #import "HomeViewController.h"
 #import "UIView+Loading.h"
 #import "LttAppDelegate.h"
@@ -29,7 +27,6 @@
 @implementation CaseViewController
 {
     CaseEntity *intention;
-    OrderEntity *order;
     TimerUtil *timerUtil;
     long timer;
 }
@@ -50,7 +47,7 @@
     self.navigationItem.title = TIP_LOADING_MESSAGE;
 }
 
-//查询订单状态切换视图
+//查询状态切换视图
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -98,75 +95,6 @@
         intention = [result firstObject];
         
         NSLog(@"需求数据：%@", [intention toDictionary]);
-        
-        //是否需要查询订单
-        if ([intention hasOrder]) {
-            [self loadOrderData:success failure:failure];
-        } else {
-            success(nil);
-        }
-    } failure:^(ErrorEntity *error){
-        failure(error);
-    }];
-}
-
-//加载订单数据
-- (void)loadOrderData:(CallbackBlock)success failure:(CallbackBlock)failure
-{
-    //查询订单
-    NSLog(@"orderNo: %@", intention.orderNo);
-    
-    OrderEntity *orderEntity = [[OrderEntity alloc] init];
-    orderEntity.no = intention.orderNo;
-    
-    //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler queryOrder:orderEntity success:^(NSArray *result){
-        order = [result firstObject];
-        
-        //解析订单商品
-        NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
-        if (order.goodsParam) {
-            NSArray *goodsList = [order.goodsParam objectForKey:@"list"];
-            if (goodsList && [goodsList count] > 0) {
-                for (NSDictionary *goodsItem in goodsList) {
-                    GoodsEntity *goods = [[GoodsEntity alloc] init];
-                    goods.id = [goodsItem objectForKey:@"goods_id"];
-                    goods.name = [goodsItem objectForKey:@"goods_name"];
-                    goods.number = [goodsItem objectForKey:@"goods_num"];
-                    goods.price = [goodsItem objectForKey:@"goods_price"];
-                    goods.specName = [goodsItem objectForKey:@"specs"];
-                    
-                    [goodsArray addObject:goods];
-                }
-            }
-        }
-        order.goods = goodsArray;
-        
-        //解析服务
-        NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
-        if (order.services && [order.services count] > 0) {
-            for (NSDictionary *servicesDict in order.services) {
-                NSArray *serviceList = [servicesDict objectForKey:@"list"];
-                NSString *typeName = [servicesDict objectForKey:@"remark"];
-                NSMutableArray *servicesGroup = [NSMutableArray arrayWithObjects:nil];
-                if (serviceList && [serviceList count] > 0) {
-                    for (NSDictionary *serviceItem in serviceList) {
-                        ServiceEntity *service = [[ServiceEntity alloc] init];
-                        service.name = [serviceItem objectForKey:@"detail"];
-                        service.number = @1;
-                        service.price = [serviceItem objectForKey:@"price"];
-                        service.typeName = typeName;
-                        
-                        [servicesGroup addObject:service];
-                    }
-                    [servicesArray addObject:servicesGroup];
-                }
-            }
-        }
-        order.services = servicesArray;
-        
-        NSLog(@"订单数据：%@", [order toDictionary]);
         
         success(nil);
     } failure:^(ErrorEntity *error){
@@ -235,7 +163,7 @@
         self.navigationItem.title = @"订单确认";
         
         //显示数据
-        [topayView setData:@"order" value:order];
+        [topayView setData:@"intention" value:intention];
         [topayView renderData];
     } else if ([intention.status isEqualToString:CASE_STATUS_PAYED]) {
         CasePayedView *receivedView = [[CasePayedView alloc] init];
@@ -245,7 +173,7 @@
         self.navigationItem.title = @"服务完成";
         
         //显示数据
-        [receivedView setData:@"order" value:order];
+        [receivedView setData:@"intention" value:intention];
         [receivedView renderData];
         
     } else if ([intention.status isEqualToString:CASE_STATUS_SUCCESS]) {
@@ -256,7 +184,7 @@
         self.navigationItem.title = @"感谢评价";
         
         //显示数据
-        [successView setData:@"order" value:order];
+        [successView setData:@"intention" value:intention];
         [successView renderData];
     } else {
         NSString *statusName = [intention statusName];
@@ -328,7 +256,7 @@
 
 - (void)actionMobile
 {
-    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.employeeMobile];
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.stuffMobile];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 
@@ -340,16 +268,16 @@
 
 - (void)actionPay
 {
-    OrderEntity *orderModel = [[OrderEntity alloc] init];
-    orderModel.no = order.no;
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.id = self.caseId;
     
     NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
     
     [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler updateOrderStatus:orderModel param:param success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler updateIntentionStatus:intentionEntity param:param success:^(NSArray *result){
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             intention.status = CASE_STATUS_PAYED;
             [self intentionView];
@@ -366,17 +294,17 @@
         return;
     }
     
-    OrderEntity *orderModel = [[OrderEntity alloc] init];
-    orderModel.no = order.no;
-    orderModel.commentLevel = [NSNumber numberWithInt:value];
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.id = self.caseId;
+    intentionEntity.rateStar = [NSNumber numberWithInt:value];
     
     [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
-    OrderHandler *orderHandler = [[OrderHandler alloc] init];
-    [orderHandler addOrderEvaluation:orderModel success:^(NSArray *result){
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler addIntentionEvaluation:intentionEntity success:^(NSArray *result){
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            order.commentLevel = [NSNumber numberWithInt:value];
+            intention.rateStar = [NSNumber numberWithInt:value];
             intention.status = CASE_STATUS_SUCCESS;
             [self intentionView];
         }];
