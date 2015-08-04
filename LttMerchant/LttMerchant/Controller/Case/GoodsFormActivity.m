@@ -12,7 +12,7 @@
 #import "BrandEntity.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
-#import "Samurai_HtmlRenderQuery.h"
+#import "PickerUtil.h"
 
 @interface GoodsFormActivity ()
 
@@ -20,7 +20,9 @@
 
 @implementation GoodsFormActivity
 {
-    NSArray *categoryies;
+    CategoryEntity *category;
+    BrandEntity *brand;
+    ModelEntity *model;
 }
 
 @synthesize intention;
@@ -36,7 +38,7 @@
     
     //查询需求
     [self loadCase:^(id object){
-        [self loadCategories];
+        [self reloadData];
     }];
 }
 
@@ -45,39 +47,25 @@
     return @"goodsForm.html";
 }
 
-#pragma mark - Api
-- (void) loadCategories
-{
-    CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
-    categoryEntity.id = @0;
-    categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
-    
-    GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-    [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
-        categoryies = result;
-        
-        //渲染数据
-        [self reloadData];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
-}
-
 #pragma mark - reloadData
 - (void) reloadData
 {
     [super reloadData];
     
-    //品类数据
-    if ([categoryies count] > 0) {
-        $(@"#goodsCategoryEmpty").ATTR(@"display", @"none");
+    self.viewStorage[@"category"] = @{
+                                      @"name": category ? category.name : @"选择品类"
+                                      };
+    
+    NSString *modelName = model ? [NSString stringWithFormat:@"%@ %@", brand.name, model.name] : (category ? @"选择品牌型号" : @"请先选择品类");
+    self.viewStorage[@"model"] = @{
+                                   @"name": modelName
+                                   };
+    
+    //选择品牌型号
+    if (category) {
+        $(@"#modelButton").ATTR(@"color", @"black").ATTR(@"border", @"0.5px solid #b2b2b2");
         
-        //添加按钮
-        SamuraiHtmlRenderQuery *query = $(@"#defaultCategoryButton");
-        query.ATTR(@"display", @"inline-block");
-        
-        UIButton *buttonView = (UIButton *) [query firstView];
-        [buttonView setTitle:@"手机" forState:UIControlStateNormal];
+        UIView *view = $(@"#modelButton").firstView;
     }
     
     //重新布局
@@ -128,6 +116,100 @@
 }
 
 #pragma mark - Action
+- (void) actionChooseCategory: (SamuraiSignal *) signal
+{
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:self.view];
+    
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+        categoryEntity.id = @0;
+        categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
+        
+        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+        [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+            //分类列表
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (CategoryEntity *entity in result) {
+                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    };
+    
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        if ([selectedRows count] < 1) return;
+        
+        PickerUtilRow *row = [selectedRows objectAtIndex:0];
+        category = row.value;
+        
+        brand = nil;
+        model = nil;
+        
+        [self reloadData];
+    };
+    
+    [pickerUtil show];
+}
+
+- (void) actionChooseModel: (SamuraiSignal *) signal
+{
+    if (!category) return;
+    
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:2 origin:self.view];
+    
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //获取品牌列表
+        CategoryEntity *categoryModel = [[CategoryEntity alloc] init];
+        categoryModel.id = category.id;
+        
+        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+        [goodsHandler queryCategoryBrands:categoryModel success:^(NSArray *result){
+            //分类列表
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (CategoryEntity *entity in result) {
+                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    };
+    
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+        categoryEntity.id = @0;
+        categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
+        
+        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+        [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+            //分类列表
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (CategoryEntity *entity in result) {
+                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    };
+    
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        if ([selectedRows count] < 1) return;
+        
+        PickerUtilRow *row = [selectedRows objectAtIndex:0];
+        category = row.value;
+        
+        [self reloadData];
+    };
+    
+    [pickerUtil show];
+}
+
 - (void) actionSave: (SamuraiSignal *) signal
 {
     //todo 保存
