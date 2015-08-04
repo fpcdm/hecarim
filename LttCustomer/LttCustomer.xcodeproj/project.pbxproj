@@ -54,7 +54,6 @@
 		2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5E11B5DF08F007947D0 /* LttNavigationController.m */; };
 		2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5E31B5DF08F007947D0 /* MenuViewController.m */; };
 		2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */; };
-		2F16E62E1B5DF162007947D0 /* AppAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5FF1B5DF162007947D0 /* AppAddressPicker.m */; };
 		2F16E62F1B5DF162007947D0 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6011B5DF162007947D0 /* AppExtension.m */; };
 		2F16E6301B5DF162007947D0 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6031B5DF162007947D0 /* AppTableView.m */; };
 		2F16E6311B5DF162007947D0 /* AppUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6051B5DF162007947D0 /* AppUIUtil.m */; };
@@ -106,6 +105,7 @@
 		2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */; };
 		2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
 		2F6B0C281B395782000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C271B395782000123BF /* AXRatingView.m */; };
+		2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D16F41B70938000C4A667 /* PickerUtil.m */; };
 		2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */; };
 		2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E001B312164007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E021B312164007A4159 /* ActionSheetCustomPicker.m */; };
@@ -336,8 +336,6 @@
 		2F16E5E31B5DF08F007947D0 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		2F16E5E41B5DF08F007947D0 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		2F16E5FE1B5DF162007947D0 /* AppAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAddressPicker.h; sourceTree = "<group>"; };
-		2F16E5FF1B5DF162007947D0 /* AppAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAddressPicker.m; sourceTree = "<group>"; };
 		2F16E6001B5DF162007947D0 /* AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppExtension.h; sourceTree = "<group>"; };
 		2F16E6011B5DF162007947D0 /* AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppExtension.m; sourceTree = "<group>"; };
 		2F16E6021B5DF162007947D0 /* AppTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTableView.h; sourceTree = "<group>"; };
@@ -423,6 +421,8 @@
 		2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
 		2F6B0C261B395782000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		2F6B0C271B395782000123BF /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
+		2F6D16F31B70938000C4A667 /* PickerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerUtil.h; sourceTree = "<group>"; };
+		2F6D16F41B70938000C4A667 /* PickerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerUtil.m; sourceTree = "<group>"; };
 		2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		2F6D3DFC1B310F2A007A4159 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2F6D3DFF1B312164007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -980,8 +980,6 @@
 		2F16E5FD1B5DF162007947D0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2F16E5FE1B5DF162007947D0 /* AppAddressPicker.h */,
-				2F16E5FF1B5DF162007947D0 /* AppAddressPicker.m */,
 				2F16E6001B5DF162007947D0 /* AppExtension.h */,
 				2F16E6011B5DF162007947D0 /* AppExtension.m */,
 				2F16E6021B5DF162007947D0 /* AppTableView.h */,
@@ -1304,6 +1302,8 @@
 		2F800AFD1B1D50EE006189EF /* util */ = {
 			isa = PBXGroup;
 			children = (
+				2F6D16F31B70938000C4A667 /* PickerUtil.h */,
+				2F6D16F41B70938000C4A667 /* PickerUtil.m */,
 				2FCAF82D1B20115700F3B084 /* RestKitUtil.h */,
 				2FCAF82E1B20115700F3B084 /* RestKitUtil.m */,
 				2FCAF82F1B20115700F3B084 /* StorageUtil.h */,
@@ -1887,7 +1887,6 @@
 				2F16E6391B5DF162007947D0 /* CategoryEntity.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
 				2FED82BD1B1EDBFB00306A11 /* qrencode.c in Sources */,
-				2F16E62E1B5DF162007947D0 /* AppAddressPicker.m in Sources */,
 				2FED7E0E1B1EA79300306A11 /* DDFileLogger.m in Sources */,
 				2F16E6331B5DF162007947D0 /* AppView.m in Sources */,
 				2FED7E0D1B1EA79300306A11 /* DDASLLogger.m in Sources */,
@@ -2049,6 +2048,7 @@
 				2F16E5A21B5DEFEE007947D0 /* ProfileNicknameView.m in Sources */,
 				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
+				2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */,
 				2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */,
 				2F6D3E5A1B312765007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */,

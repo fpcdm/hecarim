@@ -45,6 +45,7 @@
 		2F6796A91B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A81B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m */; };
 		2F6910A11B58AB3B0080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A01B58AB3B0080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
 		2F6B0C2C1B395798000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C2B1B395798000123BF /* AXRatingView.m */; };
+		2F6D16F21B70667A00C4A667 /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D16F11B70667A00C4A667 /* PickerUtil.m */; };
 		2F6D3DFA1B310EE4007A4159 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */; };
 		2F6D3EA01B312884007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E621B312884007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3EA11B312884007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3E641B312884007A4159 /* ActionSheetCustomPicker.m */; };
@@ -329,6 +330,8 @@
 		2F6910A01B58AB3B0080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
 		2F6B0C2A1B395798000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		2F6B0C2B1B395798000123BF /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
+		2F6D16F01B70667A00C4A667 /* PickerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerUtil.h; sourceTree = "<group>"; };
+		2F6D16F11B70667A00C4A667 /* PickerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerUtil.m; sourceTree = "<group>"; };
 		2F6D3DF81B310EE4007A4159 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2F6D3E611B312884007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -1129,6 +1132,8 @@
 		2F800AEA1B1D500B006189EF /* util */ = {
 			isa = PBXGroup;
 			children = (
+				2F6D16F01B70667A00C4A667 /* PickerUtil.h */,
+				2F6D16F11B70667A00C4A667 /* PickerUtil.m */,
 				2F5D29DA1B1EFDB800A99AC5 /* StorageUtil.h */,
 				2F5D29DB1B1EFDB800A99AC5 /* StorageUtil.m */,
 				2F5D29DD1B1EFDD500A99AC5 /* RestKitUtil.h */,
@@ -1547,6 +1552,7 @@
 				2FED7D671B1EA21200306A11 /* SDWebImageDecoder.m in Sources */,
 				2F2F22AB1B3A577900428742 /* TSBlurView.m in Sources */,
 				2F6D3EB91B312884007A4159 /* UIScrollView+MJRefresh.m in Sources */,
+				2F6D16F21B70667A00C4A667 /* PickerUtil.m in Sources */,
 				2FCAF7CC1B1FF40D00F3B084 /* rscode.c in Sources */,
 				2F6D3EB41B312884007A4159 /* MJRefreshNormalHeader.m in Sources */,
 				2F5D29DF1B1EFDD500A99AC5 /* RestKitUtil.m in Sources */,

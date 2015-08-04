@@ -34,7 +34,7 @@
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
         userImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        userImageView.image = [UIImage imageNamed:@"nopic.png"];
+        userImageView.image = [UIImage imageNamed:@"nopic"];
         userImageView.layer.masksToBounds = YES;
         userImageView.layer.cornerRadius = 50.0;
         userImageView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -76,7 +76,7 @@
         
         userNameLabel.text = @"未登录";
         [userNameLabel sizeToFit];
-        //userImageView.image = [UIImage imageNamed:@"icon.png"];
+        userImageView.image = [UIImage imageNamed:@"nopic"];
         //已登录
     } else {
         menuList = [[NSArray alloc] initWithObjects:
@@ -87,7 +87,7 @@
         
         userNameLabel.text = user.name ? user.name : user.mobile;
         [userNameLabel sizeToFit];
-        //userImageView.image = [UIImage imageNamed:@"icon.png"];
+        [user avatarView:userImageView];
     }
 }
 

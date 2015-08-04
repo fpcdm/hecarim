@@ -83,6 +83,7 @@
 		2F6796B81B4B84CF00E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B71B4B84CF00E0F774 /* LocationUtil.m */; };
 		2F6910A71B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A61B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
 		2F6ADD821B6B0FDF00BFFD8B /* CaseEditActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6ADD811B6B0FDF00BFFD8B /* CaseEditActivity.m */; };
+		2F6D16EF1B70664800C4A667 /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D16EE1B70664800C4A667 /* PickerUtil.m */; };
 		2F6D3EFB1B3128CC007A4159 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EBD1B3128CC007A4159 /* AbstractActionSheetPicker.m */; };
 		2F6D3EFC1B3128CC007A4159 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EBF1B3128CC007A4159 /* ActionSheetCustomPicker.m */; };
 		2F6D3EFD1B3128CC007A4159 /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D3EC21B3128CC007A4159 /* ActionSheetDatePicker.m */; };
@@ -669,6 +670,8 @@
 		2F6910A61B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
 		2F6ADD801B6B0FDF00BFFD8B /* CaseEditActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseEditActivity.h; sourceTree = "<group>"; };
 		2F6ADD811B6B0FDF00BFFD8B /* CaseEditActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEditActivity.m; sourceTree = "<group>"; };
+		2F6D16ED1B70664800C4A667 /* PickerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerUtil.h; sourceTree = "<group>"; };
+		2F6D16EE1B70664800C4A667 /* PickerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerUtil.m; sourceTree = "<group>"; };
 		2F6D3EBC1B3128CC007A4159 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 		2F6D3EBD1B3128CC007A4159 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		2F6D3EBE1B3128CC007A4159 /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPicker.h; sourceTree = "<group>"; };
@@ -2209,6 +2212,8 @@
 		2F800B0C1B1D529F006189EF /* util */ = {
 			isa = PBXGroup;
 			children = (
+				2F6D16ED1B70664800C4A667 /* PickerUtil.h */,
+				2F6D16EE1B70664800C4A667 /* PickerUtil.m */,
 				2FCAF8591B201FF000F3B084 /* RestKitUtil.h */,
 				2FCAF85A1B201FF000F3B084 /* RestKitUtil.m */,
 				2FCAF85B1B201FF000F3B084 /* StorageUtil.h */,
@@ -3890,6 +3895,7 @@
 				2F8BC6A91B5CE1E400B7D8B8 /* HtmlElement_Progress.m in Sources */,
 				2F8BC6131B5CE1E400B7D8B8 /* ServiceGestureSetting.m in Sources */,
 				2F6D3F0A1B3128CC007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
+				2F6D16EF1B70664800C4A667 /* PickerUtil.m in Sources */,
 				2F8BC5FD1B5CE1E400B7D8B8 /* error.c in Sources */,
 				2F8BC6C91B5CE1E400B7D8B8 /* Samurai_HtmlRenderWorklet_30UpdateFrame.m in Sources */,
 				2F16E7031B5E1DC6007947D0 /* RefreshCollectionView.m in Sources */,

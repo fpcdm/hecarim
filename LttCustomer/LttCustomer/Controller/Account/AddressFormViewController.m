@@ -8,12 +8,12 @@
 
 #import "AddressFormViewController.h"
 #import "AddressFormView.h"
-#import "AppAddressPicker.h"
 #import "HelperHandler.h"
 #import "ValidateUtil.h"
 #import "UserHandler.h"
+#import "PickerUtil.h"
 
-@interface AddressFormViewController () <AddressFormViewDelegate, AppAddressPickerDelegate>
+@interface AddressFormViewController () <AddressFormViewDelegate>
 
 @end
 
@@ -139,11 +139,84 @@
 
 - (void)actionArea
 {
-    AppAddressPicker *addressPicker = [[AppAddressPicker alloc] init];
-    addressPicker.delegate = self;
-    [addressPicker loadData:^{
-        [ActionSheetCustomPicker showPickerWithTitle:nil delegate:addressPicker showCancelButton:YES origin:addressFormView];
-    }];
+    //变量缓存
+    AreaEntity *requestArea = [[AreaEntity alloc] init];
+    HelperHandler *helperHandler = [[HelperHandler alloc] init];
+    
+    //地址选择器
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:3 origin:addressFormView];
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询省列表
+        requestArea.code = @0;
+        
+        [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *area in result) {
+                [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+        }];
+    };
+    
+    pickerUtil.secondLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询市列表
+        PickerUtilRow *firstRow = [selectedRows objectAtIndex:0];
+        AreaEntity *province = firstRow.value;
+        requestArea.code = province.code;
+        
+        [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *area in result) {
+                [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+        }];
+    };
+    
+    pickerUtil.thirdLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询县列表
+        PickerUtilRow *secondRow = [selectedRows objectAtIndex:1];
+        AreaEntity *city = secondRow.value;
+        requestArea.code = city.code;
+        
+        [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *area in result) {
+                [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+        }];
+    };
+    
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        if ([selectedRows count] < 3) return;
+        
+        PickerUtilRow *firstRow = [selectedRows objectAtIndex:0];
+        AreaEntity *province = firstRow.value;
+        PickerUtilRow *secondRow = [selectedRows objectAtIndex:1];
+        AreaEntity *city = secondRow.value;
+        PickerUtilRow *thirdRow = [selectedRows objectAtIndex:2];
+        AreaEntity *county = thirdRow.value;
+        
+        self.address.provinceId = province.code;
+        self.address.provinceName = province.name;
+        self.address.cityId = city.code;
+        self.address.cityName = city.name;
+        self.address.countyId = county.code;
+        self.address.countyName = county.name;
+        
+        NSLog(@"选择的地址：%@", [self.address toDictionary]);
+        
+        [addressFormView renderData];
+    };
+    
+    [pickerUtil show];
 }
 
 - (void)actionStreet
@@ -154,32 +227,39 @@
         return;
     }
     
-    //查询街道
-    AreaEntity *countyEntity = [[AreaEntity alloc] init];
-    countyEntity.code = self.address.countyId;
-    
-    HelperHandler *helperHandler = [[HelperHandler alloc] init];
-    [helperHandler queryAreas:countyEntity success:^(NSArray *result){
-        NSMutableArray *streets = [[NSMutableArray alloc] init];
-        NSArray *streetEntitys = result;
+    //街道选择器
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:addressFormView];
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询街道
+        AreaEntity *countyEntity = [[AreaEntity alloc] init];
+        countyEntity.code = self.address.countyId;
         
-        for (AreaEntity *street in streetEntitys) {
-            [streets addObject:(street.name ? street.name : @"")];
+        HelperHandler *helperHandler = [[HelperHandler alloc] init];
+        [helperHandler queryAreas:countyEntity success:^(NSArray *result){
+            //初始化行数据
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *street in result) {
+                [rows addObject:[PickerUtilRow rowWithName:street.name ? street.name : @"" value:street]];
+            }
+            
+            //回调数据
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    };
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        PickerUtilRow *row = [selectedRows objectAtIndex:0];
+        AreaEntity *selectedStreet = row.value;
+        if (selectedStreet) {
+            self.address.streetId = selectedStreet.code;
+            self.address.streetName = selectedStreet.name;
+            
+            [addressFormView renderData];
         }
         
-        //选择街道
-        [ActionSheetStringPicker showPickerWithTitle:nil rows:streets initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue){
-            AreaEntity *selectedStreet = [streetEntitys objectAtIndex:selectedIndex];
-            if (selectedStreet) {
-                self.address.streetId = selectedStreet.code;
-                self.address.streetName = selectedStreet.name;
-                
-                [addressFormView renderData];
-            }
-        } cancelBlock:^(ActionSheetStringPicker *picker){} origin:addressFormView];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
+    };
+    [pickerUtil show];
 }
 
 @end
