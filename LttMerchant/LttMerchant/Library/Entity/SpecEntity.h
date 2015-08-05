@@ -8,10 +8,12 @@
 
 #import "BaseEntity.h"
 
-@interface specEntity : BaseEntity
+@interface SpecEntity : BaseEntity
 
 @property (nonatomic, retain) NSNumber *id;
 
 @property (nonatomic, retain) NSString *name;
+
+@property (nonatomic, retain) NSArray *children;
 
 @end

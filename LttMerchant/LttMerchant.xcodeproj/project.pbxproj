@@ -26,7 +26,7 @@
 		2F16E6AF1B5DF84B007947D0 /* DeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67D1B5DF84B007947D0 /* DeviceEntity.m */; };
 		2F16E6B01B5DF84B007947D0 /* GoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */; };
 		2F16E6B21B5DF84B007947D0 /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6831B5DF84B007947D0 /* ModelEntity.m */; };
-		2F16E6B41B5DF84B007947D0 /* specEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6871B5DF84B007947D0 /* specEntity.m */; };
+		2F16E6B41B5DF84B007947D0 /* SpecEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6871B5DF84B007947D0 /* SpecEntity.m */; };
 		2F16E6B51B5DF84B007947D0 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */; };
 		2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6901B5DF84B007947D0 /* UserHandler.m */; };
 		2F16E6C21B5E1B03007947D0 /* CaseListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6C11B5E1B03007947D0 /* CaseListActivity.m */; };
@@ -77,6 +77,7 @@
 		2F5FDDD61B5F252900CBF2A7 /* MJRefreshScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD51B5F252900CBF2A7 /* MJRefreshScrollView.m */; };
 		2F5FDDE71B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDE41B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m */; };
 		2F5FDDE81B5F60D900CBF2A7 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDE61B5F60D900CBF2A7 /* UIView+Loading.m */; };
+		2F60B7191B71E8AD00FECADC /* GoodsSpecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */; };
 		2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */; };
 		2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B01B4B84BD00E0F774 /* UITextView+Placeholder.m */; };
 		2F6796B51B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796B21B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m */; };
@@ -574,8 +575,8 @@
 		2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsEntity.m; sourceTree = "<group>"; };
 		2F16E6821B5DF84B007947D0 /* ModelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEntity.h; sourceTree = "<group>"; };
 		2F16E6831B5DF84B007947D0 /* ModelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEntity.m; sourceTree = "<group>"; };
-		2F16E6861B5DF84B007947D0 /* specEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = specEntity.h; sourceTree = "<group>"; };
-		2F16E6871B5DF84B007947D0 /* specEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = specEntity.m; sourceTree = "<group>"; };
+		2F16E6861B5DF84B007947D0 /* SpecEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecEntity.h; sourceTree = "<group>"; };
+		2F16E6871B5DF84B007947D0 /* SpecEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecEntity.m; sourceTree = "<group>"; };
 		2F16E6891B5DF84B007947D0 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
 		2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
 		2F16E68F1B5DF84B007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
@@ -657,6 +658,8 @@
 		2F5FDDE41B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+RefreshLoading.m"; sourceTree = "<group>"; };
 		2F5FDDE51B5F60D900CBF2A7 /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
 		2F5FDDE61B5F60D900CBF2A7 /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
+		2F60B7171B71E8AD00FECADC /* GoodsSpecCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsSpecCell.h; sourceTree = "<group>"; };
+		2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsSpecCell.m; sourceTree = "<group>"; };
 		2F6611471B0C6B890008D500 /* LttMerchant.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttMerchant.pch; sourceTree = "<group>"; };
 		2F6796AD1B4B84BD00E0F774 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
@@ -1794,8 +1797,8 @@
 				2F16E67F1B5DF84B007947D0 /* GoodsEntity.m */,
 				2F16E6821B5DF84B007947D0 /* ModelEntity.h */,
 				2F16E6831B5DF84B007947D0 /* ModelEntity.m */,
-				2F16E6861B5DF84B007947D0 /* specEntity.h */,
-				2F16E6871B5DF84B007947D0 /* specEntity.m */,
+				2F16E6861B5DF84B007947D0 /* SpecEntity.h */,
+				2F16E6871B5DF84B007947D0 /* SpecEntity.m */,
 				2F6DE5BA1B6775F9003178DE /* ServiceEntity.h */,
 				2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */,
 				2F0E37DB1B6B62E200CFE2E6 /* CaseEntity.h */,
@@ -1830,6 +1833,8 @@
 			children = (
 				2F5330521B6083B100D4DD05 /* CaseListCell.h */,
 				2F5330531B6083B100D4DD05 /* CaseListCell.m */,
+				2F60B7171B71E8AD00FECADC /* GoodsSpecCell.h */,
+				2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -3976,7 +3981,7 @@
 				2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */,
 				2F16E6AD1B5DF84B007947D0 /* BrandEntity.m in Sources */,
 				2F8BC5AD1B5CE1E400B7D8B8 /* Samurai_DockerProtocol.m in Sources */,
-				2F16E6B41B5DF84B007947D0 /* specEntity.m in Sources */,
+				2F16E6B41B5DF84B007947D0 /* SpecEntity.m in Sources */,
 				2F8BC6C41B5CE1E400B7D8B8 /* Samurai_HtmlRenderScope.m in Sources */,
 				2F8BC5A71B5CE1E400B7D8B8 /* Signal+Model.m in Sources */,
 				2F8BC6B31B5CE1E400B7D8B8 /* HtmlElement_Textarea.m in Sources */,
@@ -4110,6 +4115,7 @@
 				2F8BC5911B5CE1E400B7D8B8 /* Samurai_Handler.m in Sources */,
 				2F8BC6651B5CE1E400B7D8B8 /* UIButton+Html.m in Sources */,
 				2FED7E351B1EA87900306A11 /* DDMultiFormatter.m in Sources */,
+				2F60B7191B71E8AD00FECADC /* GoodsSpecCell.m in Sources */,
 				2F8BC6631B5CE1E400B7D8B8 /* Samurai_HtmlDomNode.m in Sources */,
 				2F5330541B6083B100D4DD05 /* CaseListCell.m in Sources */,
 				2F8BC6151B5CE1E400B7D8B8 /* ServiceGestureViewClick.m in Sources */,

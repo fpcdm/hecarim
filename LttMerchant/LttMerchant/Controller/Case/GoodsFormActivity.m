@@ -16,6 +16,8 @@
 
 @interface GoodsFormActivity ()
 
+@property (nonatomic, strong) UITableView *specTable;
+
 @end
 
 @implementation GoodsFormActivity
@@ -23,6 +25,7 @@
     CategoryEntity *category;
     BrandEntity *brand;
     ModelEntity *model;
+    GoodsEntity *goods;
 }
 
 @synthesize intention;
@@ -66,51 +69,40 @@
         $(@"#modelButton").ATTR(@"color", @"black").ATTR(@"border", @"0.5px solid #b2b2b2");
     }
     
+    //规格列表
+    NSInteger specCount = goods && goods.specList ? [goods.specList count] : 0;
+    self.viewStorage[@"specs"] = @{
+                                   @"list":({
+                                       NSMutableArray *specs = [NSMutableArray array];
+                                       
+                                       //已选型号
+                                       if (specCount > 0) {
+                                           for (SpecEntity *specEntity in goods.specList) {
+                                               [specs addObject:@{
+                                                                  @"name": specEntity.name ? specEntity.name : @"",
+                                                                  @"list": specEntity.children ? specEntity.children : @[]
+                                                                  }];
+                                           }
+                                       }
+                                       
+                                       specs;
+                                   })
+                                   
+                                   };
+    
+    //自动切换样式并计算高度
+    if (specCount > 0) {
+        [self domDisplay:@"#specEmpty" display:@"none"];
+        [self domCss:@"#specTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", specCount * 50]];
+    } else {
+        [self domDisplay:@"#specEmpty" display:@"block"];
+        [self domCss:@"#specTable" name:@"height" value:@"0px"];
+    }
+    
+    [_specTable reloadData];
+    
     //重新布局
     [self relayout];
-}
-
-#pragma mark - Api
-- (void) queryData
-{
-    //获取品牌列表
-    CategoryEntity *categoryModel = [[CategoryEntity alloc] init];
-    categoryModel.id = @1;
-    
-    GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-    [goodsHandler queryCategoryBrands:categoryModel success:^(NSArray *result){
-        [self hideLoading];
-    } failure:^(ErrorEntity *error){
-        [self hideLoading];
-        [self showError:error.message];
-    }];
-}
-
-- (void) brandSegmentAction: (UISegmentedControl *) segment
-{
-    NSInteger selected = segment.selectedSegmentIndex;
-    BrandEntity *brandModel = [[BrandEntity alloc] init];
-    NSDictionary *param = @{@"category_id": @1};
-    
-    //获取型号列表
-    GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-    [goodsHandler queryBrandModels:brandModel param:param success:^(NSArray *result){
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
-}
-
-- (void) modelSegmentAction: (UISegmentedControl *) segment
-{
-    NSInteger selected = segment.selectedSegmentIndex;
-    ModelEntity *modelModel = [[ModelEntity alloc] init];
-    
-    //获取型号列表
-    GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-    [goodsHandler queryModelGoods:modelModel success:^(NSArray *result){
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
 }
 
 #pragma mark - Action
@@ -207,7 +199,29 @@
         PickerUtilRow *modelRow = [selectedRows objectAtIndex:1];
         model = modelRow.value;
         
-        [self reloadData];
+        //加载规格列表
+        ModelEntity *modelEntity = [[ModelEntity alloc] init];
+        modelEntity.id = model.id;
+        
+        //获取型号列表
+        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+        [goodsHandler queryModelGoods:modelEntity success:^(NSArray *result){
+            //没有商品
+            if ([result count] < 1) {
+                [self reloadData];
+                
+                [self showError:@"该型号暂无商品"];
+                return;
+            }
+            
+            goods = [result firstObject];
+            
+            [self reloadData];
+        } failure:^(ErrorEntity *error){
+            [self reloadData];
+            
+            [self showError:error.message];
+        }];
     };
     
     [pickerUtil show];

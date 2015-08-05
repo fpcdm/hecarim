@@ -11,6 +11,7 @@
 #import "BrandEntity.h"
 #import "ModelEntity.h"
 #import "GoodsEntity.h"
+#import "SpecEntity.h"
 
 @interface GoodsHandler : BaseHandler
 

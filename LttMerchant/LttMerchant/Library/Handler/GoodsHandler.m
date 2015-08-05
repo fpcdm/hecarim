@@ -73,11 +73,43 @@
 - (void) queryModelGoods:(ModelEntity *)model success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[GoodsEntity class] mappingParam:@{@"goods_id": @"id", @"goods_name": @"name", @"price_list":@"priceList", @"spec_list":@"specList"} keyPath:@"list"];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[GoodsEntity class] mappingParam:@{@"goods_id": @"id", @"goods_name": @"name", @"price_list":@"priceList", @"spec_list":@"specList"}];
     
-    NSString *restPath = [sharedClient formatPath:@"merchandise/list_by_model/:id" object:model];
+    NSString *restPath = [sharedClient formatPath:@"merchandise/prices/:id" object:model];
     [sharedClient getObject:model path:restPath param:nil success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        //整理数据
+        if ([result count] > 0) {
+            GoodsEntity *goods = [result firstObject];
+            NSMutableArray *specList = [[NSMutableArray alloc] init];
+            if (goods.specList && [goods.specList count] > 0) {
+                for (NSDictionary *specDict in goods.specList) {
+                    SpecEntity *specEntity = [[SpecEntity alloc] init];
+                    specEntity.id = [specDict objectForKey:@"spec_id"];
+                    specEntity.name = [specDict objectForKey:@"spec_name"];
+                    
+                    //子规格列表
+                    NSMutableArray *children = [[NSMutableArray alloc] init];
+                    NSArray *subList = [specDict objectForKey:@"list"];
+                    if (subList && [subList count] > 0) {
+                        for (NSDictionary *subDict in subList) {
+                            SpecEntity *subEntity = [[SpecEntity alloc] init];
+                            subEntity.id = [subDict objectForKey:@"spec_id"];
+                            subEntity.name = [subDict objectForKey:@"spec_name"];
+                            subEntity.children = @[];
+                            
+                            [children addObject:subEntity];
+                        }
+                    }
+                    specEntity.children = children;
+                    
+                    //添加到列表中
+                    [specList addObject:specEntity];
+                }
+            }
+            goods.specList = specList;
+        }
         
         success(result);
     } failure:^(ErrorEntity *error){
