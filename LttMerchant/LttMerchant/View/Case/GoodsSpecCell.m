@@ -44,6 +44,9 @@
                 [button setTitle:spec.name forState:UIControlStateNormal];
                 [button setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
                 
+                //添加specId数据绑定，先用tag绑定，后续可以考虑UIButton附加动态数据
+                button.tag = [spec.id integerValue];
+                
                 [_specList addSubview:button];
                 
                 //按钮偏移
