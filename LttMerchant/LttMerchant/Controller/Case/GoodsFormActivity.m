@@ -137,6 +137,7 @@
         
         brand = nil;
         model = nil;
+        goods = nil;
         
         [self reloadData];
     };
@@ -206,6 +207,9 @@
         //获取型号列表
         GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
         [goodsHandler queryModelGoods:modelEntity success:^(NSArray *result){
+            //清空之前的商品
+            goods = nil;
+            
             //没有商品
             if ([result count] < 1) {
                 [self reloadData];
