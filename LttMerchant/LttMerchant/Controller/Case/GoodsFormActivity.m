@@ -64,8 +64,6 @@
     //选择品牌型号
     if (category) {
         $(@"#modelButton").ATTR(@"color", @"black").ATTR(@"border", @"0.5px solid #b2b2b2");
-        
-        UIView *view = $(@"#modelButton").firstView;
     }
     
     //重新布局
@@ -169,7 +167,7 @@
         [goodsHandler queryCategoryBrands:categoryModel success:^(NSArray *result){
             //分类列表
             NSMutableArray *rows = [[NSMutableArray alloc] init];
-            for (CategoryEntity *entity in result) {
+            for (BrandEntity *entity in result) {
                 [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
             }
             
@@ -179,16 +177,18 @@
         }];
     };
     
-    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
-        CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
-        categoryEntity.id = @0;
-        categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
+    pickerUtil.secondLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        PickerUtilRow *brandRow = [selectedRows objectAtIndex:0];
         
+        BrandEntity *brandEntity = brandRow.value;
+        NSDictionary *param = @{@"category_id": category.id};
+        
+        //获取型号列表
         GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-        [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+        [goodsHandler queryBrandModels:brandEntity param:param success:^(NSArray *result){
             //分类列表
             NSMutableArray *rows = [[NSMutableArray alloc] init];
-            for (CategoryEntity *entity in result) {
+            for (ModelEntity *entity in result) {
                 [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
             }
             
@@ -199,10 +199,13 @@
     };
     
     pickerUtil.resultBlock = ^(NSArray *selectedRows){
-        if ([selectedRows count] < 1) return;
+        if ([selectedRows count] < 2) return;
         
-        PickerUtilRow *row = [selectedRows objectAtIndex:0];
-        category = row.value;
+        PickerUtilRow *brandRow = [selectedRows objectAtIndex:0];
+        brand = brandRow.value;
+        
+        PickerUtilRow *modelRow = [selectedRows objectAtIndex:1];
+        model = modelRow.value;
         
         [self reloadData];
     };

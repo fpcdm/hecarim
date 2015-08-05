@@ -56,7 +56,7 @@ typedef void (^PickerUtilResultBlock)(NSArray *selectedRows);
 @property (copy) PickerUtilLoadBlock secondLoadBlock;
 @property (copy) PickerUtilLoadBlock thirdLoadBlock;
 
-//选择完成代码块
+//全部选择完成代码块，部分选择不会回调
 @property (copy) PickerUtilResultBlock resultBlock;
 
 //初始化

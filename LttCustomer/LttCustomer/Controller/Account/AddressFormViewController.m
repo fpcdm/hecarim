@@ -195,8 +195,6 @@
     };
     
     pickerUtil.resultBlock = ^(NSArray *selectedRows){
-        if ([selectedRows count] < 3) return;
-        
         PickerUtilRow *firstRow = [selectedRows objectAtIndex:0];
         AreaEntity *province = firstRow.value;
         PickerUtilRow *secondRow = [selectedRows objectAtIndex:1];
@@ -251,13 +249,11 @@
     pickerUtil.resultBlock = ^(NSArray *selectedRows){
         PickerUtilRow *row = [selectedRows objectAtIndex:0];
         AreaEntity *selectedStreet = row.value;
-        if (selectedStreet) {
-            self.address.streetId = selectedStreet.code;
-            self.address.streetName = selectedStreet.name;
-            
-            [addressFormView renderData];
-        }
         
+        self.address.streetId = selectedStreet.code;
+        self.address.streetName = selectedStreet.name;
+            
+        [addressFormView renderData];
     };
     [pickerUtil show];
 }

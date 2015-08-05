@@ -79,12 +79,12 @@
             selectedRows = @[
                              [firstRows objectAtIndex:0]
                              ];
-            
-            if (self.grade > 1) {
-                [self loadSecond:callback];
-            } else {
-                callback();
-            }
+        }
+        
+        if (self.grade > 1 && [firstRows count] > 0) {
+            [self loadSecond:callback];
+        } else {
+            callback();
         }
     });
 }
@@ -99,12 +99,12 @@
                              [selectedRows objectAtIndex:0],
                              [secondRows objectAtIndex:0]
                              ];
-            
-            if (self.grade > 2) {
-                [self loadThird:callback];
-            } else {
-                callback();
-            }
+        }
+        
+        if (self.grade > 2 && [secondRows count] > 0) {
+            [self loadThird:callback];
+        } else {
+            callback();
         }
     });
     
@@ -121,9 +121,9 @@
                              [selectedRows objectAtIndex:1],
                              [thirdRows objectAtIndex:0]
                              ];
-            
-            callback();
         }
+        
+        callback();
     });
 }
 
@@ -135,7 +135,10 @@
 
 - (void)actionSheetPickerDidSucceed:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin
 {
-    self.resultBlock(selectedRows);
+    //全部选择完成才回调
+    if (selectedRows && [selectedRows count] == self.grade) {
+        self.resultBlock(selectedRows);
+    }
 }
 
 #pragma mark - UIPickerViewDataSource Implementation
@@ -166,7 +169,7 @@
     switch (component) {
         case 0:
         {
-            if ([firstRows count] > 0) {
+            if ([firstRows count] > row) {
                 data = [firstRows objectAtIndex:row];
                 return data.name;
                 break;
@@ -175,7 +178,7 @@
             break;
         case 1:
         {
-            if ([secondRows count] > 0) {
+            if ([secondRows count] > row) {
                 data = [secondRows objectAtIndex:row];
                 return data.name;
                 break;
@@ -184,7 +187,7 @@
             break;
         case 2:
         {
-            if ([thirdRows count] > 0) {
+            if ([thirdRows count] > row) {
                 data = [thirdRows objectAtIndex:row];
                 return data.name;
                 break;
@@ -192,7 +195,7 @@
         }
             break;
         default:
-            return  @"";
+            return  nil;
             break;
     }
     return nil;
@@ -204,47 +207,55 @@
         case 0:
         {
             //获取选中
-            selectedRows = @[
-                             [firstRows objectAtIndex:row]
-                             ];
-            
-            if (self.grade > 1) {
-                [self loadSecond:^{
-                    [pickerView selectRow:0 inComponent:1 animated:YES];
-                    [pickerView reloadComponent:1];
-                    
-                    if (self.grade > 2) {
-                        [pickerView selectRow:0 inComponent:2 animated:YES];
-                        [pickerView reloadComponent:2];
-                    }
-                }];
+            if ([firstRows count] > row) {
+                selectedRows = @[
+                                 [firstRows objectAtIndex:row]
+                                 ];
+                
+                //选中了才加载，下同
+                if (self.grade > 1) {
+                    [self loadSecond:^{
+                        [pickerView selectRow:0 inComponent:1 animated:YES];
+                        [pickerView reloadComponent:1];
+                        
+                        if (self.grade > 2) {
+                            [pickerView selectRow:0 inComponent:2 animated:YES];
+                            [pickerView reloadComponent:2];
+                        }
+                    }];
+                }
             }
         }
             break;
         case 1:
         {
             //获取选中
-            selectedRows = @[
-                             [selectedRows objectAtIndex:0],
-                             [secondRows objectAtIndex:row]
-                             ];
-            
-            if (self.grade > 2) {
-                [self loadThird:^{
-                    [pickerView  selectRow:0 inComponent:2 animated:YES];
-                    [pickerView reloadComponent:2];
-                }];
+            if ([secondRows count] > row) {
+                selectedRows = @[
+                                 [selectedRows objectAtIndex:0],
+                                 [secondRows objectAtIndex:row]
+                                 ];
+                
+                //选中了才加载
+                if (self.grade > 2) {
+                    [self loadThird:^{
+                        [pickerView selectRow:0 inComponent:2 animated:YES];
+                        [pickerView reloadComponent:2];
+                    }];
+                }
             }
         }
             break;
         case 2:
         {
             //获取选中
-            selectedRows = @[
-                             [selectedRows objectAtIndex:0],
-                             [selectedRows objectAtIndex:1],
-                             [thirdRows objectAtIndex:row]
-                             ];
+            if ([thirdRows count] > row) {
+                selectedRows = @[
+                                 [selectedRows objectAtIndex:0],
+                                 [selectedRows objectAtIndex:1],
+                                 [thirdRows objectAtIndex:row]
+                                 ];
+            }
         }
             break;
         default:
