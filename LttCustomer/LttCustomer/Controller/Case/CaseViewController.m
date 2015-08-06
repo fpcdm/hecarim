@@ -296,6 +296,7 @@
     
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
+    intentionEntity.no = intention.no;
     intentionEntity.rateStar = [NSNumber numberWithInt:value];
     
     [self showLoading:TIP_REQUEST_MESSAGE];
