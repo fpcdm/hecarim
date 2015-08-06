@@ -14,19 +14,29 @@
 @end
 
 @implementation GoodsListActivity
+{
+    //返回页面是否需要刷新
+    BOOL needRefresh;
+}
 
 @synthesize intention;
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     [super viewDidLoad];
+    
+    //第一次需要刷新
+    needRefresh = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self loadCase];
+    if (needRefresh) {
+        needRefresh = NO;
+        [self loadCase];
+    }
 }
 
 - (NSString *)templateName
@@ -48,6 +58,12 @@
 {
     GoodsFormActivity *activity = [[GoodsFormActivity alloc] init];
     activity.caseId = self.caseId;
+    activity.callbackBlock = ^(id object){
+        //标记可刷新
+        if (object && [@1 isEqualToNumber:object]) {
+            needRefresh = YES;
+        }
+    };
     [self pushViewController:activity animated:YES];
 }
 

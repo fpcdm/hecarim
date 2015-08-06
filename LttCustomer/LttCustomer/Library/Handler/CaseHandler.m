@@ -120,6 +120,7 @@
                 service.name = [serviceItem objectForKey:@"content"];
                 service.price = [serviceItem objectForKey:@"price"];
                 service.typeName = [serviceItem objectForKey:@"category_name"];
+                service.typeId = [serviceItem objectForKey:@"category_id"];
                 
                 [servicesArray addObject:service];
             }

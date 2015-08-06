@@ -25,4 +25,17 @@
 
 - (void) updateCaseStatus: (CaseEntity *) caseEntity param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//添加需求商品
+- (void) addCaseGoods: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//编辑需求商品
+- (void) editCaseGoods: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//添加需求服务
+- (void) addCaseServices: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//编辑需求服务
+- (void) editCaseServices: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+
 @end

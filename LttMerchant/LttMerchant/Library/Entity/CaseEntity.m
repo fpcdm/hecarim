@@ -7,6 +7,8 @@
 //
 
 #import "CaseEntity.h"
+#import "GoodsEntity.h"
+#import "ServiceEntity.h"
 
 @implementation CaseEntity
 
@@ -55,6 +57,46 @@
 - (BOOL) isFail
 {
     return [CASE_STATUS_MEMBER_CANCEL isEqualToString:self.status] || [CASE_STATUS_MERCHANT_CANCEL isEqualToString:self.status];
+}
+
+- (NSDictionary *) formatFormGoods
+{
+    NSMutableDictionary *goodsParam = [[NSMutableDictionary alloc] init];
+    NSInteger index = 0;
+    
+    //添加商品：为了解决nsarray不传key的问题，使用nsdictionary
+    for (GoodsEntity *entity in self.goods) {
+        NSDictionary *goodsDict = @{
+                                    @"goods_id": entity.id,
+                                    @"goods_num": entity.number,
+                                    @"price_id": entity.priceId
+                                    };
+        
+        [goodsParam setObject:goodsDict forKey:[NSString stringWithFormat:@"%ld", index]];
+        index++;
+    }
+    
+    return goodsParam;
+}
+
+- (NSDictionary *) formatFormServices
+{
+    NSMutableDictionary *servicesParam = [[NSMutableDictionary alloc] init];
+    NSInteger index = 0;
+    
+    //添加服务：为了解决nsarray不传key的问题，使用nsdictionary
+    for (ServiceEntity *entity in self.services) {
+        NSDictionary *serviceDict = @{
+                                    @"category_id": entity.typeId,
+                                    @"content": entity.name,
+                                    @"price": entity.price
+                                    };
+        
+        [servicesParam setObject:serviceDict forKey:[NSString stringWithFormat:@"%ld", index]];
+        index++;
+    }
+    
+    return servicesParam;
 }
 
 @end

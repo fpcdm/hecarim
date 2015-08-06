@@ -285,8 +285,7 @@
 - (void) actionGoodsNumberPlus: (SamuraiSignal *) signal
 {
     UILabel *numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
-    NSString *numberStr = [numberLabel.text trim];
-    NSInteger number = [numberStr length] > 0 ? [numberStr integerValue] : 1;
+    NSInteger number = [self getGoodsNumber:numberLabel];
     
     number++;
     numberLabel.text = [NSString stringWithFormat:@"%ld", number];
@@ -295,19 +294,98 @@
 - (void) actionGoodsNumberMinus: (SamuraiSignal *) signal
 {
     UILabel *numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
-    NSString *numberStr = [numberLabel.text trim];
-    NSInteger number = [numberStr length] > 0 ? [numberStr integerValue] : 1;
+    NSInteger number = [self getGoodsNumber:numberLabel];
     
     number--;
     if (number < 1) number = 1;
     numberLabel.text = [NSString stringWithFormat:@"%ld", number];
 }
 
+//获取商品数量
+- (NSInteger) getGoodsNumber: (UILabel *) numberLabel
+{
+    if (!numberLabel) {
+        numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
+    }
+    NSString *numberStr = [numberLabel.text trim];
+    NSInteger number = [numberStr length] > 0 ? [numberStr integerValue] : 1;
+    return number;
+}
+
 - (void) actionSave: (SamuraiSignal *) signal
 {
-    //todo 保存
+    //参数检查
+    if (!category) {
+        [self showError:@"请先选择品类哦~亲！"];
+        return;
+    }
+    if (!model) {
+        [self showError:@"请先选择品牌型号哦~亲！"];
+        return;
+    }
+    if (!goods || !priceId) {
+        [self showError:@"请先选择商品哦~亲！"];
+        return;
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    //获取商品列表
+    CaseEntity *postCase = [[CaseEntity alloc] init];
+    postCase.id = self.caseId;
+    
+    BOOL isEdit = intention.goods && [intention.goods count] > 0 ? YES : NO;
+    //获取之前的商品列表
+    NSMutableArray *goodsList = [[NSMutableArray alloc] init];
+    if (isEdit) {
+        for (GoodsEntity *entity in intention.goods) {
+            [goodsList addObject:entity];
+        }
+    }
+    
+    //添加当前商品
+    GoodsEntity *currentGoods = [[GoodsEntity alloc] init];
+    currentGoods.id = goods.id;
+    NSInteger number = [self getGoodsNumber:nil];
+    currentGoods.number = [NSNumber numberWithInteger:number];
+    currentGoods.priceId = priceId;
+    [goodsList addObject:currentGoods];
+    
+    //转换数据
+    postCase.goods = goodsList;
+    postCase.goodsParam = [postCase formatFormGoods];
+    postCase.goods = nil;
+    
+    //提交数据
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    //新增
+    if (!isEdit) {
+        [caseHandler addCaseGoods:postCase success:^(NSArray *result){
+            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                //通知刷新
+                if (self.callbackBlock) {
+                    self.callbackBlock(@1);
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    //编辑
+    } else {
+        [caseHandler editCaseGoods:postCase success:^(NSArray *result){
+            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                //通知刷新
+                if (self.callbackBlock) {
+                    self.callbackBlock(@1);
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    }
 }
 
 @end

@@ -72,4 +72,10 @@
 
 - (BOOL) isFail;
 
+//格式化商品供表单提交用
+- (NSDictionary *) formatFormGoods;
+
+//格式化服务供表单提交用
+- (NSDictionary *) formatFormServices;
+
 @end

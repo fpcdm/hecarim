@@ -76,6 +76,7 @@
             }
         }
         resultEntity.goods = goodsArray;
+        resultEntity.goodsParam = nil;
         
         //解析服务
         NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
@@ -90,12 +91,14 @@
                     service.name = [serviceItem objectForKey:@"content"];
                     service.price = [serviceItem objectForKey:@"price"];
                     service.typeName = [serviceItem objectForKey:@"category_name"];
+                    service.typeId = [serviceItem objectForKey:@"category_id"];
                     
                     [servicesArray addObject:service];
                 }
             }
         }
         resultEntity.services = servicesArray;
+        resultEntity.servicesParam = nil;
         
         //覆盖返回值
         result = @[resultEntity];
@@ -160,6 +163,72 @@
     [sharedClient postObject:caseEntity path:restPath param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) addCaseGoods:(CaseEntity *)caseEntity success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"id": @"case_id", @"goodsParam": @"list"}];
+    
+    [sharedClient putObject:caseEntity path:@"cases/merchandises" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) editCaseGoods:(CaseEntity *)caseEntity success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"goodsParam": @"list"}];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/merchandises/:id" object:caseEntity];
+    [sharedClient postObject:caseEntity path:restPath param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) addCaseServices:(CaseEntity *)caseEntity success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"id": @"case_id", @"servicesParam": @"list"}];
+    
+    [sharedClient putObject:caseEntity path:@"cases/services" param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) editCaseServices:(CaseEntity *)caseEntity success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"servicesParam": @"list"}];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/services/:id" object:caseEntity];
+    [sharedClient postObject:caseEntity path:restPath param:nil success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
         failure(error);
     }];
 }

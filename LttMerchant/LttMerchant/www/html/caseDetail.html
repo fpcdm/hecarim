@@ -155,6 +155,15 @@
             border: 0.5px solid #b2b2b2;
         }
         
+        .table-empty {
+            width: 100%;
+            height: 25px;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
+            padding-top: 5px;
+            font-size: 16px;
+        }
+        
         .table {
             display: block;
             width: 100%;
@@ -266,7 +275,11 @@
                 <UIButton id="editGoods" onclick="@selector(actionEditGoods:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
-            <UITableView id="goodsTable" name="goodsList" class="table" columns="1" is-vertical>
+            <div id="goodsTableEmpty" class="table-empty">
+                <label>没有商品</label>
+            </div>
+            
+            <UITableView id="goodsTable" name="goodsList" class="table table-goods" columns="1" is-vertical style="display: none;">
                 
                 <UITableViewCell name="goodsItems" class="table-item" is-row>
                     <div class="table-line">
@@ -300,7 +313,11 @@
                 <UIButton id="editServices" onclick="@selector(actionEditServices:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
-            <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical>
+            <div id="servicesTableEmpty" class="table-empty">
+                <label>没有服务</label>
+            </div>
+            
+            <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical style="display:none;">
                 
                 <UITableViewCell name="servicesItems" class="table-item" is-row>
                     <div class="table-line">

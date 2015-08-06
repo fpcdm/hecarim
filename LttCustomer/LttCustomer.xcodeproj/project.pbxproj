@@ -71,7 +71,6 @@
 		2F16E63D1B5DF162007947D0 /* ModelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E61E1B5DF162007947D0 /* ModelEntity.m */; };
 		2F16E63F1B5DF162007947D0 /* ServiceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6221B5DF162007947D0 /* ServiceEntity.m */; };
 		2F16E6401B5DF162007947D0 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6251B5DF162007947D0 /* CaseHandler.m */; };
-		2F16E6411B5DF162007947D0 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6271B5DF162007947D0 /* GoodsHandler.m */; };
 		2F16E6421B5DF162007947D0 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6291B5DF162007947D0 /* HelperHandler.m */; };
 		2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E62D1B5DF162007947D0 /* UserHandler.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
@@ -370,8 +369,6 @@
 		2F16E6221B5DF162007947D0 /* ServiceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceEntity.m; sourceTree = "<group>"; };
 		2F16E6241B5DF162007947D0 /* CaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseHandler.h; sourceTree = "<group>"; };
 		2F16E6251B5DF162007947D0 /* CaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseHandler.m; sourceTree = "<group>"; };
-		2F16E6261B5DF162007947D0 /* GoodsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsHandler.h; sourceTree = "<group>"; };
-		2F16E6271B5DF162007947D0 /* GoodsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsHandler.m; sourceTree = "<group>"; };
 		2F16E6281B5DF162007947D0 /* HelperHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperHandler.h; sourceTree = "<group>"; };
 		2F16E6291B5DF162007947D0 /* HelperHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperHandler.m; sourceTree = "<group>"; };
 		2F16E62C1B5DF162007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
@@ -1028,8 +1025,6 @@
 			children = (
 				2F16E6241B5DF162007947D0 /* CaseHandler.h */,
 				2F16E6251B5DF162007947D0 /* CaseHandler.m */,
-				2F16E6261B5DF162007947D0 /* GoodsHandler.h */,
-				2F16E6271B5DF162007947D0 /* GoodsHandler.m */,
 				2F16E6281B5DF162007947D0 /* HelperHandler.h */,
 				2F16E6291B5DF162007947D0 /* HelperHandler.m */,
 				2F16E62C1B5DF162007947D0 /* UserHandler.h */,
@@ -1916,7 +1911,6 @@
 				2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */,
 				2FED7D921B1EA2D300306A11 /* NSData+ImageContentType.m in Sources */,
 				2FCAF8351B20115700F3B084 /* RestKitUtil.m in Sources */,
-				2F16E6411B5DF162007947D0 /* GoodsHandler.m in Sources */,
 				2F16E5B51B5DEFEE007947D0 /* RegisterMobileView.m in Sources */,
 				2F16E5A61B5DEFEE007947D0 /* SettingView.m in Sources */,
 				2F16E6311B5DF162007947D0 /* AppUIUtil.m in Sources */,
