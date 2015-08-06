@@ -406,6 +406,12 @@
 {
     GoodsListActivity *viewController = [[GoodsListActivity alloc] init];
     viewController.caseId = self.caseId;
+    viewController.callbackBlock = ^(id object){
+        //标记可刷新
+        if (object && [@1 isEqualToNumber:object]) {
+            needRefresh = YES;
+        }
+    };
     [self pushViewController:viewController animated:YES];
 }
 
@@ -413,6 +419,12 @@
 {
     ServiceListActivity *viewController = [[ServiceListActivity alloc] init];
     viewController.caseId = self.caseId;
+    viewController.callbackBlock = ^(id object){
+        //标记可刷新
+        if (object && [@1 isEqualToNumber:object]) {
+            needRefresh = YES;
+        }
+    };
     [self pushViewController:viewController animated:YES];
 }
 

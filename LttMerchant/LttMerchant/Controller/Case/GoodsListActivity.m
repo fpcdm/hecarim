@@ -11,6 +11,8 @@
 
 @interface GoodsListActivity ()
 
+@property (nonatomic, strong) UITableView *listTable;
+
 @end
 
 @implementation GoodsListActivity
@@ -49,6 +51,29 @@
 {
     [super reloadData];
     
+    NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
+    self.viewStorage[@"list"] = @{
+                                   
+                                   @"goods":({
+                                       NSMutableArray *goodsList = [NSMutableArray array];
+                                       
+                                       if (goodsCount > 0) {
+                                           for (GoodsEntity *goods in intention.goods) {
+                                               [goodsList addObject:@{
+                                                                      @"name": goods.name,
+                                                                      @"number": [NSString stringWithFormat:@"x%@", goods.number],
+                                                                      @"price": [NSString stringWithFormat:@"￥%@", goods.price],
+                                                                      @"specName": goods.specName
+                                                                      }];
+                                           }
+                                       }
+                                       
+                                       goodsList;
+                                       
+                                   })};
+    
+    [self.listTable reloadData];
+    
     //重新布局
     [self relayout];
 }
@@ -62,6 +87,11 @@
         //标记可刷新
         if (object && [@1 isEqualToNumber:object]) {
             needRefresh = YES;
+            
+            //标记父级可刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(object);
+            }
         }
     };
     [self pushViewController:activity animated:YES];
