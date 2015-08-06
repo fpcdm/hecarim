@@ -99,9 +99,14 @@
 
 /********系统定义>>>********/
 #pragma mark - 系统常量
+//屏幕尺寸常量
 #define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define SCREEN_STATUSBAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+#define SCREEN_NAVIGATIONBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
+#define SCREEN_AVAILABLE_HEIGHT (SCREEN_HEIGHT - SCREEN_STATUSBAR_HEIGHT - SCREEN_NAVIGATIONBAR_HEIGHT)
+
 // 判断ios系统版本，不能用于宏判断
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 // 判断是否大于等于ios8

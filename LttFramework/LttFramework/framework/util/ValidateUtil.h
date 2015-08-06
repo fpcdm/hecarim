@@ -17,5 +17,7 @@
 + (BOOL) isLengthBetween: (NSString *) value from: (NSInteger) from to: (NSInteger) to;
 //是否是正整数
 + (BOOL) isPositiveInteger: (NSString *) value;
+//是否是正数
++ (BOOL) isPositiveNumber: (NSString *) value;
 
 @end

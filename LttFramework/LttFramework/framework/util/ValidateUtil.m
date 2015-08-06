@@ -47,4 +47,15 @@
     }
 }
 
++ (BOOL) isPositiveNumber:(NSString *)value
+{
+    NSPredicate *regex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[\\d\\.]+$"];
+    if ([regex evaluateWithObject:value] == YES) {
+        float number = [value floatValue];
+        return number > 0 ? YES : NO;
+    } else {
+        return NO;
+    }
+}
+
 @end

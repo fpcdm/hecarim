@@ -46,6 +46,14 @@
     return @"goodsList.html";
 }
 
+#pragma mark - Template
+- (void) onTemplateLoaded
+{
+    //动态计算表格高度
+    float tableHeight = SCREEN_AVAILABLE_HEIGHT - 110;
+    [self domCss:@"#listTable" name:@"height" value:[NSString stringWithFormat:@"%lfpx", tableHeight]];
+}
+
 #pragma mark - reloadData
 - (void) reloadData
 {
