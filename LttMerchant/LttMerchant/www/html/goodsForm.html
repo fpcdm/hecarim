@@ -142,6 +142,7 @@
         .number-button .number-label {
             font-size: 14px;
             margin-top: 5px;
+            width: 100%;
         }
         
         /* 列表 */
@@ -237,6 +238,7 @@
                     <div class="table-line">
                         <label id="specName" name="name"></label>
                     </div>
+                    <UIButton id="specButton" onclick="@selector(actionChooseSpec:)" style="display:none;"></UIButton>
                     <div id="specList" class="table-line">
                     </div>
                 </GoodsSpecCell>
@@ -246,25 +248,25 @@
         
         <div class="case-field">
             <label class="field-title">单价</label>
-            <label class="content-right color-red">￥0.00</label>
+            <label id="goodsPrice" class="content-right color-red" style="width: 100px;text-align: right;">￥0</label>
         </div>
         
         <div class="case-field">
             <label class="field-title">购买数量</label>
             <div class="content-right">
-                <div class="number-button">
+                <div class="number-button" onclick="@selector(actionGoodsNumberMinus:)">
                     <label class="number-label">-</label>
                 </div>
-                <div class="number-button">
-                    <label class="number-label">1</label>
+                <div class="number-button" style="width: 40px;">
+                    <label id="goodsNumber" class="number-label">1</label>
                 </div>
-                <div class="number-button">
+                <div class="number-button" onclick="@selector(actionGoodsNumberPlus:)">
                     <label class="number-label">+</label>
                 </div>
             </div>
         </div>
         
-        <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10">保存</UIButton>
+        <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10 margin-bottom-10">保存</UIButton>
         
     </body>
     

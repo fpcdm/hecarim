@@ -26,6 +26,8 @@
     BrandEntity *brand;
     ModelEntity *model;
     GoodsEntity *goods;
+    
+    NSNumber *priceId;
 }
 
 @synthesize intention;
@@ -138,6 +140,7 @@
         brand = nil;
         model = nil;
         goods = nil;
+        priceId = nil;
         
         [self reloadData];
     };
@@ -209,6 +212,7 @@
         [goodsHandler queryModelGoods:modelEntity success:^(NSArray *result){
             //清空之前的商品
             goods = nil;
+            priceId = nil;
             
             //没有商品
             if ([result count] < 1) {
@@ -229,6 +233,74 @@
     };
     
     [pickerUtil show];
+}
+
+//规格改变事件
+- (void) actionChooseSpec: (SamuraiSignal *) signal
+{
+    //获取所有规格隐藏按钮
+    NSArray *specButtons = $(@"#specButton").views;
+    //拼装选中规格
+    NSMutableArray *specIds = [[NSMutableArray alloc] init];
+    for (UIButton *specButton in specButtons) {
+        NSString *specValue = specButton.titleLabel.text ? specButton.titleLabel.text : nil;
+        if (specValue && [specValue length] > 0) {
+            [specIds addObject:specValue];
+        }
+    }
+    
+    //是否选中完成
+    UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
+    if ([specIds count] < [specButtons count]) {
+        priceId = nil;
+        priceLabel.text = @"￥0";
+        return;
+    }
+    
+    //选中完成，获取当前价格id
+    NSString *specIdsStr = [specIds componentsJoinedByString:@","];
+    NSArray *priceList = goods.priceList;
+    NSDictionary *priceItem = nil;
+    if (priceList) {
+        for (NSDictionary *subPrice in priceList) {
+            if ([specIdsStr isEqualToString:[subPrice objectForKey:@"spec_ids"]]) {
+                priceItem = subPrice;
+                break;
+            }
+        }
+    }
+    
+    //切换价格
+    if (priceItem) {
+        priceId = [priceItem objectForKey:@"price_id"];
+        NSNumber *price = [priceItem objectForKey:@"goods_price"];
+        priceLabel.text = [NSString stringWithFormat:@"￥%@", price];
+    } else {
+        priceId = nil;
+        priceLabel.text = @"￥0";
+        return;
+    }
+}
+
+- (void) actionGoodsNumberPlus: (SamuraiSignal *) signal
+{
+    UILabel *numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
+    NSString *numberStr = [numberLabel.text trim];
+    NSInteger number = [numberStr length] > 0 ? [numberStr integerValue] : 1;
+    
+    number++;
+    numberLabel.text = [NSString stringWithFormat:@"%ld", number];
+}
+
+- (void) actionGoodsNumberMinus: (SamuraiSignal *) signal
+{
+    UILabel *numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
+    NSString *numberStr = [numberLabel.text trim];
+    NSInteger number = [numberStr length] > 0 ? [numberStr integerValue] : 1;
+    
+    number--;
+    if (number < 1) number = 1;
+    numberLabel.text = [NSString stringWithFormat:@"%ld", number];
 }
 
 - (void) actionSave: (SamuraiSignal *) signal

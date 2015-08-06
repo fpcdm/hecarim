@@ -12,10 +12,14 @@
 @interface GoodsSpecCell ()
 
 @property (nonatomic, strong) UIView *specList;
+@property (nonatomic, strong) UIButton *specButton;
 
 @end
 
 @implementation GoodsSpecCell
+{
+    NSMutableArray *buttons;
+}
 
 - (void) unserialize:(id)obj
 {
@@ -23,6 +27,7 @@
     
     if (obj) {
         //移除之前的规格
+        buttons = [[NSMutableArray alloc] init];
         for (UIView *view in _specList.subviews) {
             [view removeFromSuperview];
         }
@@ -32,28 +37,53 @@
         NSInteger count = children ? [children count] : 0;
         if (count > 0) {
             CGFloat x = 0;
-            CGFloat width = 55;
             CGFloat space = 5;
             for (SpecEntity *spec in children) {
                 UIButton *button = [[UIButton alloc] init];
                 button.titleLabel.font = FONT_MIDDLE;
-                button.frame = CGRectMake(x, 0, width, 20);
+                [button setTitle:spec.name forState:UIControlStateNormal];
+                [button setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+                [button.titleLabel sizeToFit];
+                
                 button.layer.borderWidth = 0.5f;
                 button.layer.borderColor = CGCOLOR_MAIN_BORDER;
                 button.layer.cornerRadius = 3.0f;
-                [button setTitle:spec.name forState:UIControlStateNormal];
-                [button setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+                
+                //根据文字宽度计算按钮宽度
+                CGSize labelSize = button.titleLabel.frame.size;
+                CGFloat width = (labelSize.width > 28 ? labelSize.width : 28) + 10;
+                button.frame = CGRectMake(x, 0, width, 20);
                 
                 //添加specId数据绑定，先用tag绑定，后续可以考虑UIButton附加动态数据
                 button.tag = [spec.id integerValue];
                 
+                //添加按钮事件
+                [button addTarget:self action:@selector(actionSpec:) forControlEvents:UIControlEventTouchUpInside];
+                
                 [_specList addSubview:button];
+                [buttons addObject:button];
                 
                 //按钮偏移
                 x += width + space;
             }
         }
     }
+}
+
+- (void) actionSpec: (UIButton *) sender
+{
+    //取消其它所有选中
+    for (UIButton *button in buttons) {
+        button.backgroundColor = COLOR_MAIN_WHITE;
+    }
+    
+    //选中当前并保存选中值
+    sender.backgroundColor = COLOR_MAIN_HIGHLIGHT;
+    NSString *value = [NSString stringWithFormat:@"%ld", sender.tag];
+    _specButton.titleLabel.text = value;
+    
+    //触发规格改变事件（触发隐藏按钮事件实现更新主页面）
+    [_specButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 @end
