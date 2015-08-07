@@ -234,6 +234,7 @@
         
         [self domDisplay:@"#caseRemark" display:@"none"];
         [self domDisplay:@"#remarkTitle" display:@"none"];
+        [$(@"#remarkTitle").firstView  removeFromSuperview];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -251,6 +252,7 @@
         
         [self domDisplay:@"#caseRemark" display:@"none"];
         [self domDisplay:@"#remarkTitle" display:@"none"];
+        [$(@"#remarkTitle").firstView  removeFromSuperview];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -268,6 +270,7 @@
         
         [self domDisplay:@"#caseRemark" display:@"none"];
         [self domDisplay:@"#remarkTitle" display:@"none"];
+        [$(@"#remarkTitle").firstView  removeFromSuperview];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
