@@ -282,7 +282,7 @@
             //获取gps位置
             CLLocationCoordinate2D position = [locationUtil position];
             NSString *location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
-            NSDictionary *param = @{@"position": location};
+            NSDictionary *param = @{@"location": location};
             
             UserHandler *userHandler = [[UserHandler alloc] init];
             [userHandler updateHeartbeat:user param:param success:^(NSArray *result){
