@@ -196,7 +196,7 @@
     
     //模拟deviceToken，可以接单
     if (IS_DEBUG && IS_IPHONE_SIMULATOR) {
-        NSString* deviceTokenStr = @"devicetokenforcustomeriphonesimulator";
+        NSString* deviceTokenStr = @"2a9696cfe2264871e54fed9c22969a23e9095fb9bbcf459f3c58d7bf0c4b9779";
         [self addDevice:deviceTokenStr];
     }
 }

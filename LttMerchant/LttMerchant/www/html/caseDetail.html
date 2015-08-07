@@ -275,11 +275,7 @@
                 <UIButton id="editGoods" onclick="@selector(actionEditGoods:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
-            <div id="goodsTableEmpty" class="table-empty">
-                <label>没有商品</label>
-            </div>
-            
-            <UITableView id="goodsTable" name="goodsList" class="table table-goods" columns="1" is-vertical style="display: none;">
+            <UITableView id="goodsTable" name="goodsList" class="table table-goods" columns="1" is-vertical>
                 
                 <UITableViewCell name="goodsItems" class="table-item" is-row>
                     <div class="table-line">
@@ -313,11 +309,7 @@
                 <UIButton id="editServices" onclick="@selector(actionEditServices:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
             </div>
             
-            <div id="servicesTableEmpty" class="table-empty">
-                <label>没有服务</label>
-            </div>
-            
-            <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical style="display:none;">
+            <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical>
                 
                 <UITableViewCell name="servicesItems" class="table-item" is-row>
                     <div class="table-line">

@@ -40,7 +40,7 @@
             CGFloat space = 5;
             for (SpecEntity *spec in children) {
                 UIButton *button = [[UIButton alloc] init];
-                button.titleLabel.font = FONT_MIDDLE;
+                button.titleLabel.font = FONT_MAIN;
                 [button setTitle:spec.name forState:UIControlStateNormal];
                 [button setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
                 [button.titleLabel sizeToFit];
@@ -51,8 +51,8 @@
                 
                 //根据文字宽度计算按钮宽度
                 CGSize labelSize = button.titleLabel.frame.size;
-                CGFloat width = (labelSize.width > 28 ? labelSize.width : 28) + 10;
-                button.frame = CGRectMake(x, 0, width, 20);
+                CGFloat width = (labelSize.width > 32 ? labelSize.width : 32) + 10;
+                button.frame = CGRectMake(x, 2, width, 22);
                 
                 //添加specId数据绑定，先用tag绑定，后续可以考虑UIButton附加动态数据
                 button.tag = [spec.id integerValue];

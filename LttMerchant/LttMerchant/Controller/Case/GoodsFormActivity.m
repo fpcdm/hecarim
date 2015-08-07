@@ -95,7 +95,7 @@
     //自动切换样式并计算高度
     if (specCount > 0) {
         [self domDisplay:@"#specEmpty" display:@"none"];
-        [self domCss:@"#specTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", specCount * 50]];
+        [self domCss:@"#specTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", specCount * 55]];
     } else {
         [self domDisplay:@"#specEmpty" display:@"block"];
         [self domCss:@"#specTable" name:@"height" value:@"0px"];

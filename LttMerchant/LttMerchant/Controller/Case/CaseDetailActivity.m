@@ -109,6 +109,13 @@
                                                                       @"specName": goods.specName
                                                                       }];
                                            }
+                                       } else {
+                                           [goodsList addObject:@{
+                                                                  @"name": @"没有商品",
+                                                                  @"number": @"",
+                                                                  @"price": @"",
+                                                                  @"specName": @""
+                                                                  }];
                                        }
                                        
                                        goodsList;
@@ -118,15 +125,9 @@
     
     //自动切换样式并计算高度
     if (goodsCount > 0) {
-        [self domDisplay:@"#goodsTableEmpty" display:@"none"];
-        [self domDisplay:@"#goodsTable" display:@"block"];
-        
         //style_attr不生效，用选择器，下同
         [self domCss:@"#goodsTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", goodsCount * 50]];
     } else {
-        [self domDisplay:@"#goodsTableEmpty" display:@"block"];
-        [self domDisplay:@"#goodsTable" display:@"none"];
-        
         //style_attr不生效，用选择器，下同
         [self domCss:@"#goodsTable" name:@"height" value:@"25px"];
     }
@@ -148,6 +149,11 @@
                                                                        @"price": [NSString stringWithFormat:@"￥%@", service.price]
                                                                        }];
                                             }
+                                        } else {
+                                            [servicesList addObject:@{
+                                                                      @"name": @"没有服务",
+                                                                      @"price": @""
+                                                                      }];
                                         }
                                         
                                         servicesList;
@@ -157,14 +163,8 @@
     
     //自动切换样式并计算高度
     if (servicesCount > 0) {
-        [self domDisplay:@"#servicesTableEmpty" display:@"none"];
-        [self domDisplay:@"#servicesTable" display:@"block"];
-        
         [self domCss:@"#servicesTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", servicesCount * 25]];
     } else {
-        [self domDisplay:@"#servicesTableEmpty" display:@"block"];
-        [self domDisplay:@"#servicesTable" display:@"none"];
-        
         [self domCss:@"#servicesTable" name:@"height" value:@"25px"];
     }
     
