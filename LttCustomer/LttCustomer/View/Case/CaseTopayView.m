@@ -58,7 +58,6 @@
 - (void)renderData
 {
     intention = [self getData:@"intention"];
-    NSNumber *availableHeight = [self getData:@"availableHeight"];
     
     //总高度计算
     long goodsCount = intention.goods ? [intention.goods count] : 0;
@@ -71,18 +70,11 @@
     if (servicesCount > 0) {
         totalHeight += 30 + 25 + (servicesCount * 20);
     }
-    totalHeight += 5;
-    
-    //计算最大高度
-    float maxHeight = [availableHeight floatValue] - 60 - 25 - 86;
-    
-    //计算滚动视图容器高度
-    float scrollHeight = totalHeight > maxHeight ? maxHeight : totalHeight;
+    totalHeight += 5 + 30;
     
     //滚动视图
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.layer.cornerRadius = 3.0f;
-    scrollView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    scrollView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     scrollView.scrollEnabled = YES;
     scrollView.showsVerticalScrollIndicator = YES;
     [self addSubview:scrollView];
@@ -90,22 +82,21 @@
     UIView *superview = self;
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(titleLabel.mas_bottom).offset(10);
-        make.left.equalTo(superview.mas_left).offset(10);
-        make.right.equalTo(superview.mas_right).offset(-10);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
         
-        make.height.equalTo([NSNumber numberWithFloat:scrollHeight]);
+        make.bottom.equalTo(superview.mas_bottom).offset(-60);
     }];
     
     //详情容器
     orderView = [[UIView alloc] init];
-    orderView.frame = CGRectMake(0, 0, SCREEN_WIDTH - 20, totalHeight);
+    orderView.layer.cornerRadius = 3.0f;
+    orderView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    orderView.frame = CGRectMake(10, 0, SCREEN_WIDTH - 20, totalHeight - 30);
     [scrollView addSubview:orderView];
     
     //是否显示滚动条
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH - 20, totalHeight);
-    if (totalHeight < maxHeight) {
-        scrollView.scrollEnabled = NO;
-    }
     
     //商品
     if (goodsCount > 0) {
@@ -119,20 +110,18 @@
     
     //合计
     UILabel *totalLabel = [[UILabel alloc] init];
-    totalLabel.backgroundColor = [UIColor clearColor];
+    totalLabel.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
     totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", [intention.totalAmount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
     totalLabel.font = [UIFont boldSystemFontOfSize:20];
-    [self addSubview:totalLabel];
-    
-    [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(scrollView.mas_bottom).offset(5);
-        make.right.equalTo(scrollView.mas_right).offset(-10);
-    }];
+    //自动计算宽度
+    [totalLabel sizeToFit];
+    CGSize labelSize = totalLabel.frame.size;
+    totalLabel.frame = CGRectMake(SCREEN_WIDTH - 10 - labelSize.width, totalHeight - 30, labelSize.width, 30);
+    [scrollView addSubview:totalLabel];
     
     //按钮
     [payButton setTitle:[NSString stringWithFormat:@"确认并支付%.2f元", [intention.totalAmount floatValue]] forState:UIControlStateNormal];
-    
 }
 
 - (void)renderGoods

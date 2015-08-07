@@ -164,7 +164,6 @@
         
         //显示数据
         [topayView setData:@"intention" value:intention];
-        [topayView setData:@"availableHeight" value:[NSNumber numberWithFloat:SCREEN_AVAILABLE_HEIGHT]];
         [topayView renderData];
     } else if ([intention.status isEqualToString:CASE_STATUS_PAYED]) {
         CasePayedView *receivedView = [[CasePayedView alloc] init];
