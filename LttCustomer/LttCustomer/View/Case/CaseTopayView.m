@@ -58,12 +58,7 @@
 - (void)renderData
 {
     intention = [self getData:@"intention"];
-    
-    //详情容器
-    orderView = [[UIView alloc] init];
-    orderView.layer.cornerRadius = 3.0f;
-    orderView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
-    [self addSubview:orderView];
+    NSNumber *availableHeight = [self getData:@"availableHeight"];
     
     //总高度计算
     long goodsCount = intention.goods ? [intention.goods count] : 0;
@@ -78,14 +73,39 @@
     }
     totalHeight += 5;
     
+    //计算最大高度
+    float maxHeight = [availableHeight floatValue] - 60 - 25 - 86;
+    
+    //计算滚动视图容器高度
+    float scrollHeight = totalHeight > maxHeight ? maxHeight : totalHeight;
+    
+    //滚动视图
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.layer.cornerRadius = 3.0f;
+    scrollView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    scrollView.scrollEnabled = YES;
+    scrollView.showsVerticalScrollIndicator = YES;
+    [self addSubview:scrollView];
+    
     UIView *superview = self;
-    [orderView mas_makeConstraints:^(MASConstraintMaker *make){
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(titleLabel.mas_bottom).offset(10);
         make.left.equalTo(superview.mas_left).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
         
-        make.height.equalTo([NSNumber numberWithFloat:totalHeight]);
+        make.height.equalTo([NSNumber numberWithFloat:scrollHeight]);
     }];
+    
+    //详情容器
+    orderView = [[UIView alloc] init];
+    orderView.frame = CGRectMake(0, 0, SCREEN_WIDTH - 20, totalHeight);
+    [scrollView addSubview:orderView];
+    
+    //是否显示滚动条
+    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH - 20, totalHeight);
+    if (totalHeight < maxHeight) {
+        scrollView.scrollEnabled = NO;
+    }
     
     //商品
     if (goodsCount > 0) {
@@ -106,8 +126,8 @@
     [self addSubview:totalLabel];
     
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(orderView.mas_bottom).offset(5);
-        make.right.equalTo(orderView.mas_right).offset(-5);
+        make.top.equalTo(scrollView.mas_bottom).offset(5);
+        make.right.equalTo(scrollView.mas_right).offset(-10);
     }];
     
     //按钮
