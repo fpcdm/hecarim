@@ -52,17 +52,22 @@
     return @"goodsForm.html";
 }
 
+- (void)onTemplateLoaded
+{
+    self.specTable.scrollEnabled = NO;
+}
+
 #pragma mark - reloadData
 - (void) reloadData
 {
     [super reloadData];
     
-    self.viewStorage[@"category"] = @{
+    self.scope[@"category"] = @{
                                       @"name": category ? category.name : @"选择品类"
                                       };
     
     NSString *modelName = model ? [NSString stringWithFormat:@"%@ %@", brand.name, model.name] : (category ? @"选择品牌型号" : @"请先选择品类");
-    self.viewStorage[@"model"] = @{
+    self.scope[@"model"] = @{
                                    @"name": modelName
                                    };
     
@@ -73,7 +78,7 @@
     
     //规格列表
     NSInteger specCount = goods && goods.specList ? [goods.specList count] : 0;
-    self.viewStorage[@"specs"] = @{
+    self.scope[@"specs"] = @{
                                    @"list":({
                                        NSMutableArray *specs = [NSMutableArray array];
                                        
@@ -94,10 +99,10 @@
     
     //自动切换样式并计算高度
     if (specCount > 0) {
-        [self domDisplay:@"#specEmpty" display:@"none"];
+        [self domCss:@"#specEmpty" name:@"height" value:@"0px"];
         [self domCss:@"#specTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", specCount * 55]];
     } else {
-        [self domDisplay:@"#specEmpty" display:@"block"];
+        [self domCss:@"#specEmpty" name:@"height" value:@"50px"];
         [self domCss:@"#specTable" name:@"height" value:@"0px"];
     }
     

@@ -60,7 +60,7 @@
     [super reloadData];
     
     NSInteger servicesCount = intention.services ? [intention.services count] : 0;
-    self.viewStorage[@"list"] = @{
+    self.scope[@"list"] = @{
                                       
                                       @"services": ({
                                           NSMutableArray *servicesList = [NSMutableArray array];

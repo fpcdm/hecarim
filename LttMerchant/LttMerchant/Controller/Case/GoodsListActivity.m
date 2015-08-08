@@ -60,7 +60,7 @@
     [super reloadData];
     
     NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
-    self.viewStorage[@"list"] = @{
+    self.scope[@"list"] = @{
                                    
                                    @"goods":({
                                        NSMutableArray *goodsList = [NSMutableArray array];

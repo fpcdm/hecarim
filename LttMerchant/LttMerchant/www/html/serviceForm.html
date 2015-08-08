@@ -51,7 +51,7 @@
         .item-info .item-line {
             width: 100%;
             height: 20px;
-            padding-left: 50px;
+            margin-left: 50px;
         }
         
         .item-info .line-right {
@@ -61,7 +61,7 @@
         
         .item-info .case-no {
             font-weight: bold;
-            width: 100px;
+            width: 150px;
         }
         
         .case-field {
@@ -103,15 +103,14 @@
         
         .case-field .field-name {
             margin-left: 10px;
-            margin-top: 10px;
+            padding-top: 10px;
             width: 100px;
             height: 20px;
             font-size: 16px;
-            margin-bottom: 5px;
         }
         
         .case-field .service-category {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-size: 16px;
             width: 100%;
             height: auto;
@@ -130,6 +129,7 @@
             padding-top: 2.5px;
             padding-bottom: 2.5px;
             padding-left: 10px;
+            padding-right: 10px;
         }
         
         </style>
@@ -161,12 +161,12 @@
         
         <div class="case-field">
             <label class="field-title">价格</label>
-            <input class="field-input" id="priceField" type="text" keyboard-type="decimal" placeholder="请输入价格" />
+            <UITextField class="field-input" id="priceField" keyboard-type="decimal" placeholder="请输入价格"></UITextField>
         </div>
         
         <div class="case-field">
             <label class="field-title">备注</label>
-            <input class="field-input" id="remarkField" type="text" placeholder="请输入备注" />
+            <UITextField class="field-input" id="remarkField" placeholder="请输入备注"></UITextField>
         </div>
         
         <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10">保存</UIButton>

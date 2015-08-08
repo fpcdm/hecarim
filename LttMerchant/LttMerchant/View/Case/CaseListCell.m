@@ -7,6 +7,7 @@
 //
 
 #import "CaseListCell.h"
+#import "UIColor+Hex.h"
 
 @interface CaseListCell ()
 
@@ -23,8 +24,7 @@
     if (obj) {
         //状态颜色
         UIColor *statusColor = obj[@"statusColor"];
-        self.statusLabel.style.color = makeColor(statusColor);
-        [self.statusLabel restyle];
+        self.statusLabel.textColor = statusColor;
     }
 }
 

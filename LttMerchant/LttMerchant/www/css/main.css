@@ -13,21 +13,21 @@ body {
     width: 100%;
     height: 100%;
     
-	-samurai-render-class: 'UIView';
+	-samurai-view-class: 'UIView';
 }
 
 p {
 	border: 0;
 	margin: 0;
 	padding: 0;
-	
-	-samurai-render-model: 'element';
-	-samurai-render-class: 'EMStringLabel';
+    
+    -samurai-view-hierarchy: 'leaf';
+    -samurai-view-class: 'EMStringLabel';
 }
 
 img, image {
-	-samurai-render-model: 'element';
-	-samurai-render-class: 'SDWebImageView';
+	-samurai-view-hierarchy: 'leaf';
+	-samurai-view-class: 'SDWebImageView';
 }
 
 .color-dark {

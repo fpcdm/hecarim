@@ -46,7 +46,7 @@
 {
     [super reloadData];
     
-    self.viewStorage[@"category"] = @{
+    self.scope[@"category"] = @{
                                       @"name": category ? category.name : @"选择服务类别"
                                       };
     

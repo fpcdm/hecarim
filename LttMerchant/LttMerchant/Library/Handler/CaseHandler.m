@@ -51,6 +51,11 @@
         //整理需求数据
         CaseEntity *resultEntity = [result firstObject];
         
+        //处理订单号
+        if (resultEntity.no && [resultEntity.no length] > 15) {
+            resultEntity.no = [resultEntity.no substringToIndex:15];
+        }
+        
         //解析订单商品
         NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
         if (resultEntity.goodsParam) {
@@ -119,6 +124,13 @@
     NSString *restPath = @"employee/cases";
     [sharedClient getObject:[CaseEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        //处理订单号
+        for (CaseEntity *entity in result) {
+            if (entity.no && [entity.no length] > 15) {
+                entity.no = [entity.no substringToIndex:15];
+            }
+        }
         
         success(result);
     } failure:^(ErrorEntity *error){

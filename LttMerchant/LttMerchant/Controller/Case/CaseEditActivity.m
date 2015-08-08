@@ -48,7 +48,7 @@
 {
     [super reloadData];
     
-    self.viewStorage[@"form"] = @{
+    self.scope[@"form"] = @{
                                   @"remark": @""
                                   };
     

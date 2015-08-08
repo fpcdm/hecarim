@@ -81,7 +81,7 @@
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
     NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
     if (!customerRemark) customerRemark = (intention.typeName && [intention.typeName length] > 0) ? intention.typeName : nil;
-    self.viewStorage[@"info"] = @{
+    self.scope[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
                                        @"userMobile": intention.userMobile,
                                        @"buyerName": intention.buyerName ? intention.buyerName : @"-",
@@ -91,7 +91,7 @@
                                        };
     
     NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
-    self.viewStorage[@"goods"] = @{
+    self.scope[@"goods"] = @{
                                    
                                    @"goodsNumber": [NSNumber numberWithInteger:goodsCount],
                                    
@@ -135,7 +135,7 @@
     [self.goodsTable reloadData];
     
     NSInteger servicesCount = intention.services ? [intention.services count] : 0;
-    self.viewStorage[@"services"] = @{
+    self.scope[@"services"] = @{
                                       
                                     @"servicesAmount": [NSString stringWithFormat:@"￥%.2f", (intention.servicesAmount ? [intention.servicesAmount floatValue] : 0.00)],
                                     
@@ -234,7 +234,8 @@
         
         [self domDisplay:@"#caseRemark" display:@"none"];
         [self domDisplay:@"#remarkTitle" display:@"none"];
-        [$(@"#remarkTitle").firstView  removeFromSuperview];
+        UIView *remarkView = $(@"#remarkTitle").firstView;
+        if (remarkView) [remarkView removeFromSuperview];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -252,7 +253,8 @@
         
         [self domDisplay:@"#caseRemark" display:@"none"];
         [self domDisplay:@"#remarkTitle" display:@"none"];
-        [$(@"#remarkTitle").firstView  removeFromSuperview];
+        UIView *remarkView = $(@"#remarkTitle").firstView;
+        if (remarkView) [remarkView removeFromSuperview];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];
@@ -270,7 +272,8 @@
         
         [self domDisplay:@"#caseRemark" display:@"none"];
         [self domDisplay:@"#remarkTitle" display:@"none"];
-        [$(@"#remarkTitle").firstView  removeFromSuperview];
+        UIView *remarkView = $(@"#remarkTitle").firstView;
+        if (remarkView) [remarkView removeFromSuperview];
         
         [self domDisplay:@"#goodsContainer" display:@"block"];
         [self domDisplay:@"#servicesContainer" display:@"block"];

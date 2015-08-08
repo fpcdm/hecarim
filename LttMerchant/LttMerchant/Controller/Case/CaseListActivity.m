@@ -11,7 +11,6 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "CaseDetailActivity.h"
-#import "AppView.h"
 
 @interface CaseListActivity ()
 
@@ -162,7 +161,7 @@
 
 - (void)reloadData
 {
-    self.viewStorage[@"list" ] = @{
+    self.scope[@"list" ] = @{
                                    
                                    @"cases" : ({
                                        NSMutableArray *cases = [NSMutableArray array];
@@ -227,13 +226,11 @@
 {
     //清空之前的选中
     if (currentButton) {
-        currentButton.style.color = makeColor(COLOR_MAIN_BLACK);
-        [currentButton restyle];
+        $(currentButton).ATTR(@"color", @"black");
     }
     
     //新的选中
-    button.style.color = makeColor(COLOR_MAIN_GRAY);
-    [button restyle];
+    $(button).ATTR(@"color", @"gray");
     currentStatus = status;
     currentButton = button;
     

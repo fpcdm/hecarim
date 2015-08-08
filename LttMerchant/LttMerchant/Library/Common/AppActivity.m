@@ -40,7 +40,7 @@
     
     //加载模板
     NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
-    [self loadViewTemplate:viewPath];
+    [self loadTemplate:viewPath];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +49,7 @@
 
 - (void) dealloc
 {
-    [self unloadViewTemplate];
+    [self unloadTemplate];
 }
 
 - (NSString *)templateName
