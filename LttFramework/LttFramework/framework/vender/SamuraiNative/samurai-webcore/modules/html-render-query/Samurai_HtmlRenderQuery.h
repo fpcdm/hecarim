@@ -38,6 +38,7 @@
 
 @class  SamuraiHtmlRenderQuery;
 typedef SamuraiHtmlRenderQuery * (^SamuraiHtmlRenderQueryBlockN)( id first, ... );
+typedef SamuraiHtmlRenderQuery * (^SamuraiHtmlRenderQueryBlockNN)( id first, id sencond, ... );
 
 #pragma mark -
 
@@ -50,7 +51,7 @@ typedef SamuraiHtmlRenderQuery * (^SamuraiHtmlRenderQueryBlockN)( id first, ... 
 @prop_readonly( UIView *,						lastView );
 @prop_readonly( UIView *,						firstView );
 
-@prop_readonly( SamuraiHtmlRenderQueryBlockN,	ATTR );
+@prop_readonly( SamuraiHtmlRenderQueryBlockNN,	ATTR );
 @prop_readonly( SamuraiHtmlRenderQueryBlockN,	SET_CLASS );
 @prop_readonly( SamuraiHtmlRenderQueryBlockN,	ADD_CLASS );
 @prop_readonly( SamuraiHtmlRenderQueryBlockN,	REMOVE_CLASS );

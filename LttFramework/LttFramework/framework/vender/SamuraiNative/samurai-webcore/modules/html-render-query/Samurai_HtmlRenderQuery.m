@@ -345,11 +345,11 @@
 
 #pragma mark -
 
-- (SamuraiHtmlRenderQueryBlockN)ATTR
+- (SamuraiHtmlRenderQueryBlockNN)ATTR
 {
 	@weakify( self )
 	
-	SamuraiHtmlRenderQueryBlockN block = (SamuraiHtmlRenderQueryBlockN)^ SamuraiHtmlRenderQuery * ( NSString * key, NSString * value )
+	SamuraiHtmlRenderQueryBlockNN block = (SamuraiHtmlRenderQueryBlockNN)^ SamuraiHtmlRenderQuery * ( NSString * key, NSString * value )
 	{
 		@strongify( self )
 		

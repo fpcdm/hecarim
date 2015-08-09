@@ -64,8 +64,10 @@
 - (void)onTemplateLoaded
 {
     //调整视图基本样式
-    self.goodsTable.scrollEnabled = NO;
-    self.servicesTable.scrollEnabled = NO;
+    UITableView *tableGoods = (UITableView *) $(@"#goodsTable").firstView;
+    tableGoods.scrollEnabled = NO;
+    UITableView *tableServices = (UITableView *) $(@"#servicesTable").firstView;
+    tableServices.scrollEnabled = NO;
     
     //调整联系地址和客户留言宽度
     NSString *contentWidth = [NSString stringWithFormat:@"%lfpx", (SCREEN_WIDTH - 60)];
