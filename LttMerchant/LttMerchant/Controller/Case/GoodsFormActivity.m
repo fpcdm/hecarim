@@ -115,7 +115,7 @@
 #pragma mark - Action
 - (void) actionChooseCategory: (SamuraiSignal *) signal
 {
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:self.view];
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:signal.sourceView];
     
     pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
         CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
@@ -157,7 +157,7 @@
 {
     if (!category) return;
     
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:2 origin:self.view];
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:2 origin:signal.sourceView];
     
     pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
         //获取品牌列表

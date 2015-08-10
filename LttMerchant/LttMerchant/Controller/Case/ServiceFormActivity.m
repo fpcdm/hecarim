@@ -57,7 +57,7 @@
 #pragma mark - Action
 - (void) actionChooseCategory: (SamuraiSignal *) signal
 {
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:self.view];
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:signal.sourceView];
     
     pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
         CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];

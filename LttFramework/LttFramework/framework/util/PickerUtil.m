@@ -160,7 +160,7 @@
 #pragma mark UIPickerViewDelegate Implementation
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
-    return SCREEN_WIDTH / self.grade;
+    return pickerView.frame.size.width / self.grade;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component

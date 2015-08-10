@@ -120,6 +120,11 @@
 // 是否大于等于iPhone5(屏幕尺寸)
 #define IS_IPHONE5_PLUS (SCREEN_HEIGHT >= 568.0 ? YES : NO)
 
+//设备类型
+#define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad   ? YES : NO)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? YES : NO)
+#define IS_RETINA ([[UIScreen mainScreen] scale] > 1 ? YES : NO)
+
 //判断是否是模拟器
 #if TARGET_IPHONE_SIMULATOR
 #define IS_IPHONE_SIMULATOR YES
