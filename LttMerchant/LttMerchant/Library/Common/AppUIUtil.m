@@ -23,9 +23,9 @@
     barButtonItem.title = title;
     
     if (highlighted) {
-        barButtonItem.tintColor = COLOR_MAIN_BLUE;
-    } else {
         barButtonItem.tintColor = COLOR_MAIN_WHITE;
+    } else {
+        barButtonItem.tintColor = COLOR_MAIN_BLACK;
     }
     
     [barButtonItem setTitleTextAttributes:@{
@@ -45,9 +45,9 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
     
     if (highlighted) {
-        barButtonItem.tintColor = COLOR_MAIN_BLUE;
-    } else {
         barButtonItem.tintColor = COLOR_MAIN_WHITE;
+    } else {
+        barButtonItem.tintColor = COLOR_MAIN_BLACK;
     }
     
     [barButtonItem setTitleTextAttributes:@{

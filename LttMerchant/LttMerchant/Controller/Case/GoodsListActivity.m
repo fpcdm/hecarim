@@ -8,6 +8,7 @@
 
 #import "GoodsListActivity.h"
 #import "GoodsFormActivity.h"
+#import "AppUIUtil.h"
 
 @interface GoodsListActivity ()
 
@@ -29,6 +30,12 @@
     
     //第一次需要刷新
     needRefresh = YES;
+    
+    //编辑按钮
+    UIBarButtonItem *editButtonItem = [AppUIUtil makeBarButtonItem:@"编辑" highlighted:YES];
+    editButtonItem.target = self;
+    editButtonItem.action = @selector(actionEditTable);
+    self.navigationItem.rightBarButtonItem = editButtonItem;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,6 +94,12 @@
 }
 
 #pragma mark - Action
+- (void) actionEditTable
+{
+    //self.listTable.allowsMultipleSelectionDuringEditing = YES;
+    //[self.listTable setEditing:YES animated:YES];
+}
+
 - (void) actionAddGoods: (SamuraiSignal *) signal
 {
     GoodsFormActivity *activity = [[GoodsFormActivity alloc] init];
