@@ -274,24 +274,31 @@
             [locationUtil startUpdate];
         }
         
-        //用户是否登陆
-        UserEntity *user = [[StorageUtil sharedStorage] getUser];
-        if (user) {
-            NSLog(@"更新用户心跳");
-            
-            //获取gps位置
-            CLLocationCoordinate2D position = [locationUtil position];
-            NSString *location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
-            NSDictionary *param = @{@"location": location};
-            
-            UserHandler *userHandler = [[UserHandler alloc] init];
-            [userHandler updateHeartbeat:user param:param success:^(NSArray *result){
-                NSLog(@"更新用户心跳成功");
-            } failure:^(ErrorEntity *error){
-                NSLog(@"更新用户心跳失败");
-            }];
-        }
+        //更新用户心跳
+        [self updateUserHeartbeat];
     }];
+}
+
+//更新用户心跳
+- (void) updateUserHeartbeat
+{
+    //用户是否登陆
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    if (user) {
+        NSLog(@"更新用户心跳");
+        
+        //获取gps位置
+        CLLocationCoordinate2D position = [locationUtil position];
+        NSString *location = [NSString stringWithFormat:@"%f,%f", position.longitude, position.latitude];
+        NSDictionary *param = @{@"location": location};
+        
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler updateHeartbeat:user param:param success:^(NSArray *result){
+            NSLog(@"更新用户心跳成功");
+        } failure:^(ErrorEntity *error){
+            NSLog(@"更新用户心跳失败");
+        }];
+    }
 }
 
 #pragma mark - GPS
@@ -299,6 +306,9 @@
 {
     //停止监听GPS
     [locationUtil stopUpdate];
+    
+    //立即更新用户心跳位置
+    [self updateUserHeartbeat];
 }
 
 - (void)updateLocationError:(NSError *)error

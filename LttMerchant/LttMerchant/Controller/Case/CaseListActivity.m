@@ -103,6 +103,11 @@
 
 - (void)onTemplateLoaded
 {
+    //设置表格高度
+    float availableHeight = SCREEN_AVAILABLE_HEIGHT - 30;
+    $(_list).ATTR(@"height", [NSString stringWithFormat:@"%lfpx", availableHeight]);
+    
+    //下拉刷新
     [_list loadRefreshingHeader];
     [_list loadLoadingFooter];
     
