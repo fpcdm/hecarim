@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0095D81B79A61F003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D71B79A61F003C27B9 /* DLRadioButton.m */; };
 		2F2E8F261B4E052900575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F251B4E052900575271 /* ResultEntity.m */; };
 		2F2F229A1B3A577900428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22821B3A577900428742 /* NotificationBackgroundError.png */; };
 		2F2F229B1B3A577900428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22831B3A577900428742 /* NotificationBackgroundError@2x.png */; };
@@ -28,7 +29,6 @@
 		2F2F22AB1B3A577900428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22951B3A577900428742 /* TSBlurView.m */; };
 		2F2F22AC1B3A577900428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22971B3A577900428742 /* TSMessage.m */; };
 		2F2F22AD1B3A577900428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22991B3A577900428742 /* TSMessageView.m */; };
-		2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DEF1B329EC100938BD6 /* CTCheckbox.m */; };
 		2F55340E1B4FC41A00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55340D1B4FC41A00B98CA4 /* FileEntity.m */; };
 		2F5D29491B1EEBE700A99AC5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */; };
 		2F5D294B1B1EEBFA00A99AC5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294A1B1EEBFA00A99AC5 /* Security.framework */; };
@@ -174,6 +174,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0095D61B79A61F003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
+		2F0095D71B79A61F003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F2E8F241B4E052900575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F2E8F251B4E052900575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F2F22821B3A577900428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
@@ -199,8 +201,6 @@
 		2F2F22971B3A577900428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2F2F22981B3A577900428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2F2F22991B3A577900428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
-		2F473DEE1B329EC100938BD6 /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
-		2F473DEF1B329EC100938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
 		2F55340C1B4FC41900B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F55340D1B4FC41A00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
 		2F5D28DE1B1EEBA900A99AC5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -620,6 +620,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F0095D51B79A61F003C27B9 /* DLRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				2F0095D61B79A61F003C27B9 /* DLRadioButton.h */,
+				2F0095D71B79A61F003C27B9 /* DLRadioButton.m */,
+			);
+			path = DLRadioButton;
+			sourceTree = "<group>";
+		};
 		2F2F22801B3A577900428742 /* TSMessages */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,15 +673,6 @@
 				2F2F22991B3A577900428742 /* TSMessageView.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		2F473DED1B329EC000938BD6 /* CTCheckbox */ = {
-			isa = PBXGroup;
-			children = (
-				2F473DEE1B329EC100938BD6 /* CTCheckbox.h */,
-				2F473DEF1B329EC100938BD6 /* CTCheckbox.m */,
-			);
-			path = CTCheckbox;
 			sourceTree = "<group>";
 		};
 		2F5D28DB1B1EEBA900A99AC5 /* RestKit */ = {
@@ -1153,9 +1153,9 @@
 		2F800AEB1B1D500B006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F0095D51B79A61F003C27B9 /* DLRadioButton */,
 				2F2F22801B3A577900428742 /* TSMessages */,
 				2F6B0C291B395798000123BF /* AXRatingView */,
-				2F473DED1B329EC000938BD6 /* CTCheckbox */,
 				2F6D3E601B312884007A4159 /* ActionSheetPicker */,
 				2F6D3E731B312884007A4159 /* MJRefresh */,
 				2F5D28DB1B1EEBA900A99AC5 /* RestKit */,
@@ -1594,6 +1594,7 @@
 				2F6D3EB81B312884007A4159 /* UIScrollView+MJExtension.m in Sources */,
 				2FED7DE91B1EA71A00306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F74CD7C1B1D5EF300797799 /* BaseView.m in Sources */,
+				2F0095D81B79A61F003C27B9 /* DLRadioButton.m in Sources */,
 				2FCAF7C81B1FF40D00F3B084 /* QRCodeGenerator.m in Sources */,
 				2FED7DF01B1EA71A00306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FED7D711B1EA21200306A11 /* UIView+WebCacheOperation.m in Sources */,
@@ -1611,7 +1612,6 @@
 				2F6796A61B4B7D5200E0F774 /* UIImageView+PlayGIF.m in Sources */,
 				2F6D3EB31B312884007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F9000CF1B1D98790040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
-				2F473DF01B329EC100938BD6 /* CTCheckbox.m in Sources */,
 				2F6D3EA81B312884007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F6D3EB01B312884007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F6D3EB11B312884007A4159 /* MJRefreshBackNormalFooter.m in Sources */,

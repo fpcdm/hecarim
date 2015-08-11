@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
 		2F0E37D11B6B214900CFE2E6 /* GoodsListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */; };
 		2F0E37D41B6B215C00CFE2E6 /* ServiceListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */; };
 		2F0E37D71B6B216E00CFE2E6 /* GoodsFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */; };
@@ -562,6 +563,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
+		2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F0E37CF1B6B214900CFE2E6 /* GoodsListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListActivity.h; sourceTree = "<group>"; };
 		2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodsListActivity.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2F0E37D21B6B215C00CFE2E6 /* ServiceListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListActivity.h; sourceTree = "<group>"; };
@@ -1784,6 +1787,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F0095CD1B79A5DE003C27B9 /* DLRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */,
+				2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */,
+			);
+			path = DLRadioButton;
+			sourceTree = "<group>";
+		};
 		2F16E64E1B5DF84B007947D0 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -3468,6 +3480,7 @@
 		2F800B0D1B1D529F006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F0095CD1B79A5DE003C27B9 /* DLRadioButton */,
 				2F78F7391B75B1F20009F349 /* SamuraiNative */,
 				2F2F22501B3A52FE00428742 /* TSMessages */,
 				2F6D3EBB1B3128CC007A4159 /* ActionSheetPicker */,
@@ -4078,6 +4091,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */,
 				2F78FADC1B75B1F30009F349 /* ServiceInspector.m in Sources */,
 				2F78FB261B75B1F40009F349 /* Samurai_CSSNumberVmax.m in Sources */,
 				2F78FAC11B75B1F30009F349 /* Samurai_Metric.m in Sources */,

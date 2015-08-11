@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */; };
 		2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5661B5DEFEE007947D0 /* AboutView.m */; };
 		2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5681B5DEFEE007947D0 /* AccountView.m */; };
 		2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E56A1B5DEFEE007947D0 /* AddressDetailView.m */; };
@@ -95,7 +96,6 @@
 		2F2F224D1B3A4D0300428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22351B3A4D0300428742 /* TSBlurView.m */; };
 		2F2F224E1B3A4D0300428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22371B3A4D0300428742 /* TSMessage.m */; };
 		2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22391B3A4D0300428742 /* TSMessageView.m */; };
-		2F473DF41B329ED700938BD6 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F473DF31B329ED700938BD6 /* CTCheckbox.m */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
@@ -238,6 +238,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0095D21B79A5FC003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
+		2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F16E55E1B5DEF3C007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E55F1B5DEF3C007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E5601B5DEF3C007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -400,8 +402,6 @@
 		2F2F22371B3A4D0300428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2F2F22381B3A4D0300428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2F2F22391B3A4D0300428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
-		2F473DF21B329ED700938BD6 /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
-		2F473DF31B329ED700938BD6 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F55340F1B4FC6CD00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534101B4FC6CD00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
@@ -798,6 +798,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F0095D11B79A5FC003C27B9 /* DLRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				2F0095D21B79A5FC003C27B9 /* DLRadioButton.h */,
+				2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */,
+			);
+			path = DLRadioButton;
+			sourceTree = "<group>";
+		};
 		2F16E55D1B5DEF3C007947D0 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1093,15 +1102,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		2F473DF11B329ED700938BD6 /* CTCheckbox */ = {
-			isa = PBXGroup;
-			children = (
-				2F473DF21B329ED700938BD6 /* CTCheckbox.h */,
-				2F473DF31B329ED700938BD6 /* CTCheckbox.m */,
-			);
-			path = CTCheckbox;
-			sourceTree = "<group>";
-		};
 		2F6B0C251B395782000123BF /* AXRatingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1318,9 +1318,9 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F0095D11B79A5FC003C27B9 /* DLRadioButton */,
 				2F2F221E1B3A4D0300428742 /* TSMessages */,
 				2F6B0C251B395782000123BF /* AXRatingView */,
-				2F473DF11B329ED700938BD6 /* CTCheckbox */,
 				2F6D3E201B312765007A4159 /* MJRefresh */,
 				2F6D3DFE1B312164007A4159 /* ActionSheetPicker */,
 				2FCAF6C71B1FF07B00F3B084 /* RestKit */,
@@ -1944,6 +1944,7 @@
 				2FED7D951B1EA2D300306A11 /* SDWebImageDecoder.m in Sources */,
 				2FED7E0C1B1EA79300306A11 /* DDASLLogCapture.m in Sources */,
 				2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */,
+				2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */,
 				2F16E5AE1B5DEFEE007947D0 /* CasePayedView.m in Sources */,
 				2F16E63D1B5DF162007947D0 /* ModelEntity.m in Sources */,
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
@@ -1962,7 +1963,6 @@
 				2F6D3E151B312164007A4159 /* ActionSheetLocalePicker.m in Sources */,
 				2F6D3E561B312765007A4159 /* MJRefreshBackNormalFooter.m in Sources */,
 				2FCAF8AC1B20456C00F3B084 /* UserEntity.m in Sources */,
-				2F473DF41B329ED700938BD6 /* CTCheckbox.m in Sources */,
 				2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */,
 				2FED7D991B1EA2D300306A11 /* SDWebImagePrefetcher.m in Sources */,
 				2F16E5A01B5DEFEE007947D0 /* AddressFormView.m in Sources */,

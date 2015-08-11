@@ -9,6 +9,7 @@
 #import "GoodsListActivity.h"
 #import "GoodsFormActivity.h"
 #import "AppUIUtil.h"
+#import "DLRadioButton.h"
 
 @interface GoodsListActivity ()
 
@@ -20,6 +21,9 @@
 {
     //返回页面是否需要刷新
     BOOL needRefresh;
+    
+    //右侧按钮
+    UIBarButtonItem *editButtonItem;
 }
 
 @synthesize intention;
@@ -32,7 +36,7 @@
     needRefresh = YES;
     
     //编辑按钮
-    UIBarButtonItem *editButtonItem = [AppUIUtil makeBarButtonItem:@"编辑" highlighted:YES];
+    editButtonItem = [AppUIUtil makeBarButtonItem:@"编辑" highlighted:YES];
     editButtonItem.target = self;
     editButtonItem.action = @selector(actionEditTable);
     self.navigationItem.rightBarButtonItem = editButtonItem;
@@ -59,6 +63,9 @@
     //动态计算表格高度
     float tableHeight = SCREEN_AVAILABLE_HEIGHT - 110;
     [self domCss:@"#listTable" name:@"height" value:[NSString stringWithFormat:@"%lfpx", tableHeight]];
+    
+    //显示添加按钮
+    $(@"#addButton").ATTR(@"visibility", @"visbile");
 }
 
 #pragma mark - reloadData
@@ -96,8 +103,18 @@
 #pragma mark - Action
 - (void) actionEditTable
 {
-    //self.listTable.allowsMultipleSelectionDuringEditing = YES;
-    //[self.listTable setEditing:YES animated:YES];
+    //编辑
+    if (self.listTable.editing == NO) {
+        self.listTable.editing = YES;
+        
+        $(@"#addButton").ATTR(@"visibility", @"hidden");
+        $(@"#editButton").ATTR(@"visibility", @"visbile");
+    } else {
+        self.listTable.editing = NO;
+        
+        $(@"#addButton").ATTR(@"visibility", @"visible");
+        $(@"#editButton").ATTR(@"visibility", @"hidden");
+    }
 }
 
 - (void) actionAddGoods: (SamuraiSignal *) signal

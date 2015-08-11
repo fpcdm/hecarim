@@ -107,6 +107,39 @@
             bottom: 10px;
         }
         
+        .edit-button {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 40px;
+            background-color: white;
+            border-top: 0.5px solid #b2b2b2;
+            color: black;
+        }
+        
+        .edit-button .radio-button {
+            width: 60px;
+            font-size: 16px;
+            height: 20px;
+            border: 0px;
+            margin-top: 10px;
+            margin-left: 10px;
+            
+            -samurai-view-hierarchy: 'leaf';
+            -samurai-view-class: 'DLRadioButton';
+        }
+        
+        .edit-button .delete-button {
+            position: absolute;
+            right: 10px;
+            top: 9px;
+            width: 50px;
+            height: 22px;
+            font-size: 16px;
+            border: 0.5px solid #b2b2b2;
+            border-radius: 3px;
+        }
+        
         </style>
         
     </head>
@@ -143,6 +176,12 @@
         </UITableView>
         
         <UIButton id="addButton" onclick="@selector(actionAddService:)" class="primary-button bottom-button">添加服务</UIButton>
+        
+        <div id="editButton" class="edit-button" style="display: none;">
+            <DLRadioButton id="radioButton" onclick="@selector(actionChooseAll:)" class="radio-button">全选</DLRadioButton>
+            
+            <UIButton id="deleteButton" onclick="@selector(actionDeleteGoods:)" class="delete-button">删除</UIButton>
+        </div>
         
     </body>
     

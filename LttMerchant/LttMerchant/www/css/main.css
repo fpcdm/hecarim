@@ -223,9 +223,10 @@ img, image {
     color: white;
     width: 100%;
     height: 40px;
+    border: 0.01px solid #b2b2b2;
     border-radius: 3px;
-    inset-left: 10px;
-    inset-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .secondary-button {

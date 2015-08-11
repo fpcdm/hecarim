@@ -7,13 +7,13 @@
 //
 
 #import "SafetyPasswordView.h"
-#import "CTCheckbox.h"
+#import "DLRadioButton.h"
 
 @implementation SafetyPasswordView
 {
     UITextField *originField;
     UITextField *newField;
-    CTCheckbox *checkbox;
+    DLRadioButton *radioButton;
     UIButton *button;
 }
 
@@ -52,13 +52,19 @@
         make.height.equalTo(@40);
     }];
     
-    //复选框
-    checkbox = [[CTCheckbox alloc] init];
-    [checkbox addTarget:self action:@selector(checkboxDidChange:) forControlEvents:UIControlEventValueChanged];
-    checkbox.textLabel.text = @"显示密码";
-    [self addSubview:checkbox];
+    //单选框
+    radioButton = [[DLRadioButton alloc] init];
+    radioButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    radioButton.iconColor = [UIColor blackColor];
+    radioButton.indicatorColor = [UIColor blackColor];
+    radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [radioButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [radioButton setTitle:@"显示密码" forState:UIControlStateNormal];
+    [radioButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    radioButton.isIconSquare = YES;
+    [self addSubview:radioButton];
     
-    [checkbox mas_makeConstraints:^(MASConstraintMaker *make){
+    [radioButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(newField.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         
@@ -72,7 +78,7 @@
     [self addSubview:button];
     
     [button mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(checkbox.mas_bottom).offset(padding);
+        make.top.equalTo(radioButton.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
@@ -88,7 +94,7 @@
     //移除原视图
     [originField removeFromSuperview];
     [newField removeFromSuperview];
-    [checkbox removeFromSuperview];
+    [radioButton removeFromSuperview];
     [button removeFromSuperview];
     
     //添加新视图
@@ -118,15 +124,17 @@
     }];
 }
 
-#pragma mark - Checkbox
-- (void)checkboxDidChange:(CTCheckbox *)checkbox
+#pragma mark - Radio
+- (void)actionRadioClicked: (DLRadioButton *) radio
 {
-    if (checkbox.checked) {
+    if (originField.secureTextEntry == YES) {
         originField.secureTextEntry = NO;
         newField.secureTextEntry = NO;
+        radio.selected = YES;
     } else {
         originField.secureTextEntry = YES;
         newField.secureTextEntry = YES;
+        radio.selected = NO;
     }
 }
 
