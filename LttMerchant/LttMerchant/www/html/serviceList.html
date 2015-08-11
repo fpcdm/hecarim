@@ -61,45 +61,12 @@
         }
         
         /* 列表 */
-        .table {
+        .table-container {
             display: block;
             width: 100%;
             height: 100%;
-            z-index: 1;
             background-color: #eeeeee;
-        }
-        
-        .table-item {
-            display: block;
-            width: 100%;
-            height: 50px;
-            background-color: white;
-            border-bottom: 0.5px solid #b2b2b2;
-        }
-        
-        .table-separator {
-            width: 100%;
-            height: 10px;
-            background-color: #eeeeee;
-            border-bottom: 0.5px solid #b2b2b2;
-        }
-        
-        .table-container {
-            width: 100%;
-            height: 40px;
-            background-color: white;
-            inset-top: 10px;
-        }
-        
-        .table-container .table-line {
-            width: 100%;
-            height: 20px;
-            margin-left: 20px;
-        }
-        
-        .table-container .content-right {
-            position: absolute;
-            right: 10px;
+            margin-top: 10px;
         }
         
         .bottom-button {
@@ -160,27 +127,15 @@
             </div>
         </div>
         
-        <UITableView id="listTable" name="list" class="table" columns="1" is-vertical>
-            
-            <UITableViewCell name="services" class="table-item" is-row>
-                <div class="table-separator"></div>
-                
-                <div class="table-container">
-                    <div class="table-line">
-                        <label name="name"></label>
-                        <label class="content-right font-bold" name="price"></label>
-                    </div>
-                </div>
-            </UITableViewCell>
-            
-        </UITableView>
+        <div id="tableContainer" class="table-container">
+        </div>
         
-        <UIButton id="addButton" onclick="@selector(actionAddService:)" class="primary-button bottom-button">添加服务</UIButton>
+        <UIButton id="addButton" onclick="@selector(actionAddService:)" class="primary-button bottom-button" style="visibility: hidden;">添加服务</UIButton>
         
-        <div id="editButton" class="edit-button" style="display: none;">
+        <div id="editButton" class="edit-button" style="visibility: hidden;">
             <DLRadioButton id="radioButton" onclick="@selector(actionChooseAll:)" class="radio-button">全选</DLRadioButton>
             
-            <UIButton id="deleteButton" onclick="@selector(actionDeleteGoods:)" class="delete-button">删除</UIButton>
+            <UIButton id="deleteButton" onclick="@selector(actionDeleteServices:)" class="delete-button">删除</UIButton>
         </div>
         
     </body>

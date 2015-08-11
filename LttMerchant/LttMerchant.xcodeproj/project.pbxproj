@@ -53,6 +53,7 @@
 		2F2F227B1B3A52FE00428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22651B3A52FE00428742 /* TSBlurView.m */; };
 		2F2F227C1B3A52FE00428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22671B3A52FE00428742 /* TSMessage.m */; };
 		2F2F227D1B3A52FE00428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22691B3A52FE00428742 /* TSMessageView.m */; };
+		2F4347ED1B7A271200D96AB6 /* ServiceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4347EC1B7A271200D96AB6 /* ServiceListView.m */; };
 		2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E69491B3AB95F00F4E425 /* BaseTableView.m */; };
 		2F52D0F21AEF74EA0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0F11AEF74EA0003D7C2 /* CoreLocation.framework */; };
 		2F52D1101AEF8ABD0003D7C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */; };
@@ -643,6 +644,8 @@
 		2F2F22671B3A52FE00428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2F2F22681B3A52FE00428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2F2F22691B3A52FE00428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2F4347EB1B7A271200D96AB6 /* ServiceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListView.h; sourceTree = "<group>"; };
+		2F4347EC1B7A271200D96AB6 /* ServiceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceListView.m; sourceTree = "<group>"; };
 		2F4E69481B3AB95F00F4E425 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		2F4E69491B3AB95F00F4E425 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		2F52D0F11AEF74EA0003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1941,6 +1944,8 @@
 				2F0095DD1B79D683003C27B9 /* GoodsListCell.m */,
 				2F0095DF1B79D69B003C27B9 /* ServiceListCell.h */,
 				2F0095E01B79D69B003C27B9 /* ServiceListCell.m */,
+				2F4347EB1B7A271200D96AB6 /* ServiceListView.h */,
+				2F4347EC1B7A271200D96AB6 /* ServiceListView.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4211,6 +4216,7 @@
 				2F78FAB31B75B1F30009F349 /* Samurai_Script.m in Sources */,
 				2F78FAD31B75B1F30009F349 /* ServiceGestureSetting.m in Sources */,
 				2F78FBB91B75B1F40009F349 /* foundation.c in Sources */,
+				2F4347ED1B7A271200D96AB6 /* ServiceListView.m in Sources */,
 				2F90007A1B1D91470040D97B /* MASConstraintMaker.m in Sources */,
 				2F9000811B1D91470040D97B /* MBProgressHUD.m in Sources */,
 				2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */,
