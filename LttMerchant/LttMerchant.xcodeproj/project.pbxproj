@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
+		2F0095DE1B79D683003C27B9 /* GoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095DD1B79D683003C27B9 /* GoodsListCell.m */; };
+		2F0095E11B79D69B003C27B9 /* ServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095E01B79D69B003C27B9 /* ServiceListCell.m */; };
 		2F0E37D11B6B214900CFE2E6 /* GoodsListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */; };
 		2F0E37D41B6B215C00CFE2E6 /* ServiceListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */; };
 		2F0E37D71B6B216E00CFE2E6 /* GoodsFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */; };
@@ -565,6 +567,10 @@
 /* Begin PBXFileReference section */
 		2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		2F0095DC1B79D683003C27B9 /* GoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListCell.h; sourceTree = "<group>"; };
+		2F0095DD1B79D683003C27B9 /* GoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListCell.m; sourceTree = "<group>"; };
+		2F0095DF1B79D69B003C27B9 /* ServiceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListCell.h; sourceTree = "<group>"; };
+		2F0095E01B79D69B003C27B9 /* ServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceListCell.m; sourceTree = "<group>"; };
 		2F0E37CF1B6B214900CFE2E6 /* GoodsListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListActivity.h; sourceTree = "<group>"; };
 		2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodsListActivity.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2F0E37D21B6B215C00CFE2E6 /* ServiceListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListActivity.h; sourceTree = "<group>"; };
@@ -1931,6 +1937,10 @@
 				2F5330531B6083B100D4DD05 /* CaseListCell.m */,
 				2F60B7171B71E8AD00FECADC /* GoodsSpecCell.h */,
 				2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */,
+				2F0095DC1B79D683003C27B9 /* GoodsListCell.h */,
+				2F0095DD1B79D683003C27B9 /* GoodsListCell.m */,
+				2F0095DF1B79D69B003C27B9 /* ServiceListCell.h */,
+				2F0095E01B79D69B003C27B9 /* ServiceListCell.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4261,6 +4271,7 @@
 				2F16E6A81B5DF84B007947D0 /* AppTableView.m in Sources */,
 				2F78FB6B1B75B1F40009F349 /* Samurai_HtmlElementImg.m in Sources */,
 				2F78FB451B75B1F40009F349 /* Samurai_HtmlDocumentWorklet_30ParseResource.m in Sources */,
+				2F0095DE1B79D683003C27B9 /* GoodsListCell.m in Sources */,
 				2F78FA751B75B1F30009F349 /* Samurai_Notification.m in Sources */,
 				2F78FAA91B75B1F30009F349 /* Samurai_Intent.m in Sources */,
 				2F78FB7F1B75B1F40009F349 /* Samurai_HtmlElementPre.m in Sources */,
@@ -4555,6 +4566,7 @@
 				2F6D3EFD1B3128CC007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2FCAF8511B201FD100F3B084 /* BaseHandler.m in Sources */,
 				2F78FB991B75B1F40009F349 /* Samurai_HtmlRenderContainer.m in Sources */,
+				2F0095E11B79D69B003C27B9 /* ServiceListCell.m in Sources */,
 				2F78FAB01B75B1F30009F349 /* Samurai_RenderStyle.m in Sources */,
 				2F78FAC31B75B1F30009F349 /* Samurai_ViewUtility.m in Sources */,
 				2F78FADE1B75B1F30009F349 /* JBBarChartView.m in Sources */,

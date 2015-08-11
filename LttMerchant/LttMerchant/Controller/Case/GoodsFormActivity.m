@@ -99,11 +99,11 @@
     
     //自动切换样式并计算高度
     if (specCount > 0) {
-        [self domCss:@"#specEmpty" name:@"height" value:@"0px"];
-        [self domCss:@"#specTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", specCount * 55]];
+        $(@"#specEmpty").ATTR(@"height", @"0px");
+        $(@"#specTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", specCount * 55]);
     } else {
-        [self domCss:@"#specEmpty" name:@"height" value:@"50px"];
-        [self domCss:@"#specTable" name:@"height" value:@"0px"];
+        $(@"#specEmpty").ATTR(@"height", @"50px");
+        $(@"#specTable").ATTR(@"height", @"0px");
     }
     
     [_specTable reloadData];

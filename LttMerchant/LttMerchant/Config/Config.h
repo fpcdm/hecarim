@@ -86,6 +86,7 @@
 #define COLOR_MAIN_GRAY [UIColor colorWithHexString:@"7D7D7D"]
 #define COLOR_MAIN_BLUE [UIColor colorWithHexString:@"0199FF"]
 #define COLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"FF6600"]
+#define COLOR_MAIN_SELECTED [UIColor colorWithHexString:@"E9F0FA"]
 #define CGCOLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"].CGColor
 #define CGCOLOR_MAIN_WHITE [UIColor whiteColor].CGColor
 

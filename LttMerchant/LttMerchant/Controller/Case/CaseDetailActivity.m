@@ -71,8 +71,8 @@
     
     //调整联系地址和客户留言宽度
     NSString *contentWidth = [NSString stringWithFormat:@"%lfpx", (SCREEN_WIDTH - 60)];
-    [self domCss:@"#caseAddress" name:@"width" value:contentWidth];
-    [self domCss:@"#caseRemark" name:@"width" value:contentWidth];
+    $(@"#caseAddress").ATTR(@"width", contentWidth);
+    $(@"#caseRemark").ATTR(@"width", contentWidth);
 }
 
 #pragma mark - reloadData
@@ -127,11 +127,9 @@
     
     //自动切换样式并计算高度
     if (goodsCount > 0) {
-        //style_attr不生效，用选择器，下同
-        [self domCss:@"#goodsTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", goodsCount * 50]];
+        $(@"#goodsTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", goodsCount * 50]);
     } else {
-        //style_attr不生效，用选择器，下同
-        [self domCss:@"#goodsTable" name:@"height" value:@"25px"];
+        $(@"#goodsTable").ATTR(@"height", @"25px");
     }
     
     [self.goodsTable reloadData];
@@ -165,9 +163,9 @@
     
     //自动切换样式并计算高度
     if (servicesCount > 0) {
-        [self domCss:@"#servicesTable" name:@"height" value:[NSString stringWithFormat:@"%ldpx", servicesCount * 25]];
+        $(@"#servicesTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", servicesCount * 25]);
     } else {
-        [self domCss:@"#servicesTable" name:@"height" value:@"25px"];
+        $(@"#servicesTable").ATTR(@"height", @"25px");
     }
     
     [self.servicesTable reloadData];
@@ -181,112 +179,112 @@
 {
     //切换按钮状态
     if ([CASE_STATUS_NEW isEqualToString:intention.status]) {
-        [self domVisible:@"#editCase" visible:NO];
+        $(@"#editCase").ATTR(@"visibility", @"hidden");
         
-        [self domDisplay:@"#caseRemark" display:@"block"];
-        [self domDisplay:@"#remarkTitle" display:@"block"];
+        $(@"#caseRemark").ATTR(@"display", @"block");
+        $(@"#remarkTitle").ATTR(@"display", @"block");
         
-        [self domDisplay:@"#goodsContainer" display:@"none"];
-        [self domDisplay:@"#servicesContainer" display:@"none"];
+        $(@"#goodsContainer").ATTR(@"display", @"none");
+        $(@"#servicesContainer").ATTR(@"display", @"none");
         
-        [self domVisible:@"#editGoods" visible:NO];
-        [self domVisible:@"#editServices" visible:NO];
+        $(@"#editGoods").ATTR(@"visibility", @"hidden");
+        $(@"#editServices").ATTR(@"visibility", @"hidden");
         
-        [self domDisplay:@"#competeButton" display:@"block"];
-        [self domDisplay:@"#startButton" display:@"none"];
-        [self domDisplay:@"#finishButton" display:@"none"];
-        [self domDisplay:@"#cancelButton" display:@"none"];
+        $(@"#competeButton").ATTR(@"display", @"block");
+        $(@"#startButton").ATTR(@"display", @"none");
+        $(@"#finishButton").ATTR(@"display", @"none");
+        $(@"#cancelButton").ATTR(@"display", @"none");
         
     } else if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
-        [self domVisible:@"#editCase" visible:YES];
+        $(@"#editCase").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#caseRemark" display:@"block"];
-        [self domDisplay:@"#remarkTitle" display:@"block"];
+        $(@"#caseRemark").ATTR(@"display", @"block");
+        $(@"#remarkTitle").ATTR(@"display", @"block");
         
-        [self domDisplay:@"#goodsContainer" display:@"block"];
-        [self domDisplay:@"#servicesContainer" display:@"block"];
+        $(@"#goodsContainer").ATTR(@"display", @"block");
+        $(@"#servicesContainer").ATTR(@"display", @"block");
         
-        [self domVisible:@"#editGoods" visible:YES];
-        [self domVisible:@"#editServices" visible:YES];
+        $(@"#editGoods").ATTR(@"visibility", @"visible");
+        $(@"#editServices").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#competeButton" display:@"none"];
-        [self domDisplay:@"#startButton" display:@"block"];
-        [self domDisplay:@"#finishButton" display:@"none"];
-        [self domDisplay:@"#cancelButton" display:@"block"];
+        $(@"#competeButton").ATTR(@"display", @"none");
+        $(@"#startButton").ATTR(@"display", @"block");
+        $(@"#finishButton").ATTR(@"display", @"none");
+        $(@"#cancelButton").ATTR(@"display", @"block");
         
     } else if ([CASE_STATUS_CONFIRMED isEqualToString:intention.status]) {
-        [self domVisible:@"#editCase" visible:YES];
+        $(@"#editCase").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#caseRemark" display:@"block"];
-        [self domDisplay:@"#remarkTitle" display:@"block"];
+        $(@"#caseRemark").ATTR(@"display", @"block");
+        $(@"#remarkTitle").ATTR(@"display", @"block");
         
-        [self domDisplay:@"#goodsContainer" display:@"block"];
-        [self domDisplay:@"#servicesContainer" display:@"block"];
+        $(@"#goodsContainer").ATTR(@"display", @"block");
+        $(@"#servicesContainer").ATTR(@"display", @"block");
         
-        [self domVisible:@"#editGoods" visible:YES];
-        [self domVisible:@"#editServices" visible:YES];
+        $(@"#editGoods").ATTR(@"visibility", @"visible");
+        $(@"#editServices").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#competeButton" display:@"none"];
-        [self domDisplay:@"#startButton" display:@"none"];
-        [self domDisplay:@"#finishButton" display:@"block"];
-        [self domDisplay:@"#cancelButton" display:@"block"];
+        $(@"#competeButton").ATTR(@"display", @"none");
+        $(@"#startButton").ATTR(@"display", @"none");
+        $(@"#finishButton").ATTR(@"display", @"block");
+        $(@"#cancelButton").ATTR(@"display", @"block");
         
     } else if ([CASE_STATUS_TOPAY isEqualToString:intention.status]) {
-        [self domVisible:@"#editCase" visible:YES];
+        $(@"#editCase").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#caseRemark" display:@"none"];
-        [self domDisplay:@"#remarkTitle" display:@"none"];
+        $(@"#caseRemark").ATTR(@"display", @"none");
+        $(@"#remarkTitle").ATTR(@"display", @"none");
         UIView *remarkView = $(@"#remarkTitle").firstView;
         if (remarkView) [remarkView removeFromSuperview];
         
-        [self domDisplay:@"#goodsContainer" display:@"block"];
-        [self domDisplay:@"#servicesContainer" display:@"block"];
+        $(@"#goodsContainer").ATTR(@"display", @"block");
+        $(@"#servicesContainer").ATTR(@"display", @"block");
         
-        [self domVisible:@"#editGoods" visible:NO];
-        [self domVisible:@"#editServices" visible:NO];
+        $(@"#editGoods").ATTR(@"visibility", @"hidden");
+        $(@"#editServices").ATTR(@"visibility", @"hidden");
         
-        [self domDisplay:@"#competeButton" display:@"none"];
-        [self domDisplay:@"#startButton" display:@"none"];
-        [self domDisplay:@"#finishButton" display:@"none"];
-        [self domDisplay:@"#cancelButton" display:@"none"];
+        $(@"#competeButton").ATTR(@"display", @"none");
+        $(@"#startButton").ATTR(@"display", @"none");
+        $(@"#finishButton").ATTR(@"display", @"none");
+        $(@"#cancelButton").ATTR(@"display", @"none");
         
     } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
-        [self domVisible:@"#editCase" visible:YES];
+        $(@"#editCase").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#caseRemark" display:@"none"];
-        [self domDisplay:@"#remarkTitle" display:@"none"];
+        $(@"#caseRemark").ATTR(@"display", @"none");
+        $(@"#remarkTitle").ATTR(@"display", @"none");
         UIView *remarkView = $(@"#remarkTitle").firstView;
         if (remarkView) [remarkView removeFromSuperview];
         
-        [self domDisplay:@"#goodsContainer" display:@"block"];
-        [self domDisplay:@"#servicesContainer" display:@"block"];
+        $(@"#goodsContainer").ATTR(@"display", @"block");
+        $(@"#servicesContainer").ATTR(@"display", @"block");
         
-        [self domVisible:@"#editGoods" visible:NO];
-        [self domVisible:@"#editServices" visible:NO];
+        $(@"#editGoods").ATTR(@"visibility", @"hidden");
+        $(@"#editServices").ATTR(@"visibility", @"hidden");
         
-        [self domDisplay:@"#competeButton" display:@"none"];
-        [self domDisplay:@"#startButton" display:@"none"];
-        [self domDisplay:@"#finishButton" display:@"none"];
-        [self domDisplay:@"#cancelButton" display:@"none"];
+        $(@"#competeButton").ATTR(@"display", @"none");
+        $(@"#startButton").ATTR(@"display", @"none");
+        $(@"#finishButton").ATTR(@"display", @"none");
+        $(@"#cancelButton").ATTR(@"display", @"none");
         
     } else if ([CASE_STATUS_SUCCESS isEqualToString:intention.status]) {
-        [self domVisible:@"#editCase" visible:YES];
+        $(@"#editCase").ATTR(@"visibility", @"visible");
         
-        [self domDisplay:@"#caseRemark" display:@"none"];
-        [self domDisplay:@"#remarkTitle" display:@"none"];
+        $(@"#caseRemark").ATTR(@"display", @"none");
+        $(@"#remarkTitle").ATTR(@"display", @"none");
         UIView *remarkView = $(@"#remarkTitle").firstView;
         if (remarkView) [remarkView removeFromSuperview];
         
-        [self domDisplay:@"#goodsContainer" display:@"block"];
-        [self domDisplay:@"#servicesContainer" display:@"block"];
+        $(@"#goodsContainer").ATTR(@"display", @"block");
+        $(@"#servicesContainer").ATTR(@"display", @"block");
         
-        [self domVisible:@"#editGoods" visible:NO];
-        [self domVisible:@"#editServices" visible:NO];
+        $(@"#editGoods").ATTR(@"visibility", @"hidden");
+        $(@"#editServices").ATTR(@"visibility", @"hidden");
         
-        [self domDisplay:@"#competeButton" display:@"none"];
-        [self domDisplay:@"#startButton" display:@"none"];
-        [self domDisplay:@"#finishButton" display:@"none"];
-        [self domDisplay:@"#cancelButton" display:@"none"];
+        $(@"#competeButton").ATTR(@"display", @"none");
+        $(@"#startButton").ATTR(@"display", @"none");
+        $(@"#finishButton").ATTR(@"display", @"none");
+        $(@"#cancelButton").ATTR(@"display", @"none");
         
     }
     
