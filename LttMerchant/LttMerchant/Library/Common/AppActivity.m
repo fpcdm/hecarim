@@ -43,6 +43,16 @@
     [self loadTemplate:viewPath];
 }
 
+- (void) reloadTemplate
+{
+    //取消旧模板
+    [self unloadTemplate];
+    
+    //加载新模板
+    NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
+    [self loadTemplate:viewPath];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

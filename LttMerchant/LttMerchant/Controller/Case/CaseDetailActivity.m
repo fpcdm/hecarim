@@ -25,6 +25,9 @@
 {
     //返回页面是否需要刷新
     BOOL needRefresh;
+    
+    //返回页面是否需要重新加载
+    BOOL needReload;
 }
 
 @synthesize intention;
@@ -43,13 +46,17 @@
     
     //第一次需要刷新
     needRefresh = YES;
+    needReload = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if (needRefresh) {
+    //是否需要重载，优先级高于refresh
+    if (needReload) {
+        [self reloadTemplate];
+    } else if (needRefresh) {
         needRefresh = NO;
         [self loadCase];
     }
@@ -73,6 +80,13 @@
     NSString *contentWidth = [NSString stringWithFormat:@"%lfpx", (SCREEN_WIDTH - 60)];
     $(@"#caseAddress").ATTR(@"width", contentWidth);
     $(@"#caseRemark").ATTR(@"width", contentWidth);
+    
+    //重载数据
+    if (needReload) {
+        needReload = NO;
+        needRefresh = NO;
+        [self loadCase];
+    }
 }
 
 #pragma mark - reloadData
@@ -427,8 +441,11 @@
     GoodsListActivity *viewController = [[GoodsListActivity alloc] init];
     viewController.caseId = self.caseId;
     viewController.callbackBlock = ^(id object){
-        //标记可刷新
-        if (object && [@1 isEqualToNumber:object]) {
+        //标记可重载
+        if (object && [@2 isEqualToNumber:object]) {
+            needReload = YES;
+            //标记可刷新
+        } else if (object && [@1 isEqualToNumber:object]) {
             needRefresh = YES;
         }
     };
@@ -440,8 +457,11 @@
     ServiceListActivity *viewController = [[ServiceListActivity alloc] init];
     viewController.caseId = self.caseId;
     viewController.callbackBlock = ^(id object){
+        //标记可重载
+        if (object && [@2 isEqualToNumber:object]) {
+            needReload = YES;
         //标记可刷新
-        if (object && [@1 isEqualToNumber:object]) {
+        } else if (object && [@1 isEqualToNumber:object]) {
             needRefresh = YES;
         }
     };

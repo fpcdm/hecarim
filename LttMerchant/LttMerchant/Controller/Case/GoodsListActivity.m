@@ -9,6 +9,7 @@
 #import "GoodsListActivity.h"
 #import "GoodsFormActivity.h"
 #import "AppUIUtil.h"
+#import "GoodsListView.h"
 #import "DLRadioButton.h"
 
 @interface GoodsListActivity ()
@@ -22,14 +23,14 @@
     //返回页面是否需要刷新
     BOOL needRefresh;
     
-    //右侧按钮
-    UIBarButtonItem *editButtonItem;
+    //表格视图
+    GoodsListView *listView;
     
-    //商品列表
+    //服务数据
     NSMutableArray *goodsList;
     
-    //选中列表
-    NSMutableArray *selectedCells;
+    //全选按钮
+    DLRadioButton *radioButton;
 }
 
 @synthesize intention;
@@ -41,13 +42,10 @@
     //第一次需要刷新
     needRefresh = YES;
     
-    //选中列表
-    selectedCells = [[NSMutableArray alloc] init];
-    
     //编辑按钮
-    editButtonItem = [AppUIUtil makeBarButtonItem:@"编辑" highlighted:YES];
+    UIBarButtonItem *editButtonItem = [AppUIUtil makeBarButtonItem:@"编辑" highlighted:YES];
     editButtonItem.target = self;
-    editButtonItem.action = @selector(actionEditTable);
+    editButtonItem.action = @selector(actionEditTable:);
     self.navigationItem.rightBarButtonItem = editButtonItem;
 }
 
@@ -57,7 +55,18 @@
     
     if (needRefresh) {
         needRefresh = NO;
-        [self loadCase];
+        [self loadCase:^(id object){
+            //初始化商品列表
+            goodsList = [[NSMutableArray alloc] init];
+            if (intention.goods) {
+                for (GoodsEntity *goods in intention.goods) {
+                    [goodsList addObject:goods];
+                }
+            }
+            
+            //刷新数据
+            [self reloadData];
+        }];
     }
 }
 
@@ -69,153 +78,123 @@
 #pragma mark - Template
 - (void) onTemplateLoaded
 {
-    //动态计算表格高度
-    float tableHeight = SCREEN_AVAILABLE_HEIGHT - 110;
-    $(@"#listTable").ATTR(@"height", [NSString stringWithFormat:@"%lfpx", tableHeight]);
+    //动态计算表格容器高度
+    float containerHeight = SCREEN_AVAILABLE_HEIGHT - 120;
+    $(@"#tableContainer").ATTR(@"height", [NSString stringWithFormat:@"%lfpx", containerHeight]);
     
     //显示添加按钮
     $(@"#addButton").ATTR(@"visibility", @"visbile");
+    
+    //全选按钮样式
+    radioButton = (DLRadioButton *) $(@"#radioButton").firstView;
+    radioButton.iconColor = [UIColor colorWithHexString:@"CBCBCB"];
+    radioButton.iconSize = 18;
+    radioButton.iconStrokeWidth = 1.0f;
+    
+    //初始化表格
+    listView = [[GoodsListView alloc] init];
+    listView.frame = CGRectMake(0, 0, SCREEN_WIDTH, containerHeight);
+    [$(@"#tableContainer").firstView addSubview:listView];
 }
 
 #pragma mark - reloadData
 - (void) reloadData
 {
-    //初始化数据
-    if (!goodsList) {
-        goodsList = [NSMutableArray arrayWithArray:intention.goods ? intention.goods : @[]];
-    }
-    
     [super reloadData];
     
-    BOOL editing = self.listTable.editing ? YES : NO;
+    //刷新表格
+    [self refreshTable];
     
-    NSInteger goodsCount = [goodsList count];
-    self.scope[@"list"] = @{
-                                   
-                                   @"goods":({
-                                       NSMutableArray *returnList = [NSMutableArray array];
-                                       
-                                       if (goodsCount > 0) {
-                                           for (GoodsEntity *goods in goodsList) {
-                                               [returnList addObject:@{
-                                                                      @"editing": editing ? @1 : @0,
-                                                                      @"name": goods.name,
-                                                                      @"number": goods.number,
-                                                                      @"numberStr": [NSString stringWithFormat:@"x%@", goods.number],
-                                                                      @"price": [NSString stringWithFormat:@"￥%@", goods.price],
-                                                                      @"specName": goods.specName
-                                                                      }];
-                                           }
-                                       }
-                                       
-                                       returnList;
-                                       
-                                   })};
+    //切换按钮
+    [self toggleButton];
     
-    [self.listTable reloadData];
-    
+    //重新布局
+    [self relayout];
+}
+
+//刷新表格
+- (void) refreshTable
+{
+    [listView setData:@"goodsList" value:goodsList];
+    [listView renderData];
+}
+
+//切换按钮
+- (void) toggleButton
+{
     //切换控件
-    if (editing) {
+    if (listView.tableView.editing == YES) {
         $(@"#addButton").ATTR(@"visibility", @"hidden");
         $(@"#editButton").ATTR(@"visibility", @"visbile");
     } else {
         $(@"#addButton").ATTR(@"visibility", @"visible");
         $(@"#editButton").ATTR(@"visibility", @"hidden");
     }
-    
-    //重新布局
-    [self relayout];
 }
 
 #pragma mark - Action
-//数量操作
-- (void) actionGoodsNumberPlus: (SamuraiSignal *) signal
-{
-    GoodsEntity *goods = [goodsList objectAtIndex:signal.sourceIndexPath.row];
-    
-    NSInteger number = [goods.number integerValue];
-    number++;
-    goods.number = [NSNumber numberWithInteger:number];
-    
-    UILabel *numberLabel = (UILabel *) [$(@"#goodsNumber").views objectAtIndex:signal.sourceIndexPath.row];
-    numberLabel.text = [NSString stringWithFormat:@"%ld", number];
-}
-
-- (void) actionGoodsNumberMinus: (SamuraiSignal *) signal
-{
-    GoodsEntity *goods = [goodsList objectAtIndex:signal.sourceIndexPath.row];
-    
-    NSInteger number = [goods.number integerValue];
-    number--;
-    if (number < 1) number = 1;
-    goods.number = [NSNumber numberWithInteger:number];
-    
-    UILabel *numberLabel = (UILabel *) [$(@"#goodsNumber").views objectAtIndex:signal.sourceIndexPath.row];
-    numberLabel.text = [NSString stringWithFormat:@"%ld", number];
-}
-
-//单元格选中操作
-- (void) selectTableCell:(UITableViewCell *)cell indexPath: (NSIndexPath *) indexPath selected: (BOOL) selected
-{
-    if (!cell) {
-        cell = [self.listTable cellForRowAtIndexPath:indexPath];
-    }
-    
-    if (selected) {
-        cell.selected = YES;
-        
-        //防止重复添加
-        [selectedCells removeObject:indexPath];
-        [selectedCells addObject:indexPath];
-    } else {
-        cell.selected = NO;
-        
-        [selectedCells removeObject:indexPath];
-    }
-}
-
 //编辑表格
-- (void) actionEditTable
+- (void) actionEditTable: (UIBarButtonItem *) barButtonItem
 {
     //编辑
-    if (self.listTable.editing == NO) {
-        self.listTable.editing = YES;
+    if (listView.tableView.editing == NO) {
+        listView.tableView.editing = YES;
         
-        [editButtonItem setTitle:@"完成"];
+        [barButtonItem setTitle:@"完成"];
         
-        [self reloadData];
+        [self toggleButton];
     } else {
-        self.listTable.editing = NO;
+        CallbackBlock callback = ^(id object){
+            listView.tableView.editing = NO;
+            
+            [barButtonItem setTitle:@"编辑"];
+            
+            [self toggleButton];
+        };
         
-        [editButtonItem setTitle:@"编辑"];
-        
-        [self reloadData];
+        //是否含有商品，有则保存
+        if (intention.goods && [intention.goods count] > 0) {
+            [self saveGoods: callback];
+        } else {
+            callback(nil);
+        }
     }
 }
 
-- (void) actionChooseAll: (SamuraiSignal *) signal
+//保存商品
+- (void) saveGoods: (CallbackBlock) callback
 {
-    NSArray *indexPaths = [self.listTable indexPathsForVisibleRows];
-    DLRadioButton *radioButton = (DLRadioButton *) signal.sourceView;
+    //获取服务列表
+    CaseEntity *postCase = [[CaseEntity alloc] init];
+    postCase.id = self.caseId;
     
-    //是否已经全选
-    if ([selectedCells count] == [indexPaths count]) {
-        radioButton.selected = NO;
-        for (NSIndexPath *indexPath in indexPaths) {
-            [self selectTableCell:nil indexPath:indexPath selected:NO];
-        }
-    } else {
-        radioButton.selected = YES;
-        for (NSIndexPath *indexPath in indexPaths) {
-            [self selectTableCell:nil indexPath:indexPath selected:YES];
-        }
+    //当前服务列表
+    NSMutableArray *postGoods = [[NSMutableArray alloc] init];
+    for (GoodsEntity *entity in goodsList) {
+        [postGoods addObject:entity];
     }
-}
-
-- (void) actionChooseCell: (SamuraiSignal *) signal
-{
-    BOOL selected = !signal.sourceTableCell.selected;
-    [self selectTableCell:signal.sourceTableCell indexPath:signal.sourceIndexPath selected:selected];
+    
+    //转换数据
+    postCase.goods = postGoods;
+    postCase.goodsParam = [postCase formatFormGoods];
+    postCase.goods = nil;
+    
+    //提交数据
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler editCaseGoods:postCase success:^(NSArray *result){
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            //通知重新加载，解决单元格减少问题
+            if (self.callbackBlock) {
+                self.callbackBlock(@2);
+            }
+            
+            //切换按钮
+            callback(nil);
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void) actionAddGoods: (SamuraiSignal *) signal
@@ -236,26 +215,53 @@
     [self pushViewController:activity animated:YES];
 }
 
+- (void) actionChooseAll: (SamuraiSignal *) signal
+{
+    NSArray *selectedRows = [listView.tableView indexPathsForSelectedRows];
+    NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
+    
+    //已经全选
+    if (selectedCount >= [goodsList count]) {
+        radioButton.selected = NO;
+        //获取所有单元格(indexPathsForVisibleRows只含有可见行，不含有滚动后可见的)
+        for (int section = 0; section < [goodsList count]; section++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+            [listView.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        }
+        //未全选
+    } else {
+        radioButton.selected = YES;
+        //获取所有单元格(indexPathsForVisibleRows只含有可见行，不含有滚动后可见的)
+        for (int section = 0; section < [goodsList count]; section++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+            [listView.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }
+    }
+}
+
 - (void) actionDeleteGoods: (SamuraiSignal *) signal
 {
     //检查选中
-    if ([selectedCells count] < 1) {
+    NSArray *selectedRows = [listView.tableView indexPathsForSelectedRows];
+    NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
+    
+    if (selectedCount < 1) {
         [self showError:@"请选择要删除的商品哦~亲！"];
         return;
     }
     
-    //整理删除的行批量删除
-    NSMutableArray *deleteGoods = [[NSMutableArray alloc] init];
-    for (NSIndexPath *indexPath in selectedCells) {
-        GoodsEntity *goods = [goodsList objectAtIndex:indexPath.row];
-        [deleteGoods addObject:goods];
+    //批量删除数据
+    NSMutableIndexSet *deleteIndexs = [NSMutableIndexSet new];
+    for (NSIndexPath *indexPath in selectedRows) {
+        [deleteIndexs addIndex:indexPath.section];
     }
-    [goodsList removeObjectsInArray:deleteGoods];
+    [goodsList removeObjectsAtIndexes:deleteIndexs];
     
-    //重置选中行
-    selectedCells = [[NSMutableArray alloc] init];
+    //刷新表格
+    [self refreshTable];
     
-    [self reloadData];
+    //取消全选
+    radioButton.selected = NO;
 }
 
 @end

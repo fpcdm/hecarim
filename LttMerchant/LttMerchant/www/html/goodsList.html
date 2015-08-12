@@ -61,76 +61,12 @@
         }
         
         /* 列表 */
-        .table {
+        .table-container {
             display: block;
             width: 100%;
             height: 100%;
-            z-index: 1;
             background-color: #eeeeee;
-        }
-        
-        .table-item {
-            display: block;
-            width: 100%;
-            height: 60px;
-            background-color: white;
-            border-bottom: 0.5px solid #b2b2b2;
-        }
-        
-        .table-separator {
-            width: 100%;
-            height: 10px;
-            background-color: #eeeeee;
-            border-bottom: 0.5px solid #b2b2b2;
-        }
-        
-        .table-container {
-            width: 100%;
-            height: 50px;
-            background-color: white;
-            inset-top: 5px;
-        }
-        
-        .table-container .checkbox-button {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            margin-left: 5px;
             margin-top: 10px;
-        }
-        
-        .table-container .table-line {
-            width: 100%;
-            height: 20px;
-            margin-left: 30px;
-        }
-        
-        .table-container .content-right {
-            position: absolute;
-            right: 10px;
-        }
-        
-        .table-container .right-number {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-        }
-        
-        .table-container .number-button {
-            border: 0.5px solid black;
-            display: inline-block;
-            height: 30px;
-            width: 25px;
-            margin-left: 2px;
-            inset-top: -5px;
-            inset-bottom: 5px;
-            text-align: center;
-        }
-        
-        .number-button .number-label {
-            font-size: 16px;
-            margin-top: 5px;
-            width: 100%;
         }
         
         .bottom-button {
@@ -191,36 +127,8 @@
             </div>
         </div>
         
-        <UITableView id="listTable" name="list" class="table" columns="1" is-vertical>
-            
-            <GoodsListCell name="goods" class="table-item" is-row>
-                <div class="table-separator"></div>
-                
-                <div id="cellContainer" class="table-container">
-                    <DLRadioButton id="checkboxButton" onclick="@selector(actionChooseCell:)" class="checkbox-button" style="visibility:hidden;"></DLRadioButton>
-                    <div class="table-line">
-                        <label name="name"></label>
-                        <label id="priceLabel" class="content-right font-bold" name="price"></label>
-                    </div>
-                    <div class="table-line">
-                        <label name="specName" class="color-gray"></label>
-                        <label id="numberLabel" class="content-right color-gray" name="numberStr"></label>
-                    </div>
-                    <div id="numberContainer" class="right-number">
-                        <div class="number-button" onclick="@selector(actionGoodsNumberMinus:)">
-                            <label class="number-label">-</label>
-                        </div>
-                        <div class="number-button" style="width: 40px;">
-                            <label id="goodsNumber" name="number" class="number-label"></label>
-                        </div>
-                        <div class="number-button" onclick="@selector(actionGoodsNumberPlus:)">
-                            <label class="number-label">+</label>
-                        </div>
-                    </div>
-                </div>
-            </GoodsListCell>
-            
-        </UITableView>
+        <div id="tableContainer" class="table-container">
+        </div>
         
         <UIButton id="addButton" onclick="@selector(actionAddGoods:)" class="primary-button bottom-button" style="visibility: hidden;">添加商品</UIButton>
         

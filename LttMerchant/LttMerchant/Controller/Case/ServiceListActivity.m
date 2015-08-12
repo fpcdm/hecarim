@@ -181,9 +181,9 @@
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler editCaseServices:postCase success:^(NSArray *result){
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            //通知刷新
+            //通知重新加载，解决单元格减少问题
             if (self.callbackBlock) {
-                self.callbackBlock(@1);
+                self.callbackBlock(@2);
             }
             
             //切换按钮

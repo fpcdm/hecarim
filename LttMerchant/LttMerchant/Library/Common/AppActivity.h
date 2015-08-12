@@ -53,4 +53,7 @@
 //视图名称
 - (NSString *) templateName;
 
+//重新加载视图，主要解决Samurai的bug：UITableView单元格减少relayout后删除不掉的问题
+- (void) reloadTemplate;
+
 @end

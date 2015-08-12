@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
-		2F0095DE1B79D683003C27B9 /* GoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095DD1B79D683003C27B9 /* GoodsListCell.m */; };
 		2F0E37D11B6B214900CFE2E6 /* GoodsListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */; };
 		2F0E37D41B6B215C00CFE2E6 /* ServiceListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D31B6B215C00CFE2E6 /* ServiceListActivity.m */; };
 		2F0E37D71B6B216E00CFE2E6 /* GoodsFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */; };
@@ -469,6 +468,7 @@
 		2F7A56EB1B09D52300D12500 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD187D1B047D1800C3D09E /* SystemConfiguration.framework */; };
 		2F7A56ED1B09D52B00D12500 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */; };
 		2F7A56EF1B09D53300D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EE1B09D53300D12500 /* Foundation.framework */; };
+		2F7B607B1B7AF24900F65729 /* GoodsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B607A1B7AF24900F65729 /* GoodsListView.m */; };
 		2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B071B1D529F006189EF /* NSString+trim.m */; };
 		2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B091B1D529F006189EF /* UIColor+Hex.m */; };
 		2F800B101B1D529F006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B0A1B1D529F006189EF /* README.md */; };
@@ -567,8 +567,6 @@
 /* Begin PBXFileReference section */
 		2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
-		2F0095DC1B79D683003C27B9 /* GoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListCell.h; sourceTree = "<group>"; };
-		2F0095DD1B79D683003C27B9 /* GoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListCell.m; sourceTree = "<group>"; };
 		2F0E37CF1B6B214900CFE2E6 /* GoodsListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListActivity.h; sourceTree = "<group>"; };
 		2F0E37D01B6B214900CFE2E6 /* GoodsListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodsListActivity.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2F0E37D21B6B215C00CFE2E6 /* ServiceListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListActivity.h; sourceTree = "<group>"; };
@@ -1470,6 +1468,8 @@
 		2F78FBD71B75C0470009F349 /* SDWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageView.m; sourceTree = "<group>"; };
 		2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2F7A56EE1B09D53300D12500 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2F7B60791B7AF24900F65729 /* GoodsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListView.h; sourceTree = "<group>"; };
+		2F7B607A1B7AF24900F65729 /* GoodsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListView.m; sourceTree = "<group>"; };
 		2F800B061B1D529F006189EF /* NSString+trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+trim.h"; sourceTree = "<group>"; };
 		2F800B071B1D529F006189EF /* NSString+trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+trim.m"; sourceTree = "<group>"; };
 		2F800B081B1D529F006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
@@ -1937,10 +1937,10 @@
 				2F5330531B6083B100D4DD05 /* CaseListCell.m */,
 				2F60B7171B71E8AD00FECADC /* GoodsSpecCell.h */,
 				2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */,
-				2F0095DC1B79D683003C27B9 /* GoodsListCell.h */,
-				2F0095DD1B79D683003C27B9 /* GoodsListCell.m */,
 				2F4347EB1B7A271200D96AB6 /* ServiceListView.h */,
 				2F4347EC1B7A271200D96AB6 /* ServiceListView.m */,
+				2F7B60791B7AF24900F65729 /* GoodsListView.h */,
+				2F7B607A1B7AF24900F65729 /* GoodsListView.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4188,6 +4188,7 @@
 				2F78FB511B75B1F40009F349 /* Samurai_HtmlElementButton.m in Sources */,
 				2F6D3EFF1B3128CC007A4159 /* ActionSheetLocalePicker.m in Sources */,
 				2F78FA731B75B1F30009F349 /* Samurai_Core.m in Sources */,
+				2F7B607B1B7AF24900F65729 /* GoodsListView.m in Sources */,
 				2F78FA8A1B75B1F30009F349 /* Signal+View.m in Sources */,
 				2F78FB411B75B1F40009F349 /* Samurai_HtmlDocument.m in Sources */,
 				2F6D3F121B3128CC007A4159 /* MJRefreshConst.m in Sources */,
@@ -4272,7 +4273,6 @@
 				2F16E6A81B5DF84B007947D0 /* AppTableView.m in Sources */,
 				2F78FB6B1B75B1F40009F349 /* Samurai_HtmlElementImg.m in Sources */,
 				2F78FB451B75B1F40009F349 /* Samurai_HtmlDocumentWorklet_30ParseResource.m in Sources */,
-				2F0095DE1B79D683003C27B9 /* GoodsListCell.m in Sources */,
 				2F78FA751B75B1F30009F349 /* Samurai_Notification.m in Sources */,
 				2F78FAA91B75B1F30009F349 /* Samurai_Intent.m in Sources */,
 				2F78FB7F1B75B1F40009F349 /* Samurai_HtmlElementPre.m in Sources */,
