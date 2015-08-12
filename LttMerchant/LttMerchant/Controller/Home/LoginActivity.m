@@ -12,6 +12,8 @@
 #import "AppExtension.h"
 #import "HomeActivity.h"
 #import "UserHandler.h"
+#import "AppUIUtil.h"
+#import "PickerUtil.h"
 
 @interface LoginActivity ()
 
@@ -27,6 +29,13 @@
     isMenuEnabled = NO;
     hideBackButton = YES;
     [super viewDidLoad];
+    
+    //调试功能
+#ifdef LTT_DEBUG
+    if (IS_DEBUG) {
+        [self debug];
+    }
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,6 +70,42 @@
 {
     
 }
+
+#pragma mark - Debug
+#ifdef LTT_DEBUG
+- (void) debug
+{
+    UIBarButtonItem *debugButton = [AppUIUtil makeBarButtonItem:@"调试"];
+    debugButton.target = self;
+    debugButton.action = @selector(actionDebug:);
+    self.navigationItem.leftBarButtonItem = debugButton;
+}
+
+- (void) actionDebug:(UIBarButtonItem *) debugButton
+{
+    //选择调试服务器
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:@"请选择调试服务器" grade:1 origin:debugButton];
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        NSMutableArray *rows = [[NSMutableArray alloc] init];
+        
+        //开发
+        [rows addObject:[PickerUtilRow rowWithName:@"开发" value:DEBUG_LTT_REST_SERVER_DEV]];
+        //测试
+        [rows addObject:[PickerUtilRow rowWithName:@"测试" value:DEBUG_LTT_REST_SERVER_TEST]];
+        //正式
+        [rows addObject:[PickerUtilRow rowWithName:@"正式" value:DEBUG_LTT_REST_SERVER_PROD]];
+        
+        completionHandler(rows);
+    };
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        PickerUtilRow *row = [selectedRows objectAtIndex:0];
+        NSString *server = row.value;
+        
+        [[RestKitUtil sharedClient] setBaseUrl:[NSURL URLWithString:server]];
+    };
+    [pickerUtil show];
+}
+#endif
 
 #pragma mark - Action
 - (void)actionLogin:(SamuraiSignal *)signal

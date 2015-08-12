@@ -14,4 +14,9 @@
 //百度推送KEY
 #define BAIDU_PUSH_APIKEY @"6quFPwgdpb68P413HWODHGmQ"
 
+//调试服务器
+#define DEBUG_LTT_REST_SERVER_DEV @"http://api.web.dm/"
+#define DEBUG_LTT_REST_SERVER_TEST @"http://api.web.dm/"
+#define DEBUG_LTT_REST_SERVER_PROD @"http://115.29.54.118:8080/"
+
 #endif

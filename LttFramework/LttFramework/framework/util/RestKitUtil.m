@@ -41,6 +41,11 @@ static RestKitUtil *sharedClient = nil;
 }
 
 #pragma mark - Public Methods
+- (void) setBaseUrl:(NSURL *)baseUrl
+{
+    manager = [RKObjectManager managerWithBaseURL:baseUrl];
+}
+
 - (void) setClientType:(NSString *)clientType;
 {
     client = clientType;
@@ -264,58 +269,6 @@ static RestKitUtil *sharedClient = nil;
     if (errorChain && callback) {
         callback(errorModel);
     }
-}
-
-#pragma mark - Test Methods
-- (void) test
-{
-    [self addRequestDescriptor:[UserEntity class] mappingParam:@[@"mobile", @"password", @"type"]];
-    [self addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id", @"user_truename":@"name"}];
-    
-    // Work with the object
-    UserEntity *user = [UserEntity new];
-    user.mobile = @"18875001455";
-    user.password = @"123456";
-    user.type = @"merchant";
-    
-    NSDictionary *param = nil;
-    
-    // PUT
-    /*
-     [self putObject:user path:@"user" param:param success:^(NSArray *result){
-     
-     } failure:^(NSDictionary *error){
-     
-     }];
-     */
-    
-    // GET
-    [self getObject:user path:@"user/passport" param:param success:^(NSArray *result){
-        UserEntity *user = [result firstObject];
-        NSLog(@"user:%@", user);
-        NSLog(@"user:%@, %@", user.id, user.name);
-        
-    } failure:^(ErrorEntity *error){
-        
-    }];
-    
-    // POST
-    /*
-     [self postObject:user path:@"user" param:param success:^(NSArray *result){
-     
-     } failure:^(ErrorModel *error){
-     
-     }];
-     */
-    
-    // DELETE
-    /*
-     [self deleteObject:user path:@"user" param:param success:^(NSArray *result){
-     
-     } failure:^(ErrorModel *error){
-     
-     }];
-     */
 }
 
 @end

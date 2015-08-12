@@ -27,6 +27,8 @@ typedef void (^RestKitErrorBlock)(ErrorEntity *error);
 
 + (RestKitUtil *) sharedClient;
 
+- (void) setBaseUrl: (NSURL *) baseUrl;
+
 - (void) setClientType: (NSString *) clientType;
 
 - (NSString *) formatPath: (NSString *) path  object: (id) object;
@@ -50,7 +52,5 @@ typedef void (^RestKitErrorBlock)(ErrorEntity *error);
 - (void) getObject: (id) object path: (NSString *) path param: (NSDictionary *) param success: (void (^)(NSArray *result)) success failure: (void (^)(ErrorEntity *error)) failure;
 
 - (void) postFile: (FileEntity *) file path: (NSString *) path param: (NSDictionary *) param success: (RestKitSuccessBlock) success failure: (RestKitErrorBlock) failure;
-
-- (void) test;
 
 @end
