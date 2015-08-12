@@ -421,8 +421,9 @@
                 self.callbackBlock(@1);
             }
             
-            //刷新需求
-            [self loadCase];
+            //重新加载模板，解决布局错乱问题
+            needReload = YES;
+            [self reloadTemplate];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
