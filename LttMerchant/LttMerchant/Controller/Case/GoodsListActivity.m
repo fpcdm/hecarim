@@ -123,7 +123,7 @@
 - (void) toggleButton
 {
     //切换控件
-    if (listView.tableView.editing == YES) {
+    if (listView.editing == YES) {
         $(@"#addButton").ATTR(@"visibility", @"hidden");
         $(@"#editButton").ATTR(@"visibility", @"visbile");
     } else {
@@ -137,15 +137,15 @@
 - (void) actionEditTable: (UIBarButtonItem *) barButtonItem
 {
     //编辑
-    if (listView.tableView.editing == NO) {
-        listView.tableView.editing = YES;
+    if (listView.editing == NO) {
+        listView.editing = YES;
         
         [barButtonItem setTitle:@"完成"];
         
         [self toggleButton];
     } else {
         CallbackBlock callback = ^(id object){
-            listView.tableView.editing = NO;
+            listView.editing = NO;
             
             [barButtonItem setTitle:@"编辑"];
             

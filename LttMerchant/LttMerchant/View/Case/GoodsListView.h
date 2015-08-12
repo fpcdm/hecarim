@@ -14,6 +14,8 @@
 
 @interface GoodsListView : AppTableView
 
+@property (assign, nonatomic) BOOL editing;
+
 @property (retain, nonatomic) id<GoodsListViewDelegate> delegate;
 
 @end
