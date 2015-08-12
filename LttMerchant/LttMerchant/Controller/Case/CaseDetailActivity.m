@@ -293,6 +293,20 @@
 }
 
 #pragma mark - Action
+//联系下单人
+- (void)actionContactUser:(SamuraiSignal *)signal
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.userMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
+//联系服务联系人
+- (void)actionContactBuyer:(SamuraiSignal *)signal
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.buyerMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
 //抢单
 - (void) actionCompeteCase: (SamuraiSignal *)signal
 {

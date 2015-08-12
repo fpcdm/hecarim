@@ -9,6 +9,7 @@
 #import "ServiceListActivity.h"
 #import "ServiceFormActivity.h"
 #import "ServiceListView.h"
+#import "DLRadioButton.h"
 
 @interface ServiceListActivity ()
 
@@ -24,6 +25,9 @@
     
     //服务数据
     NSMutableArray *services;
+    
+    //全选按钮
+    DLRadioButton *radioButton;
 }
 
 @synthesize intention;
@@ -78,6 +82,12 @@
     //显示添加按钮
     $(@"#addButton").ATTR(@"visibility", @"visbile");
     
+    //全选按钮样式
+    radioButton = (DLRadioButton *) $(@"#radioButton").firstView;
+    radioButton.iconColor = [UIColor colorWithHexString:@"CBCBCB"];
+    radioButton.iconSize = 18;
+    radioButton.iconStrokeWidth = 1.0f;
+    
     //初始化表格
     listView = [[ServiceListView alloc] init];
     listView.frame = CGRectMake(0, 0, SCREEN_WIDTH, containerHeight);
@@ -89,9 +99,26 @@
 {
     [super reloadData];
     
+    //刷新表格
+    [self refreshTable];
+    
+    //切换按钮
+    [self toggleButton];
+    
+    //重新布局
+    [self relayout];
+}
+
+//刷新表格
+- (void) refreshTable
+{
     [listView setData:@"services" value:services];
     [listView renderData];
-    
+}
+
+//切换按钮
+- (void) toggleButton
+{
     //切换控件
     if (listView.tableView.editing == YES) {
         $(@"#addButton").ATTR(@"visibility", @"hidden");
@@ -100,9 +127,6 @@
         $(@"#addButton").ATTR(@"visibility", @"visible");
         $(@"#editButton").ATTR(@"visibility", @"hidden");
     }
-    
-    //重新布局
-    [self relayout];
 }
 
 #pragma mark - Action
@@ -115,14 +139,59 @@
         
         [barButtonItem setTitle:@"完成"];
         
-        [self reloadData];
+        [self toggleButton];
     } else {
-        listView.tableView.editing = NO;
+        CallbackBlock callback = ^(id object){
+            listView.tableView.editing = NO;
+            
+            [barButtonItem setTitle:@"编辑"];
+            
+            [self toggleButton];
+        };
         
-        [barButtonItem setTitle:@"编辑"];
-        
-        [self reloadData];
+        //是否含有服务，有则保存
+        if (intention.services && [intention.services count] > 0) {
+            [self saveServices: callback];
+        } else {
+            callback(nil);
+        }
     }
+}
+
+//保存服务
+- (void) saveServices: (CallbackBlock) callback
+{
+    //获取服务列表
+    CaseEntity *postCase = [[CaseEntity alloc] init];
+    postCase.id = self.caseId;
+    
+    //当前服务列表
+    NSMutableArray *postServices = [[NSMutableArray alloc] init];
+    for (ServiceEntity *entity in services) {
+        [postServices addObject:entity];
+    }
+    
+    //转换数据
+    postCase.services = postServices;
+    postCase.servicesParam = [postCase formatFormServices];
+    postCase.services = nil;
+    
+    //提交数据
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler editCaseServices:postCase success:^(NSArray *result){
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            //通知刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            
+            //切换按钮
+            callback(nil);
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 - (void) actionAddService: (SamuraiSignal *) signal
@@ -145,21 +214,51 @@
 
 - (void) actionChooseAll: (SamuraiSignal *) signal
 {
-
+    NSArray *selectedRows = [listView.tableView indexPathsForSelectedRows];
+    NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
+    
+    //已经全选
+    if (selectedCount >= [services count]) {
+        radioButton.selected = NO;
+        //获取所有单元格(indexPathsForVisibleRows只含有可见行，不含有滚动后可见的)
+        for (int section = 0; section < [services count]; section++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+            [listView.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        }
+    //未全选
+    } else {
+        radioButton.selected = YES;
+        //获取所有单元格(indexPathsForVisibleRows只含有可见行，不含有滚动后可见的)
+        for (int section = 0; section < [services count]; section++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+            [listView.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }
+    }
 }
 
 - (void) actionDeleteServices: (SamuraiSignal *) signal
 {
     //检查选中
-    //if ([selectedCells count] < 1) {
-        //[self showError:@"请选择要删除的商品哦~亲！"];
-        //return;
-    //}
+    NSArray *selectedRows = [listView.tableView indexPathsForSelectedRows];
+    NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
     
-    //整理删除的行批量删除
-    services = [[NSMutableArray alloc] init];
+    if (selectedCount < 1) {
+        [self showError:@"请选择要删除的服务哦~亲！"];
+        return;
+    }
     
-    [self reloadData];
+    //批量删除数据
+    NSMutableIndexSet *deleteIndexs = [NSMutableIndexSet new];
+    for (NSIndexPath *indexPath in selectedRows) {
+        [deleteIndexs addIndex:indexPath.section];
+    }
+    [services removeObjectsAtIndexes:deleteIndexs];
+    
+    //刷新表格
+    [self refreshTable];
+    
+    //取消全选
+    radioButton.selected = NO;
 }
 
 @end
