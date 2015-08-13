@@ -30,6 +30,15 @@
     //获取数据
     intention = [self getData:@"intention"];
     
+    //计算高度
+    CGFloat goodsHeight = 70;
+    NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
+    goodsHeight += goodsCount > 0 ? goodsCount * 50 : 30;
+    
+    CGFloat serviceHeight = 70;
+    NSInteger serviceCount = intention.services ? [intention.services count] : 0;
+    serviceHeight += serviceCount > 0 ? serviceCount * 25 : 30;
+    
     //添加数据
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     
@@ -37,10 +46,10 @@
     [tableData addObject:@[@{@"id": @"info", @"type": @"custom", @"view": @"cellInfo:", @"height": @230}]];
     
     //商品信息
-    [tableData addObject:@[@{@"id": @"goods", @"type": @"custom", @"view": @"cellGoods:", @"height": @100}]];
+    [tableData addObject:@[@{@"id": @"goods", @"type": @"custom", @"view": @"cellGoods:", @"height": [NSNumber numberWithFloat:goodsHeight]}]];
     
     //服务信息
-    [tableData addObject:@[@{@"id": @"service", @"type": @"custom", @"view": @"cellService:", @"height": @100}]];
+    [tableData addObject:@[@{@"id": @"service", @"type": @"custom", @"view": @"cellService:", @"height": [NSNumber numberWithFloat:serviceHeight]}]];
     
     self.tableData = tableData;
     [self.tableView reloadData];
@@ -50,7 +59,7 @@
 {
     //需求基本数据
     UIView *caseView = [[UIView alloc] init];
-    caseView.backgroundColor = [UIColor colorWithHexString:@"7984B5"];
+    caseView.backgroundColor = [UIColor colorWithHexString:@"FF6869"];
     [cell addSubview:caseView];
     
     UIView *superview = cell;
@@ -220,9 +229,11 @@
     [infoView addSubview:addressLabel];
     
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(nameTitle.mas_bottom).offset(5);
+        make.top.equalTo(nameTitle.mas_bottom);
         make.left.equalTo(iconView.mas_right).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
+        
+        make.height.equalTo(@40);
     }];
     
     //需求
@@ -230,27 +241,33 @@
     [infoView addSubview:remarkTitle];
     
     [remarkTitle mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(addressLabel.mas_bottom).offset(10);
+        make.top.equalTo(addressLabel.mas_bottom).offset(5);
         make.left.equalTo(iconView.mas_right).offset(10);
         
         make.height.equalTo(@16);
     }];
     
     //需求备注
-    UILabel *remarkLabel = [self makeLabel:@"-"];
-    remarkLabel.textColor = [UIColor colorWithHexString:@"585858"];
-    remarkLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
-    remarkLabel.numberOfLines = 0;
-    [infoView addSubview:remarkLabel];
+    UITextView *remarkTextView = [[UITextView alloc] init];
+    remarkTextView.textColor = [UIColor colorWithHexString:@"585858"];
+    remarkTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    remarkTextView.editable = NO;
+    //内边距为0
+    if (IS_IOS7_PLUS) {
+        remarkTextView.textContainerInset = UIEdgeInsetsZero;
+    }
+    [infoView addSubview:remarkTextView];
     
     NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
     if (!customerRemark) customerRemark = (intention.typeName && [intention.typeName length] > 0) ? intention.typeName : @"-";
-    remarkLabel.text = customerRemark;
+    remarkTextView.text = customerRemark;
     
-    [remarkLabel mas_makeConstraints:^(MASConstraintMaker *make){
+    [remarkTextView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(remarkTitle.mas_bottom).offset(5);
-        make.left.equalTo(iconView.mas_right).offset(10);
+        make.left.equalTo(iconView.mas_right).offset(5);
         make.right.equalTo(superview.mas_right).offset(-10);
+        
+        make.height.equalTo(@50);
     }];
     
     return cell;
@@ -258,14 +275,229 @@
 
 - (UITableViewCell *) cellGoods:(UITableViewCell *)cell
 {
+    //商品标题
+    UILabel *goodsTitle = [UILabel new];
+    goodsTitle.text = @"商品";
+    goodsTitle.backgroundColor = [UIColor clearColor];
+    goodsTitle.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+    goodsTitle.font = [UIFont boldSystemFontOfSize:18];
+    [cell addSubview:goodsTitle];
+    
+    int padding = 10;
+    
+    UIView *superview = cell;
+    [goodsTitle mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top).offset(5);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        
+        make.height.equalTo(@30);
+    }];
+    
+    //分隔
+    UIView *relateview = [self separatorView:goodsTitle];
+    
+    //有商品
+    NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
+    if (goodsCount > 0) {
+        //商品列表
+        for (GoodsEntity *goods in intention.goods) {
+            //名称
+            UILabel *nameLabel = [UILabel new];
+            nameLabel.text = goods.name;
+            nameLabel.backgroundColor = [UIColor clearColor];
+            nameLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+            nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            [cell addSubview:nameLabel];
+            
+            [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(relateview.mas_bottom);
+                make.left.equalTo(superview.mas_left).offset(padding);
+                
+                make.height.equalTo(@25);
+            }];
+            
+            //单价
+            UILabel *priceLabel = [UILabel new];
+            priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [goods.price floatValue]];
+            priceLabel.backgroundColor = [UIColor clearColor];
+            priceLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+            priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+            [cell addSubview:priceLabel];
+            
+            [priceLabel mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(relateview.mas_bottom);
+                make.right.equalTo(superview.mas_right).offset(-padding);
+                
+                make.height.equalTo(@25);
+            }];
+            
+            //规格
+            UILabel *specLabel = [UILabel new];
+            specLabel.text = goods.specName;
+            specLabel.backgroundColor = [UIColor clearColor];
+            specLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+            specLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            [cell addSubview:specLabel];
+            
+            [specLabel mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(nameLabel.mas_bottom);
+                make.left.equalTo(superview.mas_left).offset(padding);
+                
+                make.height.equalTo(@25);
+            }];
+            
+            //数量
+            UILabel *numberLabel = [UILabel new];
+            numberLabel.backgroundColor = [UIColor clearColor];
+            numberLabel.text = [NSString stringWithFormat:@"x%@", goods.number];
+            numberLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+            numberLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            [cell addSubview:numberLabel];
+            
+            [numberLabel mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(priceLabel.mas_bottom);
+                make.right.equalTo(superview.mas_right).offset(-padding);
+                
+                make.height.equalTo(@25);
+            }];
+            
+            relateview = [self separatorView:numberLabel];
+        }
+    //没有商品
+    } else {
+        UILabel *emptyLabel = [UILabel new];
+        emptyLabel.text = @"没有商品";
+        emptyLabel.backgroundColor = [UIColor clearColor];
+        emptyLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+        emptyLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        [cell addSubview:emptyLabel];
+        
+        [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(relateview.mas_bottom);
+            make.left.equalTo(superview.mas_left).offset(padding);
+            
+            make.height.equalTo(@30);
+        }];
+        
+        relateview = [self separatorView:emptyLabel];
+    }
+    
+    //总价
+    UILabel *totalLabel = [UILabel new];
+    totalLabel.backgroundColor = [UIColor clearColor];
+    totalLabel.text = [NSString stringWithFormat:@"共%ld件商品 小计金额：￥%.2f", goodsCount, [intention.goodsAmount floatValue]];
+    totalLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+    totalLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    [cell addSubview:totalLabel];
+    
+    [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(superview.mas_bottom).offset(-5);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo(@30);
+    }];
+    
     return cell;
 }
 
 - (UITableViewCell *) cellService:(UITableViewCell *)cell
 {
+    //服务标题
+    UILabel *servicesTitle = [UILabel new];
+    servicesTitle.backgroundColor = [UIColor clearColor];
+    servicesTitle.text = @"上门服务";
+    servicesTitle.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+    servicesTitle.font = [UIFont boldSystemFontOfSize:18];
+    [cell addSubview:servicesTitle];
+    
+    int padding = 10;
+    
+    UIView *superview = cell;
+    [servicesTitle mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top).offset(5);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        
+        make.height.equalTo(@30);
+    }];
+    
+    //分隔
+    UIView *relateview = [self separatorView:servicesTitle];
+    
+    NSInteger serviceCount = intention.services ? [intention.services count] : 0;
+    //有服务
+    if (serviceCount > 0) {
+        for (ServiceEntity *service in intention.services) {
+            //名称
+            UILabel *nameLabel = [UILabel new];
+            nameLabel.backgroundColor = [UIColor clearColor];
+            nameLabel.text = service.typeName;
+            nameLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+            nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            [cell addSubview:nameLabel];
+            
+            [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(relateview.mas_bottom);
+                make.left.equalTo(superview.mas_left).offset(padding);
+                
+                make.height.equalTo(@25);
+            }];
+            
+            //价格
+            UILabel *priceLabel = [UILabel new];
+            priceLabel.backgroundColor = [UIColor clearColor];
+            priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [[service total] floatValue]];
+            priceLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+            priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+            [cell addSubview:priceLabel];
+            
+            [priceLabel mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(relateview.mas_bottom);
+                make.right.equalTo(superview.mas_right).offset(-padding);
+                
+                make.height.equalTo(@25);
+            }];
+            
+            relateview = priceLabel;
+        }
+        
+        relateview = [self separatorView:relateview];
+    //没有服务
+    } else {
+        UILabel *emptyLabel = [UILabel new];
+        emptyLabel.text = @"没有服务";
+        emptyLabel.backgroundColor = [UIColor clearColor];
+        emptyLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+        emptyLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        [cell addSubview:emptyLabel];
+        
+        [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(relateview.mas_bottom);
+            make.left.equalTo(superview.mas_left).offset(padding);
+            make.height.equalTo(@30);
+        }];
+        
+        relateview = [self separatorView:emptyLabel];
+    }
+    
+    //总价
+    UILabel *totalLabel = [UILabel new];
+    totalLabel.backgroundColor = [UIColor clearColor];
+    totalLabel.text = [NSString stringWithFormat:@"小计金额：￥%.2f", [intention.servicesAmount floatValue]];
+    totalLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+    totalLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    [cell addSubview:totalLabel];
+    
+    [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(superview.mas_bottom).offset(-5);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo(@30);
+    }];
+    
     return cell;
 }
 
+//文本
 - (UILabel *) makeLabel: (NSString *) text
 {
     UILabel *label = [[UILabel alloc] init];
@@ -273,6 +505,24 @@
     label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     label.backgroundColor = [UIColor clearColor];
     return label;
+}
+
+//分割线
+- (UIView *)separatorView: (UIView *)view
+{
+    UIView *sepratorView = [[UIView alloc] init];
+    sepratorView.backgroundColor = [UIColor blackColor];
+    [view.superview addSubview:sepratorView];
+    
+    [sepratorView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(view.mas_bottom);
+        make.left.equalTo(view.superview.mas_left).offset(10);
+        make.right.equalTo(view.superview.mas_right);
+        
+        make.height.equalTo(@0.5);
+    }];
+    
+    return sepratorView;
 }
 
 #pragma mark - TableView
