@@ -385,16 +385,28 @@
     //总价
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.text = [NSString stringWithFormat:@"共%ld件商品 小计金额：￥%.2f", goodsCount, [intention.goodsAmount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
     totalLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [cell addSubview:totalLabel];
     
+    //小计金额
+    NSString *numberStr = [NSString stringWithFormat:@"%ld", goodsCount];
+    NSString *amountStr = [NSString stringWithFormat:@"￥%.2f", [intention.goodsAmount floatValue]];
+    NSString *totalText = [NSString stringWithFormat:@"共%@件商品 小计金额：%@", numberStr, amountStr];
+    
+    NSMutableAttributedString *totalAttributedText = [[NSMutableAttributedString alloc] initWithString:totalText];
+    //NSRange计数从0开始，第二个参数为长度
+    NSRange numberRange = {1, [numberStr length]};
+    [totalAttributedText addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT] range:numberRange];
+    NSRange amountRange = {numberRange.length + 10, [amountStr length]};
+    [totalAttributedText addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT] range:amountRange];
+    totalLabel.attributedText = totalAttributedText;
+    
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(superview.mas_bottom).offset(-5);
+        make.bottom.equalTo(superview.mas_bottom);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo(@30);
+        make.height.equalTo(@35);
     }];
     
     return cell;
@@ -482,16 +494,23 @@
     //总价
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.text = [NSString stringWithFormat:@"小计金额：￥%.2f", [intention.servicesAmount floatValue]];
     totalLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
     totalLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
     [cell addSubview:totalLabel];
     
+    //小计金额
+    NSString *totalText = [NSString stringWithFormat:@"小计金额：￥%.2f", [intention.servicesAmount floatValue]];
+    NSMutableAttributedString *totalAttributedText = [[NSMutableAttributedString alloc] initWithString:totalText];
+    //NSRange计数从0开始，第二个参数为长度
+    NSRange boldRange = {5, [totalText length] - 5};
+    [totalAttributedText addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT] range:boldRange];
+    totalLabel.attributedText = totalAttributedText;
+    
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(superview.mas_bottom).offset(-5);
+        make.bottom.equalTo(superview.mas_bottom);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo(@30);
+        make.height.equalTo(@35);
     }];
     
     return cell;
