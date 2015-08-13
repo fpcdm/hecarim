@@ -72,6 +72,11 @@
     }
     totalHeight += 5 + 30;
     
+    //无数据高度计算
+    if (goodsCount < 1 && servicesCount < 1) {
+        totalHeight = 70;
+    }
+    
     //滚动视图
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
@@ -97,6 +102,23 @@
     
     //是否显示滚动条
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH - 20, totalHeight);
+    
+    //无商品和服务
+    if (goodsCount < 1 && servicesCount < 1) {
+        UILabel *emptyTitle = [UILabel new];
+        emptyTitle.backgroundColor = [UIColor clearColor];
+        emptyTitle.text = @"没有商品和服务";
+        emptyTitle.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+        emptyTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        [orderView addSubview:emptyTitle];
+        
+        [emptyTitle mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(orderView.mas_top);
+            make.left.equalTo(orderView.mas_left).offset(10);
+            
+            make.height.equalTo(@40);
+        }];
+    }
     
     //商品
     if (goodsCount > 0) {
