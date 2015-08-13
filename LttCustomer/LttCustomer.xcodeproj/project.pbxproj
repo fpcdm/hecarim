@@ -140,6 +140,7 @@
 		2F7A56E21B09C12700D12500 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56E11B09C12700D12500 /* CoreTelephony.framework */; };
 		2F7A56E31B09C13100D12500 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18991B04847000C3D09E /* libz.dylib */; };
 		2F7A56E41B09C13900D12500 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD189F1B04848500C3D09E /* SystemConfiguration.framework */; };
+		2F7F8C0A1B7C2C0300EF4938 /* CaseDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F8C091B7C2C0300EF4938 /* CaseDetailView.m */; };
 		2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF81B1D50EE006189EF /* NSString+trim.m */; };
 		2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */; };
 		2F800B011B1D50EE006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFB1B1D50EE006189EF /* README.md */; };
@@ -485,6 +486,8 @@
 		2F74CD7E1B1D5F6D00797799 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		2F7A56DF1B09C11700D12500 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F7A56E11B09C12700D12500 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		2F7F8C081B7C2C0300EF4938 /* CaseDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailView.h; sourceTree = "<group>"; };
+		2F7F8C091B7C2C0300EF4938 /* CaseDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailView.m; sourceTree = "<group>"; };
 		2F800AF71B1D50EE006189EF /* NSString+trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+trim.h"; sourceTree = "<group>"; };
 		2F800AF81B1D50EE006189EF /* NSString+trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+trim.m"; sourceTree = "<group>"; };
 		2F800AF91B1D50EE006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
@@ -861,22 +864,24 @@
 			children = (
 				2F16E57C1B5DEFEE007947D0 /* AddressSelectorView.h */,
 				2F16E57D1B5DEFEE007947D0 /* AddressSelectorView.m */,
-				2F16E57E1B5DEFEE007947D0 /* CaseConfirmedView.h */,
-				2F16E57F1B5DEFEE007947D0 /* CaseConfirmedView.m */,
 				2F16E5801B5DEFEE007947D0 /* CaseFormView.h */,
 				2F16E5811B5DEFEE007947D0 /* CaseFormView.m */,
 				2F16E5821B5DEFEE007947D0 /* CaseListView.h */,
 				2F16E5831B5DEFEE007947D0 /* CaseListView.m */,
-				2F16E5841B5DEFEE007947D0 /* CaseLockedView.h */,
-				2F16E5851B5DEFEE007947D0 /* CaseLockedView.m */,
 				2F16E5861B5DEFEE007947D0 /* CaseNewView.h */,
 				2F16E5871B5DEFEE007947D0 /* CaseNewView.m */,
+				2F16E5841B5DEFEE007947D0 /* CaseLockedView.h */,
+				2F16E5851B5DEFEE007947D0 /* CaseLockedView.m */,
+				2F16E57E1B5DEFEE007947D0 /* CaseConfirmedView.h */,
+				2F16E57F1B5DEFEE007947D0 /* CaseConfirmedView.m */,
+				2F16E58C1B5DEFEE007947D0 /* CaseTopayView.h */,
+				2F16E58D1B5DEFEE007947D0 /* CaseTopayView.m */,
 				2F16E5881B5DEFEE007947D0 /* CasePayedView.h */,
 				2F16E5891B5DEFEE007947D0 /* CasePayedView.m */,
 				2F16E58A1B5DEFEE007947D0 /* CaseSuccessView.h */,
 				2F16E58B1B5DEFEE007947D0 /* CaseSuccessView.m */,
-				2F16E58C1B5DEFEE007947D0 /* CaseTopayView.h */,
-				2F16E58D1B5DEFEE007947D0 /* CaseTopayView.m */,
+				2F7F8C081B7C2C0300EF4938 /* CaseDetailView.h */,
+				2F7F8C091B7C2C0300EF4938 /* CaseDetailView.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -1966,6 +1971,7 @@
 				2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */,
 				2FED7D991B1EA2D300306A11 /* SDWebImagePrefetcher.m in Sources */,
 				2F16E5A01B5DEFEE007947D0 /* AddressFormView.m in Sources */,
+				2F7F8C0A1B7C2C0300EF4938 /* CaseDetailView.m in Sources */,
 				2F16E5B71B5DEFEE007947D0 /* RegisterSuccessView.m in Sources */,
 				2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */,
 				2FED7D9B1B1EA2D300306A11 /* UIImage+GIF.m in Sources */,

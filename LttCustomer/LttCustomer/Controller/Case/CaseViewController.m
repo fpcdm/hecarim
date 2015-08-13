@@ -14,13 +14,14 @@
 #import "CaseTopayView.h"
 #import "CasePayedView.h"
 #import "CaseSuccessView.h"
+#import "CaseDetailView.h"
 #import "TimerUtil.h"
 #import "CaseHandler.h"
 #import "HomeViewController.h"
 #import "UIView+Loading.h"
 #import "LttAppDelegate.h"
 
-@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate>
+@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
 
 @end
 
@@ -177,15 +178,15 @@
         [receivedView renderData];
         
     } else if ([intention.status isEqualToString:CASE_STATUS_SUCCESS]) {
-        CaseSuccessView *successView = [[CaseSuccessView alloc] init];
-        successView.delegate = self;
-        self.view = successView;
+        CaseDetailView *detailView = [[CaseDetailView alloc] init];
+        detailView.delegate = self;
+        self.view = detailView;
         
-        self.navigationItem.title = @"感谢评价";
+        self.navigationItem.title = @"服务单详情";
         
         //显示数据
-        [successView setData:@"intention" value:intention];
-        [successView renderData];
+        [detailView setData:@"intention" value:intention];
+        [detailView renderData];
     } else {
         NSString *statusName = [intention statusName];
         self.navigationItem.title = statusName;
@@ -266,6 +267,12 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
 }
 
+- (void)actionContactBuyer
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.buyerMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
 - (void)actionPay
 {
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
@@ -307,7 +314,17 @@
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             intention.rateStar = [NSNumber numberWithInt:value];
             intention.status = CASE_STATUS_SUCCESS;
-            [self intentionView];
+            
+            //显示评价成功页面
+            CaseSuccessView *successView = [[CaseSuccessView alloc] init];
+            successView.delegate = self;
+            self.view = successView;
+            
+            self.navigationItem.title = @"感谢评价";
+            
+            //显示数据
+            [successView setData:@"intention" value:intention];
+            [successView renderData];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
