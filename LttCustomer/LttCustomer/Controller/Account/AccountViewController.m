@@ -96,7 +96,15 @@
         LoginViewController *viewController = [[LoginViewController alloc] init];
         [self pushViewController:viewController animated:YES];
     } failure:^(ErrorEntity *error){
-        [self showError:error.message];
+        //接口失败也同样退出
+        [[StorageUtil sharedStorage] setUser:nil];
+        [[StorageUtil sharedStorage] setRemoteNotification:nil];
+        
+        //刷新菜单
+        [self refreshMenu];
+        
+        LoginViewController *viewController = [[LoginViewController alloc] init];
+        [self pushViewController:viewController animated:YES];
     }];
 }
 

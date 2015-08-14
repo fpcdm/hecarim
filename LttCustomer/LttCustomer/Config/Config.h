@@ -45,7 +45,7 @@
 #define USER_TYPE_MEMBER @"member"
 
 //客服电话
-#define LTT_CUSTOMER_SERVICE @"400-820-5555"
+#define LTT_CUSTOMER_SERVICE @"400-088-2552"
 
 //用户心跳时间
 #define USER_HEARTBEAT_INTERVAL 60.0

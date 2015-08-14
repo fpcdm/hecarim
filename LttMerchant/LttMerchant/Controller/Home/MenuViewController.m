@@ -113,7 +113,13 @@
             //刷新菜单
             [self refresh];
         } failure:^(ErrorEntity *error){
-            [self showError:error.message];
+            //接口失败也同样退出
+            [[StorageUtil sharedStorage] setUser:nil];
+            user = nil;
+            [[StorageUtil sharedStorage] setRemoteNotification:nil];
+            
+            //刷新菜单
+            [self refresh];
         }];
     }
 }
