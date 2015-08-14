@@ -55,7 +55,8 @@
     
     //是否需要重载，优先级高于refresh
     if (needReload) {
-        [self reloadTemplate];
+        needReload = NO;
+        [self reloadCase];
     } else if (needRefresh) {
         needRefresh = NO;
         [self loadCase];
@@ -65,6 +66,14 @@
 - (NSString *) templateName
 {
     return @"caseDetail.html";
+}
+
+- (void) reloadCase
+{
+    //切换控制器
+    CaseDetailActivity *activity = [[CaseDetailActivity alloc] init];
+    activity.caseId = self.caseId;
+    [self refreshViewController:activity animated:NO];
 }
 
 #pragma mark - View
@@ -80,13 +89,6 @@
     NSString *contentWidth = [NSString stringWithFormat:@"%lfpx", (SCREEN_WIDTH - 60)];
     $(@"#caseAddress").ATTR(@"width", contentWidth);
     $(@"#caseRemark").ATTR(@"width", contentWidth);
-    
-    //重载数据
-    if (needReload) {
-        needReload = NO;
-        needRefresh = NO;
-        [self loadCase];
-    }
 }
 
 #pragma mark - reloadData
@@ -340,9 +342,7 @@
                 self.callbackBlock(@1);
             }
             
-            //重新加载模板，解决布局错乱问题
-            needReload = YES;
-            [self reloadTemplate];
+            [self reloadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
@@ -395,9 +395,7 @@
                 self.callbackBlock(@1);
             }
             
-            //重新加载模板，解决布局错乱问题
-            needReload = YES;
-            [self reloadTemplate];
+            [self reloadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -423,9 +421,7 @@
                 self.callbackBlock(@1);
             }
             
-            //重新加载模板，解决布局错乱问题
-            needReload = YES;
-            [self reloadTemplate];
+            [self reloadCase];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

@@ -43,16 +43,6 @@
     [self loadTemplate:viewPath];
 }
 
-- (void) reloadTemplate
-{
-    //取消旧模板
-    [self unloadTemplate];
-    
-    //加载新模板
-    NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
-    [self loadTemplate:viewPath];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -158,12 +148,25 @@
 
 - (void) pushViewController:(UIViewController *)viewController animated: (BOOL)animated
 {
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self.navigationController pushViewController:viewController animated:animated];
 }
 
 - (void) toggleViewController: (UIViewController *)viewController animated: (BOOL)animated
 {
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:animated];
+}
+
+- (void) refreshViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    
+    //替换最后一个控制器
+    if ([viewControllers count] > 0) {
+        [viewControllers removeLastObject];
+    }
+    [viewControllers addObject:viewController];
+    
+    [self.navigationController setViewControllers:viewControllers animated:animated];
 }
 
 - (void) refreshMenu
