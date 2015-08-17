@@ -39,8 +39,10 @@
     }
     
     //加载模板
-    NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
-    [self loadTemplate:viewPath];
+    if ([self templateName]) {
+        NSString *viewPath = [NSString stringWithFormat:@"/www/html/%@", [self templateName]];
+        [self loadTemplate:viewPath];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +51,9 @@
 
 - (void) dealloc
 {
-    [self unloadTemplate];
+    if ([self templateName]) {
+        [self unloadTemplate];
+    }
 }
 
 - (NSString *)templateName

@@ -7,20 +7,18 @@
 //
 
 #import "CaseListActivity.h"
-#import "MJRefreshScrollView.h"
+#import "CaseListView.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "CaseDetailActivity.h"
 
-@interface CaseListActivity ()
-
-@property (nonatomic, strong) UITableView *list;
-@property (nonatomic, strong) UIButton *defaultButton;
+@interface CaseListActivity () <CaseListViewDelegate>
 
 @end
 
 @implementation CaseListActivity
 {
+    CaseListView *listView;
     NSMutableArray *caseList;
     
     //当前页数
@@ -33,18 +31,19 @@
     BOOL needRefresh;
 }
 
+- (void)loadView
+{
+    listView = [[CaseListView alloc] init];
+    listView.delegate = self;
+    self.view = listView;
+}
+
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     isMenuEnabled = YES;
     [super viewDidLoad];
     
-    self.onSignal( UITableView.eventPullToRefresh, ^{
-        [self refresh];
-    });
-    
-    self.onSignal( UITableView.eventLoadMore, ^{
-        [self loadMore];
-    });
+    self.navigationItem.title = @"服务单管理";
 }
 
 //自动刷新服务单
@@ -56,11 +55,11 @@
         //返回时需要刷新
         if (needRefresh) {
             needRefresh = NO;
-            [self actionCaseList:currentButton status:currentStatus];
+            [self actionLoadCase:currentButton status:currentStatus];
         }
     //默认加载待接单
     } else {
-        [self actionCaseList:_defaultButton status:CASE_STATUS_NEW];
+        [self actionLoadCase:listView.defaultButton status:CASE_STATUS_NEW];
     }
 }
 
@@ -90,158 +89,38 @@
     }];
 }
 
-- (NSString *)templateName
-{
-    return @"caseList.html";
-}
-
-#pragma mark -
-
-- (void)onTemplateLoading
-{
-}
-
-- (void)onTemplateLoaded
-{
-    //设置表格高度
-    float availableHeight = SCREEN_AVAILABLE_HEIGHT - 30;
-    $(_list).ATTR(@"height", [NSString stringWithFormat:@"%lfpx", availableHeight]);
-    
-    //下拉刷新
-    [_list loadRefreshingHeader];
-    [_list loadLoadingFooter];
-    
-    //初始化空视图
-    UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 20)];
-    emptyLabel.font = [UIFont systemFontOfSize:18];
-    emptyLabel.backgroundColor = [UIColor clearColor];
-    emptyLabel.textAlignment = NSTextAlignmentCenter;
-    emptyLabel.text = @"你还没有相关订单";
-    _list.emptyView = emptyLabel;
-}
-
-- (void)onTemplateFailed
-{
-    
-}
-
-- (void)onTemplateCancelled
-{
-    
-}
-
-#pragma mark -
-
-//刷新
-- (void)refresh
-{
-    caseList = [[NSMutableArray alloc] initWithObjects:nil];
-    page = 0;
-    hasMore = YES;
-    
-    [self loadData:^(id object){
-        [_list stopRefreshLoading];
-        
-        [self reloadData];
-    } failure:^(ErrorEntity *error){
-        [_list stopRefreshLoading];
-        
-        [self showError:error.message];
-    }];
-}
-
-//重新加载
-- (void)loadMore
-{
-    [self loadData:^(id object){
-        [_list stopRefreshLoading];
-        
-        [self reloadData];
-    } failure:^(ErrorEntity *error){
-        [_list stopRefreshLoading];
-        
-        [self showError:error.message];
-    }];
-}
-
 - (void)reloadData
 {
-    self.scope[@"list" ] = @{
-                                   
-                                   @"cases" : ({
-                                       NSMutableArray *cases = [NSMutableArray array];
-                                       
-                                       for (CaseEntity *intention in caseList) {
-                                           [cases addObject: @{
-                                                               @"no": intention.no,
-                                                               @"status": intention.status,
-                                                               @"statusName": [intention statusName],
-                                                               @"statusColor": [intention statusColor],
-                                                               @"time": [intention.createTime substringToIndex:16],
-                                                               @"name": intention.buyerName ? intention.buyerName : @"-",
-                                                               @"mobile": intention.buyerMobile
-                                                               }];
-                                           
-                                       }
-                                       
-                                       cases;
-                                   })
-                                   
-                                   };
-    
-    [_list reloadData];
+    [listView setData:@"intentionList" value:caseList];
+    [listView renderData];
     
     //根据数据切换刷新状态
     if (hasMore) {
-        [_list setRefreshLoadingState:RefreshLoadingStateMoreData];
+        [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
     } else if ([caseList count] < 1) {
-        [_list setRefreshLoadingState:RefreshLoadingStateNoData];
+        [listView.tableView setRefreshLoadingState:RefreshLoadingStateNoData];
     } else {
-        [_list setRefreshLoadingState:RefreshLoadingStateNoMoreData];
+        [listView.tableView setRefreshLoadingState:RefreshLoadingStateNoMoreData];
     }
 }
 
-#pragma mark - 需求列表
-- (void)actionCasesNew: (SamuraiSignal *)signal
-{
-    [self actionCaseList:signal.source status:CASE_STATUS_NEW];
-}
-
-- (void)actionCasesLocked: (SamuraiSignal *)signal
-{
-    [self actionCaseList:signal.source status:CASE_STATUS_LOCKED];
-}
-
-- (void)actionCasesInService: (SamuraiSignal *)signal
-{
-    [self actionCaseList:signal.source status:CASE_STATUS_CONFIRMED];
-}
-
-- (void)actionCasesServiced: (SamuraiSignal *)signal
-{
-    [self actionCaseList:signal.source status:CASE_STATUS_TOPAY];
-}
-
-- (void)actionCasesFinished: (SamuraiSignal *)signal
-{
-    [self actionCaseList:signal.source status:@"finished"];
-}
-
-- (void)actionCaseList:(UIButton *)button status: (NSString *) status
+#pragma mark - Action
+//加载需求
+- (void)actionLoadCase:(UIButton *)button status:(NSString *) status
 {
     //清空之前的选中
     if (currentButton) {
-        $(currentButton).ATTR(@"color", @"black");
+        [currentButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
     }
     
     //新的选中
-    $(button).ATTR(@"color", @"gray");
+    [button setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateNormal];
     currentStatus = status;
     currentButton = button;
     
     //清空之前的数据
     if (caseList && [caseList count] > 0) {
-        caseList = [[NSMutableArray alloc] initWithObjects:nil];
+        caseList = [[NSMutableArray alloc] init];
         [self reloadData];
     }
     
@@ -251,16 +130,44 @@
     hasMore = YES;
     
     //加载数据
-    [_list setRefreshLoadingState:RefreshLoadingStateMoreData];
-    [_list startLoading];
+    [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
+    [listView.tableView startLoading];
 }
 
-#pragma mark - 需求详情
-- (void)actionCaseDetail: (SamuraiSignal *)signal
+//加载更多
+- (void)actionLoadMore
 {
-    //获取数据
-    CaseEntity *intention = [caseList objectAtIndex:signal.sourceIndexPath.row];
+    [self loadData:^(id object){
+        [listView.tableView stopRefreshLoading];
+        
+        [self reloadData];
+    } failure:^(ErrorEntity *error){
+        [listView.tableView stopRefreshLoading];
+        
+        [self showError:error.message];
+    }];
+}
+
+//下拉刷新
+- (void)actionRefresh
+{
+    caseList = [[NSMutableArray alloc] initWithObjects:nil];
+    page = 0;
+    hasMore = YES;
     
+    [self loadData:^(id object){
+        [listView.tableView stopRefreshLoading];
+        
+        [self reloadData];
+    } failure:^(ErrorEntity *error){
+        [listView.tableView stopRefreshLoading];
+        
+        [self showError:error.message];
+    }];
+}
+
+- (void)actionDetail:(CaseEntity *)intention
+{
     //失败不让跳转
     if ([intention isFail]) return;
     
