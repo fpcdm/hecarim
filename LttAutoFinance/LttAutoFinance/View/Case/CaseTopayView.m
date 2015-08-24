@@ -1,6 +1,6 @@
 //
 //  OrderNewView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/23.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -27,7 +27,7 @@
     titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"请您确认并支付";
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
+    titleLabel.textColor = COLOR_MAIN_HIGHLIGHT;
     titleLabel.font = [UIFont boldSystemFontOfSize:26];
     [self addSubview:titleLabel];
     
@@ -39,7 +39,7 @@
     }];
     
     //支付按钮
-    payButton = [AppUIUtil makeButton:@"" font:[UIFont boldSystemFontOfSize:SIZE_BUTTON_TEXT]];
+    payButton = [AppUIUtil makeButton:@"" font:FONT_MAIN_BOLD];
     [payButton addTarget:self action:@selector(actionPay) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:payButton];
     
@@ -79,7 +79,7 @@
     
     //滚动视图
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    scrollView.backgroundColor = COLOR_MAIN_BG;
     scrollView.scrollEnabled = YES;
     scrollView.showsVerticalScrollIndicator = YES;
     [self addSubview:scrollView];
@@ -96,7 +96,7 @@
     //详情容器
     orderView = [[UIView alloc] init];
     orderView.layer.cornerRadius = 3.0f;
-    orderView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    orderView.backgroundColor = COLOR_MAIN_WHITE;
     orderView.frame = CGRectMake(10, 0, SCREEN_WIDTH - 20, totalHeight - 30);
     [scrollView addSubview:orderView];
     
@@ -108,8 +108,8 @@
         UILabel *emptyTitle = [UILabel new];
         emptyTitle.backgroundColor = [UIColor clearColor];
         emptyTitle.text = @"没有商品和服务";
-        emptyTitle.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-        emptyTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        emptyTitle.textColor = COLOR_MAIN_BLACK;
+        emptyTitle.font = FONT_MAIN;
         [orderView addSubview:emptyTitle];
         
         [emptyTitle mas_makeConstraints:^(MASConstraintMaker *make){
@@ -132,9 +132,9 @@
     
     //合计
     UILabel *totalLabel = [[UILabel alloc] init];
-    totalLabel.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    totalLabel.backgroundColor = COLOR_MAIN_BG;
     totalLabel.text = [NSString stringWithFormat:@"合计：￥%.2f", [intention.totalAmount floatValue]];
-    totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+    totalLabel.textColor = COLOR_MAIN_DARK;
     totalLabel.font = [UIFont boldSystemFontOfSize:20];
     //自动计算宽度
     [totalLabel sizeToFit];
@@ -152,8 +152,8 @@
     UILabel *goodsTitle = [UILabel new];
     goodsTitle.text = @"商品";
     goodsTitle.backgroundColor = [UIColor clearColor];
-    goodsTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    goodsTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    goodsTitle.textColor = COLOR_MAIN_DARK;
+    goodsTitle.font = FONT_MAIN;
     [orderView addSubview:goodsTitle];
     
     UIView *superview = orderView;
@@ -175,8 +175,8 @@
         UILabel *nameLabel = [UILabel new];
         nameLabel.text = goods.name;
         nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-        nameLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+        nameLabel.textColor = COLOR_MAIN_DARK;
+        nameLabel.font = FONT_MIDDLE;
         [orderView addSubview:nameLabel];
         
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -189,8 +189,8 @@
         UILabel *priceLabel = [UILabel new];
         priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [goods.price floatValue]];
         priceLabel.backgroundColor = [UIColor clearColor];
-        priceLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-        priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
+        priceLabel.textColor = COLOR_MAIN_DARK;
+        priceLabel.font = FONT_MIDDLE_BOLD;
         [orderView addSubview:priceLabel];
         
         [priceLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -204,8 +204,8 @@
         UILabel *specLabel = [UILabel new];
         specLabel.text = goods.specName;
         specLabel.backgroundColor = [UIColor clearColor];
-        specLabel.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
-        specLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+        specLabel.textColor = COLOR_MAIN_GRAY;
+        specLabel.font = FONT_MIDDLE;
         [orderView addSubview:specLabel];
         
         [specLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -220,7 +220,7 @@
         numberLabel.backgroundColor = [UIColor clearColor];
         numberLabel.text = [NSString stringWithFormat:@"x%@", goods.number];
         numberLabel.textColor = [UIColor grayColor];
-        numberLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+        numberLabel.font = FONT_MIDDLE;
         [orderView addSubview:numberLabel];
         
         [numberLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -241,8 +241,8 @@
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.text = [NSString stringWithFormat:@"￥%.2f", [intention.goodsAmount floatValue]];
-    totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    totalLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    totalLabel.textColor = COLOR_MAIN_DARK;
+    totalLabel.font = FONT_MIDDLE;
     [orderView addSubview:totalLabel];
     
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -262,8 +262,8 @@
     UILabel *servicesTitle = [UILabel new];
     servicesTitle.backgroundColor = [UIColor clearColor];
     servicesTitle.text = @"上门服务";
-    servicesTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    servicesTitle.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    servicesTitle.textColor = COLOR_MAIN_DARK;
+    servicesTitle.font = FONT_MAIN;
     [orderView addSubview:servicesTitle];
     
     UIView *superview = orderView;
@@ -284,8 +284,8 @@
         UILabel *nameLabel = [UILabel new];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.text = service.typeName;
-        nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-        nameLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+        nameLabel.textColor = COLOR_MAIN_DARK;
+        nameLabel.font = FONT_MIDDLE;
         [orderView addSubview:nameLabel];
         
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -298,8 +298,8 @@
         UILabel *priceLabel = [UILabel new];
         priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [[service total] floatValue]];
-        priceLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-        priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
+        priceLabel.textColor = COLOR_MAIN_DARK;
+        priceLabel.font = FONT_MIDDLE_BOLD;
         [orderView addSubview:priceLabel];
         
         [priceLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -319,8 +319,8 @@
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.text = [NSString stringWithFormat:@"￥%.2f", [intention.servicesAmount floatValue]];
-    totalLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    totalLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    totalLabel.textColor = COLOR_MAIN_DARK;
+    totalLabel.font = FONT_MIDDLE;
     [orderView addSubview:totalLabel];
     
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){

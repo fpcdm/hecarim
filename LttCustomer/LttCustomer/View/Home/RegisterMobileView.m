@@ -20,8 +20,8 @@
     
     //输入视图
     UIView *inputView = [UIView new];
-    inputView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
-    inputView.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    inputView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
+    inputView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     inputView.layer.cornerRadius = 3.0f;
     inputView.layer.borderWidth = 0.5f;
     [self addSubview:inputView];
@@ -39,7 +39,7 @@
     //手机号
     UILabel *mobileLabel = [UILabel new];
     mobileLabel.text = @"手机号";
-    mobileLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    mobileLabel.font = FONT_MAIN;
     [inputView addSubview:mobileLabel];
     
     superview = inputView;
@@ -55,7 +55,7 @@
     mobileField = [AppUIUtil makeTextField];
     mobileField.keyboardType = UIKeyboardTypePhonePad;
     mobileField.placeholder = @"请输入手机号码";
-    mobileField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    mobileField.font = FONT_MAIN;
     [inputView addSubview:mobileField];
     
     [mobileField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -84,8 +84,8 @@
     UILabel *protocolIntro = [[UILabel alloc] init];
     protocolIntro.text = @"注册即视为同意";
     protocolIntro.backgroundColor = [UIColor clearColor];
-    protocolIntro.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
-    protocolIntro.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    protocolIntro.textColor = COLOR_MAIN_GRAY;
+    protocolIntro.font = FONT_MIDDLE;
     [self addSubview:protocolIntro];
     
     [protocolIntro mas_makeConstraints:^(MASConstraintMaker *make){
@@ -97,8 +97,8 @@
     UILabel *protocolTitle = [[UILabel alloc] init];
     protocolTitle.text = @"两条腿平台服务协议。";
     protocolTitle.backgroundColor = [UIColor clearColor];
-    protocolTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    protocolTitle.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    protocolTitle.textColor = COLOR_MAIN_DARK;
+    protocolTitle.font = FONT_MAIN_BOLD;
     [self addSubview:protocolTitle];
     
     [protocolTitle mas_makeConstraints:^(MASConstraintMaker *make){

@@ -1,6 +1,6 @@
 //
 //  CaseConfirmedView.h
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/7/15.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.

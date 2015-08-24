@@ -1,6 +1,6 @@
 //
 //  OrderReceivedView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/23.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -25,7 +25,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"服务您满意吗";
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
+    titleLabel.textColor = COLOR_MAIN_HIGHLIGHT;
     titleLabel.font = [UIFont boldSystemFontOfSize:26];
     [self addSubview:titleLabel];
     
@@ -39,8 +39,8 @@
     UILabel *detailLabel = [[UILabel alloc] init];
     detailLabel.text = @"为我们的服务人员做个评价吧";
     detailLabel.backgroundColor = [UIColor clearColor];
-    detailLabel.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
-    detailLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    detailLabel.textColor = COLOR_MAIN_GRAY;
+    detailLabel.font = FONT_MIDDLE;
     [self addSubview:detailLabel];
     
     [detailLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -50,7 +50,7 @@
     }];
     
     //按钮
-    UIButton *button = [AppUIUtil makeButton:@"提交评价" font:[UIFont boldSystemFontOfSize:SIZE_BUTTON_TEXT]];
+    UIButton *button = [AppUIUtil makeButton:@"提交评价" font:FONT_MAIN_BOLD];
     [button addTarget:self action:@selector(actionComment) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     
@@ -65,7 +65,7 @@
     //服务人员
     UIView *customerView = [UIView new];
     customerView.layer.cornerRadius = 3.0f;
-    customerView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    customerView.backgroundColor = COLOR_MAIN_WHITE;
     [self addSubview:customerView];
     
     [customerView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -104,7 +104,7 @@
     
     //评级
     ratingView = [[AXRatingView alloc] init];
-    ratingView.highlightColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG];
+    ratingView.highlightColor = COLOR_MAIN_HIGHLIGHT;
     [ratingView setStepInterval:1.0];
     [customerView addSubview:ratingView];
     

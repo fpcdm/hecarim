@@ -28,7 +28,7 @@
     if (!self) return nil;
     
     //背景颜色
-    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    self.backgroundColor = COLOR_MAIN_WHITE;
     
     //顶部视图
     [self topView];
@@ -46,7 +46,7 @@
 {
     //顶部视图
     topView = [[UIView alloc] init];
-    topView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
+    topView.layer.backgroundColor = CGCOLOR_MAIN_HIGHLIGHT;
     [self addSubview:topView];
     
     UIView *superview = self;
@@ -90,7 +90,7 @@
     infoLabel = [[UILabel alloc] init];
     infoLabel.backgroundColor = [UIColor clearColor];
     infoLabel.textColor = [UIColor whiteColor];
-    infoLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
+    infoLabel.font = FONT_MIDDLE_BOLD;
     [addressView addSubview:infoLabel];
     
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -118,7 +118,7 @@
     
     //开始视图
     UIView *beginView = [[UIView alloc] init];
-    beginView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    beginView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
     beginView.layer.cornerRadius = 3.0f;
     [topView addSubview:beginView];
     
@@ -133,9 +133,9 @@
     //开始文字
     UILabel *beginLabel = [[UILabel alloc] init];
     beginLabel.text = @"我们开始吧!";
-    beginLabel.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
+    beginLabel.font = FONT_MIDDLE_BOLD;
     beginLabel.textAlignment = NSTextAlignmentCenter;
-    beginLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
+    beginLabel.textColor = COLOR_MAIN_HIGHLIGHT;
     [beginView addSubview:beginLabel];
     
     [beginLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -242,7 +242,7 @@
     
     //呼叫客服
     UIButton *customerButton = [[UIButton alloc] init];
-    customerButton.layer.backgroundColor = [UIColor colorWithHexString:COLOR_HIGHLIGHTED_BG].CGColor;
+    customerButton.layer.backgroundColor = CGCOLOR_MAIN_HIGHLIGHT;
     customerButton.layer.cornerRadius = 3.0f;
     customerButton.titleLabel.text = nil;
     customerButton.tag = LTT_TYPE_MOBILE;
@@ -260,7 +260,7 @@
     UILabel *customerLabel = [[UILabel alloc] init];
     customerLabel.text = @"呼叫客服";
     customerLabel.backgroundColor = [UIColor clearColor];
-    customerLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
+    customerLabel.textColor = COLOR_MAIN_WHITE;
     customerLabel.font = [UIFont boldSystemFontOfSize:20];
     [customerButton addSubview:customerLabel];
     
@@ -272,7 +272,7 @@
     UILabel *customerDescLabel = [[UILabel alloc] init];
     customerDescLabel.text = @"我不是很懂，找客服帮我选";
     customerDescLabel.backgroundColor = [UIColor clearColor];
-    customerDescLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON];
+    customerDescLabel.textColor = COLOR_MAIN_WHITE;
     customerDescLabel.font = [UIFont boldSystemFontOfSize:12];
     [customerButton addSubview:customerDescLabel];
     
@@ -398,7 +398,7 @@
 - (void)bottomView
 {
     bottomView = [[UIView alloc] init];
-    bottomView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    bottomView.backgroundColor = COLOR_MAIN_BG;
     [self addSubview:bottomView];
     
     UIView *superview = self;

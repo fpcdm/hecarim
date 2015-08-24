@@ -1,6 +1,6 @@
 //
 //  AppView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/10.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -13,7 +13,7 @@
 - (void) customView
 {
     //修正闪烁
-    self.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    self.backgroundColor = COLOR_MAIN_BG;
 }
 
 @end

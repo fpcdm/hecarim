@@ -49,9 +49,9 @@
     //是否默认或当前
     if (isDefault || isCurrent) {
         defaultLabel = [self makeCellLabel:isDefault ? @"[默认]" : @"[定位]"];
-        defaultLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+        defaultLabel.font = FONT_MAIN_BOLD;
         defaultLabel.backgroundColor = [UIColor clearColor];
-        defaultLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
+        defaultLabel.textColor = COLOR_MAIN_BUTTON_BG;
         [cell addSubview:defaultLabel];
         
         [defaultLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -130,7 +130,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
     label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    label.font = FONT_MAIN;
     return label;
 }
 

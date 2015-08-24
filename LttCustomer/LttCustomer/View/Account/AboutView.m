@@ -32,15 +32,15 @@
     //头视图
     UIView *headerView = [[UIView alloc] init];
     headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 170);
-    headerView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    headerView.backgroundColor = COLOR_MAIN_BG;
     self.tableView.tableHeaderView = headerView;
     
     //介绍
     textView = [[UITextView alloc] init];
     textView.text = @"关于手机两条腿";
     textView.editable = NO;
-    textView.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
-    textView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    textView.font = FONT_MAIN;
+    textView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
     textView.layer.cornerRadius = 3.0;
     textView.layer.borderColor = [UIColor colorWithHexString:@"D8D8D8"].CGColor;
     textView.layer.borderWidth = 0.5f;

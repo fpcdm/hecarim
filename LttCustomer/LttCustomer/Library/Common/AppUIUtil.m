@@ -25,13 +25,13 @@
     barButtonItem.title = title;
     
     if (highlighted) {
-        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
+        barButtonItem.tintColor = COLOR_MAIN_HIGHLIGHT;
     } else {
-        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+        barButtonItem.tintColor = COLOR_MAIN_BLACK;
     }
     
     [barButtonItem setTitleTextAttributes:@{
-                                            NSFontAttributeName:[UIFont systemFontOfSize:SIZE_BAR_TEXT]
+                                            NSFontAttributeName:FONT_MAIN
                                             } forState:UIControlStateNormal];
     
     return barButtonItem;
@@ -47,13 +47,13 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
     
     if (highlighted) {
-        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
+        barButtonItem.tintColor = COLOR_MAIN_HIGHLIGHT;
     } else {
-        barButtonItem.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+        barButtonItem.tintColor = COLOR_MAIN_BLACK;
     }
     
     [barButtonItem setTitleTextAttributes:@{
-                                            NSFontAttributeName:[UIFont systemFontOfSize:SIZE_BAR_TEXT]
+                                            NSFontAttributeName:FONT_MAIN
                                             } forState:UIControlStateNormal];
     
     return barButtonItem;
@@ -61,7 +61,7 @@
 
 + (UIButton *)makeButton:(NSString *)title
 {
-    return [self makeButton:title font:[UIFont systemFontOfSize:SIZE_BUTTON_TEXT]];
+    return [self makeButton:title font:FONT_MAIN];
 }
 
 + (UIButton *)makeButton:(NSString *)title font:(UIFont *)font
@@ -72,14 +72,14 @@
     [button.layer setCornerRadius:3.0];
     button.titleLabel.font = font;
     button.titleLabel.backgroundColor = [UIColor clearColor];
-    button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG];
+    button.backgroundColor = COLOR_MAIN_BUTTON_BG;
     return button;
 }
 
 + (UITextField *) makeTextField
 {
     UITextField *textField = [[UITextField alloc] init];
-    textField.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    textField.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
     textField.layer.cornerRadius = 3.0;
     
     //设置内左边距

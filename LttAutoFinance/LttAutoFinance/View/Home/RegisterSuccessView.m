@@ -1,6 +1,6 @@
 //
 //  RegisterSuccessView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/7/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -32,7 +32,7 @@
     
     //注册成功
     UILabel *successLabel = [[UILabel alloc] init];
-    successLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    successLabel.font = FONT_MAIN;
     successLabel.text = @"恭喜您注册成为两条腿会员！";
     successLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:successLabel];
@@ -45,13 +45,13 @@
     //返回首页
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:@"返回首页" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithHexString:COLOR_MAIN_TEXT] forState:UIControlStateNormal];
+    [button setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
     [button addTarget:self action:@selector(actionHome) forControlEvents:UIControlEventTouchUpInside];
     button.backgroundColor = [UIColor whiteColor];
-    button.titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    button.titleLabel.font = FONT_MAIN;
     button.titleLabel.backgroundColor = [UIColor clearColor];
     button.layer.cornerRadius = 3.0f;
-    button.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    button.layer.borderColor = CGCOLOR_MAIN_BORDER;
     button.layer.borderWidth = 0.5f;
     [self addSubview:button];
     

@@ -1,6 +1,6 @@
 //
 //  RegisterCodeView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/7/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -23,7 +23,7 @@
     
     //提示标题
     tipLabel = [[UILabel alloc] init];
-    tipLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    tipLabel.font = FONT_MIDDLE;
     [self addSubview:tipLabel];
     
     UIView *superview = self;
@@ -36,12 +36,12 @@
     //发送按钮
     sendButton = [[UIButton alloc] init];
     [sendButton setTitle:@"重新获取" forState:UIControlStateNormal];
-    [sendButton setTitleColor:[UIColor colorWithHexString:COLOR_MAIN_TEXT] forState:UIControlStateNormal];
+    [sendButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
     [sendButton addTarget:self action:@selector(actionSend) forControlEvents:UIControlEventTouchUpInside];
-    sendButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    sendButton.titleLabel.font = FONT_MIDDLE;
     sendButton.titleLabel.backgroundColor = [UIColor clearColor];
-    sendButton.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
-    sendButton.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    sendButton.backgroundColor = COLOR_MAIN_BG;
+    sendButton.layer.borderColor = CGCOLOR_MAIN_BORDER;
     sendButton.layer.borderWidth = 0.5f;
     sendButton.layer.cornerRadius = 3.0f;
     [self addSubview:sendButton];
@@ -56,8 +56,8 @@
     
     //输入视图
     UIView *inputView = [UIView new];
-    inputView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
-    inputView.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    inputView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
+    inputView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     inputView.layer.cornerRadius = 3.0f;
     inputView.layer.borderWidth = 0.5f;
     [self addSubview:inputView];
@@ -74,7 +74,7 @@
     UILabel *codeLabel = [UILabel new];
     codeLabel.text = @"效验码";
     codeLabel.backgroundColor = [UIColor clearColor];
-    codeLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    codeLabel.font = FONT_MAIN;
     [inputView addSubview:codeLabel];
     
     superview = inputView;
@@ -90,7 +90,7 @@
     codeField = [AppUIUtil makeTextField];
     codeField.keyboardType = UIKeyboardTypeNumberPad;
     codeField.placeholder = @"短信效验码";
-    codeField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    codeField.font = FONT_MAIN;
     [inputView addSubview:codeField];
     
     [codeField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -119,8 +119,8 @@
     UILabel *protocolIntro = [[UILabel alloc] init];
     protocolIntro.text = @"注册即视为同意";
     protocolIntro.backgroundColor = [UIColor clearColor];
-    protocolIntro.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
-    protocolIntro.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    protocolIntro.textColor = COLOR_MAIN_GRAY;
+    protocolIntro.font = FONT_MIDDLE;
     [self addSubview:protocolIntro];
     
     [protocolIntro mas_makeConstraints:^(MASConstraintMaker *make){
@@ -132,8 +132,8 @@
     UILabel *protocolTitle = [[UILabel alloc] init];
     protocolTitle.text = @"两条腿平台服务协议。";
     protocolTitle.backgroundColor = [UIColor clearColor];
-    protocolTitle.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    protocolTitle.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    protocolTitle.textColor = COLOR_MAIN_DARK;
+    protocolTitle.font = FONT_MAIN_BOLD;
     [self addSubview:protocolTitle];
     
     [protocolTitle mas_makeConstraints:^(MASConstraintMaker *make){

@@ -36,7 +36,7 @@
     //手机号
     mobileLabel = [[UILabel alloc] init];
     mobileLabel.backgroundColor = [UIColor clearColor];
-    mobileLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    mobileLabel.font = FONT_MAIN;
     [self addSubview:mobileLabel];
     
     [mobileLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -46,7 +46,7 @@
     
     //已注册
     UILabel *registeredLabel = [[UILabel alloc] init];
-    registeredLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    registeredLabel.font = FONT_MAIN;
     registeredLabel.backgroundColor = [UIColor clearColor];
     registeredLabel.text = @"当前手机号已注册，你看可以";
     [self addSubview:registeredLabel];
@@ -59,9 +59,9 @@
     //直接登陆
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:@"直接登陆" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithHexString:COLOR_MAIN_BUTTON_BG] forState:UIControlStateNormal];
+    [button setTitleColor:COLOR_MAIN_BUTTON_BG forState:UIControlStateNormal];
     [button addTarget:self action:@selector(actionLogin) forControlEvents:UIControlEventTouchUpInside];
-    button.titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    button.titleLabel.font = FONT_MAIN;
     button.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:button];
     

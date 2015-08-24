@@ -105,7 +105,7 @@
     //服务联系人
     contactLabel = [[UILabel alloc] init];
     contactLabel.backgroundColor = [UIColor clearColor];
-    contactLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    contactLabel.font = FONT_MIDDLE;
     [cell addSubview:contactLabel];
     
     padding = 10;
@@ -121,7 +121,7 @@
     addressTextView = [[UITextView alloc] init];
     addressTextView.editable = NO;
     addressTextView.backgroundColor = [UIColor clearColor];
-    addressTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    addressTextView.font = FONT_MIDDLE;
     addressTextView.scrollEnabled = NO;
     addressTextView.userInteractionEnabled = NO;
     [cell addSubview:addressTextView];
@@ -157,10 +157,10 @@
     //输入框
     remarkTextView = [[UITextView alloc] init];
     remarkTextView.placeholder = @"给客服留言";
-    remarkTextView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    remarkTextView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
     remarkTextView.layer.cornerRadius = 3.0;
-    remarkTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
-    remarkTextView.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    remarkTextView.font = FONT_MIDDLE;
+    remarkTextView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     remarkTextView.layer.borderWidth = 0.5f;
     remarkTextView.delegate = self;
     [cell addSubview:remarkTextView];

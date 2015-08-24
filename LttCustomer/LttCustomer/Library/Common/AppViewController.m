@@ -70,22 +70,22 @@
     if (isIndexNavBar) {
         UINavigationBar *navigationBar = self.navigationController.navigationBar;
         if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-            navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE_BG];
+            navigationBar.barTintColor = COLOR_MAIN_WHITE;
         }
-        navigationBar.tintColor = [UIColor colorWithHexString:COLOR_INDEX_TITLE];
+        navigationBar.tintColor = COLOR_MAIN_HIGHLIGHT;
         navigationBar.titleTextAttributes = @{
-                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:SIZE_TITLE_TEXT],
-                                              NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_INDEX_TITLE]
+                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+                                              NSForegroundColorAttributeName: COLOR_MAIN_HIGHLIGHT
                                               };
     } else {
         UINavigationBar *navigationBar = self.navigationController.navigationBar;
         if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-            navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+            navigationBar.barTintColor = [UIColor colorWithHexString:@"F8F8F8"];
         }
-        navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+        navigationBar.tintColor = COLOR_MAIN_BLACK;
         navigationBar.titleTextAttributes = @{
-                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:SIZE_TITLE_TEXT],
-                                              NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
+                                              NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+                                              NSForegroundColorAttributeName: COLOR_MAIN_BLACK
                                               };
     }
 }

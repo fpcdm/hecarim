@@ -1,6 +1,6 @@
 //
 //  AppTableView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/10.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -13,7 +13,7 @@
 - (void) customTableView
 {
     //全局背景色
-    self.tableView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    self.tableView.backgroundColor = COLOR_MAIN_BG;
     self.tableView.scrollEnabled = NO;
 }
 

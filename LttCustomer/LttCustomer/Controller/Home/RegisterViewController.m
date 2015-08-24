@@ -156,10 +156,10 @@
                 [self clearTimer];
                 
                 [button setTitle:@"重新获取" forState:UIControlStateNormal];
-                button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+                button.backgroundColor = COLOR_MAIN_WHITE;
             } else {
                 [button setTitle:[NSString stringWithFormat:@"%d秒后重发", smsLeft] forState:UIControlStateNormal];
-                button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+                button.backgroundColor = COLOR_MAIN_BG;
             }
         } queue:dispatch_get_main_queue()];
             
@@ -168,7 +168,7 @@
     
     //发送短信
     [button setTitle:@"重新获取" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    button.backgroundColor = COLOR_MAIN_WHITE;
     return YES;
 }
 

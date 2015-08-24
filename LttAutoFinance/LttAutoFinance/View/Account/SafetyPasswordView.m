@@ -1,6 +1,6 @@
 //
 //  SafetyPasswordView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/18.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -54,7 +54,7 @@
     
     //单选框
     radioButton = [[DLRadioButton alloc] init];
-    radioButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    radioButton.titleLabel.font = FONT_MIDDLE;
     radioButton.iconColor = [UIColor blackColor];
     radioButton.indicatorColor = [UIColor blackColor];
     radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

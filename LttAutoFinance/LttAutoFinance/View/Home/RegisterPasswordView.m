@@ -1,6 +1,6 @@
 //
 //  RegisterPasswordView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/7/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -20,8 +20,8 @@
     
     //输入视图
     UIView *inputView = [UIView new];
-    inputView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
-    inputView.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    inputView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
+    inputView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     inputView.layer.cornerRadius = 3.0f;
     inputView.layer.borderWidth = 0.5f;
     [self addSubview:inputView];
@@ -40,7 +40,7 @@
     UILabel *passwordLabel = [UILabel new];
     passwordLabel.text = @"登陆密码";
     passwordLabel.backgroundColor = [UIColor clearColor];
-    passwordLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    passwordLabel.font = FONT_MAIN;
     [inputView addSubview:passwordLabel];
     
     superview = inputView;
@@ -56,7 +56,7 @@
     passwordField = [AppUIUtil makeTextField];
     passwordField.placeholder = @"请输入密码";
     passwordField.secureTextEntry = YES;
-    passwordField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    passwordField.font = FONT_MAIN;
     [inputView addSubview:passwordField];
     
     [passwordField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -71,7 +71,7 @@
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"密码由6-20位英文字母，数字或符号组成";
     tipLabel.backgroundColor = [UIColor clearColor];
-    tipLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    tipLabel.font = FONT_MIDDLE;
     [self addSubview:tipLabel];
     
     superview = self;

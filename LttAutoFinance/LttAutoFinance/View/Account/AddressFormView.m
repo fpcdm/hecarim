@@ -1,6 +1,6 @@
 //
 //  AddressFormView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/16.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -87,7 +87,7 @@
 - (UITableViewCell *)cellName:(UITableViewCell *)cell
 {
     nameField.placeholder = @"联系人姓名";
-    nameField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    nameField.font = FONT_MAIN;
     [cell addSubview:nameField];
     
     //占位符用来定位
@@ -107,7 +107,7 @@
 - (UITableViewCell *)cellMobile:(UITableViewCell *)cell
 {
     mobileField.placeholder = @"手机号码";
-    mobileField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    mobileField.font = FONT_MAIN;
     mobileField.keyboardType = UIKeyboardTypePhonePad;
     [cell addSubview:mobileField];
     
@@ -129,7 +129,7 @@
 {
     addressView.placeholder = @"详细地址";
     addressView.delegate = self;
-    addressView.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    addressView.font = FONT_MAIN;
     [cell addSubview:addressView];
     
     UIView *superview = cell;

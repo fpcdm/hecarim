@@ -1,6 +1,6 @@
 //
 //  IntentionListView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/23.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -63,7 +63,7 @@
     }];
     
     UILabel *noLabel = [self makeCellLabel:intention.no];
-    noLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    noLabel.font = FONT_MAIN_BOLD;
     [cell addSubview:noLabel];
     
     [noLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -104,7 +104,7 @@
     if (details) {
         for (NSString *detail in details) {
             UILabel *detailLabel = [self makeCellLabel:detail];
-            detailLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+            detailLabel.textColor = COLOR_MAIN_BLACK;
             [cell addSubview:detailLabel];
             
             [detailLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -127,7 +127,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
     label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    label.font = FONT_MAIN;
     return label;
 }
 

@@ -19,7 +19,7 @@
     bigLabel.text = @"收到";
     bigLabel.backgroundColor = [UIColor clearColor];
     bigLabel.font = [UIFont boldSystemFontOfSize:26];
-    bigLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
+    bigLabel.textColor = COLOR_MAIN_HIGHLIGHT;
     [self addSubview:bigLabel];
     
     UIView *superview = self;
@@ -33,7 +33,7 @@
     textLabel.text = @"正在为您呼叫客服";
     textLabel.backgroundColor = [UIColor clearColor];
     textLabel.font = [UIFont boldSystemFontOfSize:16];
-    textLabel.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
+    textLabel.textColor = COLOR_MAIN_GRAY;
     [self addSubview:textLabel];
     
     [textLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -47,7 +47,7 @@
     timerLabel.text = @"00:00";
     timerLabel.backgroundColor = [UIColor clearColor];
     timerLabel.font = [UIFont boldSystemFontOfSize:16];
-    timerLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
+    timerLabel.textColor = COLOR_MAIN_HIGHLIGHT;
     [self addSubview:timerLabel];
     self.timerLabel = timerLabel;
     
@@ -61,7 +61,7 @@
     cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     cancelButton.titleLabel.backgroundColor = [UIColor clearColor];
     [cancelButton setTitle:@"取消呼叫" forState:UIControlStateNormal];
-    [cancelButton setTitleColor:[UIColor colorWithHexString:COLOR_GRAY_TEXT] forState:UIControlStateNormal];
+    [cancelButton setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(actionCancel) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:cancelButton];
     

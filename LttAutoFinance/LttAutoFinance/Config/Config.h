@@ -1,14 +1,14 @@
 //
 //  应用配置文件，包含此文件即可
 //  Config.h
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/4/23.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#ifndef LttAutoFInance_Config_h
-#define LttAutoFInance_Config_h
+#ifndef LttAutoFinance_Config_h
+#define LttAutoFinance_Config_h
 
 
 #pragma mark - 框架配置
@@ -77,59 +77,25 @@
 #define CASE_STATUS_MEMBER_CANCEL @"member_cancel"
 #define CASE_STATUS_MERCHANT_CANCEL @"merchant_cancel"
 
-//颜色配置：@todo优化
-//主背景
-#define COLOR_MAIN_BG @"EEEEEE"
-//高亮背景
-#define COLOR_HIGHLIGHTED_BG @"E2383B"
-//主边框
-#define COLOR_MAIN_BORDER @"B2B2B2"
-//主标题背景
-#define COLOR_MAIN_TITLE_BG @"F8F8F8"
-//主标题
-#define COLOR_MAIN_TITLE @"000000"
-//首页标题背景
-//红色背景
-//#define COLOR_INDEX_TITLE_BG @"E2383B"
-//白色背景
-#define COLOR_INDEX_TITLE_BG @"FFFFFF"
-//首页标题文字
-//白色文字
-//#define COLOR_INDEX_TITLE @"FFFFFF"
-//红色文字
-#define COLOR_INDEX_TITLE @"E2383B"
-//文字颜色
-#define COLOR_MAIN_TEXT @"000000"
-//文字深色
-#define COLOR_DARK_TEXT @"585858"
-//文字灰色
-#define COLOR_GRAY_TEXT @"7D7D7D"
-//文字高亮
-//#define COLOR_MAIN_TEXT_HIGHLIGHTED @"F15353"
-#define COLOR_MAIN_TEXT_HIGHLIGHTED @"E2383B"
-//文字背景
-#define COLOR_MAIN_TEXT_BG @"FFFFFF"
-//button 文字
-#define COLOR_MAIN_BUTTON @"FFFFFF"
-//button 背景
-//#define COLOR_MAIN_BUTTON_BG @"F15353"
-#define COLOR_MAIN_BUTTON_BG @"E2383B"
+//颜色配置
+#define COLOR_MAIN_BG [UIColor colorWithHexString:@"EEEEEE"]
+#define COLOR_MAIN_BUTTON_BG [UIColor colorWithHexString:@"E2383B"]
+#define COLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"E2383B"]
+#define COLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"]
+#define COLOR_MAIN_WHITE [UIColor whiteColor]
+#define COLOR_MAIN_BLACK [UIColor blackColor]
+#define COLOR_MAIN_DARK [UIColor colorWithHexString:@"585858"]
+#define COLOR_MAIN_GRAY [UIColor colorWithHexString:@"7D7D7D"]
+#define CGCOLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"].CGColor
+#define CGCOLOR_MAIN_WHITE [UIColor whiteColor].CGColor
+#define CGCOLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"E2383B"].CGColor
 
-//字体配置:@todo 优化
-//标题字体
-#define SIZE_TITLE_TEXT 20
-//导航文字字体
-#define SIZE_BAR_TEXT 16
-//主要字体
-#define SIZE_MAIN_TEXT 16
-//大按钮文字
-#define SIZE_BUTTON_TEXT 16
-//中按钮文字
-#define SIZE_MIDDLE_BUTTON_TEXT 14
-//中号字体
-#define SIZE_MIDDLE_TEXT 14
-//小号字体
-#define SIZE_SMALL_TEXT 12
+//尺寸配置
+#define FONT_MAIN [UIFont systemFontOfSize:16]
+#define FONT_MAIN_BOLD [UIFont boldSystemFontOfSize:16]
+#define FONT_MIDDLE [UIFont systemFontOfSize:14]
+#define FONT_MIDDLE_BOLD [UIFont boldSystemFontOfSize:14]
+#define FONT_SMALL [UIFont systemFontOfSize:12]
 
 //按钮配置
 //中按钮高度

@@ -1,6 +1,6 @@
 //
 //  ProfileNicknameView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/18.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -20,8 +20,8 @@
     
     //输入框
     textView = [[UITextView alloc] init];
-    textView.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
-    textView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
+    textView.font = FONT_MAIN;
+    textView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
     textView.layer.cornerRadius = 3.0;
     textView.placeholder = @"请输入意见反馈";
     [self addSubview:textView];

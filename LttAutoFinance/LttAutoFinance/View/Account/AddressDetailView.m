@@ -1,6 +1,6 @@
 //
 //  AddressDetailView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/16.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -38,8 +38,8 @@
     UIButton *defaultButton = [[UIButton alloc] init];
     [defaultButton setTitle:@"设为默认地址" forState:UIControlStateNormal];
     [defaultButton setTitleColor:[UIColor colorWithHexString:@"008000"] forState:UIControlStateNormal];
-    defaultButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_BUTTON_TEXT];
-    defaultButton.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    defaultButton.titleLabel.font = FONT_MAIN;
+    defaultButton.backgroundColor = COLOR_MAIN_WHITE;
     [defaultButton addTarget:self action:@selector(actionDefault) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:defaultButton];
     
@@ -84,7 +84,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.backgroundColor = [UIColor clearColor];
     label.text = [cellData objectForKey:@"data"];
-    label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    label.font = FONT_MAIN;
     [cell addSubview:label];
     
     UIView *superview = cell;

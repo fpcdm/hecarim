@@ -48,12 +48,12 @@
     UINavigationBar *navigationBar = [UINavigationBar appearance];
     //iOS6兼容
     if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-        navigationBar.barTintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE_BG];
+        navigationBar.barTintColor = [UIColor colorWithHexString:@"F8F8F8"];
     }
-    navigationBar.tintColor = [UIColor colorWithHexString:COLOR_MAIN_TITLE];
+    navigationBar.tintColor = COLOR_MAIN_BLACK;
     navigationBar.titleTextAttributes = @{
-                                          NSFontAttributeName:[UIFont systemFontOfSize:SIZE_TITLE_TEXT],
-                                          NSForegroundColorAttributeName: [UIColor colorWithHexString:COLOR_MAIN_TITLE]
+                                          NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                          NSForegroundColorAttributeName: COLOR_MAIN_BLACK
                                           };
     
     //初始化客户端类型
@@ -85,7 +85,7 @@
     frostedViewController.delegate = self;
     
     self.window.rootViewController = frostedViewController;
-    self.window.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    self.window.backgroundColor = COLOR_MAIN_BG;
     [self.window makeKeyAndVisible];
     
     //接口错误未登录时跳转登陆界面

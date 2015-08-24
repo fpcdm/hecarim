@@ -1,6 +1,6 @@
 //
 //  LoginView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/12.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -22,8 +22,8 @@
     
     //输入视图
     UIView *inputView = [UIView new];
-    inputView.layer.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG].CGColor;
-    inputView.layer.borderColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER].CGColor;
+    inputView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
+    inputView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     inputView.layer.borderWidth = 0.5f;
     [self addSubview:inputView];
     
@@ -40,7 +40,7 @@
     //账户
     UILabel *accountLabel = [UILabel new];
     accountLabel.text = @"账户";
-    accountLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    accountLabel.font = FONT_MAIN;
     [inputView addSubview:accountLabel];
     
     superview = inputView;
@@ -56,7 +56,7 @@
     mobileField = [AppUIUtil makeTextField];
     mobileField.keyboardType = UIKeyboardTypePhonePad;
     mobileField.placeholder = @"请输入手机号";
-    mobileField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    mobileField.font = FONT_MAIN;
     [inputView addSubview:mobileField];
     
     [mobileField mas_makeConstraints:^(MASConstraintMaker *make){
@@ -69,7 +69,7 @@
     
     //间隔
     UIView *borderView = [[UIView alloc] init];
-    borderView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BORDER];
+    borderView.backgroundColor = COLOR_MAIN_BORDER;
     [inputView addSubview:borderView];
     
     [borderView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -83,7 +83,7 @@
     //密码
     UILabel *passwordLabel = [UILabel new];
     passwordLabel.text = @"密码";
-    passwordLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    passwordLabel.font = FONT_MAIN;
     [inputView addSubview:passwordLabel];
     
     [passwordLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -98,7 +98,7 @@
     passwordField = [AppUIUtil makeTextField];
     passwordField.placeholder = @"请输入密码";
     passwordField.secureTextEntry = YES;
-    passwordField.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    passwordField.font = FONT_MAIN;
     [inputView addSubview:passwordField];
     
     [passwordField mas_makeConstraints:^(MASConstraintMaker *make){

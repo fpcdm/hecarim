@@ -35,7 +35,7 @@
 - (void)loadView
 {
     [super loadView];
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    self.view.backgroundColor = COLOR_MAIN_BG;
     [self.view showLoading];
 }
 

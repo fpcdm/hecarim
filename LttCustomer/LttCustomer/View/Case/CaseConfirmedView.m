@@ -31,7 +31,7 @@
     //地图视图
     mapWebView = [[UIWebView alloc] init];
     mapWebView.scrollView.bounces = NO;
-    mapWebView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    mapWebView.backgroundColor = COLOR_MAIN_WHITE;
     mapWebView.opaque = NO;
     mapWebView.delegate = self;
     [self addSubview:mapWebView];
@@ -61,8 +61,8 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"正在为您服务的客服：";
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    titleLabel.textColor = COLOR_MAIN_DARK;
+    titleLabel.font = FONT_MAIN;
     [self addSubview:titleLabel];
     
     int padding = 10;
@@ -89,8 +89,8 @@
     //姓名
     nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
-    nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-    nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    nameLabel.textColor = COLOR_MAIN_DARK;
+    nameLabel.font = FONT_MAIN;
     [self addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -102,8 +102,8 @@
     
     //电话
     mobileButton = [[UIButton alloc] init];
-    [mobileButton setTitleColor:[UIColor colorWithHexString:COLOR_DARK_TEXT] forState:UIControlStateNormal];
-    mobileButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    [mobileButton setTitleColor:COLOR_MAIN_DARK forState:UIControlStateNormal];
+    mobileButton.titleLabel.font = FONT_MAIN;
     mobileButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:mobileButton];
     
@@ -116,9 +116,9 @@
     
     //投诉
     UIButton *complainButton = [[UIButton alloc] init];
-    [complainButton setTitleColor:[UIColor colorWithHexString:COLOR_DARK_TEXT] forState:UIControlStateNormal];
+    [complainButton setTitleColor:COLOR_MAIN_DARK forState:UIControlStateNormal];
     [complainButton addTarget:self action:@selector(actionComplain) forControlEvents:UIControlEventTouchUpInside];
-    complainButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    complainButton.titleLabel.font = FONT_MIDDLE;
     complainButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:complainButton];
     //文字下划线

@@ -13,7 +13,7 @@
 - (void) customTableView
 {
     //全局背景色
-    self.tableView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    self.tableView.backgroundColor = COLOR_MAIN_BG;
     self.tableView.scrollEnabled = NO;
 }
 

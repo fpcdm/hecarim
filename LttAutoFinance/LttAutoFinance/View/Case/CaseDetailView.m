@@ -1,6 +1,6 @@
 //
 //  CaseDetailView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/8/13.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -99,7 +99,7 @@
     }];
     
     UILabel *noLabel = [self makeLabel:intention.no];
-    noLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    noLabel.font = FONT_MAIN_BOLD;
     noLabel.textColor = [UIColor whiteColor];
     [caseView addSubview:noLabel];
     
@@ -124,7 +124,7 @@
     
     UILabel *timeLabel = [self makeLabel:intention.createTime];
     timeLabel.textColor = [UIColor colorWithHexString:@"CCCCCC"];
-    timeLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    timeLabel.font = FONT_MIDDLE;
     [caseView addSubview:timeLabel];
     
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -146,7 +146,7 @@
     
     //需求服务数据
     UIView *infoView = [[UIView alloc] init];
-    infoView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    infoView.backgroundColor = COLOR_MAIN_WHITE;
     [cell addSubview:infoView];
     
     superview = cell;
@@ -201,7 +201,7 @@
     //电话
     UIButton *mobileButton = [[UIButton alloc] init];
     mobileButton.backgroundColor = [UIColor clearColor];
-    mobileButton.titleLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    mobileButton.titleLabel.font = FONT_MIDDLE;
     [mobileButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [mobileButton addTarget:self action:@selector(actionContactBuyer) forControlEvents:UIControlEventTouchUpInside];
     [infoView addSubview:mobileButton];
@@ -224,7 +224,7 @@
     UILabel *addressLabel = [self makeLabel:@"服务地址：-"];
     addressLabel.text = [NSString stringWithFormat:@"服务地址：%@", intention.buyerAddress ? intention.buyerAddress : @"-"];
     addressLabel.textColor = [UIColor colorWithHexString:@"585858"];
-    addressLabel.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    addressLabel.font = FONT_MIDDLE;
     addressLabel.numberOfLines = 0;
     [infoView addSubview:addressLabel];
     
@@ -250,7 +250,7 @@
     //需求备注
     UITextView *remarkTextView = [[UITextView alloc] init];
     remarkTextView.textColor = [UIColor colorWithHexString:@"585858"];
-    remarkTextView.font = [UIFont systemFontOfSize:SIZE_MIDDLE_TEXT];
+    remarkTextView.font = FONT_MIDDLE;
     remarkTextView.editable = NO;
     //内边距为0
     if (IS_IOS7_PLUS) {
@@ -279,7 +279,7 @@
     UILabel *goodsTitle = [UILabel new];
     goodsTitle.text = @"商品";
     goodsTitle.backgroundColor = [UIColor clearColor];
-    goodsTitle.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+    goodsTitle.textColor = COLOR_MAIN_BLACK;
     goodsTitle.font = [UIFont boldSystemFontOfSize:18];
     [cell addSubview:goodsTitle];
     
@@ -305,8 +305,8 @@
             UILabel *nameLabel = [UILabel new];
             nameLabel.text = goods.name;
             nameLabel.backgroundColor = [UIColor clearColor];
-            nameLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-            nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            nameLabel.textColor = COLOR_MAIN_BLACK;
+            nameLabel.font = FONT_MAIN;
             [cell addSubview:nameLabel];
             
             [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -320,8 +320,8 @@
             UILabel *priceLabel = [UILabel new];
             priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [goods.price floatValue]];
             priceLabel.backgroundColor = [UIColor clearColor];
-            priceLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-            priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+            priceLabel.textColor = COLOR_MAIN_BLACK;
+            priceLabel.font = FONT_MAIN_BOLD;
             [cell addSubview:priceLabel];
             
             [priceLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -335,8 +335,8 @@
             UILabel *specLabel = [UILabel new];
             specLabel.text = goods.specName;
             specLabel.backgroundColor = [UIColor clearColor];
-            specLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-            specLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            specLabel.textColor = COLOR_MAIN_DARK;
+            specLabel.font = FONT_MAIN;
             [cell addSubview:specLabel];
             
             [specLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -350,8 +350,8 @@
             UILabel *numberLabel = [UILabel new];
             numberLabel.backgroundColor = [UIColor clearColor];
             numberLabel.text = [NSString stringWithFormat:@"x%@", goods.number];
-            numberLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
-            numberLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            numberLabel.textColor = COLOR_MAIN_DARK;
+            numberLabel.font = FONT_MAIN;
             [cell addSubview:numberLabel];
             
             [numberLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -368,8 +368,8 @@
         UILabel *emptyLabel = [UILabel new];
         emptyLabel.text = @"没有商品";
         emptyLabel.backgroundColor = [UIColor clearColor];
-        emptyLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-        emptyLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        emptyLabel.textColor = COLOR_MAIN_BLACK;
+        emptyLabel.font = FONT_MAIN;
         [cell addSubview:emptyLabel];
         
         [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -385,8 +385,8 @@
     //总价
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-    totalLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    totalLabel.textColor = COLOR_MAIN_BLACK;
+    totalLabel.font = FONT_MAIN;
     [cell addSubview:totalLabel];
     
     //小计金额
@@ -397,9 +397,9 @@
     NSMutableAttributedString *totalAttributedText = [[NSMutableAttributedString alloc] initWithString:totalText];
     //NSRange计数从0开始，第二个参数为长度
     NSRange numberRange = {1, [numberStr length]};
-    [totalAttributedText addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT] range:numberRange];
+    [totalAttributedText addAttribute:NSFontAttributeName value:FONT_MAIN_BOLD range:numberRange];
     NSRange amountRange = {numberRange.length + 10, [amountStr length]};
-    [totalAttributedText addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT] range:amountRange];
+    [totalAttributedText addAttribute:NSFontAttributeName value:FONT_MAIN_BOLD range:amountRange];
     totalLabel.attributedText = totalAttributedText;
     
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -418,7 +418,7 @@
     UILabel *servicesTitle = [UILabel new];
     servicesTitle.backgroundColor = [UIColor clearColor];
     servicesTitle.text = @"上门服务";
-    servicesTitle.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
+    servicesTitle.textColor = COLOR_MAIN_BLACK;
     servicesTitle.font = [UIFont boldSystemFontOfSize:18];
     [cell addSubview:servicesTitle];
     
@@ -443,8 +443,8 @@
             UILabel *nameLabel = [UILabel new];
             nameLabel.backgroundColor = [UIColor clearColor];
             nameLabel.text = service.typeName;
-            nameLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-            nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+            nameLabel.textColor = COLOR_MAIN_BLACK;
+            nameLabel.font = FONT_MAIN;
             [cell addSubview:nameLabel];
             
             [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -458,8 +458,8 @@
             UILabel *priceLabel = [UILabel new];
             priceLabel.backgroundColor = [UIColor clearColor];
             priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [[service total] floatValue]];
-            priceLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-            priceLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+            priceLabel.textColor = COLOR_MAIN_BLACK;
+            priceLabel.font = FONT_MAIN_BOLD;
             [cell addSubview:priceLabel];
             
             [priceLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -478,8 +478,8 @@
         UILabel *emptyLabel = [UILabel new];
         emptyLabel.text = @"没有服务";
         emptyLabel.backgroundColor = [UIColor clearColor];
-        emptyLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-        emptyLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        emptyLabel.textColor = COLOR_MAIN_BLACK;
+        emptyLabel.font = FONT_MAIN;
         [cell addSubview:emptyLabel];
         
         [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -494,8 +494,8 @@
     //总价
     UILabel *totalLabel = [UILabel new];
     totalLabel.backgroundColor = [UIColor clearColor];
-    totalLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT];
-    totalLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    totalLabel.textColor = COLOR_MAIN_BLACK;
+    totalLabel.font = FONT_MAIN;
     [cell addSubview:totalLabel];
     
     //小计金额
@@ -503,7 +503,7 @@
     NSMutableAttributedString *totalAttributedText = [[NSMutableAttributedString alloc] initWithString:totalText];
     //NSRange计数从0开始，第二个参数为长度
     NSRange boldRange = {5, [totalText length] - 5};
-    [totalAttributedText addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT] range:boldRange];
+    [totalAttributedText addAttribute:NSFontAttributeName value:FONT_MAIN_BOLD range:boldRange];
     totalLabel.attributedText = totalAttributedText;
     
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -521,7 +521,7 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
-    label.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+    label.font = FONT_MAIN;
     label.backgroundColor = [UIColor clearColor];
     return label;
 }

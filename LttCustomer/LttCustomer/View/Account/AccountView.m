@@ -81,7 +81,7 @@
             make.height.equalTo(@40);
         }];
         
-        nameLabel.font = [UIFont systemFontOfSize:SIZE_MAIN_TEXT];
+        nameLabel.font = FONT_MAIN;
         nameLabel.backgroundColor = [UIColor clearColor];
         [cell addSubview:nameLabel];
         
@@ -91,7 +91,7 @@
         }];
     //contact
     } else {
-        cell.detailTextLabel.textColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_HIGHLIGHTED];
+        cell.detailTextLabel.textColor = COLOR_MAIN_HIGHLIGHT;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     

@@ -1,6 +1,6 @@
 //
 //  IntentionViewController.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/19.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -35,7 +35,7 @@
 - (void)loadView
 {
     [super loadView];
-    self.view.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_BG];
+    self.view.backgroundColor = COLOR_MAIN_BG;
     [self.view showLoading];
 }
 

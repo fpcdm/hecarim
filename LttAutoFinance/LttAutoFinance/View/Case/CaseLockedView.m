@@ -1,6 +1,6 @@
 //
 //  IntentionLockedView.m
-//  LttAutoFInance
+//  LttAutoFinance
 //
 //  Created by wuyong on 15/6/19.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -26,7 +26,7 @@
     titleLabel.text = @"我们联系到了离你最近的客服";
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    titleLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+    titleLabel.textColor = COLOR_MAIN_DARK;
     [self addSubview:titleLabel];
     
     UIView *superview = self;
@@ -38,8 +38,8 @@
     UILabel *detailText = [UILabel new];
     detailText.text = @"稍后我们一个服务人员将联系您";
     detailText.backgroundColor = [UIColor clearColor];
-    detailText.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
-    detailText.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
+    detailText.font = FONT_MIDDLE_BOLD;
+    detailText.textColor = COLOR_MAIN_GRAY;
     [self addSubview:detailText];
     
     [detailText mas_makeConstraints:^(MASConstraintMaker *make){
@@ -50,8 +50,8 @@
     UILabel *detailText2 = [UILabel new];
     detailText2.text = @"他将和您讨论一下您的需求以及服务地点";
     detailText2.backgroundColor = [UIColor clearColor];
-    detailText2.font = [UIFont boldSystemFontOfSize:SIZE_MIDDLE_TEXT];
-    detailText2.textColor = [UIColor colorWithHexString:COLOR_GRAY_TEXT];
+    detailText2.font = FONT_MIDDLE_BOLD;
+    detailText2.textColor = COLOR_MAIN_GRAY;
     [self addSubview:detailText2];
     
     [detailText2 mas_makeConstraints:^(MASConstraintMaker *make){
@@ -62,8 +62,8 @@
     aboutLabel = [UILabel new];
     aboutLabel.text = @"即将为您服务的客服：";
     aboutLabel.backgroundColor = [UIColor clearColor];
-    aboutLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
-    aboutLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+    aboutLabel.font = FONT_MAIN_BOLD;
+    aboutLabel.textColor = COLOR_MAIN_DARK;
     [self addSubview:aboutLabel];
     
     [aboutLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -82,7 +82,7 @@
 {
     UIView *customerView = [UIView new];
     customerView.layer.cornerRadius = 3.0f;
-    customerView.backgroundColor = [UIColor colorWithHexString:COLOR_MAIN_TEXT_BG];
+    customerView.backgroundColor = COLOR_MAIN_WHITE;
     [self addSubview:customerView];
     
     UIView *superview = self;
@@ -111,7 +111,7 @@
     nameLabel = [UILabel new];
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.font = [UIFont boldSystemFontOfSize:24];
-    nameLabel.textColor = [UIColor colorWithHexString:COLOR_DARK_TEXT];
+    nameLabel.textColor = COLOR_MAIN_DARK;
     [customerView addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -121,8 +121,8 @@
     
     //电话
     mobileButton = [UIButton new];
-    [mobileButton setTitleColor:[UIColor colorWithHexString:COLOR_GRAY_TEXT] forState:UIControlStateNormal];
-    mobileButton.titleLabel.font = [UIFont boldSystemFontOfSize:SIZE_MAIN_TEXT];
+    [mobileButton setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateNormal];
+    mobileButton.titleLabel.font = FONT_MAIN_BOLD;
     mobileButton.titleLabel.backgroundColor = [UIColor clearColor];
     [mobileButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
     [customerView addSubview:mobileButton];
