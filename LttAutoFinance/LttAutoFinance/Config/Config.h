@@ -60,12 +60,8 @@
 #define LTT_PAGESIZE_DEFAULT 10
 
 //需求类型
-//买手机
-#define LTT_TYPE_MOBILE 1
-//手机上门
-#define LTT_TYPE_MOBILEDOOR 2
-//电脑上门
-#define LTT_TYPE_COMPUTERDOOR 3
+//汽车金融
+#define LTT_TYPE_AUTOFINANCE 4
 
 //需求状态
 #define CASE_STATUS_NEW @"new"
@@ -79,8 +75,8 @@
 
 //颜色配置
 #define COLOR_MAIN_BG [UIColor colorWithHexString:@"EEEEEE"]
-#define COLOR_MAIN_BUTTON_BG [UIColor colorWithHexString:@"E2383B"]
-#define COLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"E2383B"]
+#define COLOR_MAIN_BUTTON_BG [UIColor colorWithHexString:@"F38600"]
+#define COLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"F38600"]
 #define COLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"]
 #define COLOR_MAIN_WHITE [UIColor whiteColor]
 #define COLOR_MAIN_BLACK [UIColor blackColor]
@@ -88,7 +84,7 @@
 #define COLOR_MAIN_GRAY [UIColor colorWithHexString:@"7D7D7D"]
 #define CGCOLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"].CGColor
 #define CGCOLOR_MAIN_WHITE [UIColor whiteColor].CGColor
-#define CGCOLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"E2383B"].CGColor
+#define CGCOLOR_MAIN_HIGHLIGHT [UIColor colorWithHexString:@"F38600"].CGColor
 
 //尺寸配置
 #define FONT_MAIN [UIFont systemFontOfSize:16]
