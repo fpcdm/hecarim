@@ -7,8 +7,10 @@
 //
 
 #import "HomeView.h"
+#import "InfiniteScrollPicker.h"
+#import "iCarousel.h"
 
-@interface HomeView ()
+@interface HomeView () <iCarouselDataSource, iCarouselDelegate>
 
 @end
 
@@ -20,6 +22,8 @@
     UIView *topView;
     UIView *middleView;
     UIView *bottomView;
+    
+    iCarousel *carousel;
 }
 
 - (id)init
@@ -69,6 +73,26 @@
     middleView = [UIView new];
     [self addSubview:middleView];
     
+    NSMutableArray *set1 = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 5; i++) {
+        [set1 addObject:[UIImage imageNamed:@"homeButton"]];
+    }
+    
+    InfiniteScrollPicker *isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 190)];
+    [isp setItemSize:CGSizeMake(100, 150)];
+    [isp setImageAry:set1];
+    [isp setHeightOffset:20];
+    [isp setPositionRatio:2];
+    [isp setAlphaOfobjs:1];
+    [self addSubview:isp];
+    
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 250, SCREEN_WIDTH, 200)];
+    carousel.delegate = self;
+    carousel.dataSource = self;
+    [self addSubview:carousel];
+    
+    carousel.type = iCarouselTypeCoverFlow;
+    
     UIView *superview = self;
     [middleView mas_makeConstraints:^(MASConstraintMaker *make){
     }];
@@ -83,6 +107,51 @@
     UIView *superview = self;
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make){
     }];
+}
+
+#pragma mark -
+
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return 30;
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index
+{
+    UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"homeButton"]];
+    
+    view.frame = CGRectMake(70, 80, 180, 260);
+    return view;
+}
+
+- (NSUInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel
+{
+    return 0;
+}
+
+- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
+{
+    return 30;
+}
+
+- (CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    return 200;
+}
+
+- (CATransform3D)carousel:(iCarousel *)_carousel transformForItemView:(UIView *)view withOffset:(CGFloat)offset
+{
+    view.alpha = 1.0 - fminf(fmaxf(offset, 0.0), 1.0);
+    
+    CATransform3D transform = CATransform3DIdentity;
+    transform.m34 = carousel.perspective;
+    transform = CATransform3DRotate(transform, M_PI / 8.0, 0, 1.0, 0);
+    return CATransform3DTranslate(transform, 0.0, 0.0, offset * carousel.itemWidth);
+}
+
+- (BOOL)carouselShouldWrap:(iCarousel *)carousel
+{
+    return YES;
 }
 
 #pragma mark - RenderData

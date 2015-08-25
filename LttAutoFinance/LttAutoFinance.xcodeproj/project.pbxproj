@@ -96,6 +96,8 @@
 		2F2F224D1B3A4D0300428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22351B3A4D0300428742 /* TSBlurView.m */; };
 		2F2F224E1B3A4D0300428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22371B3A4D0300428742 /* TSMessage.m */; };
 		2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22391B3A4D0300428742 /* TSMessageView.m */; };
+		2F3BD1521B8C6386007CB3F5 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BD14F1B8C6386007CB3F5 /* InfiniteScrollPicker.m */; };
+		2F3BD1561B8C76B0007CB3F5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BD1551B8C76B0007CB3F5 /* iCarousel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
@@ -403,6 +405,10 @@
 		2F2F22371B3A4D0300428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2F2F22381B3A4D0300428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2F2F22391B3A4D0300428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2F3BD14E1B8C6386007CB3F5 /* InfiniteScrollPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollPicker.h; sourceTree = "<group>"; };
+		2F3BD14F1B8C6386007CB3F5 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
+		2F3BD1541B8C76B0007CB3F5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		2F3BD1551B8C76B0007CB3F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F55340F1B4FC6CD00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534101B4FC6CD00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
@@ -991,6 +997,10 @@
 		2F16E5FD1B5DF162007947D0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2F3BD1541B8C76B0007CB3F5 /* iCarousel.h */,
+				2F3BD1551B8C76B0007CB3F5 /* iCarousel.m */,
+				2F3BD14E1B8C6386007CB3F5 /* InfiniteScrollPicker.h */,
+				2F3BD14F1B8C6386007CB3F5 /* InfiniteScrollPicker.m */,
 				2F16E6001B5DF162007947D0 /* AppExtension.h */,
 				2F16E6011B5DF162007947D0 /* AppExtension.m */,
 				2F16E6021B5DF162007947D0 /* AppTableView.h */,
@@ -1899,6 +1909,7 @@
 				2F16E5F61B5DF08F007947D0 /* LoginViewController.m in Sources */,
 				2F6D3E521B312765007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
+				2F3BD1561B8C76B0007CB3F5 /* iCarousel.m in Sources */,
 				2F16E5EF1B5DF08F007947D0 /* SettingViewController.m in Sources */,
 				2FED82C11B1EDBFB00306A11 /* split.c in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
@@ -2046,6 +2057,7 @@
 				2F6D3E551B312765007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F6D3E4E1B312765007A4159 /* MJRefreshBackFooter.m in Sources */,
 				2F16E5A21B5DEFEE007947D0 /* ProfileNicknameView.m in Sources */,
+				2F3BD1521B8C6386007CB3F5 /* InfiniteScrollPicker.m in Sources */,
 				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */,
