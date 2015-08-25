@@ -8,7 +8,7 @@
 
 #import "HomeView.h"
 
-@interface HomeView () <UIGestureRecognizerDelegate>
+@interface HomeView ()
 
 @end
 
@@ -27,8 +27,18 @@
     self = [super init];
     if (!self) return nil;
     
-    //背景颜色
-    self.backgroundColor = [UIColor colorWithHexString:@"979899"];
+    //背景图片
+    UIImageView *bgView = [[UIImageView alloc] init];
+    bgView.image = [UIImage imageNamed:@"homeBg"];
+    [self addSubview:bgView];
+    
+    UIView *superview = self;
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+    }];
     
     //顶部视图
     [self topView];
