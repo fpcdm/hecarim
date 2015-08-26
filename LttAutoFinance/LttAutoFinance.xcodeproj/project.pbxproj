@@ -145,6 +145,10 @@
 		2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */; };
 		2F800B011B1D50EE006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFB1B1D50EE006189EF /* README.md */; };
 		2F8BFF101B8D53E00087EDA0 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF0F1B8D53E00087EDA0 /* iCarousel.m */; };
+		2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */; };
+		2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF191B8DB4B90087EDA0 /* TAAnimatedDotView.m */; };
+		2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF1B1B8DB4B90087EDA0 /* TADotView.m */; };
+		2F8BFF211B8DB4B90087EDA0 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF1D1B8DB4B90087EDA0 /* TAPageControl.m */; };
 		2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */; };
 		2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000191B1D8B930040D97B /* MASCompositeConstraint.m */; };
 		2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90001C1B1D8B930040D97B /* MASConstraint.m */; };
@@ -496,6 +500,14 @@
 		2F800AFB1B1D50EE006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2F8BFF0E1B8D53E00087EDA0 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		2F8BFF0F1B8D53E00087EDA0 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		2F8BFF161B8DB4B90087EDA0 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		2F8BFF181B8DB4B90087EDA0 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		2F8BFF191B8DB4B90087EDA0 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		2F8BFF1A1B8DB4B90087EDA0 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		2F8BFF1B1B8DB4B90087EDA0 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		2F8BFF1C1B8DB4B90087EDA0 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		2F8BFF1D1B8DB4B90087EDA0 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
 		2F9000071B1D8B640040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
 		2F9000081B1D8B7A0040D97B /* UIViewController+Ltt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ltt.h"; sourceTree = "<group>"; };
 		2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Ltt.m"; sourceTree = "<group>"; };
@@ -1326,6 +1338,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F8BFF151B8DB4B90087EDA0 /* TAPageControl */,
 				2F8BFF0D1B8D53E00087EDA0 /* iCarousel */,
 				2F0095D11B79A5FC003C27B9 /* DLRadioButton */,
 				2F2F221E1B3A4D0300428742 /* TSMessages */,
@@ -1352,6 +1365,21 @@
 				2F8BFF0F1B8D53E00087EDA0 /* iCarousel.m */,
 			);
 			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		2F8BFF151B8DB4B90087EDA0 /* TAPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				2F8BFF161B8DB4B90087EDA0 /* TAAbstractDotView.h */,
+				2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */,
+				2F8BFF181B8DB4B90087EDA0 /* TAAnimatedDotView.h */,
+				2F8BFF191B8DB4B90087EDA0 /* TAAnimatedDotView.m */,
+				2F8BFF1A1B8DB4B90087EDA0 /* TADotView.h */,
+				2F8BFF1B1B8DB4B90087EDA0 /* TADotView.m */,
+				2F8BFF1C1B8DB4B90087EDA0 /* TAPageControl.h */,
+				2F8BFF1D1B8DB4B90087EDA0 /* TAPageControl.m */,
+			);
+			path = TAPageControl;
 			sourceTree = "<group>";
 		};
 		2F9000171B1D8B930040D97B /* Masonry */ = {
@@ -1892,6 +1920,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */,
+				2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */,
 				2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2F16E63A1B5DF162007947D0 /* DeviceEntity.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
@@ -1997,6 +2026,7 @@
 				2F16E5EB1B5DF08F007947D0 /* ProfileNicknameViewController.m in Sources */,
 				2F16E6361B5DF162007947D0 /* AreaEntity.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
+				2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */,
 				2F6D3E5C1B312765007A4159 /* MJRefreshConst.m in Sources */,
 				2F16E5F11B5DF08F007947D0 /* AddressSelectorViewController.m in Sources */,
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
@@ -2012,6 +2042,7 @@
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
 				2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */,
 				2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */,
+				2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */,
 				2F6D3E181B312164007A4159 /* SWActionSheet.m in Sources */,
 				2F16E5F41B5DF08F007947D0 /* CaseViewController.m in Sources */,
 				2F16E6301B5DF162007947D0 /* AppTableView.m in Sources */,
@@ -2049,6 +2080,7 @@
 				2F2F224D1B3A4D0300428742 /* TSBlurView.m in Sources */,
 				2FED82BE1B1EDBFB00306A11 /* qrinput.c in Sources */,
 				2FED7D961B1EA2D300306A11 /* SDWebImageDownloader.m in Sources */,
+				2F8BFF211B8DB4B90087EDA0 /* TAPageControl.m in Sources */,
 				2F16E63C1B5DF162007947D0 /* LocationEntity.m in Sources */,
 				2F16E5A41B5DEFEE007947D0 /* SafetyPasswordView.m in Sources */,
 				2FED82BB1B1EDBFB00306A11 /* mask.c in Sources */,

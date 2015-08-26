@@ -8,8 +8,9 @@
 
 #import "HomeView.h"
 #import "iCarousel.h"
+#import "TAPageControl.h"
 
-@interface HomeView () <iCarouselDataSource, iCarouselDelegate>
+@interface HomeView () <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, TAPageControlDelegate>
 
 @end
 
@@ -22,13 +23,26 @@
     UIView *middleView;
     UIView *bottomView;
     
+    //图片轮播
+    UIScrollView *scrollView;
+    TAPageControl *pageControl;
+    
+    //3D动画
     NSMutableArray *carouselItems;
+    
+    //适配比例
+    CGFloat widthRadio;
+    CGFloat heightRadio;
 }
 
 - (id)init
 {
     self = [super init];
     if (!self) return nil;
+    
+    //初始化
+    widthRadio = SCREEN_WIDTH / 320.0f;
+    heightRadio = SCREEN_HEIGHT / 570.0f;
     
     //背景图片
     UIImageView *bgView = [[UIImageView alloc] init];
@@ -58,12 +72,50 @@
 - (void) topView
 {
     //顶部视图
-    topView = [[UIView alloc] init];
+    topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
     [self addSubview:topView];
     
-    UIView *superview = self;
-    [topView mas_makeConstraints:^(MASConstraintMaker *make){
+    //幻灯片
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH, 120)];
+    scrollView.scrollEnabled = YES;
+    scrollView.pagingEnabled = YES;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.delegate = self;
+    [topView addSubview:scrollView];
+    
+    //添加图片
+    NSArray *imagesData = @[@"homeImage", @"homeImage", @"homeImage"];
+    [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
+        //图片容器
+        UIView *imageContainer = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, 120)];
+        [scrollView addSubview:imageContainer];
+        
+        //图片内容
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, 120)];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.image = [UIImage imageNamed:imageName];
+        imageView.layer.cornerRadius = 10;
+        [imageContainer addSubview:imageView];
     }];
+    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, 120);
+    
+    //图片控件
+    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, 180 - 20, SCREEN_WIDTH, 20)];
+    pageControl.numberOfPages = imagesData.count;
+    pageControl.delegate = self;
+    [topView addSubview:pageControl];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)_scrollView
+{
+    NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
+    pageControl.currentPage = pageIndex;
+}
+
+- (void)TAPageControl:(TAPageControl *)pageControl didSelectPageAtIndex:(NSInteger)index
+{
+    [scrollView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
 }
 
 //中部视图
@@ -99,6 +151,28 @@
     
     UIView *superview = self;
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@(60 * heightRadio));
+    }];
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"homeHelp"];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    imageView.tag = LTT_TYPE_AUTOFINANCE;
+    imageView.userInteractionEnabled = YES;
+    //点击事件
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionCase:)];
+    [imageView addGestureRecognizer:singleTap];
+    [bottomView addSubview:imageView];
+    
+    superview = bottomView;
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(superview.mas_left).offset(25);
+        make.right.equalTo(superview.mas_right).offset(-25);
+        make.top.equalTo(superview.mas_top);
+        make.bottom.equalTo(superview.mas_bottom);
     }];
 }
 
@@ -118,6 +192,17 @@
     }
     
     return view;
+}
+
+- (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    //启用循环
+    if (option == iCarouselOptionWrap) {
+        return YES;
+    //返回默认值
+    } else {
+        return value;
+    }
 }
 
 - (void)carousel:(__unused iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
@@ -142,9 +227,18 @@
     }
 }
 
-- (void) actionCase: (UIButton *)sender
+- (void) actionCase: (id)sender
 {
-    NSNumber *type = [NSNumber numberWithInteger:sender.tag];
+    UIView *view = nil;
+    if ([sender isKindOfClass:[UIView class]]) {
+        view = sender;
+    } else if ([sender isKindOfClass:[UIGestureRecognizer class]]) {
+        view = ((UIGestureRecognizer *)sender).view;
+    } else {
+        return;
+    }
+    
+    NSNumber *type = [NSNumber numberWithInteger:view.tag];
     [self.delegate actionCase:type];
 }
 
