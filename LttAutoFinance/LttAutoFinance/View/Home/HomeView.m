@@ -71,12 +71,18 @@
 
 - (void) topView
 {
+    //参数定制
+    CGFloat topHeight = 180;
+    CGFloat logoHeight = 30;
+    CGFloat imageHeight = 120;
+    CGFloat scrollHeight = imageHeight + logoHeight / 2;
+    
     //顶部视图
-    topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+    topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, topHeight)];
     [self addSubview:topView];
     
     //幻灯片
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH, 120)];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, topHeight - imageHeight - logoHeight / 2, SCREEN_WIDTH, scrollHeight)];
     scrollView.scrollEnabled = YES;
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -88,20 +94,28 @@
     NSArray *imagesData = @[@"homeImage", @"homeImage", @"homeImage"];
     [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
         //图片容器
-        UIView *imageContainer = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, 120)];
+        UIView *imageContainer = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, scrollHeight)];
         [scrollView addSubview:imageContainer];
         
         //图片内容
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, 120)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, logoHeight / 2, SCREEN_WIDTH - 40, imageHeight)];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.image = [UIImage imageNamed:imageName];
+        imageView.layer.masksToBounds = YES;
         imageView.layer.cornerRadius = 10;
         [imageContainer addSubview:imageView];
+        
+        //添加logo
+        UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - logoHeight / 2, 0, logoHeight, logoHeight)];
+        logoView.image = [UIImage imageNamed:@"homeIcon"];
+        logoView.layer.masksToBounds = YES;
+        logoView.layer.cornerRadius = logoHeight / 2;
+        [imageContainer addSubview:logoView];
     }];
-    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, 120);
+    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, scrollHeight);
     
     //图片控件
-    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, 180 - 20, SCREEN_WIDTH, 20)];
+    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 20, SCREEN_WIDTH, 20)];
     pageControl.numberOfPages = imagesData.count;
     pageControl.delegate = self;
     [topView addSubview:pageControl];
