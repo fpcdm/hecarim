@@ -22,7 +22,6 @@
     UIView *middleView;
     UIView *bottomView;
     
-    iCarousel *carousel;
     NSMutableArray *carouselItems;
 }
 
@@ -84,7 +83,7 @@
     }
     
     //初始化视图
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 200, SCREEN_WIDTH, SCREEN_WIDTH / 320 * 150)];
+    iCarousel *carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 200, SCREEN_WIDTH, SCREEN_WIDTH / 320 * 150)];
     carousel.delegate = self;
     carousel.dataSource = self;
     carousel.type = iCarouselTypeRotary;
@@ -115,13 +114,13 @@
     {
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150)];
         ((UIImageView *)view).image = [carouselItems objectAtIndex:index];
-        view.contentMode = UIViewContentModeScaleAspectFit;
+        view.contentMode = UIViewContentModeScaleAspectFill;
     }
     
     return view;
 }
 
-- (void)carousel:(__unused iCarousel *)_carousel didSelectItemAtIndex:(NSInteger)index
+- (void)carousel:(__unused iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     //选择的是当前跳转需求发表页面
     if (index == carousel.currentItemIndex) {
