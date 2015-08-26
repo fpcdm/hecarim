@@ -7,7 +7,6 @@
 //
 
 #import "HomeView.h"
-#import "InfiniteScrollPicker.h"
 #import "iCarousel.h"
 
 @interface HomeView () <iCarouselDataSource, iCarouselDelegate>
@@ -24,6 +23,7 @@
     UIView *bottomView;
     
     iCarousel *carousel;
+    NSMutableArray *carouselItems;
 }
 
 - (id)init
@@ -73,29 +73,23 @@
     middleView = [UIView new];
     [self addSubview:middleView];
     
-    NSMutableArray *set1 = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 5; i++) {
-        [set1 addObject:[UIImage imageNamed:@"homeButton"]];
-    }
-    
-    InfiniteScrollPicker *isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 190)];
-    [isp setItemSize:CGSizeMake(100, 150)];
-    [isp setImageAry:set1];
-    [isp setHeightOffset:20];
-    [isp setPositionRatio:2];
-    [isp setAlphaOfobjs:1];
-    [self addSubview:isp];
-    
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 250, SCREEN_WIDTH, 200)];
-    carousel.delegate = self;
-    carousel.dataSource = self;
-    [self addSubview:carousel];
-    
-    carousel.type = iCarouselTypeCoverFlow;
-    
     UIView *superview = self;
     [middleView mas_makeConstraints:^(MASConstraintMaker *make){
     }];
+    
+    //初始化数据
+    carouselItems = [NSMutableArray array];
+    for (int i = 0; i < 10; i++) {
+        [carouselItems addObject:[UIImage imageNamed:@"homeButton"]];
+    }
+    
+    //初始化视图
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 200, SCREEN_WIDTH, SCREEN_WIDTH / 320 * 150)];
+    carousel.delegate = self;
+    carousel.dataSource = self;
+    carousel.type = iCarouselTypeRotary;
+    [self addSubview:carousel];
+    
 }
 
 //底部视图
@@ -109,49 +103,30 @@
     }];
 }
 
-#pragma mark -
-
-- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+#pragma mark - iCarousel
+- (NSInteger)numberOfItemsInCarousel:(__unused iCarousel *)carousel
 {
-    return 30;
+    return (NSInteger)[carouselItems count];
 }
 
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index
+- (UIView *)carousel:(__unused iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"homeButton"]];
+    if (view == nil)
+    {
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150)];
+        ((UIImageView *)view).image = [carouselItems objectAtIndex:index];
+        view.contentMode = UIViewContentModeScaleAspectFit;
+    }
     
-    view.frame = CGRectMake(70, 80, 180, 260);
     return view;
 }
 
-- (NSUInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel
+- (void)carousel:(__unused iCarousel *)_carousel didSelectItemAtIndex:(NSInteger)index
 {
-    return 0;
-}
-
-- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
-{
-    return 30;
-}
-
-- (CGFloat)carouselItemWidth:(iCarousel *)carousel
-{
-    return 200;
-}
-
-- (CATransform3D)carousel:(iCarousel *)_carousel transformForItemView:(UIView *)view withOffset:(CGFloat)offset
-{
-    view.alpha = 1.0 - fminf(fmaxf(offset, 0.0), 1.0);
-    
-    CATransform3D transform = CATransform3DIdentity;
-    transform.m34 = carousel.perspective;
-    transform = CATransform3DRotate(transform, M_PI / 8.0, 0, 1.0, 0);
-    return CATransform3DTranslate(transform, 0.0, 0.0, offset * carousel.itemWidth);
-}
-
-- (BOOL)carouselShouldWrap:(iCarousel *)carousel
-{
-    return YES;
+    //选择的是当前跳转需求发表页面
+    if (index == carousel.currentItemIndex) {
+        [self.delegate actionCase:@(LTT_TYPE_AUTOFINANCE)];
+    }
 }
 
 #pragma mark - RenderData
