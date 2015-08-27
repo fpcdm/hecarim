@@ -90,7 +90,7 @@
     
     UIView *superview = topView;
     [pointView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(superview.mas_left).offset(20);
+        make.left.equalTo(superview.mas_left).offset(15);
         make.centerY.equalTo(superview.mas_top).offset(25);
         
         make.width.equalTo(@11);
@@ -134,14 +134,14 @@
     
     //地址标签
     addressLabel = [[UILabel alloc] init];
-    addressLabel.text = @"正在为您定位";
+    addressLabel.text = @"正在为您定位：定位中";
     addressLabel.backgroundColor = [UIColor clearColor];
-    addressLabel.textColor = [UIColor colorWithHexString:@"EBEDED"];
-    addressLabel.font = FONT_SMALL;
+    addressLabel.textColor = COLOR_MAIN_WHITE;
+    addressLabel.font = [UIFont boldSystemFontOfSize:10];
     [addressView addSubview:addressLabel];
     
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(addressView.mas_top).offset(2);
+        make.top.equalTo(addressView.mas_top).offset(3);
         make.left.equalTo(addressView.mas_left).offset(20);
         make.height.equalTo(@12);
     }];
@@ -150,11 +150,11 @@
     infoLabel = [[UILabel alloc] init];
     infoLabel.backgroundColor = [UIColor clearColor];
     infoLabel.textColor = [UIColor whiteColor];
-    infoLabel.font = FONT_SMALL_BOLD;
+    infoLabel.font = [UIFont boldSystemFontOfSize:10];
     [addressView addSubview:infoLabel];
     
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(addressView.mas_bottom).offset(-2);
+        make.bottom.equalTo(addressView.mas_bottom).offset(-3);
         make.left.equalTo(addressView.mas_left).offset(20);
         make.height.equalTo(@12);
     }];
@@ -169,14 +169,14 @@
     [topView addSubview:scrollView];
     
     //添加图片
-    NSArray *imagesData = @[@"homeImage", @"homeImage", @"homeImage"];
+    NSArray *imagesData = @[@"homeAd"];
     [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
         //图片容器
         UIView *imageContainer = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, scrollHeight)];
         [scrollView addSubview:imageContainer];
         
         //图片内容
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, logoHeight / 2, SCREEN_WIDTH - 40, imageHeight)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, logoHeight / 2, SCREEN_WIDTH - 30, imageHeight)];
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.image = [UIImage imageNamed:imageName];
         imageView.layer.masksToBounds = YES;
@@ -185,7 +185,7 @@
         
         //添加logo
         UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - logoHeight / 2, 0, logoHeight, logoHeight)];
-        logoView.image = [UIImage imageNamed:@"homeLogo"];
+        logoView.image = [UIImage imageNamed:@"logo"];
         logoView.layer.masksToBounds = YES;
         logoView.layer.cornerRadius = logoHeight / 2;
         [imageContainer addSubview:logoView];
@@ -193,7 +193,7 @@
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, scrollHeight);
     
     //图片控件
-    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 20, SCREEN_WIDTH, 20)];
+    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 30, SCREEN_WIDTH, 30)];
     pageControl.numberOfPages = imagesData.count;
     pageControl.delegate = self;
     [topView addSubview:pageControl];
@@ -389,11 +389,11 @@
 #pragma mark - RenderData
 - (void) renderData
 {
-    //todo
-    cityLabel.text = @"城市";
+    NSString *city = [self getData:@"city"];
+    cityLabel.text = city;
     
     NSString *address = [self getData:@"address"];
-    addressLabel.text = [NSString stringWithFormat:@"%@", address];
+    addressLabel.text = [NSString stringWithFormat:@"正在为您定位：%@", address];
     
     NSNumber *count = [self getData:@"count"];
     if (!count || [@-1 isEqualToNumber:count]) {

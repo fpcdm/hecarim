@@ -20,4 +20,6 @@
 
 @property (retain, nonatomic) NSNumber *serviceNumber;
 
+@property (retain, nonatomic) NSString *city;
+
 @end

@@ -19,8 +19,9 @@
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
 static NSString *detailAddress = nil;
+static NSString *lastCity = nil;
 static NSNumber *lastService = nil;
-static NSDate   *lastDate    = nil;
+static NSDate   *lastDate = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
@@ -67,6 +68,7 @@ static NSDate   *lastDate    = nil;
 - (void) renderView
 {
     [homeView setData:@"address" value:lastAddress ? lastAddress : @"定位失败"];
+    [homeView setData:@"city" value:lastCity ? lastCity : @"定位"];
     [homeView setData:@"count" value:lastService ? lastService : @-1];
     [homeView renderData];
 }
@@ -114,6 +116,7 @@ static NSDate   *lastDate    = nil;
         if (location.address && [location.address length] > 0) {
             lastAddress = location.address;
             detailAddress = location.detailAddress;
+            lastCity = location.city;
         }
         
         //查询信使数量
@@ -145,6 +148,7 @@ static NSDate   *lastDate    = nil;
     //重置数据
     lastAddress = nil;
     lastService = nil;
+    lastCity = nil;
     
     //刷新视图
     [self renderView];

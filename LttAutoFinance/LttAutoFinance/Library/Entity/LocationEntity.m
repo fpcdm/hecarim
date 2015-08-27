@@ -20,4 +20,6 @@
 
 @synthesize serviceNumber;
 
+@synthesize city;
+
 @end
