@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */; };
+		2F064BAF1B8EE39B003550B0 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BAE1B8EE39B003550B0 /* ReflectionView.m */; };
 		2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5661B5DEFEE007947D0 /* AboutView.m */; };
 		2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5681B5DEFEE007947D0 /* AccountView.m */; };
 		2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E56A1B5DEFEE007947D0 /* AddressDetailView.m */; };
@@ -246,6 +247,8 @@
 /* Begin PBXFileReference section */
 		2F0095D21B79A5FC003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		2F064BAD1B8EE39B003550B0 /* ReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
+		2F064BAE1B8EE39B003550B0 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
 		2F16E55E1B5DEF3C007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E55F1B5DEF3C007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E5601B5DEF3C007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -825,6 +828,15 @@
 			path = DLRadioButton;
 			sourceTree = "<group>";
 		};
+		2F064BAC1B8EE39B003550B0 /* ReflectionView */ = {
+			isa = PBXGroup;
+			children = (
+				2F064BAD1B8EE39B003550B0 /* ReflectionView.h */,
+				2F064BAE1B8EE39B003550B0 /* ReflectionView.m */,
+			);
+			path = ReflectionView;
+			sourceTree = "<group>";
+		};
 		2F16E55D1B5DEF3C007947D0 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1338,6 +1350,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F064BAC1B8EE39B003550B0 /* ReflectionView */,
 				2F8BFF151B8DB4B90087EDA0 /* TAPageControl */,
 				2F8BFF0D1B8D53E00087EDA0 /* iCarousel */,
 				2F0095D11B79A5FC003C27B9 /* DLRadioButton */,
@@ -1928,6 +1941,7 @@
 				2F16E5E81B5DF08F007947D0 /* AddressDetailViewController.m in Sources */,
 				2F16E6391B5DF162007947D0 /* CategoryEntity.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
+				2F064BAF1B8EE39B003550B0 /* ReflectionView.m in Sources */,
 				2FED82BD1B1EDBFB00306A11 /* qrencode.c in Sources */,
 				2FED7E0E1B1EA79300306A11 /* DDFileLogger.m in Sources */,
 				2F16E6331B5DF162007947D0 /* AppView.m in Sources */,

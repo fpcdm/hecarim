@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2F0095D81B79A61F003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D71B79A61F003C27B9 /* DLRadioButton.m */; };
+		2F064BBC1B8EE3FF003550B0 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB21B8EE3FF003550B0 /* ReflectionView.m */; };
+		2F064BBD1B8EE3FF003550B0 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB51B8EE3FF003550B0 /* TAAbstractDotView.m */; };
+		2F064BBE1B8EE3FF003550B0 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB71B8EE3FF003550B0 /* TAAnimatedDotView.m */; };
+		2F064BBF1B8EE3FF003550B0 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB91B8EE3FF003550B0 /* TADotView.m */; };
+		2F064BC01B8EE3FF003550B0 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BBB1B8EE3FF003550B0 /* TAPageControl.m */; };
 		2F2E8F261B4E052900575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F251B4E052900575271 /* ResultEntity.m */; };
 		2F2F229A1B3A577900428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22821B3A577900428742 /* NotificationBackgroundError.png */; };
 		2F2F229B1B3A577900428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22831B3A577900428742 /* NotificationBackgroundError@2x.png */; };
@@ -177,6 +182,16 @@
 /* Begin PBXFileReference section */
 		2F0095D61B79A61F003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095D71B79A61F003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		2F064BB11B8EE3FF003550B0 /* ReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
+		2F064BB21B8EE3FF003550B0 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
+		2F064BB41B8EE3FF003550B0 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		2F064BB51B8EE3FF003550B0 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		2F064BB61B8EE3FF003550B0 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		2F064BB71B8EE3FF003550B0 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		2F064BB81B8EE3FF003550B0 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		2F064BB91B8EE3FF003550B0 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		2F064BBA1B8EE3FF003550B0 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		2F064BBB1B8EE3FF003550B0 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
 		2F2E8F241B4E052900575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F2E8F251B4E052900575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F2F22821B3A577900428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
@@ -630,6 +645,30 @@
 				2F0095D71B79A61F003C27B9 /* DLRadioButton.m */,
 			);
 			path = DLRadioButton;
+			sourceTree = "<group>";
+		};
+		2F064BB01B8EE3FF003550B0 /* ReflectionView */ = {
+			isa = PBXGroup;
+			children = (
+				2F064BB11B8EE3FF003550B0 /* ReflectionView.h */,
+				2F064BB21B8EE3FF003550B0 /* ReflectionView.m */,
+			);
+			path = ReflectionView;
+			sourceTree = "<group>";
+		};
+		2F064BB31B8EE3FF003550B0 /* TAPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				2F064BB41B8EE3FF003550B0 /* TAAbstractDotView.h */,
+				2F064BB51B8EE3FF003550B0 /* TAAbstractDotView.m */,
+				2F064BB61B8EE3FF003550B0 /* TAAnimatedDotView.h */,
+				2F064BB71B8EE3FF003550B0 /* TAAnimatedDotView.m */,
+				2F064BB81B8EE3FF003550B0 /* TADotView.h */,
+				2F064BB91B8EE3FF003550B0 /* TADotView.m */,
+				2F064BBA1B8EE3FF003550B0 /* TAPageControl.h */,
+				2F064BBB1B8EE3FF003550B0 /* TAPageControl.m */,
+			);
+			path = TAPageControl;
 			sourceTree = "<group>";
 		};
 		2F2F22801B3A577900428742 /* TSMessages */ = {
@@ -1156,6 +1195,8 @@
 		2F800AEB1B1D500B006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F064BB01B8EE3FF003550B0 /* ReflectionView */,
+				2F064BB31B8EE3FF003550B0 /* TAPageControl */,
 				2F8BFF111B8D579C0087EDA0 /* iCarousel */,
 				2F0095D51B79A61F003C27B9 /* DLRadioButton */,
 				2F2F22801B3A577900428742 /* TSMessages */,
@@ -1547,6 +1588,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FCAF7CD1B1FF40D00F3B084 /* split.c in Sources */,
+				2F064BBF1B8EE3FF003550B0 /* TADotView.m in Sources */,
+				2F064BBD1B8EE3FF003550B0 /* TAAbstractDotView.m in Sources */,
 				2F6D3EA61B312884007A4159 /* DistancePickerView.m in Sources */,
 				2F2F22AD1B3A577900428742 /* TSMessageView.m in Sources */,
 				2F74CDE81B1D833200797799 /* MASConstraint.m in Sources */,
@@ -1573,6 +1616,7 @@
 				2FED7D661B1EA21200306A11 /* SDWebImageCompat.m in Sources */,
 				2FCAF89B1B2044F700F3B084 /* ErrorEntity.m in Sources */,
 				2FCAF7C61B1FF40D00F3B084 /* bitstream.c in Sources */,
+				2F064BBE1B8EE3FF003550B0 /* TAAnimatedDotView.m in Sources */,
 				2F9000C51B1D98790040D97B /* Reachability.m in Sources */,
 				2F74CDE71B1D833200797799 /* MASCompositeConstraint.m in Sources */,
 				2FED7D641B1EA21200306A11 /* NSData+ImageContentType.m in Sources */,
@@ -1586,7 +1630,9 @@
 				2FED7DEE1B1EA71A00306A11 /* DDTTYLogger.m in Sources */,
 				2FCAF7C71B1FF40D00F3B084 /* mask.c in Sources */,
 				2F74CDE91B1D833200797799 /* MASConstraintMaker.m in Sources */,
+				2F064BC01B8EE3FF003550B0 /* TAPageControl.m in Sources */,
 				2F6796A91B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
+				2F064BBC1B8EE3FF003550B0 /* ReflectionView.m in Sources */,
 				2F6D3EAD1B312884007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2FCAF7C91B1FF40D00F3B084 /* qrencode.c in Sources */,
 				2FCAF8821B202E4700F3B084 /* BaseViewController.m in Sources */,

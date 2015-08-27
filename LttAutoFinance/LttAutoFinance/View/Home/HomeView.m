@@ -9,6 +9,7 @@
 #import "HomeView.h"
 #import "iCarousel.h"
 #import "TAPageControl.h"
+#import "ReflectionView.h"
 
 @interface HomeView () <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, TAPageControlDelegate>
 
@@ -388,9 +389,27 @@
 {
     if (view == nil)
     {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150)];
-        ((UIImageView *)view).image = [carouselItems objectAtIndex:index];
-        view.contentMode = UIViewContentModeScaleAspectFill;
+        //容器
+        CGRect viewFrame = CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150);
+        view = [[UIView alloc] initWithFrame:viewFrame];
+        
+        //阴影
+        CGRect reflectionFrame = CGRectMake(viewFrame.origin.x + 10, 0, viewFrame.size.width - 20, viewFrame.size.height);
+        ReflectionView *reflectionView = [[ReflectionView alloc] initWithFrame:reflectionFrame];
+        reflectionView.backgroundColor = COLOR_MAIN_WHITE;
+        reflectionView.layer.cornerRadius = 5.0f;
+        reflectionView.reflectionScale = 0.3;
+        reflectionView.reflectionAlpha = 0.3;
+        reflectionView.reflectionGap = 8;
+        [view addSubview:reflectionView];
+        
+        //图片
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:viewFrame];
+        imageView.layer.masksToBounds = YES;
+        imageView.layer.cornerRadius = 5.0f;
+        imageView.image = [carouselItems objectAtIndex:index];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [view addSubview:imageView];
     }
     
     return view;
