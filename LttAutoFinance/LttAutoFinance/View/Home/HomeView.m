@@ -185,7 +185,7 @@
         
         //添加logo
         UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - logoHeight / 2, 0, logoHeight, logoHeight)];
-        logoView.image = [UIImage imageNamed:@"homeIcon"];
+        logoView.image = [UIImage imageNamed:@"homeLogo"];
         logoView.layer.masksToBounds = YES;
         logoView.layer.cornerRadius = logoHeight / 2;
         [imageContainer addSubview:logoView];
@@ -216,7 +216,7 @@
     //初始化数据
     carouselItems = [NSMutableArray array];
     for (int i = 0; i < 10; i++) {
-        [carouselItems addObject:[UIImage imageNamed:@"homeButton"]];
+        [carouselItems addObject:[UIImage imageNamed:@"homeCard"]];
     }
     
     //初始化视图
@@ -233,137 +233,89 @@
     bottomView = [[UIView alloc] init];
     [self addSubview:bottomView];
     
-    CGFloat bottomHeight = 120;
-    
     UIView *superview = self;
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom);
-        make.height.equalTo(@(bottomHeight));
+        make.height.equalTo(@(140));
     }];
     
-    //一键救援
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"homeHelp"];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.tag = LTT_TYPE_AUTOFINANCE;
-    imageView.userInteractionEnabled = YES;
-    //点击事件
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionCase:)];
-    [imageView addGestureRecognizer:singleTap];
-    [bottomView addSubview:imageView];
+    //两条腿转车
+    UIButton *carButton = [[UIButton alloc] init];
+    [carButton setBackgroundImage:[UIImage imageNamed:@"homeButtonCar"] forState:UIControlStateNormal];
+    carButton.tag = 4;
+    [carButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:carButton];
     
     superview = bottomView;
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(superview.mas_left).offset(25);
-        make.right.equalTo(superview.mas_right).offset(-25);
-        make.bottom.equalTo(superview.mas_bottom);
-        
+    [carButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top);
+        make.centerX.equalTo(superview.mas_centerX);
+        make.width.equalTo(@(SCREEN_WIDTH * 4 / 10));
         make.height.equalTo(@60);
     }];
     
-    //按钮列表
-    UIView *buttonsView = [[UIView alloc] init];
-    [bottomView addSubview:buttonsView];
-    
-    [buttonsView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@35);
-    }];
-    
-    //按钮总长度
-    CGFloat buttonsWidth = SCREEN_WIDTH - 40;
-    
     //分期商城
     UIButton *firstButton = [[UIButton alloc] init];
-    firstButton.tag = LTT_TYPE_AUTOFINANCE;
+    [firstButton setBackgroundImage:[UIImage imageNamed:@"homeButtonFinance"] forState:UIControlStateNormal];
+    [firstButton setBackgroundImage:[UIImage imageNamed:@"homeButtonFinance"] forState:UIControlStateHighlighted];
+    firstButton.tag = 4;
     [firstButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
-    [buttonsView addSubview:firstButton];
+    [bottomView addSubview:firstButton];
     
-    superview = buttonsView;
     [firstButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
-        make.bottom.equalTo(superview.mas_bottom);
-        
-        make.left.equalTo(superview.mas_left).offset(10);
-        make.width.equalTo(@(buttonsWidth * 2 / 7));
+        make.top.equalTo(carButton.mas_bottom);
+        make.left.equalTo(superview.mas_left);
+        make.width.equalTo(@(SCREEN_WIDTH * 3 / 10));
+        make.height.equalTo(@40);
     }];
-    
-    [self makeButtonView:firstButton title:@"分期商城" subtitle:@"0首付，2小时送达"];
     
     //车友部落
     UIButton *secondButton = [[UIButton alloc] init];
-    secondButton.tag = LTT_TYPE_AUTOFINANCE;
+    [secondButton setBackgroundImage:[UIImage imageNamed:@"homeButtonClub"] forState:UIControlStateNormal];
+    [secondButton setBackgroundImage:[UIImage imageNamed:@"homeButtonClub"] forState:UIControlStateHighlighted];
+    secondButton.tag = 4;
     [secondButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
-    [buttonsView addSubview:secondButton];
+    [bottomView addSubview:secondButton];
     
     [secondButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
-        make.bottom.equalTo(superview.mas_bottom);
-        
+        make.top.equalTo(carButton.mas_bottom);
         make.centerX.equalTo(superview.mas_centerX);
-        make.width.equalTo(@(buttonsWidth * 3 / 7));
+        make.width.equalTo(@(SCREEN_WIDTH * 4 / 10));
+        make.height.equalTo(@40);
     }];
-    
-    [self makeButtonView:secondButton title:@"车友部落" subtitle:@"登记我的爱车,寻找同城的那个TA"];
     
     //汽车商城
     UIButton *thirdButton = [[UIButton alloc] init];
-    thirdButton.tag = LTT_TYPE_AUTOFINANCE;
+    [thirdButton setBackgroundImage:[UIImage imageNamed:@"homeButtonMall"] forState:UIControlStateNormal];
+    [thirdButton setBackgroundImage:[UIImage imageNamed:@"homeButtonMall"] forState:UIControlStateHighlighted];
+    thirdButton.tag = 4;
     [thirdButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
-    [buttonsView addSubview:thirdButton];
+    [bottomView addSubview:thirdButton];
     
+    superview = bottomView;
     [thirdButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
+        make.top.equalTo(carButton.mas_bottom);
+        make.right.equalTo(superview.mas_right);
+        make.width.equalTo(@(SCREEN_WIDTH * 3 / 10));
+        make.height.equalTo(@40);
+    }];
+    
+    //一键救援
+    UIButton *helpButton = [[UIButton alloc] init];
+    [helpButton setBackgroundImage:[UIImage imageNamed:@"homeButtonHelp"] forState:UIControlStateNormal];
+    [helpButton setBackgroundImage:[UIImage imageNamed:@"homeButtonHelp"] forState:UIControlStateHighlighted];
+    helpButton.tag = 4;
+    [helpButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:helpButton];
+    
+    superview = bottomView;
+    [helpButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.bottom.equalTo(superview.mas_bottom);
-        
-        make.right.equalTo(superview.mas_right).offset(-10);
-        make.width.equalTo(@(buttonsWidth * 2 / 7));
-    }];
-    
-    [self makeButtonView:thirdButton title:@"汽车商城" subtitle:@"Auto mall"];
-}
-
-- (void)makeButtonView:(UIButton *)button title:(NSString *)title subtitle:(NSString *)subtitle
-{
-    //按钮样式
-    button.layer.backgroundColor = [UIColor colorWithHexString:@"C7C8C9"].CGColor;
-    button.layer.cornerRadius = 3.0f;
-    button.layer.borderColor = (COLOR_MAIN_WHITE).CGColor;
-    button.layer.borderWidth = 0.5f;
-    button.titleLabel.text = nil;
-    
-    UILabel *label = [[UILabel alloc] init];
-    //文字下划线
-    NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:title];
-    NSRange titleRange = NSMakeRange(0, [title length]);
-    [titleText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:titleRange];
-    label.attributedText = titleText;
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = COLOR_MAIN_BLACK;
-    label.font = FONT_MIDDLE_BOLD;
-    [button addSubview:label];
-    
-    [label mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.equalTo(button.mas_centerX);
-        make.bottom.equalTo(button.mas_centerY).offset(3);
-        make.height.equalTo(@14);
-    }];
-    
-    UILabel *firstDescLabel = [[UILabel alloc] init];
-    firstDescLabel.backgroundColor = [UIColor clearColor];
-    firstDescLabel.text = subtitle;
-    firstDescLabel.textColor = [UIColor colorWithHexString:@"6F6766"];
-    firstDescLabel.font = [UIFont systemFontOfSize:8];
-    [button addSubview:firstDescLabel];
-    
-    [firstDescLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.equalTo(button.mas_centerX);
-        make.top.equalTo(button.mas_centerY).offset(5);
-        make.height.equalTo(@8);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(@40);
     }];
 }
 
