@@ -92,6 +92,7 @@
 #define FONT_MIDDLE [UIFont systemFontOfSize:14]
 #define FONT_MIDDLE_BOLD [UIFont boldSystemFontOfSize:14]
 #define FONT_SMALL [UIFont systemFontOfSize:12]
+#define FONT_SMALL_BOLD [UIFont boldSystemFontOfSize:12]
 
 //按钮配置
 //中按钮高度
