@@ -7,11 +7,10 @@
 //
 
 #import "HomeView.h"
-#import "iCarousel.h"
 #import "TAPageControl.h"
 #import "ReflectionView.h"
 
-@interface HomeView () <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, TAPageControlDelegate>
+@interface HomeView () <UIScrollViewDelegate, TAPageControlDelegate>
 
 @end
 
@@ -31,6 +30,7 @@
     
     //3D动画
     NSMutableArray *carouselItems;
+    NSMutableArray *cardData;
     
     //适配比例
     CGFloat widthRadio;
@@ -165,7 +165,7 @@
     [topView addSubview:scrollView];
     
     //添加图片
-    NSArray *imagesData = @[@"homeAd"];
+    NSArray *imagesData = @[@"homeAd", @"homeAd", @"homeAd"];
     [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
         //图片容器
         UIView *imageContainer = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, scrollHeight)];
@@ -201,26 +201,64 @@
     middleView = [UIView new];
     [self addSubview:middleView];
     
+    CGFloat middleHeight = 150;
+    
     UIView *superview = self;
     [middleView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(topView.mas_bottom).offset(10);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@(SCREEN_WIDTH / 320 * 150));
+        make.height.equalTo(@(middleHeight));
     }];
     
-    //初始化数据
-    carouselItems = [NSMutableArray array];
-    for (int i = 0; i < 10; i++) {
-        [carouselItems addObject:[UIImage imageNamed:@"homeCard"]];
-    }
+    //卡片数据
+    cardData = [[NSMutableArray alloc] init];
+    UIImage *cardImage = [UIImage imageNamed:@"homeCard"];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconFinance", @"title":@"一键贷款", @"detail": @"汽车活押，月息0.9%", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconProtect", @"title":@"一键保险", @"detail": @"One key insurance", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconFix", @"title":@"一键维修", @"detail": @"One key repair", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconCheck", @"title":@"一键评估", @"detail": @"One key assessment", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
+    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
     
-    //初始化视图
-    iCarousel *carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH / 320 * 150)];
-    carousel.delegate = self;
-    carousel.dataSource = self;
-    carousel.type = iCarouselTypeRotary;
-    [middleView addSubview:carousel];
+    UIScrollView *cardView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, middleHeight)];
+    CGFloat cardX = 0;
+    CGFloat cardWidth = SCREEN_WIDTH / 5;
+    CGFloat cardHeight = cardWidth * 1.5;
+    for (NSDictionary *cardDict in cardData) {
+        UIImageView *view = nil;
+        
+        //容器
+        CGRect viewFrame = CGRectMake(cardX, 0, cardWidth, cardHeight);
+        view = [[UIImageView alloc] initWithFrame:viewFrame];
+        
+        //阴影
+        CGRect reflectionFrame = CGRectMake(viewFrame.origin.x + 10, 0, viewFrame.size.width - 20, viewFrame.size.height);
+        ReflectionView *reflectionView = [[ReflectionView alloc] initWithFrame:reflectionFrame];
+        reflectionView.backgroundColor = COLOR_MAIN_WHITE;
+        reflectionView.layer.cornerRadius = 5.0f;
+        reflectionView.reflectionScale = 0.3;
+        reflectionView.reflectionAlpha = 0.3;
+        reflectionView.reflectionGap = 8;
+        [view addSubview:reflectionView];
+        
+        //图片
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:viewFrame];
+        imageView.layer.masksToBounds = YES;
+        imageView.layer.cornerRadius = 5.0f;
+        imageView.image = [UIImage imageNamed:@"homeCard"];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [view addSubview:imageView];
+        
+        [cardView addSubview:view];
+        
+        cardX += cardWidth;
+        
+    }
+    [middleView addSubview:cardView];
+    cardView.contentSize = CGSizeMake(cardWidth * cardData.count, cardWidth);
 }
 
 //底部视图
@@ -325,61 +363,6 @@
 - (void)TAPageControl:(TAPageControl *)pageControl didSelectPageAtIndex:(NSInteger)index
 {
     [scrollView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
-}
-
-#pragma mark - iCarousel
-- (NSInteger)numberOfItemsInCarousel:(__unused iCarousel *)carousel
-{
-    return (NSInteger)[carouselItems count];
-}
-
-- (UIView *)carousel:(__unused iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
-{
-    if (view == nil)
-    {
-        //容器
-        CGRect viewFrame = CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150);
-        view = [[UIView alloc] initWithFrame:viewFrame];
-        
-        //阴影
-        CGRect reflectionFrame = CGRectMake(viewFrame.origin.x + 10, 0, viewFrame.size.width - 20, viewFrame.size.height);
-        ReflectionView *reflectionView = [[ReflectionView alloc] initWithFrame:reflectionFrame];
-        reflectionView.backgroundColor = COLOR_MAIN_WHITE;
-        reflectionView.layer.cornerRadius = 5.0f;
-        reflectionView.reflectionScale = 0.3;
-        reflectionView.reflectionAlpha = 0.3;
-        reflectionView.reflectionGap = 8;
-        [view addSubview:reflectionView];
-        
-        //图片
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:viewFrame];
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 5.0f;
-        imageView.image = [carouselItems objectAtIndex:index];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [view addSubview:imageView];
-    }
-    
-    return view;
-}
-
-- (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
-{
-    //启用循环
-    if (option == iCarouselOptionWrap) {
-        return YES;
-    //返回默认值
-    } else {
-        return value;
-    }
-}
-
-- (void)carousel:(__unused iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
-{
-    //选择的是当前跳转需求发表页面
-    if (index == carousel.currentItemIndex) {
-        [self.delegate actionCase:@(LTT_TYPE_AUTOFINANCE)];
-    }
 }
 
 #pragma mark - RenderData
