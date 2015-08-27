@@ -20,6 +20,16 @@
     [sharedClient getObject:[LocationEntity new] path:@"location/address" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
+        //处理city名称，去掉最后的市
+        if ([result count] > 0) {
+            LocationEntity *entity = [result firstObject];
+            if (entity.city && entity.city.length > 0) {
+                if ([[entity.city substringFromIndex:(entity.city.length - 1)] isEqualToString:@"市"]) {
+                    entity.city = [entity.city substringToIndex:entity.city.length - 1];
+                }
+            }
+        }
+        
         success(result);
     } failure:^(ErrorEntity *error){
         [sharedClient removeResponseDescriptor:responseDescriptor];

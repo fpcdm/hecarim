@@ -113,15 +113,11 @@
     }];
     
     //地址视图
-    UIView *addressView = [[UIView alloc] init];
-    addressView.layer.cornerRadius = 3.0f;
-    addressView.layer.backgroundColor = [UIColor colorWithHexString:@"A2A3A4"].CGColor;
-    addressView.layer.borderColor = [UIColor colorWithHexString:@"B2B3B3"].CGColor;
-    addressView.layer.borderWidth = 1;
-    addressView.userInteractionEnabled = YES;
-    //点击事件
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGps)];
-    [addressView addGestureRecognizer:singleTap];
+    UIButton *addressView = [[UIButton alloc] init];
+    addressView.titleLabel.text = nil;
+    [addressView setBackgroundImage:[UIImage imageNamed:@"homeButtonGps"] forState:UIControlStateNormal];
+    [addressView setBackgroundImage:[UIImage imageNamed:@"homeButtonGps"] forState:UIControlStateHighlighted];
+    [addressView addTarget:self action:@selector(actionGps) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:addressView];
     
     [addressView mas_makeConstraints:^(MASConstraintMaker *make){
