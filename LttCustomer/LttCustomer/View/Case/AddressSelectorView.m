@@ -61,7 +61,7 @@
     }
     
     //姓名
-    UILabel *nameLabel = [self makeCellLabel:address.name];
+    UILabel *nameLabel = [self makeCellLabel:address.name ? address.name : @"-"];
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){

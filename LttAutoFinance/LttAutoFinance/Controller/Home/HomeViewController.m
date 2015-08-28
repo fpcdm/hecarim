@@ -35,7 +35,7 @@ static NSDate   *lastDate = nil;
 
 - (void)loadView
 {
-    homeView = [[HomeView alloc] init];
+    homeView = [[HomeView alloc] initWithData:@{@"height":@(SCREEN_AVAILABLE_HEIGHT)}];
     homeView.delegate = self;
     self.view = homeView;
 }

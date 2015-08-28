@@ -25,26 +25,24 @@
     UIView *middleView;
     UIView *bottomView;
     
+    //屏幕可用高度
+    CGFloat screenHeight;
+    
     //图片轮播
     UIScrollView *scrollView;
     TAPageControl *pageControl;
     
     //3D动画
     NSMutableArray *cardData;
-    
-    //适配比例
-    CGFloat widthRadio;
-    CGFloat heightRadio;
 }
 
-- (id)init
+- (id)initWithData:(NSDictionary *)data
 {
     self = [super init];
     if (!self) return nil;
     
-    //初始化
-    widthRadio = SCREEN_WIDTH / 320.0f;
-    heightRadio = SCREEN_HEIGHT / 570.0f;
+    //初始化屏幕高度
+    screenHeight = [((NSNumber *)[data objectForKey:@"height"]) floatValue];
     
     //背景图片
     UIImageView *bgView = [[UIImageView alloc] init];
@@ -74,10 +72,11 @@
 - (void) topView
 {
     //参数定制
-    CGFloat topHeight = 180;
+    CGFloat topHeight = screenHeight * 3 / 8;
+    CGFloat imageHeight = topHeight * 0.63;
     CGFloat logoHeight = 30;
-    CGFloat imageHeight = 120;
     CGFloat scrollHeight = imageHeight + logoHeight / 2;
+    CGFloat gpsCenterY = topHeight * 0.15;
     
     //顶部视图
     topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, topHeight)];
@@ -91,7 +90,7 @@
     UIView *superview = topView;
     [pointView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(superview.mas_left).offset(15);
-        make.centerY.equalTo(superview.mas_top).offset(25);
+        make.centerY.equalTo(superview.mas_top).offset(gpsCenterY);
         
         make.width.equalTo(@11);
         make.height.equalTo(@16);
@@ -107,7 +106,7 @@
     
     [cityLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(pointView.mas_right).offset(5);
-        make.centerY.equalTo(superview.mas_top).offset(25);
+        make.centerY.equalTo(pointView.mas_centerY);
         
         make.height.equalTo(@20);
     }];
@@ -121,7 +120,7 @@
     [topView addSubview:addressView];
     
     [addressView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(10);
+        make.centerY.equalTo(pointView.mas_centerY);
         make.left.equalTo(cityLabel.mas_right).offset(10);
         make.right.equalTo(superview.mas_right).offset(-30);
         
@@ -198,14 +197,14 @@
 //中部视图
 - (void)middleView
 {
+    CGFloat middleHeight = screenHeight * 3 / 8;
+    
     middleView = [UIView new];
     [self addSubview:middleView];
     
-    CGFloat middleHeight = SCREEN_WIDTH / 320 * 150;
-    
     UIView *superview = self;
     [middleView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(topView.mas_bottom).offset(10);
+        make.top.equalTo(topView.mas_bottom);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(@(middleHeight));
@@ -228,6 +227,7 @@
     iCarousel *carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, middleHeight)];
     carousel.delegate = self;
     carousel.dataSource = self;
+    carousel.viewpointOffset = CGSizeMake(0, middleHeight * 1 / 20);
     carousel.type = iCarouselTypeRotary;
     [middleView addSubview:carousel];
 }
@@ -235,6 +235,9 @@
 //底部视图
 - (void)bottomView
 {
+    CGFloat bottomHeight = screenHeight * 2 / 8.0;
+    CGFloat buttonHeight = bottomHeight * 2 / 7;
+    
     bottomView = [[UIView alloc] init];
     [self addSubview:bottomView];
     
@@ -243,7 +246,7 @@
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom);
-        make.height.equalTo(@(140));
+        make.height.equalTo(@(bottomHeight));
     }];
     
     //两条腿转车
@@ -259,7 +262,7 @@
         make.top.equalTo(superview.mas_top);
         make.centerX.equalTo(superview.mas_centerX);
         make.width.equalTo(@(SCREEN_WIDTH * 4 / 10));
-        make.height.equalTo(@60);
+        make.height.equalTo(@(buttonHeight * 1.5));
     }];
     
     //分期商城
@@ -274,7 +277,7 @@
         make.top.equalTo(carButton.mas_bottom);
         make.left.equalTo(superview.mas_left);
         make.width.equalTo(@(SCREEN_WIDTH * 3 / 10));
-        make.height.equalTo(@40);
+        make.height.equalTo(@(buttonHeight));
     }];
     
     //车友部落
@@ -289,7 +292,7 @@
         make.top.equalTo(carButton.mas_bottom);
         make.centerX.equalTo(superview.mas_centerX);
         make.width.equalTo(@(SCREEN_WIDTH * 4 / 10));
-        make.height.equalTo(@40);
+        make.height.equalTo(@(buttonHeight));
     }];
     
     //汽车商城
@@ -305,7 +308,7 @@
         make.top.equalTo(carButton.mas_bottom);
         make.right.equalTo(superview.mas_right);
         make.width.equalTo(@(SCREEN_WIDTH * 3 / 10));
-        make.height.equalTo(@40);
+        make.height.equalTo(@(buttonHeight));
     }];
     
     //一键救援
@@ -321,7 +324,7 @@
         make.bottom.equalTo(superview.mas_bottom);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@40);
+        make.height.equalTo(@(buttonHeight));
     }];
 }
 
@@ -347,16 +350,21 @@
 {
     if (view == nil)
     {
+        //高度适配
+        CGFloat carouselHeight = carousel.frame.size.height;
+        CGFloat cardHeight = carouselHeight * 4 / 5;
+        CGFloat cardWidth = cardHeight * 2 / 3;
+        
         //容器
-        CGRect viewFrame = CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150);
+        CGRect viewFrame = CGRectMake(0, 0, cardWidth, cardHeight);
         view = [[UIView alloc] initWithFrame:viewFrame];
         
         //阴影
-        CGRect reflectionFrame = CGRectMake(viewFrame.origin.x + 10, 0, viewFrame.size.width - 20, viewFrame.size.height);
+        CGRect reflectionFrame = CGRectMake(10, 0, cardWidth - 20, cardHeight);
         ReflectionView *reflectionView = [[ReflectionView alloc] initWithFrame:reflectionFrame];
         reflectionView.backgroundColor = COLOR_MAIN_WHITE;
         reflectionView.layer.cornerRadius = 5.0f;
-        reflectionView.reflectionScale = 0.3;
+        reflectionView.reflectionScale = 0.2;
         reflectionView.reflectionAlpha = 0.3;
         reflectionView.reflectionGap = 8;
         [view addSubview:reflectionView];
