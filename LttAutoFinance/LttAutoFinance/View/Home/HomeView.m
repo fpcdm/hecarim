@@ -124,7 +124,7 @@
         make.left.equalTo(cityLabel.mas_right).offset(10);
         make.right.equalTo(superview.mas_right).offset(-30);
         
-        make.height.equalTo(@30);
+        make.height.equalTo(@40);
     }];
     
     //地址标签
@@ -132,26 +132,26 @@
     addressLabel.text = @"正在为您定位：定位中";
     addressLabel.backgroundColor = [UIColor clearColor];
     addressLabel.textColor = COLOR_MAIN_WHITE;
-    addressLabel.font = [UIFont boldSystemFontOfSize:10];
+    addressLabel.font = FONT_SMALL_BOLD;
     [addressView addSubview:addressLabel];
     
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(addressView.mas_top).offset(3);
+        make.top.equalTo(addressView.mas_top).offset(5);
         make.left.equalTo(addressView.mas_left).offset(20);
-        make.height.equalTo(@12);
+        make.right.equalTo(addressView.mas_right).offset(-10);
     }];
     
     //信息标签
     infoLabel = [[UILabel alloc] init];
     infoLabel.backgroundColor = [UIColor clearColor];
     infoLabel.textColor = [UIColor whiteColor];
-    infoLabel.font = [UIFont boldSystemFontOfSize:10];
+    infoLabel.font = FONT_SMALL_BOLD;
     [addressView addSubview:infoLabel];
     
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(addressView.mas_bottom).offset(-3);
+        make.bottom.equalTo(addressView.mas_bottom).offset(-5);
         make.left.equalTo(addressView.mas_left).offset(20);
-        make.height.equalTo(@12);
+        make.right.equalTo(addressView.mas_right).offset(-10);
     }];
     
     //幻灯片
@@ -428,9 +428,7 @@
         
         [subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(sepView.mas_bottom).offset(5);
-            make.left.equalTo(sepView.mas_left);
-            make.right.equalTo(sepView.mas_right);
-            
+            make.centerX.equalTo(superview.mas_centerX);
         }];
     }
     
