@@ -7,10 +7,11 @@
 //
 
 #import "HomeView.h"
+#import "iCarousel.h"
 #import "TAPageControl.h"
 #import "ReflectionView.h"
 
-@interface HomeView () <UIScrollViewDelegate, TAPageControlDelegate>
+@interface HomeView () <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, TAPageControlDelegate>
 
 @end
 
@@ -29,7 +30,6 @@
     TAPageControl *pageControl;
     
     //3D动画
-    NSMutableArray *carouselItems;
     NSMutableArray *cardData;
     
     //适配比例
@@ -201,7 +201,7 @@
     middleView = [UIView new];
     [self addSubview:middleView];
     
-    CGFloat middleHeight = 150;
+    CGFloat middleHeight = SCREEN_WIDTH / 320 * 150;
     
     UIView *superview = self;
     [middleView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -211,54 +211,25 @@
         make.height.equalTo(@(middleHeight));
     }];
     
-    //卡片数据
+    //卡片数据（3D旋转）
     cardData = [[NSMutableArray alloc] init];
-    UIImage *cardImage = [UIImage imageNamed:@"homeCard"];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconFinance", @"title":@"一键贷款", @"detail": @"汽车活押，月息0.9%", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconProtect", @"title":@"一键保险", @"detail": @"One key insurance", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconFix", @"title":@"一键维修", @"detail": @"One key repair", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconCheck", @"title":@"一键评估", @"detail": @"One key assessment", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
-    [cardData addObject:@{@"image":cardImage, @"icon":@"homeIconBuy", @"title":@"一键买车", @"detail": @"新车、二手车", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconFinance", @"title":@"一键贷款", @"subtitle": @"汽车活押，月息0.9%", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconProtect", @"title":@"一键保险", @"subtitle": @"One key insurance", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconFix", @"title":@"一键维修", @"subtitle": @"One key repair", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconCheck", @"title":@"一键评估", @"subtitle": @"One key assessment", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconBuy", @"title":@"一键买车", @"subtitle": @"新车、二手车", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconFinance", @"title":@"一键贷款", @"subtitle": @"汽车活押，月息0.9%", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconProtect", @"title":@"一键保险", @"subtitle": @"One key insurance", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconFix", @"title":@"一键维修", @"subtitle": @"One key repair", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconCheck", @"title":@"一键评估", @"subtitle": @"One key assessment", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconBuy", @"title":@"一键买车", @"subtitle": @"新车、二手车", @"tag": @4}];
     
-    UIScrollView *cardView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, middleHeight)];
-    CGFloat cardX = 0;
-    CGFloat cardWidth = SCREEN_WIDTH / 5;
-    CGFloat cardHeight = cardWidth * 1.5;
-    for (NSDictionary *cardDict in cardData) {
-        UIImageView *view = nil;
-        
-        //容器
-        CGRect viewFrame = CGRectMake(cardX, 0, cardWidth, cardHeight);
-        view = [[UIImageView alloc] initWithFrame:viewFrame];
-        
-        //阴影
-        CGRect reflectionFrame = CGRectMake(viewFrame.origin.x + 10, 0, viewFrame.size.width - 20, viewFrame.size.height);
-        ReflectionView *reflectionView = [[ReflectionView alloc] initWithFrame:reflectionFrame];
-        reflectionView.backgroundColor = COLOR_MAIN_WHITE;
-        reflectionView.layer.cornerRadius = 5.0f;
-        reflectionView.reflectionScale = 0.3;
-        reflectionView.reflectionAlpha = 0.3;
-        reflectionView.reflectionGap = 8;
-        [view addSubview:reflectionView];
-        
-        //图片
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:viewFrame];
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 5.0f;
-        imageView.image = [UIImage imageNamed:@"homeCard"];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [view addSubview:imageView];
-        
-        [cardView addSubview:view];
-        
-        cardX += cardWidth;
-        
-    }
-    [middleView addSubview:cardView];
-    cardView.contentSize = CGSizeMake(cardWidth * cardData.count, cardWidth);
+    //初始化视图
+    iCarousel *carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, middleHeight)];
+    carousel.delegate = self;
+    carousel.dataSource = self;
+    carousel.type = iCarouselTypeRotary;
+    [middleView addSubview:carousel];
 }
 
 //底部视图
@@ -278,6 +249,7 @@
     //两条腿转车
     UIButton *carButton = [[UIButton alloc] init];
     [carButton setBackgroundImage:[UIImage imageNamed:@"homeButtonCar"] forState:UIControlStateNormal];
+    [carButton setBackgroundImage:[UIImage imageNamed:@"homeButtonCar"] forState:UIControlStateHighlighted];
     carButton.tag = 4;
     [carButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:carButton];
@@ -363,6 +335,117 @@
 - (void)TAPageControl:(TAPageControl *)pageControl didSelectPageAtIndex:(NSInteger)index
 {
     [scrollView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
+}
+
+#pragma mark - iCarousel
+- (NSInteger)numberOfItemsInCarousel:(__unused iCarousel *)carousel
+{
+    return (NSInteger)[cardData count];
+}
+
+- (UIView *)carousel:(__unused iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    if (view == nil)
+    {
+        //容器
+        CGRect viewFrame = CGRectMake(0, 0, SCREEN_WIDTH / 320 * 100, SCREEN_WIDTH / 320 * 150);
+        view = [[UIView alloc] initWithFrame:viewFrame];
+        
+        //阴影
+        CGRect reflectionFrame = CGRectMake(viewFrame.origin.x + 10, 0, viewFrame.size.width - 20, viewFrame.size.height);
+        ReflectionView *reflectionView = [[ReflectionView alloc] initWithFrame:reflectionFrame];
+        reflectionView.backgroundColor = COLOR_MAIN_WHITE;
+        reflectionView.layer.cornerRadius = 5.0f;
+        reflectionView.reflectionScale = 0.3;
+        reflectionView.reflectionAlpha = 0.3;
+        reflectionView.reflectionGap = 8;
+        [view addSubview:reflectionView];
+        
+        //图片
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:viewFrame];
+        imageView.layer.masksToBounds = YES;
+        imageView.layer.cornerRadius = 5.0f;
+        imageView.image = [UIImage imageNamed:@"homeCard"];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [view addSubview:imageView];
+        
+        //数据
+        NSDictionary *cardDict = [cardData objectAtIndex:index];
+        
+        //标题
+        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.text = [cardDict objectForKey:@"title"];
+        titleLabel.textColor = [UIColor colorWithHexString:@"FF9D03"];
+        titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        [view addSubview:titleLabel];
+        
+        UIView *superview = view;
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.centerX.equalTo(superview.mas_centerX);
+            make.centerY.equalTo(superview.mas_centerY);
+        }];
+        
+        //图标
+        UIImageView *iconView = [[UIImageView alloc] init];
+        iconView.image = [UIImage imageNamed:[cardDict objectForKey:@"icon"]];
+        iconView.contentMode = UIViewContentModeScaleAspectFit;
+        [view addSubview:iconView];
+        
+        [iconView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.bottom.equalTo(titleLabel.mas_top).offset(-10);
+            make.centerX.equalTo(superview.mas_centerX);
+            
+            make.width.equalTo(@50);
+            make.height.equalTo(@30);
+        }];
+        
+        //分割线
+        UIView *sepView = [[UIView alloc] init];
+        sepView.backgroundColor = [UIColor colorWithHexString:@"dcc080"];
+        [view addSubview:sepView];
+        
+        [sepView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(titleLabel.mas_bottom).offset(2);
+            make.left.equalTo(superview.mas_left).offset(10);
+            make.right.equalTo(superview.mas_right).offset(-10);
+            make.height.equalTo(@0.5);
+        }];
+        
+        //子标题
+        UILabel *subtitleLabel = [[UILabel alloc] init];
+        subtitleLabel.text = [cardDict objectForKey:@"subtitle"];
+        subtitleLabel.textColor = [UIColor colorWithHexString:@"454545"];
+        subtitleLabel.font = [UIFont systemFontOfSize:8];
+        [view addSubview:subtitleLabel];
+        
+        [subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(sepView.mas_bottom).offset(5);
+            make.left.equalTo(sepView.mas_left);
+            make.right.equalTo(sepView.mas_right);
+            
+        }];
+    }
+    
+    return view;
+}
+
+- (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    //启用循环
+    if (option == iCarouselOptionWrap) {
+        return YES;
+        //返回默认值
+    } else {
+        return value;
+    }
+}
+
+- (void)carousel:(__unused iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    //选择的是当前跳转需求发表页面
+    if (index == carousel.currentItemIndex) {
+        [self.delegate actionCase:@(LTT_TYPE_AUTOFINANCE)];
+    }
 }
 
 #pragma mark - RenderData
