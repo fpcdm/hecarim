@@ -8,8 +8,12 @@
 
 #import "BaseHandler.h"
 #import "CaseEntity.h"
+#import "CategoryEntity.h"
 
 @interface CaseHandler : BaseHandler
+
+//需求类型列表
+- (void) queryTypes:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 - (void) addIntention: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 

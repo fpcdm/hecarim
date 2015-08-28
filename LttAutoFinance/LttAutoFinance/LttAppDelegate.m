@@ -15,6 +15,7 @@
 #import "UserHandler.h"
 #import "NotificationUtil.h"
 #import "TimerUtil.h"
+#import "CaseHandler.h"
 
 @interface LttAppDelegate ()
 
@@ -64,6 +65,9 @@
     
     //初始化推送
     [self initPush:launchOptions];
+    
+    //初始化需求类型
+    [self initCaseTypes];
     
     //初始化心跳
     [self initHeartbeat];
@@ -247,6 +251,16 @@
         [viewController isKindOfClass:[AppViewController class]]) {
         [(AppViewController *) viewController checkRemoteNotification];
     }
+}
+
+//初始化需求类型
+- (void)initCaseTypes
+{
+    //只请求一次，失败了使用之前数据
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryTypes:nil success:^(NSArray *result){
+        
+    } failure:^(ErrorEntity *error){}];
 }
 
 /**

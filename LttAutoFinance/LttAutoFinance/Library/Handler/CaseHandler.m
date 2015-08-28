@@ -10,6 +10,31 @@
 
 @implementation CaseHandler
 
+- (void) queryTypes:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *mappingParam = @{
+                                   @"type_id": @"id",
+                                   @"type_name": @"name",
+                                   @"remark": @"remark"
+                                   };
+    
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
+    
+    NSString *restPath = @"cases/types";
+    [sharedClient getObject:[CategoryEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void) addIntention:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
