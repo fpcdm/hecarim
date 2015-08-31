@@ -30,4 +30,8 @@
 
 - (NSString *) getDeviceId;
 
+- (void) setData:(NSString *)key object:(id)object;
+
+- (id) getData:(NSString *)key;
+
 @end

@@ -23,7 +23,7 @@
     
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
     
-    NSString *restPath = @"cases/types";
+    NSString *restPath = @"casetype/types";
     [sharedClient getObject:[CategoryEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         

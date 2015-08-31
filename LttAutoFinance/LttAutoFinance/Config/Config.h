@@ -59,6 +59,9 @@
 //默认每页数量
 #define LTT_PAGESIZE_DEFAULT 10
 
+//需求类型缓存KEY
+#define LTT_STORAGE_KEY_CASE_TYPES @"case_types"
+
 //需求类型
 //汽车金融
 #define LTT_TYPE_AUTOFINANCE 4

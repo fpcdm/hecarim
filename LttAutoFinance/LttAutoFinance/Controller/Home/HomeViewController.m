@@ -22,6 +22,7 @@ static NSString *detailAddress = nil;
 static NSString *lastCity = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
+static NSArray  *caseTypes = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
@@ -48,9 +49,54 @@ static NSDate   *lastDate = nil;
     [super viewDidLoad];
     
     self.navigationItem.title = @"两条腿";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    //设置定时器
-    [self setTimer];
+    //数据已经存在
+    if (caseTypes) {
+        //设置定时器
+        [self setTimer];
+    } else {
+        [self showLoading:TIP_LOADING_MESSAGE];
+        
+        CaseHandler *caseHandler = [[CaseHandler alloc] init];
+        [caseHandler queryTypes:nil success:^(NSArray *result){
+            [self hideLoading];
+            
+            //静态缓存
+            caseTypes = result;
+            
+            //离线缓存
+            NSMutableArray *resultTypes = [[NSMutableArray alloc] init];
+            for (CategoryEntity *category in caseTypes) {
+                [resultTypes addObject:[category toDictionary]];
+            }
+            [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CASE_TYPES object:resultTypes];
+            
+            //设置定时器
+            [self setTimer];
+        } failure:^(ErrorEntity *error){
+            [self hideLoading];
+            
+            //读取离线缓存
+            NSArray *cacheTypes = [[StorageUtil sharedStorage] getData:LTT_STORAGE_KEY_CASE_TYPES];
+            if (cacheTypes) {
+                caseTypes = [[NSMutableArray alloc] init];
+                for (NSDictionary *value in cacheTypes) {
+                    CategoryEntity *category = [[CategoryEntity alloc] initWithDictionary:value];
+                    [(NSMutableArray *)caseTypes addObject:category];
+                }
+                
+                //设置定时器
+                [self setTimer];
+            } else {
+                [self showError:error.message];
+            }
+        }];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -67,6 +113,7 @@ static NSDate   *lastDate = nil;
 //渲染视图
 - (void) renderView
 {
+    [homeView setData:@"types" value:caseTypes];
     [homeView setData:@"address" value:lastAddress ? lastAddress : @"定位失败"];
     [homeView setData:@"city" value:lastCity ? lastCity : @"定位"];
     [homeView setData:@"count" value:lastService ? lastService : @-1];

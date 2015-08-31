@@ -142,4 +142,30 @@ static StorageUtil *sharedStorage = nil;
     return deviceId;
 }
 
+- (void)setData:(NSString *)key object:(id)object
+{
+    if (object) {
+        [self.storage setObject:object forKey:key];
+        [self.storage synchronize];
+        
+        NSLog(@"set %@: %@", key, object);
+    } else {
+        [self.storage removeObjectForKey:key];
+        [self.storage synchronize];
+        
+        NSLog(@"delete %@", key);
+    }
+}
+
+- (id)getData:(NSString *)key
+{
+    id object = [self.storage objectForKey:key];
+    if (!object) {
+        return nil;
+    }
+    
+    NSLog(@"get %@: %@", key, object);
+    return object;
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "iCarousel.h"
 #import "TAPageControl.h"
 #import "ReflectionView.h"
+#import "CategoryEntity.h"
 
 @interface HomeView () <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, TAPageControlDelegate>
 
@@ -34,12 +35,19 @@
     
     //3D动画
     NSMutableArray *cardData;
+    
+    //需求类型
+    NSArray *caseTypes;
+    NSMutableArray *typeViews;
 }
 
 - (id)initWithData:(NSDictionary *)data
 {
     self = [super init];
     if (!self) return nil;
+    
+    //初始化数据
+    typeViews = [[NSMutableArray alloc] init];
     
     //初始化屏幕高度
     screenHeight = [((NSNumber *)[data objectForKey:@"height"]) floatValue];
@@ -164,7 +172,7 @@
     [topView addSubview:scrollView];
     
     //添加图片
-    NSArray *imagesData = @[@"homeAd", @"homeAd", @"homeAd"];
+    NSArray *imagesData = @[@"homeAd"];
     [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
         //图片容器
         UIView *imageContainer = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, scrollHeight)];
@@ -212,16 +220,16 @@
     
     //卡片数据（3D旋转）
     cardData = [[NSMutableArray alloc] init];
-    [cardData addObject:@{@"icon":@"homeIconFinance", @"title":@"一键贷款", @"subtitle": @"汽车活押，月息0.9%", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconProtect", @"title":@"一键保险", @"subtitle": @"One key insurance", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconFix", @"title":@"一键维修", @"subtitle": @"One key repair", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconCheck", @"title":@"一键评估", @"subtitle": @"One key assessment", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconBuy", @"title":@"一键买车", @"subtitle": @"新车、二手车", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconFinance", @"title":@"一键贷款", @"subtitle": @"汽车活押，月息0.9%", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconProtect", @"title":@"一键保险", @"subtitle": @"One key insurance", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconFix", @"title":@"一键维修", @"subtitle": @"One key repair", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconCheck", @"title":@"一键评估", @"subtitle": @"One key assessment", @"tag": @4}];
-    [cardData addObject:@{@"icon":@"homeIconBuy", @"title":@"一键买车", @"subtitle": @"新车、二手车", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconFinance", @"tag": @0}];
+    [cardData addObject:@{@"icon":@"homeIconProtect", @"tag": @1}];
+    [cardData addObject:@{@"icon":@"homeIconFix", @"tag": @2}];
+    [cardData addObject:@{@"icon":@"homeIconCheck", @"tag": @3}];
+    [cardData addObject:@{@"icon":@"homeIconBuy", @"tag": @4}];
+    [cardData addObject:@{@"icon":@"homeIconFinance", @"tag": @0}];
+    [cardData addObject:@{@"icon":@"homeIconProtect", @"tag": @1}];
+    [cardData addObject:@{@"icon":@"homeIconFix", @"tag": @2}];
+    [cardData addObject:@{@"icon":@"homeIconCheck", @"tag": @3}];
+    [cardData addObject:@{@"icon":@"homeIconBuy", @"tag": @4}];
     
     //初始化视图
     iCarousel *carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, middleHeight)];
@@ -253,9 +261,10 @@
     UIButton *carButton = [[UIButton alloc] init];
     [carButton setBackgroundImage:[UIImage imageNamed:@"homeButtonCar"] forState:UIControlStateNormal];
     [carButton setBackgroundImage:[UIImage imageNamed:@"homeButtonCar"] forState:UIControlStateHighlighted];
-    carButton.tag = 4;
+    carButton.tag = 5;
     [carButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:carButton];
+    [typeViews addObject:carButton];
     
     superview = bottomView;
     [carButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -269,9 +278,10 @@
     UIButton *firstButton = [[UIButton alloc] init];
     [firstButton setBackgroundImage:[UIImage imageNamed:@"homeButtonFinance"] forState:UIControlStateNormal];
     [firstButton setBackgroundImage:[UIImage imageNamed:@"homeButtonFinance"] forState:UIControlStateHighlighted];
-    firstButton.tag = 4;
+    firstButton.tag = 6;
     [firstButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:firstButton];
+    [typeViews addObject:firstButton];
     
     [firstButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(carButton.mas_bottom);
@@ -284,9 +294,10 @@
     UIButton *secondButton = [[UIButton alloc] init];
     [secondButton setBackgroundImage:[UIImage imageNamed:@"homeButtonClub"] forState:UIControlStateNormal];
     [secondButton setBackgroundImage:[UIImage imageNamed:@"homeButtonClub"] forState:UIControlStateHighlighted];
-    secondButton.tag = 4;
+    secondButton.tag = 7;
     [secondButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:secondButton];
+    [typeViews addObject:secondButton];
     
     [secondButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(carButton.mas_bottom);
@@ -299,9 +310,10 @@
     UIButton *thirdButton = [[UIButton alloc] init];
     [thirdButton setBackgroundImage:[UIImage imageNamed:@"homeButtonMall"] forState:UIControlStateNormal];
     [thirdButton setBackgroundImage:[UIImage imageNamed:@"homeButtonMall"] forState:UIControlStateHighlighted];
-    thirdButton.tag = 4;
+    thirdButton.tag = 8;
     [thirdButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:thirdButton];
+    [typeViews addObject:thirdButton];
     
     superview = bottomView;
     [thirdButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -315,9 +327,10 @@
     UIButton *helpButton = [[UIButton alloc] init];
     [helpButton setBackgroundImage:[UIImage imageNamed:@"homeButtonHelp"] forState:UIControlStateNormal];
     [helpButton setBackgroundImage:[UIImage imageNamed:@"homeButtonHelp"] forState:UIControlStateHighlighted];
-    helpButton.tag = 4;
+    helpButton.tag = 9;
     [helpButton addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:helpButton];
+    [typeViews addObject:helpButton];
     
     superview = bottomView;
     [helpButton mas_makeConstraints:^(MASConstraintMaker *make){
@@ -379,10 +392,13 @@
         
         //数据
         NSDictionary *cardDict = [cardData objectAtIndex:index];
+        NSNumber *tagNumber = [cardDict objectForKey:@"tag"];
+        view.tag = [tagNumber integerValue];
+        [typeViews addObject:view];
         
         //标题
         UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.text = [cardDict objectForKey:@"title"];
+        titleLabel.tag = 101;
         titleLabel.textColor = [UIColor colorWithHexString:@"FF9D03"];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
         [view addSubview:titleLabel];
@@ -421,7 +437,7 @@
         
         //子标题
         UILabel *subtitleLabel = [[UILabel alloc] init];
-        subtitleLabel.text = [cardDict objectForKey:@"subtitle"];
+        subtitleLabel.tag = 102;
         subtitleLabel.textColor = [UIColor colorWithHexString:@"454545"];
         subtitleLabel.font = [UIFont systemFontOfSize:8];
         [view addSubview:subtitleLabel];
@@ -450,13 +466,38 @@
 {
     //选择的是当前跳转需求发表页面
     if (index == carousel.currentItemIndex) {
-        [self.delegate actionCase:@(LTT_TYPE_AUTOFINANCE)];
+        UIView *view = [carousel itemViewAtIndex:index];
+        if (!caseTypes || [caseTypes count] < (view.tag + 1)) return;
+        
+        //获取需求类型
+        CategoryEntity *category = [caseTypes objectAtIndex:view.tag];
+        if (category) {
+            [self.delegate actionCase:category.id];
+        }
     }
 }
 
 #pragma mark - RenderData
 - (void) renderData
 {
+    //需求类型
+    caseTypes = [self getData:@"types"];
+    for (UIView *view in typeViews) {
+        if ([caseTypes count] < (view.tag + 1)) continue;
+        
+        CategoryEntity *category = [caseTypes objectAtIndex:view.tag];
+        //标题
+        UIView *titleView = [view viewWithTag:101];
+        if (titleView && [titleView isKindOfClass:[UILabel class]]) {
+            ((UILabel *)titleView).text = category.name;
+        }
+        //子标题
+        UIView *subtitleView = [view viewWithTag:102];
+        if (subtitleView && [subtitleView isKindOfClass:[UILabel class]]) {
+            ((UILabel *)subtitleView).text = category.remark;
+        }
+    }
+    
     NSString *city = [self getData:@"city"];
     cityLabel.text = city;
     
@@ -471,19 +512,16 @@
     }
 }
 
-- (void) actionCase: (id)sender
+- (void) actionCase: (UIButton *)sender
 {
-    UIView *view = nil;
-    if ([sender isKindOfClass:[UIView class]]) {
-        view = sender;
-    } else if ([sender isKindOfClass:[UIGestureRecognizer class]]) {
-        view = ((UIGestureRecognizer *)sender).view;
-    }
-    //检查参数
-    if (!view || !view.tag) return;
+    //参数检查
+    if (!caseTypes || [caseTypes count] < (sender.tag + 1)) return;
     
-    NSNumber *type = [NSNumber numberWithInteger:view.tag];
-    [self.delegate actionCase:type];
+    //获取需求类型
+    CategoryEntity *category = [caseTypes objectAtIndex:sender.tag];
+    if (category) {
+        [self.delegate actionCase:category.id];
+    }
 }
 
 - (void)actionGps
