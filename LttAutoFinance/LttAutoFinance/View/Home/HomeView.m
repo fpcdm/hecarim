@@ -399,6 +399,7 @@
         //标题
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.tag = 101;
+        titleLabel.text = @" ";
         titleLabel.textColor = [UIColor colorWithHexString:@"FF9D03"];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
         [view addSubview:titleLabel];
@@ -438,6 +439,7 @@
         //子标题
         UILabel *subtitleLabel = [[UILabel alloc] init];
         subtitleLabel.tag = 102;
+        subtitleLabel.text = @" ";
         subtitleLabel.textColor = [UIColor colorWithHexString:@"454545"];
         subtitleLabel.font = [UIFont systemFontOfSize:8];
         [view addSubview:subtitleLabel];
