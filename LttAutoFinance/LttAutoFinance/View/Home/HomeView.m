@@ -244,7 +244,7 @@
 - (void)bottomView
 {
     CGFloat bottomHeight = screenHeight * 2 / 8.0;
-    CGFloat buttonHeight = bottomHeight * 2 / 7;
+    CGFloat buttonHeight = bottomHeight * 5 / 16;
     
     bottomView = [[UIView alloc] init];
     [self addSubview:bottomView];
@@ -268,10 +268,10 @@
     
     superview = bottomView;
     [carButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
+        make.bottom.equalTo(superview.mas_top).offset(buttonHeight * 1.2);
         make.centerX.equalTo(superview.mas_centerX);
         make.width.equalTo(@(SCREEN_WIDTH * 4 / 10));
-        make.height.equalTo(@(buttonHeight * 1.5));
+        make.height.equalTo(@(SCREEN_WIDTH * 4 / 10 * 0.44));
     }];
     
     //分期商城
@@ -286,7 +286,7 @@
     [firstButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(carButton.mas_bottom);
         make.left.equalTo(superview.mas_left);
-        make.width.equalTo(@(SCREEN_WIDTH * 3 / 10));
+        make.width.equalTo(@(SCREEN_WIDTH * 1 / 3));
         make.height.equalTo(@(buttonHeight));
     }];
     
@@ -302,7 +302,7 @@
     [secondButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(carButton.mas_bottom);
         make.centerX.equalTo(superview.mas_centerX);
-        make.width.equalTo(@(SCREEN_WIDTH * 4 / 10));
+        make.width.equalTo(@(SCREEN_WIDTH * 1 / 3));
         make.height.equalTo(@(buttonHeight));
     }];
     
@@ -319,7 +319,7 @@
     [thirdButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(carButton.mas_bottom);
         make.right.equalTo(superview.mas_right);
-        make.width.equalTo(@(SCREEN_WIDTH * 3 / 10));
+        make.width.equalTo(@(SCREEN_WIDTH * 1 / 3));
         make.height.equalTo(@(buttonHeight));
     }];
     
