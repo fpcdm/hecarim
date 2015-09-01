@@ -55,6 +55,12 @@ static NSArray  *caseTypes = nil;
 {
     [super viewWillAppear:animated];
     
+    //定位失败，重新定位
+    if (!lastAddress) {
+        [LocationUtil sharedInstance].delegate = self;
+        [[LocationUtil sharedInstance] restartUpdate];
+    }
+    
     [self initData];
 }
 
@@ -127,16 +133,18 @@ static NSArray  *caseTypes = nil;
 
 - (void) setTimer
 {
-    //定时器间隔：1分钟，GPS刷新间隔：5-6分钟，因为手工GPS会重置最后刷新时间
-    gpsTimer = [TimerUtil repeatTimer:(USER_LOCATION_INTERVAL / 5) block:^{
-        //检查GPS刷新间隔
-        NSTimeInterval timeInterval = [TimerUtil timeInterval:lastDate];
-        if (timeInterval > 0 && timeInterval < (USER_LOCATION_INTERVAL - 1)) {
-            NSLog(@"未到GPS刷新时间");
-            
-            //加载缓存数据视图
-            [self renderView];
-            return;
+    //定时器间隔：30秒钟，GPS刷新间隔：5-6分钟，因为手工GPS会重置最后刷新时间
+    gpsTimer = [TimerUtil repeatTimer:(USER_LOCATION_INTERVAL / 10) block:^{
+        //定位成功检查GPS刷新间隔
+        if (lastAddress) {
+            NSTimeInterval timeInterval = [TimerUtil timeInterval:lastDate];
+            if (timeInterval > 0 && timeInterval < (USER_LOCATION_INTERVAL - 1)) {
+                NSLog(@"未到GPS刷新时间");
+                
+                //加载缓存数据视图
+                [self renderView];
+                return;
+            }
         }
         
         //记录刷新时间
@@ -145,7 +153,7 @@ static NSArray  *caseTypes = nil;
         //设置位置代理
         [LocationUtil sharedInstance].delegate = self;
         //刷新一次gps
-        [[LocationUtil sharedInstance] startUpdate];
+        [[LocationUtil sharedInstance] restartUpdate];
     } queue:dispatch_get_main_queue()];
 }
 
@@ -194,8 +202,7 @@ static NSArray  *caseTypes = nil;
 
 - (void)updateLocationError:(NSError *)error
 {
-    //停止监听GPS
-    [[LocationUtil sharedInstance] stopUpdate];
+    if (lastAddress) return;
     
     //重置数据
     lastAddress = nil;
