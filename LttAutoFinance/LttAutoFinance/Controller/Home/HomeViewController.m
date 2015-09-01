@@ -55,6 +55,22 @@ static NSArray  *caseTypes = nil;
 {
     [super viewWillAppear:animated];
     
+    [self initData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //释放定时器
+    if (gpsTimer) {
+        [gpsTimer invalidate];
+        gpsTimer = nil;
+    }
+}
+
+- (void)initData
+{
     //数据已经存在
     if (caseTypes) {
         //设置定时器
@@ -96,17 +112,6 @@ static NSArray  *caseTypes = nil;
                 [self showError:error.message];
             }
         }];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    //释放定时器
-    if (gpsTimer) {
-        [gpsTimer invalidate];
-        gpsTimer = nil;
     }
 }
 
@@ -211,6 +216,11 @@ static NSArray  *caseTypes = nil;
     [LocationUtil sharedInstance].delegate = self;
     //刷新GPS
     [[LocationUtil sharedInstance] restartUpdate];
+}
+
+- (void)actionReload
+{
+    [self initData];
 }
 
 - (void)actionCase:(NSNumber *)type

@@ -469,7 +469,12 @@
     //选择的是当前跳转需求发表页面
     if (index == carousel.currentItemIndex) {
         UIView *view = [carousel itemViewAtIndex:index];
-        if (!caseTypes || [caseTypes count] < (view.tag + 1)) return;
+        if (!caseTypes) {
+            [self.delegate actionReload];
+            return;
+        }
+        
+        if ([caseTypes count] < (view.tag + 1)) return;
         
         //获取需求类型
         CategoryEntity *category = [caseTypes objectAtIndex:view.tag];
@@ -516,8 +521,13 @@
 
 - (void) actionCase: (UIButton *)sender
 {
+    if (!caseTypes) {
+        [self.delegate actionReload];
+        return;
+    }
+    
     //参数检查
-    if (!caseTypes || [caseTypes count] < (sender.tag + 1)) return;
+    if ([caseTypes count] < (sender.tag + 1)) return;
     
     //获取需求类型
     CategoryEntity *category = [caseTypes objectAtIndex:sender.tag];
