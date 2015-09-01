@@ -11,6 +11,7 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "CaseDetailActivity.h"
+#import "LocationUtil.h"
 
 @interface CaseListActivity () <CaseListViewDelegate>
 
@@ -44,6 +45,9 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"服务单管理";
+    
+    //刷新gps
+    [[LocationUtil sharedInstance] restartUpdate];
 }
 
 //自动刷新服务单

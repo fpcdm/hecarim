@@ -35,10 +35,7 @@
 #pragma mark - 公用配置
 /********公用配置>>>********/
 //用户心跳间隔
-#define USER_HEARTBEAT_INTERVAL 60.0
-
-//刷新位置间隔
-#define USER_LOCATION_INTERVAL 300.0
+#define USER_HEARTBEAT_INTERVAL 10.0
 
 //默认每页数量
 #define LTT_PAGESIZE_DEFAULT 10

@@ -28,7 +28,7 @@
     
     TimerUtil *heartbeatTimer;
     LocationUtil *locationUtil;
-    NSDate *lastLocationDate;
+    BOOL isFirstGps;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -257,23 +257,12 @@
 - (void) initHeartbeat
 {
     //初始化GPS
+    isFirstGps = YES;
     locationUtil = [LocationUtil sharedInstance];
     locationUtil.delegate = self;
     
     //初始化定时器
     heartbeatTimer = [TimerUtil repeatTimer:USER_HEARTBEAT_INTERVAL block:^{
-        //检查GPS刷新间隔
-        NSTimeInterval timeInterval = [TimerUtil timeInterval:lastLocationDate];
-        if (timeInterval > 0 && timeInterval < (USER_LOCATION_INTERVAL - 1)) {
-            NSLog(@"未到GPS刷新时间");
-        } else {
-            //记录刷新时间
-            lastLocationDate = [NSDate date];
-            
-            //刷新一次gps
-            [locationUtil startUpdate];
-        }
-        
         //更新用户心跳
         [self updateUserHeartbeat];
     }];
@@ -304,17 +293,16 @@
 #pragma mark - GPS
 - (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
-    //停止监听GPS
-    [locationUtil stopUpdate];
-    
-    //立即更新用户心跳位置
-    [self updateUserHeartbeat];
+    //第一次立即更新用户心跳位置
+    if (isFirstGps) {
+        isFirstGps = NO;
+        [self updateUserHeartbeat];
+    }
 }
 
 - (void)updateLocationError:(NSError *)error
 {
-    //停止监听GPS
-    [locationUtil stopUpdate];
+    
 }
 
 @end

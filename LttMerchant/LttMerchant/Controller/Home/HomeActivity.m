@@ -8,6 +8,7 @@
 
 #import "HomeActivity.h"
 #import "CaseListActivity.h"
+#import "LocationUtil.h"
 
 @interface HomeActivity ()
 
@@ -20,6 +21,9 @@
     isIndexNavBar = YES;
     isMenuEnabled = YES;
     [super viewDidLoad];
+    
+    //刷新gps
+    [[LocationUtil sharedInstance] restartUpdate];
 }
 
 - (NSString *) templateName
