@@ -102,6 +102,7 @@
         NSString *server = row.value;
         
         [[RestKitUtil sharedClient] setBaseUrl:[NSURL URLWithString:server]];
+        [[StorageUtil sharedStorage] setData:DEBUG_LTT_REST_SERVER_KEY object:server];
     };
     [pickerUtil show];
 }

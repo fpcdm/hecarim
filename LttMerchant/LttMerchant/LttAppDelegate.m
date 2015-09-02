@@ -61,6 +61,16 @@
     //初始化客户端类型
     [[RestKitUtil sharedClient] setClientType:LTT_CLIENT_TYPE];
     
+    //调试功能
+#ifdef LTT_DEBUG
+    if (IS_DEBUG) {
+        NSString *server = [[StorageUtil sharedStorage] getData:DEBUG_LTT_REST_SERVER_KEY];
+        if (server) {
+            [[RestKitUtil sharedClient] setBaseUrl:[NSURL URLWithString:server]];
+        }
+    }
+#endif
+    
     UIViewController *viewController = nil;
     //是否登录
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
