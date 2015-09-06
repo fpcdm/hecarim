@@ -12,6 +12,7 @@
 @implementation AddressDetailView
 {
     AddressEntity *address;
+    UIButton *deleteButton;
 }
 
 - (id)init
@@ -20,13 +21,14 @@
     if (!self) return nil;
     
     //删除按钮
-    UIButton *button = [AppUIUtil makeButton:@"删除"];
-    [button addTarget:self action:@selector(actionDelete) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
+    deleteButton = [AppUIUtil makeButton:@"删除"];
+    deleteButton.hidden = YES;
+    [deleteButton addTarget:self action:@selector(actionDelete) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:deleteButton];
     
     UIView *superview = self;
     int padding = 10;
-    [button mas_makeConstraints:^(MASConstraintMaker *make){
+    [deleteButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.tableView.tableFooterView.mas_bottom);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
@@ -74,6 +76,8 @@
                         ],
                       nil];
     [self.tableView reloadData];
+    
+    deleteButton.hidden = NO;
 }
 
 #pragma mark - TableView

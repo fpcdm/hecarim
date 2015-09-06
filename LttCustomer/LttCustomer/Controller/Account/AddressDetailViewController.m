@@ -34,7 +34,7 @@
     
     self.navigationItem.title = @"我的地址";
     
-    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonSystemItem:UIBarButtonSystemItemEdit];
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"编辑"];
     barButtonItem.target = self;
     barButtonItem.action = @selector(actionEdit);
     self.navigationItem.rightBarButtonItem = barButtonItem;
