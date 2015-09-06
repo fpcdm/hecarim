@@ -82,12 +82,11 @@ static NSArray  *caseTypes = nil;
         //设置定时器
         [self setTimer];
     } else {
+        //显示加载框
         [self showLoading:TIP_LOADING_MESSAGE];
         
         CaseHandler *caseHandler = [[CaseHandler alloc] init];
         [caseHandler queryTypes:nil success:^(NSArray *result){
-            [self hideLoading];
-            
             //静态缓存
             caseTypes = result;
             
@@ -101,8 +100,6 @@ static NSArray  *caseTypes = nil;
             //设置定时器
             [self setTimer];
         } failure:^(ErrorEntity *error){
-            [self hideLoading];
-            
             //读取离线缓存
             NSArray *cacheTypes = [[StorageUtil sharedStorage] getData:LTT_STORAGE_KEY_CASE_TYPES];
             if (cacheTypes) {
@@ -124,6 +121,9 @@ static NSArray  *caseTypes = nil;
 //渲染视图
 - (void) renderView
 {
+    //隐藏加载框
+    [self hideLoading];
+    
     [homeView setData:@"types" value:caseTypes];
     [homeView setData:@"address" value:lastAddress ? lastAddress : @"定位失败"];
     [homeView setData:@"city" value:lastCity ? lastCity : @"定位"];
