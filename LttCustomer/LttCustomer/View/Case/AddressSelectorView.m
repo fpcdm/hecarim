@@ -61,7 +61,7 @@
     }
     
     //姓名
-    UILabel *nameLabel = [self makeCellLabel:address.name ? address.name : @"-"];
+    UILabel *nameLabel = [self makeCellLabel:address.name];
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -115,7 +115,7 @@
         [cell addSubview:addressLabel];
         
         [addressLabel mas_makeConstraints:^(MASConstraintMaker *make){
-            make.top.equalTo(nameLabel.mas_bottom).offset(5);
+            make.top.equalTo(mobileLabel.mas_bottom).offset(5);
             make.left.equalTo(superview.mas_left).offset(padding);
             make.right.equalTo(superview.mas_right).offset(-padding);
         }];
