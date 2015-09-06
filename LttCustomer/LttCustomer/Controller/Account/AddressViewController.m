@@ -41,7 +41,10 @@
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
     //加载数据
+    [self showLoading:TIP_LOADING_MESSAGE];
     [self loadData:^(id object){
+        [self hideLoading];
+        
         [addressView setData:@"addressList" value:addressList];
         [addressView renderData];
     } failure:^(ErrorEntity *error){

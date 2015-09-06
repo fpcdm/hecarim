@@ -40,8 +40,11 @@
     self.navigationItem.title = @"呼叫客服";
     
     //查询默认收货地址
+    [self showLoading:TIP_LOADING_MESSAGE];
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
+        [self hideLoading];
+        
         if ([result count] > 0) {
             AddressEntity *address = [result firstObject];
             [self addressView:address];

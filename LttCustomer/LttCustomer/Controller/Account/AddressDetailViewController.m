@@ -43,8 +43,11 @@
     AddressEntity *requestAddress = [[AddressEntity alloc] init];
     requestAddress.id = self.address.id;
     
+    [self showLoading:TIP_LOADING_MESSAGE];
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler queryAddress:requestAddress success:^(NSArray *result){
+        [self hideLoading];
+        
         AddressEntity *resultAddress = [result firstObject];
         self.address = resultAddress;
         
