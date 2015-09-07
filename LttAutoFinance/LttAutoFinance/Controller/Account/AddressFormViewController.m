@@ -139,6 +139,9 @@
 
 - (void)actionArea
 {
+    //加载效果
+    [self showLoading:TIP_LOADING_MESSAGE];
+    
     //变量缓存
     AreaEntity *requestArea = [[AreaEntity alloc] init];
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
@@ -157,6 +160,7 @@
             
             completionHandler(rows);
         } failure:^(ErrorEntity *error){
+            [self hideLoading];
         }];
     };
     
@@ -174,6 +178,7 @@
             
             completionHandler(rows);
         } failure:^(ErrorEntity *error){
+            [self hideLoading];
         }];
     };
     
@@ -184,6 +189,8 @@
         requestArea.code = city.code;
         
         [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            [self hideLoading];
+            
             NSMutableArray *rows = [[NSMutableArray alloc] init];
             for (AreaEntity *area in result) {
                 [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
@@ -191,6 +198,7 @@
             
             completionHandler(rows);
         } failure:^(ErrorEntity *error){
+            [self hideLoading];
         }];
     };
     
@@ -225,6 +233,9 @@
         return;
     }
     
+    //加载效果
+    [self showLoading:TIP_LOADING_MESSAGE];
+    
     //街道选择器
     PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:addressFormView];
     pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
@@ -234,6 +245,8 @@
         
         HelperHandler *helperHandler = [[HelperHandler alloc] init];
         [helperHandler queryAreas:countyEntity success:^(NSArray *result){
+            [self hideLoading];
+            
             //初始化行数据
             NSMutableArray *rows = [[NSMutableArray alloc] init];
             for (AreaEntity *street in result) {

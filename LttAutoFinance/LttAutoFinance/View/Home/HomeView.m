@@ -506,10 +506,10 @@
     }
     
     NSString *city = [self getData:@"city"];
-    cityLabel.text = city;
+    if (city) cityLabel.text = city;
     
     NSString *address = [self getData:@"address"];
-    addressLabel.text = [NSString stringWithFormat:@"正在为您定位：%@", address];
+    if (address) addressLabel.text = [NSString stringWithFormat:@"正在为您定位：%@", address];
     
     NSNumber *count = [self getData:@"count"];
     if (!count || [@-1 isEqualToNumber:count]) {
