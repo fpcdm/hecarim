@@ -472,6 +472,10 @@
 		2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B071B1D529F006189EF /* NSString+trim.m */; };
 		2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B091B1D529F006189EF /* UIColor+Hex.m */; };
 		2F800B101B1D529F006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B0A1B1D529F006189EF /* README.md */; };
+		2F81ADE71B9D427F00E381B0 /* CaseTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADE61B9D427F00E381B0 /* CaseTableCell.m */; };
+		2F81ADEA1B9D6C2500E381B0 /* ConsumeHistoryActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADE91B9D6C2500E381B0 /* ConsumeHistoryActivity.m */; };
+		2F81ADED1B9D6D1600E381B0 /* ConsumeHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADEC1B9D6D1600E381B0 /* ConsumeHistoryView.m */; };
+		2F81ADF01B9D900C00E381B0 /* ConsumeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */; };
 		2F8BC2651B5CE07300B7D8B8 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 2F8BC2641B5CE07300B7D8B8 /* www */; };
 		2F9000481B1D91380040D97B /* UIViewController+Ltt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000471B1D91380040D97B /* UIViewController+Ltt.m */; };
 		2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000571B1D91470040D97B /* MASCompositeConstraint.m */; };
@@ -1475,6 +1479,14 @@
 		2F800B081B1D529F006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800B091B1D529F006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800B0A1B1D529F006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2F81ADE51B9D427F00E381B0 /* CaseTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTableCell.h; sourceTree = "<group>"; };
+		2F81ADE61B9D427F00E381B0 /* CaseTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTableCell.m; sourceTree = "<group>"; };
+		2F81ADE81B9D6C2500E381B0 /* ConsumeHistoryActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeHistoryActivity.h; sourceTree = "<group>"; };
+		2F81ADE91B9D6C2500E381B0 /* ConsumeHistoryActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumeHistoryActivity.m; sourceTree = "<group>"; };
+		2F81ADEB1B9D6D1600E381B0 /* ConsumeHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeHistoryView.h; sourceTree = "<group>"; };
+		2F81ADEC1B9D6D1600E381B0 /* ConsumeHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumeHistoryView.m; sourceTree = "<group>"; };
+		2F81ADEE1B9D900C00E381B0 /* ConsumeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeEntity.h; sourceTree = "<group>"; };
+		2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumeEntity.m; sourceTree = "<group>"; };
 		2F8BC2641B5CE07300B7D8B8 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		2F9000451B1D91260040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
 		2F9000461B1D91380040D97B /* UIViewController+Ltt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ltt.h"; sourceTree = "<group>"; };
@@ -1840,6 +1852,8 @@
 				2F0E37D61B6B216E00CFE2E6 /* GoodsFormActivity.m */,
 				2F0E37D81B6B218400CFE2E6 /* ServiceFormActivity.h */,
 				2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */,
+				2F81ADE81B9D6C2500E381B0 /* ConsumeHistoryActivity.h */,
+				2F81ADE91B9D6C2500E381B0 /* ConsumeHistoryActivity.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -1905,6 +1919,8 @@
 				2F6DE5BB1B6775F9003178DE /* ServiceEntity.m */,
 				2F0E37DB1B6B62E200CFE2E6 /* CaseEntity.h */,
 				2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */,
+				2F81ADEE1B9D900C00E381B0 /* ConsumeEntity.h */,
+				2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1937,10 +1953,14 @@
 				2F6697401B8185C6004BF473 /* CaseListView.m */,
 				2F60B7171B71E8AD00FECADC /* GoodsSpecCell.h */,
 				2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */,
+				2F81ADE51B9D427F00E381B0 /* CaseTableCell.h */,
+				2F81ADE61B9D427F00E381B0 /* CaseTableCell.m */,
 				2F4347EB1B7A271200D96AB6 /* ServiceListView.h */,
 				2F4347EC1B7A271200D96AB6 /* ServiceListView.m */,
 				2F7B60791B7AF24900F65729 /* GoodsListView.h */,
 				2F7B607A1B7AF24900F65729 /* GoodsListView.m */,
+				2F81ADEB1B9D6D1600E381B0 /* ConsumeHistoryView.h */,
+				2F81ADEC1B9D6D1600E381B0 /* ConsumeHistoryView.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4211,6 +4231,7 @@
 				2F78FAA61B75B1F30009F349 /* Samurai_ActivityRouter.m in Sources */,
 				2F78FAB31B75B1F30009F349 /* Samurai_Script.m in Sources */,
 				2F78FAD31B75B1F30009F349 /* ServiceGestureSetting.m in Sources */,
+				2F81ADED1B9D6D1600E381B0 /* ConsumeHistoryView.m in Sources */,
 				2F6697411B8185C6004BF473 /* CaseListView.m in Sources */,
 				2F78FBB91B75B1F40009F349 /* foundation.c in Sources */,
 				2F4347ED1B7A271200D96AB6 /* ServiceListView.m in Sources */,
@@ -4225,6 +4246,7 @@
 				2F78FA7D1B75B1F30009F349 /* Signal+Model.m in Sources */,
 				2F6D3F031B3128CC007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F78FA991B75B1F30009F349 /* Samurai_UIScrollView.m in Sources */,
+				2F81ADE71B9D427F00E381B0 /* CaseTableCell.m in Sources */,
 				2FCAF8A31B20453E00F3B084 /* ErrorEntity.m in Sources */,
 				2F78FA6C1B75B1F30009F349 /* Samurai_Sandbox.m in Sources */,
 				2F78FAEE1B75B1F30009F349 /* NSObject+AutoRuntime.m in Sources */,
@@ -4356,6 +4378,7 @@
 				2F78FB251B75B1F40009F349 /* Samurai_CSSNumberVh.m in Sources */,
 				2FED7E341B1EA87900306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2F78FBB21B75B1F40009F349 /* string_buffer.c in Sources */,
+				2F81ADEA1B9D6C2500E381B0 /* ConsumeHistoryActivity.m in Sources */,
 				2F78FB401B75B1F40009F349 /* UIWebView+Html.m in Sources */,
 				2F78FA661B75B1F30009F349 /* Samurai_Encoding.m in Sources */,
 				2F78FAEC1B75B1F30009F349 /* AutoCoding.m in Sources */,
@@ -4418,6 +4441,7 @@
 				2F78FB331B75B1F40009F349 /* UILabel+Html.m in Sources */,
 				2F78FB8C1B75B1F40009F349 /* Samurai_HtmlElementTfoot.m in Sources */,
 				2F78FAEF1B75B1F30009F349 /* EMMarkupProperty.m in Sources */,
+				2F81ADF01B9D900C00E381B0 /* ConsumeEntity.m in Sources */,
 				2F78FB901B75B1F40009F349 /* Samurai_HtmlElementTr.m in Sources */,
 				2FED7DC61B1EA2E100306A11 /* UIButton+WebCache.m in Sources */,
 				2FED7DC71B1EA2E100306A11 /* UIImage+GIF.m in Sources */,

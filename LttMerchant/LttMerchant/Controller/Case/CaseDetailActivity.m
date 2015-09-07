@@ -12,8 +12,11 @@
 #import "CaseEditActivity.h"
 #import "GoodsListActivity.h"
 #import "ServiceListActivity.h"
+#import "ConsumeHistoryActivity.h"
 
 @interface CaseDetailActivity ()
+
+@property (nonatomic, strong) UITableView *consumeTable;
 
 @property (nonatomic, strong) UITableView *goodsTable;
 
@@ -80,6 +83,8 @@
 - (void)onTemplateLoaded
 {
     //调整视图基本样式
+    UITableView *tableConsume = (UITableView *) $(@"#consumeTable").firstView;
+    tableConsume.scrollEnabled = NO;
     UITableView *tableGoods = (UITableView *) $(@"#goodsTable").firstView;
     tableGoods.scrollEnabled = NO;
     UITableView *tableServices = (UITableView *) $(@"#servicesTable").firstView;
@@ -101,12 +106,19 @@
     if (!customerRemark) customerRemark = (intention.typeName && [intention.typeName length] > 0) ? intention.typeName : nil;
     self.scope[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
+                                       @"userAppellation": intention.userAppellation ? intention.userAppellation : @"-",
                                        @"userMobile": intention.userMobile,
                                        @"buyerName": intention.buyerName ? intention.buyerName : @"-",
                                        @"buyerMobile": intention.buyerMobile ? intention.buyerMobile : @"-",
                                        @"buyerAddress": buyerAddress,
                                        @"remark": customerRemark ? customerRemark: @"-"
                                        };
+    
+    self.scope[@"consume"] = @{@"consumeList": @{@"consumeItems":@[@{
+                                                                       @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)
+                                                                       }]}};
+    
+    [self.consumeTable reloadData];
     
     NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
     self.scope[@"goods"] = @{
@@ -200,6 +212,7 @@
         $(@"#caseRemark").ATTR(@"display", @"block");
         $(@"#remarkTitle").ATTR(@"display", @"block");
         
+        $(@"#consumeContainer").ATTR(@"display", @"block");
         $(@"#goodsContainer").ATTR(@"display", @"none");
         $(@"#servicesContainer").ATTR(@"display", @"none");
         
@@ -217,6 +230,7 @@
         $(@"#caseRemark").ATTR(@"display", @"block");
         $(@"#remarkTitle").ATTR(@"display", @"block");
         
+        $(@"#consumeContainer").ATTR(@"display", @"block");
         $(@"#goodsContainer").ATTR(@"display", @"block");
         $(@"#servicesContainer").ATTR(@"display", @"block");
         
@@ -234,6 +248,7 @@
         $(@"#caseRemark").ATTR(@"display", @"block");
         $(@"#remarkTitle").ATTR(@"display", @"block");
         
+        $(@"#consumeContainer").ATTR(@"display", @"none");
         $(@"#goodsContainer").ATTR(@"display", @"block");
         $(@"#servicesContainer").ATTR(@"display", @"block");
         
@@ -253,6 +268,7 @@
         UIView *remarkView = $(@"#remarkTitle").firstView;
         if (remarkView) [remarkView removeFromSuperview];
         
+        $(@"#consumeContainer").ATTR(@"display", @"none");
         $(@"#goodsContainer").ATTR(@"display", @"block");
         $(@"#servicesContainer").ATTR(@"display", @"block");
         
@@ -272,6 +288,7 @@
         UIView *remarkView = $(@"#remarkTitle").firstView;
         if (remarkView) [remarkView removeFromSuperview];
         
+        $(@"#consumeContainer").ATTR(@"display", @"none");
         $(@"#goodsContainer").ATTR(@"display", @"block");
         $(@"#servicesContainer").ATTR(@"display", @"block");
         
@@ -291,6 +308,7 @@
         UIView *remarkView = $(@"#remarkTitle").firstView;
         if (remarkView) [remarkView removeFromSuperview];
         
+        $(@"#consumeContainer").ATTR(@"display", @"none");
         $(@"#goodsContainer").ATTR(@"display", @"block");
         $(@"#servicesContainer").ATTR(@"display", @"block");
         
@@ -321,6 +339,14 @@
 {
     NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.buyerMobile];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
+//消费记录
+- (void)actionConsumeHistory:(SamuraiSignal *)signal
+{
+    ConsumeHistoryActivity *viewController = [[ConsumeHistoryActivity alloc] init];
+    viewController.intention = intention;
+    [self pushViewController:viewController animated:YES];
 }
 
 //抢单

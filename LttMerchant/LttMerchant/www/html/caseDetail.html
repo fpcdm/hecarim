@@ -66,6 +66,14 @@
             margin-left: 50px;
         }
         
+        .item-scroll {
+            width: 200%;
+        }
+        
+        .item-scroll .item-inline {
+            width: 200%;
+        }
+        
         .item-info .line-right {
             position: absolute;
             right: 10px;
@@ -190,6 +198,22 @@
             padding-top: 2.5px;
         }
         
+        .table-consume {
+            height: 35;
+            border-bottom: 0px;
+        }
+        
+        .table-consume .table-item {
+            height: 35;
+            border-top: 0px;
+        }
+        
+        .table-consume .table-line {
+            width: 100%;
+            height: 35px;
+            padding-top: 7.5px;
+        }
+        
         .table-goods .table-item {
             height: 50px;
         }
@@ -241,16 +265,17 @@
             <div class="item-icon">
                 <img src="detail_icon" />
             </div>
-            <div class="item-info">
-                <div class="item-line">
+            <div class="item-info item-scroll">
+                <div class="item-line item-inline">
                     <label>下单人：</label>
-                    <label name="userName">-</label>
+                    <label name="userAppellation">-</label>
                     <label>(</label>
+                    <label name="userName">-</label>
                     <label onclick="@selector(actionContactUser:)" class="case-mobile" name="userMobile">-</label>
                     <label>)</label>
                 </div>
                 
-                <div class="item-line margin-top-10">
+                <div class="item-line item-inline margin-top-10">
                     <label>服务联系人：</label>
                     <label name="buyerName">-</label>
                     <label>(</label>
@@ -267,6 +292,20 @@
                 <UIScrollView id="caseRemark" class="case-remark" name="remark" style="display:none;">-</UIScrollView>
                 
             </div>
+        </div>
+        
+        <div id="consumeContainer" class="case-detail" name="consume" style="display:none;">
+            
+            <UITableView id="consumeTable" name="consumeList" class="table table-consume" columns="1" is-vertical>
+                
+                <CaseTableCell onclick="@selector(actionConsumeHistory:)" name="consumeItems" class="table-item" is-row>
+                    <div class="table-line">
+                        <label>消费记录</label>
+                    </div>
+                </CaseTableCell>
+                
+            </UITableView>
+            
         </div>
         
         <div id="goodsContainer" class="case-detail" name="goods" style="display:none;">

@@ -9,6 +9,7 @@
 #import "BaseHandler.h"
 #import "UserEntity.h"
 #import "DeviceEntity.h"
+#import "ConsumeEntity.h"
 
 @interface UserHandler : BaseHandler
 
@@ -55,5 +56,12 @@
  *  @param failure 失败回调
  */
 - (void) clearNotifications: (DeviceEntity *) device success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ * 查询用户消费记录
+ * @param success
+ * @param failure
+ */
+- (void) queryConsumeHistory: (UserEntity *)user param: (NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
 
 @end

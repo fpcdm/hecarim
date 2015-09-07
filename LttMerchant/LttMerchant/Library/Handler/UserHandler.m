@@ -86,4 +86,22 @@
     }];
 }
 
+- (void) queryConsumeHistory:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ConsumeEntity class] mappingParam:@{@"consum_time": @"consumeTime", @"content": @"consumeContent"} keyPath:@"list"];
+    
+    NSString *restPath = [sharedClient formatPath:@"member/consumptions/:id" object:user];
+    [sharedClient getObject:user path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 @end

@@ -50,6 +50,8 @@
 
 @property (nonatomic, retain) NSString *userMobile;
 
+@property (nonatomic, retain) NSString *userAppellation;
+
 @property (nonatomic, retain) NSString *userAvatar;
 
 @property (nonatomic, retain) NSNumber *totalAmount;

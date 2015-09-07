@@ -38,6 +38,7 @@
                                    @"user_name": @"userName",
                                    @"user_mobile": @"userMobile",
                                    @"user_avatar": @"userAvatar",
+                                   @"user_appellation": @"userAppellation",
                                    @"goods": @"goodsParam",
                                    @"services": @"servicesParam"
                                    };

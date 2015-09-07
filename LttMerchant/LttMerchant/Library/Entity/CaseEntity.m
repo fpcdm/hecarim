@@ -15,7 +15,7 @@
 @synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName,
             buyerName, buyerMobile, buyerAddress, customerRemark,
             staffId, staffName, staffMobile, staffAvatar, staffRemark,
-            userId, userName, userMobile, userAvatar,
+            userId, userName, userMobile, userAvatar, userAppellation,
             totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 
 - (NSString *)statusName
