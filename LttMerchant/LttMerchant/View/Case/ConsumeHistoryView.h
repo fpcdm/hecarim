@@ -11,6 +11,7 @@
 
 @protocol ConsumeHistoryViewDelegate <NSObject>
 
+- (void)actionContact;
 - (void)actionLoadMore;
 
 @end

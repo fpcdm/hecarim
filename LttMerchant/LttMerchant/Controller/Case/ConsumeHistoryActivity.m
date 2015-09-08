@@ -112,4 +112,11 @@
     }];
 }
 
+//联系下单人
+- (void)actionContact
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", intention.userMobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
 @end
