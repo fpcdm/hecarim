@@ -31,13 +31,13 @@
     
     //头视图
     UIView *headerView = [[UIView alloc] init];
-    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 170);
+    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 220);
     headerView.backgroundColor = COLOR_MAIN_BG;
     self.tableView.tableHeaderView = headerView;
     
     //介绍
     textView = [[UITextView alloc] init];
-    textView.text = @"关于手机两条腿";
+    textView.text = @"两条腿--中国同城送货上门服务第一品牌！\n中国首家专注提供同城上门服务的服务品牌，全国性六省近百市同步运营！\n每个商家都由专业的服务人员上门做实地认证，让消费者高枕无忧！\n商家合作进入，免费，终身可免费发布商品及服务信息！\n上门服务，尽在两条腿！";
     textView.editable = NO;
     textView.font = FONT_MAIN;
     textView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
@@ -53,7 +53,7 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo(@150);
+        make.height.equalTo(@200);
     }];
     
     return self;
