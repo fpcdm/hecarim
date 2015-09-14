@@ -64,14 +64,14 @@
         [rows addObject:entity.name ? entity.name : @""];
     }
     
-    CGFloat dropDownHeight = 25 * [rows count];
+    CGFloat dropDownHeight = 30 * [rows count];
     dropDown = [[SKDropDown alloc]showDropDown:sender withHeight:dropDownHeight withData:rows animationDirection:@"down"];
     dropDown.delegate = self;
 }
 
 - (CGFloat) dropDown:(SKDropDown *)_dropDown heightForRow:(NSIndexPath *)indexPath
 {
-    return 25;
+    return 30;
 }
 
 - (void) dropDown:(SKDropDown *)_dropDown didSelectRow:(NSIndexPath *)indexPath
