@@ -9,17 +9,19 @@
 #import "ServiceFormActivity.h"
 #import "CategoryEntity.h"
 #import "ServiceEntity.h"
-#import "PickerUtil.h"
 #import "GoodsHandler.h"
 #import "CaseHandler.h"
+#import "SKDropDown.h"
 
-@interface ServiceFormActivity ()
+@interface ServiceFormActivity () <SKDropDownDelegate>
 
 @end
 
 @implementation ServiceFormActivity
 {
+    NSArray *categories;
     CategoryEntity *category;
+    SKDropDown *dropDown;
 }
 
 @synthesize intention;
@@ -54,40 +56,59 @@
     [self relayout];
 }
 
+#pragma mark - DropDown
+- (void) showDropDown:(UIButton *)sender
+{
+    NSMutableArray *rows = [[NSMutableArray alloc] init];
+    for (CategoryEntity *entity in categories) {
+        [rows addObject:entity.name ? entity.name : @""];
+    }
+    
+    CGFloat dropDownHeight = 25 * [rows count];
+    dropDown = [[SKDropDown alloc]showDropDown:sender withHeight:dropDownHeight withData:rows animationDirection:@"down"];
+    dropDown.delegate = self;
+}
+
+- (CGFloat) dropDown:(SKDropDown *)_dropDown heightForRow:(NSIndexPath *)indexPath
+{
+    return 25;
+}
+
+- (void) dropDown:(SKDropDown *)_dropDown didSelectRow:(NSIndexPath *)indexPath
+{
+    category = [categories objectAtIndex:indexPath.row];
+    dropDown = nil;
+}
+
 #pragma mark - Action
 - (void) actionChooseCategory: (SamuraiSignal *) signal
 {
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:signal.sourceView];
+    UIButton *sender = (UIButton *) signal.sourceView;
     
-    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
-        CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
-        categoryEntity.id = @0;
-        categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_SERVICE];
-        
-        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-        [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
-            //分类列表
-            NSMutableArray *rows = [[NSMutableArray alloc] init];
-            for (CategoryEntity *entity in result) {
-                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
-            }
+    //显示dropDown
+    if (dropDown == nil) {
+        //加载分类列表
+        if (!categories) {
+            CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+            categoryEntity.id = @0;
+            categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_SERVICE];
             
-            completionHandler(rows);
-        } failure:^(ErrorEntity *error){
-            [self showError:error.message];
-        }];
-    };
-    
-    pickerUtil.resultBlock = ^(NSArray *selectedRows){
-        if ([selectedRows count] < 1) return;
-        
-        PickerUtilRow *row = [selectedRows objectAtIndex:0];
-        category = row.value;
-        
-        [self reloadData];
-    };
-    
-    [pickerUtil show];
+            GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+            [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+                categories = result;
+                
+                [self showDropDown:sender];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
+        } else {
+            [self showDropDown:sender];
+        }
+    //隐藏dropDown
+    } else {
+        [dropDown hideDropDown:sender];
+        dropDown = nil;
+    }
 }
 
 - (void) actionSave: (SamuraiSignal *) signal

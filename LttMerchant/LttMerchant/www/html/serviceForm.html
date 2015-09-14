@@ -110,27 +110,18 @@
             font-size: 16px;
         }
         
-        .case-field .service-category {
-            margin-bottom: 5px;
-            font-size: 16px;
-            width: 100%;
-            height: auto;
-            border: 0px;
-            margin-left: 10px;
+        .field-category {
+            height: 65px;
         }
         
-        .case-field .category-button {
-            margin-bottom: 5px;
-            font-size: 16px;
-            height: 18px;
-            background-color: white;
+        .case-category {
+            margin-top: -35px;
+            margin-left: 10px;
+            width: 120px;
+            height: 25px;
+            color: black;
             border: 0.5px solid #b2b2b2;
             border-radius: 3px;
-            color: black;
-            padding-top: 2.5px;
-            padding-bottom: 2.5px;
-            padding-left: 10px;
-            padding-right: 10px;
         }
         
         </style>
@@ -153,12 +144,11 @@
             </div>
         </div>
         
-        <div class="case-field field-category" name="category">
+        <div class="case-field field-category">
             <label class="field-name">服务类别</label>
-            <div class="service-category">
-                <div id="categoryButton" name="name" onclick="@selector(actionChooseCategory:)" class="category-button">选择服务类别</div>
-            </div>
         </div>
+        
+        <UIButton id="categoryButton" onclick="@selector(actionChooseCategory:)" class="case-category">选择服务类别</UIButton>
         
         <div class="case-field">
             <label class="field-title">价格</label>

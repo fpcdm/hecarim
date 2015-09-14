@@ -469,6 +469,7 @@
 		2F7A56ED1B09D52B00D12500 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */; };
 		2F7A56EF1B09D53300D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EE1B09D53300D12500 /* Foundation.framework */; };
 		2F7B607B1B7AF24900F65729 /* GoodsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B607A1B7AF24900F65729 /* GoodsListView.m */; };
+		2F7E2C5A1BA6BB4500F7E6BD /* SKDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E2C591BA6BB4500F7E6BD /* SKDropDown.m */; };
 		2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B071B1D529F006189EF /* NSString+trim.m */; };
 		2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B091B1D529F006189EF /* UIColor+Hex.m */; };
 		2F800B101B1D529F006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B0A1B1D529F006189EF /* README.md */; };
@@ -1474,6 +1475,8 @@
 		2F7A56EE1B09D53300D12500 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F7B60791B7AF24900F65729 /* GoodsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListView.h; sourceTree = "<group>"; };
 		2F7B607A1B7AF24900F65729 /* GoodsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListView.m; sourceTree = "<group>"; };
+		2F7E2C581BA6BB4500F7E6BD /* SKDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDropDown.h; sourceTree = "<group>"; };
+		2F7E2C591BA6BB4500F7E6BD /* SKDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDropDown.m; sourceTree = "<group>"; };
 		2F800B061B1D529F006189EF /* NSString+trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+trim.h"; sourceTree = "<group>"; };
 		2F800B071B1D529F006189EF /* NSString+trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+trim.m"; sourceTree = "<group>"; };
 		2F800B081B1D529F006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
@@ -3421,6 +3424,15 @@
 			path = SDWebImageView;
 			sourceTree = "<group>";
 		};
+		2F7E2C571BA6BB4500F7E6BD /* SKDropDown */ = {
+			isa = PBXGroup;
+			children = (
+				2F7E2C581BA6BB4500F7E6BD /* SKDropDown.h */,
+				2F7E2C591BA6BB4500F7E6BD /* SKDropDown.m */,
+			);
+			path = SKDropDown;
+			sourceTree = "<group>";
+		};
 		2F800B021B1D529F006189EF /* LttFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -3510,6 +3522,7 @@
 		2F800B0D1B1D529F006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F7E2C571BA6BB4500F7E6BD /* SKDropDown */,
 				2F0095CD1B79A5DE003C27B9 /* DLRadioButton */,
 				2F78F7391B75B1F20009F349 /* SamuraiNative */,
 				2F2F22501B3A52FE00428742 /* TSMessages */,
@@ -4241,6 +4254,7 @@
 				2F78FA831B75B1F30009F349 /* Samurai_DockerProtocol.m in Sources */,
 				2F78FB921B75B1F40009F349 /* Samurai_HtmlElementViewport.m in Sources */,
 				2F78FA901B75B1F30009F349 /* UIViewController+TemplateLoading.m in Sources */,
+				2F7E2C5A1BA6BB4500F7E6BD /* SKDropDown.m in Sources */,
 				2F78FB0A1B75B1F40009F349 /* Samurai_CSSNumber.m in Sources */,
 				2F78FAA51B75B1F30009F349 /* Samurai_Activity.m in Sources */,
 				2F78FA7D1B75B1F30009F349 /* Signal+Model.m in Sources */,
