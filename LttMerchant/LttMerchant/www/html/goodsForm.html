@@ -75,14 +75,6 @@
             background-color: white;
         }
         
-        .field-category {
-            height: auto;
-        }
-        
-        .field-spec {
-            height: auto;
-        }
-        
         .case-field .field-title {
             position: absolute;
             width: 100px;
@@ -106,29 +98,6 @@
             right: 10px;
         }
         
-        .case-field .goods-category {
-            margin-bottom: 5px;
-            font-size: 16px;
-            width: 300px;
-            height: auto;
-            border: 0px;
-            margin-left: 10px;
-        }
-        
-        .case-field .category-button {
-            margin-bottom: 5px;
-            font-size: 16px;
-            height: 18px;
-            background-color: white;
-            border: 0.5px solid #b2b2b2;
-            border-radius: 3px;
-            color: black;
-            padding-top: 2.5px;
-            padding-bottom: 2.5px;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
         .case-field .number-button {
             border: 0.5px solid black;
             display: inline-block;
@@ -146,23 +115,48 @@
             width: 100%;
         }
         
+        .field-dropdown {
+            height: 65px;
+        }
+        
+        .case-button {
+            margin-top: -35px;
+            margin-left: 10px;
+            width: 120px;
+            height: 25px;
+            color: black;
+            border: 0.5px solid #b2b2b2;
+            border-radius: 3px;
+        }
+        
         /* 列表 */
         .table {
             display: block;
             width: 100%;
             font-size: 16px;
-            height: 0px;
+            height: 60px;
             z-index: 1;
             background-color: white;
             color: black;
+            margin-top: 10px;
+            border-top: 0.5px solid #b2b2b2;
+            border-bottom: 0.5px solid #b2b2b2;
         }
         
         .table .table-item {
             display: block;
             width: 100%;
-            height: 55px;
+            height: 60px;
             background-color: white;
             border-top: 0.5px solid #b2b2b2;
+        }
+        
+        .table .table-info {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            color: gray;
+            inset-left: 10px;
         }
         
         .table .table-line {
@@ -173,24 +167,6 @@
         }
         
         .table-line label {
-            font-size: 16px;
-        }
-        
-        .table-empty {
-            display: block;
-            width: 100%;
-            font-size: 16px;
-            height: 50px;
-            color: gray;
-            z-index: 1;
-            inset-top: 15px;
-            inset-left: 10px;
-            background-color: white;
-        }
-        
-        .table-empty label {
-            width: 200px;
-            height: 20px;
             font-size: 16px;
         }
         
@@ -214,38 +190,30 @@
             </div>
         </div>
         
-        <div class="case-field field-category" name="category">
-            <label class="field-name">品类</label>
-            <div id="goodsCategory" class="goods-category">
-                <div id="categoryButton" name="name" onclick="@selector(actionChooseCategory:)" class="category-button">选择品类</div>
-            </div>
+        <div class="case-field field-dropdown">
+            <label class="field-name">商品类别</label>
         </div>
         
-        <div class="case-field field-category" name="model">
+        <UIButton id="categoryButton" onclick="@selector(actionChooseCategory:)" class="case-button">请选择</UIButton>
+        
+        <div class="case-field field-dropdown">
             <label class="field-name">品牌型号</label>
-            <div id="goodsModel" class="goods-category">
-                <div id="modelButton" name="name" onclick="@selector(actionChooseModel:)" class="category-button" style="border: 0px; color: gray;">请先选择品类</div>
-            </div>
         </div>
         
-        <div class="case-field field-spec">
-            <div id="specEmpty" class="table-empty">
-                <label>请先选择品牌型号</label>
-            </div>
-            
-            <UITableView id="specTable" name="specs" class="table" columns="1" is-vertical>
-                
-                <GoodsSpecCell name="list" class="table-item" is-row>
-                    <div class="table-line">
-                        <label id="specName" name="name"></label>
-                    </div>
-                    <UIButton id="specButton" onclick="@selector(actionChooseSpec:)" style="display:none;"></UIButton>
-                    <div id="specList" class="table-line">
-                    </div>
-                </GoodsSpecCell>
-                
-            </UITableView>
-        </div>
+        <UIButton id="brandButton" onclick="@selector(actionChooseBrand:)" class="case-button">请选择</UIButton>
+        <UIButton id="modelButton" onclick="@selector(actionChooseModel:)" class="case-button">请选择</UIButton>
+        
+        <UITableView id="specTable" name="specs" class="table" columns="1" is-vertical>
+            <GoodsSpecCell name="list" class="table-item" is-row>
+                <label class="table-info" name="info"></label>
+                <div class="table-line">
+                    <label id="specName" name="name"></label>
+                </div>
+                <UIButton id="specButton" onclick="@selector(actionChooseSpec:)" style="display:none;"></UIButton>
+                <div id="specList" class="table-line">
+                </div>
+            </GoodsSpecCell>
+        </UITableView>
         
         <div class="case-field">
             <label class="field-title">单价</label>

@@ -51,8 +51,8 @@
                 
                 //根据文字宽度计算按钮宽度
                 CGSize labelSize = button.titleLabel.frame.size;
-                CGFloat width = (labelSize.width > 32 ? labelSize.width : 32) + 10;
-                button.frame = CGRectMake(x, 2, width, 22);
+                CGFloat width = (labelSize.width > 40 ? labelSize.width : 40) + 10;
+                button.frame = CGRectMake(x, 2, width, 25);
                 
                 //添加specId数据绑定，先用tag绑定，后续可以考虑UIButton附加动态数据
                 button.tag = [spec.id integerValue];

@@ -74,10 +74,6 @@
             background-color: white;
         }
         
-        .field-category {
-            height: auto;
-        }
-        
         .case-field .field-title {
             position: absolute;
             font-size: 16px;
@@ -110,11 +106,11 @@
             font-size: 16px;
         }
         
-        .field-category {
+        .field-dropdown {
             height: 65px;
         }
         
-        .case-category {
+        .case-button {
             margin-top: -35px;
             margin-left: 10px;
             width: 120px;
@@ -144,11 +140,11 @@
             </div>
         </div>
         
-        <div class="case-field field-category">
+        <div class="case-field field-dropdown">
             <label class="field-name">服务类别</label>
         </div>
         
-        <UIButton id="categoryButton" onclick="@selector(actionChooseCategory:)" class="case-category">请选择</UIButton>
+        <UIButton id="categoryButton" onclick="@selector(actionChooseCategory:)" class="case-button">请选择</UIButton>
         
         <div class="case-field">
             <label class="field-title">价格</label>
@@ -156,8 +152,8 @@
         </div>
         
         <div class="case-field">
-            <label class="field-title">备注</label>
-            <UITextField class="field-input" id="remarkField" placeholder="请输入备注"></UITextField>
+            <label class="field-title">内容</label>
+            <UITextField class="field-input" id="remarkField" placeholder="请输入内容"></UITextField>
         </div>
         
         <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10">保存</UIButton>

@@ -48,10 +48,6 @@
 {
     [super reloadData];
     
-    self.scope[@"category"] = @{
-                                      @"name": category ? category.name : @"选择服务类别"
-                                      };
-    
     //重新布局
     [self relayout];
 }
@@ -64,14 +60,15 @@
         [rows addObject:entity.name ? entity.name : @""];
     }
     
-    CGFloat dropDownHeight = 30 * [rows count];
+    CGFloat dropDownHeight = 35 * [rows count];
+    if (dropDownHeight > 200) dropDownHeight = 200;
     dropDown = [[SKDropDown alloc]showDropDown:sender withHeight:dropDownHeight withData:rows animationDirection:@"down"];
     dropDown.delegate = self;
 }
 
 - (CGFloat) dropDown:(SKDropDown *)_dropDown heightForRow:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 35;
 }
 
 - (void) dropDown:(SKDropDown *)_dropDown didSelectRow:(NSIndexPath *)indexPath
@@ -89,12 +86,16 @@
     if (dropDown == nil) {
         //加载分类列表
         if (!categories) {
+            [self showLoading:TIP_LOADING_MESSAGE];
+            
             CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
             categoryEntity.id = @0;
             categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_SERVICE];
             
             GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
             [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+                [self hideLoading];
+                
                 categories = result;
                 
                 [self showDropDown:sender];
@@ -130,11 +131,11 @@
         return;
     }
     
-    //备注
+    //内容
     UITextField *remarkField = (UITextField *) $(@"#remarkField").firstView;
     NSString *remark = remarkField.text;
     if (![ValidateUtil isRequired:remark]) {
-        [self showError:@"请先填写备注哦~亲！"];
+        [self showError:@"请先填写内容哦~亲！"];
         return;
     }
     

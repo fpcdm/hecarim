@@ -12,9 +12,9 @@
 #import "BrandEntity.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
-#import "PickerUtil.h"
+#import "SKDropDown.h"
 
-@interface GoodsFormActivity ()
+@interface GoodsFormActivity () <SKDropDownDelegate>
 
 @property (nonatomic, strong) UITableView *specTable;
 
@@ -22,10 +22,18 @@
 
 @implementation GoodsFormActivity
 {
+    NSArray *categoryList;
+    NSArray *brandList;
+    NSArray *modelList;
+    
     CategoryEntity *category;
     BrandEntity *brand;
     ModelEntity *model;
     GoodsEntity *goods;
+    
+    SKDropDown *categoryDropDown;
+    SKDropDown *brandDropDown;
+    SKDropDown *modelDropDown;
     
     NSNumber *priceId;
 }
@@ -62,20 +70,6 @@
 {
     [super reloadData];
     
-    self.scope[@"category"] = @{
-                                      @"name": category ? category.name : @"选择品类"
-                                      };
-    
-    NSString *modelName = model ? [NSString stringWithFormat:@"%@ %@", brand.name, model.name] : (category ? @"选择品牌型号" : @"请先选择品类");
-    self.scope[@"model"] = @{
-                                   @"name": modelName
-                                   };
-    
-    //选择品牌型号
-    if (category) {
-        $(@"#modelButton").ATTR(@"color", @"black").ATTR(@"border", @"0.5px solid #b2b2b2");
-    }
-    
     //规格列表
     NSInteger specCount = goods && goods.specList ? [goods.specList count] : 0;
     self.scope[@"specs"] = @{
@@ -86,10 +80,17 @@
                                        if (specCount > 0) {
                                            for (SpecEntity *specEntity in goods.specList) {
                                                [specs addObject:@{
+                                                                  @"info": @"",
                                                                   @"name": specEntity.name ? specEntity.name : @"",
                                                                   @"list": specEntity.children ? specEntity.children : @[]
                                                                   }];
                                            }
+                                       } else {
+                                           [specs addObject:@{
+                                                              @"info": @"请先选择品牌型号",
+                                                              @"name": @"",
+                                                              @"list": @[]
+                                                              }];
                                        }
                                        
                                        specs;
@@ -99,11 +100,9 @@
     
     //自动切换样式并计算高度
     if (specCount > 0) {
-        $(@"#specEmpty").ATTR(@"height", @"0px");
-        $(@"#specTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", specCount * 55]);
+        $(@"#specTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", specCount * 60]);
     } else {
-        $(@"#specEmpty").ATTR(@"height", @"50px");
-        $(@"#specTable").ATTR(@"height", @"0px");
+        $(@"#specTable").ATTR(@"height", @"60px");
     }
     
     [_specTable reloadData];
@@ -112,132 +111,255 @@
     [self relayout];
 }
 
+#pragma mark - DropDown
+- (void) showDropDown:(UIButton *)sender tag:(NSInteger)tag
+{
+    //整理数据
+    NSMutableArray *rows = [[NSMutableArray alloc] init];
+    switch (tag) {
+        case 1:
+            for (CategoryEntity *entity in categoryList) {
+                [rows addObject:entity.name ? entity.name : @""];
+            }
+            break;
+        case 2:
+            for (BrandEntity *entity in brandList) {
+                [rows addObject:entity.name ? entity.name : @""];
+            }
+            break;
+        default:
+            for (ModelEntity *entity in modelList) {
+                [rows addObject:entity.name ? entity.name : @""];
+            }
+            break;
+    }
+    
+    //初始化下拉列表
+    CGFloat dropDownHeight = 35 * [rows count];
+    if (dropDownHeight > 200) dropDownHeight = 200;
+    SKDropDown *dropDown = [[SKDropDown alloc]showDropDown:sender withHeight:dropDownHeight withData:rows animationDirection:@"down"];
+    dropDown.tag = tag;
+    dropDown.delegate = self;
+    
+    //变量赋值
+    switch (tag) {
+        case 1:
+            categoryDropDown = dropDown;
+            break;
+        case 2:
+            brandDropDown = dropDown;
+            break;
+        default:
+            modelDropDown = dropDown;
+            break;
+    }
+}
+
+- (CGFloat) dropDown:(SKDropDown *)_dropDown heightForRow:(NSIndexPath *)indexPath
+{
+    return 35;
+}
+
+- (void) dropDown:(SKDropDown *)_dropDown didSelectRow:(NSIndexPath *)indexPath
+{
+    switch (_dropDown.tag) {
+        //选择分类
+        case 1:
+        {
+            category = [categoryList objectAtIndex:indexPath.row];
+            categoryDropDown = nil;
+            
+            //清空已选择
+            brand = nil;
+            model = nil;
+            brandList = nil;
+            modelList = nil;
+            
+            UIButton *brandButton = (UIButton *)$(@"#brandButton").firstView;
+            [brandButton setTitle:@"请选择" forState:UIControlStateNormal];
+            
+            UIButton *modelButton = (UIButton *)$(@"#modelButton").firstView;
+            [modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            
+            if (goods) {
+                goods = nil;
+                priceId = nil;
+                [self reloadData];
+                
+                UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
+                priceLabel.text = @"￥0";
+            }
+        }
+            break;
+        //选择品牌
+        case 2:
+        {
+            brand = [brandList objectAtIndex:indexPath.row];
+            brandDropDown = nil;
+            
+            //清空已选择
+            model = nil;
+            modelList = nil;
+            
+            UIButton *modelButton = (UIButton *)$(@"#modelButton").firstView;
+            [modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            
+            if (goods) {
+                goods = nil;
+                priceId = nil;
+                [self reloadData];
+                
+                UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
+                priceLabel.text = @"￥0";
+            }
+        }
+            break;
+        //选择型号
+        default:
+        {
+            model = [modelList objectAtIndex:indexPath.row];
+            modelDropDown = nil;
+            
+            [self showLoading:TIP_LOADING_MESSAGE];
+            
+            //加载规格列表
+            ModelEntity *modelEntity = [[ModelEntity alloc] init];
+            modelEntity.id = model.id;
+            
+            //获取型号列表
+            GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+            [goodsHandler queryModelGoods:modelEntity success:^(NSArray *result){
+                [self hideLoading];
+                
+                //清空之前的商品
+                goods = nil;
+                priceId = nil;
+                
+                UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
+                priceLabel.text = @"￥0";
+                
+                //没有商品
+                if ([result count] < 1) {
+                    [self reloadData];
+                    
+                    [self showError:@"该型号暂无商品"];
+                    return;
+                }
+                
+                goods = [result firstObject];
+                
+                [self reloadData];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
+        }
+            break;
+    }
+}
+
 #pragma mark - Action
 - (void) actionChooseCategory: (SamuraiSignal *) signal
 {
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:signal.sourceView];
+    UIButton *sender = (UIButton *) signal.sourceView;
     
-    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
-        CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
-        categoryEntity.id = @0;
-        categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
-        
-        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-        [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
-            //分类列表
-            NSMutableArray *rows = [[NSMutableArray alloc] init];
-            for (CategoryEntity *entity in result) {
-                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
-            }
+    //显示dropDown
+    if (categoryDropDown == nil) {
+        //加载分类列表
+        if (!categoryList) {
+            [self showLoading:TIP_LOADING_MESSAGE];
             
-            completionHandler(rows);
-        } failure:^(ErrorEntity *error){
-            [self showError:error.message];
-        }];
-    };
-    
-    pickerUtil.resultBlock = ^(NSArray *selectedRows){
-        if ([selectedRows count] < 1) return;
-        
-        PickerUtilRow *row = [selectedRows objectAtIndex:0];
-        category = row.value;
-        
-        brand = nil;
-        model = nil;
-        goods = nil;
-        priceId = nil;
-        
-        [self reloadData];
-    };
-    
-    [pickerUtil show];
+            CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+            categoryEntity.id = @0;
+            categoryEntity.tradeId = [NSNumber numberWithInteger:LTT_TRADE_GOODS];
+            
+            GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
+            [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
+                [self hideLoading];
+                
+                categoryList = result;
+                
+                [self showDropDown:sender tag:1];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
+        } else {
+            [self showDropDown:sender tag:1];
+        }
+        //隐藏dropDown
+    } else {
+        [categoryDropDown hideDropDown:sender];
+        categoryDropDown = nil;
+    }
 }
 
-- (void) actionChooseModel: (SamuraiSignal *) signal
+- (void) actionChooseBrand: (SamuraiSignal *) signal
 {
-    if (!category) return;
+    //参数检查
+    if (!category) {
+        [self showError:@"请先选择商品类别哦~亲！"];
+        return;
+    }
     
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:2 origin:signal.sourceView];
+    UIButton *sender = (UIButton *) signal.sourceView;
     
-    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+    //显示dropDown
+    if (brandDropDown == nil) {
+        [self showLoading:TIP_LOADING_MESSAGE];
+        
         //获取品牌列表
         CategoryEntity *categoryModel = [[CategoryEntity alloc] init];
         categoryModel.id = category.id;
         
         GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
         [goodsHandler queryCategoryBrands:categoryModel success:^(NSArray *result){
-            //分类列表
-            NSMutableArray *rows = [[NSMutableArray alloc] init];
-            for (BrandEntity *entity in result) {
-                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
-            }
+            [self hideLoading];
             
-            completionHandler(rows);
+            brandList = result;
+            
+            [self showDropDown:sender tag:2];
         } failure:^(ErrorEntity *error){
             [self showError:error.message];
         }];
-    };
+    //隐藏dropDown
+    } else {
+        [brandDropDown hideDropDown:sender];
+        brandDropDown = nil;
+    }
+}
+
+- (void) actionChooseModel: (SamuraiSignal *) signal
+{
+    //参数检查
+    if (!brand) {
+        [self showError:@"请先选择品牌哦~亲！"];
+        return;
+    }
     
-    pickerUtil.secondLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
-        PickerUtilRow *brandRow = [selectedRows objectAtIndex:0];
+    UIButton *sender = (UIButton *) signal.sourceView;
+    
+    //显示dropDown
+    if (modelDropDown == nil) {
+        [self showLoading:TIP_LOADING_MESSAGE];
         
-        BrandEntity *brandEntity = brandRow.value;
+        //获取型号列表
+        BrandEntity *brandEntity = brand;
         NSDictionary *param = @{@"category_id": category.id};
         
-        //获取型号列表
         GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
         [goodsHandler queryBrandModels:brandEntity param:param success:^(NSArray *result){
-            //分类列表
-            NSMutableArray *rows = [[NSMutableArray alloc] init];
-            for (ModelEntity *entity in result) {
-                [rows addObject:[PickerUtilRow rowWithName:entity.name ? entity.name : @"" value:entity]];
-            }
+            [self hideLoading];
             
-            completionHandler(rows);
+            modelList = result;
+            
+            [self showDropDown:sender tag:3];
         } failure:^(ErrorEntity *error){
             [self showError:error.message];
         }];
-    };
-    
-    pickerUtil.resultBlock = ^(NSArray *selectedRows){
-        if ([selectedRows count] < 2) return;
-        
-        PickerUtilRow *brandRow = [selectedRows objectAtIndex:0];
-        brand = brandRow.value;
-        
-        PickerUtilRow *modelRow = [selectedRows objectAtIndex:1];
-        model = modelRow.value;
-        
-        //加载规格列表
-        ModelEntity *modelEntity = [[ModelEntity alloc] init];
-        modelEntity.id = model.id;
-        
-        //获取型号列表
-        GoodsHandler *goodsHandler = [[GoodsHandler alloc] init];
-        [goodsHandler queryModelGoods:modelEntity success:^(NSArray *result){
-            //清空之前的商品
-            goods = nil;
-            priceId = nil;
-            
-            //没有商品
-            if ([result count] < 1) {
-                [self reloadData];
-                
-                [self showError:@"该型号暂无商品"];
-                return;
-            }
-            
-            goods = [result firstObject];
-            
-            [self reloadData];
-        } failure:^(ErrorEntity *error){
-            [self reloadData];
-            
-            [self showError:error.message];
-        }];
-    };
-    
-    [pickerUtil show];
+    //隐藏dropDown
+    } else {
+        [modelDropDown hideDropDown:sender];
+        modelDropDown = nil;
+    }
 }
 
 //规格改变事件
@@ -321,7 +443,7 @@
 {
     //参数检查
     if (!category) {
-        [self showError:@"请先选择品类哦~亲！"];
+        [self showError:@"请先选择商品类别哦~亲！"];
         return;
     }
     if (!model) {
@@ -329,7 +451,7 @@
         return;
     }
     if (!goods || !priceId) {
-        [self showError:@"请先选择商品哦~亲！"];
+        [self showError:@"请先选择商品规格哦~亲！"];
         return;
     }
     
