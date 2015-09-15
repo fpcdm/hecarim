@@ -79,7 +79,7 @@
     
     //选中当前并保存选中值
     sender.backgroundColor = COLOR_MAIN_HIGHLIGHT;
-    NSString *value = [NSString stringWithFormat:@"%ld", sender.tag];
+    NSString *value = [NSString stringWithFormat:@"%@", @(sender.tag)];
     _specButton.titleLabel.text = value;
     
     //触发规格改变事件（触发隐藏按钮事件实现更新主页面）

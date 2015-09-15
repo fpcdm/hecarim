@@ -17,6 +17,9 @@
 @interface GoodsFormActivity () <SKDropDownDelegate>
 
 @property (nonatomic, strong) UITableView *specTable;
+@property (nonatomic, strong) UIButton *brandButton;
+@property (nonatomic, strong) UIButton *modelButton;
+@property (nonatomic, strong) UILabel *goodsPrice;
 
 @end
 
@@ -63,6 +66,12 @@
 - (void)onTemplateLoaded
 {
     self.specTable.scrollEnabled = NO;
+    
+    [self.brandButton setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateDisabled];
+    self.brandButton.enabled = NO;
+    
+    [self.modelButton setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateDisabled];
+    self.modelButton.enabled = NO;
 }
 
 #pragma mark - reloadData
@@ -100,9 +109,15 @@
     
     //自动切换样式并计算高度
     if (specCount > 0) {
-        $(@"#specTable").ATTR(@"height", [NSString stringWithFormat:@"%ldpx", specCount * 60]);
+        $(@"#specTable").ATTR(@"height", [NSString stringWithFormat:@"%@px", @(specCount * 60)]);
     } else {
         $(@"#specTable").ATTR(@"height", @"60px");
+        //修正无规格重载table时，Samurai渲染错乱问题
+        NSArray *specCells = $(@".specCell").views;
+        for (UIView *specCell in specCells) {
+            //移除未释放的cell
+            [specCell removeFromSuperview];
+        }
     }
     
     [_specTable reloadData];
@@ -175,19 +190,18 @@
             brandList = nil;
             modelList = nil;
             
-            UIButton *brandButton = (UIButton *)$(@"#brandButton").firstView;
-            [brandButton setTitle:@"请选择" forState:UIControlStateNormal];
+            [self.brandButton setTitle:@"请选择" forState:UIControlStateNormal];
+            self.brandButton.enabled = YES;
             
-            UIButton *modelButton = (UIButton *)$(@"#modelButton").firstView;
-            [modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            [self.modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            self.modelButton.enabled = NO;
             
             if (goods) {
                 goods = nil;
                 priceId = nil;
                 [self reloadData];
                 
-                UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
-                priceLabel.text = @"￥0";
+                self.goodsPrice.text = @"￥0";
             }
         }
             break;
@@ -201,16 +215,15 @@
             model = nil;
             modelList = nil;
             
-            UIButton *modelButton = (UIButton *)$(@"#modelButton").firstView;
-            [modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            [self.modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            self.modelButton.enabled = YES;
             
             if (goods) {
                 goods = nil;
                 priceId = nil;
                 [self reloadData];
                 
-                UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
-                priceLabel.text = @"￥0";
+                self.goodsPrice.text = @"￥0";
             }
         }
             break;
@@ -235,8 +248,7 @@
                 goods = nil;
                 priceId = nil;
                 
-                UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
-                priceLabel.text = @"￥0";
+                self.goodsPrice.text = @"￥0";
                 
                 //没有商品
                 if ([result count] < 1) {
@@ -276,6 +288,11 @@
             [goodsHandler queryCategories:categoryEntity success:^(NSArray *result){
                 [self hideLoading];
                 
+                if ([result count] < 1) {
+                    [self showError:@"暂无商品类别"];
+                    return;
+                }
+                
                 categoryList = result;
                 
                 [self showDropDown:sender tag:1];
@@ -314,6 +331,11 @@
         [goodsHandler queryCategoryBrands:categoryModel success:^(NSArray *result){
             [self hideLoading];
             
+            if ([result count] < 1) {
+                [self showError:@"该分类暂无品牌"];
+                return;
+            }
+            
             brandList = result;
             
             [self showDropDown:sender tag:2];
@@ -349,6 +371,11 @@
         [goodsHandler queryBrandModels:brandEntity param:param success:^(NSArray *result){
             [self hideLoading];
             
+            if ([result count] < 1) {
+                [self showError:@"该品牌暂无型号"];
+                return;
+            }
+            
             modelList = result;
             
             [self showDropDown:sender tag:3];
@@ -377,10 +404,9 @@
     }
     
     //是否选中完成
-    UILabel *priceLabel = (UILabel *) $(@"#goodsPrice").firstView;
     if ([specIds count] < [specButtons count]) {
         priceId = nil;
-        priceLabel.text = @"￥0";
+        self.goodsPrice.text = @"￥0";
         return;
     }
     
@@ -401,10 +427,10 @@
     if (priceItem) {
         priceId = [priceItem objectForKey:@"price_id"];
         NSNumber *price = [priceItem objectForKey:@"goods_price"];
-        priceLabel.text = [NSString stringWithFormat:@"￥%@", price];
+        self.goodsPrice.text = [NSString stringWithFormat:@"￥%@", price];
     } else {
         priceId = nil;
-        priceLabel.text = @"￥0";
+        self.goodsPrice.text = @"￥0";
         return;
     }
 }
