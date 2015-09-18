@@ -28,4 +28,7 @@
 //渲染需求头数据
 - (void) renderCaseData;
 
+//默认错误处理，子类可重写
+- (void) loadError:(ErrorEntity *)error;
+
 @end

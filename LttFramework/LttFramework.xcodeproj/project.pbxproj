@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2F0095D81B79A61F003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D71B79A61F003C27B9 /* DLRadioButton.m */; };
+		2F02FB881BABE6FA00D7D68F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB871BABE6FA00D7D68F /* libz.tbd */; };
+		2F02FB8A1BABE70400D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB891BABE70400D7D68F /* libxml2.tbd */; };
+		2F02FB8C1BABE70B00D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB8B1BABE70B00D7D68F /* libiconv.tbd */; };
 		2F064BBC1B8EE3FF003550B0 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB21B8EE3FF003550B0 /* ReflectionView.m */; };
 		2F064BBD1B8EE3FF003550B0 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB51B8EE3FF003550B0 /* TAAbstractDotView.m */; };
 		2F064BBE1B8EE3FF003550B0 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB71B8EE3FF003550B0 /* TAAnimatedDotView.m */; };
@@ -35,7 +38,6 @@
 		2F2F22AC1B3A577900428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22971B3A577900428742 /* TSMessage.m */; };
 		2F2F22AD1B3A577900428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22991B3A577900428742 /* TSMessageView.m */; };
 		2F55340E1B4FC41A00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55340D1B4FC41A00B98CA4 /* FileEntity.m */; };
-		2F5D29491B1EEBE700A99AC5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */; };
 		2F5D294B1B1EEBFA00A99AC5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294A1B1EEBFA00A99AC5 /* Security.framework */; };
 		2F5D294D1B1EEC0500A99AC5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294C1B1EEC0500A99AC5 /* CoreData.framework */; };
 		2F5D294F1B1EEC1100A99AC5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D294E1B1EEC1100A99AC5 /* MobileCoreServices.framework */; };
@@ -138,7 +140,6 @@
 		2FCAF89B1B2044F700F3B084 /* ErrorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF8981B2044F700F3B084 /* ErrorEntity.m */; };
 		2FCAF89C1B2044F700F3B084 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAF89A1B2044F700F3B084 /* UserEntity.m */; };
 		2FCAF8B01B20490300F3B084 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF8AF1B20490300F3B084 /* libBPush.a */; };
-		2FCAF8B21B20498400F3B084 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF8B11B20498400F3B084 /* libz.dylib */; };
 		2FED7D641B1EA21200306A11 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7D481B1EA21200306A11 /* NSData+ImageContentType.m */; };
 		2FED7D651B1EA21200306A11 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7D4A1B1EA21200306A11 /* SDImageCache.m */; };
 		2FED7D661B1EA21200306A11 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7D4C1B1EA21200306A11 /* SDWebImageCompat.m */; };
@@ -166,7 +167,6 @@
 		2FED825E1B1ED60100306A11 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED825D1B1ED60100306A11 /* AVFoundation.framework */; };
 		2FED82601B1ED60900306A11 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED825F1B1ED60900306A11 /* CoreMedia.framework */; };
 		2FED82621B1ED61000306A11 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED82611B1ED61000306A11 /* CoreVideo.framework */; };
-		2FED82641B1ED62100306A11 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED82631B1ED62100306A11 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +182,9 @@
 /* Begin PBXFileReference section */
 		2F0095D61B79A61F003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095D71B79A61F003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		2F02FB871BABE6FA00D7D68F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		2F02FB891BABE70400D7D68F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		2F02FB8B1BABE70B00D7D68F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		2F064BB11B8EE3FF003550B0 /* ReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
 		2F064BB21B8EE3FF003550B0 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
 		2F064BB41B8EE3FF003550B0 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -322,7 +325,6 @@
 		2F5D29431B1EEBA900A99AC5 /* TKStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKStateMachine.h; sourceTree = "<group>"; };
 		2F5D29441B1EEBA900A99AC5 /* TransitionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionKit.h; sourceTree = "<group>"; };
 		2F5D29451B1EEBA900A99AC5 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		2F5D294A1B1EEBFA00A99AC5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2F5D294C1B1EEC0500A99AC5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2F5D294E1B1EEC1100A99AC5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -541,7 +543,6 @@
 		2FCAF89A1B2044F700F3B084 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
 		2FCAF8AE1B20490300F3B084 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
 		2FCAF8AF1B20490300F3B084 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
-		2FCAF8B11B20498400F3B084 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2FED7D471B1EA21200306A11 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		2FED7D481B1EA21200306A11 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ImageContentType.m"; sourceTree = "<group>"; };
 		2FED7D491B1EA21200306A11 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -598,7 +599,6 @@
 		2FED825D1B1ED60100306A11 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2FED825F1B1ED60900306A11 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2FED82611B1ED61000306A11 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		2FED82631B1ED62100306A11 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -606,15 +606,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F02FB8C1BABE70B00D7D68F /* libiconv.tbd in Frameworks */,
+				2F02FB8A1BABE70400D7D68F /* libxml2.tbd in Frameworks */,
+				2F02FB881BABE6FA00D7D68F /* libz.tbd in Frameworks */,
 				2F6796A01B4B687F00E0F774 /* CoreLocation.framework in Frameworks */,
-				2FCAF8B21B20498400F3B084 /* libz.dylib in Frameworks */,
 				2F5D29511B1EEC2000A99AC5 /* CFNetwork.framework in Frameworks */,
 				2F5D294F1B1EEC1100A99AC5 /* MobileCoreServices.framework in Frameworks */,
 				2FCAF8B01B20490300F3B084 /* libBPush.a in Frameworks */,
 				2F5D294D1B1EEC0500A99AC5 /* CoreData.framework in Frameworks */,
 				2F5D294B1B1EEBFA00A99AC5 /* Security.framework in Frameworks */,
-				2F5D29491B1EEBE700A99AC5 /* libxml2.dylib in Frameworks */,
-				2FED82641B1ED62100306A11 /* libiconv.dylib in Frameworks */,
 				2FED82621B1ED61000306A11 /* CoreVideo.framework in Frameworks */,
 				2FED82601B1ED60900306A11 /* CoreMedia.framework in Frameworks */,
 				2FED825E1B1ED60100306A11 /* AVFoundation.framework in Frameworks */,
@@ -982,14 +982,14 @@
 		2F74CDC91B1D819A00797799 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F02FB8B1BABE70B00D7D68F /* libiconv.tbd */,
+				2F02FB891BABE70400D7D68F /* libxml2.tbd */,
+				2F02FB871BABE6FA00D7D68F /* libz.tbd */,
 				2F67969F1B4B687F00E0F774 /* CoreLocation.framework */,
-				2FCAF8B11B20498400F3B084 /* libz.dylib */,
 				2F5D29501B1EEC2000A99AC5 /* CFNetwork.framework */,
 				2F5D294E1B1EEC1100A99AC5 /* MobileCoreServices.framework */,
 				2F5D294C1B1EEC0500A99AC5 /* CoreData.framework */,
 				2F5D294A1B1EEBFA00A99AC5 /* Security.framework */,
-				2F5D29481B1EEBE700A99AC5 /* libxml2.dylib */,
-				2FED82631B1ED62100306A11 /* libiconv.dylib */,
 				2FED82611B1ED61000306A11 /* CoreVideo.framework */,
 				2FED825F1B1ED60900306A11 /* CoreMedia.framework */,
 				2FED825D1B1ED60100306A11 /* AVFoundation.framework */,
@@ -1812,6 +1812,7 @@
 		2F800A191B1D46DD006189EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LttFramework/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1829,6 +1830,7 @@
 		2F800A1A1B1D46DD006189EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LttFramework/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

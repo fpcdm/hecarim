@@ -13,6 +13,7 @@
 #import "GoodsListActivity.h"
 #import "ServiceListActivity.h"
 #import "ConsumeHistoryActivity.h"
+#import "CaseErrorView.h"
 
 @interface CaseDetailActivity ()
 
@@ -79,6 +80,22 @@
     [self refreshViewController:activity animated:NO];
 }
 
+#pragma mark - loadError
+- (void)loadError:(ErrorEntity *)error
+{
+    //无权限单独处理
+    if (error.code != ERROR_CODE_NOAUTH) {
+        [super loadError:error];
+    } else {
+        self.view = [[CaseErrorView alloc] initWithMessage:@"抢单失败\n下次手快点哦~亲！"];
+        
+        //标记列表刷新
+        if (self.callbackBlock) {
+            self.callbackBlock(@1);
+        }
+    }
+}
+
 #pragma mark - View
 - (void)onTemplateLoaded
 {
@@ -101,7 +118,7 @@
 {
     [super reloadData];
     
-    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址：%@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
+    NSString *buyerAddress = [NSString stringWithFormat:@"服务地址: %@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
     NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
     if (!customerRemark) customerRemark = (intention.typeName && [intention.typeName length] > 0) ? intention.typeName : nil;
     self.scope[@"info"] = @{

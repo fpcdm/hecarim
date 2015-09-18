@@ -65,8 +65,17 @@
         
         callback(nil);
     } failure:^(ErrorEntity *error){
-        [self showError:error.message];
+        [self hideLoading];
+        
+        [self loadError:error];
     }];
+}
+
+#pragma mark - loadError
+//默认错误处理，子类可重写
+- (void) loadError:(ErrorEntity *)error
+{
+    [self showError:error.message];
 }
 
 #pragma mark - reloadData
