@@ -110,12 +110,14 @@
     cityLabel.text = @"定位";
     cityLabel.backgroundColor = [UIColor clearColor];
     cityLabel.font = [UIFont boldSystemFontOfSize:16];
+    [cityLabel sizeToFit];
     [topView addSubview:cityLabel];
     
     [cityLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(pointView.mas_right).offset(5);
         make.centerY.equalTo(pointView.mas_centerY);
         
+        make.width.equalTo(@(cityLabel.frame.size.width));
         make.height.equalTo(@20);
     }];
     
@@ -506,7 +508,13 @@
     }
     
     NSString *city = [self getData:@"city"];
-    if (city) cityLabel.text = city;
+    if (city) {
+        cityLabel.text = city;
+        [cityLabel sizeToFit];
+        [cityLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@(cityLabel.frame.size.width));
+        }];
+    }
     
     NSString *address = [self getData:@"address"];
     if (address) addressLabel.text = [NSString stringWithFormat:@"正在为您定位：%@", address];
