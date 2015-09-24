@@ -14,6 +14,7 @@
 		2F02FB7E1BABE68900D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB7D1BABE68900D7D68F /* libiconv.tbd */; };
 		2F064BAF1B8EE39B003550B0 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BAE1B8EE39B003550B0 /* ReflectionView.m */; };
 		2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5661B5DEFEE007947D0 /* AboutView.m */; };
 		2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5681B5DEFEE007947D0 /* AccountView.m */; };
 		2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E56A1B5DEFEE007947D0 /* AddressDetailView.m */; };
@@ -256,6 +257,7 @@
 		2F064BAD1B8EE39B003550B0 /* ReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
 		2F064BAE1B8EE39B003550B0 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
 		2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2F16E55E1B5DEF3C007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E55F1B5DEF3C007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E5601B5DEF3C007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -1085,6 +1087,7 @@
 				2FD795901AE7ACC900D51FB0 /* LttAppDelegate.m */,
 				2F7057FC1B4665F3000DBEB8 /* Images.xcassets */,
 				2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */,
+				2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */,
 				2F6611461B0C697C0008D500 /* LttAutoFinance.pch */,
 				2FA0A3961B69BFDC0083365B /* InfoPlist.strings */,
 				2FD7958C1AE7ACC900D51FB0 /* Info.plist */,
@@ -1901,6 +1904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2F223D1B3A4D0300428742 /* NotificationBackgroundErrorIcon.png in Resources */,
+				2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */,
 				2F2F223E1B3A4D0300428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				2F2F22421B3A4D0300428742 /* NotificationBackgroundSuccess@2x.png in Resources */,
 				2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */,
