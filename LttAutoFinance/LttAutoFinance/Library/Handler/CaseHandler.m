@@ -35,6 +35,30 @@
     }];
 }
 
+- (void) queryProperties:(CategoryEntity *)type success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *mappingParam = @{
+                                   @"id": @"id",
+                                   @"name": @"name"
+                                   };
+    
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
+    
+    NSString *restPath = [sharedClient formatPath:@"casetype/properties/:id" object:type];
+    [sharedClient getObject:type path:restPath param:nil success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void) addIntention:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];

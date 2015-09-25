@@ -15,6 +15,9 @@
 //需求类型列表
 - (void) queryTypes:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//需求属性列表
+- (void) queryProperties:(CategoryEntity *) type success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 - (void) addIntention: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 - (void) queryIntention: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;

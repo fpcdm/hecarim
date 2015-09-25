@@ -22,6 +22,7 @@
 @implementation CaseFormViewController
 {
     CaseFormView *formView;
+    NSArray *properties;
 }
 
 @synthesize caseEntity;
@@ -39,25 +40,38 @@
     
     self.navigationItem.title = @"呼叫客服";
     
-    //查询默认收货地址
+    //查询属性列表
     [self showLoading:TIP_LOADING_MESSAGE];
-    UserHandler *userHandler = [[UserHandler alloc] init];
-    [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
-        [self hideLoading];
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    CategoryEntity *type = [[CategoryEntity alloc] init];
+    type.id = caseEntity.typeId;
+    [caseHandler queryProperties:type success:^(NSArray *result) {
+        properties = result ? result : @[];
         
-        if ([result count] > 0) {
-            AddressEntity *address = [result firstObject];
-            [self addressView:address];
-        } else {
-            [self addressView:[self currentAddress]];
-        }
-    } failure:^(ErrorEntity *error){
+        //查询默认收货地址
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
+            [self hideLoading];
+            
+            if ([result count] > 0) {
+                AddressEntity *address = [result firstObject];
+                [self addressView:address];
+            } else {
+                [self addressView:[self currentAddress]];
+            }
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];
 }
 
 - (void) addressView: (AddressEntity *) address
 {
+    //属性列表
+    [formView setData:@"properties" value:properties];
+    
     //地址存在
     if (address && address.id) {
         [formView setData:@"name" value:address.name];
