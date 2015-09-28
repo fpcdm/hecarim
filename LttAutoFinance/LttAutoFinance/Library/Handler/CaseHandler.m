@@ -42,10 +42,11 @@
     
     NSDictionary *mappingParam = @{
                                    @"id": @"id",
-                                   @"name": @"name"
+                                   @"name": @"name",
+                                   @"img": @"icon"
                                    };
     
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[PropertyEntity class] mappingParam:mappingParam keyPath:@"list"];
     
     NSString *restPath = [sharedClient formatPath:@"casetype/properties/:id" object:type];
     [sharedClient getObject:type path:restPath param:nil success:^(NSArray *result){
@@ -62,7 +63,7 @@
 - (void) addIntention:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"typeId": @"type", @"customerRemark": @"remark", @"buyerAddress": @"address", @"addressId": @"address_id"}];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"typeId": @"type", @"customerRemark": @"remark", @"buyerAddress": @"address", @"addressId": @"address_id", @"propertyId": @"property"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:@{@"intention_id": @"id"}];
     
     [sharedClient putObject:intention path:@"cases/info" param:nil success:^(NSArray *result){

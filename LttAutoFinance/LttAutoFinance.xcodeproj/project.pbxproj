@@ -179,6 +179,11 @@
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A3961B69BFDC0083365B /* InfoPlist.strings */; };
 		2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467631B43DA6500B2186F /* AudioToolbox.framework */; };
+		2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */; settings = {ASSET_TAGS = (); }; };
+		2FB72F631BB8D72400CB8E62 /* CasePropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2FB72F661BB8D75600CB8E62 /* CasePropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F651BB8D75600CB8E62 /* CasePropertyView.m */; settings = {ASSET_TAGS = (); }; };
+		2FB72F691BB928BA00CB8E62 /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F681BB928BA00CB8E62 /* BaseCollectionView.m */; settings = {ASSET_TAGS = (); }; };
+		2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F6B1BB935B700CB8E62 /* AppCollectionView.m */; settings = {ASSET_TAGS = (); }; };
 		2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */; };
 		2FCAF6AE1B1FEF8400F3B084 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18A11B04848B00C3D09E /* CFNetwork.framework */; };
 		2FCAF6B01B1FEFA400F3B084 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6AF1B1FEFA400F3B084 /* MobileCoreServices.framework */; };
@@ -572,6 +577,16 @@
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		2FA0A3981B69C0000083365B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FA467631B43DA6500B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2FB72F5B1BB8D3A200CB8E62 /* PropertyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyEntity.h; sourceTree = "<group>"; };
+		2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyEntity.m; sourceTree = "<group>"; };
+		2FB72F611BB8D72400CB8E62 /* CasePropertyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CasePropertyViewController.h; sourceTree = "<group>"; };
+		2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CasePropertyViewController.m; sourceTree = "<group>"; };
+		2FB72F641BB8D75600CB8E62 /* CasePropertyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CasePropertyView.h; sourceTree = "<group>"; };
+		2FB72F651BB8D75600CB8E62 /* CasePropertyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CasePropertyView.m; sourceTree = "<group>"; };
+		2FB72F671BB928BA00CB8E62 /* BaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionView.h; sourceTree = "<group>"; };
+		2FB72F681BB928BA00CB8E62 /* BaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionView.m; sourceTree = "<group>"; };
+		2FB72F6A1BB935B700CB8E62 /* AppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCollectionView.h; sourceTree = "<group>"; };
+		2FB72F6B1BB935B700CB8E62 /* AppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCollectionView.m; sourceTree = "<group>"; };
 		2FBF3F6C1B281CA400C0DC54 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		2FCAF6AF1B1FEFA400F3B084 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -897,6 +912,8 @@
 			children = (
 				2F16E57C1B5DEFEE007947D0 /* AddressSelectorView.h */,
 				2F16E57D1B5DEFEE007947D0 /* AddressSelectorView.m */,
+				2FB72F641BB8D75600CB8E62 /* CasePropertyView.h */,
+				2FB72F651BB8D75600CB8E62 /* CasePropertyView.m */,
 				2F16E5801B5DEFEE007947D0 /* CaseFormView.h */,
 				2F16E5811B5DEFEE007947D0 /* CaseFormView.m */,
 				2F16E5821B5DEFEE007947D0 /* CaseListView.h */,
@@ -984,6 +1001,8 @@
 			children = (
 				2F16E5D31B5DF08F007947D0 /* AddressSelectorViewController.h */,
 				2F16E5D41B5DF08F007947D0 /* AddressSelectorViewController.m */,
+				2FB72F611BB8D72400CB8E62 /* CasePropertyViewController.h */,
+				2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */,
 				2F16E5D51B5DF08F007947D0 /* CaseFormViewController.h */,
 				2F16E5D61B5DF08F007947D0 /* CaseFormViewController.m */,
 				2F16E5D71B5DF08F007947D0 /* CaseListViewController.h */,
@@ -1028,6 +1047,8 @@
 				2F16E6011B5DF162007947D0 /* AppExtension.m */,
 				2F16E6021B5DF162007947D0 /* AppTableView.h */,
 				2F16E6031B5DF162007947D0 /* AppTableView.m */,
+				2FB72F6A1BB935B700CB8E62 /* AppCollectionView.h */,
+				2FB72F6B1BB935B700CB8E62 /* AppCollectionView.m */,
 				2F16E6041B5DF162007947D0 /* AppUIUtil.h */,
 				2F16E6051B5DF162007947D0 /* AppUIUtil.m */,
 				2F16E6061B5DF162007947D0 /* AppUserViewController.h */,
@@ -1063,6 +1084,8 @@
 				2F16E61E1B5DF162007947D0 /* ModelEntity.m */,
 				2F16E6211B5DF162007947D0 /* ServiceEntity.h */,
 				2F16E6221B5DF162007947D0 /* ServiceEntity.m */,
+				2FB72F5B1BB8D3A200CB8E62 /* PropertyEntity.h */,
+				2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1299,6 +1322,8 @@
 				2F74CD7E1B1D5F6D00797799 /* BaseView.m */,
 				2FBF3F6C1B281CA400C0DC54 /* BaseTableView.h */,
 				2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */,
+				2FB72F671BB928BA00CB8E62 /* BaseCollectionView.h */,
+				2FB72F681BB928BA00CB8E62 /* BaseCollectionView.m */,
 				2F74CD741B1D5E9500797799 /* BaseEntity.h */,
 				2F74CD751B1D5E9500797799 /* BaseEntity.m */,
 				2FCAF8401B20117D00F3B084 /* BaseHandler.h */,
@@ -1961,11 +1986,13 @@
 				2F6D3E591B312765007A4159 /* MJRefreshNormalHeader.m in Sources */,
 				2F16E5B11B5DEFEE007947D0 /* HomeView.m in Sources */,
 				2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */,
+				2FB72F661BB8D75600CB8E62 /* CasePropertyView.m in Sources */,
 				2F6D3E531B312765007A4159 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2F16E5F61B5DF08F007947D0 /* LoginViewController.m in Sources */,
 				2F6D3E521B312765007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
 				2F8BFF101B8D53E00087EDA0 /* iCarousel.m in Sources */,
+				2FB72F691BB928BA00CB8E62 /* BaseCollectionView.m in Sources */,
 				2F16E5EF1B5DF08F007947D0 /* SettingViewController.m in Sources */,
 				2FED82C11B1EDBFB00306A11 /* split.c in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
@@ -1993,6 +2020,7 @@
 				2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */,
 				2F9000411B1D8B930040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F16E5EE1B5DF08F007947D0 /* SafetyViewController.m in Sources */,
+				2FB72F631BB8D72400CB8E62 /* CasePropertyViewController.m in Sources */,
 				2FED82BC1B1EDBFB00306A11 /* QRCodeGenerator.m in Sources */,
 				2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */,
 				2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */,
@@ -2056,6 +2084,7 @@
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2F16E6381B5DF162007947D0 /* CaseEntity.m in Sources */,
+				2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */,
 				2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */,
 				2F6D3E131B312164007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */,
@@ -2084,6 +2113,7 @@
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,
 				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
+				2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */,
 				2F16E5AA1B5DEFEE007947D0 /* CaseFormView.m in Sources */,
 				2FED7D9F1B1EA2D300306A11 /* UIView+WebCacheOperation.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,

@@ -11,6 +11,7 @@
 #import "CaseViewController.h"
 #import "CaseHandler.h"
 #import "AddressSelectorViewController.h"
+#import "CasePropertyViewController.h"
 #import "AddressEntity.h"
 #import "ValidateUtil.h"
 #import "UserHandler.h"
@@ -22,7 +23,10 @@
 @implementation CaseFormViewController
 {
     CaseFormView *formView;
+    
+    AddressEntity *address;
     NSArray *properties;
+    PropertyEntity *property;
 }
 
 @synthesize caseEntity;
@@ -32,7 +36,6 @@
     formView = [[CaseFormView alloc] init];
     formView.delegate = self;
     self.view = formView;
-    
 }
 
 - (void)viewDidLoad {
@@ -46,7 +49,11 @@
     CategoryEntity *type = [[CategoryEntity alloc] init];
     type.id = caseEntity.typeId;
     [caseHandler queryProperties:type success:^(NSArray *result) {
+        //启用属性
         properties = result ? result : @[];
+        if ([properties count] > 0) {
+            [formView setPropertyEnabled:YES];
+        }
         
         //查询默认收货地址
         UserHandler *userHandler = [[UserHandler alloc] init];
@@ -54,10 +61,11 @@
             [self hideLoading];
             
             if ([result count] > 0) {
-                AddressEntity *address = [result firstObject];
-                [self addressView:address];
+                address = [result firstObject];
+                [self renderView];
             } else {
-                [self addressView:[self currentAddress]];
+                address = [self currentAddress];
+                [self renderView];
             }
         } failure:^(ErrorEntity *error){
             [self showError:error.message];
@@ -67,10 +75,11 @@
     }];
 }
 
-- (void) addressView: (AddressEntity *) address
+- (void) renderView
 {
-    //属性列表
-    [formView setData:@"properties" value:properties];
+    //已选属性
+    [formView setData:@"property" value:property];
+    caseEntity.propertyId = property ? property.id : @0;
     
     //地址存在
     if (address && address.id) {
@@ -108,10 +117,25 @@
     AddressSelectorViewController *viewController = [[AddressSelectorViewController alloc] init];
     //获取当前地址
     viewController.currentAddress = [self currentAddress];
-    viewController.callbackBlock = ^(AddressEntity *address){
-        NSLog(@"选择的地址：%@", [address toDictionary]);
+    viewController.callbackBlock = ^(AddressEntity *newAddress){
+        NSLog(@"选择的地址：%@", [newAddress toDictionary]);
         
-        [self addressView:address];
+        address = newAddress;
+        [self renderView];
+    };
+    
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void) actionProperty
+{
+    CasePropertyViewController *viewController = [[CasePropertyViewController alloc] init];
+    viewController.properties = properties;
+    viewController.callbackBlock = ^(PropertyEntity *value){
+        NSLog(@"选择的属性：%@", [value toDictionary]);
+        
+        property = value;
+        [self renderView];
     };
     
     [self pushViewController:viewController animated:YES];

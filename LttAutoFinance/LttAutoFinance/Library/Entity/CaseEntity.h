@@ -70,6 +70,8 @@
 
 @property (nonatomic, retain) NSNumber *addressId;
 
+@property (nonatomic, retain) NSNumber *propertyId;
+
 - (void) avatarView: (UIImageView *)view;
 
 - (NSString *)statusName;

@@ -21,6 +21,8 @@ totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesP
 
 @synthesize addressId;
 
+@synthesize propertyId;
+
 - (void) avatarView: (UIImageView *)view
 {
     if (self.staffAvatar && [self.staffAvatar length] > 0) {

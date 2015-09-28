@@ -7,6 +7,7 @@
 //
 
 #import "CaseFormView.h"
+#import "PropertyEntity.h"
 
 @interface CaseFormView () <UITextViewDelegate>
 
@@ -17,6 +18,9 @@
     UITextView *remarkTextView;
     UILabel *contactLabel;
     UITextView *addressTextView;
+    UILabel *propertyLabel;
+    
+    BOOL propertyEnabled;
 }
 
 - (id)init
@@ -53,6 +57,19 @@
     return self;
 }
 
+- (void)setPropertyEnabled:(BOOL)enabled
+{
+    if (enabled) {
+        propertyEnabled = enabled;
+        
+        NSArray *tableRow = @[
+                              @{@"id" : @"property", @"type" : @"custom", @"view": @"cellProperty:", @"action": @"actionProperty", @"height":@50}
+                              ];
+        [self.tableData insertObject:tableRow atIndex:1];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - RenderData
 - (void) renderData
 {
@@ -74,6 +91,10 @@
         addressTextView.text = @"请选择服务地址";
         addressTextView.textColor = [UIColor redColor];
     }
+    
+    //是否有属性
+    PropertyEntity *property = [self getData:@"property"];
+    if (property) propertyLabel.text = [NSString stringWithFormat:@"汽车品牌：%@", property.name];
 }
 
 #pragma mark - TableView
@@ -131,6 +152,25 @@
         make.left.equalTo(imageView.mas_right).offset(4);
         make.right.equalTo(superview.mas_right).offset(-24);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
+    }];
+    
+    return cell;
+}
+
+- (UITableViewCell *) cellProperty: (UITableViewCell *) cell
+{
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    //文本框
+    propertyLabel = [[UILabel alloc] init];
+    propertyLabel.font = FONT_MIDDLE;
+    propertyLabel.text = @"汽车品牌";
+    [cell addSubview:propertyLabel];
+    
+    UIView *superview = cell;
+    [propertyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(superview.mas_left).offset(40);
+        make.centerY.equalTo(superview.mas_centerY);
     }];
     
     return cell;
@@ -197,6 +237,11 @@
 - (void) actionAddress
 {
     [self.delegate actionAddress];
+}
+
+- (void) actionProperty
+{
+    [self.delegate actionProperty];
 }
 
 - (void) actionSubmit

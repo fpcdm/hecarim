@@ -9,6 +9,7 @@
 #import "BaseHandler.h"
 #import "CaseEntity.h"
 #import "CategoryEntity.h"
+#import "PropertyEntity.h"
 
 @interface CaseHandler : BaseHandler
 
