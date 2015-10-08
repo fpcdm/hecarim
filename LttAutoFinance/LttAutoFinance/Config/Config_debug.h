@@ -20,6 +20,6 @@
 //调试服务器
 #define DEBUG_LTT_REST_SERVER_DEV @"http://api.web.dm/"
 #define DEBUG_LTT_REST_SERVER_TEST @"http://api.web.dm/"
-#define DEBUG_LTT_REST_SERVER_PROD @"http://115.29.54.118:8080/"
+#define DEBUG_LTT_REST_SERVER_PROD @"http://maokai.lttok.com/"
 
 #endif
