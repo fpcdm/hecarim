@@ -70,8 +70,34 @@
     userInfo = [[StorageUtil sharedStorage] prepareDictionary:userInfo];
     [[StorageUtil sharedStorage] setRemoteNotification:userInfo];
     
-    // 播放声音并震动
-    AudioServicesPlaySystemSound(1007);
+    // 检测声音文件
+    NSString *soundName = nil;
+    if (userInfo) {
+        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+        if (aps) soundName = [aps objectForKey:@"sound"];
+    }
+    
+    // 文件是否存在
+    NSString *soundFile = nil;
+    if (soundName && ![@"default" isEqualToString:soundName]) {
+        soundFile = [[NSBundle mainBundle] pathForResource:soundName ofType:nil];
+        if (soundFile && ![[NSFileManager defaultManager] fileExistsAtPath:soundFile]) {
+            soundFile = nil;
+        }
+    }
+    
+    // 播放内置声音
+    if (soundFile) {
+        NSURL *soundUrl = [NSURL fileURLWithPath:soundFile];
+        SystemSoundID soundId = 0;
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundUrl, &soundId);
+        AudioServicesPlaySystemSound(soundId);
+    // 播放系统声音
+    } else {
+        AudioServicesPlaySystemSound(1007);
+    }
+    
+    //震动
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
