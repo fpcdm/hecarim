@@ -36,7 +36,6 @@ static NSArray  *caseTypes = nil;
 
 - (void)loadView
 {
-    homeView = [[HomeView alloc] initWithData:@{@"height":@(SCREEN_AVAILABLE_HEIGHT)}];
     homeView.delegate = self;
     self.view = homeView;
 }
