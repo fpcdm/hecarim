@@ -18,8 +18,6 @@
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
-static NSString *detailAddress = nil;
-static NSString *lastCity = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
 static NSArray  *caseTypes = nil;
@@ -32,10 +30,12 @@ static NSArray  *caseTypes = nil;
 {
     HomeView *homeView;
     TimerUtil *gpsTimer;
+    NSString *gpsStatus;
 }
 
 - (void)loadView
 {
+    homeView = [[HomeView alloc] init];
     homeView.delegate = self;
     self.view = homeView;
 }
@@ -89,7 +89,7 @@ static NSArray  *caseTypes = nil;
         } else {
             [homeView setData:@"types" value:caseTypes];
             [homeView setData:@"address" value:lastAddress];
-            [homeView setData:@"city" value:lastCity];
+            [homeView setData:@"gps" value:gpsStatus];
             [homeView setData:@"count" value:lastService];
             [homeView renderData];
         }
@@ -141,8 +141,8 @@ static NSArray  *caseTypes = nil;
 - (void) renderView
 {
     [homeView setData:@"types" value:caseTypes];
-    [homeView setData:@"address" value:lastAddress ? lastAddress : @"定位失败"];
-    [homeView setData:@"city" value:lastCity ? lastCity : @"定位"];
+    [homeView setData:@"address" value:lastAddress];
+    [homeView setData:@"gps" value:gpsStatus];
     [homeView setData:@"count" value:lastService ? lastService : @-1];
     [homeView renderData];
 }
@@ -189,10 +189,11 @@ static NSArray  *caseTypes = nil;
         LocationEntity *location = [result firstObject];
         
         //获取位置
-        if (location.address && [location.address length] > 0) {
-            lastAddress = location.address;
-            detailAddress = location.detailAddress;
-            lastCity = location.city;
+        if (location.detailAddress && [location.detailAddress length] > 0) {
+            lastAddress = location.detailAddress;
+            gpsStatus = nil;
+        } else {
+            gpsStatus = @"获取位置失败";
         }
         
         //查询信使数量
@@ -211,6 +212,8 @@ static NSArray  *caseTypes = nil;
             [self renderView];
         }];
     } failure:^(ErrorEntity *error){
+        gpsStatus = @"查询位置失败";
+        
         //刷新视图
         [self renderView];
     }];
@@ -223,7 +226,15 @@ static NSArray  *caseTypes = nil;
     //重置数据
     lastAddress = nil;
     lastService = nil;
-    lastCity = nil;
+    
+    //失败原因
+    if ([error code] == kCLErrorDenied) {
+        gpsStatus = @"请打开手机定位";
+    } else if ([error code] == kCLErrorLocationUnknown) {
+        gpsStatus = @"无法获取位置";
+    } else {
+        gpsStatus = @"定位失败";
+    }
     
     //刷新视图
     [self renderView];
@@ -258,7 +269,7 @@ static NSArray  *caseTypes = nil;
     //获取参数
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.typeId = type;
-    intentionEntity.buyerAddress = detailAddress;
+    intentionEntity.buyerAddress = lastAddress;
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
