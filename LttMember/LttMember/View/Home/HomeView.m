@@ -8,8 +8,11 @@
 
 #import "HomeView.h"
 #import "CategoryEntity.h"
+#import "AppEditButton.h"
 
-@interface HomeView ()
+#define Duration 0.2
+
+@interface HomeView () <UIScrollViewDelegate, UIGestureRecognizerDelegate, AppEditButtonDelegate>
 
 @end
 
@@ -17,7 +20,7 @@
 {
     UILabel *addressLabel;
     UIView *separateView;
-    UIScrollView *serviceView;
+    UIScrollView *scrollView;
     
     NSMutableArray *menuBtns;
     NSMutableArray *itemBtns;
@@ -212,17 +215,56 @@
     }
     
     //服务菜单
-    serviceView = [[UIScrollView alloc] init];
-    serviceView.backgroundColor = COLOR_MAIN_WHITE;
-    [self addSubview:serviceView];
+    scrollView = [[UIScrollView alloc] init];
+    scrollView.backgroundColor = COLOR_MAIN_WHITE;
+    [self addSubview:scrollView];
     
     superview = self;
-    [serviceView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(menuView.mas_bottom).offset(5);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom).offset(-(SCREEN_WIDTH * 0.22 * 0.8));
     }];
+    
+    //服务选项
+    itemBtns = [NSMutableArray array];
+    scrollView.delegate = self;
+    [scrollView setPagingEnabled:NO];
+    
+    AppEditButton *editButton = [[AppEditButton alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
+    editButton.backgroundColor = COLOR_MAIN_DARK;
+    editButton.delegate = self;
+    [scrollView addSubview:editButton];
+    [itemBtns addObject:editButton];
+    
+    AppEditButton *editButton2 = [[AppEditButton alloc] initWithFrame:CGRectMake(90, 20, 50, 50)];
+    editButton2.backgroundColor = COLOR_MAIN_HIGHLIGHT;
+    editButton2.delegate = self;
+    [scrollView addSubview:editButton2];
+    [itemBtns addObject:editButton2];
+    
+    AppEditButton *editButton3 = [[AppEditButton alloc] initWithFrame:CGRectMake(160, 20, 50, 50)];
+    editButton3.backgroundColor = COLOR_MAIN_HIGHLIGHT;
+    editButton3.delegate = self;
+    editButton3.isEditable = NO;
+    [scrollView addSubview:editButton3];
+    [itemBtns addObject:editButton3];
+}
+
+- (void) actionItemClicked:(AppEditButton *)item
+{
+    NSLog(@"clicked");
+}
+
+- (void) actionDeleteItem:(AppEditButton *)item
+{
+    [itemBtns removeObject:item];
+}
+
+- (NSArray *) itemsForItem:(AppEditButton *)item
+{
+    return itemBtns;
 }
 
 - (void) bottomView
