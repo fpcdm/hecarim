@@ -11,6 +11,8 @@
 @protocol HomeViewDelegate <NSObject>
 
 @required
+- (void)actionCategory: (NSNumber *) id;
+- (void)actionMore;
 - (void)actionCase: (NSNumber *) type;
 - (void)actionGps;
 - (void)actionReload;

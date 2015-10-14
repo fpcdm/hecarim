@@ -257,6 +257,16 @@ static NSArray  *caseTypes = nil;
     [self initData];
 }
 
+- (void)actionCategory:(NSNumber *)id
+{
+    
+}
+
+- (void)actionMore
+{
+    
+}
+
 - (void)actionCase:(NSNumber *)type
 {
     //是否登陆
