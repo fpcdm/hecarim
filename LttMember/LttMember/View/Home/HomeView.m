@@ -8,11 +8,11 @@
 
 #import "HomeView.h"
 #import "CategoryEntity.h"
-#import "AppEditButton.h"
+#import "SpringBoardButton.h"
 
 #define Duration 0.2
 
-@interface HomeView () <UIScrollViewDelegate, UIGestureRecognizerDelegate, AppEditButtonDelegate>
+@interface HomeView () <UIScrollViewDelegate, UIGestureRecognizerDelegate, SpringBoardButtonDelegate>
 
 @end
 
@@ -232,37 +232,56 @@
     scrollView.delegate = self;
     [scrollView setPagingEnabled:NO];
     
-    AppEditButton *editButton = [[AppEditButton alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
+    SpringBoardButton *editButton = [[SpringBoardButton alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
     editButton.backgroundColor = COLOR_MAIN_DARK;
     editButton.delegate = self;
+    [editButton setContainerView:scrollView];
     [scrollView addSubview:editButton];
     [itemBtns addObject:editButton];
     
-    AppEditButton *editButton2 = [[AppEditButton alloc] initWithFrame:CGRectMake(90, 20, 50, 50)];
+    SpringBoardButton *editButton2 = [[SpringBoardButton alloc] initWithFrame:CGRectMake(90, 20, 50, 50)];
     editButton2.backgroundColor = COLOR_MAIN_HIGHLIGHT;
     editButton2.delegate = self;
+    [editButton2 setContainerView:scrollView];
     [scrollView addSubview:editButton2];
     [itemBtns addObject:editButton2];
     
-    AppEditButton *editButton3 = [[AppEditButton alloc] initWithFrame:CGRectMake(160, 20, 50, 50)];
+    SpringBoardButton *editButton3 = [[SpringBoardButton alloc] initWithFrame:CGRectMake(160, 20, 50, 50)];
     editButton3.backgroundColor = COLOR_MAIN_HIGHLIGHT;
     editButton3.delegate = self;
+    [editButton3 setContainerView:scrollView];
     editButton3.isEditable = NO;
     [scrollView addSubview:editButton3];
     [itemBtns addObject:editButton3];
 }
 
-- (void) actionItemClicked:(AppEditButton *)item
+- (void) actionItemClicked:(SpringBoardButton *)item
 {
     NSLog(@"clicked");
 }
 
-- (void) actionDeleteItem:(AppEditButton *)item
+- (void) actionItemsStartEditing
+{
+    NSLog(@"startEditing");
+}
+
+- (void) actionItemsEndEditing
+{
+    NSLog(@"endEditing");
+}
+
+- (void) actionItemMoved:(SpringBoardButton *)item toIndex:(NSInteger)index
+{
+    NSInteger fromIndex = [itemBtns indexOfObject:item];
+    [itemBtns exchangeObjectAtIndex:fromIndex withObjectAtIndex:index];
+}
+
+- (void) actionItemDeleted:(SpringBoardButton *)item
 {
     [itemBtns removeObject:item];
 }
 
-- (NSArray *) itemsForItem:(AppEditButton *)item
+- (NSArray *) itemsForItem:(SpringBoardButton *)item
 {
     return itemBtns;
 }

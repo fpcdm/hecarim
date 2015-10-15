@@ -149,7 +149,6 @@
 		2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF81B1D50EE006189EF /* NSString+trim.m */; };
 		2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */; };
 		2F800B011B1D50EE006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFB1B1D50EE006189EF /* README.md */; };
-		2F8B59071BCE429D00067917 /* AppEditButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B59061BCE429D00067917 /* AppEditButton.m */; settings = {ASSET_TAGS = (); }; };
 		2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */; };
 		2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF191B8DB4B90087EDA0 /* TAAnimatedDotView.m */; };
 		2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF1B1B8DB4B90087EDA0 /* TADotView.m */; };
@@ -177,6 +176,7 @@
 		2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A3961B69BFDC0083365B /* InfoPlist.strings */; };
+		2FA29B1B1BCF95DD00FB056B /* SpringBoardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA29B1A1BCF95DD00FB056B /* SpringBoardButton.m */; settings = {ASSET_TAGS = (); }; };
 		2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467631B43DA6500B2186F /* AudioToolbox.framework */; };
 		2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */; settings = {ASSET_TAGS = (); }; };
 		2FB72F631BB8D72400CB8E62 /* CasePropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -504,8 +504,6 @@
 		2F800AF91B1D50EE006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800AFB1B1D50EE006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2F8B59051BCE429D00067917 /* AppEditButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppEditButton.h; sourceTree = "<group>"; };
-		2F8B59061BCE429D00067917 /* AppEditButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppEditButton.m; sourceTree = "<group>"; };
 		2F8BFF161B8DB4B90087EDA0 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		2F8BFF181B8DB4B90087EDA0 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -565,6 +563,8 @@
 		2F9001001B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		2FA0A3981B69C0000083365B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2FA29B191BCF95DD00FB056B /* SpringBoardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardButton.h; sourceTree = "<group>"; };
+		2FA29B1A1BCF95DD00FB056B /* SpringBoardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBoardButton.m; sourceTree = "<group>"; };
 		2FA467631B43DA6500B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2FB72F5B1BB8D3A200CB8E62 /* PropertyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyEntity.h; sourceTree = "<group>"; };
 		2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyEntity.m; sourceTree = "<group>"; };
@@ -1021,8 +1021,6 @@
 				2F16E6091B5DF162007947D0 /* AppView.m */,
 				2F16E60A1B5DF162007947D0 /* AppViewController.h */,
 				2F16E60B1B5DF162007947D0 /* AppViewController.m */,
-				2F8B59051BCE429D00067917 /* AppEditButton.h */,
-				2F8B59061BCE429D00067917 /* AppEditButton.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1349,6 +1347,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2FA29B181BCF95DD00FB056B /* SpringBoardButton */,
 				2F8BFF151B8DB4B90087EDA0 /* TAPageControl */,
 				2F0095D11B79A5FC003C27B9 /* DLRadioButton */,
 				2F2F221E1B3A4D0300428742 /* TSMessages */,
@@ -1462,6 +1461,15 @@
 				2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 			);
 			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		2FA29B181BCF95DD00FB056B /* SpringBoardButton */ = {
+			isa = PBXGroup;
+			children = (
+				2FA29B191BCF95DD00FB056B /* SpringBoardButton.h */,
+				2FA29B1A1BCF95DD00FB056B /* SpringBoardButton.m */,
+			);
+			path = SpringBoardButton;
 			sourceTree = "<group>";
 		};
 		2FCAF6C71B1FF07B00F3B084 /* RestKit */ = {
@@ -1963,7 +1971,6 @@
 				2F16E5A11B5DEFEE007947D0 /* AddressView.m in Sources */,
 				2F16E5B41B5DEFEE007947D0 /* RegisterExistView.m in Sources */,
 				2FED7D9D1B1EA2D300306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
-				2F8B59071BCE429D00067917 /* AppEditButton.m in Sources */,
 				2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F16E6341B5DF162007947D0 /* AppViewController.m in Sources */,
 				2FED7D9C1B1EA2D300306A11 /* UIImage+MultiFormat.m in Sources */,
@@ -2012,6 +2019,7 @@
 				2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */,
 				2F6D3E131B312164007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */,
+				2FA29B1B1BCF95DD00FB056B /* SpringBoardButton.m in Sources */,
 				2F16E5E91B5DF08F007947D0 /* AddressFormViewController.m in Sources */,
 				2F16E5B31B5DEFEE007947D0 /* RegisterCodeView.m in Sources */,
 				2F16E5EA1B5DF08F007947D0 /* AddressViewController.m in Sources */,

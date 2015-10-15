@@ -1,14 +1,18 @@
 //
-//  AppEditButton.m
+//  SpringBoardButton.m
 //  LttMember
 //
 //  Created by wuyong on 15/10/14.
 //  Copyright © 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppEditButton.h"
+#import "SpringBoardButton.h"
 
-@implementation AppEditButton
+@interface SpringBoardButton ()
+
+@end
+
+@implementation SpringBoardButton
 {
     UIButton *deleteButton;
     BOOL _isEditing;
@@ -32,7 +36,7 @@
         deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(-10, -10, 20, 20)];
         [deleteButton setBackgroundImage:[UIImage imageNamed:@"deleteItem"] forState:UIControlStateNormal];
         [deleteButton setBackgroundImage:[UIImage imageNamed:@"deleteItem"] forState:UIControlStateHighlighted];
-        [deleteButton addTarget:self action:@selector(actionDeleteItem:) forControlEvents:UIControlEventTouchUpInside];
+        [deleteButton addTarget:self action:@selector(actionItemDeleted:) forControlEvents:UIControlEventTouchUpInside];
         deleteButton.hidden = YES;
         [self addSubview:deleteButton];
         
@@ -43,48 +47,59 @@
     return self;
 }
 
+- (void) setContainerView:(UIView *)containerView
+{
+    //检查单击手势
+    NSArray *gestures = containerView.gestureRecognizers;
+    BOOL hasBind = NO;
+    if (gestures) {
+        for (UIGestureRecognizer *gesture in gestures) {
+            if ([gesture isKindOfClass:[UITapGestureRecognizer class]] &&
+                ((UITapGestureRecognizer *)gesture).numberOfTapsRequired == 1) {
+                hasBind = YES;
+                break;
+            }
+        }
+    }
+    if (hasBind) return;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionContainerTapped:)];
+    [tapGesture setNumberOfTapsRequired:1];
+    [containerView addGestureRecognizer:tapGesture];
+}
+
 - (void) setIsEditing:(BOOL)isEditing
 {
     if (!self.isEditable) return;
     
     if (isEditing) {
-        [self enableEditing];
+        if (_isEditing) return;
+        _isEditing = YES;
+        
+        CGFloat rotation = 0.03;
+        CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"transform"];
+        shake.duration = 0.13;
+        shake.autoreverses = YES;
+        shake.repeatCount  = MAXFLOAT;
+        shake.removedOnCompletion = NO;
+        shake.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform,-rotation, 0.0 ,0.0 ,1.0)];
+        shake.toValue   = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform, rotation, 0.0 ,0.0 ,1.0)];
+        [self.layer addAnimation:shake forKey:@"shakeAnimation"];
+        
+        deleteButton.hidden = NO;
     } else {
-        [self disableEditing];
+        if (!_isEditing) return;
+        _isEditing = NO;
+        
+        [self.layer removeAnimationForKey:@"shakeAnimation"];
+        
+        deleteButton.hidden = YES;
     }
 }
 
 - (BOOL) isEditing
 {
     return _isEditing;
-}
-
-- (void) enableEditing
-{
-    if (_isEditing) return;
-    _isEditing = YES;
-    
-    CGFloat rotation = 0.03;
-    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"transform"];
-    shake.duration = 0.13;
-    shake.autoreverses = YES;
-    shake.repeatCount  = MAXFLOAT;
-    shake.removedOnCompletion = NO;
-    shake.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform,-rotation, 0.0 ,0.0 ,1.0)];
-    shake.toValue   = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform, rotation, 0.0 ,0.0 ,1.0)];
-    [self.layer addAnimation:shake forKey:@"shakeAnimation"];
-    
-    deleteButton.hidden = NO;
-}
-
-- (void) disableEditing
-{
-    if (!_isEditing) return;
-    _isEditing = NO;
-    
-    [self.layer removeAnimationForKey:@"shakeAnimation"];
-    
-    deleteButton.hidden = YES;
 }
 
 //效果优化
@@ -95,6 +110,7 @@
         [self setFrame:CGRectMake(self.frame.origin.x+50, self.frame.origin.y+50, 0, 0)];
         [deleteButton setFrame:CGRectMake(0, 0, 0, 0)];
     }completion:^(BOOL finished) {
+        deleteButton = nil;
         [super removeFromSuperview];
     }];
 }
@@ -107,9 +123,16 @@
     NSArray *items = [self.delegate itemsForItem:self];
     if (sender.state == UIGestureRecognizerStateBegan) {
         //进入编辑模式
-        if (!_isEditing) {
-            for (AppEditButton *item in items) {
-                item.isEditing = YES;
+        BOOL startEditing = NO;
+        for (SpringBoardButton *item in items) {
+            if (item.isEditing) continue;
+            
+            item.isEditing = YES;
+            startEditing = YES;
+        }
+        if (startEditing) {
+            if ([self.delegate respondsToSelector:@selector(actionItemsStartEditing)]) {
+                [self.delegate actionItemsStartEditing];
             }
         }
         
@@ -136,11 +159,11 @@
                 self.center = temp;
                 originPoint = self.center;
                 contain = YES;
+                //移动数据
+                [self actionItemMoved:index];
             }];
         }
     } else if (sender.state == UIGestureRecognizerStateEnded) {
-        //todo: 解析移动结果
-        
         [UIView animateWithDuration:0.2 animations:^{
             self.transform = CGAffineTransformIdentity;
             self.alpha = 1.0;
@@ -155,7 +178,7 @@
 {
     NSArray *items = [self.delegate itemsForItem:self];
     for (NSInteger i = 0;i<items.count;i++) {
-        AppEditButton *button = items[i];
+        SpringBoardButton *button = items[i];
         if (button != self) {
             if (CGRectContainsPoint(button.frame, point)) {
                 return button.isEditable ? i : -1;
@@ -165,15 +188,42 @@
     return -1;
 }
 
+- (void) actionContainerTapped: (UITapGestureRecognizer *) tapGesture
+{
+    //退出编辑模式
+    BOOL endEditing = NO;
+    NSArray *items = [self.delegate itemsForItem:self];
+    for (SpringBoardButton *item in items) {
+        if (!item.isEditing) continue;
+        
+        item.isEditing = NO;
+        endEditing = YES;
+    }
+    if (!endEditing) return;
+    
+    if ([self.delegate respondsToSelector:@selector(actionItemsEndEditing)]) {
+        [self.delegate actionItemsEndEditing];
+    }
+}
+
 - (void) actionItemClicked: (UIButton *)sender
 {
     //编辑模式不可用
-    if (_isEditing) return;
+    if (self.isEditing) return;
     
-    [self.delegate actionItemClicked:self];
+    if ([self.delegate respondsToSelector:@selector(actionItemClicked:)]) {
+        [self.delegate actionItemClicked:self];
+    }
 }
 
-- (void) actionDeleteItem: (UIButton *)sender
+- (void) actionItemMoved: (NSInteger) toIndex
+{
+    if ([self.delegate respondsToSelector:@selector(actionItemMoved:toIndex:)]) {
+        [self.delegate actionItemMoved:self toIndex:toIndex];
+    }
+}
+
+- (void) actionItemDeleted: (UIButton *)sender
 {
     //移除自己
     NSArray *items = [self.delegate itemsForItem:self];
@@ -190,7 +240,9 @@
     }];
     [self removeFromSuperview];
     
-    [self.delegate actionDeleteItem:self];
+    if ([self.delegate respondsToSelector:@selector(actionItemDeleted:)]) {
+        [self.delegate actionItemDeleted:self];
+    }
 }
 
 @end
