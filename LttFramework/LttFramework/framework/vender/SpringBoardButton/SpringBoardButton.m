@@ -107,7 +107,7 @@
 {
     [UIView animateWithDuration:0.2 animations:^{
         self.alpha = 0.0;
-        [self setFrame:CGRectMake(self.frame.origin.x+50, self.frame.origin.y+50, 0, 0)];
+        [self setFrame:CGRectMake(self.frame.origin.x + self.frame.size.width / 2, self.frame.origin.y + self.frame.size.height / 2, 0, 0)];
         [deleteButton setFrame:CGRectMake(0, 0, 0, 0)];
     }completion:^(BOOL finished) {
         deleteButton = nil;

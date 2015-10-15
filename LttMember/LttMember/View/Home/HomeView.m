@@ -232,27 +232,52 @@
     scrollView.delegate = self;
     [scrollView setPagingEnabled:NO];
     
-    SpringBoardButton *editButton = [[SpringBoardButton alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
-    editButton.backgroundColor = COLOR_MAIN_DARK;
-    editButton.delegate = self;
-    [editButton setContainerView:scrollView];
-    [scrollView addSubview:editButton];
-    [itemBtns addObject:editButton];
+    NSArray *itemArray = @[
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
+                           @{@"icon":@"homeAdd", @"category":@0, @"name":@"添加", @"detail": @"添加你想要的服务"}
+                           ];
     
-    SpringBoardButton *editButton2 = [[SpringBoardButton alloc] initWithFrame:CGRectMake(90, 20, 50, 50)];
-    editButton2.backgroundColor = COLOR_MAIN_HIGHLIGHT;
-    editButton2.delegate = self;
-    [editButton2 setContainerView:scrollView];
-    [scrollView addSubview:editButton2];
-    [itemBtns addObject:editButton2];
+    //计算宽高
+    CGFloat itemWidth = 50;
+    CGFloat itemHeight = 60;
+    NSInteger itemLine = 4;
+    CGFloat itemSpaceW = (SCREEN_WIDTH - itemLine * itemWidth) / (itemLine + 1);
+    CGFloat itemSpaceH = 20;
     
-    SpringBoardButton *editButton3 = [[SpringBoardButton alloc] initWithFrame:CGRectMake(160, 20, 50, 50)];
-    editButton3.backgroundColor = COLOR_MAIN_HIGHLIGHT;
-    editButton3.delegate = self;
-    [editButton3 setContainerView:scrollView];
-    editButton3.isEditable = NO;
-    [scrollView addSubview:editButton3];
-    [itemBtns addObject:editButton3];
+    //添加元素
+    int i = 0;
+    for (NSDictionary *itemDict in itemArray) {
+        i++;
+        
+        //计算位置
+        NSInteger itemRow = (i % 4) == 0 ? (i / 4) : ((int)(i / 4)) + 1;
+        NSInteger itemCol = (i % 4) == 0 ? 4 : (i % 4);
+        CGFloat itemX = itemSpaceW + (itemWidth + itemSpaceW) * (itemCol - 1);
+        CGFloat itemY = itemSpaceH + (itemHeight + itemSpaceH) * (itemRow - 1);
+        CGRect itemFrame = CGRectMake(itemX, itemY, itemWidth, itemHeight);
+        
+        //初始化按钮
+        SpringBoardButton *editButton = [[SpringBoardButton alloc] initWithFrame:itemFrame];
+        editButton.backgroundColor = COLOR_MAIN_DARK;
+        [editButton setTitle:[NSString stringWithFormat:@"%d", i] forState:UIControlStateNormal];
+        editButton.delegate = self;
+        //添加按钮
+        if ([@0 isEqualToNumber:[itemDict objectForKey:@"category"]]) {
+            editButton.isEditable = NO;
+            //todo 解决删除绑定元素不触发EndEditing事件问题
+            //todo 修正商户端下拉闪退问题
+            [editButton setContainerView:scrollView];
+        }
+        [scrollView addSubview:editButton];
+        [itemBtns addObject:editButton];
+    }
 }
 
 - (void) actionItemClicked:(SpringBoardButton *)item

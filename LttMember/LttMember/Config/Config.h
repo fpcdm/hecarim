@@ -39,7 +39,7 @@
 #define LTT_APPSTORE_ID @"1034680001"
 
 //客户端类型
-#define LTT_CLIENT_TYPE @"AF"
+#define LTT_CLIENT_TYPE @"GM"
 
 //用户登录类型
 #define USER_TYPE_MEMBER @"member"
@@ -51,7 +51,7 @@
 #define USER_HEARTBEAT_INTERVAL 60.0
 
 //刷新位置间隔
-#define USER_LOCATION_INTERVAL 300.0
+#define USER_LOCATION_INTERVAL 60.0
 
 //短信验证码发送间隔
 #define USER_SMS_INTERVAL 60
