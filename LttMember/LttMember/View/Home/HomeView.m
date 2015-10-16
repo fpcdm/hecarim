@@ -134,6 +134,7 @@
     //服务菜单
     scrollView = [[UIScrollView alloc] init];
     scrollView.backgroundColor = COLOR_MAIN_WHITE;
+    scrollView.userInteractionEnabled = YES;
     [scrollView setPagingEnabled:NO];
     [scrollView setSpringBoardDelegate:self];
     [self addSubview:scrollView];
