@@ -23,4 +23,6 @@
 
 @property (retain, nonatomic) id<HomeViewDelegate> delegate;
 
+@property (retain, nonatomic) UIScrollView *scrollView;
+
 @end

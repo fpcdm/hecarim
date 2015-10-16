@@ -20,7 +20,7 @@
 static NSString *lastAddress = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
-static NSArray  *caseTypes = nil;
+static NSMutableArray *caseCategories = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
@@ -76,71 +76,31 @@ static NSArray  *caseTypes = nil;
 
 - (void)initData
 {
-    //数据已经存在
-    if (caseTypes) {
-        //设置定时器
-        [self setTimer];
-    } else {
-        [self initCacheTypes];
-        //第一次，显示加载效果
-        if (!caseTypes) {
-            [self showLoading:TIP_LOADING_MESSAGE];
-        //缓存存在，不显示加载效果
-        } else {
-            [homeView setData:@"types" value:caseTypes];
-            [homeView setData:@"address" value:lastAddress];
-            [homeView setData:@"gps" value:gpsStatus];
-            [homeView setData:@"count" value:lastService];
-            [homeView renderData];
-        }
+    //获取分类列表
+    if (!caseCategories) {
+        [self showLoading:TIP_LOADING_MESSAGE];
         
         CaseHandler *caseHandler = [[CaseHandler alloc] init];
-        [caseHandler queryTypes:nil success:^(NSArray *result){
+        [caseHandler queryCategories:nil success:^(NSArray *result) {
             [self hideLoading];
             
-            //静态缓存
-            caseTypes = result;
-            
-            //离线缓存
-            NSMutableArray *resultTypes = [[NSMutableArray alloc] init];
-            for (CategoryEntity *category in caseTypes) {
-                [resultTypes addObject:[category toDictionary]];
-            }
-            [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CASE_TYPES object:resultTypes];
+            caseCategories = [NSMutableArray arrayWithArray:result];
             
             //设置定时器
             [self setTimer];
-        } failure:^(ErrorEntity *error){
-            [self hideLoading];
-            
-            if (caseTypes) {
-                //设置定时器
-                [self setTimer];
-            } else {
-                [self showError:error.message];
-            }
+        } failure:^(ErrorEntity *error) {
+            [self showError:error.message];
         }];
-    }
-}
-
-//读取缓存数据
-- (void) initCacheTypes
-{
-    //读取离线缓存
-    NSArray *cacheTypes = [[StorageUtil sharedStorage] getData:LTT_STORAGE_KEY_CASE_TYPES];
-    if (cacheTypes) {
-        caseTypes = [[NSMutableArray alloc] init];
-        for (NSDictionary *value in cacheTypes) {
-            CategoryEntity *category = [[CategoryEntity alloc] initWithDictionary:value];
-            [(NSMutableArray *)caseTypes addObject:category];
-        }
+    } else {
+        //设置定时器
+        [self setTimer];
     }
 }
 
 //渲染视图
 - (void) renderView
 {
-    [homeView setData:@"types" value:caseTypes];
+    [homeView setData:@"categories" value:caseCategories];
     [homeView setData:@"address" value:lastAddress];
     [homeView setData:@"gps" value:gpsStatus];
     [homeView setData:@"count" value:lastService ? lastService : @-1];

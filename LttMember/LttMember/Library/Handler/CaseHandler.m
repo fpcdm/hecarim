@@ -10,6 +10,31 @@
 
 @implementation CaseHandler
 
+- (void) queryCategories:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *mappingParam = @{
+                                   @"category_id": @"id",
+                                   @"category_name": @"name",
+                                   @"img": @"icon"
+                                   };
+    
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
+    
+    NSString *restPath = @"casetype/categories";
+    [sharedClient getObject:[CategoryEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void) queryTypes:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
@@ -18,6 +43,7 @@
     NSDictionary *mappingParam = @{
                                    @"type_id": @"id",
                                    @"type_name": @"name",
+                                   @"img": @"icon",
                                    @"remark": @"remark"
                                    };
     
@@ -31,6 +57,35 @@
     } failure:^(ErrorEntity *error){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
+        failure(error);
+    }];
+}
+
+- (void) saveTypes:(CategoryEntity *)category types:(NSArray *)types success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //组装参数
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *typesDict = [[NSMutableDictionary alloc] init];
+    int i = 0;
+    for (CategoryEntity *type in types) {
+        //为解决数组传参问题，使用Dictionary
+        NSDictionary *typeDict = @{
+                                   @"sort": type.sort ? type.sort : @0,
+                                   @"type_id": type.id ? type.id : @0
+                                   };
+        [typesDict setObject:typeDict forKey:[NSString stringWithFormat:@"%d", i]];
+        
+        i++;
+    }
+    
+    [param setObject:category.id ? category.id : @0 forKey:@"category_id"];
+    [param setObject:typesDict forKey:@"type_list"];
+    
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    [sharedClient putObject:category path:@"casetype/relations" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
         failure(error);
     }];
 }

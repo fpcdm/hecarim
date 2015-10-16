@@ -7,6 +7,7 @@
 //
 
 #import "CategoryEntity.h"
+#import "UIImageView+WebCache.h"
 
 @implementation CategoryEntity
 
@@ -14,6 +15,21 @@
 
 @synthesize name;
 
+@synthesize icon;
+
 @synthesize remark;
+
+@synthesize detail;
+
+@synthesize sort;
+
+- (void) iconView:(UIImageView *)view
+{
+    if (self.icon && [self.icon length] > 0) {
+        [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:[UIImage imageNamed:@"homeGroup"]];
+    } else {
+        view.image = [UIImage imageNamed:@"homeGroup"];
+    }
+}
 
 @end

@@ -12,7 +12,7 @@
 
 #define Duration 0.2
 
-@interface HomeView () <UIScrollViewDelegate, SpringBoardButtonDelegate>
+@interface HomeView () <SpringBoardButtonDelegate>
 
 @end
 
@@ -20,11 +20,15 @@
 {
     UILabel *addressLabel;
     UIView *separateView;
-    UIScrollView *scrollView;
+    
+    UIImageView *adView;
+    UIView *menuView;
     
     NSMutableArray *menuBtns;
     NSMutableArray *itemBtns;
 }
+
+@synthesize scrollView;
 
 - (id) init
 {
@@ -98,7 +102,7 @@
     }];
     
     //图片
-    UIImageView *adView = [[UIImageView alloc] init];
+    adView = [[UIImageView alloc] init];
     adView.layer.cornerRadius = 3.0f;
     adView.image = [UIImage imageNamed:@"homeAd"];
     [topView addSubview:adView];
@@ -110,45 +114,157 @@
         make.right.equalTo(superview.mas_right).offset(-2.5);
         make.height.equalTo(@(imageHeight));
     }];
-    
-    separateView = adView;
 }
 
 - (void) middleView
 {
     //导航菜单
-    UIView *menuView = [[UIView alloc] init];
+    menuView = [[UIView alloc] init];
     menuView.backgroundColor = COLOR_MAIN_WHITE;
     [self addSubview:menuView];
     
     UIView *superview = self;
     [menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(separateView.mas_bottom).offset(2.5);
+        make.top.equalTo(adView.mas_bottom).offset(2.5);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(@50);
     }];
     
+    //服务菜单
+    scrollView = [[UIScrollView alloc] init];
+    scrollView.backgroundColor = COLOR_MAIN_WHITE;
+    [scrollView setPagingEnabled:NO];
+    [scrollView setSpringBoardDelegate:self];
+    [self addSubview:scrollView];
+    
+    superview = self;
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(menuView.mas_bottom).offset(5);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom).offset(-(SCREEN_WIDTH * 0.22 * 0.8));
+    }];
+}
+
+- (void) bottomView
+{
+    //计算参数
+    CGFloat btnWidth = SCREEN_WIDTH  * 0.22;
+    CGFloat btnHeight = btnWidth * 0.8;
+    CGFloat spaceWidth = SCREEN_WIDTH * 0.12 / 7;
+    
+    //底部容器
+    UIView *bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = COLOR_MAIN_WHITE;
+    [self addSubview:bottomView];
+    
+    UIView *superview = self;
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@(btnHeight));
+    }];
+    
+    //底部按钮
+    UIButton *caseBtn1 = [[UIButton alloc] init];
+    caseBtn1.layer.cornerRadius = 3.0f;
+    [caseBtn1 setBackgroundImage:[UIImage imageNamed:@"homeBtn1"] forState:UIControlStateNormal];
+    [caseBtn1 setBackgroundImage:[UIImage imageNamed:@"homeBtn1"] forState:UIControlStateHighlighted];
+    [bottomView addSubview:caseBtn1];
+    
+    superview = bottomView;
+    [caseBtn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(superview.mas_left).offset(spaceWidth * 2);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.width.equalTo(@(btnWidth));
+        make.height.equalTo(@(btnHeight));
+    }];
+    
+    UIButton *caseBtn2 = [[UIButton alloc] init];
+    caseBtn2.layer.cornerRadius = 3.0f;
+    [caseBtn2 setBackgroundImage:[UIImage imageNamed:@"homeBtn2"] forState:UIControlStateNormal];
+    [caseBtn2 setBackgroundImage:[UIImage imageNamed:@"homeBtn2"] forState:UIControlStateHighlighted];
+    [bottomView addSubview:caseBtn2];
+    
+    [caseBtn2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(caseBtn1.mas_right).offset(spaceWidth);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.width.equalTo(@(btnWidth));
+        make.height.equalTo(@(btnHeight));
+    }];
+    
+    UIButton *caseBtn3 = [[UIButton alloc] init];
+    caseBtn3.layer.cornerRadius = 3.0f;
+    [caseBtn3 setBackgroundImage:[UIImage imageNamed:@"homeBtn3"] forState:UIControlStateNormal];
+    [caseBtn3 setBackgroundImage:[UIImage imageNamed:@"homeBtn3"] forState:UIControlStateHighlighted];
+    [bottomView addSubview:caseBtn3];
+    
+    [caseBtn3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(caseBtn2.mas_right).offset(spaceWidth);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.width.equalTo(@(btnWidth));
+        make.height.equalTo(@(btnHeight));
+    }];
+    
+    UIButton *caseBtn4 = [[UIButton alloc] init];
+    caseBtn4.layer.cornerRadius = 3.0f;
+    [caseBtn4 setBackgroundImage:[UIImage imageNamed:@"homeBtn4"] forState:UIControlStateNormal];
+    [caseBtn4 setBackgroundImage:[UIImage imageNamed:@"homeBtn4"] forState:UIControlStateHighlighted];
+    [bottomView addSubview:caseBtn4];
+    
+    [caseBtn4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(caseBtn3.mas_right).offset(spaceWidth);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.width.equalTo(@(btnWidth));
+        make.height.equalTo(@(btnHeight));
+    }];
+}
+
+#pragma mark - RenderData
+- (void) renderData
+{
+    //渲染分类
+    [self renderMenu];
+    
+    //显示位置
+    NSString *address = [self getData:@"address"];
+    NSString *gps = [self getData:@"gps"];
+    if (address) {
+        NSNumber *count = [self getData:@"count"];
+        if (count && ![@-1 isEqualToNumber:count]) {
+            address = [NSString stringWithFormat:@"%@(有%@位信使为您服务)", address, count];
+        }
+        addressLabel.text = address;
+    } else if (gps) {
+        addressLabel.text = gps;
+    }
+}
+
+- (void) renderMenu
+{
+    //获取分类列表
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
+    //添加更多
+    CategoryEntity *moreCategory = [[CategoryEntity alloc] init];
+    moreCategory.icon = @"homeMore";
+    moreCategory.id = @0;
+    moreCategory.name = @"更多";
+    [categories addObject:moreCategory];
+    
     //菜单元素
     menuBtns = [NSMutableArray array];
-    NSArray *menuItems = @[
-                           @{@"icon":@"homeGroup", @"category":@1, @"name":@"我在家"},
-                           @{@"icon":@"homeGroup", @"category":@1, @"name":@"我在公司"},
-                           @{@"icon":@"homeGroup", @"category":@1, @"name":@"在旅行"},
-                           @{@"icon":@"homeGroup", @"category":@1, @"name":@"我在户外"},
-                           @{@"icon":@"homeGroup", @"category":@1, @"name":@"人车生活"},
-                           @{@"icon":@"homeGroup", @"category":@0, @"name":@"更多"}
-                           ];
     CGFloat btnWidth = SCREEN_WIDTH / 6;
-    superview = menuView;
+    UIView *superview = menuView;
     separateView = nil;
-    for (NSDictionary *menuItem in menuItems) {
+    for (CategoryEntity *category in categories) {
         //菜单项
         UIButton *menuBtn = [[UIButton alloc] init];
-        NSNumber *menuCategory = [menuItem objectForKey:@"category"];
-        menuBtn.tag = [menuCategory integerValue];
+        menuBtn.tag = [category.id integerValue];
+        BOOL isMore = [@0 isEqualToNumber:category.id];
         //选择菜单
-        if (![@0 isEqualToNumber:menuCategory]) {
+        if (!isMore) {
             [menuBtn addTarget:self action:@selector(actionCategory:) forControlEvents:UIControlEventTouchUpInside];
         //更多
         } else {
@@ -164,7 +280,11 @@
         }];
         
         UIImageView *iconView = [[UIImageView alloc] init];
-        iconView.image = [UIImage imageNamed:[menuItem objectForKey:@"icon"]];
+        if (!isMore) {
+            [category iconView:iconView];
+        } else {
+            iconView.image = [UIImage imageNamed:category.icon];
+        }
         [menuBtn addSubview:iconView];
         
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -176,7 +296,7 @@
         
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.tag = -1;
-        nameLabel.text = [menuItem objectForKey:@"name"];
+        nameLabel.text = category.name;
         nameLabel.font = [UIFont systemFontOfSize:10];
         nameLabel.textColor = COLOR_MAIN_DARK;
         [menuBtn addSubview:nameLabel];
@@ -214,25 +334,16 @@
         separateView = menuBtn;
     }
     
-    //服务菜单
-    scrollView = [[UIScrollView alloc] init];
-    scrollView.backgroundColor = COLOR_MAIN_WHITE;
-    [self addSubview:scrollView];
-    
-    superview = self;
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(menuView.mas_bottom).offset(5);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom).offset(-(SCREEN_WIDTH * 0.22 * 0.8));
-    }];
-    
+    //默认选中第一个
+    if ([categories count] > 1) {
+        [self actionCategory:[menuBtns firstObject]];
+    }
+}
+
+- (void) renderItems
+{
     //服务选项
     itemBtns = [NSMutableArray array];
-    scrollView.delegate = self;
-    [scrollView setPagingEnabled:NO];
-    [scrollView setSpringBoardDelegate:self];
-    
     NSArray *itemArray = @[
                            @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
                            @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
@@ -317,98 +428,6 @@
 - (void) actionBoardItemDeleted:(SpringBoardButton *)item
 {
     [itemBtns removeObject:item];
-}
-
-- (void) bottomView
-{
-    //计算参数
-    CGFloat btnWidth = SCREEN_WIDTH  * 0.22;
-    CGFloat btnHeight = btnWidth * 0.8;
-    CGFloat spaceWidth = SCREEN_WIDTH * 0.12 / 7;
-    
-    //底部容器
-    UIView *bottomView = [[UIView alloc] init];
-    bottomView.backgroundColor = COLOR_MAIN_WHITE;
-    [self addSubview:bottomView];
-    
-    UIView *superview = self;
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom);
-        make.height.equalTo(@(btnHeight));
-    }];
-    
-    //底部按钮
-    UIButton *caseBtn1 = [[UIButton alloc] init];
-    caseBtn1.layer.cornerRadius = 3.0f;
-    [caseBtn1 setBackgroundImage:[UIImage imageNamed:@"homeBtn1"] forState:UIControlStateNormal];
-    [caseBtn1 setBackgroundImage:[UIImage imageNamed:@"homeBtn1"] forState:UIControlStateHighlighted];
-    [bottomView addSubview:caseBtn1];
-    
-    superview = bottomView;
-    [caseBtn1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superview.mas_left).offset(spaceWidth * 2);
-        make.bottom.equalTo(superview.mas_bottom);
-        make.width.equalTo(@(btnWidth));
-        make.height.equalTo(@(btnHeight));
-    }];
-    
-    UIButton *caseBtn2 = [[UIButton alloc] init];
-    caseBtn2.layer.cornerRadius = 3.0f;
-    [caseBtn2 setBackgroundImage:[UIImage imageNamed:@"homeBtn2"] forState:UIControlStateNormal];
-    [caseBtn2 setBackgroundImage:[UIImage imageNamed:@"homeBtn2"] forState:UIControlStateHighlighted];
-    [bottomView addSubview:caseBtn2];
-    
-    [caseBtn2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(caseBtn1.mas_right).offset(spaceWidth);
-        make.bottom.equalTo(superview.mas_bottom);
-        make.width.equalTo(@(btnWidth));
-        make.height.equalTo(@(btnHeight));
-    }];
-    
-    UIButton *caseBtn3 = [[UIButton alloc] init];
-    caseBtn3.layer.cornerRadius = 3.0f;
-    [caseBtn3 setBackgroundImage:[UIImage imageNamed:@"homeBtn3"] forState:UIControlStateNormal];
-    [caseBtn3 setBackgroundImage:[UIImage imageNamed:@"homeBtn3"] forState:UIControlStateHighlighted];
-    [bottomView addSubview:caseBtn3];
-    
-    [caseBtn3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(caseBtn2.mas_right).offset(spaceWidth);
-        make.bottom.equalTo(superview.mas_bottom);
-        make.width.equalTo(@(btnWidth));
-        make.height.equalTo(@(btnHeight));
-    }];
-    
-    UIButton *caseBtn4 = [[UIButton alloc] init];
-    caseBtn4.layer.cornerRadius = 3.0f;
-    [caseBtn4 setBackgroundImage:[UIImage imageNamed:@"homeBtn4"] forState:UIControlStateNormal];
-    [caseBtn4 setBackgroundImage:[UIImage imageNamed:@"homeBtn4"] forState:UIControlStateHighlighted];
-    [bottomView addSubview:caseBtn4];
-    
-    [caseBtn4 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(caseBtn3.mas_right).offset(spaceWidth);
-        make.bottom.equalTo(superview.mas_bottom);
-        make.width.equalTo(@(btnWidth));
-        make.height.equalTo(@(btnHeight));
-    }];
-}
-
-#pragma mark - RenderData
-- (void) renderData
-{
-    //显示位置
-    NSString *address = [self getData:@"address"];
-    NSString *gps = [self getData:@"gps"];
-    if (address) {
-        NSNumber *count = [self getData:@"count"];
-        if (count && ![@-1 isEqualToNumber:count]) {
-            address = [NSString stringWithFormat:@"%@(有%@位信使为您服务)", address, count];
-        }
-        addressLabel.text = address;
-    } else if (gps) {
-        addressLabel.text = gps;
-    }
 }
 
 #pragma mark - Action

@@ -14,6 +14,14 @@
 
 @property (nonatomic, retain) NSString *name;
 
+@property (nonatomic, retain) NSString *icon;
+
 @property (nonatomic, retain) NSString *remark;
+
+@property (nonatomic, retain) NSString *detail;
+
+@property (nonatomic, retain) NSNumber *sort;
+
+- (void) iconView: (UIImageView *)view;
 
 @end

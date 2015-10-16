@@ -13,11 +13,17 @@
 
 @interface CaseHandler : BaseHandler
 
+//需求分类列表
+- (void) queryCategories: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 //需求类型列表
-- (void) queryTypes:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+- (void) queryTypes: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//保存需求类型
+- (void) saveTypes: (CategoryEntity *) category types: (NSArray *) types success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 //需求属性列表
-- (void) queryProperties:(CategoryEntity *) type success: (SuccessBlock) success failure: (FailedBlock) failure;
+- (void) queryProperties: (CategoryEntity *) type success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 - (void) addIntention: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 
