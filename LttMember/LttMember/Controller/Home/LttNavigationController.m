@@ -17,12 +17,14 @@
 @implementation LttNavigationController
 {
     BOOL menuEnabled;
+    BOOL menuGestured;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     menuEnabled = YES;
+    menuGestured = YES;
     
     [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
 }
@@ -42,9 +44,14 @@
     menuEnabled = enable;
 }
 
+- (void) menuGestured:(BOOL)gestured
+{
+    menuGestured = gestured;
+}
+
 - (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
 {
-    if (menuEnabled) {
+    if (menuEnabled && menuGestured) {
         [self.view endEditing:YES];
         [self.frostedViewController.view endEditing:YES];
         

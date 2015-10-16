@@ -350,6 +350,8 @@
 #pragma mark - reloadItems
 - (void) reloadItems
 {
+    //todo: 未登录不能编辑菜单
+    
     //移除旧的服务列表
     if (itemBtns && [itemBtns count] > 0) {
         for (SpringBoardButton *itemBtn in itemBtns) {
@@ -461,11 +463,15 @@
 - (void) actionBoardItemsStartEditing
 {
     NSLog(@"startEditing");
+    
+    //todo: 编辑模式禁用右滑菜单
 }
 
 - (void) actionBoardItemsEndEditing
 {
     NSLog(@"endEditing");
+    
+    //todo: 非编辑模式启用右滑菜单
 }
 
 - (void) actionBoardItemClicked:(SpringBoardButton *)item

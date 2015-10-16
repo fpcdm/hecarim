@@ -16,4 +16,6 @@
 
 - (void)menuEnable: (BOOL) enable;
 
+- (void)menuGestured: (BOOL) gestured;
+
 @end
