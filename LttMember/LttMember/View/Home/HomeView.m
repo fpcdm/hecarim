@@ -254,6 +254,7 @@
     
     //添加元素
     int i = 0;
+    CGFloat contentHeight = 0;
     for (NSDictionary *itemDict in itemArray) {
         i++;
         
@@ -263,6 +264,7 @@
         CGFloat itemX = itemSpaceW + (itemWidth + itemSpaceW) * (itemCol - 1);
         CGFloat itemY = itemSpaceH + (itemHeight + itemSpaceH) * (itemRow - 1);
         CGRect itemFrame = CGRectMake(itemX, itemY, itemWidth, itemHeight);
+        contentHeight = itemY + itemHeight + itemSpaceH;
         
         //初始化按钮
         SpringBoardButton *editButton = [[SpringBoardButton alloc] initWithFrame:itemFrame];
@@ -276,6 +278,9 @@
         [scrollView addSubview:editButton];
         [itemBtns addObject:editButton];
     }
+    
+    //设置scrollView容器宽高
+    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
 }
 
 - (NSArray *) dataSourceForBoardItems

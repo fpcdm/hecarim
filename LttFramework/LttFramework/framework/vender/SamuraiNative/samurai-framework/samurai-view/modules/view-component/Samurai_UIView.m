@@ -135,7 +135,8 @@
 {
 	[[SamuraiLogger sharedInstance] outputCapture];
 	
-	[self dump];
+    //注释代码解决表格含有输入框且弹出输入键盘时滚动屏幕导致应用崩溃的问题
+	//[self dump];
 	
 	[[SamuraiLogger sharedInstance] outputRelease];
 	

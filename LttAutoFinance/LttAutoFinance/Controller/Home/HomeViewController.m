@@ -150,8 +150,8 @@ static NSArray  *caseTypes = nil;
 
 - (void) setTimer
 {
-    //定时器间隔：30秒钟，GPS刷新间隔：5-6分钟，因为手工GPS会重置最后刷新时间
-    gpsTimer = [TimerUtil repeatTimer:(USER_LOCATION_INTERVAL / 10) block:^{
+    //定时器间隔：30秒钟，GPS刷新间隔：1分钟，因为手工GPS会重置最后刷新时间
+    gpsTimer = [TimerUtil repeatTimer:(USER_LOCATION_INTERVAL / 2) block:^{
         //定位成功检查GPS刷新间隔
         if (lastAddress) {
             NSTimeInterval timeInterval = [TimerUtil timeInterval:lastDate];

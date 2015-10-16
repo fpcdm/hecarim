@@ -51,7 +51,7 @@
 #define USER_HEARTBEAT_INTERVAL 60.0
 
 //刷新位置间隔
-#define USER_LOCATION_INTERVAL 300.0
+#define USER_LOCATION_INTERVAL 60.0
 
 //短信验证码发送间隔
 #define USER_SMS_INTERVAL 60
