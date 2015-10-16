@@ -15,12 +15,14 @@
 #import "HelperHandler.h"
 #import "LocationUtil.h"
 #import "TimerUtil.h"
+#import "UIView+Loading.h"
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
 static NSMutableArray *caseCategories = nil;
+static NSMutableArray *caseTypes = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
@@ -86,12 +88,20 @@ static NSMutableArray *caseCategories = nil;
             
             caseCategories = [NSMutableArray arrayWithArray:result];
             
+            //重新加载菜单
+            [homeView setData:@"categories" value:caseCategories];
+            [homeView reloadMenu];
+            
             //设置定时器
             [self setTimer];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];
     } else {
+        //重新加载菜单
+        [homeView setData:@"categories" value:caseCategories];
+        [homeView reloadMenu];
+        
         //设置定时器
         [self setTimer];
     }
@@ -100,7 +110,6 @@ static NSMutableArray *caseCategories = nil;
 //渲染视图
 - (void) renderView
 {
-    [homeView setData:@"categories" value:caseCategories];
     [homeView setData:@"address" value:lastAddress];
     [homeView setData:@"gps" value:gpsStatus];
     [homeView setData:@"count" value:lastService ? lastService : @-1];
@@ -212,19 +221,29 @@ static NSMutableArray *caseCategories = nil;
     [[LocationUtil sharedInstance] restartUpdate];
 }
 
-- (void)actionReload
-{
-    [self initData];
-}
-
 - (void)actionCategory:(NSNumber *)id
 {
+    [homeView.scrollView showIndicator];
     
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    NSDictionary *param = @{@"category_id": id};
+    [caseHandler queryTypes:param success:^(NSArray *result) {
+        [homeView.scrollView hideIndicator];
+        
+        //重新加载项目
+        caseTypes = [NSMutableArray arrayWithArray:result];
+        [homeView setData:@"types" value:caseTypes];
+        [homeView reloadItems];
+    } failure:^(ErrorEntity *error) {
+        [homeView.scrollView hideIndicator];
+        
+        [self showError:error.message];
+    }];
 }
 
 - (void)actionMore
 {
-    
+    NSLog(@"more");
 }
 
 - (void)actionCase:(NSNumber *)type

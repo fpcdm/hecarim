@@ -17,4 +17,8 @@
 
 - (void) hideLoading;
 
+- (void) showIndicator;
+
+- (void) hideIndicator;
+
 @end

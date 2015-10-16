@@ -23,12 +23,21 @@
 
 @synthesize sort;
 
-- (void) iconView:(UIImageView *)view
+- (void) groupIconView:(UIImageView *)view
 {
     if (self.icon && [self.icon length] > 0) {
         [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:[UIImage imageNamed:@"homeGroup"]];
     } else {
         view.image = [UIImage imageNamed:@"homeGroup"];
+    }
+}
+
+- (void) itemIconView:(UIImageView *)view
+{
+    if (self.icon && [self.icon length] > 0) {
+        [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:[UIImage imageNamed:@"homeItem"]];
+    } else {
+        view.image = [UIImage imageNamed:@"homeItem"];
     }
 }
 

@@ -225,9 +225,6 @@
 #pragma mark - RenderData
 - (void) renderData
 {
-    //渲染分类
-    [self renderMenu];
-    
     //显示位置
     NSString *address = [self getData:@"address"];
     NSString *gps = [self getData:@"gps"];
@@ -242,8 +239,17 @@
     }
 }
 
-- (void) renderMenu
+#pragma mark - reloadMenu
+- (void) reloadMenu
 {
+    //移除旧的分类列表
+    if (menuBtns && [menuBtns count] > 0) {
+        for (UIButton *menuBtn in menuBtns) {
+            menuBtn.hidden = YES;
+            [menuBtn removeFromSuperview];
+        }
+    }
+    
     //获取分类列表
     NSMutableArray *categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
     //添加更多
@@ -281,7 +287,7 @@
         
         UIImageView *iconView = [[UIImageView alloc] init];
         if (!isMore) {
-            [category iconView:iconView];
+            [category groupIconView:iconView];
         } else {
             iconView.image = [UIImage imageNamed:category.icon];
         }
@@ -340,21 +346,29 @@
     }
 }
 
-- (void) renderItems
+#pragma mark - reloadItems
+- (void) reloadItems
 {
+    //移除旧的服务列表
+    if (itemBtns && [itemBtns count] > 0) {
+        for (SpringBoardButton *itemBtn in itemBtns) {
+            itemBtn.hidden = YES;
+            [itemBtn removeFromSuperview];
+        }
+    }
+    
+    //加载服务列表
+    NSMutableArray *types = [self getData:@"types"];
+    //添加服务
+    CategoryEntity *addItem = [[CategoryEntity alloc] init];
+    addItem.icon = @"homeAdd";
+    addItem.id = @0;
+    addItem.name = @"添加";
+    addItem.detail = @"添加你想要的服务";
+    [types addObject:addItem];
+    
     //服务选项
     itemBtns = [NSMutableArray array];
-    NSArray *itemArray = @[
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
-                           @{@"icon":@"homeAdd", @"category":@0, @"name":@"添加", @"detail": @"添加你想要的服务"}
-                           ];
     
     //计算宽高
     CGFloat itemWidth = 50;
@@ -366,12 +380,13 @@
     //添加元素
     int i = 0;
     CGFloat contentHeight = 0;
-    for (NSDictionary *itemDict in itemArray) {
+    for (CategoryEntity *type in types) {
         i++;
+        BOOL isAdd = [@0 isEqualToNumber:type.id];
         
         //计算位置
-        NSInteger itemRow = (i % 4) == 0 ? (i / 4) : ((int)(i / 4)) + 1;
-        NSInteger itemCol = (i % 4) == 0 ? 4 : (i % 4);
+        NSInteger itemRow = (i % itemLine) == 0 ? (i / itemLine) : ((int)(i / itemLine)) + 1;
+        NSInteger itemCol = (i % itemLine) == 0 ? itemLine : (i % itemLine);
         CGFloat itemX = itemSpaceW + (itemWidth + itemSpaceW) * (itemCol - 1);
         CGFloat itemY = itemSpaceH + (itemHeight + itemSpaceH) * (itemRow - 1);
         CGRect itemFrame = CGRectMake(itemX, itemY, itemWidth, itemHeight);
@@ -379,18 +394,61 @@
         
         //初始化按钮
         SpringBoardButton *editButton = [[SpringBoardButton alloc] initWithFrame:itemFrame];
-        editButton.backgroundColor = COLOR_MAIN_DARK;
-        [editButton setTitle:[NSString stringWithFormat:@"%d", i] forState:UIControlStateNormal];
+        editButton.tag = [type.id integerValue];
         editButton.delegate = self;
         //添加按钮
-        if ([@0 isEqualToNumber:[itemDict objectForKey:@"category"]]) {
+        if (isAdd) {
             editButton.isEditable = NO;
         }
         [scrollView addSubview:editButton];
         [itemBtns addObject:editButton];
+        
+        UIImageView *iconView = [[UIImageView alloc] init];
+        if (!isAdd) {
+            [type itemIconView:iconView];
+        } else {
+            iconView.image = [UIImage imageNamed:type.icon];
+        }
+        [editButton addSubview:iconView];
+        
+        [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(editButton.mas_centerX);
+            make.centerY.equalTo(editButton.mas_top).offset(15);
+            make.width.equalTo(@25);
+            make.height.equalTo(@25);
+        }];
+        
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.tag = -1;
+        nameLabel.text = type.name;
+        nameLabel.font = [UIFont systemFontOfSize:10];
+        nameLabel.textColor = COLOR_MAIN_DARK;
+        [editButton addSubview:nameLabel];
+        
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(iconView.mas_bottom).offset(5);
+            make.centerX.equalTo(editButton.mas_centerX);
+            make.height.equalTo(@10);
+        }];
     }
     
     //设置scrollView容器宽高
+    scrollView.contentOffset = CGPointMake(0, 0);
+    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
+}
+
+- (void) adjustScrollView
+{
+    //计算宽高
+    CGFloat itemHeight = 60;
+    NSInteger itemLine = 4;
+    CGFloat itemSpaceH = 20;
+    
+    NSInteger i = [itemBtns count];
+    NSInteger maxRow = (i % itemLine) == 0 ? (i / itemLine) : ((int)(i / itemLine)) + 1;
+    CGFloat itemY = itemSpaceH + (itemHeight + itemSpaceH) * (maxRow - 1);
+    CGFloat contentHeight = itemY + itemHeight + itemSpaceH;
+    
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
 }
 
@@ -411,7 +469,19 @@
 
 - (void) actionBoardItemClicked:(SpringBoardButton *)item
 {
+    //添加按钮
+    if (item.tag < 1) {
+        [self actionBoardItemAdd];
+        return;
+    }
+    
     NSLog(@"clicked");
+    [self actionCase:item];
+}
+
+- (void) actionBoardItemAdd
+{
+    NSLog(@"add");
 }
 
 - (void) actionBoardItemMoved:(SpringBoardButton *)item toIndex:(NSInteger)index
@@ -428,6 +498,9 @@
 - (void) actionBoardItemDeleted:(SpringBoardButton *)item
 {
     [itemBtns removeObject:item];
+    
+    //自适应滚动视图
+    [self adjustScrollView];
 }
 
 #pragma mark - Action
@@ -458,7 +531,9 @@
 
 - (void) actionCase: (UIButton *)sender
 {
+    if (sender.tag < 1) return;
     
+    [self.delegate actionCase:@(sender.tag)];
 }
 
 - (void)actionGps

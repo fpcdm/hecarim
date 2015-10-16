@@ -15,7 +15,6 @@
 - (void)actionMore;
 - (void)actionCase: (NSNumber *) type;
 - (void)actionGps;
-- (void)actionReload;
 
 @end
 
@@ -24,5 +23,8 @@
 @property (retain, nonatomic) id<HomeViewDelegate> delegate;
 
 @property (retain, nonatomic) UIScrollView *scrollView;
+
+- (void) reloadMenu;
+- (void) reloadItems;
 
 @end
