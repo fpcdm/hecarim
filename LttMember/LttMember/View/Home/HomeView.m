@@ -12,7 +12,7 @@
 
 #define Duration 0.2
 
-@interface HomeView () <UIScrollViewDelegate, UIGestureRecognizerDelegate, SpringBoardButtonDelegate>
+@interface HomeView () <UIScrollViewDelegate, SpringBoardButtonDelegate>
 
 @end
 
@@ -231,6 +231,7 @@
     itemBtns = [NSMutableArray array];
     scrollView.delegate = self;
     [scrollView setPagingEnabled:NO];
+    [scrollView setSpringBoardDelegate:self];
     
     NSArray *itemArray = @[
                            @{@"icon":@"homeItem", @"category":@1, @"name":@"一键便利店", @"detail": @"便利店到家"},
@@ -271,44 +272,46 @@
         //添加按钮
         if ([@0 isEqualToNumber:[itemDict objectForKey:@"category"]]) {
             editButton.isEditable = NO;
-            //todo 解决删除绑定元素不触发EndEditing事件问题
-            //todo 修正商户端下拉闪退问题
-            [editButton setContainerView:scrollView];
         }
         [scrollView addSubview:editButton];
         [itemBtns addObject:editButton];
     }
 }
 
-- (void) actionItemClicked:(SpringBoardButton *)item
+- (NSArray *) dataSourceForBoardItems
 {
-    NSLog(@"clicked");
+    return itemBtns;
 }
 
-- (void) actionItemsStartEditing
+- (void) actionBoardItemsStartEditing
 {
     NSLog(@"startEditing");
 }
 
-- (void) actionItemsEndEditing
+- (void) actionBoardItemsEndEditing
 {
     NSLog(@"endEditing");
 }
 
-- (void) actionItemMoved:(SpringBoardButton *)item toIndex:(NSInteger)index
+- (void) actionBoardItemClicked:(SpringBoardButton *)item
+{
+    NSLog(@"clicked");
+}
+
+- (void) actionBoardItemMoved:(SpringBoardButton *)item toIndex:(NSInteger)index
 {
     NSInteger fromIndex = [itemBtns indexOfObject:item];
     [itemBtns exchangeObjectAtIndex:fromIndex withObjectAtIndex:index];
 }
 
-- (void) actionItemDeleted:(SpringBoardButton *)item
+- (BOOL) shouldBoardItemDeleted:(SpringBoardButton *)item
 {
-    [itemBtns removeObject:item];
+    return [itemBtns count] > 2 ? YES : NO;
 }
 
-- (NSArray *) itemsForItem:(SpringBoardButton *)item
+- (void) actionBoardItemDeleted:(SpringBoardButton *)item
 {
-    return itemBtns;
+    [itemBtns removeObject:item];
 }
 
 - (void) bottomView

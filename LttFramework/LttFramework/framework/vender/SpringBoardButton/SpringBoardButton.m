@@ -7,6 +7,7 @@
 //
 
 #import "SpringBoardButton.h"
+#import <objc/runtime.h>
 
 @interface SpringBoardButton ()
 
@@ -30,13 +31,13 @@
         self.isEditable = YES;
         
         //绑定事件
-        [self addTarget:self action:@selector(actionItemClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(actionItemClicked) forControlEvents:UIControlEventTouchUpInside];
         
         //添加删除按钮
         deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(-10, -10, 20, 20)];
         [deleteButton setBackgroundImage:[UIImage imageNamed:@"deleteItem"] forState:UIControlStateNormal];
         [deleteButton setBackgroundImage:[UIImage imageNamed:@"deleteItem"] forState:UIControlStateHighlighted];
-        [deleteButton addTarget:self action:@selector(actionItemDeleted:) forControlEvents:UIControlEventTouchUpInside];
+        [deleteButton addTarget:self action:@selector(actionItemDeleted) forControlEvents:UIControlEventTouchUpInside];
         deleteButton.hidden = YES;
         [self addSubview:deleteButton];
         
@@ -45,27 +46,6 @@
         [self addGestureRecognizer:longGesture];
     }
     return self;
-}
-
-- (void) setContainerView:(UIView *)containerView
-{
-    //检查单击手势
-    NSArray *gestures = containerView.gestureRecognizers;
-    BOOL hasBind = NO;
-    if (gestures) {
-        for (UIGestureRecognizer *gesture in gestures) {
-            if ([gesture isKindOfClass:[UITapGestureRecognizer class]] &&
-                ((UITapGestureRecognizer *)gesture).numberOfTapsRequired == 1) {
-                hasBind = YES;
-                break;
-            }
-        }
-    }
-    if (hasBind) return;
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionContainerTapped:)];
-    [tapGesture setNumberOfTapsRequired:1];
-    [containerView addGestureRecognizer:tapGesture];
 }
 
 - (void) setIsEditing:(BOOL)isEditing
@@ -120,7 +100,7 @@
 {
     if (!self.isEditable) return;
     
-    NSArray *items = [self.delegate itemsForItem:self];
+    NSArray *items = [self.delegate dataSourceForBoardItems];
     if (sender.state == UIGestureRecognizerStateBegan) {
         //进入编辑模式
         BOOL startEditing = NO;
@@ -131,8 +111,8 @@
             startEditing = YES;
         }
         if (startEditing) {
-            if ([self.delegate respondsToSelector:@selector(actionItemsStartEditing)]) {
-                [self.delegate actionItemsStartEditing];
+            if ([self.delegate respondsToSelector:@selector(actionBoardItemsStartEditing)]) {
+                [self.delegate actionBoardItemsStartEditing];
             }
         }
         
@@ -176,7 +156,7 @@
 
 - (NSInteger)indexOfPoint:(CGPoint)point
 {
-    NSArray *items = [self.delegate itemsForItem:self];
+    NSArray *items = [self.delegate dataSourceForBoardItems];
     for (NSInteger i = 0;i<items.count;i++) {
         SpringBoardButton *button = items[i];
         if (button != self) {
@@ -188,45 +168,39 @@
     return -1;
 }
 
-- (void) actionContainerTapped: (UITapGestureRecognizer *) tapGesture
-{
-    //退出编辑模式
-    BOOL endEditing = NO;
-    NSArray *items = [self.delegate itemsForItem:self];
-    for (SpringBoardButton *item in items) {
-        if (!item.isEditing) continue;
-        
-        item.isEditing = NO;
-        endEditing = YES;
-    }
-    if (!endEditing) return;
-    
-    if ([self.delegate respondsToSelector:@selector(actionItemsEndEditing)]) {
-        [self.delegate actionItemsEndEditing];
-    }
-}
-
-- (void) actionItemClicked: (UIButton *)sender
+- (void) actionItemClicked
 {
     //编辑模式不可用
     if (self.isEditing) return;
     
-    if ([self.delegate respondsToSelector:@selector(actionItemClicked:)]) {
-        [self.delegate actionItemClicked:self];
+    if ([self.delegate respondsToSelector:@selector(actionBoardItemClicked:)]) {
+        [self.delegate actionBoardItemClicked:self];
     }
 }
 
 - (void) actionItemMoved: (NSInteger) toIndex
 {
-    if ([self.delegate respondsToSelector:@selector(actionItemMoved:toIndex:)]) {
-        [self.delegate actionItemMoved:self toIndex:toIndex];
+    if ([self.delegate respondsToSelector:@selector(actionBoardItemMoved:toIndex:)]) {
+        [self.delegate actionBoardItemMoved:self toIndex:toIndex];
     }
 }
 
-- (void) actionItemDeleted: (UIButton *)sender
+- (BOOL) shouldItemDeleted
 {
+    if ([self.delegate respondsToSelector:@selector(shouldBoardItemDeleted:)]) {
+        return [self.delegate shouldBoardItemDeleted:self];
+    } else {
+        return YES;
+    }
+}
+
+- (void) actionItemDeleted
+{
+    //是否允许删除
+    if (![self shouldItemDeleted]) return;
+    
     //移除自己
-    NSArray *items = [self.delegate itemsForItem:self];
+    NSArray *items = [self.delegate dataSourceForBoardItems];
     NSInteger index = [items indexOfObject:self];
     [UIView animateWithDuration:0.2 animations:^{
         CGRect lastFrame = self.frame;
@@ -240,8 +214,44 @@
     }];
     [self removeFromSuperview];
     
-    if ([self.delegate respondsToSelector:@selector(actionItemDeleted:)]) {
-        [self.delegate actionItemDeleted:self];
+    if ([self.delegate respondsToSelector:@selector(actionBoardItemDeleted:)]) {
+        [self.delegate actionBoardItemDeleted:self];
+    }
+}
+
+@end
+
+@implementation UIView (SpringBoardButton)
+
+static const char SpringBoardDelegateKey = '\0';
+- (void) setSpringBoardDelegate:(id<SpringBoardButtonDelegate>)delegate
+{
+    [self willChangeValueForKey:@"springBoardDelegate"];
+    objc_setAssociatedObject(self, &SpringBoardDelegateKey, delegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self didChangeValueForKey:@"springBoardDelegate"];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(springBoardHandler)];
+    [tapGesture setNumberOfTapsRequired:1];
+    [self addGestureRecognizer:tapGesture];
+}
+
+- (void) springBoardHandler
+{
+    id<SpringBoardButtonDelegate> delegate = objc_getAssociatedObject(self, &SpringBoardDelegateKey);
+    NSArray *items = [delegate dataSourceForBoardItems];
+    
+    //退出编辑模式
+    BOOL endEditing = NO;
+    for (SpringBoardButton *item in items) {
+        if (!item.isEditing) continue;
+        
+        item.isEditing = NO;
+        endEditing = YES;
+    }
+    if (!endEditing) return;
+    
+    if ([delegate respondsToSelector:@selector(actionBoardItemsEndEditing)]) {
+        [delegate actionBoardItemsEndEditing];
     }
 }
 

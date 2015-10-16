@@ -13,14 +13,15 @@
 @protocol SpringBoardButtonDelegate <NSObject>
 
 @required
-- (NSMutableArray *) itemsForItem: (SpringBoardButton *)item;
+- (NSArray *) dataSourceForBoardItems;
 
 @optional
-- (void) actionItemClicked: (SpringBoardButton *)item;
-- (void) actionItemDeleted: (SpringBoardButton *)item;
-- (void) actionItemMoved: (SpringBoardButton *)item toIndex: (NSInteger)index;
-- (void) actionItemsStartEditing;
-- (void) actionItemsEndEditing;
+- (void) actionBoardItemClicked: (SpringBoardButton *)item;
+- (BOOL) shouldBoardItemDeleted: (SpringBoardButton *)item;
+- (void) actionBoardItemDeleted: (SpringBoardButton *)item;
+- (void) actionBoardItemMoved: (SpringBoardButton *)item toIndex: (NSInteger)index;
+- (void) actionBoardItemsStartEditing;
+- (void) actionBoardItemsEndEditing;
 
 @end
 
@@ -32,7 +33,11 @@
 
 @property (assign, nonatomic) BOOL isEditable;
 
-//设置容器视图，取消编辑，多个只需设置一次即可
-- (void) setContainerView:(UIView *)containerView;
+@end
+
+@interface UIView (SpringBoardButton)
+
+//设置容器代理，取消编辑等
+- (void) setSpringBoardDelegate:(id<SpringBoardButtonDelegate>)delegate;
 
 @end
