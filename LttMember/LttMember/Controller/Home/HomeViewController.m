@@ -45,8 +45,10 @@ static NSMutableArray *caseTypes = nil;
 - (void)viewDidLoad
 {
     isIndexNavBar = YES;
+    isIndexStatusBar = YES;
     isMenuEnabled = [self isLogin];
     hideBackButton = YES;
+    hideNavigationBar = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"两条腿";

@@ -36,6 +36,13 @@
     } else {
         self.navigationItem.hidesBackButton = NO;
     }
+    
+    //是否隐藏导航栏
+    if (hideNavigationBar) {
+        self.navigationController.navigationBar.hidden = YES;
+    } else {
+        self.navigationController.navigationBar.hidden = NO;
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -57,11 +64,8 @@
     }
     
     //状态栏颜色
-    if (isIndexNavBar) {
-        //红色背景
-        //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-        //白色背景
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    if (isIndexStatusBar) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     } else {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     }
@@ -88,6 +92,13 @@
                                               NSForegroundColorAttributeName: COLOR_MAIN_BLACK
                                               };
     }
+    
+    //是否隐藏导航栏
+    if (hideNavigationBar) {
+        self.navigationController.navigationBar.hidden = YES;
+    } else {
+        self.navigationController.navigationBar.hidden = NO;
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -103,6 +114,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    //显示导航栏
+    self.navigationController.navigationBar.hidden = NO;
     
     //隐藏远程通知
     if (!hideRemoteNotification) {

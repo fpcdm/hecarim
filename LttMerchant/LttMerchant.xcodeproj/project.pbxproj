@@ -19,6 +19,7 @@
 		2F0E37DA1B6B218400CFE2E6 /* ServiceFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */; };
 		2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */; };
 		2F0E37E01B6B66B100CFE2E6 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */; };
+		2F1410181BD4F3C000B88F23 /* notification.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2F1410171BD4F3C000B88F23 /* notification.m4a */; settings = {ASSET_TAGS = (); }; };
 		2F16E6A21B5DF84B007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6601B5DF84B007947D0 /* HomeActivity.m */; };
 		2F16E6A41B5DF84B007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6641B5DF84B007947D0 /* LttNavigationController.m */; };
 		2F16E6A51B5DF84B007947D0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6661B5DF84B007947D0 /* MenuViewController.m */; };
@@ -592,6 +593,7 @@
 		2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEntity.m; sourceTree = "<group>"; };
 		2F0E37DE1B6B66B100CFE2E6 /* CaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseHandler.h; sourceTree = "<group>"; };
 		2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseHandler.m; sourceTree = "<group>"; };
+		2F1410171BD4F3C000B88F23 /* notification.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.m4a; sourceTree = "<group>"; };
 		2F16E64F1B5DF84B007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E6501B5DF84B007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E6511B5DF84B007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -2027,6 +2029,7 @@
 				2F52D11D1AEF8AFC0003D7C2 /* LttAppDelegate.h */,
 				2F52D11E1AEF8AFC0003D7C2 /* LttAppDelegate.m */,
 				2FD795CA1AE7ADD300D51FB0 /* Images.xcassets */,
+				2F1410171BD4F3C000B88F23 /* notification.m4a */,
 				2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */,
 				2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */,
 				2FA0A39B1B69C05B0083365B /* InfoPlist.strings */,
@@ -4097,6 +4100,7 @@
 				2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */,
 				2F2F22721B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
 				2F2F226C1B3A52FE00428742 /* NotificationBackgroundErrorIcon.png in Resources */,
+				2F1410181BD4F3C000B88F23 /* notification.m4a in Resources */,
 				2F78FADB1B75B1F30009F349 /* ServiceInspector.bundle in Resources */,
 				2F2F22771B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				2F2F22711B3A52FE00428742 /* NotificationBackgroundSuccess@2x.png in Resources */,

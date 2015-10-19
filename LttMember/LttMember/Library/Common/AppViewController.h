@@ -18,11 +18,17 @@
     //是否显示菜单
     BOOL isMenuEnabled;
     
+    //是否隐藏导航栏
+    BOOL hideNavigationBar;
+    
     //当前页面是否隐藏返回按钮
     BOOL hideBackButton;
     
     //是否是首页导航栏(背景高亮)
     BOOL isIndexNavBar;
+    
+    //是否是首页状态栏
+    BOOL isIndexStatusBar;
     
     //是否隐藏远程通知提示
     BOOL hideRemoteNotification;
