@@ -455,19 +455,19 @@
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
 }
 
-- (NSArray *) dataSourceForBoardItems
+- (NSArray *) dataSourceForBoardItems:(UIView *)boardView
 {
     return itemBtns;
 }
 
-- (void) actionBoardItemsStartEditing
+- (void) actionBoardItemsStartEditing:(UIView *)boardView
 {
     NSLog(@"startEditing");
     
     //todo: 编辑模式禁用右滑菜单
 }
 
-- (void) actionBoardItemsEndEditing
+- (void) actionBoardItemsEndEditing:(UIView *)boardView
 {
     NSLog(@"endEditing");
     

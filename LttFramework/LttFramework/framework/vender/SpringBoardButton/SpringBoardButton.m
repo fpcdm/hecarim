@@ -100,7 +100,7 @@
 {
     if (!self.isEditable) return;
     
-    NSArray *items = [self.delegate dataSourceForBoardItems];
+    NSArray *items = [self.delegate dataSourceForBoardItems:self.boardView];
     if (sender.state == UIGestureRecognizerStateBegan) {
         //进入编辑模式
         BOOL startEditing = NO;
@@ -111,8 +111,8 @@
             startEditing = YES;
         }
         if (startEditing) {
-            if ([self.delegate respondsToSelector:@selector(actionBoardItemsStartEditing)]) {
-                [self.delegate actionBoardItemsStartEditing];
+            if ([self.delegate respondsToSelector:@selector(actionBoardItemsStartEditing:)]) {
+                [self.delegate actionBoardItemsStartEditing:self.boardView];
             }
         }
         
@@ -156,7 +156,7 @@
 
 - (NSInteger)indexOfPoint:(CGPoint)point
 {
-    NSArray *items = [self.delegate dataSourceForBoardItems];
+    NSArray *items = [self.delegate dataSourceForBoardItems:self.boardView];
     for (NSInteger i = 0;i<items.count;i++) {
         SpringBoardButton *button = items[i];
         if (button != self) {
@@ -200,7 +200,7 @@
     if (![self shouldItemDeleted]) return;
     
     //移除自己
-    NSArray *items = [self.delegate dataSourceForBoardItems];
+    NSArray *items = [self.delegate dataSourceForBoardItems:self.boardView];
     NSInteger index = [items indexOfObject:self];
     [UIView animateWithDuration:0.2 animations:^{
         CGRect lastFrame = self.frame;
@@ -238,7 +238,7 @@ static const char SpringBoardDelegateKey = '\0';
 - (void) springBoardHandler
 {
     id<SpringBoardButtonDelegate> delegate = objc_getAssociatedObject(self, &SpringBoardDelegateKey);
-    NSArray *items = [delegate dataSourceForBoardItems];
+    NSArray *items = [delegate dataSourceForBoardItems:self];
     
     //退出编辑模式
     BOOL endEditing = NO;
@@ -250,8 +250,8 @@ static const char SpringBoardDelegateKey = '\0';
     }
     if (!endEditing) return;
     
-    if ([delegate respondsToSelector:@selector(actionBoardItemsEndEditing)]) {
-        [delegate actionBoardItemsEndEditing];
+    if ([delegate respondsToSelector:@selector(actionBoardItemsEndEditing:)]) {
+        [delegate actionBoardItemsEndEditing:self];
     }
 }
 

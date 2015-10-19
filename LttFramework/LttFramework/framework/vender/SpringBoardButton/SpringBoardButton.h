@@ -13,21 +13,24 @@
 @protocol SpringBoardButtonDelegate <NSObject>
 
 @required
-- (NSArray *) dataSourceForBoardItems;
+- (NSArray *) dataSourceForBoardItems: (UIView *)boardView;
 
 @optional
 - (void) actionBoardItemClicked: (SpringBoardButton *)item;
 - (BOOL) shouldBoardItemDeleted: (SpringBoardButton *)item;
 - (void) actionBoardItemDeleted: (SpringBoardButton *)item;
 - (void) actionBoardItemMoved: (SpringBoardButton *)item toIndex: (NSInteger)index;
-- (void) actionBoardItemsStartEditing;
-- (void) actionBoardItemsEndEditing;
+- (void) actionBoardItemsStartEditing: (UIView *)boardView;
+- (void) actionBoardItemsEndEditing: (UIView *)boardView;
 
 @end
 
 @interface SpringBoardButton : UIButton
 
 @property (retain, nonatomic) id<SpringBoardButtonDelegate> delegate;
+
+//容器视图，必须设置
+@property (retain, nonatomic) UIView *boardView;
 
 @property (assign, nonatomic) BOOL isEditing;
 
