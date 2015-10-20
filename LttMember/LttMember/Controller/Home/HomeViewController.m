@@ -15,12 +15,13 @@
 #import "HelperHandler.h"
 #import "LocationUtil.h"
 #import "TimerUtil.h"
-#import "UIView+Loading.h"
+#import "LttNavigationController.h"
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
+static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
 static NSMutableArray *caseTypes = nil;
 
@@ -47,6 +48,7 @@ static NSMutableArray *caseTypes = nil;
     isIndexNavBar = YES;
     isIndexStatusBar = YES;
     isMenuEnabled = [self isLogin];
+    disableMenuGesture = YES;
     hideBackButton = YES;
     hideNavigationBar = YES;
     [super viewDidLoad];
@@ -80,6 +82,25 @@ static NSMutableArray *caseTypes = nil;
 
 - (void)initData
 {
+    //获取推荐列表
+    if (!caseRecommends) {
+        CaseHandler *caseHandler = [[CaseHandler alloc] init];
+        NSDictionary *param = @{@"recommend": @1};
+        [caseHandler queryTypes:param success:^(NSArray *result) {
+            caseRecommends = [NSMutableArray arrayWithArray:result];
+            
+            //重载推荐
+            [homeView setData:@"recommends" value:caseRecommends];
+            [homeView reloadRecommends];
+        } failure:^(ErrorEntity *error) {
+            [self showError:error.message];
+        }];
+    } else {
+        //重载推荐
+        [homeView setData:@"recommends" value:caseRecommends];
+        [homeView reloadRecommends];
+    }
+    
     //获取分类列表
     if (!caseCategories) {
         [self showLoading:TIP_LOADING_MESSAGE];
@@ -92,7 +113,7 @@ static NSMutableArray *caseTypes = nil;
             
             //重新加载菜单
             [homeView setData:@"categories" value:caseCategories];
-            [homeView reloadMenu];
+            [homeView reloadCategories];
             
             //设置定时器
             [self setTimer];
@@ -102,7 +123,7 @@ static NSMutableArray *caseTypes = nil;
     } else {
         //重新加载菜单
         [homeView setData:@"categories" value:caseCategories];
-        [homeView reloadMenu];
+        [homeView reloadCategories];
         
         //设置定时器
         [self setTimer];
@@ -212,6 +233,18 @@ static NSMutableArray *caseTypes = nil;
 }
 
 #pragma mark - Action
+- (void)actionMenu
+{
+    //已经登录，显示菜单
+    if ([self isLogin]) {
+        [(LttNavigationController *) self.navigationController showMenu];
+    //跳转登陆
+    } else {
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
+    }
+}
+
 - (void)actionGps
 {
     //记录刷新时间
@@ -225,27 +258,18 @@ static NSMutableArray *caseTypes = nil;
 
 - (void)actionCategory:(NSNumber *)id
 {
-    [homeView.scrollView showIndicator];
+    //todo:加载效果
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"category_id": id};
     [caseHandler queryTypes:param success:^(NSArray *result) {
-        [homeView.scrollView hideIndicator];
-        
         //重新加载项目
         caseTypes = [NSMutableArray arrayWithArray:result];
         [homeView setData:@"types" value:caseTypes];
-        [homeView reloadItems];
+        [homeView reloadTypes];
     } failure:^(ErrorEntity *error) {
-        [homeView.scrollView hideIndicator];
-        
         [self showError:error.message];
     }];
-}
-
-- (void)actionMore
-{
-    NSLog(@"more");
 }
 
 - (void)actionCase:(NSNumber *)type

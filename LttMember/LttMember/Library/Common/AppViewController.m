@@ -63,6 +63,13 @@
         [(LttNavigationController *) self.navigationController menuEnable:NO];
     }
     
+    //是否禁用菜单手势
+    if (disableMenuGesture) {
+        [(LttNavigationController *) self.navigationController menuGestured:NO];
+    } else {
+        [(LttNavigationController *) self.navigationController menuGestured:YES];
+    }
+    
     //状态栏颜色
     if (isIndexStatusBar) {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

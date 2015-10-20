@@ -18,6 +18,9 @@
     //是否显示菜单
     BOOL isMenuEnabled;
     
+    //是否禁用菜单手势
+    BOOL disableMenuGesture;
+    
     //是否隐藏导航栏
     BOOL hideNavigationBar;
     

@@ -11,10 +11,10 @@
 @protocol HomeViewDelegate <NSObject>
 
 @required
-- (void)actionCategory: (NSNumber *) id;
-- (void)actionMore;
-- (void)actionCase: (NSNumber *) type;
+- (void)actionMenu;
 - (void)actionGps;
+- (void)actionCategory: (NSNumber *) id;
+- (void)actionCase: (NSNumber *) type;
 
 @end
 
@@ -22,9 +22,8 @@
 
 @property (retain, nonatomic) id<HomeViewDelegate> delegate;
 
-@property (retain, nonatomic) UIScrollView *scrollView;
-
-- (void) reloadMenu;
-- (void) reloadItems;
+- (void) reloadRecommends;
+- (void) reloadCategories;
+- (void) reloadTypes;
 
 @end
