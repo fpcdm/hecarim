@@ -16,14 +16,14 @@
 
 @property (nonatomic, retain) NSString *icon;
 
-@property (nonatomic, retain) NSString *remark;
+@property (nonatomic, retain) NSString *selectedIcon;
 
-@property (nonatomic, retain) NSString *detail;
+@property (nonatomic, retain) NSString *remark;
 
 @property (nonatomic, retain) NSNumber *sort;
 
-- (void) groupIconView: (UIImageView *)view;
+- (void) iconView: (UIImageView *)view;
 
-- (void) itemIconView: (UIImageView *)view;
+- (void) selectedIconView: (UIImageView *)view;
 
 @end

@@ -17,27 +17,23 @@
 
 @synthesize icon;
 
-@synthesize remark;
+@synthesize selectedIcon;
 
-@synthesize detail;
+@synthesize remark;
 
 @synthesize sort;
 
-- (void) groupIconView:(UIImageView *)view
+- (void) iconView:(UIImageView *)view
 {
     if (self.icon && [self.icon length] > 0) {
-        [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:[UIImage imageNamed:@"homeGroup"]];
-    } else {
-        view.image = [UIImage imageNamed:@"homeGroup"];
+        [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:nil];
     }
 }
 
-- (void) itemIconView:(UIImageView *)view
+- (void) selectedIconView:(UIImageView *)view
 {
-    if (self.icon && [self.icon length] > 0) {
-        [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:[UIImage imageNamed:@"homeItem"]];
-    } else {
-        view.image = [UIImage imageNamed:@"homeItem"];
+    if (self.selectedIcon && [self.selectedIcon length] > 0) {
+        [view sd_setImageWithURL:[NSURL URLWithString:self.selectedIcon] placeholderImage:nil];
     }
 }
 

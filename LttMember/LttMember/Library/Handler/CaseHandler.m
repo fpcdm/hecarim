@@ -18,7 +18,8 @@
     NSDictionary *mappingParam = @{
                                    @"category_id": @"id",
                                    @"category_name": @"name",
-                                   @"img": @"icon"
+                                   @"img": @"icon",
+                                   @"img_focus": @"selectedIcon"
                                    };
     
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
@@ -189,7 +190,7 @@
 - (void) formatIntention: (CaseEntity *)resultEntity
 {
     //解析订单商品
-    NSMutableArray *goodsArray = [NSMutableArray arrayWithObjects:nil];
+    NSMutableArray *goodsArray = [NSMutableArray array];
     if (resultEntity.goodsParam) {
         NSNumber *goodsAmount = [resultEntity.goodsParam objectForKey:@"amount"];
         resultEntity.goodsAmount = goodsAmount ? goodsAmount : @0.00;
@@ -213,7 +214,7 @@
     resultEntity.goodsParam = nil;
     
     //解析服务
-    NSMutableArray *servicesArray = [NSMutableArray arrayWithObjects:nil];
+    NSMutableArray *servicesArray = [NSMutableArray array];
     if (resultEntity.servicesParam) {
         NSNumber *servicesAmount = [resultEntity.servicesParam objectForKey:@"amount"];
         resultEntity.servicesAmount = servicesAmount ? servicesAmount : @0.00;

@@ -83,6 +83,7 @@
 #define COLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"]
 #define COLOR_MAIN_WHITE [UIColor whiteColor]
 #define COLOR_MAIN_BLACK [UIColor blackColor]
+#define COLOR_MAIN_CLEAR [UIColor clearColor]
 #define COLOR_MAIN_DARK [UIColor colorWithHexString:@"585858"]
 #define COLOR_MAIN_GRAY [UIColor colorWithHexString:@"7D7D7D"]
 #define CGCOLOR_MAIN_BORDER [UIColor colorWithHexString:@"B2B2B2"].CGColor

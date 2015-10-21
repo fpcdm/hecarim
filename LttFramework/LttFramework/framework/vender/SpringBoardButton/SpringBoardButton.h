@@ -16,6 +16,8 @@
 - (NSArray *) dataSourceForBoardItems: (UIView *)boardView;
 
 @optional
+- (CGRect) deleteFrameForBoardItem: (SpringBoardButton *)item;
+- (UIImage *) deleteImageForBoardItem: (SpringBoardButton *)item;
 - (void) actionBoardItemClicked: (SpringBoardButton *)item;
 - (BOOL) shouldBoardItemDeleted: (SpringBoardButton *)item;
 - (void) actionBoardItemDeleted: (SpringBoardButton *)item;

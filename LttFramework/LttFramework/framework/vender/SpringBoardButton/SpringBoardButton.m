@@ -33,14 +33,6 @@
         //绑定事件
         [self addTarget:self action:@selector(actionItemClicked) forControlEvents:UIControlEventTouchUpInside];
         
-        //添加删除按钮
-        deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(-10, -10, 20, 20)];
-        [deleteButton setBackgroundImage:[UIImage imageNamed:@"deleteItem"] forState:UIControlStateNormal];
-        [deleteButton setBackgroundImage:[UIImage imageNamed:@"deleteItem"] forState:UIControlStateHighlighted];
-        [deleteButton addTarget:self action:@selector(actionItemDeleted) forControlEvents:UIControlEventTouchUpInside];
-        deleteButton.hidden = YES;
-        [self addSubview:deleteButton];
-        
         //添加长按手势
         UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(actionLongPressed:)];
         [self addGestureRecognizer:longGesture];
@@ -65,6 +57,28 @@
         shake.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform,-rotation, 0.0 ,0.0 ,1.0)];
         shake.toValue   = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform, rotation, 0.0 ,0.0 ,1.0)];
         [self.layer addAnimation:shake forKey:@"shakeAnimation"];
+        
+        //添加删除按钮
+        if (!deleteButton) {
+            //获取删除按钮设置
+            CGRect deleteFrame = CGRectMake(-10, -10, 20, 20);
+            if ([self.delegate respondsToSelector:@selector(deleteFrameForBoardItem:)]) {
+                deleteFrame = [self.delegate deleteFrameForBoardItem:self];
+            }
+            UIImage *deleteImage = nil;
+            if ([self.delegate respondsToSelector:@selector(deleteImageForBoardItem:)]) {
+                deleteImage = [self.delegate deleteImageForBoardItem:self];
+            } else {
+                deleteImage = [UIImage imageNamed:@"deleteItem"];
+            }
+            
+            deleteButton = [[UIButton alloc] initWithFrame:deleteFrame];
+            [deleteButton setBackgroundImage:deleteImage forState:UIControlStateNormal];
+            [deleteButton setBackgroundImage:deleteImage forState:UIControlStateHighlighted];
+            [deleteButton addTarget:self action:@selector(actionItemDeleted) forControlEvents:UIControlEventTouchUpInside];
+            deleteButton.hidden = YES;
+            [self addSubview:deleteButton];
+        }
         
         deleteButton.hidden = NO;
     } else {

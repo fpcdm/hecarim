@@ -137,36 +137,33 @@
         make.bottom.equalTo(superview.mas_bottom);
     }];
     
-    /*
-    //导航菜单
-    menuView = [[UIView alloc] init];
-    menuView.backgroundColor = COLOR_MAIN_WHITE;
-    [self addSubview:menuView];
+    //推荐菜单
+    recommendView = [[UIView alloc] init];
+    recommendView.backgroundColor = COLOR_MAIN_CLEAR;
+    [middleView addSubview:recommendView];
     
-    UIView *superview = self;
-    [menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(adView.mas_bottom).offset(2.5);
+    superview = middleView;
+    [recommendView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@50);
+        make.height.equalTo(@(100));
     }];
     
     //服务菜单
-    scrollView = [[UIScrollView alloc] init];
-    scrollView.backgroundColor = COLOR_MAIN_WHITE;
-    scrollView.userInteractionEnabled = YES;
-    [scrollView setPagingEnabled:NO];
-    [scrollView setSpringBoardDelegate:self];
-    [self addSubview:scrollView];
+    typeView = [[UIScrollView alloc] init];
+    typeView.backgroundColor = COLOR_MAIN_CLEAR;
+    typeView.tag = 2;
+    [typeView setPagingEnabled:NO];
+    [typeView setSpringBoardDelegate:self];
+    [middleView addSubview:typeView];
     
-    superview = self;
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(menuView.mas_bottom).offset(5);
+    [typeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(recommendView.mas_bottom);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom).offset(-(SCREEN_WIDTH * 0.22 * 0.8));
+        make.bottom.equalTo(superview.mas_bottom).offset(-80);
     }];
-     */
 }
 
 - (void) bottomView
@@ -186,6 +183,22 @@
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom);
         make.height.equalTo(@(bottomHeight));
+    }];
+    
+    //分类菜单
+    categoryView = [[UIScrollView alloc] init];
+    categoryView.backgroundColor = COLOR_MAIN_CLEAR;
+    categoryView.tag = 1;
+    [categoryView setPagingEnabled:NO];
+    [categoryView setSpringBoardDelegate:self];
+    [bottomView addSubview:categoryView];
+    
+    superview = bottomView;
+    [categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
     }];
 }
 
@@ -217,217 +230,278 @@
         }
     }
     
+    //计算宽高
+    CGFloat buttonWidth = 50;
+    CGFloat buttonHeight = 100;
+    NSInteger buttonSize = 4;
+    CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
+    
     //加载新的分类列表
     NSMutableArray *recommends = [self getData:@"recommends"];
+    NSInteger recommendsCount = recommends ? [recommends count] : 0;
     
+    recommendBtns = [NSMutableArray array];
+    CGFloat frameX = 0;
+    for (int i = 0; i < recommendsCount; i++) {
+        CategoryEntity *recommend = [recommends objectAtIndex:i];
+        
+        //计算当前X坐标
+        frameX += i == 0 ? spaceWidth / 2 : spaceWidth + buttonWidth;
+        
+        //推荐项
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frameX, 0, buttonWidth, buttonHeight)];
+        button.backgroundColor = COLOR_MAIN_CLEAR;
+        button.tag = [recommend.id integerValue];
+        [button addTarget:self action:@selector(actionCase:) forControlEvents:UIControlEventTouchUpInside];
+        [recommendView addSubview:button];
+        [recommendBtns addObject:button];
+        
+        //添加图标
+        UIImageView *iconView = [[UIImageView alloc] init];
+        if (recommend.icon && [recommend.icon length] > 0) {
+            [recommend iconView:iconView];
+        } else {
+            iconView.image = [UIImage imageNamed:@"homeRecommend"];
+        }
+        [button addSubview:iconView];
+        
+        [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(button.mas_top).offset(10);
+            make.left.equalTo(button.mas_left);
+            make.width.equalTo(@(buttonWidth));
+            make.height.equalTo(@(buttonWidth));
+        }];
+        
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.text = recommend.name;
+        nameLabel.font = [UIFont systemFontOfSize:10];
+        nameLabel.textColor = [UIColor colorWithHexString:@"FEFFFD"];
+        [button addSubview:nameLabel];
+        
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(iconView.mas_bottom).offset(5);
+            make.centerX.equalTo(button.mas_centerX);
+            make.height.equalTo(@15);
+        }];
+        
+        UILabel *detailLabel = [[UILabel alloc] init];
+        detailLabel.text = recommend.remark;
+        detailLabel.font = [UIFont systemFontOfSize:10];
+        detailLabel.textColor = [UIColor colorWithHexString:@"D2D2D2" alpha:0.52];
+        [button addSubview:detailLabel];
+        
+        [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(nameLabel.mas_bottom);
+            make.centerX.equalTo(button.mas_centerX);
+            make.height.equalTo(@15);
+        }];
+    }
 }
 
 #pragma mark - reloadCategories
 - (void) reloadCategories
 {
-    /*
     //移除旧的分类列表
-    if (menuBtns && [menuBtns count] > 0) {
-        for (UIButton *menuBtn in menuBtns) {
-            menuBtn.hidden = YES;
-            [menuBtn removeFromSuperview];
+    if (categoryBtns && [categoryBtns count] > 0) {
+        for (UIButton *button in categoryBtns) {
+            button.hidden = YES;
+            [button removeFromSuperview];
         }
     }
     
     //获取分类列表
-    NSMutableArray *categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
-    //添加更多
-    CategoryEntity *moreCategory = [[CategoryEntity alloc] init];
-    moreCategory.icon = @"homeMore";
-    moreCategory.id = @0;
-    moreCategory.name = @"更多";
-    [categories addObject:moreCategory];
+    NSMutableArray *categories = [self getData:@"categories"];
+    //添加
+    CategoryEntity *addCategory = [[CategoryEntity alloc] init];
+    addCategory.icon = @"homeGroupAdd";
+    addCategory.id = @-1;
+    addCategory.name = @"增加";
+    [categories addObject:addCategory];
+    //减少
+    CategoryEntity *deleteCategory = [[CategoryEntity alloc] init];
+    deleteCategory.icon = @"homeGroupDelete";
+    deleteCategory.id = @-2;
+    deleteCategory.name = @"减少";
+    [categories addObject:deleteCategory];
     
-    //菜单元素
-    menuBtns = [NSMutableArray array];
-    CGFloat btnWidth = SCREEN_WIDTH / 6;
-    UIView *superview = menuView;
-    separateView = nil;
-    for (CategoryEntity *category in categories) {
-        //菜单项
-        UIButton *menuBtn = [[UIButton alloc] init];
-        menuBtn.tag = [category.id integerValue];
-        BOOL isMore = [@0 isEqualToNumber:category.id];
-        //选择菜单
-        if (!isMore) {
-            [menuBtn addTarget:self action:@selector(actionCategory:) forControlEvents:UIControlEventTouchUpInside];
-        //更多
-        } else {
-            [menuBtn addTarget:self action:@selector(actionMore) forControlEvents:UIControlEventTouchUpInside];
+    //计算宽高
+    CGFloat buttonWidth = 50;
+    CGFloat buttonHeight = 80;
+    NSInteger buttonSize = 4;
+    CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
+    
+    //分类列表
+    NSInteger categoriesCount = [categories count];
+    
+    categoryBtns = [NSMutableArray array];
+    CGFloat frameX = 0;
+    for (int i = 0; i < categoriesCount; i++) {
+        CategoryEntity *category = [categories objectAtIndex:i];
+        
+        //计算当前X坐标
+        frameX += i == 0 ? spaceWidth / 2 : spaceWidth + buttonWidth;
+        
+        //初始化按钮
+        SpringBoardButton *button = [[SpringBoardButton alloc] initWithFrame:CGRectMake(frameX, 0, buttonWidth, buttonHeight)];
+        button.backgroundColor = COLOR_MAIN_CLEAR;
+        button.tag = [category.id integerValue];
+        button.delegate = self;
+        button.boardView = categoryView;
+        //是否可编辑
+        if ([category.id integerValue] < 1) {
+            button.isEditable = NO;
         }
-        [superview addSubview:menuBtn];
+        [categoryView addSubview:button];
+        [categoryBtns addObject:button];
         
-        [menuBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(superview.mas_top);
-            make.left.equalTo(separateView ? separateView.mas_right : superview.mas_left);
-            make.bottom.equalTo(superview.mas_bottom);
-            make.width.equalTo(@(btnWidth));
-        }];
-        
+        //添加图标
         UIImageView *iconView = [[UIImageView alloc] init];
-        if (!isMore) {
-            [category groupIconView:iconView];
-        } else {
+        //图片
+        if ([category.id integerValue] < 1) {
             iconView.image = [UIImage imageNamed:category.icon];
+        } else {
+            if (category.icon && [category.icon length] > 0) {
+                [category iconView:iconView];
+            } else {
+                iconView.image = [UIImage imageNamed:@"homeGroup"];
+            }
         }
-        [menuBtn addSubview:iconView];
+        [button addSubview:iconView];
         
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(menuBtn.mas_centerX);
-            make.centerY.equalTo(menuBtn.mas_top).offset(15);
-            make.width.equalTo(@25);
-            make.height.equalTo(@25);
+            make.top.equalTo(button.mas_top).offset(10);
+            make.left.equalTo(button.mas_left);
+            make.width.equalTo(@(buttonWidth));
+            make.height.equalTo(@(buttonWidth));
         }];
         
         UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.tag = -1;
         nameLabel.text = category.name;
-        nameLabel.font = [UIFont systemFontOfSize:10];
-        nameLabel.textColor = COLOR_MAIN_DARK;
-        [menuBtn addSubview:nameLabel];
+        nameLabel.font = FONT_SMALL;
+        nameLabel.textColor = COLOR_MAIN_WHITE;
+        [button addSubview:nameLabel];
         
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(iconView.mas_bottom).offset(5);
-            make.centerX.equalTo(menuBtn.mas_centerX);
-            make.height.equalTo(@10);
+            make.top.equalTo(iconView.mas_bottom);
+            make.centerX.equalTo(button.mas_centerX);
+            make.height.equalTo(@20);
         }];
-        
-        UIView *sepView = [[UIView alloc] init];
-        sepView.backgroundColor = [UIColor colorWithHexString:@"F1F1F1"];
-        [menuBtn addSubview:sepView];
-        
-        [sepView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(menuBtn.mas_right).offset(1);
-            make.centerY.equalTo(menuBtn.mas_centerY);
-            make.width.equalTo(@1);
-            make.height.equalTo(@40);
-        }];
-        
-        UIView *selectedView = [[UIView alloc] init];
-        selectedView.tag = -2;
-        selectedView.backgroundColor = COLOR_MAIN_WHITE;
-        [menuBtn addSubview:selectedView];
-        
-        [selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(menuBtn.mas_bottom);
-            make.left.equalTo(menuBtn.mas_left);
-            make.right.equalTo(menuBtn.mas_right);
-            make.height.equalTo(@1.5);
-        }];
-        
-        [menuBtns addObject:menuBtn];
-        separateView = menuBtn;
     }
+    
+    //计算容器宽高
+    CGFloat contentX = frameX + buttonWidth + spaceWidth / 2;
+    categoryView.contentSize = CGSizeMake(contentX, buttonHeight);
     
     //默认选中第一个
     if ([categories count] > 1) {
-        [self actionCategory:[menuBtns firstObject]];
+        [self actionCategory:[categoryBtns firstObject]];
     }
-    */
 }
 
 #pragma mark - reloadTypes
 - (void) reloadTypes
 {
-    /*
     //todo: 未登录不能编辑菜单
     
     //移除旧的服务列表
-    if (itemBtns && [itemBtns count] > 0) {
-        for (SpringBoardButton *itemBtn in itemBtns) {
-            itemBtn.hidden = YES;
-            [itemBtn removeFromSuperview];
+    if (typeBtns && [typeBtns count] > 0) {
+        for (SpringBoardButton *button in typeBtns) {
+            button.hidden = YES;
+            [button removeFromSuperview];
         }
     }
     
     //加载服务列表
     NSMutableArray *types = [self getData:@"types"];
-    //添加服务
-    CategoryEntity *addItem = [[CategoryEntity alloc] init];
-    addItem.icon = @"homeAdd";
-    addItem.id = @0;
-    addItem.name = @"添加";
-    addItem.detail = @"添加你想要的服务";
-    [types addObject:addItem];
-    
-    //服务选项
-    itemBtns = [NSMutableArray array];
+    //添加
+    CategoryEntity *addType = [[CategoryEntity alloc] init];
+    addType.icon = @"homeItemAdd";
+    addType.id = @-1;
+    addType.name = @"增加";
+    [types addObject:addType];
+    //减少
+    CategoryEntity *deleteType = [[CategoryEntity alloc] init];
+    deleteType.icon = @"homeItemDelete";
+    deleteType.id = @-2;
+    deleteType.name = @"减少";
+    [types addObject:deleteType];
     
     //计算宽高
-    CGFloat itemWidth = 50;
-    CGFloat itemHeight = 60;
-    NSInteger itemLine = 4;
-    CGFloat itemSpaceW = (SCREEN_WIDTH - itemLine * itemWidth) / (itemLine + 1);
-    CGFloat itemSpaceH = 20;
+    CGFloat buttonWidth = 50;
+    CGFloat buttonHeight = 80;
+    NSInteger buttonSize = 4;
+    CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
     
-    //添加元素
-    int i = 0;
-    CGFloat contentHeight = 0;
-    for (CategoryEntity *type in types) {
-        i++;
-        BOOL isAdd = [@0 isEqualToNumber:type.id];
+    //服务选项
+    typeBtns = [NSMutableArray array];
+    
+    //添加服务
+    NSInteger typesCount = [types count];
+    CGFloat frameX = 0;
+    CGFloat frameY = 0;
+    for (int i = 0; i < typesCount; i++) {
+        CategoryEntity *type = [types objectAtIndex:i];
         
         //计算位置
-        NSInteger itemRow = (i % itemLine) == 0 ? (i / itemLine) : ((int)(i / itemLine)) + 1;
-        NSInteger itemCol = (i % itemLine) == 0 ? itemLine : (i % itemLine);
-        CGFloat itemX = itemSpaceW + (itemWidth + itemSpaceW) * (itemCol - 1);
-        CGFloat itemY = itemSpaceH + (itemHeight + itemSpaceH) * (itemRow - 1);
-        CGRect itemFrame = CGRectMake(itemX, itemY, itemWidth, itemHeight);
-        contentHeight = itemY + itemHeight + itemSpaceH;
+        NSInteger itemRow = (int)(i / buttonSize) + 1;
+        NSInteger itemCol = i % buttonSize + 1;
+        frameX = spaceWidth / 2 + (buttonWidth + spaceWidth) * (itemCol - 1);
+        frameY = buttonHeight * (itemRow - 1);
         
         //初始化按钮
-        SpringBoardButton *editButton = [[SpringBoardButton alloc] initWithFrame:itemFrame];
-        editButton.tag = [type.id integerValue];
-        editButton.delegate = self;
-        //添加按钮
-        if (isAdd) {
-            editButton.isEditable = NO;
+        SpringBoardButton *button = [[SpringBoardButton alloc] initWithFrame:CGRectMake(frameX, frameY, buttonWidth, buttonHeight)];
+        button.backgroundColor = COLOR_MAIN_CLEAR;
+        button.tag = [type.id integerValue];
+        button.delegate = self;
+        button.boardView = typeView;
+        //是否可编辑
+        if ([type.id integerValue] < 1) {
+            button.isEditable = NO;
         }
-        [scrollView addSubview:editButton];
-        [itemBtns addObject:editButton];
+        [typeView addSubview:button];
+        [typeBtns addObject:button];
         
         UIImageView *iconView = [[UIImageView alloc] init];
-        if (!isAdd) {
-            [type itemIconView:iconView];
-        } else {
+        //图片
+        if ([type.id integerValue] < 1) {
             iconView.image = [UIImage imageNamed:type.icon];
+        } else {
+            if (type.icon && [type.icon length] > 0) {
+                [type iconView:iconView];
+            } else {
+                iconView.image = [UIImage imageNamed:@"homeItem"];
+            }
         }
-        [editButton addSubview:iconView];
+        [button addSubview:iconView];
         
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(editButton.mas_centerX);
-            make.centerY.equalTo(editButton.mas_top).offset(15);
-            make.width.equalTo(@25);
-            make.height.equalTo(@25);
+            make.top.equalTo(button.mas_top).offset(10);
+            make.left.equalTo(button.mas_left);
+            make.width.equalTo(@(buttonWidth));
+            make.height.equalTo(@(buttonWidth));
         }];
         
         UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.tag = -1;
         nameLabel.text = type.name;
         nameLabel.font = [UIFont systemFontOfSize:10];
-        nameLabel.textColor = COLOR_MAIN_DARK;
-        [editButton addSubview:nameLabel];
+        nameLabel.textColor = COLOR_MAIN_WHITE;
+        [button addSubview:nameLabel];
         
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(iconView.mas_bottom).offset(5);
-            make.centerX.equalTo(editButton.mas_centerX);
-            make.height.equalTo(@10);
+            make.top.equalTo(iconView.mas_bottom);
+            make.centerX.equalTo(button.mas_centerX);
+            make.height.equalTo(@20);
         }];
     }
     
-    //设置scrollView容器宽高
-    scrollView.contentOffset = CGPointMake(0, 0);
-    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
-    */
+    //计算容器宽高
+    CGFloat contentY = frameY + buttonHeight;
+    typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentY);
 }
 
 - (void) adjustScrollView
 {
+    /*
     //计算宽高
     CGFloat itemHeight = 60;
     NSInteger itemLine = 4;
@@ -439,61 +513,93 @@
     CGFloat contentHeight = itemY + itemHeight + itemSpaceH;
     
     typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
+     */
 }
 
 - (NSArray *) dataSourceForBoardItems:(UIView *)boardView
 {
-    return typeBtns;
+    //分类
+    if (boardView.tag == 1) {
+        return categoryBtns;
+    //类型
+    } else {
+        return typeBtns;
+    }
 }
 
 - (void) actionBoardItemsStartEditing:(UIView *)boardView
 {
-    NSLog(@"startEditing");
-    
-    //todo: 编辑模式禁用右滑菜单
+    //分类
+    if (boardView.tag == 1) {
+        NSLog(@"startEditing");
+    //类型
+    } else {
+        NSLog(@"startEditing");
+    }
 }
 
 - (void) actionBoardItemsEndEditing:(UIView *)boardView
 {
-    NSLog(@"endEditing");
-    
-    //todo: 非编辑模式启用右滑菜单
+    //分类
+    if (boardView.tag == 1) {
+        NSLog(@"endEditing");
+    //类型
+    } else {
+        NSLog(@"endEditing");
+    }
 }
 
 - (void) actionBoardItemClicked:(SpringBoardButton *)item
 {
-    //添加按钮
-    if (item.tag < 1) {
-        [self actionBoardItemAdd];
-        return;
+    //分类
+    if (item.boardView.tag == 1) {
+        
+    //类型
+    } else {
     }
-    
-    NSLog(@"clicked");
-    [self actionCase:item];
-}
-
-- (void) actionBoardItemAdd
-{
-    NSLog(@"add");
 }
 
 - (void) actionBoardItemMoved:(SpringBoardButton *)item toIndex:(NSInteger)index
 {
-    NSInteger fromIndex = [typeBtns indexOfObject:item];
-    [typeBtns exchangeObjectAtIndex:fromIndex withObjectAtIndex:index];
+    //分类
+    if (item.boardView.tag == 1) {
+        NSInteger fromIndex = [categoryBtns indexOfObject:item];
+        [categoryBtns exchangeObjectAtIndex:fromIndex withObjectAtIndex:index];
+    //类型
+    } else {
+        NSInteger fromIndex = [typeBtns indexOfObject:item];
+        [typeBtns exchangeObjectAtIndex:fromIndex withObjectAtIndex:index];
+    }
 }
 
 - (BOOL) shouldBoardItemDeleted:(SpringBoardButton *)item
 {
-    return [typeBtns count] > 2 ? YES : NO;
+    //分类
+    if (item.boardView.tag == 1) {
+        return [categoryBtns count] > 2 ? YES : NO;
+    //类型
+    } else {
+        return [typeBtns count] > 2 ? YES : NO;
+    }
 }
 
 - (void) actionBoardItemDeleted:(SpringBoardButton *)item
 {
-    [typeBtns removeObject:item];
-    
-    //自适应滚动视图
-    [self adjustScrollView];
+    //分类
+    if (item.boardView.tag == 1) {
+        [categoryBtns removeObject:item];
+        //自适应滚动视图
+    //类型
+    } else {
+        [typeBtns removeObject:item];
+        //自适应滚动视图
+    }
+}
+
+- (CGRect) deleteFrameForBoardItem:(SpringBoardButton *)item
+{
+    //调整删除按钮位置
+    return CGRectMake(-10, 0, 20, 20);
 }
 
 #pragma mark - Action
