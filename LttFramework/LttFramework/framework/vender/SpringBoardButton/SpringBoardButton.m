@@ -40,6 +40,7 @@
     return self;
 }
 
+//todo: 全部进入编辑模式
 - (void) setIsEditing:(BOOL)isEditing
 {
     if (!self.isEditable) return;

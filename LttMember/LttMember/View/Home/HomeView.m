@@ -29,6 +29,9 @@
     NSMutableArray *recommendBtns;
     NSMutableArray *categoryBtns;
     NSMutableArray *typeBtns;
+    
+    BOOL isLogin;
+    NSNumber *categoryId;
 }
 
 - (id) init
@@ -202,6 +205,12 @@
     }];
 }
 
+#pragma mark - setLogin
+- (void) setLogin:(BOOL)login
+{
+    isLogin = login;
+}
+
 #pragma mark - RenderData
 - (void) renderData
 {
@@ -310,7 +319,7 @@
     }
     
     //获取分类列表
-    NSMutableArray *categories = [self getData:@"categories"];
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
     //添加
     CategoryEntity *addCategory = [[CategoryEntity alloc] init];
     addCategory.icon = @"homeGroupAdd";
@@ -349,6 +358,9 @@
         button.boardView = categoryView;
         //是否可编辑
         if ([category.id integerValue] < 1) {
+            button.isEditable = NO;
+        }
+        if (!isLogin) {
             button.isEditable = NO;
         }
         [categoryView addSubview:button];
@@ -393,7 +405,7 @@
     categoryView.contentSize = CGSizeMake(contentX, buttonHeight);
     
     //默认选中第一个
-    if ([categories count] > 1) {
+    if ([categories count] > 2) {
         [self actionCategory:[categoryBtns firstObject]];
     }
 }
@@ -412,7 +424,7 @@
     }
     
     //加载服务列表
-    NSMutableArray *types = [self getData:@"types"];
+    NSMutableArray *types = [NSMutableArray arrayWithArray:[self getData:@"types"]];
     //添加
     CategoryEntity *addType = [[CategoryEntity alloc] init];
     addType.icon = @"homeItemAdd";
@@ -458,6 +470,9 @@
         if ([type.id integerValue] < 1) {
             button.isEditable = NO;
         }
+        if (!isLogin) {
+            button.isEditable = NO;
+        }
         [typeView addSubview:button];
         [typeBtns addObject:button];
         
@@ -499,23 +514,6 @@
     typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentY);
 }
 
-- (void) adjustScrollView
-{
-    /*
-    //计算宽高
-    CGFloat itemHeight = 60;
-    NSInteger itemLine = 4;
-    CGFloat itemSpaceH = 20;
-    
-    NSInteger i = [typeBtns count];
-    NSInteger maxRow = (i % itemLine) == 0 ? (i / itemLine) : ((int)(i / itemLine)) + 1;
-    CGFloat itemY = itemSpaceH + (itemHeight + itemSpaceH) * (maxRow - 1);
-    CGFloat contentHeight = itemY + itemHeight + itemSpaceH;
-    
-    typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentHeight);
-     */
-}
-
 - (NSArray *) dataSourceForBoardItems:(UIView *)boardView
 {
     //分类
@@ -553,9 +551,49 @@
 {
     //分类
     if (item.boardView.tag == 1) {
-        
-    //类型
+        //添加或减少
+        if (item.tag < 1) {
+            //未登录
+            if (!isLogin) {
+                [self actionLogin];
+                return;
+            }
+            
+            //添加或减少
+            if (item.tag == -1) {
+                [self actionAddCategory];
+            } else {
+                if ([categoryBtns count] < 3) return;
+                
+                for (SpringBoardButton *button in categoryBtns) {
+                    button.isEditing = YES;
+                }
+            }
+        } else {
+            [self actionCategory:item];
+        }
+    //服务
     } else {
+        //未登录
+        if (!isLogin) {
+            [self actionLogin];
+            return;
+        }
+        
+        //添加或减少
+        if (item.tag < 1) {
+            if (item.tag == -1) {
+                [self actionAddType];
+            } else {
+                if ([typeBtns count] < 3) return;
+                
+                for (SpringBoardButton *button in typeBtns) {
+                    button.isEditing = YES;
+                }
+            }
+        } else {
+            [self actionCase:item];
+        }
     }
 }
 
@@ -576,10 +614,20 @@
 {
     //分类
     if (item.boardView.tag == 1) {
-        return [categoryBtns count] > 2 ? YES : NO;
+        if ([categoryBtns count] > 3) {
+            return YES;
+        } else {
+            [self actionError:@"请至少保留一个场景哦~亲！"];
+            return NO;
+        }
     //类型
     } else {
-        return [typeBtns count] > 2 ? YES : NO;
+        if ([typeBtns count] > 3) {
+            return YES;
+        } else {
+            [self actionError:@"请至少保留一个服务哦~亲！"];
+            return NO;
+        }
     }
 }
 
@@ -588,11 +636,28 @@
     //分类
     if (item.boardView.tag == 1) {
         [categoryBtns removeObject:item];
+        
         //自适应滚动视图
+        CGSize contentSize = categoryView.contentSize;
+        NSInteger categoriesCount = [categoryBtns count];
+        
+        CGFloat buttonWidth = 50;
+        NSInteger buttonSize = 4;
+        CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
+        contentSize.width = (spaceWidth + buttonWidth) * categoriesCount;
+        categoryView.contentSize = contentSize;
     //类型
     } else {
         [typeBtns removeObject:item];
+        
         //自适应滚动视图
+        CGSize contentSize = typeView.contentSize;
+        NSInteger typesCount = [typeBtns count];
+        
+        CGFloat buttonHeight = 80;
+        NSInteger buttonSize = 4;
+        contentSize.height = ((int)((typesCount - 1) / buttonSize) + 1) * buttonHeight;
+        typeView.contentSize = contentSize;
     }
 }
 
@@ -603,18 +668,35 @@
 }
 
 #pragma mark - Action
+- (void) actionLogin
+{
+    [self.delegate actionLogin];
+}
+
 - (void) actionMenu
 {
+    if (!isLogin) {
+        [self actionLogin];
+        return;
+    }
+    
     [self.delegate actionMenu];
 }
 
 - (void) actionCategory: (UIButton *)sender
 {
-    [self.delegate actionCategory:@(sender.tag)];
+    categoryId = @(sender.tag);
+    
+    [self.delegate actionCategory:categoryId];
 }
 
 - (void) actionCase: (UIButton *)sender
 {
+    if (!isLogin) {
+        [self actionLogin];
+        return;
+    }
+    
     if (sender.tag < 1) return;
     
     [self.delegate actionCase:@(sender.tag)];
@@ -623,6 +705,21 @@
 - (void)actionGps
 {
     [self.delegate actionGps];
+}
+
+- (void)actionError: (NSString *) message
+{
+    [self.delegate actionError:message];
+}
+
+- (void)actionAddCategory
+{
+    
+}
+
+- (void)actionAddType
+{
+    
 }
 
 @end

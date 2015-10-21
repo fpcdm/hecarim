@@ -53,6 +53,9 @@ static NSMutableArray *caseTypes = nil;
     hideNavigationBar = YES;
     [super viewDidLoad];
     
+    //是否登陆
+    [homeView setLogin:[self isLogin]];
+    
     self.navigationItem.title = @"两条腿";
 }
 
@@ -233,16 +236,16 @@ static NSMutableArray *caseTypes = nil;
 }
 
 #pragma mark - Action
+- (void)actionLogin
+{
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:loginViewController animated:YES];
+}
+
 - (void)actionMenu
 {
     //已经登录，显示菜单
-    if ([self isLogin]) {
-        [(LttNavigationController *) self.navigationController showMenu];
-    //跳转登陆
-    } else {
-        LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        [self.navigationController pushViewController:loginViewController animated:YES];
-    }
+    [(LttNavigationController *) self.navigationController showMenu];
 }
 
 - (void)actionGps
@@ -274,13 +277,6 @@ static NSMutableArray *caseTypes = nil;
 
 - (void)actionCase:(NSNumber *)type
 {
-    //是否登陆
-    if (![self isLogin]) {
-        LoginViewController *viewController = [[LoginViewController alloc] init];
-        [self pushViewController:viewController animated:YES];
-        return;
-    }
-    
     //获取参数
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.typeId = type;
@@ -292,6 +288,21 @@ static NSMutableArray *caseTypes = nil;
     CaseFormViewController *viewController = [[CaseFormViewController alloc] init];
     viewController.caseEntity = intentionEntity;
     [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionAddCategory
+{
+    
+}
+
+- (void)actionAddType:(NSNumber *)categoryId
+{
+    
+}
+
+- (void)actionError:(NSString *)message
+{
+    [self showError:message];
 }
 
 @end

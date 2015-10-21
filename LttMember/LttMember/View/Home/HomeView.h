@@ -11,10 +11,14 @@
 @protocol HomeViewDelegate <NSObject>
 
 @required
+- (void)actionLogin;
 - (void)actionMenu;
 - (void)actionGps;
 - (void)actionCategory: (NSNumber *) id;
 - (void)actionCase: (NSNumber *) type;
+- (void)actionError: (NSString *) message;
+- (void)actionAddCategory;
+- (void)actionAddType: (NSNumber *) categoryId;
 
 @end
 
@@ -22,6 +26,7 @@
 
 @property (retain, nonatomic) id<HomeViewDelegate> delegate;
 
+- (void) setLogin: (BOOL) login;
 - (void) reloadRecommends;
 - (void) reloadCategories;
 - (void) reloadTypes;
