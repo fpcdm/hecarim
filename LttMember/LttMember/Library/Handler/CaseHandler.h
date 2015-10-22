@@ -23,7 +23,7 @@
 - (void) saveCategories: (NSArray *) categories success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 //保存需求类型
-- (void) saveTypes: (CategoryEntity *) category types: (NSArray *) types success: (SuccessBlock) success failure: (FailedBlock) failure;
+- (void) saveTypes: (NSNumber *) categoryId types: (NSArray *) types success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 //需求属性列表
 - (void) queryProperties: (CategoryEntity *) type success: (SuccessBlock) success failure: (FailedBlock) failure;

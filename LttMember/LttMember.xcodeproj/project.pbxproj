@@ -104,6 +104,8 @@
 		2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22391B3A4D0300428742 /* TSMessageView.m */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
+		2F5C8B251BD8C8A300EF1586 /* CaseCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C8B241BD8C8A300EF1586 /* CaseCategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C8B271BD8C9A700EF1586 /* CaseCategoryView.m */; settings = {ASSET_TAGS = (); }; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
 		2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */; };
 		2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A21B4B70B900E0F774 /* LocationUtil.m */; };
@@ -417,6 +419,10 @@
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F55340F1B4FC6CD00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534101B4FC6CD00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
+		2F5C8B231BD8C8A300EF1586 /* CaseCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseCategoryViewController.h; sourceTree = "<group>"; };
+		2F5C8B241BD8C8A300EF1586 /* CaseCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseCategoryViewController.m; sourceTree = "<group>"; };
+		2F5C8B261BD8C9A700EF1586 /* CaseCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseCategoryView.h; sourceTree = "<group>"; };
+		2F5C8B271BD8C9A700EF1586 /* CaseCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseCategoryView.m; sourceTree = "<group>"; };
 		2F5FDDD71B5F391800CBF2A7 /* UIScrollView+RefreshLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+RefreshLoading.h"; sourceTree = "<group>"; };
 		2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+RefreshLoading.m"; sourceTree = "<group>"; };
 		2F5FDDDA1B5F3E1800CBF2A7 /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
@@ -876,6 +882,8 @@
 			children = (
 				2F16E57C1B5DEFEE007947D0 /* AddressSelectorView.h */,
 				2F16E57D1B5DEFEE007947D0 /* AddressSelectorView.m */,
+				2F5C8B261BD8C9A700EF1586 /* CaseCategoryView.h */,
+				2F5C8B271BD8C9A700EF1586 /* CaseCategoryView.m */,
 				2FB72F641BB8D75600CB8E62 /* CasePropertyView.h */,
 				2FB72F651BB8D75600CB8E62 /* CasePropertyView.m */,
 				2F16E5801B5DEFEE007947D0 /* CaseFormView.h */,
@@ -965,6 +973,8 @@
 			children = (
 				2F16E5D31B5DF08F007947D0 /* AddressSelectorViewController.h */,
 				2F16E5D41B5DF08F007947D0 /* AddressSelectorViewController.m */,
+				2F5C8B231BD8C8A300EF1586 /* CaseCategoryViewController.h */,
+				2F5C8B241BD8C8A300EF1586 /* CaseCategoryViewController.m */,
 				2FB72F611BB8D72400CB8E62 /* CasePropertyViewController.h */,
 				2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */,
 				2F16E5D51B5DF08F007947D0 /* CaseFormViewController.h */,
@@ -1984,6 +1994,7 @@
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
 				2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */,
 				2F16E5AF1B5DEFEE007947D0 /* CaseSuccessView.m in Sources */,
+				2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */,
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
 				2F16E5A71B5DEFEE007947D0 /* SuggestionView.m in Sources */,
 				2F16E5B01B5DEFEE007947D0 /* CaseTopayView.m in Sources */,
@@ -2014,6 +2025,7 @@
 				2F6D3E5C1B312765007A4159 /* MJRefreshConst.m in Sources */,
 				2F16E5F11B5DF08F007947D0 /* AddressSelectorViewController.m in Sources */,
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
+				2F5C8B251BD8C8A300EF1586 /* CaseCategoryViewController.m in Sources */,
 				2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2F16E6381B5DF162007947D0 /* CaseEntity.m in Sources */,
 				2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */,

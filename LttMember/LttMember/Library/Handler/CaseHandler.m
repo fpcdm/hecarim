@@ -90,7 +90,7 @@
     }];
 }
 
-- (void) saveTypes:(CategoryEntity *)category types:(NSArray *)types success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void) saveTypes:(NSNumber *)categoryId types:(NSArray *)types success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //组装参数
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
@@ -107,12 +107,12 @@
         i++;
     }
     
-    [param setObject:category.id ? category.id : @0 forKey:@"category_id"];
+    [param setObject:categoryId ? categoryId : @0 forKey:@"category_id"];
     [param setObject:typesDict forKey:@"type_list"];
     
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
-    [sharedClient putObject:category path:@"casetype/relations" param:param success:^(NSArray *result){
+    [sharedClient putObject:[CategoryEntity new] path:@"casetype/relations" param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
         failure(error);

@@ -17,6 +17,7 @@
 #import "TimerUtil.h"
 #import "UIView+Loading.h"
 #import "LttNavigationController.h"
+#import "CaseCategoryViewController.h"
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
@@ -323,12 +324,86 @@ static NSMutableDictionary *caseTypes = nil;
 
 - (void)actionAddCategory
 {
+    CaseCategoryViewController *viewController = [[CaseCategoryViewController alloc] init];
+    viewController.categoryId = nil;
+    viewController.callbackBlock = ^(NSArray *categories){
+        if (!caseCategories) return;
+        
+        //添加到缓存数据
+        BOOL hasNew = NO;
+        for (CategoryEntity *category in categories) {
+            //检查重复数据
+            BOOL isExist = NO;
+            for (CategoryEntity *cacheCategory in caseCategories) {
+                if ([cacheCategory.id isEqualToNumber:category.id]) {
+                    isExist = YES;
+                    break;
+                }
+                
+            }
+            
+            if (!isExist) {
+                [caseCategories addObject:category];
+                hasNew = YES;
+            }
+        }
+        if (!hasNew) return;
+        
+        //有新数据重新渲染视图并保存
+        [homeView setData:@"categories" value:caseCategories];
+        [homeView reloadCategories];
+        
+        //重新保存场景
+        [homeView saveCategories];
+    };
     
+    [self pushViewController:viewController animated:YES];
 }
 
-- (void)actionAddType:(NSNumber *)categoryId
+- (void)actionAddType:(NSNumber *)id
 {
+    CaseCategoryViewController *viewController = [[CaseCategoryViewController alloc] init];
+    viewController.categoryId = id;
+    viewController.callbackBlock = ^(NSArray *types){
+        if (!caseTypes) return;
+        
+        //添加到缓存数据
+        NSString *idStr = [NSString stringWithFormat:@"%@", id];
+        NSArray *idTypes = [caseTypes objectForKey:idStr];
+        if (idTypes == nil) return;
+        
+        NSMutableArray *result = [NSMutableArray arrayWithArray:idTypes];
+        BOOL hasNew = NO;
+        for (CategoryEntity *type in types) {
+            //检查重复数据
+            BOOL isExist = NO;
+            for (CategoryEntity *cacheType in result) {
+                if ([cacheType.id isEqualToNumber:type.id]) {
+                    isExist = YES;
+                    break;
+                }
+                
+            }
+            
+            if (!isExist) {
+                [result addObject:type];
+                hasNew = YES;
+            }
+        }
+        if (!hasNew) return;
+        
+        //有新数据重新渲染视图并保存
+        [caseTypes setObject:result forKey:idStr];
+        
+        NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
+        [homeView setData:@"types" value:categoryTypes];
+        [homeView reloadTypes];
+        
+        //重新保存服务列表
+        [homeView saveTypes];
+    };
     
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionSaveCategories:(NSArray *)categories
@@ -355,18 +430,15 @@ static NSMutableDictionary *caseTypes = nil;
     }];
 }
 
-- (void)actionSaveTypes:(NSNumber *)categoryId types:(NSArray *)types
+- (void)actionSaveTypes:(NSNumber *)id types:(NSArray *)types
 {
     //不显示请求效果
-    CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
-    categoryEntity.id = categoryId;
-    
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    [caseHandler saveTypes:categoryEntity types:types success:^(NSArray *result) {
+    [caseHandler saveTypes:id types:types success:^(NSArray *result) {
         if (!caseTypes) return;
         
         //清除缓存数据
-        NSString *idStr = [NSString stringWithFormat:@"%@", categoryId];
+        NSString *idStr = [NSString stringWithFormat:@"%@", id];
         NSArray *idTypes = [caseTypes objectForKey:idStr];
         if (idTypes != nil) {
             [caseTypes removeObjectForKey:idStr];

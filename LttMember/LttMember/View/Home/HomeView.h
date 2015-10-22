@@ -35,4 +35,10 @@
 - (void) reloadCategories;
 - (void) reloadTypes;
 
+//重新保存当前的分类
+- (void) saveCategories;
+
+//重新保存当前的服务列表
+- (void) saveTypes;
+
 @end

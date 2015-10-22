@@ -420,8 +420,6 @@
 #pragma mark - reloadTypes
 - (void) reloadTypes
 {
-    //todo: 未登录不能编辑菜单
-    
     //移除旧的服务列表
     if (typeBtns && [typeBtns count] > 0) {
         for (SpringBoardButton *button in typeBtns) {
@@ -543,10 +541,10 @@
 {
     //分类
     if (boardView.tag == 1) {
-        [self actionSaveCategories];
+        [self saveCategories];
     //类型
     } else {
-        [self actionSaveTypes];
+        [self saveTypes];
     }
 }
 
@@ -636,6 +634,12 @@
 {
     //分类
     if (item.boardView.tag == 1) {
+        //是否删除当前分类
+        BOOL isCurrent = NO;
+        if (categoryId && [categoryId isEqualToNumber:@(item.tag)]) {
+            isCurrent = YES;
+        }
+        
         [categoryBtns removeObject:item];
         
         //自适应滚动视图
@@ -647,6 +651,11 @@
         CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
         contentSize.width = (spaceWidth + buttonWidth) * categoriesCount;
         categoryView.contentSize = contentSize;
+        
+        //删除当前分类重新加载服务列表
+        if (isCurrent) {
+            [self actionCategory:[categoryBtns firstObject]];
+        }
     //类型
     } else {
         [typeBtns removeObject:item];
@@ -665,7 +674,7 @@
 - (CGRect) deleteFrameForBoardItem:(SpringBoardButton *)item
 {
     //调整删除按钮位置
-    return CGRectMake(-10, 0, 20, 20);
+    return CGRectMake(-10, 0, 30, 30);
 }
 
 #pragma mark - handleSwipeGesture
@@ -814,7 +823,7 @@
     [self.delegate actionAddType:categoryId];
 }
 
-- (void)actionSaveCategories
+- (void)saveCategories
 {
     NSMutableArray *newCategories = [[NSMutableArray alloc] init];
     
@@ -832,7 +841,7 @@
     [self.delegate actionSaveCategories:newCategories];
 }
 
-- (void)actionSaveTypes
+- (void)saveTypes
 {
     if (!categoryId) return;
     

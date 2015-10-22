@@ -1,18 +1,14 @@
 //
-//  CasePropertyView.m
+//  CaseCategoryView.m
 //  LttMember
 //
-//  Created by wuyong on 15/9/28.
+//  Created by wuyong on 15/10/22.
 //  Copyright © 2015年 Gilbert. All rights reserved.
 //
 
-#import "CasePropertyView.h"
+#import "CaseCategoryView.h"
 
-@interface CasePropertyView ()
-
-@end
-
-@implementation CasePropertyView
+@implementation CaseCategoryView
 
 - (id)init
 {
@@ -28,13 +24,13 @@
 {
     NSMutableArray *section = [NSMutableArray array];
     
-    //循环属性
-    NSArray *properties = [self getData:@"properties"];
-    if (properties) {
-        for (PropertyEntity *property in properties) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
+    //循环分类
+    NSArray *categories = [self getData:@"categories"];
+    if (categories) {
+        for (CategoryEntity *category in categories) {
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": category}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": category}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": category}];
         }
     }
     
@@ -43,7 +39,7 @@
 }
 
 #pragma mark - CollectionView
-- (UICollectionViewCell *)cellProperty: (UICollectionViewCell *)cell cellData:(NSDictionary *)cellData
+- (UICollectionViewCell *)cellCategory: (UICollectionViewCell *)cell cellData:(NSDictionary *)cellData
 {
     //图片显示
     UIImageView *imageView = [[UIImageView alloc] init];
@@ -51,8 +47,8 @@
     imageView.backgroundColor = COLOR_MAIN_CLEAR;
     [cell addSubview:imageView];
     
-    PropertyEntity *property = [cellData objectForKey:@"data"];
-    [property iconView:imageView];
+    CategoryEntity *category = [cellData objectForKey:@"data"];
+    [category iconView:imageView placeholder:nil];
     
     UIView *superview = cell;
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -64,7 +60,7 @@
     
     //文字显示
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.text = property.name;
+    nameLabel.text = category.name;
     nameLabel.font = FONT_MIDDLE;
     nameLabel.textColor = COLOR_MAIN_BLACK;
     [cell addSubview:nameLabel];
@@ -81,8 +77,8 @@
 #pragma mark - Action
 - (void) actionChoose:(NSDictionary *)cellData
 {
-    PropertyEntity *property = [cellData objectForKey:@"data"];
-    [self.delegate actionSelected:property];
+    CategoryEntity *category = [cellData objectForKey:@"data"];
+    [self.delegate actionSelected:@[category]];
 }
 
 @end
