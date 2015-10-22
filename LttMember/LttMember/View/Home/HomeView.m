@@ -24,7 +24,6 @@
     
     UIView *recommendView;
     UIScrollView *categoryView;
-    UIScrollView *typeView;
     
     NSMutableArray *recommendBtns;
     NSMutableArray *categoryBtns;
@@ -32,7 +31,12 @@
     
     BOOL isLogin;
     NSNumber *categoryId;
+    CategoryEntity *categoryEntity;
+    UIButton *categoryButton;
+    NSMutableArray *categories;
 }
+
+@synthesize typeView;
 
 - (id) init
 {
@@ -267,11 +271,7 @@
         
         //添加图标
         UIImageView *iconView = [[UIImageView alloc] init];
-        if (recommend.icon && [recommend.icon length] > 0) {
-            [recommend iconView:iconView];
-        } else {
-            iconView.image = [UIImage imageNamed:@"homeRecommend"];
-        }
+        [recommend iconView:iconView placeholder:[UIImage imageNamed:@"homeRecommend"]];
         [button addSubview:iconView];
         
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -319,7 +319,7 @@
     }
     
     //获取分类列表
-    NSMutableArray *categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
+    categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
     //添加
     CategoryEntity *addCategory = [[CategoryEntity alloc] init];
     addCategory.icon = @"homeGroupAdd";
@@ -368,15 +368,12 @@
         
         //添加图标
         UIImageView *iconView = [[UIImageView alloc] init];
+        iconView.tag = -9;
         //图片
         if ([category.id integerValue] < 1) {
             iconView.image = [UIImage imageNamed:category.icon];
         } else {
-            if (category.icon && [category.icon length] > 0) {
-                [category iconView:iconView];
-            } else {
-                iconView.image = [UIImage imageNamed:@"homeGroup"];
-            }
+            [category iconView:iconView placeholder:[UIImage imageNamed:@"homeGroup"]];
         }
         [button addSubview:iconView];
         
@@ -481,11 +478,7 @@
         if ([type.id integerValue] < 1) {
             iconView.image = [UIImage imageNamed:type.icon];
         } else {
-            if (type.icon && [type.icon length] > 0) {
-                [type iconView:iconView];
-            } else {
-                iconView.image = [UIImage imageNamed:@"homeItem"];
-            }
+            [type iconView:iconView placeholder:[UIImage imageNamed:@"homeItem"]];
         }
         [button addSubview:iconView];
         
@@ -565,9 +558,8 @@
             } else {
                 if ([categoryBtns count] < 3) return;
                 
-                for (SpringBoardButton *button in categoryBtns) {
-                    button.isEditing = YES;
-                }
+                //切换编辑模式
+                item.boardView.isSpringBoardEditing = !item.boardView.isSpringBoardEditing;
             }
         } else {
             [self actionCategory:item];
@@ -587,9 +579,8 @@
             } else {
                 if ([typeBtns count] < 3) return;
                 
-                for (SpringBoardButton *button in typeBtns) {
-                    button.isEditing = YES;
-                }
+                //切换编辑模式
+                item.boardView.isSpringBoardEditing = !item.boardView.isSpringBoardEditing;
             }
         } else {
             [self actionCase:item];
@@ -685,8 +676,33 @@
 
 - (void) actionCategory: (UIButton *)sender
 {
-    categoryId = @(sender.tag);
+    //未修改分类
+    NSNumber *newCategoryId = @(sender.tag);
+    if (categoryId && [categoryId isEqualToNumber:newCategoryId]) return;
     
+    //获取分类
+    CategoryEntity *newCategory = nil;
+    for (CategoryEntity *category in categories) {
+        if (category.id && [category.id isEqualToNumber:newCategoryId]) {
+            newCategory = category;
+            break;
+        }
+    }
+    
+    //选择新按钮，取消选择旧按钮
+    UIImageView *iconView = (UIImageView *) [sender viewWithTag:-9];
+    [newCategory selectedIconView:iconView placeholder:[UIImage imageNamed:@"homeGroupSelected"]];
+    
+    //取消选择旧按钮
+    if (categoryEntity && categoryButton) {
+        UIImageView *iconView = (UIImageView *) [categoryButton viewWithTag:-9];
+        [categoryEntity iconView:iconView placeholder:[UIImage imageNamed:@"homeGroup"]];
+    }
+    
+    //加载新的分类
+    categoryId = newCategoryId;
+    categoryEntity = newCategory;
+    categoryButton = sender;
     [self.delegate actionCategory:categoryId];
 }
 

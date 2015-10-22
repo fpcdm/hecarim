@@ -40,7 +40,6 @@
     return self;
 }
 
-//todo: 全部进入编辑模式
 - (void) setIsEditing:(BOOL)isEditing
 {
     if (!self.isEditable) return;
@@ -115,20 +114,10 @@
 {
     if (!self.isEditable) return;
     
-    NSArray *items = [self.delegate dataSourceForBoardItems:self.boardView];
     if (sender.state == UIGestureRecognizerStateBegan) {
         //进入编辑模式
-        BOOL startEditing = NO;
-        for (SpringBoardButton *item in items) {
-            if (item.isEditing) continue;
-            
-            item.isEditing = YES;
-            startEditing = YES;
-        }
-        if (startEditing) {
-            if ([self.delegate respondsToSelector:@selector(actionBoardItemsStartEditing:)]) {
-                [self.delegate actionBoardItemsStartEditing:self.boardView];
-            }
+        if (!self.boardView.isSpringBoardEditing) {
+            self.boardView.isSpringBoardEditing = YES;
         }
         
         startPoint = [sender locationInView:sender.view];
@@ -148,7 +137,7 @@
         } else {
             [UIView animateWithDuration:0.2 animations:^{
                 CGPoint temp = CGPointZero;
-                UIButton *button = items[index];
+                UIButton *button = [[self.delegate dataSourceForBoardItems:self.boardView] objectAtIndex:index];
                 temp = button.center;
                 button.center = originPoint;
                 self.center = temp;
@@ -252,22 +241,59 @@ static const char SpringBoardDelegateKey = '\0';
 
 - (void) springBoardHandler
 {
+    //退出编辑模式
+    if (self.isSpringBoardEditing) {
+        self.isSpringBoardEditing = NO;
+    }
+}
+
+- (BOOL) isSpringBoardEditing
+{
     id<SpringBoardButtonDelegate> delegate = objc_getAssociatedObject(self, &SpringBoardDelegateKey);
     NSArray *items = [delegate dataSourceForBoardItems:self];
     
-    //退出编辑模式
-    BOOL endEditing = NO;
+    //检查是否有编辑模式的按钮
+    BOOL isEditing = NO;
     for (SpringBoardButton *item in items) {
         if (!item.isEditing) continue;
         
-        item.isEditing = NO;
-        endEditing = YES;
+        isEditing = YES;
+        break;
     }
-    if (!endEditing) return;
+    return isEditing;
+}
+
+- (void) setIsSpringBoardEditing:(BOOL)isSpringBoardEditing
+{
+    //获取当前模式且未修改
+    BOOL isEditing = self.isSpringBoardEditing;
+    if (isSpringBoardEditing == isEditing) return;
     
-    if ([delegate respondsToSelector:@selector(actionBoardItemsEndEditing:)]) {
-        [delegate actionBoardItemsEndEditing:self];
+    id<SpringBoardButtonDelegate> delegate = objc_getAssociatedObject(self, &SpringBoardDelegateKey);
+    NSArray *items = [delegate dataSourceForBoardItems:self];
+    
+    //设置编辑模式
+    BOOL isEditable = NO;
+    for (SpringBoardButton *item in items) {
+        if (!item.isEditable) continue;
+        
+        item.isEditing = isSpringBoardEditing;
+        isEditable = YES;
     }
+    if (!isEditable) return;
+    
+    //开始编辑
+    if (isSpringBoardEditing) {
+        if ([delegate respondsToSelector:@selector(actionBoardItemsStartEditing:)]) {
+            [delegate actionBoardItemsStartEditing:self];
+        }
+    //结束编辑
+    } else {
+        if ([delegate respondsToSelector:@selector(actionBoardItemsEndEditing:)]) {
+            [delegate actionBoardItemsEndEditing:self];
+        }
+    }
+    
 }
 
 @end

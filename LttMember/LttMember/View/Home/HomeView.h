@@ -26,6 +26,8 @@
 
 @property (retain, nonatomic) id<HomeViewDelegate> delegate;
 
+@property (retain, nonatomic) UIScrollView *typeView;
+
 - (void) setLogin: (BOOL) login;
 - (void) reloadRecommends;
 - (void) reloadCategories;

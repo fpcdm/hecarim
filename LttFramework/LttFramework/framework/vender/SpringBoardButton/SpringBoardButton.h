@@ -45,4 +45,7 @@
 //设置容器代理，取消编辑等
 - (void) setSpringBoardDelegate:(id<SpringBoardButtonDelegate>)delegate;
 
+//获取或设置编辑模式
+@property (assign, nonatomic) BOOL isSpringBoardEditing;
+
 @end

@@ -22,8 +22,8 @@
 
 @property (nonatomic, retain) NSNumber *sort;
 
-- (void) iconView: (UIImageView *)view;
+- (void) iconView: (UIImageView *)view placeholder: (UIImage *)placeholder;
 
-- (void) selectedIconView: (UIImageView *)view;
+- (void) selectedIconView: (UIImageView *)view placeholder: (UIImage *)placeholder;
 
 @end

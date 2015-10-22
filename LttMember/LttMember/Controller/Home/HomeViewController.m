@@ -15,6 +15,7 @@
 #import "HelperHandler.h"
 #import "LocationUtil.h"
 #import "TimerUtil.h"
+#import "UIView+Loading.h"
 #import "LttNavigationController.h"
 
 //GPS数据缓存，优化GPS耗电
@@ -32,6 +33,8 @@ static NSMutableArray *caseTypes = nil;
 @implementation HomeViewController
 {
     HomeView *homeView;
+    BOOL viewRendered;
+    
     TimerUtil *gpsTimer;
     NSString *gpsStatus;
 }
@@ -117,6 +120,7 @@ static NSMutableArray *caseTypes = nil;
             //重新加载菜单
             [homeView setData:@"categories" value:caseCategories];
             [homeView reloadCategories];
+            viewRendered = YES;
             
             //设置定时器
             [self setTimer];
@@ -125,8 +129,10 @@ static NSMutableArray *caseTypes = nil;
         }];
     } else {
         //重新加载菜单
-        [homeView setData:@"categories" value:caseCategories];
-        [homeView reloadCategories];
+        if (!viewRendered) {
+            [homeView setData:@"categories" value:caseCategories];
+            [homeView reloadCategories];
+        }
         
         //设置定时器
         [self setTimer];
@@ -261,16 +267,20 @@ static NSMutableArray *caseTypes = nil;
 
 - (void)actionCategory:(NSNumber *)id
 {
-    //todo:加载效果
+    [homeView.typeView showIndicator];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"category_id": id};
     [caseHandler queryTypes:param success:^(NSArray *result) {
+        [homeView.typeView hideIndicator];
+        
         //重新加载项目
         caseTypes = [NSMutableArray arrayWithArray:result];
         [homeView setData:@"types" value:caseTypes];
         [homeView reloadTypes];
     } failure:^(ErrorEntity *error) {
+        [homeView.typeView hideIndicator];
+        
         [self showError:error.message];
     }];
 }
