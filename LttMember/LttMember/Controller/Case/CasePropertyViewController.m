@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"汽车品牌选择";
+    self.navigationItem.title = @"二级分类选择";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,7 +43,7 @@
 - (void)actionSelected:(PropertyEntity *)property
 {
     if (!property) {
-        [self showError:@"请先选择汽车品牌哦~亲！"];
+        [self showError:@"请先选择二级分类哦~亲！"];
         return;
     }
     

@@ -19,6 +19,9 @@
 //需求类型列表
 - (void) queryTypes: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//保存分类列表
+- (void) saveCategories: (NSArray *) categories success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 //保存需求类型
 - (void) saveTypes: (CategoryEntity *) category types: (NSArray *) types success: (SuccessBlock) success failure: (FailedBlock) failure;
 

@@ -62,6 +62,34 @@
     }];
 }
 
+- (void) saveCategories:(NSArray *)categories success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //组装参数
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *categoriesDict = [[NSMutableDictionary alloc] init];
+    int i = 0;
+    for (CategoryEntity *category in categories) {
+        //为解决数组传参问题，使用Dictionary
+        NSDictionary *categoryDict = @{
+                                   @"sort": category.sort ? category.sort : @0,
+                                   @"category_id": category.id ? category.id : @0
+                                   };
+        [categoriesDict setObject:categoryDict forKey:[NSString stringWithFormat:@"%d", i]];
+        
+        i++;
+    }
+    
+    [param setObject:categoriesDict forKey:@"category_list"];
+    
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    [sharedClient putObject:[CategoryEntity new] path:@"casetype/member_categories" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 - (void) saveTypes:(CategoryEntity *)category types:(NSArray *)types success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //组装参数

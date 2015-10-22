@@ -532,10 +532,10 @@
 {
     //分类
     if (boardView.tag == 1) {
-        NSLog(@"startEditing");
+        NSLog(@"开始编辑分类");
     //类型
     } else {
-        NSLog(@"startEditing");
+        NSLog(@"开始编辑服务");
     }
 }
 
@@ -543,10 +543,10 @@
 {
     //分类
     if (boardView.tag == 1) {
-        NSLog(@"endEditing");
+        [self actionSaveCategories];
     //类型
     } else {
-        NSLog(@"endEditing");
+        [self actionSaveTypes];
     }
 }
 
@@ -804,12 +804,52 @@
 
 - (void)actionAddCategory
 {
-    
+    [self.delegate actionAddCategory];
 }
 
 - (void)actionAddType
 {
+    if (!categoryId) return;
     
+    [self.delegate actionAddType:categoryId];
+}
+
+- (void)actionSaveCategories
+{
+    NSMutableArray *newCategories = [[NSMutableArray alloc] init];
+    
+    int sort = 0;
+    for (SpringBoardButton *button in categoryBtns) {
+        if (button.tag < 1) continue;
+        
+        sort++;
+        CategoryEntity *newCategory = [[CategoryEntity alloc] init];
+        newCategory.id = @(button.tag);
+        newCategory.sort = @(sort);
+        [newCategories addObject:newCategory];
+    }
+    
+    [self.delegate actionSaveCategories:newCategories];
+}
+
+- (void)actionSaveTypes
+{
+    if (!categoryId) return;
+    
+    NSMutableArray *newTypes = [[NSMutableArray alloc] init];
+    
+    int sort = 0;
+    for (SpringBoardButton *button in typeBtns) {
+        if (button.tag < 1) continue;
+        
+        sort++;
+        CategoryEntity *newType = [[CategoryEntity alloc] init];
+        newType.id = @(button.tag);
+        newType.sort = @(sort);
+        [newTypes addObject:newType];
+    }
+    
+    [self.delegate actionSaveTypes:categoryId types:newTypes];
 }
 
 @end

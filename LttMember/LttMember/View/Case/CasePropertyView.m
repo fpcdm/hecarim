@@ -32,7 +32,9 @@
     NSArray *properties = [self getData:@"properties"];
     if (properties) {
         for (PropertyEntity *property in properties) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@67.5, @"width": @67.5, @"data": property}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
         }
     }
     
@@ -43,14 +45,12 @@
 #pragma mark - CollectionView
 - (UICollectionViewCell *)cellProperty: (UICollectionViewCell *)cell cellData:(NSDictionary *)cellData
 {
-    //边框和圆角
-    cell.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    cell.layer.borderWidth = 0.5f;
-    cell.layer.cornerRadius = 3.0f;
-    cell.backgroundColor = COLOR_MAIN_WHITE;
-    
     //图片显示
     UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    imageView.layer.borderWidth = 0.5;
+    imageView.layer.cornerRadius = 3.0f;
+    imageView.backgroundColor = COLOR_MAIN_WHITE;
     [cell addSubview:imageView];
     
     PropertyEntity *property = [cellData objectForKey:@"data"];
@@ -61,8 +61,22 @@
         make.top.equalTo(superview.mas_top);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@67.5);
     }];
+    
+    //文字显示
+    UILabel *nameLabel = [[UILabel alloc] init];
+    nameLabel.text = property.name;
+    nameLabel.font = FONT_MIDDLE;
+    nameLabel.textColor = COLOR_MAIN_BLACK;
+    [cell addSubview:nameLabel];
+    
+    [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(imageView.mas_bottom);
+        make.centerX.equalTo(superview.mas_centerX);
+        make.height.equalTo(@22.5);
+    }];
+    
     
     return cell;
 }

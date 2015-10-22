@@ -94,7 +94,7 @@
     
     //是否有属性
     PropertyEntity *property = [self getData:@"property"];
-    if (property) propertyLabel.text = [NSString stringWithFormat:@"汽车品牌：%@", property.name];
+    if (property) propertyLabel.text = [NSString stringWithFormat:@"二级分类：%@", property.name];
 }
 
 #pragma mark - TableView
@@ -164,7 +164,7 @@
     //文本框
     propertyLabel = [[UILabel alloc] init];
     propertyLabel.font = FONT_MIDDLE;
-    propertyLabel.text = @"汽车品牌";
+    propertyLabel.text = @"二级分类";
     [cell addSubview:propertyLabel];
     
     UIView *superview = cell;

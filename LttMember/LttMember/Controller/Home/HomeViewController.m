@@ -331,6 +331,52 @@ static NSMutableDictionary *caseTypes = nil;
     
 }
 
+- (void)actionSaveCategories:(NSArray *)categories
+{
+    //不显示请求效果
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler saveCategories:categories success:^(NSArray *result) {
+        if (!caseCategories) return;
+        
+        //更新缓存数据及顺序
+        NSMutableArray *newCategories = [NSMutableArray array];
+        for (CategoryEntity *category in categories) {
+            for (CategoryEntity *cacheCategory in caseCategories) {
+                if ([cacheCategory.id isEqualToNumber:category.id]) {
+                    [newCategories addObject:cacheCategory];
+                    break;
+                }
+            }
+        }
+        caseCategories = newCategories;
+        
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+}
+
+- (void)actionSaveTypes:(NSNumber *)categoryId types:(NSArray *)types
+{
+    //不显示请求效果
+    CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+    categoryEntity.id = categoryId;
+    
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler saveTypes:categoryEntity types:types success:^(NSArray *result) {
+        if (!caseTypes) return;
+        
+        //清除缓存数据
+        NSString *idStr = [NSString stringWithFormat:@"%@", categoryId];
+        NSArray *idTypes = [caseTypes objectForKey:idStr];
+        if (idTypes != nil) {
+            [caseTypes removeObjectForKey:idStr];
+        }
+        
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+}
+
 - (void)actionError:(NSString *)message
 {
     [self showError:message];
