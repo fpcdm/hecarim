@@ -9,8 +9,9 @@
 #import "HomeView.h"
 #import "CategoryEntity.h"
 #import "SpringBoardButton.h"
+#import "TAPageControl.h"
 
-@interface HomeView () <SpringBoardButtonDelegate>
+@interface HomeView () <SpringBoardButtonDelegate, UIScrollViewDelegate, TAPageControlDelegate>
 
 @end
 
@@ -34,6 +35,7 @@
     CategoryEntity *categoryEntity;
     UIButton *categoryButton;
     NSMutableArray *categories;
+    TAPageControl *pageControl;
 }
 
 @synthesize typeView;
@@ -206,7 +208,8 @@
     categoryView = [[UIScrollView alloc] init];
     categoryView.backgroundColor = COLOR_MAIN_CLEAR;
     categoryView.tag = 1;
-    [categoryView setPagingEnabled:NO];
+    categoryView.delegate = self;
+    [categoryView setPagingEnabled:YES];
     [categoryView setSpringBoardDelegate:self];
     [bottomView addSubview:categoryView];
     
@@ -411,10 +414,36 @@
     CGFloat contentX = frameX + buttonWidth + spaceWidth / 2;
     categoryView.contentSize = CGSizeMake(contentX, buttonHeight);
     
+    //移除旧控件
+    if (pageControl) {
+        [pageControl removeFromSuperview];
+        pageControl = nil;
+    }
+    
+    //切换控件
+    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+    pageControl.alpha = 0.8;
+    pageControl.dotSize = CGSizeMake(5, 5);
+    pageControl.numberOfPages = (int)((categoriesCount - 1) / buttonSize) + 1;
+    pageControl.delegate = self;
+    [bottomView addSubview:pageControl];
+    
     //默认选中第一个
     if ([categories count] > 2) {
         [self actionCategory:[categoryBtns firstObject]];
     }
+}
+
+#pragma mark - TAPageControl
+- (void)scrollViewDidScroll:(UIScrollView *)_scrollView
+{
+    NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
+    pageControl.currentPage = pageIndex;
+}
+
+- (void)TAPageControl:(TAPageControl *)pageControl didSelectPageAtIndex:(NSInteger)index
+{
+    [categoryView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
 }
 
 #pragma mark - reloadTypes
@@ -491,10 +520,10 @@
         [button addSubview:iconView];
         
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(button.mas_top).offset(10);
-            make.left.equalTo(button.mas_left);
-            make.width.equalTo(@(buttonWidth));
-            make.height.equalTo(@(buttonWidth));
+            make.top.equalTo(button.mas_top).offset(12.5);
+            make.centerX.equalTo(button.mas_centerX);
+            make.width.equalTo(@(45));
+            make.height.equalTo(@(45));
         }];
         
         UILabel *nameLabel = [[UILabel alloc] init];
@@ -504,7 +533,7 @@
         [button addSubview:nameLabel];
         
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(iconView.mas_bottom);
+            make.top.equalTo(iconView.mas_bottom).offset(2.5);
             make.centerX.equalTo(button.mas_centerX);
             make.height.equalTo(@20);
         }];

@@ -29,8 +29,6 @@
     if (categories) {
         for (CategoryEntity *category in categories) {
             [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": category}];
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": category}];
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": category}];
         }
     }
     

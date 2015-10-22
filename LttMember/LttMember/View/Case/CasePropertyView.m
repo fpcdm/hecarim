@@ -33,8 +33,6 @@
     if (properties) {
         for (PropertyEntity *property in properties) {
             [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
         }
     }
     
