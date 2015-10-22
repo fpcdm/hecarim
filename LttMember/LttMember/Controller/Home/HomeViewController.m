@@ -24,7 +24,7 @@ static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
 static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
-static NSMutableArray *caseTypes = nil;
+static NSMutableDictionary *caseTypes = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
 
@@ -37,6 +37,8 @@ static NSMutableArray *caseTypes = nil;
     
     TimerUtil *gpsTimer;
     NSString *gpsStatus;
+    
+    NSNumber *categoryId;
 }
 
 - (void)loadView
@@ -267,22 +269,41 @@ static NSMutableArray *caseTypes = nil;
 
 - (void)actionCategory:(NSNumber *)id
 {
-    [homeView.typeView showIndicator];
+    //初始化缓存
+    if (!caseTypes) caseTypes = [NSMutableDictionary dictionary];
     
-    CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    NSDictionary *param = @{@"category_id": id};
-    [caseHandler queryTypes:param success:^(NSArray *result) {
-        [homeView.typeView hideIndicator];
-        
+    //当前分类id
+    categoryId = id;
+    
+    //缓存是否存在
+    NSString *idStr = [NSString stringWithFormat:@"%@", id];
+    NSArray *idTypes = [caseTypes objectForKey:idStr];
+    if (idTypes != nil) {
         //重新加载项目
-        caseTypes = [NSMutableArray arrayWithArray:result];
-        [homeView setData:@"types" value:caseTypes];
+        NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:idTypes];
+        [homeView setData:@"types" value:categoryTypes];
         [homeView reloadTypes];
-    } failure:^(ErrorEntity *error) {
-        [homeView.typeView hideIndicator];
+    } else {
+        [homeView.typeView showIndicator];
         
-        [self showError:error.message];
-    }];
+        CaseHandler *caseHandler = [[CaseHandler alloc] init];
+        NSDictionary *param = @{@"category_id": id};
+        [caseHandler queryTypes:param success:^(NSArray *result) {
+            [homeView.typeView hideIndicator];
+            
+            //设置缓存
+            [caseTypes setObject:result forKey:idStr];
+            
+            //重新加载项目
+            NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
+            [homeView setData:@"types" value:categoryTypes];
+            [homeView reloadTypes];
+        } failure:^(ErrorEntity *error) {
+            [homeView.typeView hideIndicator];
+            
+            [self showError:error.message];
+        }];
+    }
 }
 
 - (void)actionCase:(NSNumber *)type

@@ -161,7 +161,8 @@
     typeView = [[UIScrollView alloc] init];
     typeView.backgroundColor = COLOR_MAIN_CLEAR;
     typeView.tag = 2;
-    [typeView setPagingEnabled:NO];
+    typeView.showsHorizontalScrollIndicator = NO;
+    [typeView setPagingEnabled:YES];
     [typeView setSpringBoardDelegate:self];
     [middleView addSubview:typeView];
     
@@ -171,6 +172,15 @@
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom).offset(-80);
     }];
+    
+    //添加左右滑动事件
+    UISwipeGestureRecognizer *leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    [leftRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [typeView addGestureRecognizer:leftRecognizer];
+    
+    UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    [rightRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    [typeView addGestureRecognizer:rightRecognizer];
 }
 
 - (void) bottomView
@@ -658,6 +668,68 @@
     return CGRectMake(-10, 0, 20, 20);
 }
 
+#pragma mark - handleSwipeGesture
+- (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer
+{
+    //是否处于编辑模式
+    if (typeView.isSpringBoardEditing || categoryView.isSpringBoardEditing) return;
+    
+    //未选择分类，返回
+    if (!categoryButton) return;
+    
+    //获取当前索引
+    NSInteger index = [categoryBtns indexOfObject:categoryButton];
+    NSInteger maxIndex = [categoryBtns count] - 3;
+    
+    //左滑动
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+        if (index == maxIndex) return;
+        
+        NSInteger newIndex = index + 1;
+        if (newIndex > maxIndex) return;
+        
+        UIButton *button = [categoryBtns objectAtIndex:newIndex];
+        if (button) {
+            [self actionCategory:button];
+            
+            //自动滚动菜单
+            CGFloat buttonWidth = 50;
+            NSInteger buttonSize = 4;
+            CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
+            
+            CGPoint contentOffset = categoryView.contentOffset;
+            contentOffset.x += (buttonWidth + spaceWidth);
+            if (contentOffset.x > categoryView.contentSize.width - SCREEN_WIDTH) {
+                contentOffset.x = categoryView.contentSize.width - SCREEN_WIDTH;
+            }
+            [categoryView setContentOffset:contentOffset animated:YES];
+        }
+    //右滑动
+    } else {
+        if (index < 1) return;
+        
+        NSInteger newIndex = index - 1;
+        if (newIndex < 0) return;
+        
+        UIButton *button = [categoryBtns objectAtIndex:newIndex];
+        if (button) {
+            [self actionCategory:button];
+            
+            //自动滚动菜单
+            CGFloat buttonWidth = 50;
+            NSInteger buttonSize = 4;
+            CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
+            
+            CGPoint contentOffset = categoryView.contentOffset;
+            contentOffset.x -= (buttonWidth + spaceWidth);
+            if (contentOffset.x < 0) {
+                contentOffset.x = 0;
+            }
+            [categoryView setContentOffset:contentOffset animated:YES];
+        }
+    }
+}
+
 #pragma mark - Action
 - (void) actionLogin
 {
@@ -676,6 +748,8 @@
 
 - (void) actionCategory: (UIButton *)sender
 {
+    if (sender.tag < 1) return;
+    
     //未修改分类
     NSNumber *newCategoryId = @(sender.tag);
     if (categoryId && [categoryId isEqualToNumber:newCategoryId]) return;
