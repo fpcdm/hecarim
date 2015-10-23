@@ -99,7 +99,7 @@
     //文字显示
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.text = category.name;
-    nameLabel.font = FONT_SMALL;
+    nameLabel.font = [UIFont systemFontOfSize:10];
     nameLabel.textColor = COLOR_MAIN_WHITE;
     [cell addSubview:nameLabel];
     

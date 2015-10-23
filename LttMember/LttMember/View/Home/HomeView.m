@@ -258,7 +258,6 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
-        recommendBtns = nil;
     }
     
     //计算宽高
@@ -334,7 +333,6 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
-        categoryBtns = nil;
     }
     
     //获取分类列表
@@ -461,7 +459,6 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
-        typeBtns = nil;
     }
     
     //加载服务列表
@@ -756,6 +753,7 @@
     
     //未选择分类，返回
     if (!categoryButton) return;
+    if (![categoryBtns containsObject:categoryButton]) return;
     
     //获取当前索引
     NSInteger index = [categoryBtns indexOfObject:categoryButton];
@@ -832,7 +830,14 @@
     
     //未修改分类
     NSNumber *newCategoryId = @(sender.tag);
-    if (categoryId && [categoryId isEqualToNumber:newCategoryId]) return;
+    if (categoryId && [categoryId isEqualToNumber:newCategoryId]) {
+        if (categoryEntity) {
+            //选中效果
+            UIImageView *iconView = (UIImageView *) [sender viewWithTag:-9];
+            [categoryEntity selectedIconView:iconView placeholder:[UIImage imageNamed:@"homeGroupSelected"]];
+        }
+        return;
+    }
     
     //获取分类
     CategoryEntity *newCategory = nil;
@@ -864,7 +869,6 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
-        typeBtns = nil;
     }
     
     [self.delegate actionCategory:categoryId];
