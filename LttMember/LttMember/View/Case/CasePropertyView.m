@@ -43,6 +43,12 @@
 #pragma mark - CollectionView
 - (UICollectionViewCell *)cellProperty: (UICollectionViewCell *)cell cellData:(NSDictionary *)cellData
 {
+    //移除子视图
+    for (UIView *subview in cell.subviews) {
+        subview.hidden = YES;
+        [subview removeFromSuperview];
+    }
+    
     //图片显示
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.layer.cornerRadius = 3.0f;

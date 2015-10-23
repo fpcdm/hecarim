@@ -46,6 +46,12 @@
 #pragma mark - CollectionView
 - (UICollectionViewCell *)cellCategory: (UICollectionViewCell *)cell cellData:(NSDictionary *)cellData
 {
+    //移除子视图
+    for (UIView *subview in cell.subviews) {
+        subview.hidden = YES;
+        [subview removeFromSuperview];
+    }
+    
     //设置选中样式
     UIView *selectedView = [[UIView alloc] initWithFrame:cell.bounds];
     selectedView.backgroundColor = [UIColor colorWithHexString:@"E8F0FA"];

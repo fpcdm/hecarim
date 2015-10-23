@@ -858,11 +858,23 @@
 
 - (void)actionAddCategory
 {
+    //编辑模式不能添加
+    if (categoryView.isSpringBoardEditing) {
+        [self actionError:@"请编辑完成后再添加哦~亲！"];
+        return;
+    }
+    
     [self.delegate actionAddCategory];
 }
 
 - (void)actionAddType
 {
+    //编辑模式不能添加
+    if (typeView.isSpringBoardEditing) {
+        [self actionError:@"请编辑完成后再添加哦~亲！"];
+        return;
+    }
+    
     if (!categoryId) return;
     
     [self.delegate actionAddType:categoryId];
