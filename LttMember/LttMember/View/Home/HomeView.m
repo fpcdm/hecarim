@@ -480,9 +480,10 @@
     
     //计算宽高
     CGFloat buttonWidth = 50;
-    CGFloat buttonHeight = 80;
+    CGFloat buttonHeight = [self heightForTypeButton];
     NSInteger buttonSize = 4;
     CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
+    CGFloat spaceHeight = (buttonHeight - 70) / 2;
     
     //服务选项
     typeBtns = [NSMutableArray array];
@@ -526,7 +527,7 @@
         [button addSubview:iconView];
         
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(button.mas_top).offset(12.5);
+            make.top.equalTo(button.mas_top).offset(spaceHeight + 2.5);
             make.centerX.equalTo(button.mas_centerX);
             make.width.equalTo(@(45));
             make.height.equalTo(@(45));
@@ -548,6 +549,28 @@
     //计算容器宽高
     CGFloat contentY = frameY + buttonHeight;
     typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentY);
+}
+
+//计算高度，解决图标显示一半问题
+- (CGFloat) heightForTypeButton
+{
+    //计算滚动视图总高度
+    CGFloat totalHeight = SCREEN_HEIGHT - SCREEN_WIDTH * 0.548 - 100 - 80;
+    //默认按钮高度
+    CGFloat height = 80;
+    
+    //最小按钮高度
+    if (totalHeight < height) {
+        return height;
+    }
+    
+    //剩下的高度平均分配
+    NSInteger rowCount = (int)(totalHeight / 80);
+    CGFloat spaceTotal = ((int)totalHeight) % 80;
+    CGFloat spaceHeight = spaceTotal / rowCount;
+    
+    //默认高度+平均空隙
+    return height + spaceHeight;
 }
 
 - (NSArray *) dataSourceForBoardItems:(UIView *)boardView
@@ -699,7 +722,7 @@
         CGSize contentSize = typeView.contentSize;
         NSInteger typesCount = [typeBtns count];
         
-        CGFloat buttonHeight = 80;
+        CGFloat buttonHeight = [self heightForTypeButton];
         NSInteger buttonSize = 4;
         contentSize.height = ((int)((typesCount - 1) / buttonSize) + 1) * buttonHeight;
         typeView.contentSize = contentSize;
