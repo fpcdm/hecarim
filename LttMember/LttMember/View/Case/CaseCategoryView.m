@@ -54,7 +54,7 @@
     
     //设置选中样式
     UIView *selectedView = [[UIView alloc] initWithFrame:cell.bounds];
-    selectedView.backgroundColor = [UIColor colorWithHexString:@"E8F0FA"];
+    selectedView.backgroundColor = COLOR_MAIN_WHITE;
     selectedView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     selectedView.layer.borderWidth = 0.5f;
     cell.selectedBackgroundView = selectedView;
