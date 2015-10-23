@@ -35,6 +35,7 @@
     CategoryEntity *categoryEntity;
     UIButton *categoryButton;
     NSMutableArray *categories;
+    NSMutableArray *types;
     TAPageControl *pageControl;
 }
 
@@ -464,7 +465,7 @@
     }
     
     //加载服务列表
-    NSMutableArray *types = [NSMutableArray arrayWithArray:[self getData:@"types"]];
+    types = [NSMutableArray arrayWithArray:[self getData:@"types"]];
     //添加
     CategoryEntity *addType = [[CategoryEntity alloc] init];
     addType.icon = @"homeItemAdd";
@@ -549,6 +550,7 @@
     //计算容器宽高
     CGFloat contentY = frameY + buttonHeight;
     typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentY);
+    typeView.contentOffset = CGPointMake(0, 0);
 }
 
 //计算高度，解决图标显示一半问题
@@ -912,10 +914,13 @@
         if (button.tag < 1) continue;
         
         sort++;
-        CategoryEntity *newCategory = [[CategoryEntity alloc] init];
-        newCategory.id = @(button.tag);
-        newCategory.sort = @(sort);
-        [newCategories addObject:newCategory];
+        for (CategoryEntity *category in categories) {
+            if ([category.id isEqualToNumber:@(button.tag)]) {
+                category.sort = @(sort);
+                [newCategories addObject:category];
+                break;
+            }
+        }
     }
     
     [self.delegate actionSaveCategories:newCategories];
@@ -932,10 +937,13 @@
         if (button.tag < 1) continue;
         
         sort++;
-        CategoryEntity *newType = [[CategoryEntity alloc] init];
-        newType.id = @(button.tag);
-        newType.sort = @(sort);
-        [newTypes addObject:newType];
+        for (CategoryEntity *type in types) {
+            if ([type.id isEqualToNumber:@(button.tag)]) {
+                type.sort = @(sort);
+                [newTypes addObject:type];
+                break;
+            }
+        }
     }
     
     [self.delegate actionSaveTypes:categoryId types:newTypes];

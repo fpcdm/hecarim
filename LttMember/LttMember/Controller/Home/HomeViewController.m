@@ -425,19 +425,8 @@ static NSMutableDictionary *caseTypes = nil;
     //不显示请求效果
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler saveCategories:categories success:^(NSArray *result) {
-        if (!caseCategories) return;
-        
         //更新缓存数据及顺序
-        NSMutableArray *newCategories = [NSMutableArray array];
-        for (CategoryEntity *category in categories) {
-            for (CategoryEntity *cacheCategory in caseCategories) {
-                if ([cacheCategory.id isEqualToNumber:category.id]) {
-                    [newCategories addObject:cacheCategory];
-                    break;
-                }
-            }
-        }
-        caseCategories = newCategories;
+        caseCategories = [NSMutableArray arrayWithArray:categories];
         
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
@@ -451,12 +440,9 @@ static NSMutableDictionary *caseTypes = nil;
     [caseHandler saveTypes:id types:types success:^(NSArray *result) {
         if (!caseTypes) return;
         
-        //清除缓存数据
+        //更新缓存数据
         NSString *idStr = [NSString stringWithFormat:@"%@", id];
-        NSArray *idTypes = [caseTypes objectForKey:idStr];
-        if (idTypes != nil) {
-            [caseTypes removeObjectForKey:idStr];
-        }
+        [caseTypes setObject:types forKey:idStr];
         
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];

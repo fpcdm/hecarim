@@ -120,7 +120,9 @@
     
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址: %@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
     NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
-    if (!customerRemark) customerRemark = (intention.typeName && [intention.typeName length] > 0) ? intention.typeName : nil;
+    if (intention.typeName && [intention.typeName length] > 0) {
+        customerRemark = customerRemark ? [NSString stringWithFormat:@"%@(%@)", customerRemark, intention.typeName] : intention.typeName;
+    }
     self.scope[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
                                        @"userAppellation": intention.userAppellation ? intention.userAppellation : @"-",
