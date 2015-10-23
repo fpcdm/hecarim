@@ -32,7 +32,7 @@
     NSArray *properties = [self getData:@"properties"];
     if (properties) {
         for (PropertyEntity *property in properties) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@90, @"width": @67.5, @"data": property}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @67.5, @"data": property}];
         }
     }
     
@@ -60,23 +60,23 @@
     
     UIView *superview = cell;
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@67.5);
+        make.top.equalTo(superview.mas_top).offset(5);
+        make.centerX.equalTo(superview.mas_centerX);
+        make.width.equalTo(@50);
+        make.height.equalTo(@50);
     }];
     
     //文字显示
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.text = property.name;
-    nameLabel.font = FONT_MIDDLE;
+    nameLabel.font = FONT_SMALL;
     nameLabel.textColor = COLOR_MAIN_BLACK;
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(imageView.mas_bottom);
         make.centerX.equalTo(superview.mas_centerX);
-        make.height.equalTo(@22.5);
+        make.height.equalTo(@25);
     }];
     
     return cell;

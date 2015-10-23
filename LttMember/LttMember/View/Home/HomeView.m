@@ -733,8 +733,19 @@
 
 - (CGRect) deleteFrameForBoardItem:(SpringBoardButton *)item
 {
-    //调整删除按钮位置
-    return CGRectMake(-10, 0, 30, 30);
+    //分类
+    if (item.boardView.tag == 1) {
+        //调整删除按钮位置
+        return CGRectMake(-10, 0, 30, 30);
+    //类型
+    } else {
+        //计算宽高
+        CGFloat buttonHeight = [self heightForTypeButton];
+        CGFloat spaceHeight = (buttonHeight - 70) / 2;
+        
+        //调整删除按钮位置
+        return CGRectMake(-10, spaceHeight - 10, 30, 30);
+    }
 }
 
 #pragma mark - handleSwipeGesture

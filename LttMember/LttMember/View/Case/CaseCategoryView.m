@@ -18,8 +18,27 @@
     self = [super init];
     if (!self) return nil;
     
+    //添加背景图
+    UIImageView *bgView = [[UIImageView alloc] init];
+    bgView.image = [UIImage imageNamed:@"homeCategoryBg"];
+    bgView.alpha = 0.9;
+    [self addSubview:bgView];
+    
+    UIView *superview = self;
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+    }];
+    
+    //表格放到上面
+    [self bringSubviewToFront:self.collectionView];
+    
+    //设置滚动视图
     self.collectionView.scrollEnabled = YES;
     self.collectionView.allowsMultipleSelection = YES;
+    self.collectionView.backgroundColor = COLOR_MAIN_CLEAR;
     
     //初始化数据
     selectCategories = [NSMutableArray array];
@@ -35,7 +54,7 @@
     NSArray *categories = [self getData:@"categories"];
     if (categories) {
         for (CategoryEntity *category in categories) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:indexPath:", @"height":@90, @"width": @67.5, @"data": category}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:indexPath:", @"height":@85, @"width": @67.5, @"data": category}];
         }
     }
     
@@ -54,7 +73,8 @@
     
     //设置选中样式
     UIView *selectedView = [[UIView alloc] initWithFrame:cell.bounds];
-    selectedView.backgroundColor = COLOR_MAIN_WHITE;
+    selectedView.backgroundColor = [UIColor colorWithHexString:@"E3C8A8"];
+    selectedView.alpha = 0.5;
     selectedView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     selectedView.layer.borderWidth = 0.5f;
     cell.selectedBackgroundView = selectedView;
@@ -70,23 +90,23 @@
     
     UIView *superview = cell;
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@67.5);
+        make.top.equalTo(superview.mas_top).offset(5);
+        make.centerX.equalTo(superview.mas_centerX);
+        make.width.equalTo(@(50));
+        make.height.equalTo(@50);
     }];
     
     //文字显示
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.text = category.name;
     nameLabel.font = FONT_SMALL;
-    nameLabel.textColor = COLOR_MAIN_BLACK;
+    nameLabel.textColor = COLOR_MAIN_WHITE;
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(imageView.mas_bottom);
         make.centerX.equalTo(superview.mas_centerX);
-        make.height.equalTo(@22.5);
+        make.height.equalTo(@25);
     }];
     
     return cell;
