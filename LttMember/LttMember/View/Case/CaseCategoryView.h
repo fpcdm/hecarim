@@ -21,4 +21,6 @@
 
 @property (retain, nonatomic) id<CaseCategoryViewDelegate> delegate;
 
+- (NSArray *)selectedCategories;
+
 @end

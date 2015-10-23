@@ -164,6 +164,7 @@
     typeView.backgroundColor = COLOR_MAIN_CLEAR;
     typeView.tag = 2;
     typeView.showsHorizontalScrollIndicator = NO;
+    typeView.showsVerticalScrollIndicator = NO;
     [typeView setPagingEnabled:YES];
     [typeView setSpringBoardDelegate:self];
     [middleView addSubview:typeView];
@@ -209,6 +210,8 @@
     categoryView.backgroundColor = COLOR_MAIN_CLEAR;
     categoryView.tag = 1;
     categoryView.delegate = self;
+    categoryView.showsHorizontalScrollIndicator = NO;
+    categoryView.showsVerticalScrollIndicator = NO;
     [categoryView setPagingEnabled:YES];
     [categoryView setSpringBoardDelegate:self];
     [bottomView addSubview:categoryView];
@@ -254,6 +257,7 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
+        recommendBtns = nil;
     }
     
     //计算宽高
@@ -329,6 +333,7 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
+        categoryBtns = nil;
     }
     
     //获取分类列表
@@ -455,6 +460,7 @@
             button.hidden = YES;
             [button removeFromSuperview];
         }
+        typeBtns = nil;
     }
     
     //加载服务列表
@@ -815,6 +821,16 @@
     categoryId = newCategoryId;
     categoryEntity = newCategory;
     categoryButton = sender;
+    
+    //移除旧的服务列表
+    if (typeBtns && [typeBtns count] > 0) {
+        for (SpringBoardButton *button in typeBtns) {
+            button.hidden = YES;
+            [button removeFromSuperview];
+        }
+        typeBtns = nil;
+    }
+    
     [self.delegate actionCategory:categoryId];
 }
 

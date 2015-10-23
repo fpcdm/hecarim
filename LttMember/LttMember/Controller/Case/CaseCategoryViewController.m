@@ -31,6 +31,11 @@
     [super viewDidLoad];
     
     self.navigationItem.title = self.categoryId ? @"添加服务" : @"添加场景";
+    
+    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"保存"];
+    barButtonItem.target = self;
+    barButtonItem.action = @selector(actionAdd);
+    self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,8 +80,10 @@
 }
 
 #pragma mark - Action
-- (void)actionSelected:(NSArray *)categories
+- (void)actionAdd
 {
+    //获取选中的列表
+    NSArray *categories = [categoryView selectedCategories];
     if (!categories || [categories count] < 1) {
         [self showError:self.categoryId ? @"请先选择服务哦~亲！" : @"请先选择场景哦~亲！"];
         return;

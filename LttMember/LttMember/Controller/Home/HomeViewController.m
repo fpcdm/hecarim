@@ -112,11 +112,11 @@ static NSMutableDictionary *caseTypes = nil;
     
     //获取分类列表
     if (!caseCategories) {
-        [self showLoading:TIP_LOADING_MESSAGE];
+        [homeView.typeView showIndicator];
         
         CaseHandler *caseHandler = [[CaseHandler alloc] init];
         [caseHandler queryCategories:nil success:^(NSArray *result) {
-            [self hideLoading];
+            [homeView.typeView hideIndicator];
             
             caseCategories = [NSMutableArray arrayWithArray:result];
             
@@ -128,6 +128,8 @@ static NSMutableDictionary *caseTypes = nil;
             //设置定时器
             [self setTimer];
         } failure:^(ErrorEntity *error) {
+            [homeView.typeView hideIndicator];
+            
             [self showError:error.message];
         }];
     } else {
@@ -276,35 +278,47 @@ static NSMutableDictionary *caseTypes = nil;
     //当前分类id
     categoryId = id;
     
+    //加载效果
+    [homeView.typeView showIndicator];
+    NSTimeInterval totalInterval = 0.3;
+    
     //缓存是否存在
     NSString *idStr = [NSString stringWithFormat:@"%@", id];
     NSArray *idTypes = [caseTypes objectForKey:idStr];
     if (idTypes != nil) {
         //重新加载项目
         NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:idTypes];
-        [homeView setData:@"types" value:categoryTypes];
-        [homeView reloadTypes];
+        [self performSelector:@selector(reloadTypes:) withObject:categoryTypes afterDelay:totalInterval];
     } else {
-        [homeView.typeView showIndicator];
+        NSDate *beginDate = [NSDate date];
         
         CaseHandler *caseHandler = [[CaseHandler alloc] init];
         NSDictionary *param = @{@"category_id": id};
         [caseHandler queryTypes:param success:^(NSArray *result) {
-            [homeView.typeView hideIndicator];
-            
             //设置缓存
             [caseTypes setObject:result forKey:idStr];
             
             //重新加载项目
             NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
-            [homeView setData:@"types" value:categoryTypes];
-            [homeView reloadTypes];
+            
+            //延迟显示
+            NSTimeInterval loadInterval = [TimerUtil timeInterval:beginDate];
+            NSTimeInterval loadDelay = loadInterval >= totalInterval ? 0.001 : totalInterval - loadInterval;
+            [self performSelector:@selector(reloadTypes:) withObject:categoryTypes afterDelay:loadDelay];
         } failure:^(ErrorEntity *error) {
             [homeView.typeView hideIndicator];
             
             [self showError:error.message];
         }];
     }
+}
+
+- (void)reloadTypes: (NSMutableArray *)types
+{
+    [homeView.typeView hideIndicator];
+    
+    [homeView setData:@"types" value:types];
+    [homeView reloadTypes];
 }
 
 - (void)actionCase:(NSNumber *)type
