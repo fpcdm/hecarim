@@ -37,6 +37,9 @@
 //用户心跳间隔
 #define USER_HEARTBEAT_INTERVAL 10.0
 
+//短信验证码发送间隔
+#define USER_SMS_INTERVAL 60
+
 //默认每页数量
 #define LTT_PAGESIZE_DEFAULT 10
 
@@ -106,6 +109,7 @@
 #define ERROR_COMMENT_REQUIRED @"请选择评价星级哦~亲！"
 #define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
 #define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
+#define ERROR_MOBILE_NOTFOUND @"该手机号不存在哦~亲！"
 
 #define TIP_LOADING_MESSAGE @"加载中"
 #define TIP_LOADING_SUCCESS @"加载完成"
