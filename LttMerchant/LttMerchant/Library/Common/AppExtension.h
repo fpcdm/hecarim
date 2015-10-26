@@ -12,6 +12,10 @@
 //StorageUtil分类
 @interface StorageUtil (App)
 
+- (void) setSmsTime: (NSDate *) time;
+
+- (NSDate *) getSmsTime;
+
 @end
 
 //UserEntity分类
