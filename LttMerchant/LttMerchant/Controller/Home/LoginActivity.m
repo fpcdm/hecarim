@@ -14,6 +14,7 @@
 #import "UserHandler.h"
 #import "AppUIUtil.h"
 #import "PickerUtil.h"
+#import "ForgetPasswordViewController.h"
 
 @interface LoginActivity ()
 
@@ -165,6 +166,12 @@
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+//找回密码
+-(void)actionForgetPassword{
+    ForgetPasswordViewController *viewController = [[ForgetPasswordViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end
