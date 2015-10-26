@@ -117,16 +117,32 @@
         make.width.equalTo(@18);
     }];
     
-    addressLabel = [[UILabel alloc] init];
-    addressLabel.text = @"正在定位";
-    addressLabel.font = [UIFont systemFontOfSize:12];
-    addressLabel.textColor = COLOR_MAIN_GRAY;
-    [locationButton addSubview:addressLabel];
+    //地址视图
+    UIScrollView *addressView = [[UIScrollView alloc] init];
+    addressView.showsHorizontalScrollIndicator = NO;
+    addressView.showsVerticalScrollIndicator = NO;
+    [locationButton addSubview:addressView];
     
-    [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [addressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(superview.mas_centerY);
         make.left.equalTo(pointView.mas_right).offset(2.5);
+        make.right.equalTo(superview.mas_right).offset(-5);
         make.height.equalTo(@20);
+    }];
+    
+    //地址文本
+    addressLabel = [[UILabel alloc] init];
+    addressLabel.text = @"正在定位";
+    addressLabel.font = FONT_SMALL;
+    addressLabel.textColor = COLOR_MAIN_GRAY;
+    [addressView addSubview:addressLabel];
+    
+    superview = addressView;
+    [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(superview.mas_height);
     }];
 }
 
