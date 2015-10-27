@@ -9,6 +9,7 @@
 #import "BaseHandler.h"
 #import "LocationEntity.h"
 #import "AreaEntity.h"
+#import "UserEntity.h"
 
 @interface HelperHandler : BaseHandler
 
@@ -56,5 +57,25 @@
  *  @param failure 失败回调
  */
 - (void) verifyMobileCode: (NSString *) mobile code: (NSString *) code success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+
+/**
+ *  检查手机号是否已注册
+ *
+ *  @param mobile 手机号
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) checkMobile: (NSString *) mobile success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  重置密码
+ *
+ *  @param mobile 手机号
+ *  @param vCode 安全码
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) resetPassword: (UserEntity *)user vCode: (NSString *) vCode success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end
