@@ -71,6 +71,7 @@
     NSString *id = [cellData objectForKey:@"id"];
     //info
     if ([@"info" isEqualToString:id]) {
+        imageView.layer.cornerRadius = 20;
         [cell addSubview:imageView];
         
         [imageView mas_makeConstraints:^(MASConstraintMaker *make){

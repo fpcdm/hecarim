@@ -119,8 +119,8 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.centerY.equalTo(superview.mas_centerY);
         
-        make.width.equalTo(@30);
-        make.height.equalTo(@30);
+        make.width.equalTo(@20);
+        make.height.equalTo(@20);
     }];
     
     //服务联系人
@@ -169,7 +169,7 @@
     
     UIView *superview = cell;
     [propertyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superview.mas_left).offset(40);
+        make.left.equalTo(superview.mas_left).offset(30);
         make.centerY.equalTo(superview.mas_centerY);
     }];
     
@@ -190,8 +190,8 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.centerY.equalTo(superview.mas_centerY);
         
-        make.width.equalTo(@30);
-        make.height.equalTo(@30);
+        make.width.equalTo(@20);
+        make.height.equalTo(@20);
     }];
     
     //输入框

@@ -79,6 +79,7 @@
     
     //头像
     imageView = [UIImageView new];
+    imageView.layer.cornerRadius = 45;
     [customerView addSubview:imageView];
     
     [imageView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -111,7 +112,8 @@
     
     [ratingView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(sepratorView.mas_bottom).offset(10);
-        make.centerX.equalTo(superview.mas_centerX);
+        //修正居中问题
+        make.centerX.equalTo(superview.mas_centerX).offset(13);
         
         make.width.equalTo(@135);
     }];

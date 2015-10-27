@@ -59,7 +59,7 @@
     
     //客服信息
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"正在为您服务的客服：";
+    titleLabel.text = @"正在为您服务的服务商：";
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = COLOR_MAIN_DARK;
     titleLabel.font = FONT_MAIN;
@@ -76,6 +76,7 @@
     
     //头像
     avatarView = [[UIImageView alloc] init];
+    avatarView.layer.cornerRadius = 25;
     [self addSubview:avatarView];
     
     [avatarView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -102,7 +103,7 @@
     
     //电话
     mobileButton = [[UIButton alloc] init];
-    [mobileButton setTitleColor:COLOR_MAIN_DARK forState:UIControlStateNormal];
+    [mobileButton setTitleColor:COLOR_MAIN_HIGHLIGHT forState:UIControlStateNormal];
     mobileButton.titleLabel.font = FONT_MAIN;
     mobileButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:mobileButton];
@@ -116,16 +117,12 @@
     
     //投诉
     UIButton *complainButton = [[UIButton alloc] init];
-    [complainButton setTitleColor:COLOR_MAIN_DARK forState:UIControlStateNormal];
+    [complainButton setTitleColor:COLOR_MAIN_HIGHLIGHT forState:UIControlStateNormal];
+    [complainButton setTitle:@"官方客服" forState:UIControlStateNormal];
     [complainButton addTarget:self action:@selector(actionComplain) forControlEvents:UIControlEventTouchUpInside];
     complainButton.titleLabel.font = FONT_MIDDLE;
     complainButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:complainButton];
-    //文字下划线
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"我要投诉"];
-    NSRange strRange = {0, [str length]};
-    [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
-    [complainButton setAttributedTitle:str forState:UIControlStateNormal];
     
     [complainButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.right.equalTo(superview.mas_right).offset(-padding);

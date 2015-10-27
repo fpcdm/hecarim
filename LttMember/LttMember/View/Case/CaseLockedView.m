@@ -23,7 +23,7 @@
     if (!self) return nil;
     
     UILabel *titleLabel = [UILabel new];
-    titleLabel.text = @"我们联系到了离你最近的客服";
+    titleLabel.text = @"我们联系到了离你最近的服务商";
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textColor = COLOR_MAIN_DARK;
@@ -60,7 +60,7 @@
     }];
     
     aboutLabel = [UILabel new];
-    aboutLabel.text = @"即将为您服务的客服：";
+    aboutLabel.text = @"即将为您服务的服务商：";
     aboutLabel.backgroundColor = [UIColor clearColor];
     aboutLabel.font = FONT_MAIN_BOLD;
     aboutLabel.textColor = COLOR_MAIN_DARK;
@@ -97,6 +97,7 @@
     
     //头像
     imageView = [UIImageView new];
+    imageView.layer.cornerRadius = 50;
     [customerView addSubview:imageView];
     
     [imageView mas_makeConstraints:^(MASConstraintMaker *make){
