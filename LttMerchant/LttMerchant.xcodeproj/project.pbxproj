@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
-		2F02FB6E1BABE1B100D7D68F /* CaseErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F02FB6D1BABE1B100D7D68F /* CaseErrorView.m */; settings = {ASSET_TAGS = (); }; };
+		2F02FB6E1BABE1B100D7D68F /* CaseErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F02FB6D1BABE1B100D7D68F /* CaseErrorView.m */; };
 		2F02FB701BABE5DE00D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB6F1BABE5DE00D7D68F /* libxml2.tbd */; };
 		2F02FB721BABE5E800D7D68F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB711BABE5E800D7D68F /* libsqlite3.tbd */; };
 		2F02FB741BABE5EE00D7D68F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB731BABE5EE00D7D68F /* libz.tbd */; };
@@ -19,7 +19,7 @@
 		2F0E37DA1B6B218400CFE2E6 /* ServiceFormActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D91B6B218400CFE2E6 /* ServiceFormActivity.m */; };
 		2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */; };
 		2F0E37E01B6B66B100CFE2E6 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */; };
-		2F1410181BD4F3C000B88F23 /* notification.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2F1410171BD4F3C000B88F23 /* notification.m4a */; settings = {ASSET_TAGS = (); }; };
+		2F1410181BD4F3C000B88F23 /* notification.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2F1410171BD4F3C000B88F23 /* notification.m4a */; };
 		2F16E6A21B5DF84B007947D0 /* HomeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6601B5DF84B007947D0 /* HomeActivity.m */; };
 		2F16E6A41B5DF84B007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6641B5DF84B007947D0 /* LttNavigationController.m */; };
 		2F16E6A51B5DF84B007947D0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6661B5DF84B007947D0 /* MenuViewController.m */; };
@@ -65,6 +65,12 @@
 		2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5533FC1B4F656200B98CA4 /* ResultEntity.m */; };
 		2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */; };
 		2F5534141B4FCD5F00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534131B4FCD5F00B98CA4 /* FileEntity.m */; };
+		2F55F69B1BDF12D000A89174 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55F69A1BDF12D000A89174 /* ForgetPasswordViewController.m */; };
+		2F55F6A51BDF12F400A89174 /* ForgetPasswordCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55F69E1BDF12F400A89174 /* ForgetPasswordCodeView.m */; };
+		2F55F6A61BDF12F400A89174 /* ForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55F6A01BDF12F400A89174 /* ForgetPasswordView.m */; };
+		2F55F6A71BDF12F400A89174 /* ResetPasswordSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55F6A21BDF12F400A89174 /* ResetPasswordSuccess.m */; };
+		2F55F6A81BDF12F400A89174 /* ResetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55F6A41BDF12F400A89174 /* ResetPasswordView.m */; };
+		2F55F6AB1BDF130700A89174 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55F6AA1BDF130700A89174 /* HelperHandler.m */; };
 		2F5FDDE71B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDE41B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m */; };
 		2F5FDDE81B5F60D900CBF2A7 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDE61B5F60D900CBF2A7 /* UIView+Loading.m */; };
 		2F60B7191B71E8AD00FECADC /* GoodsSpecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60B7181B71E8AD00FECADC /* GoodsSpecCell.m */; };
@@ -667,6 +673,18 @@
 		2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2F5534121B4FCD5F00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534131B4FCD5F00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
+		2F55F6991BDF12D000A89174 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		2F55F69A1BDF12D000A89174 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		2F55F69D1BDF12F400A89174 /* ForgetPasswordCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCodeView.h; sourceTree = "<group>"; };
+		2F55F69E1BDF12F400A89174 /* ForgetPasswordCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCodeView.m; sourceTree = "<group>"; };
+		2F55F69F1BDF12F400A89174 /* ForgetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordView.h; sourceTree = "<group>"; };
+		2F55F6A01BDF12F400A89174 /* ForgetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordView.m; sourceTree = "<group>"; };
+		2F55F6A11BDF12F400A89174 /* ResetPasswordSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordSuccess.h; sourceTree = "<group>"; };
+		2F55F6A21BDF12F400A89174 /* ResetPasswordSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordSuccess.m; sourceTree = "<group>"; };
+		2F55F6A31BDF12F400A89174 /* ResetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordView.h; sourceTree = "<group>"; };
+		2F55F6A41BDF12F400A89174 /* ResetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordView.m; sourceTree = "<group>"; };
+		2F55F6A91BDF130700A89174 /* HelperHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperHandler.h; sourceTree = "<group>"; };
+		2F55F6AA1BDF130700A89174 /* HelperHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperHandler.m; sourceTree = "<group>"; };
 		2F5FDDE31B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+RefreshLoading.h"; sourceTree = "<group>"; };
 		2F5FDDE41B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+RefreshLoading.m"; sourceTree = "<group>"; };
 		2F5FDDE51B5F60D900CBF2A7 /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
@@ -1879,6 +1897,8 @@
 				2F16E6641B5DF84B007947D0 /* LttNavigationController.m */,
 				2F16E6651B5DF84B007947D0 /* MenuViewController.h */,
 				2F16E6661B5DF84B007947D0 /* MenuViewController.m */,
+				2F55F6991BDF12D000A89174 /* ForgetPasswordViewController.h */,
+				2F55F69A1BDF12D000A89174 /* ForgetPasswordViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1944,6 +1964,8 @@
 				2F16E6901B5DF84B007947D0 /* UserHandler.m */,
 				2F0E37DE1B6B66B100CFE2E6 /* CaseHandler.h */,
 				2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */,
+				2F55F6A91BDF130700A89174 /* HelperHandler.h */,
+				2F55F6AA1BDF130700A89174 /* HelperHandler.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -1952,6 +1974,7 @@
 			isa = PBXGroup;
 			children = (
 				2F16E6921B5DF84B007947D0 /* Case */,
+				2F55F69C1BDF12F400A89174 /* Home */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2021,6 +2044,21 @@
 				2F2F22691B3A52FE00428742 /* TSMessageView.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		2F55F69C1BDF12F400A89174 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2F55F69D1BDF12F400A89174 /* ForgetPasswordCodeView.h */,
+				2F55F69E1BDF12F400A89174 /* ForgetPasswordCodeView.m */,
+				2F55F69F1BDF12F400A89174 /* ForgetPasswordView.h */,
+				2F55F6A01BDF12F400A89174 /* ForgetPasswordView.m */,
+				2F55F6A11BDF12F400A89174 /* ResetPasswordSuccess.h */,
+				2F55F6A21BDF12F400A89174 /* ResetPasswordSuccess.m */,
+				2F55F6A31BDF12F400A89174 /* ResetPasswordView.h */,
+				2F55F6A41BDF12F400A89174 /* ResetPasswordView.m */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		2F628C0B1AE89C2300530B07 /* App */ = {
@@ -4163,6 +4201,7 @@
 				2F78FAAD1B75B1F30009F349 /* Samurai_DomNode.m in Sources */,
 				2F78FA861B75B1F30009F349 /* Samurai_ServiceInstance.m in Sources */,
 				2F78FAE21B75B1F30009F349 /* ServiceMonitorCPUModel.m in Sources */,
+				2F55F69B1BDF12D000A89174 /* ForgetPasswordViewController.m in Sources */,
 				2F78FB6C1B75B1F40009F349 /* Samurai_HtmlElementInputButton.m in Sources */,
 				2F78FAD51B75B1F30009F349 /* ServiceGestureViewClick.m in Sources */,
 				2F78FAF01B75B1F30009F349 /* EMStringStylingConfiguration.m in Sources */,
@@ -4264,6 +4303,7 @@
 				2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */,
 				2F78FA831B75B1F30009F349 /* Samurai_DockerProtocol.m in Sources */,
 				2F78FB921B75B1F40009F349 /* Samurai_HtmlElementViewport.m in Sources */,
+				2F55F6A51BDF12F400A89174 /* ForgetPasswordCodeView.m in Sources */,
 				2F78FA901B75B1F30009F349 /* UIViewController+TemplateLoading.m in Sources */,
 				2F7E2C5A1BA6BB4500F7E6BD /* SKDropDown.m in Sources */,
 				2F78FB0A1B75B1F40009F349 /* Samurai_CSSNumber.m in Sources */,
@@ -4286,6 +4326,7 @@
 				2F78FAE71B75B1F30009F349 /* ServiceTapspot.m in Sources */,
 				2F78FA7B1B75B1F30009F349 /* Samurai_Event.m in Sources */,
 				2F90007D1B1D91470040D97B /* MASViewConstraint.m in Sources */,
+				2F55F6A81BDF12F400A89174 /* ResetPasswordView.m in Sources */,
 				2F78FB3C1B75B1F40009F349 /* UITextField+Html.m in Sources */,
 				2F78FAB41B75B1F30009F349 /* Samurai_StyleSheet.m in Sources */,
 				2F78FBDE1B75C0470009F349 /* RefreshCollectionView.m in Sources */,
@@ -4469,6 +4510,7 @@
 				2F78FAEF1B75B1F30009F349 /* EMMarkupProperty.m in Sources */,
 				2F81ADF01B9D900C00E381B0 /* ConsumeEntity.m in Sources */,
 				2F78FB901B75B1F40009F349 /* Samurai_HtmlElementTr.m in Sources */,
+				2F55F6A61BDF12F400A89174 /* ForgetPasswordView.m in Sources */,
 				2FED7DC61B1EA2E100306A11 /* UIButton+WebCache.m in Sources */,
 				2FED7DC71B1EA2E100306A11 /* UIImage+GIF.m in Sources */,
 				2F78FAE91B75B1F30009F349 /* ServiceTapspotManager.m in Sources */,
@@ -4488,6 +4530,7 @@
 				2FCAF86D1B20251800F3B084 /* NotificationUtil.m in Sources */,
 				2F78FA6B1B75B1F30009F349 /* Samurai_Runtime.m in Sources */,
 				2F6D3F041B3128CC007A4159 /* MJRefreshBackFooter.m in Sources */,
+				2F55F6A71BDF12F400A89174 /* ResetPasswordSuccess.m in Sources */,
 				2F6D3F0E1B3128CC007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2FED7DC01B1EA2E100306A11 /* SDWebImageCompat.m in Sources */,
 				2F78FADF1B75B1F30009F349 /* JBChartView.m in Sources */,
@@ -4573,6 +4616,7 @@
 				2F78FBE01B75C0470009F349 /* SDWebImageView.m in Sources */,
 				2F78FA681B75B1F30009F349 /* Samurai_Log.m in Sources */,
 				2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */,
+				2F55F6AB1BDF130700A89174 /* HelperHandler.m in Sources */,
 				2F78FAF11B75B1F30009F349 /* EMStylingClass.m in Sources */,
 				2F78FBDA1B75C0470009F349 /* INSCirclePullToRefresh.m in Sources */,
 				2F78FB941B75B1F40009F349 /* Samurai_HtmlLayoutElement.m in Sources */,

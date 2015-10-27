@@ -99,7 +99,7 @@
     superview = topView;
     [locationButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5);
-        make.left.equalTo(menuButton.mas_right).offset(5);
+        make.left.equalTo(menuButton.mas_right).offset(10);
         make.right.equalTo(superview.mas_right).offset(-5);
         make.height.equalTo(@25);
     }];
