@@ -25,23 +25,25 @@
     //提示
     tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"我们已经发送校验码到您的手机：";
-    tipLabel.font = FONT_MIDDLE;
+    tipLabel.font = FONT_MAIN;
     [self addSubview:tipLabel];
     
     [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superView.mas_top).offset(10);
         make.left.equalTo(superView.mas_left).offset(10);
         make.right.equalTo(superView.mas_right).offset(10);
+        make.height.equalTo(@16);
     }];
     
     //手机号
     tipMobile = [[UILabel alloc] init];
-    tipMobile.font = FONT_MIDDLE;
+    tipMobile.font = FONT_MAIN;
     [self addSubview:tipMobile];
     
     [tipMobile mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(tipLabel.mas_bottom).offset(10);
         make.centerX.equalTo(superView.mas_centerX);
+        make.height.equalTo(@14);
     }];
     
     //输入视图
@@ -53,15 +55,15 @@
     
     [inputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(tipMobile.mas_bottom).offset(10);
-        make.left.equalTo(superView.mas_left).offset(0.5);
-        make.right.equalTo(superView.mas_right).offset(0.5);
-        make.height.equalTo(@40);
+        make.left.equalTo(superView.mas_left).offset(-0.5);
+        make.right.equalTo(superView.mas_right);
+        make.height.equalTo(@50);
     }];
     
     //输入框名称
     UILabel *inputLabel = [[UILabel alloc] init];
     inputLabel.text = @"校验码";
-    inputLabel.font = FONT_MIDDLE;
+    inputLabel.font = FONT_MAIN;
     [inputView addSubview:inputLabel];
     
     [inputLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,7 +75,7 @@
     //校验码输入框
     codeField = [AppUIUtil makeTextField];
     codeField.placeholder = @"请输入校验码";
-    codeField.font = FONT_MIDDLE;
+    codeField.font = FONT_MAIN;
     codeField.clearButtonMode = YES;
     codeField.keyboardType = UIKeyboardTypeNumberPad;
     [inputView addSubview:codeField];
@@ -102,7 +104,7 @@
     [sendButton setTitle:@"发送短信" forState:UIControlStateNormal];
     [sendButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
     [sendButton addTarget:self action:@selector(actionSend) forControlEvents:UIControlEventTouchUpInside];
-    sendButton.titleLabel.font = FONT_MIDDLE;
+    sendButton.titleLabel.font = FONT_MAIN;
     sendButton.titleLabel.backgroundColor = [UIColor clearColor];
     sendButton.backgroundColor = COLOR_MAIN_BG;
     sendButton.layer.borderColor = CGCOLOR_MAIN_BORDER;
@@ -114,7 +116,7 @@
         make.left.equalTo(borderView.mas_right).offset(5);
         make.right.equalTo(inputView.mas_right).offset(-10);
         make.centerY.equalTo(inputView.mas_centerY);
-        make.height.equalTo(@30);
+        make.height.equalTo(@40);
     }];
     
     //下一步按钮

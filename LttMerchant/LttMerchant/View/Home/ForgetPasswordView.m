@@ -28,15 +28,15 @@
     UIView *superView = self;
     [inputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superView.mas_top).offset(20);
-        make.left.equalTo(superView.mas_left);
+        make.left.equalTo(superView.mas_left).offset(-10);
         make.right.equalTo(superView.mas_right);
-        make.height.equalTo(@40);
+        make.height.equalTo(@50);
     }];
     
     //手机号
     UILabel *labelName = [[UILabel alloc] init];
     labelName.text = @"手机号";
-    labelName.font = FONT_MIDDLE;
+    labelName.font = FONT_MAIN;
     [self addSubview:labelName];
     [labelName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(inputView.mas_centerY);
@@ -47,7 +47,7 @@
     //输入框
     mobileField = [AppUIUtil makeTextField];
     mobileField.placeholder = @"请输入手机号";
-    mobileField.font = FONT_MIDDLE;
+    mobileField.font = FONT_MAIN;
     //定义编辑时显示清除按钮效果
     mobileField.clearButtonMode = YES;
     //设置为数字键盘
@@ -57,7 +57,7 @@
         make.centerY.equalTo(inputView.mas_centerY);
         make.left.equalTo(labelName.mas_right);
         make.right.equalTo(inputView.mas_right).offset(-10);
-        make.height.equalTo(@30);
+        make.height.equalTo(@40);
     }];
     
     //按钮

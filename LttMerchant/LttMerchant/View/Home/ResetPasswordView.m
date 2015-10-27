@@ -26,8 +26,7 @@
     //新密码输入框
     passwordField = [AppUIUtil makeTextField];
     passwordField.placeholder = @"请输入新密码";
-    passwordField.font = FONT_MIDDLE;
-//    passwordField.
+    passwordField.font = FONT_MAIN;
     passwordField.secureTextEntry = YES;
     passwordField.clearButtonMode = YES;
     passwordField.layer.borderWidth = 0.5f;
@@ -40,13 +39,13 @@
         make.top.equalTo(superView.mas_top).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@40);
+        make.height.equalTo(@50);
     }];
     
     //请确认新密码
     rePasswordField = [AppUIUtil makeTextField];
     rePasswordField.placeholder = @"请确认新密码";
-    rePasswordField.font = FONT_MIDDLE;
+    rePasswordField.font = FONT_MAIN;
     rePasswordField.secureTextEntry = YES;
     rePasswordField.clearButtonMode = YES;
     rePasswordField.layer.borderWidth = 0.5f;
@@ -57,25 +56,26 @@
         make.top.equalTo(passwordField.mas_bottom).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@40);
+        make.height.equalTo(@50);
     }];
     
     //密码长度提示
     tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"密码由6-15位英文字母，数字组成";
-    tipLabel.font = FONT_MIDDLE;
+    tipLabel.font = FONT_MAIN;
     [self addSubview:tipLabel];
     
     [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(rePasswordField.mas_bottom).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
+        make.height.equalTo(@16);
     }];
     
     
     //单选按钮
     radioButton = [[DLRadioButton alloc] init];
-    radioButton.titleLabel.font = FONT_MIDDLE;
+    radioButton.titleLabel.font = FONT_MAIN;
     radioButton.iconColor = [UIColor blackColor];
     radioButton.indicatorColor = [UIColor blackColor];
     radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -89,7 +89,7 @@
         make.top.equalTo(tipLabel.mas_bottom);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@30);
+        make.height.equalTo(@40);
         make.width.equalTo(@100);
     }];
 
