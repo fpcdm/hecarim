@@ -16,6 +16,7 @@
 #import "RegisterViewController.h"
 #import "UIViewController+BackButtonHandler.h"
 #import "PickerUtil.h"
+#import "ForgetPasswordViewController.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -167,6 +168,12 @@
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+- (void)actionFindPwd
+{
+    ForgetPasswordViewController *findPwdController = [[ForgetPasswordViewController alloc] init];
+    [self pushViewController:findPwdController animated:YES];
 }
 
 @end
