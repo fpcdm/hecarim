@@ -122,6 +122,24 @@
         
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
+
+    //找回密码
+    UIButton *findPwdBtn = [[UIButton alloc] init];
+    [findPwdBtn setTitle:@"找回密码" forState:UIControlStateNormal];
+    [findPwdBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [findPwdBtn addTarget:self action:@selector(actionFindPwd) forControlEvents:UIControlEventTouchUpInside];
+    findPwdBtn.titleLabel.font = FONT_MAIN;
+    findPwdBtn.layer.cornerRadius = 0.0f;
+    findPwdBtn.layer.borderWidth = 0.0f;
+    [self addSubview:findPwdBtn];
+    
+    
+    [findPwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(button.mas_bottom);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+    }];
+
     
     return self;
 }
@@ -134,6 +152,11 @@
     user.password = passwordField.text;
     
     [self.delegate actionLogin:user];
+}
+
+- (void)actionFindPwd
+{
+    [self.delegate actionFindPwd];
 }
 
 @end
