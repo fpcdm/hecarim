@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */; };
+		2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0951BDF55E600293737 /* ForgetPasswordView.m */; };
+		2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0971BDF55E600293737 /* ResetPasswordSuccess.m */; };
+		2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0991BDF55E600293737 /* ResetPasswordView.m */; };
+		2BB0C0A01BDF55F900293737 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C09F1BDF55F900293737 /* ForgetPasswordViewController.m */; };
 		2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */; };
 		2F02FB781BABE66100D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB771BABE66100D7D68F /* libxml2.tbd */; };
 		2F02FB7A1BABE66900D7D68F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB791BABE66900D7D68F /* libsqlite3.tbd */; };
@@ -246,6 +251,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BB0C0921BDF55E600293737 /* ForgetPasswordCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCodeView.h; sourceTree = "<group>"; };
+		2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCodeView.m; sourceTree = "<group>"; };
+		2BB0C0941BDF55E600293737 /* ForgetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordView.h; sourceTree = "<group>"; };
+		2BB0C0951BDF55E600293737 /* ForgetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordView.m; sourceTree = "<group>"; };
+		2BB0C0961BDF55E600293737 /* ResetPasswordSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordSuccess.h; sourceTree = "<group>"; };
+		2BB0C0971BDF55E600293737 /* ResetPasswordSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordSuccess.m; sourceTree = "<group>"; };
+		2BB0C0981BDF55E600293737 /* ResetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordView.h; sourceTree = "<group>"; };
+		2BB0C0991BDF55E600293737 /* ResetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordView.m; sourceTree = "<group>"; };
+		2BB0C09E1BDF55F900293737 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		2BB0C09F1BDF55F900293737 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		2F0095D21B79A5FC003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F02FB771BABE66100D7D68F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -925,6 +940,14 @@
 				2F16E59A1B5DEFEE007947D0 /* RegisterPasswordView.m */,
 				2F16E59B1B5DEFEE007947D0 /* RegisterSuccessView.h */,
 				2F16E59C1B5DEFEE007947D0 /* RegisterSuccessView.m */,
+				2BB0C0941BDF55E600293737 /* ForgetPasswordView.h */,
+				2BB0C0951BDF55E600293737 /* ForgetPasswordView.m */,
+				2BB0C0921BDF55E600293737 /* ForgetPasswordCodeView.h */,
+				2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */,
+				2BB0C0981BDF55E600293737 /* ResetPasswordView.h */,
+				2BB0C0991BDF55E600293737 /* ResetPasswordView.m */,
+				2BB0C0961BDF55E600293737 /* ResetPasswordSuccess.h */,
+				2BB0C0971BDF55E600293737 /* ResetPasswordSuccess.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1000,6 +1023,8 @@
 				2F16E5E31B5DF08F007947D0 /* MenuViewController.m */,
 				2F16E5E41B5DF08F007947D0 /* RegisterViewController.h */,
 				2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */,
+				2BB0C09E1BDF55F900293737 /* ForgetPasswordViewController.h */,
+				2BB0C09F1BDF55F900293737 /* ForgetPasswordViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1928,6 +1953,7 @@
 				2FED7E0E1B1EA79300306A11 /* DDFileLogger.m in Sources */,
 				2F16E6331B5DF162007947D0 /* AppView.m in Sources */,
 				2FED7E0D1B1EA79300306A11 /* DDASLLogger.m in Sources */,
+				2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */,
 				2F16E5A91B5DEFEE007947D0 /* CaseConfirmedView.m in Sources */,
 				2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */,
 				2F6D3E591B312765007A4159 /* MJRefreshNormalHeader.m in Sources */,
@@ -1962,6 +1988,7 @@
 				2F6D3E141B312164007A4159 /* ActionSheetDistancePicker.m in Sources */,
 				2F16E5ED1B5DF08F007947D0 /* SafetyPasswordViewController.m in Sources */,
 				2F6D3E511B312765007A4159 /* MJRefreshHeader.m in Sources */,
+				2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */,
 				2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */,
 				2F9000411B1D8B930040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2F16E5EE1B5DF08F007947D0 /* SafetyViewController.m in Sources */,
@@ -1973,6 +2000,7 @@
 				2F6D3E541B312765007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
 				2F16E5A81B5DEFEE007947D0 /* AddressSelectorView.m in Sources */,
 				2FED7D9E1B1EA2D300306A11 /* UIImageView+WebCache.m in Sources */,
+				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
 				2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */,
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F16E5F21B5DF08F007947D0 /* CaseFormViewController.m in Sources */,
@@ -1988,6 +2016,7 @@
 				2FED7E0C1B1EA79300306A11 /* DDASLLogCapture.m in Sources */,
 				2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */,
 				2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */,
+				2BB0C0A01BDF55F900293737 /* ForgetPasswordViewController.m in Sources */,
 				2F16E5AE1B5DEFEE007947D0 /* CasePayedView.m in Sources */,
 				2F16E63D1B5DF162007947D0 /* ModelEntity.m in Sources */,
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
@@ -2038,6 +2067,7 @@
 				2FED7E131B1EA79300306A11 /* DDMultiFormatter.m in Sources */,
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
 				2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */,
+				2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */,
 				2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */,
 				2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */,
 				2F6D3E181B312164007A4159 /* SWActionSheet.m in Sources */,
