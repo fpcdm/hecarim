@@ -101,7 +101,11 @@
             
             //判断手机号检查结果
             if ([@"registered" isEqualToString:mobileStatus]) {
-                [self pushView:[self codeView] animated:YES completion:nil];
+                ForgetPasswordCodeView *codeView = [self codeView];
+                [self popView:codeView animated:YES completion:^{
+                    [codeView setData:@"mobile" value:mobile];
+                    [codeView renderData];
+                }];
             } else {
                 [self showError:ERROR_MOBILE_NOTFOUND];
                 return;
@@ -119,11 +123,6 @@
     currentView.delegate = self;
     
     self.navigationItem.title = @"填写短信校验码";
-    
-    //加密手机号
-    NSMutableString *strMobile = [[NSMutableString alloc] initWithString:mobile];
-    [strMobile replaceCharactersInRange:NSMakeRange(3,5) withString:@"*****"];
-    currentView.tipMobile.text = strMobile;
     
     sendButton = currentView.sendButton;
     [self checkSmsButton];
@@ -344,15 +343,20 @@
         return;
     }
     
+    UserEntity *user = [[UserEntity alloc] init];
+    user.password = newPassword;
+    user.mobile = mobile;
+    
     //请求中
     [self showLoading:TIP_REQUEST_MESSAGE];
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
-    [helperHandler resetPassword:mobile vCode:vCode password:newPassword success:^(NSArray *result) {
+    [helperHandler resetPassword:user vCode:vCode success:^(NSArray *result) {
         NSLog(@"重置密码成功");
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             [self pushView:[self resetPwdSuccessView] animated:YES completion:nil];
         }];
+
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];
