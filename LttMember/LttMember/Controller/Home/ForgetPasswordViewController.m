@@ -105,6 +105,10 @@
                 [self popView:codeView animated:YES completion:^{
                     [codeView setData:@"mobile" value:mobile];
                     [codeView renderData];
+                    
+                    //发送短信校验码
+                    [self actionSend];
+
                 }];
                 
                 //加密手机号
