@@ -2049,14 +2049,14 @@
 		2F55F69C1BDF12F400A89174 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2F55F69D1BDF12F400A89174 /* ForgetPasswordCodeView.h */,
-				2F55F69E1BDF12F400A89174 /* ForgetPasswordCodeView.m */,
 				2F55F69F1BDF12F400A89174 /* ForgetPasswordView.h */,
 				2F55F6A01BDF12F400A89174 /* ForgetPasswordView.m */,
-				2F55F6A11BDF12F400A89174 /* ResetPasswordSuccess.h */,
-				2F55F6A21BDF12F400A89174 /* ResetPasswordSuccess.m */,
+				2F55F69D1BDF12F400A89174 /* ForgetPasswordCodeView.h */,
+				2F55F69E1BDF12F400A89174 /* ForgetPasswordCodeView.m */,
 				2F55F6A31BDF12F400A89174 /* ResetPasswordView.h */,
 				2F55F6A41BDF12F400A89174 /* ResetPasswordView.m */,
+				2F55F6A11BDF12F400A89174 /* ResetPasswordSuccess.h */,
+				2F55F6A21BDF12F400A89174 /* ResetPasswordSuccess.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
