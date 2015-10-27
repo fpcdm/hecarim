@@ -105,6 +105,7 @@
                 [self popView:codeView animated:YES completion:^{
                     [codeView setData:@"mobile" value:mobile];
                     [codeView renderData];
+                    [self actionSend];
                 }];
             } else {
                 [self showError:ERROR_MOBILE_NOTFOUND];
