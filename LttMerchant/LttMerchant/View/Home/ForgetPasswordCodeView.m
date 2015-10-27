@@ -12,9 +12,10 @@
 @implementation ForgetPasswordCodeView {
     UILabel *tipLabel;
     UITextField *codeField;
+    UILabel *tipMobile;
 }
 
-@synthesize sendButton,tipMobile;
+@synthesize sendButton;
 
 - (id)init {
     self = [super init];
@@ -43,7 +44,7 @@
     [tipMobile mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(tipLabel.mas_bottom).offset(10);
         make.centerX.equalTo(superView.mas_centerX);
-        make.height.equalTo(@14);
+        make.height.equalTo(@16);
     }];
     
     //输入视图
@@ -147,5 +148,13 @@
     [self.delegate actionVerifyCode:codeField.text];
 }
 
+
+- (void)renderData
+{
+    NSString *mobile = [self getData:@"mobile"];
+    NSMutableString *strMobile = [[NSMutableString alloc] initWithString:mobile];
+    [strMobile replaceCharactersInRange:NSMakeRange(3,5) withString:@"*****"];
+    tipMobile.text = strMobile;
+}
 
 @end

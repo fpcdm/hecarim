@@ -102,7 +102,7 @@
         make.top.equalTo(radioButton.mas_bottom).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo([NSNumber numberWithFloat:HEIGHT_MIDDLE_BUTTON]);
+        make.height.equalTo([NSNumber numberWithFloat:HEIGHT_MAIN_BUTTON]);
     }];
     return self;
 }

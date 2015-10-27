@@ -27,6 +27,5 @@
 //发送短信按钮
 @property (retain, nonatomic) UIButton *sendButton;
 
-@property (retain, nonatomic) UILabel *tipMobile;
 
 @end
