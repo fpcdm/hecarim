@@ -7,6 +7,7 @@
 //
 
 #import "BaseHandler.h"
+#import "UserEntity.h"
 
 @interface HelperHandler : BaseHandler
 
@@ -46,6 +47,6 @@
  *  @param success 成功回调
  *  @param failure 失败回调
  */
-- (void) resetPassword: (NSString *) mobile vCode: (NSString *) vCode password: (NSString *) password success: (SuccessBlock) success failure: (FailedBlock) failure;
+- (void) resetPassword: (UserEntity *) user vCode: (NSString *) vCode success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end

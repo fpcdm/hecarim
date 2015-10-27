@@ -58,12 +58,12 @@
 }
 
 //重置密码
-- (void) resetPassword:(NSString *)mobile vCode:(NSString *)vCode password:(NSString *)password success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void) resetPassword:(UserEntity *) user vCode:(NSString *)vCode success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    NSDictionary *param = @{@"newPass":(password ? password : @""),@"vCode":(vCode ? vCode : @"")};
+    NSDictionary *param = @{@"newPass":(user.password ? user.password : @""),@"vCode":(vCode ? vCode : @"")};
     
-    NSString * restPath = [NSString stringWithFormat:@"user/password/%@",mobile];
+    NSString * restPath = [NSString stringWithFormat:@"user/password/%@",user.mobile];
     [sharedClient postObject:[RestKitUtil new] path:restPath param:param success:^(NSArray *result) {
         success(result);
     } failure:^(ErrorEntity *error) {
