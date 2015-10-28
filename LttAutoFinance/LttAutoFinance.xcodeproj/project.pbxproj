@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B8346D91BE07BF5001530F0 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346D81BE07BF5001530F0 /* ForgetPasswordViewController.m */; };
+		2B8346E21BE07C23001530F0 /* ForgetPasswordCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346DB1BE07C23001530F0 /* ForgetPasswordCodeView.m */; };
+		2B8346E31BE07C23001530F0 /* ForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346DD1BE07C23001530F0 /* ForgetPasswordView.m */; };
+		2B8346E41BE07C23001530F0 /* ResetPasswordSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346DF1BE07C23001530F0 /* ResetPasswordSuccess.m */; };
+		2B8346E51BE07C23001530F0 /* ResetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346E11BE07C23001530F0 /* ResetPasswordView.m */; };
 		2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */; };
 		2F02FB781BABE66100D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB771BABE66100D7D68F /* libxml2.tbd */; };
 		2F02FB7A1BABE66900D7D68F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB791BABE66900D7D68F /* libsqlite3.tbd */; };
 		2F02FB7C1BABE66F00D7D68F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB7B1BABE66F00D7D68F /* libz.tbd */; };
 		2F02FB7E1BABE68900D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB7D1BABE68900D7D68F /* libiconv.tbd */; };
 		2F064BAF1B8EE39B003550B0 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BAE1B8EE39B003550B0 /* ReflectionView.m */; };
-		2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */; };
+		2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */; };
 		2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5661B5DEFEE007947D0 /* AboutView.m */; };
 		2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5681B5DEFEE007947D0 /* AccountView.m */; };
 		2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E56A1B5DEFEE007947D0 /* AddressDetailView.m */; };
@@ -179,11 +184,11 @@
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A3961B69BFDC0083365B /* InfoPlist.strings */; };
 		2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467631B43DA6500B2186F /* AudioToolbox.framework */; };
-		2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */; settings = {ASSET_TAGS = (); }; };
-		2FB72F631BB8D72400CB8E62 /* CasePropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2FB72F661BB8D75600CB8E62 /* CasePropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F651BB8D75600CB8E62 /* CasePropertyView.m */; settings = {ASSET_TAGS = (); }; };
-		2FB72F691BB928BA00CB8E62 /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F681BB928BA00CB8E62 /* BaseCollectionView.m */; settings = {ASSET_TAGS = (); }; };
-		2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F6B1BB935B700CB8E62 /* AppCollectionView.m */; settings = {ASSET_TAGS = (); }; };
+		2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */; };
+		2FB72F631BB8D72400CB8E62 /* CasePropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F621BB8D72400CB8E62 /* CasePropertyViewController.m */; };
+		2FB72F661BB8D75600CB8E62 /* CasePropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F651BB8D75600CB8E62 /* CasePropertyView.m */; };
+		2FB72F691BB928BA00CB8E62 /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F681BB928BA00CB8E62 /* BaseCollectionView.m */; };
+		2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB72F6B1BB935B700CB8E62 /* AppCollectionView.m */; };
 		2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */; };
 		2FCAF6AE1B1FEF8400F3B084 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD18A11B04848B00C3D09E /* CFNetwork.framework */; };
 		2FCAF6B01B1FEFA400F3B084 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCAF6AF1B1FEFA400F3B084 /* MobileCoreServices.framework */; };
@@ -253,6 +258,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B8346D71BE07BF5001530F0 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		2B8346D81BE07BF5001530F0 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		2B8346DA1BE07C23001530F0 /* ForgetPasswordCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCodeView.h; sourceTree = "<group>"; };
+		2B8346DB1BE07C23001530F0 /* ForgetPasswordCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCodeView.m; sourceTree = "<group>"; };
+		2B8346DC1BE07C23001530F0 /* ForgetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordView.h; sourceTree = "<group>"; };
+		2B8346DD1BE07C23001530F0 /* ForgetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordView.m; sourceTree = "<group>"; };
+		2B8346DE1BE07C23001530F0 /* ResetPasswordSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordSuccess.h; sourceTree = "<group>"; };
+		2B8346DF1BE07C23001530F0 /* ResetPasswordSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordSuccess.m; sourceTree = "<group>"; };
+		2B8346E01BE07C23001530F0 /* ResetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordView.h; sourceTree = "<group>"; };
+		2B8346E11BE07C23001530F0 /* ResetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordView.m; sourceTree = "<group>"; };
 		2F0095D21B79A5FC003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095D31B79A5FC003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F02FB771BABE66100D7D68F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -953,6 +968,14 @@
 				2F16E59A1B5DEFEE007947D0 /* RegisterPasswordView.m */,
 				2F16E59B1B5DEFEE007947D0 /* RegisterSuccessView.h */,
 				2F16E59C1B5DEFEE007947D0 /* RegisterSuccessView.m */,
+				2B8346DA1BE07C23001530F0 /* ForgetPasswordCodeView.h */,
+				2B8346DB1BE07C23001530F0 /* ForgetPasswordCodeView.m */,
+				2B8346DC1BE07C23001530F0 /* ForgetPasswordView.h */,
+				2B8346DD1BE07C23001530F0 /* ForgetPasswordView.m */,
+				2B8346DE1BE07C23001530F0 /* ResetPasswordSuccess.h */,
+				2B8346DF1BE07C23001530F0 /* ResetPasswordSuccess.m */,
+				2B8346E01BE07C23001530F0 /* ResetPasswordView.h */,
+				2B8346E11BE07C23001530F0 /* ResetPasswordView.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1026,6 +1049,8 @@
 				2F16E5E31B5DF08F007947D0 /* MenuViewController.m */,
 				2F16E5E41B5DF08F007947D0 /* RegisterViewController.h */,
 				2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */,
+				2B8346D71BE07BF5001530F0 /* ForgetPasswordViewController.h */,
+				2B8346D81BE07BF5001530F0 /* ForgetPasswordViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1971,7 +1996,9 @@
 				2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */,
 				2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2F16E63A1B5DF162007947D0 /* DeviceEntity.m in Sources */,
+				2B8346E41BE07C23001530F0 /* ResetPasswordSuccess.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
+				2B8346E21BE07C23001530F0 /* ForgetPasswordCodeView.m in Sources */,
 				2F16E63B1B5DF162007947D0 /* GoodsEntity.m in Sources */,
 				2F16E5E81B5DF08F007947D0 /* AddressDetailViewController.m in Sources */,
 				2F16E6391B5DF162007947D0 /* CategoryEntity.m in Sources */,
@@ -2009,6 +2036,7 @@
 				2F9000421B1D8B930040D97B /* View+MASAdditions.m in Sources */,
 				2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */,
 				2FED7D921B1EA2D300306A11 /* NSData+ImageContentType.m in Sources */,
+				2B8346D91BE07BF5001530F0 /* ForgetPasswordViewController.m in Sources */,
 				2FCAF8351B20115700F3B084 /* RestKitUtil.m in Sources */,
 				2F16E5B51B5DEFEE007947D0 /* RegisterMobileView.m in Sources */,
 				2F16E5A61B5DEFEE007947D0 /* SettingView.m in Sources */,
@@ -2033,6 +2061,7 @@
 				2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */,
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F16E5F21B5DF08F007947D0 /* CaseFormViewController.m in Sources */,
+				2B8346E31BE07C23001530F0 /* ForgetPasswordView.m in Sources */,
 				2F16E5EC1B5DF08F007947D0 /* ProfileViewController.m in Sources */,
 				2F6D3E161B312164007A4159 /* ActionSheetStringPicker.m in Sources */,
 				2F16E5A11B5DEFEE007947D0 /* AddressView.m in Sources */,
@@ -2146,6 +2175,7 @@
 				2F6D3E551B312765007A4159 /* MJRefreshBackGifFooter.m in Sources */,
 				2F6D3E4E1B312765007A4159 /* MJRefreshBackFooter.m in Sources */,
 				2F16E5A21B5DEFEE007947D0 /* ProfileNicknameView.m in Sources */,
+				2B8346E51BE07C23001530F0 /* ResetPasswordView.m in Sources */,
 				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */,
