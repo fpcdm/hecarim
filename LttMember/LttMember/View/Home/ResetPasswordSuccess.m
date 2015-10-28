@@ -9,12 +9,14 @@
 #import "ResetPasswordSuccess.h"
 #import "AppUIUtil.h"
 
-@implementation ResetPasswordSuccess {
+@implementation ResetPasswordSuccess
+{
     UILabel *tipLabel;
     UIButton *button;
 }
 
-- (id)init {
+- (id)init
+{
     self  = [super init];
     if (!self) return nil;
     
@@ -46,7 +48,8 @@
     return self;
 }
 
-- (void)actionLogin {
+- (void)actionLogin
+{
     [self.delegate actionLogin];
 }
 

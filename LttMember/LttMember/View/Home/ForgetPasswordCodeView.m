@@ -9,7 +9,8 @@
 #import "ForgetPasswordCodeView.h"
 #import "AppUIUtil.h"
 
-@implementation ForgetPasswordCodeView {
+@implementation ForgetPasswordCodeView
+{
     UILabel *tipLabel;
     UITextField *codeField;
     UILabel *tipMobile;
@@ -17,7 +18,8 @@
 
 @synthesize sendButton;
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (!self) return nil;
     

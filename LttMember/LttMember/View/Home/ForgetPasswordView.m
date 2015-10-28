@@ -9,12 +9,14 @@
 #import "ForgetPasswordView.h"
 #import "AppUIUtil.h"
 
-@implementation ForgetPasswordView {
+@implementation ForgetPasswordView
+{
     UITextField *mobileField;
 }
 
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (!self) return nil;
     
