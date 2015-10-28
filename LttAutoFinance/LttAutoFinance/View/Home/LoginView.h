@@ -14,6 +14,7 @@
 @required
 - (void)actionLogin:(UserEntity *)user;
 
+- (void)actionFindPwd;
 @end
 
 @interface LoginView : AppView
