@@ -149,6 +149,8 @@
 		2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F7057FC1B4665F3000DBEB8 /* Images.xcassets */; };
 		2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD751B1D5E9500797799 /* BaseEntity.m */; };
 		2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD7E1B1D5F6D00797799 /* BaseView.m */; };
+		2F7993741BE0763900399632 /* NotificationButtonBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7993721BE0763900399632 /* NotificationButtonBackground2.png */; };
+		2F7993751BE0763900399632 /* NotificationButtonBackground2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7993731BE0763900399632 /* NotificationButtonBackground2@2x.png */; };
 		2F7A56E01B09C11700D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56DF1B09C11700D12500 /* Foundation.framework */; };
 		2F7A56E21B09C12700D12500 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56E11B09C12700D12500 /* CoreTelephony.framework */; };
 		2F7A56E41B09C13900D12500 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD189F1B04848500C3D09E /* SystemConfiguration.framework */; };
@@ -516,6 +518,8 @@
 		2F74CD751B1D5E9500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD7D1B1D5F6D00797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		2F74CD7E1B1D5F6D00797799 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		2F7993721BE0763900399632 /* NotificationButtonBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationButtonBackground2.png; sourceTree = "<group>"; };
+		2F7993731BE0763900399632 /* NotificationButtonBackground2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationButtonBackground2@2x.png"; sourceTree = "<group>"; };
 		2F7A56DF1B09C11700D12500 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F7A56E11B09C12700D12500 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2F7F8C081B7C2C0300EF4938 /* CaseDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailView.h; sourceTree = "<group>"; };
@@ -1146,6 +1150,8 @@
 				2F2F222E1B3A4D0300428742 /* NotificationBackgroundWarningIcon@2x.png */,
 				2F2F222F1B3A4D0300428742 /* NotificationButtonBackground.png */,
 				2F2F22301B3A4D0300428742 /* NotificationButtonBackground@2x.png */,
+				2F7993721BE0763900399632 /* NotificationButtonBackground2.png */,
+				2F7993731BE0763900399632 /* NotificationButtonBackground2@2x.png */,
 				2F2F22311B3A4D0300428742 /* TSMessagesDefaultDesign.json */,
 			);
 			path = Assets;
@@ -1906,7 +1912,9 @@
 				2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */,
 				2F2F223E1B3A4D0300428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				2F2F22421B3A4D0300428742 /* NotificationBackgroundSuccess@2x.png in Resources */,
+				2F7993741BE0763900399632 /* NotificationButtonBackground2.png in Resources */,
 				2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */,
+				2F7993751BE0763900399632 /* NotificationButtonBackground2@2x.png in Resources */,
 				2F2F223C1B3A4D0300428742 /* NotificationBackgroundError@2x.png in Resources */,
 				2F2F22411B3A4D0300428742 /* NotificationBackgroundSuccess.png in Resources */,
 				2F2F22461B3A4D0300428742 /* NotificationBackgroundWarning@2x.png in Resources */,

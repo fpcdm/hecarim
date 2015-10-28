@@ -476,6 +476,8 @@
 		2F78FBDE1B75C0470009F349 /* RefreshCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F78FBD11B75C0470009F349 /* RefreshCollectionView.m */; };
 		2F78FBDF1B75C0470009F349 /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F78FBD41B75C0470009F349 /* RefreshTableView.m */; };
 		2F78FBE01B75C0470009F349 /* SDWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F78FBD71B75C0470009F349 /* SDWebImageView.m */; };
+		2F7993701BE065E000399632 /* NotificationButtonBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F79936E1BE065E000399632 /* NotificationButtonBackground2.png */; };
+		2F7993711BE065E000399632 /* NotificationButtonBackground2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F79936F1BE065E000399632 /* NotificationButtonBackground2@2x.png */; };
 		2F7A56EB1B09D52300D12500 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD187D1B047D1800C3D09E /* SystemConfiguration.framework */; };
 		2F7A56ED1B09D52B00D12500 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */; };
 		2F7A56EF1B09D53300D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56EE1B09D53300D12500 /* Foundation.framework */; };
@@ -1499,6 +1501,8 @@
 		2F78FBD41B75C0470009F349 /* RefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableView.m; sourceTree = "<group>"; };
 		2F78FBD61B75C0470009F349 /* SDWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageView.h; sourceTree = "<group>"; };
 		2F78FBD71B75C0470009F349 /* SDWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageView.m; sourceTree = "<group>"; };
+		2F79936E1BE065E000399632 /* NotificationButtonBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationButtonBackground2.png; sourceTree = "<group>"; };
+		2F79936F1BE065E000399632 /* NotificationButtonBackground2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationButtonBackground2@2x.png"; sourceTree = "<group>"; };
 		2F7A56EC1B09D52B00D12500 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2F7A56EE1B09D53300D12500 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F7B60791B7AF24900F65729 /* GoodsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListView.h; sourceTree = "<group>"; };
@@ -2028,6 +2032,8 @@
 				2F2F225F1B3A52FE00428742 /* NotificationBackgroundWarningIcon@2x.png */,
 				2F2F22601B3A52FE00428742 /* NotificationButtonBackground.png */,
 				2F2F22611B3A52FE00428742 /* NotificationButtonBackground@2x.png */,
+				2F79936E1BE065E000399632 /* NotificationButtonBackground2.png */,
+				2F79936F1BE065E000399632 /* NotificationButtonBackground2@2x.png */,
 				2F2F22621B3A52FE00428742 /* TSMessagesDefaultDesign.json */,
 			);
 			path = Assets;
@@ -4146,6 +4152,7 @@
 				2F2F226F1B3A52FE00428742 /* NotificationBackgroundMessage@2x.png in Resources */,
 				2F2F22751B3A52FE00428742 /* NotificationBackgroundWarning@2x.png in Resources */,
 				2F8BC2651B5CE07300B7D8B8 /* www in Resources */,
+				2F7993701BE065E000399632 /* NotificationButtonBackground2.png in Resources */,
 				2F2F226A1B3A52FE00428742 /* NotificationBackgroundError.png in Resources */,
 				2F2F22791B3A52FE00428742 /* NotificationButtonBackground@2x.png in Resources */,
 				2F78FBAB1B75B1F40009F349 /* html+samurai.css in Resources */,
@@ -4163,6 +4170,7 @@
 				2F2F226D1B3A52FE00428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				2FED82851B1ED69000306A11 /* zbar-help.html in Resources */,
 				2F2F226E1B3A52FE00428742 /* NotificationBackgroundMessage.png in Resources */,
+				2F7993711BE065E000399632 /* NotificationButtonBackground2@2x.png in Resources */,
 				2F2F22731B3A52FE00428742 /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
 				2F2F22701B3A52FE00428742 /* NotificationBackgroundSuccess.png in Resources */,
 				2F78FACC1B75B1F30009F349 /* ServiceBorder.bundle in Resources */,

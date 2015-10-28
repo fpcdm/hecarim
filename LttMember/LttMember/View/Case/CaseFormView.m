@@ -110,6 +110,7 @@
     //图片
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage imageNamed:@"caseAddress"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     [cell addSubview:imageView];
     
     float padding = 5;

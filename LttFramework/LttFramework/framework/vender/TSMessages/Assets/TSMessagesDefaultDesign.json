@@ -19,14 +19,14 @@
         "backgroundColor": "#76CF67"
     },
     "message": {
-        "backgroundImageName": "NotificationBackgroundMessage.png",
-        "borderColor": "#727C83",
+        "backgroundImageName": "",
+        "borderColor": "#B2B2B2",
         "borderHeight": 1,
-        "buttonBackgroundImageName": "NotificationButtonBackground.png",
-        "buttonTitleTextColor": "#727C83",
+        "buttonBackgroundImageName": "NotificationButtonBackground2.png",
+        "buttonTitleTextColor": "#FFFFFF",
         "buttonTitleShadowColor": "#EBEEF1",
         "buttonTitleShadowOffsetX": 0,
-        "buttonTitleShadowOffsetY": 1,
+        "buttonTitleShadowOffsetY": 0,
         "contentFontSize": 12,
         "contentTextColor": "#727C83",
         "imageName": "",
@@ -35,7 +35,7 @@
         "shadowOffsetY": 1,
         "textColor": "#727C83",
         "titleFontSize": 14,
-        "backgroundColor": "#D4DDDF"
+        "backgroundColor": "#EEEEEE"
     },
     "warning": {
         "backgroundImageName": "NotificationBackgroundWarning.png",
