@@ -12,12 +12,11 @@
 #import "ValidateUtil.h"
 #import "HelperHandler.h"
 #import "TimerUtil.h"
-#import "StorageUtil.h"
 #import "ResetPasswordView.h"
 #import "ResetPasswordSuccess.h"
 #import "UIViewController+BackButtonHandler.h"
 #import "LoginViewController.h"
-#import "AppExtension.h"
+#import "UserHandler.h"
 
 @interface ForgetPasswordViewController ()<ForgetPasswordViewDelegate,ForgetPasswordCodeViewDelegate,ResetPasswordSuccessDelegate,ResetPasswordViewDelegate>
 
@@ -40,7 +39,8 @@
     self.view.backgroundColor = COLOR_MAIN_BG;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     
     [super viewDidLoad];
 }
@@ -88,8 +88,8 @@
     [self showLoading:TIP_REQUEST_MESSAGE];
     
     //手机号检查接口调用
-    HelperHandler * helpHandler = [[HelperHandler alloc] init];
-    [helpHandler checkMobile:inputMobile success:^(NSArray *result) {
+    UserHandler * userHandler = [[UserHandler alloc] init];
+    [userHandler checkMobile:inputMobile success:^(NSArray *result) {
         //请求成功
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             ResultEntity *checkResult = [result firstObject];
@@ -111,7 +111,6 @@
 
                 }];
                 
-                //加密手机号
             } else {
                 [self showError:ERROR_MOBILE_NOTFOUND];
                 return;
