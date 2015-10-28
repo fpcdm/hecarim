@@ -60,15 +60,6 @@
 
 
 /**
- *  检查手机号是否已注册
- *
- *  @param mobile 手机号
- *  @param success 成功回调
- *  @param failure 失败回调
- */
-- (void) checkMobile: (NSString *) mobile success: (SuccessBlock) success failure: (FailedBlock) failure;
-
-/**
  *  重置密码
  *
  *  @param mobile 手机号

@@ -106,21 +106,6 @@
     }];
 }
 
-//检查手机号是否存在
-- (void) checkMobile:(NSString *)mobile success:(SuccessBlock)success failure:(FailedBlock)failure {
-    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"result": @"data"}];
-
-    NSString *restPath = [NSString stringWithFormat:@"user/mobilecheck/%@", mobile];
-    [sharedClient getObject:[ResultEntity new] path:restPath param:nil success:^(NSArray *result){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        success(result);
-    } failure:^(ErrorEntity *error){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        failure(error);
-    }];
-}
-
 //重置密码
 - (void) resetPassword:(UserEntity *)user vCode:(NSString *)vCode success:(SuccessBlock)success failure:(FailedBlock)failure
 {
