@@ -72,7 +72,7 @@
     }];
     
     UIImageView *iconView = [[UIImageView alloc] init];
-    iconView.backgroundColor = [UIColor whiteColor];
+    iconView.backgroundColor = [UIColor clearColor];
     iconView.image = [UIImage imageNamed:@"detailIcon"];
     iconView.layer.cornerRadius = 3.0f;
     [caseView addSubview:iconView];
@@ -159,7 +159,7 @@
     }];
     
     UIImageView *infoIconView = [[UIImageView alloc] init];
-    infoIconView.backgroundColor = [UIColor whiteColor];
+    infoIconView.backgroundColor = [UIColor clearColor];
     infoIconView.image = [UIImage imageNamed:@"detailIcon"];
     [infoView addSubview:infoIconView];
     
