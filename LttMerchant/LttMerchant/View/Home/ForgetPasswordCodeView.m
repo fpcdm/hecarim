@@ -9,7 +9,8 @@
 #import "ForgetPasswordCodeView.h"
 #import "AppUIUtil.h"
 
-@implementation ForgetPasswordCodeView {
+@implementation ForgetPasswordCodeView
+{
     UILabel *tipLabel;
     UITextField *codeField;
     UILabel *tipMobile;
@@ -17,7 +18,8 @@
 
 @synthesize sendButton;
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (!self) return nil;
     
@@ -139,12 +141,14 @@
 
 
 #pragma mark - Action
-- (void)actionSend {
+- (void)actionSend
+{
     [self.delegate actionSend];
 }
 
 //校验码验证
-- (void)actionVerifyCode {
+- (void)actionVerifyCode
+{
     [self.delegate actionVerifyCode:codeField.text];
 }
 

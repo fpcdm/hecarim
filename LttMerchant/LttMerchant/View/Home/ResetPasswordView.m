@@ -10,7 +10,8 @@
 #import "AppUIUtil.h"
 #import "DLRadioButton.h"
 
-@implementation ResetPasswordView {
+@implementation ResetPasswordView
+{
     UITextField *passwordField;
     UITextField *rePasswordField;
     DLRadioButton *radioButton;
@@ -19,7 +20,8 @@
 }
 
 
-- (id)init {
+- (id)init
+{
     self  = [super init];
     if (!self) return nil;
     
@@ -109,7 +111,8 @@
 
 //显示密码事件
 #pragma mark - Radio
-- (void)actionRadioClicked:(DLRadioButton *)radio {
+- (void)actionRadioClicked:(DLRadioButton *)radio
+{
     if (passwordField.secureTextEntry == YES) {
         passwordField.secureTextEntry = NO;
         rePasswordField.secureTextEntry = NO;
@@ -121,7 +124,8 @@
     }
 }
 
-- (void)actionResetPassword {
+- (void)actionResetPassword
+{
     NSString *password = passwordField.text;
     NSString *rePassword = rePasswordField.text;
     [self.delegate actionResetPassword:password reNewPassword:rePassword];
