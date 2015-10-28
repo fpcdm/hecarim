@@ -59,7 +59,7 @@
     
     //客服信息
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"正在为您服务的服务商：";
+    titleLabel.text = @"正在为您服务的工作人员：";
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = COLOR_MAIN_DARK;
     titleLabel.font = FONT_MAIN;

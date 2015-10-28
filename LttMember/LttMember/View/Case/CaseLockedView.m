@@ -60,7 +60,7 @@
     }];
     
     aboutLabel = [UILabel new];
-    aboutLabel.text = @"即将为您服务的服务商：";
+    aboutLabel.text = @"即将为您服务的工作人员：";
     aboutLabel.backgroundColor = [UIColor clearColor];
     aboutLabel.font = FONT_MAIN_BOLD;
     aboutLabel.textColor = COLOR_MAIN_DARK;
