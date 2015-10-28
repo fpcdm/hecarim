@@ -19,7 +19,28 @@
     self = [super init];
     if (!self) return nil;
     
+    //添加背景图
+    UIImageView *bgView = [[UIImageView alloc] init];
+    bgView.image = [UIImage imageNamed:@"homeCategoryBg"];
+    bgView.alpha = 0.9;
+    [self addSubview:bgView];
+    
+    UIView *superview = self;
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+    }];
+    
+    //表格放到上面
+    [self bringSubviewToFront:self.collectionView];
+    
+    //设置滚动视图
     self.collectionView.scrollEnabled = YES;
+    self.collectionView.backgroundColor = COLOR_MAIN_CLEAR;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.showsVerticalScrollIndicator = NO;
     
     return self;
 }
@@ -28,11 +49,14 @@
 {
     NSMutableArray *section = [NSMutableArray array];
     
+    //计算宽度
+    CGFloat cellWidth = (SCREEN_WIDTH - 70) / 4;
+    
     //循环属性
     NSArray *properties = [self getData:@"properties"];
     if (properties) {
         for (PropertyEntity *property in properties) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @67.5, @"data": property}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @(cellWidth), @"data": property}];
         }
     }
     

@@ -18,6 +18,8 @@
 #import "UIView+Loading.h"
 #import "LttNavigationController.h"
 #import "CaseCategoryViewController.h"
+#import "CNPPopupController.h"
+#import "CasePropertyView.h"
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;
@@ -27,7 +29,7 @@ static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
 static NSMutableDictionary *caseTypes = nil;
 
-@interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate>
+@interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate, CNPPopupControllerDelegate, CasePropertyViewDelegate>
 
 @end
 
@@ -40,6 +42,11 @@ static NSMutableDictionary *caseTypes = nil;
     NSString *gpsStatus;
     
     NSNumber *categoryId;
+    NSNumber *typeId;
+    NSNumber *propertyId;
+    
+    //二级分类
+    CNPPopupController *popupController;
 }
 
 - (void)loadView
@@ -246,6 +253,96 @@ static NSMutableDictionary *caseTypes = nil;
     [self renderView];
 }
 
+#pragma mark - Case
+- (void)actionCase:(NSNumber *)type
+{
+    //查询属性列表
+    [self showLoading:TIP_LOADING_MESSAGE];
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
+    categoryEntity.id = type;
+    [caseHandler queryProperties:categoryEntity success:^(NSArray *result) {
+        [self hideLoading];
+        
+        //当前所选类型
+        typeId = type;
+        propertyId = @0;
+        
+        //判断是否启用属性
+        NSArray *properties = result ? result : @[];
+        if ([properties count] > 0) {
+            [self showPopupProperty:properties];
+        } else {
+            [self showCaseForm];
+        }
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+}
+
+- (void)showCaseForm
+{
+    //获取参数
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.typeId = typeId;
+    intentionEntity.propertyId = propertyId ? propertyId : @0;
+    intentionEntity.buyerAddress = lastAddress;
+    
+    NSLog(@"intention: %@", [intentionEntity toDictionary]);
+    
+    //跳转表单页面
+    CaseFormViewController *viewController = [[CaseFormViewController alloc] init];
+    viewController.caseEntity = intentionEntity;
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)showPopupProperty:(NSArray *)properties
+{
+    //属性视图，最多三行，超过滚动
+    NSInteger itemLine = (int)([properties count] / 4) + 1;
+    if (itemLine > 3) itemLine = 3;
+    
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 20, itemLine * 100)];
+    CasePropertyView *propertyView = [[CasePropertyView alloc] init];
+    propertyView.delegate = self;
+    propertyView.frame = [customView bounds];
+    [customView addSubview:propertyView];
+    
+    [propertyView setData:@"properties" value:properties];
+    [propertyView renderData];
+    
+    //设置弹出框主题
+    CNPPopupTheme *popupTheme = [[CNPPopupTheme alloc] init];
+    popupTheme.backgroundColor = [UIColor whiteColor];
+    popupTheme.cornerRadius = 0;
+    popupTheme.popupContentInsets = UIEdgeInsetsZero;
+    popupTheme.popupStyle = CNPPopupStyleCentered;
+    popupTheme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
+    popupTheme.dismissesOppositeDirection = NO;
+    popupTheme.maskType = CNPPopupMaskTypeDimmed;
+    popupTheme.shouldDismissOnBackgroundTouch = YES;
+    popupTheme.movesAboveKeyboard = YES;
+    popupTheme.contentVerticalPadding = 0;
+    popupTheme.maxPopupWidth = SCREEN_WIDTH - 20;
+    
+    //显示弹出框
+    popupController = [[CNPPopupController alloc] initWithContents:@[customView]];
+    popupController.theme = popupTheme;
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
+}
+
+- (void)actionSelected:(PropertyEntity *)property
+{
+    //隐藏弹框
+    [popupController dismissPopupControllerAnimated:NO];
+    
+    //跳转表单页面
+    propertyId = property.id;
+    [self showCaseForm];
+}
+
 #pragma mark - Action
 - (void)actionLogin
 {
@@ -319,21 +416,6 @@ static NSMutableDictionary *caseTypes = nil;
     
     [homeView setData:@"types" value:types];
     [homeView reloadTypes];
-}
-
-- (void)actionCase:(NSNumber *)type
-{
-    //获取参数
-    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
-    intentionEntity.typeId = type;
-    intentionEntity.buyerAddress = lastAddress;
-    
-    NSLog(@"intention: %@", [intentionEntity toDictionary]);
-    
-    //跳转表单页面
-    CaseFormViewController *viewController = [[CaseFormViewController alloc] init];
-    viewController.caseEntity = intentionEntity;
-    [self pushViewController:viewController animated:YES];
 }
 
 - (void)actionAddCategory

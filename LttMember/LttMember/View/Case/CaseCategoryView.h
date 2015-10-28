@@ -11,10 +11,6 @@
 
 @protocol CaseCategoryViewDelegate <NSObject>
 
-@required
-
-- (void)actionSelected:(NSArray *)categories;
-
 @end
 
 @interface CaseCategoryView : AppCollectionView

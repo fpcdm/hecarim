@@ -11,7 +11,6 @@
 #import "CaseViewController.h"
 #import "CaseHandler.h"
 #import "AddressSelectorViewController.h"
-#import "CasePropertyViewController.h"
 #import "AddressEntity.h"
 #import "ValidateUtil.h"
 #import "UserHandler.h"
@@ -25,8 +24,6 @@
     CaseFormView *formView;
     
     AddressEntity *address;
-    NSArray *properties;
-    PropertyEntity *property;
 }
 
 @synthesize caseEntity;
@@ -43,44 +40,26 @@
     
     self.navigationItem.title = @"呼叫客服";
     
-    //查询属性列表
+    //查询默认收货地址
     [self showLoading:TIP_LOADING_MESSAGE];
-    CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    CategoryEntity *type = [[CategoryEntity alloc] init];
-    type.id = caseEntity.typeId;
-    [caseHandler queryProperties:type success:^(NSArray *result) {
-        //启用属性
-        properties = result ? result : @[];
-        if ([properties count] > 0) {
-            [formView setPropertyEnabled:YES];
-        }
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
+        [self hideLoading];
         
-        //查询默认收货地址
-        UserHandler *userHandler = [[UserHandler alloc] init];
-        [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
-            [self hideLoading];
-            
-            if ([result count] > 0) {
-                address = [result firstObject];
-                [self renderView];
-            } else {
-                address = [self currentAddress];
-                [self renderView];
-            }
-        } failure:^(ErrorEntity *error){
-            [self showError:error.message];
-        }];
-    } failure:^(ErrorEntity *error) {
+        if ([result count] > 0) {
+            address = [result firstObject];
+            [self renderView];
+        } else {
+            address = [self currentAddress];
+            [self renderView];
+        }
+    } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
 }
 
 - (void) renderView
 {
-    //已选属性
-    [formView setData:@"property" value:property];
-    caseEntity.propertyId = property ? property.id : @0;
-    
     //地址存在
     if (address && address.id) {
         [formView setData:@"name" value:address.name];
@@ -121,20 +100,6 @@
         NSLog(@"选择的地址：%@", [newAddress toDictionary]);
         
         address = newAddress;
-        [self renderView];
-    };
-    
-    [self pushViewController:viewController animated:YES];
-}
-
-- (void) actionProperty
-{
-    CasePropertyViewController *viewController = [[CasePropertyViewController alloc] init];
-    viewController.properties = properties;
-    viewController.callbackBlock = ^(PropertyEntity *value){
-        NSLog(@"选择的属性：%@", [value toDictionary]);
-        
-        property = value;
         [self renderView];
     };
     
