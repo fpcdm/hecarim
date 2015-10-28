@@ -244,7 +244,7 @@
         $(@"#cancelButton").ATTR(@"display", @"none");
         
     } else if ([CASE_STATUS_LOCKED isEqualToString:intention.status]) {
-        $(@"#editCase").ATTR(@"visibility", @"visible");
+        $(@"#editCase").ATTR(@"visibility", @"hidden");
         
         $(@"#caseRemark").ATTR(@"display", @"block");
         $(@"#remarkTitle").ATTR(@"display", @"block");
@@ -262,7 +262,7 @@
         $(@"#cancelButton").ATTR(@"display", @"block");
         
     } else if ([CASE_STATUS_CONFIRMED isEqualToString:intention.status]) {
-        $(@"#editCase").ATTR(@"visibility", @"visible");
+        $(@"#editCase").ATTR(@"visibility", @"hidden");
         
         $(@"#caseRemark").ATTR(@"display", @"block");
         $(@"#remarkTitle").ATTR(@"display", @"block");
@@ -280,7 +280,7 @@
         $(@"#cancelButton").ATTR(@"display", @"block");
         
     } else if ([CASE_STATUS_TOPAY isEqualToString:intention.status]) {
-        $(@"#editCase").ATTR(@"visibility", @"visible");
+        $(@"#editCase").ATTR(@"visibility", @"hidden");
         
         $(@"#caseRemark").ATTR(@"display", @"none");
         $(@"#remarkTitle").ATTR(@"display", @"none");
@@ -300,7 +300,7 @@
         $(@"#cancelButton").ATTR(@"display", @"none");
         
     } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
-        $(@"#editCase").ATTR(@"visibility", @"visible");
+        $(@"#editCase").ATTR(@"visibility", @"hidden");
         
         $(@"#caseRemark").ATTR(@"display", @"none");
         $(@"#remarkTitle").ATTR(@"display", @"none");
@@ -320,7 +320,7 @@
         $(@"#cancelButton").ATTR(@"display", @"none");
         
     } else if ([CASE_STATUS_SUCCESS isEqualToString:intention.status]) {
-        $(@"#editCase").ATTR(@"visibility", @"visible");
+        $(@"#editCase").ATTR(@"visibility", @"hidden");
         
         $(@"#caseRemark").ATTR(@"display", @"none");
         $(@"#remarkTitle").ATTR(@"display", @"none");
