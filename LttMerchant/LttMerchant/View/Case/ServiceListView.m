@@ -34,7 +34,7 @@
         [tableData addObject:@[@{
                                @"id" : @"service",
                                @"type" : @"custom",
-                               @"text": service.typeName ? service.typeName : @"",
+                               @"text": service.name ? service.name : @"",
                                @"height": @40,
                                @"style": @"value1",
                                @"detail": service.price ? [NSString stringWithFormat:@"￥%@", service.price] : @"",

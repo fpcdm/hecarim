@@ -70,18 +70,20 @@
         .forget-box .forget-pwd{
             float:right;
             margin-right:10px;
-            font-size:16px;
+            font-size:14px;
         }
-        
         
         .reg-box .reg-label{
             text-align:center;
             padding:10px;
             width:60%;
+            margin-top: 10px;
             margin-left:20%;
             margin-right:20%;
             background:#ffffff;
+            color: #0199FF;
             font-size:16px;
+            border: 0.5px solid #0199FF;
         }
         </style>
         
@@ -100,15 +102,17 @@
             </div>
         </div>
         
-        <UIButton class="primary-button" onclick="@selector(actionLogin:)">登陆</UIButton>
-        
         <div class="forget-box">
-            <label class="forget-pwd" onclick="@selector(actionForgetPassword)">找回密码</label>
+            <label class="forget-pwd" onclick="@selector(actionForgetPassword)">忘记密码</label>
         </div>
+        
+        <UIButton class="primary-button" onclick="@selector(actionLogin:)">登陆</UIButton>
         
         <div class="reg-box">
             <label class="reg-label" onclick="@selector(actionRegister)">商户注册</label>
         </div>
+        
+        
     </body>
     
 </html>

@@ -49,13 +49,9 @@
 //用户登录类型
 #define USER_TYPE_MERCHANT @"merchant"
 
-//需求类型
-//买手机
-#define LTT_TYPE_MOBILE 1
-//手机上门
-#define LTT_TYPE_MOBILEDOOR 2
-//电脑上门
-#define LTT_TYPE_COMPUTERDOOR 3
+//通用服务类型
+#define LTT_SERVICE_CATEGORYID -1
+#define LTT_SERVICE_CATEGORYNAME @"上门服务"
 
 //行业列表
 //商品

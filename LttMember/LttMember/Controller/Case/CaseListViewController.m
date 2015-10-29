@@ -41,7 +41,7 @@
     self.navigationItem.title = @"我的服务单";
     
     //默认值
-    intentionList = [[NSMutableArray alloc] initWithObjects:nil];
+    intentionList = [NSMutableArray array];
     page = 0;
     hasMore = YES;
 }

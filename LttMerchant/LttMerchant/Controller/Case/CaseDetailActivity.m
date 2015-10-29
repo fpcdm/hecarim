@@ -192,7 +192,7 @@
                                         if (servicesCount > 0) {
                                             for (ServiceEntity *service in intention.services) {
                                                 [servicesList addObject:@{
-                                                                       @"name": service.typeName,
+                                                                       @"name": service.name ? service.name : @"",
                                                                        @"price": [NSString stringWithFormat:@"￥%@", service.price]
                                                                        }];
                                             }

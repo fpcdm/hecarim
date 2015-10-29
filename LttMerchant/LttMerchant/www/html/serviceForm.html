@@ -140,20 +140,14 @@
             </div>
         </div>
         
-        <div class="case-field field-dropdown">
-            <label class="field-name">服务类别</label>
+        <div class="case-field">
+            <label class="field-title">内容</label>
+            <UITextField class="field-input" id="remarkField" placeholder="请输入内容"></UITextField>
         </div>
-        
-        <UIButton id="categoryButton" onclick="@selector(actionChooseCategory:)" class="case-button">请选择</UIButton>
         
         <div class="case-field">
             <label class="field-title">价格</label>
             <UITextField class="field-input" id="priceField" keyboard-type="decimal" placeholder="请输入价格"></UITextField>
-        </div>
-        
-        <div class="case-field">
-            <label class="field-title">内容</label>
-            <UITextField class="field-input" id="remarkField" placeholder="请输入内容"></UITextField>
         </div>
         
         <UIButton id="saveButton" onclick="@selector(actionSave:)" class="primary-button margin-top-10">保存</UIButton>
