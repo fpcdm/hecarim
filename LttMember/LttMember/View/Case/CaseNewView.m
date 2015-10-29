@@ -30,7 +30,7 @@
     }];
     
     UILabel *textLabel = [UILabel new];
-    textLabel.text = @"正在为您呼叫客服";
+    textLabel.text = @"正在为您呼叫工作人员";
     textLabel.backgroundColor = [UIColor clearColor];
     textLabel.font = [UIFont boldSystemFontOfSize:16];
     textLabel.textColor = COLOR_MAIN_GRAY;
@@ -40,6 +40,20 @@
         make.top.equalTo(bigLabel.mas_bottom).offset(10);
         make.centerX.equalTo(superview.mas_centerX);
         
+    }];
+    
+    //头像
+    UIImageView *imageView = [UIImageView new];
+    imageView.image = [UIImage imageNamed:@"support"];
+    imageView.layer.cornerRadius = 45;
+    [self addSubview:imageView];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(textLabel.mas_bottom).offset(10);
+        make.centerX.equalTo(superview.mas_centerX);
+        
+        make.width.equalTo(@90);
+        make.height.equalTo(@90);
     }];
     
     //定时器
@@ -52,7 +66,7 @@
     self.timerLabel = timerLabel;
     
     [timerLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(textLabel.mas_bottom).offset(20);
+        make.top.equalTo(imageView.mas_bottom).offset(20);
         make.centerX.equalTo(superview.mas_centerX);
     }];
     

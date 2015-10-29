@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"呼叫客服";
+    self.navigationItem.title = @"呼叫工作人员";
     
     //查询默认收货地址
     [self showLoading:TIP_LOADING_MESSAGE];

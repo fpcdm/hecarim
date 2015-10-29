@@ -157,7 +157,7 @@
     
     //输入框
     remarkTextView = [[UITextView alloc] init];
-    remarkTextView.placeholder = @"给客服留言";
+    remarkTextView.placeholder = @"给工作人员留言";
     remarkTextView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
     remarkTextView.layer.cornerRadius = 3.0;
     remarkTextView.font = FONT_MIDDLE;
