@@ -15,8 +15,10 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"result": @"data"}];
     
+    NSDictionary *param = @{@"user_type":@"merchant"};
+    
     NSString *restPath = [NSString stringWithFormat:@"user/mobilecheck/%@", mobile];
-    [sharedClient getObject:[ResultEntity new] path:restPath param:nil success:^(NSArray *result){
+    [sharedClient getObject:[ResultEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);

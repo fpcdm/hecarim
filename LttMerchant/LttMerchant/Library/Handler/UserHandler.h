@@ -64,4 +64,13 @@
  */
 - (void) queryConsumeHistory: (UserEntity *)user param: (NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
 
+/**
+ * 商户注册
+ 
+ * @param user 商户
+ * @param vCode 安全码
+ * @param success 成功回调
+ * @param failure 失败回调
+ */
+- (void) registerWithUser: (UserEntity *)user vCode: (NSString *)vCode success:(SuccessBlock) success failure:(FailedBlock) failure;
 @end
