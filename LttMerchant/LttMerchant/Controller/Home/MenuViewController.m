@@ -37,8 +37,6 @@
         userImageView.image = [UIImage imageNamed:@"nopic"];
         userImageView.layer.masksToBounds = YES;
         userImageView.layer.cornerRadius = 50.0;
-        userImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        userImageView.layer.borderWidth = 3.0f;
         userImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         userImageView.layer.shouldRasterize = YES;
         userImageView.clipsToBounds = YES;
