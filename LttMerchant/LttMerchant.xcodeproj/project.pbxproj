@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346F61BE0B422001530F0 /* RegisterViewController.m */; };
+		2B8347021BE0B4CE001530F0 /* RegisterCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346F91BE0B4CE001530F0 /* RegisterCodeView.m */; };
+		2B8347031BE0B4CE001530F0 /* RegisterExistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */; };
+		2B8347041BE0B4CE001530F0 /* RegisterMobileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FD1BE0B4CE001530F0 /* RegisterMobileView.m */; };
+		2B8347051BE0B4CE001530F0 /* RegisterPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FF1BE0B4CE001530F0 /* RegisterPasswordView.m */; };
+		2B8347061BE0B4CE001530F0 /* RegisterSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8347011BE0B4CE001530F0 /* RegisterSuccessView.m */; };
 		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
 		2F02FB6E1BABE1B100D7D68F /* CaseErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F02FB6D1BABE1B100D7D68F /* CaseErrorView.m */; };
 		2F02FB701BABE5DE00D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB6F1BABE5DE00D7D68F /* libxml2.tbd */; };
@@ -581,6 +587,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B8346F51BE0B422001530F0 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2B8346F61BE0B422001530F0 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2B8346F81BE0B4CE001530F0 /* RegisterCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterCodeView.h; sourceTree = "<group>"; };
+		2B8346F91BE0B4CE001530F0 /* RegisterCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterCodeView.m; sourceTree = "<group>"; };
+		2B8346FA1BE0B4CE001530F0 /* RegisterExistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterExistView.h; sourceTree = "<group>"; };
+		2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterExistView.m; sourceTree = "<group>"; };
+		2B8346FC1BE0B4CE001530F0 /* RegisterMobileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterMobileView.h; sourceTree = "<group>"; };
+		2B8346FD1BE0B4CE001530F0 /* RegisterMobileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterMobileView.m; sourceTree = "<group>"; };
+		2B8346FE1BE0B4CE001530F0 /* RegisterPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPasswordView.h; sourceTree = "<group>"; };
+		2B8346FF1BE0B4CE001530F0 /* RegisterPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPasswordView.m; sourceTree = "<group>"; };
+		2B8347001BE0B4CE001530F0 /* RegisterSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSuccessView.h; sourceTree = "<group>"; };
+		2B8347011BE0B4CE001530F0 /* RegisterSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSuccessView.m; sourceTree = "<group>"; };
 		2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F02FB6C1BABE1B100D7D68F /* CaseErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseErrorView.h; sourceTree = "<group>"; };
@@ -1901,6 +1919,8 @@
 				2F16E6641B5DF84B007947D0 /* LttNavigationController.m */,
 				2F16E6651B5DF84B007947D0 /* MenuViewController.h */,
 				2F16E6661B5DF84B007947D0 /* MenuViewController.m */,
+				2B8346F51BE0B422001530F0 /* RegisterViewController.h */,
+				2B8346F61BE0B422001530F0 /* RegisterViewController.m */,
 				2F55F6991BDF12D000A89174 /* ForgetPasswordViewController.h */,
 				2F55F69A1BDF12D000A89174 /* ForgetPasswordViewController.m */,
 			);
@@ -2055,6 +2075,16 @@
 		2F55F69C1BDF12F400A89174 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2B8346FC1BE0B4CE001530F0 /* RegisterMobileView.h */,
+				2B8346FD1BE0B4CE001530F0 /* RegisterMobileView.m */,
+				2B8346F81BE0B4CE001530F0 /* RegisterCodeView.h */,
+				2B8346F91BE0B4CE001530F0 /* RegisterCodeView.m */,
+				2B8346FA1BE0B4CE001530F0 /* RegisterExistView.h */,
+				2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */,
+				2B8346FE1BE0B4CE001530F0 /* RegisterPasswordView.h */,
+				2B8346FF1BE0B4CE001530F0 /* RegisterPasswordView.m */,
+				2B8347001BE0B4CE001530F0 /* RegisterSuccessView.h */,
+				2B8347011BE0B4CE001530F0 /* RegisterSuccessView.m */,
 				2F55F69F1BDF12F400A89174 /* ForgetPasswordView.h */,
 				2F55F6A01BDF12F400A89174 /* ForgetPasswordView.m */,
 				2F55F69D1BDF12F400A89174 /* ForgetPasswordCodeView.h */,
@@ -4213,6 +4243,7 @@
 				2F78FB6C1B75B1F40009F349 /* Samurai_HtmlElementInputButton.m in Sources */,
 				2F78FAD51B75B1F30009F349 /* ServiceGestureViewClick.m in Sources */,
 				2F78FAF01B75B1F30009F349 /* EMStringStylingConfiguration.m in Sources */,
+				2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */,
 				2F16E6A71B5DF84B007947D0 /* AppExtension.m in Sources */,
 				2F78FAEA1B75B1F30009F349 /* ServiceTapspotView.m in Sources */,
 				2FA0A39F1B69E62B0083365B /* LoginActivity.m in Sources */,
@@ -4271,6 +4302,7 @@
 				2FED7DC11B1EA2E100306A11 /* SDWebImageDecoder.m in Sources */,
 				2F90007C1B1D91470040D97B /* MASViewAttribute.m in Sources */,
 				2F78FA641B75B1F30009F349 /* Samurai_Assert.m in Sources */,
+				2B8347021BE0B4CE001530F0 /* RegisterCodeView.m in Sources */,
 				2F78FA9E1B75B1F30009F349 /* Samurai_UITableViewCell.m in Sources */,
 				2F78FA551B75B1F30009F349 /* Samurai_Config(Phone).m in Sources */,
 				2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */,
@@ -4318,10 +4350,12 @@
 				2F78FAA51B75B1F30009F349 /* Samurai_Activity.m in Sources */,
 				2F78FA7D1B75B1F30009F349 /* Signal+Model.m in Sources */,
 				2F6D3F031B3128CC007A4159 /* MJRefreshAutoFooter.m in Sources */,
+				2B8347041BE0B4CE001530F0 /* RegisterMobileView.m in Sources */,
 				2F78FA991B75B1F30009F349 /* Samurai_UIScrollView.m in Sources */,
 				2F81ADE71B9D427F00E381B0 /* CaseTableCell.m in Sources */,
 				2FCAF8A31B20453E00F3B084 /* ErrorEntity.m in Sources */,
 				2F78FA6C1B75B1F30009F349 /* Samurai_Sandbox.m in Sources */,
+				2B8347061BE0B4CE001530F0 /* RegisterSuccessView.m in Sources */,
 				2F78FAEE1B75B1F30009F349 /* NSObject+AutoRuntime.m in Sources */,
 				2F78FB191B75B1F40009F349 /* Samurai_CSSNumberKhz.m in Sources */,
 				2F78FB711B75B1F40009F349 /* Samurai_HtmlElementInputPassword.m in Sources */,
@@ -4336,6 +4370,7 @@
 				2F90007D1B1D91470040D97B /* MASViewConstraint.m in Sources */,
 				2F55F6A81BDF12F400A89174 /* ResetPasswordView.m in Sources */,
 				2F78FB3C1B75B1F40009F349 /* UITextField+Html.m in Sources */,
+				2B8347051BE0B4CE001530F0 /* RegisterPasswordView.m in Sources */,
 				2F78FAB41B75B1F30009F349 /* Samurai_StyleSheet.m in Sources */,
 				2F78FBDE1B75C0470009F349 /* RefreshCollectionView.m in Sources */,
 				2F78FAED1B75B1F30009F349 /* NSObject+AutoCoding.m in Sources */,
@@ -4544,6 +4579,7 @@
 				2F78FADF1B75B1F30009F349 /* JBChartView.m in Sources */,
 				2F78FA651B75B1F30009F349 /* Samurai_Debug.m in Sources */,
 				2F90007F1B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2B8347031BE0B4CE001530F0 /* RegisterExistView.m in Sources */,
 				2F78FB481B75B1F40009F349 /* Samurai_HtmlDocumentWorklet_60ApplyStyleTree.m in Sources */,
 				2F78FAA41B75B1F30009F349 /* Samurai_ViewComponent.m in Sources */,
 				2F78FB531B75B1F40009F349 /* Samurai_HtmlElementCaption.m in Sources */,
