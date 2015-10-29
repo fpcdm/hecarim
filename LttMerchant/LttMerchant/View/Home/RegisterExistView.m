@@ -48,7 +48,7 @@
     UILabel *registeredLabel = [[UILabel alloc] init];
     registeredLabel.font = FONT_MAIN;
     registeredLabel.backgroundColor = [UIColor clearColor];
-    registeredLabel.text = @"当前手机号已注册，你看可以";
+    registeredLabel.text = @"当前手机号已注册，你可以";
     [self addSubview:registeredLabel];
     
     [registeredLabel mas_makeConstraints:^(MASConstraintMaker *make){
