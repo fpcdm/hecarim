@@ -43,17 +43,20 @@
     }];
     
     UILabel *tipLabel = [[UILabel alloc] init];
-    tipLabel.text = @"您可以用注册手机管理订单和员工了！";
+    tipLabel.text = @"您的请求已经受理，\n我们将尽快审核您的商户申请。";
     tipLabel.font = FONT_MAIN;
-    tipLabel.textColor =COLOR_MAIN_BUTTON_BG;
+    tipLabel.textColor = [UIColor redColor];
+    tipLabel.numberOfLines = 2;
+    tipLabel.textAlignment = NSTextAlignmentCenter;
     tipLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:tipLabel];
     
     [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(successLabel.mas_bottom).offset(padding);
         make.centerX.equalTo(superview.mas_centerX);
-        make.height.equalTo(@16);
+//        make.height.equalTo(@16);
     }];
+
     
     //返回首页
     UIButton *button = [[UIButton alloc] init];

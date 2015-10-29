@@ -59,7 +59,7 @@
     //直接登陆
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:@"直接登陆" forState:UIControlStateNormal];
-    [button setTitleColor:COLOR_MAIN_BUTTON_BG forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(actionLogin) forControlEvents:UIControlEventTouchUpInside];
     button.titleLabel.font = FONT_MAIN;
     button.titleLabel.backgroundColor = [UIColor clearColor];
