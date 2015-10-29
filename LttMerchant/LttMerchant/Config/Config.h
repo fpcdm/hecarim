@@ -92,8 +92,11 @@
 
 //尺寸配置
 #define FONT_MAIN [UIFont systemFontOfSize:16]
+#define FONT_MAIN_BOLD [UIFont boldSystemFontOfSize:16]
 #define FONT_MIDDLE [UIFont systemFontOfSize:14]
+#define FONT_MIDDLE_BOLD [UIFont boldSystemFontOfSize:14]
 #define FONT_SMALL [UIFont systemFontOfSize:12]
+#define FONT_SMALL_BOLD [UIFont boldSystemFontOfSize:12]
 
 //按钮配置
 //中按钮高度
@@ -110,6 +113,8 @@
 #define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
 #define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
 #define ERROR_MOBILE_NOTFOUND @"该手机号不存在哦~亲！"
+#define ERROR_MERCHANT_REQUIRED @"请填写商户名称哦~亲！"
+#define ERROR_CONTACT_REQUIRED @"请填写联系人哦~亲"
 
 #define TIP_LOADING_MESSAGE @"加载中"
 #define TIP_LOADING_SUCCESS @"加载完成"
