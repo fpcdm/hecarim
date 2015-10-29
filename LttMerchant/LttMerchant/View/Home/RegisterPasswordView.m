@@ -119,10 +119,6 @@
     
     xxView = inputView1;
     
-    
-    
-    
-    
     return self;
 }
 
@@ -190,8 +186,8 @@
         }];
         
         xxView = inputView2;
-        
     }
+    
     //密码提示
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"密码由6-20位英文字母，数字或符号组成";
