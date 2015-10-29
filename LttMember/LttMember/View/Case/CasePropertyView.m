@@ -21,8 +21,7 @@
     
     //添加背景图
     UIImageView *bgView = [[UIImageView alloc] init];
-    bgView.image = [UIImage imageNamed:@"homeCategoryBg"];
-    bgView.alpha = 0.9;
+    bgView.image = [UIImage imageNamed:@"homePopupBg"];
     [self addSubview:bgView];
     
     UIView *superview = self;
@@ -94,7 +93,7 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.text = property.name;
     nameLabel.font = FONT_SMALL;
-    nameLabel.textColor = COLOR_MAIN_BLACK;
+    nameLabel.textColor = COLOR_MAIN_WHITE;
     [cell addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {

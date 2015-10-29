@@ -83,7 +83,7 @@
     superview = topView;
     [menuButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(statusHeight + 7);
-        make.left.equalTo(superview.mas_left).offset(5);
+        make.left.equalTo(superview.mas_left).offset(10);
         make.width.equalTo(@20);
         make.height.equalTo(@16);
     }];
@@ -91,8 +91,6 @@
     //当前位置
     UIButton *locationButton = [[UIButton alloc] init];
     locationButton.backgroundColor = [UIColor clearColor];
-    [locationButton setBackgroundImage:[UIImage imageNamed:@"homeAddress"] forState:UIControlStateNormal];
-    [locationButton setBackgroundImage:[UIImage imageNamed:@"homeAddress"] forState:UIControlStateHighlighted];
     [locationButton addTarget:self action:@selector(actionGps) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:locationButton];
     
@@ -100,7 +98,7 @@
     [locationButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5);
         make.left.equalTo(menuButton.mas_right).offset(10);
-        make.right.equalTo(superview.mas_right).offset(-5);
+        make.right.equalTo(superview.mas_right).offset(-10);
         make.height.equalTo(@25);
     }];
     
@@ -111,7 +109,7 @@
     
     superview = locationButton;
     [pointView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superview.mas_left).offset(5);
+        make.left.equalTo(superview.mas_left);
         make.centerY.equalTo(superview.mas_centerY);
         make.height.equalTo(@13.5);
         make.width.equalTo(@18);
@@ -126,7 +124,7 @@
     [addressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(superview.mas_centerY);
         make.left.equalTo(pointView.mas_right).offset(2.5);
-        make.right.equalTo(superview.mas_right).offset(-5);
+        make.right.equalTo(superview.mas_right);
         make.height.equalTo(@20);
     }];
     
@@ -134,7 +132,7 @@
     addressLabel = [[UILabel alloc] init];
     addressLabel.text = @"正在定位";
     addressLabel.font = FONT_SMALL;
-    addressLabel.textColor = COLOR_MAIN_GRAY;
+    addressLabel.textColor = COLOR_MAIN_WHITE;
     [addressView addSubview:addressLabel];
     
     superview = addressView;

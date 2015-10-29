@@ -302,7 +302,8 @@ static NSMutableDictionary *caseTypes = nil;
     NSInteger itemLine = (int)([properties count] / 4) + 1;
     if (itemLine > 3) itemLine = 3;
     
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 20, itemLine * 100)];
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 20, itemLine * 95 + 10)];
+    customView.alpha = 0.9;
     CasePropertyView *propertyView = [[CasePropertyView alloc] init];
     propertyView.delegate = self;
     propertyView.frame = [customView bounds];
@@ -313,7 +314,7 @@ static NSMutableDictionary *caseTypes = nil;
     
     //设置弹出框主题
     CNPPopupTheme *popupTheme = [[CNPPopupTheme alloc] init];
-    popupTheme.backgroundColor = [UIColor whiteColor];
+    popupTheme.backgroundColor = [UIColor clearColor];
     popupTheme.cornerRadius = 0;
     popupTheme.popupContentInsets = UIEdgeInsetsZero;
     popupTheme.popupStyle = CNPPopupStyleCentered;

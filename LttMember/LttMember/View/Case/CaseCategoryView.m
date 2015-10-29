@@ -52,11 +52,14 @@
 {
     NSMutableArray *section = [NSMutableArray array];
     
+    //计算宽度
+    CGFloat cellWidth = (SCREEN_WIDTH - 50) / 4;
+    
     //循环分类
     NSArray *categories = [self getData:@"categories"];
     if (categories) {
         for (CategoryEntity *category in categories) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:indexPath:", @"height":@85, @"width": @67.5, @"data": category}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:indexPath:", @"height":@85, @"width": @(cellWidth), @"data": category}];
         }
     }
     
@@ -74,7 +77,7 @@
     }
     
     //设置选中样式
-    UIView *selectedView = [[UIView alloc] initWithFrame:cell.bounds];
+    UIView *selectedView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
     selectedView.backgroundColor = [UIColor colorWithHexString:@"E3C8A8"];
     selectedView.alpha = 0.5;
     selectedView.layer.borderColor = CGCOLOR_MAIN_BORDER;
