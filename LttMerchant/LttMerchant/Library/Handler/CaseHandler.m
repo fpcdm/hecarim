@@ -34,6 +34,8 @@
                                    @"staff_avatar": @"staffAvatar",
                                    @"type_id": @"typeId",
                                    @"type_name": @"typeName",
+                                   @"property_id": @"propertyId",
+                                   @"property_name": @"propertyName",
                                    @"user_id": @"userId",
                                    @"user_name": @"userName",
                                    @"user_mobile": @"userMobile",

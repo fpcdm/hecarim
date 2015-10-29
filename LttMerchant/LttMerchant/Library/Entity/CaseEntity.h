@@ -44,6 +44,10 @@
 
 @property (nonatomic, retain) NSString *typeName;
 
+@property (nonatomic, retain) NSNumber *propertyId;
+
+@property (nonatomic, retain) NSString *propertyName;
+
 @property (nonatomic, retain) NSNumber *userId;
 
 @property (nonatomic, retain) NSString *userName;

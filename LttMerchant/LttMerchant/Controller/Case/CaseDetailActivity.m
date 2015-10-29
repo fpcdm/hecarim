@@ -119,10 +119,11 @@
     [super reloadData];
     
     NSString *buyerAddress = [NSString stringWithFormat:@"服务地址: %@", (intention.buyerAddress && [intention.buyerAddress length] > 0 ? intention.buyerAddress : @"-")];
-    NSString *customerRemark = intention.customerRemark && [intention.customerRemark length] > 0 ? intention.customerRemark : nil;
-    if (intention.typeName && [intention.typeName length] > 0) {
-        customerRemark = customerRemark ? [NSString stringWithFormat:@"%@(%@)", customerRemark, intention.typeName] : intention.typeName;
-    }
+    NSString *customerRemark = [NSString stringWithFormat:@"%@ (%@%@)",
+                                intention.customerRemark ? intention.customerRemark : @"",
+                                intention.typeName ? intention.typeName : @"",
+                                intention.propertyName && [intention.propertyName length] > 0 ? [NSString stringWithFormat:@"-%@", intention.propertyName] : @""
+                                ];
     self.scope[@"info"] = @{
                                        @"userName": intention.userName ? intention.userName: @"-",
                                        @"userAppellation": intention.userAppellation ? intention.userAppellation : @"-",

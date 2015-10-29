@@ -12,7 +12,7 @@
 
 @implementation CaseEntity
 
-@synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName,
+@synthesize id, no, status, createTime, mapUrl, rateStar, typeId, typeName, propertyId, propertyName,
             buyerName, buyerMobile, buyerAddress, customerRemark,
             staffId, staffName, staffMobile, staffAvatar, staffRemark,
             userId, userName, userMobile, userAvatar, userAppellation,
