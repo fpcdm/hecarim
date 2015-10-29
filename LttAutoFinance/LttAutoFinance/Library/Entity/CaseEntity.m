@@ -86,7 +86,7 @@ totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesP
     }
     if (self.services && [self.services count] > 0) {
         for (ServiceEntity *serviceEntity in self.services) {
-            [details addObject:serviceEntity.typeName];
+            [details addObject:serviceEntity.name];
         }
     }
     

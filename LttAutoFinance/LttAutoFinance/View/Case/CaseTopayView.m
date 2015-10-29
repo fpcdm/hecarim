@@ -283,7 +283,7 @@
         //名称
         UILabel *nameLabel = [UILabel new];
         nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.text = service.typeName;
+        nameLabel.text = service.name;
         nameLabel.textColor = COLOR_MAIN_DARK;
         nameLabel.font = FONT_MIDDLE;
         [orderView addSubview:nameLabel];
