@@ -123,7 +123,7 @@
     
     [addressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(superview.mas_centerY);
-        make.left.equalTo(pointView.mas_right).offset(2.5);
+        make.left.equalTo(pointView.mas_right);
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(@20);
     }];
