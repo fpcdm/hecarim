@@ -183,17 +183,8 @@
     } else if ([self.view isMemberOfClass:[RegisterCodeView class]]) {
         [self popView:[self mobileInputView] animated:YES completion:nil];
     } else if ([self.view isMemberOfClass:[RegisterPasswordView class]]) {
-//        RegisterCodeView *codeView = [self mobileCodeView];
-//        [self popView:codeView animated:YES completion:^{
-//            [codeView setData:@"mobile" value:mobile];
-//            [codeView renderData];
-//            
-//            sendButton = codeView.sendButton;
-//            [self checkButton];
-//        }];
         [self popView:[self mobileInputView] animated:YES completion:nil];
     } else if ([self.view isMemberOfClass:[RegisterSuccessView class]]) {
-//        [self popView:[self mobilePasswordView] animated:YES completion:nil];
         [self actionLogin];
     }
     return NO;
@@ -235,7 +226,6 @@
                     [codeView setData:@"mobile" value:mobile];
                     [codeView renderData];
                     
-                    
                     //发送短信验证码
                     sendButton = codeView.sendButton;
                     [self sendSms:^(id object){
@@ -256,7 +246,6 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (void) actionSend
 {
@@ -316,6 +305,7 @@
         [self showError:ERROR_CONTACT_REQUIRED];
         return;
     }
+    
     if ([mobileStatus isEqualToString:@"unregistered"]) {
         NSString *inputPassword = [user.password trim];
         if (![ValidateUtil isRequired:inputPassword]) {
