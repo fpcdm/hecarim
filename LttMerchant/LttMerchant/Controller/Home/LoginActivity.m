@@ -15,6 +15,7 @@
 #import "AppUIUtil.h"
 #import "PickerUtil.h"
 #import "ForgetPasswordViewController.h"
+#import "RegisterViewController.h"
 
 @interface LoginActivity ()
 
@@ -169,9 +170,17 @@
 }
 
 //找回密码
--(void)actionForgetPassword{
+-(void)actionForgetPassword
+{
     ForgetPasswordViewController *viewController = [[ForgetPasswordViewController alloc] init];
     [self pushViewController:viewController animated:YES];
+}
+
+//商户注册
+- (void)actionRegister
+{
+    RegisterViewController *registerController = [[RegisterViewController alloc] init];
+    [self pushViewController:registerController animated:YES];
 }
 
 @end
