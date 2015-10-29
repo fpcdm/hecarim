@@ -1,6 +1,6 @@
 //
 //  RegisterPasswordView.h
-//  LttAutoFinance
+//  LttMember
 //
 //  Created by wuyong on 15/7/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -10,7 +10,7 @@
 
 @protocol RegisterPasswordViewDelegate <NSObject>
 
-- (void) actionRegister: (NSString *) password;
+-(void)actionRegister:(UserEntity *)user;
 
 @end
 

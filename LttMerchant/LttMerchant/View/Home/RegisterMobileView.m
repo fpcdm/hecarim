@@ -1,6 +1,6 @@
 //
 //  RegisterMobileView.m
-//  LttAutoFinance
+//  LttMember
 //
 //  Created by wuyong on 15/7/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
@@ -53,7 +53,7 @@
     
     //手机号输入框
     mobileField = [AppUIUtil makeTextField];
-    mobileField.keyboardType = UIKeyboardTypePhonePad;
+    mobileField.keyboardType = UIKeyboardTypeNumberPad;
     mobileField.placeholder = @"请输入手机号码";
     mobileField.font = FONT_MAIN;
     [inputView addSubview:mobileField];
@@ -95,7 +95,7 @@
     }];
     
     UILabel *protocolTitle = [[UILabel alloc] init];
-    protocolTitle.text = @"两条腿平台服务协议。";
+    protocolTitle.text = @"两条腿商户服务协议。";
     protocolTitle.backgroundColor = [UIColor clearColor];
     protocolTitle.textColor = COLOR_MAIN_DARK;
     protocolTitle.font = FONT_MAIN_BOLD;
