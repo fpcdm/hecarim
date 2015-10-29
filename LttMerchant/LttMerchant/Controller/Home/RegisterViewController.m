@@ -40,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = COLOR_MAIN_BG;
     
     self.navigationItem.title = @"注册";
 }
