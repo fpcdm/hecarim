@@ -34,14 +34,16 @@
     mapWebView.backgroundColor = COLOR_MAIN_WHITE;
     mapWebView.opaque = NO;
     mapWebView.delegate = self;
+    mapWebView.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    mapWebView.layer.borderWidth = 0.5f;
     [self addSubview:mapWebView];
     
     UIView *superview = self;
     [mapWebView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom).offset(-100);
+        make.top.equalTo(superview.mas_top).offset(-0.5);
+        make.left.equalTo(superview.mas_left).offset(-0.5);
+        make.right.equalTo(superview.mas_right).offset(0.5);
+        make.bottom.equalTo(superview.mas_bottom).offset(-80);
     }];
     
     //加载中
@@ -57,30 +59,14 @@
         make.width.equalTo(@40);
     }];
     
-    //客服信息
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"正在为您服务的工作人员：";
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = COLOR_MAIN_DARK;
-    titleLabel.font = FONT_MAIN;
-    [self addSubview:titleLabel];
-    
-    int padding = 10;
-    
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(mapWebView.mas_bottom).offset(padding + 4);
-        make.left.equalTo(superview.mas_left).offset(padding);
-        
-        make.height.equalTo(@16);
-    }];
-    
     //头像
     avatarView = [[UIImageView alloc] init];
     avatarView.layer.cornerRadius = 25;
     [self addSubview:avatarView];
     
+    int padding = 10;
     [avatarView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(titleLabel.mas_bottom).offset(padding);
+        make.top.equalTo(mapWebView.mas_bottom).offset(15);
         make.left.equalTo(superview.mas_left).offset(padding);
         
         make.width.equalTo(@50);
@@ -90,45 +76,61 @@
     //姓名
     nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
-    nameLabel.textColor = COLOR_MAIN_DARK;
-    nameLabel.font = FONT_MAIN;
+    nameLabel.textColor = COLOR_MAIN_BLACK;
+    nameLabel.font = [UIFont boldSystemFontOfSize:20];
     [self addSubview:nameLabel];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(avatarView.mas_top).offset(5);
+        make.top.equalTo(avatarView.mas_top).offset(7);
         make.left.equalTo(avatarView.mas_right).offset(padding);
         
-        make.height.equalTo(@16);
+        make.height.equalTo(@20);
+    }];
+    
+    //客服信息
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"正在为您服务";
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = COLOR_MAIN_DARK;
+    titleLabel.font = [UIFont systemFontOfSize:10];
+    [self addSubview:titleLabel];
+    
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(avatarView.mas_right).offset(padding);
+        make.top.equalTo(nameLabel.mas_bottom).offset(6);
+        
+        make.height.equalTo(@10);
     }];
     
     //电话
     mobileButton = [[UIButton alloc] init];
-    [mobileButton setTitleColor:COLOR_MAIN_HIGHLIGHT forState:UIControlStateNormal];
-    mobileButton.titleLabel.font = FONT_MAIN;
-    mobileButton.titleLabel.backgroundColor = [UIColor clearColor];
+    mobileButton.backgroundColor = COLOR_MAIN_CLEAR;
+    [mobileButton setBackgroundImage:[UIImage imageNamed:@"phoneStaff"] forState:UIControlStateNormal];
+    [mobileButton setBackgroundImage:[UIImage imageNamed:@"phoneStaff"] forState:UIControlStateHighlighted];
     [self addSubview:mobileButton];
     
     [mobileButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(avatarView.mas_right).offset(padding);
-        make.bottom.equalTo(avatarView.mas_bottom).offset(-5);
+        make.top.equalTo(mapWebView.mas_bottom).offset(15);
+        make.right.equalTo(superview.mas_right).offset(-80);
         
-        make.height.equalTo(@16);
+        make.width.equalTo(@50);
+        make.height.equalTo(@50);
     }];
     
     //投诉
     UIButton *complainButton = [[UIButton alloc] init];
-    [complainButton setTitleColor:COLOR_MAIN_HIGHLIGHT forState:UIControlStateNormal];
-    [complainButton setTitle:@"官方客服" forState:UIControlStateNormal];
+    complainButton.backgroundColor = COLOR_MAIN_CLEAR;
+    [complainButton setBackgroundImage:[UIImage imageNamed:@"phone400"] forState:UIControlStateNormal];
+    [complainButton setBackgroundImage:[UIImage imageNamed:@"phone400"] forState:UIControlStateHighlighted];
     [complainButton addTarget:self action:@selector(actionComplain) forControlEvents:UIControlEventTouchUpInside];
-    complainButton.titleLabel.font = FONT_MIDDLE;
-    complainButton.titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:complainButton];
     
     [complainButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.right.equalTo(superview.mas_right).offset(-padding);
-        make.bottom.equalTo(superview.mas_bottom).offset(-15);
+        make.top.equalTo(mapWebView.mas_bottom).offset(15);
+        make.right.equalTo(superview.mas_right).offset(-15);
         
-        make.height.equalTo(@16);
+        make.width.equalTo(@50);
+        make.height.equalTo(@50);
     }];
     
     return self;
@@ -157,7 +159,6 @@
     //客服信息
     [intention avatarView:avatarView];
     nameLabel.text = intention.staffName;
-    [mobileButton setTitle:intention.staffMobile forState:UIControlStateNormal];
     [mobileButton addTarget:self action:@selector(actionMobile) forControlEvents:UIControlEventTouchUpInside];
 }
 
