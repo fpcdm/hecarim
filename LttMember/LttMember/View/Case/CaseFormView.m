@@ -89,21 +89,9 @@
     superview = formView;
     [addressBorder mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(39.5);
-        make.left.equalTo(superview.mas_left).offset(15);
+        make.left.equalTo(superview.mas_left).offset(32);
         make.right.equalTo(superview.mas_right).offset(-30);
         make.height.equalTo(@0.5);
-    }];
-    
-    //联系人图标
-    UIImageView *contactIcon = [[UIImageView alloc] init];
-    contactIcon.image = [UIImage imageNamed:@"caseCustomer"];
-    [formView addSubview:contactIcon];
-    
-    [contactIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(addressBorder.mas_bottom).offset(padding);
-        make.left.equalTo(superview.mas_left).offset(padding);
-        make.width.equalTo(@12);
-        make.height.equalTo(@20);
     }];
     
     //联系人文本
@@ -113,7 +101,7 @@
     
     [contactLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(addressBorder.mas_bottom).offset(padding);
-        make.left.equalTo(contactIcon.mas_right).offset(10);
+        make.left.equalTo(addressIcon.mas_right).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
         make.height.equalTo(@20);
     }];
@@ -160,10 +148,10 @@
     [formView addSubview:remarkIcon];
     
     [remarkIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(contactBorder.mas_bottom).offset(padding);
+        make.top.equalTo(contactBorder.mas_bottom).offset(padding + 5);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.width.equalTo(@12);
-        make.height.equalTo(@20);
+        make.height.equalTo(@12);
     }];
     
     //输入框

@@ -73,7 +73,7 @@
     
     UIImageView *iconView = [[UIImageView alloc] init];
     iconView.backgroundColor = [UIColor clearColor];
-    iconView.image = [UIImage imageNamed:@"detailIcon"];
+    iconView.image = [UIImage imageNamed:@"detailIconWhite"];
     iconView.layer.cornerRadius = 3.0f;
     [caseView addSubview:iconView];
     
@@ -83,7 +83,7 @@
         make.left.equalTo(superview.mas_left).offset(10);
         
         make.width.equalTo(@30);
-        make.height.equalTo(@34);
+        make.height.equalTo(@30);
     }];
     
     UILabel *noTitle = [self makeLabel:@"编号："];
@@ -169,7 +169,7 @@
         make.left.equalTo(superview.mas_left).offset(10);
         
         make.width.equalTo(@30);
-        make.height.equalTo(@34);
+        make.height.equalTo(@30);
     }];
     
     //联系人
