@@ -14,9 +14,9 @@
 
 @implementation CaseFormView
 {
-    UITextView *remarkTextView;
+    UILabel *addressLabel;
     UILabel *contactLabel;
-    UITextView *addressTextView;
+    UITextView *remarkTextView;
 }
 
 - (id)init
@@ -24,154 +24,162 @@
     self = [super init];
     if (!self) return nil;
     
-    self.tableData = [[NSMutableArray alloc] initWithObjects:
-                      @[
-                        @{@"id" : @"address", @"type" : @"custom", @"view": @"cellAddress:", @"action": @"actionAddress", @"height":@90},
-                        ],
-                      @[
-                        @{@"id" : @"remark", @"type" : @"custom", @"view": @"cellRemark:", @"height":@75},
-                        ],
-                      nil];
+    //表单视图
+    UIView *formView = [[UIView alloc] init];
+    formView.backgroundColor = COLOR_MAIN_WHITE;
+    formView.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    formView.layer.borderWidth = 0.5f;
+    formView.layer.cornerRadius = 5.0f;
+    [self addSubview:formView];
     
-    //呼叫按钮
-    UIButton *button = [AppUIUtil makeButton:@"呼叫"];
-    [button addTarget:self action:@selector(actionSubmit) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
+    int padding = 10;
     
     UIView *superview = self;
-    int padding = 10;
-    [button mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.tableView.tableFooterView.mas_bottom);
+    [formView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(20);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
-        
-        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
+        make.height.equalTo(@160);
     }];
     
-    [self.tableView reloadData];
+    //地址图标
+    UIImageView *addressIcon = [[UIImageView alloc] init];
+    addressIcon.image = [UIImage imageNamed:@"caseAddress"];
+    [formView addSubview:addressIcon];
     
-    return self;
-}
-
-#pragma mark - RenderData
-- (void) renderData
-{
-    NSString *name = [self getData:@"name"];
-    if (!name) name = @"";
-    NSString *mobile = [self getData:@"mobile"];
-    NSString *address = [self getData:@"address"];
-    
-    //显示联系人
-    contactLabel.text = [NSString stringWithFormat:@"服务联系人：%@  %@", name, mobile];
-    
-    //是否有地址
-    if (address) {
-        contactLabel.hidden = NO;
-        addressTextView.text = [NSString stringWithFormat:@"服务地址：%@", address];
-        addressTextView.textColor = [UIColor blackColor];
-    } else {
-        contactLabel.hidden = YES;
-        addressTextView.text = @"请选择服务地址";
-        addressTextView.textColor = [UIColor redColor];
-    }
-}
-
-#pragma mark - TableView
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return section == 0 ? HEIGHT_TABLE_MARGIN_DEFAULT : HEIGHT_TABLE_MARGIN_ZERO;
-}
-
-- (UITableViewCell *) cellAddress: (UITableViewCell *) cell
-{
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    //图片
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"caseAddress"];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [cell addSubview:imageView];
-    
-    float padding = 5;
-    
-    UIView *superview = cell;
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(superview.mas_left).offset(padding);
-        make.centerY.equalTo(superview.mas_centerY);
-        
-        make.width.equalTo(@20);
-        make.height.equalTo(@20);
-    }];
-    
-    //服务联系人
-    contactLabel = [[UILabel alloc] init];
-    contactLabel.backgroundColor = [UIColor clearColor];
-    contactLabel.font = FONT_MIDDLE;
-    [cell addSubview:contactLabel];
-    
-    padding = 10;
-    
-    [contactLabel mas_makeConstraints:^(MASConstraintMaker *make){
+    superview = formView;
+    [addressIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(padding);
-        make.left.equalTo(imageView.mas_right).offset(padding);
-        
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.width.equalTo(@12);
         make.height.equalTo(@20);
     }];
     
     //服务地址
-    addressTextView = [[UITextView alloc] init];
-    addressTextView.editable = NO;
-    addressTextView.backgroundColor = [UIColor clearColor];
-    addressTextView.font = FONT_MIDDLE;
-    addressTextView.scrollEnabled = NO;
-    addressTextView.userInteractionEnabled = NO;
-    [cell addSubview:addressTextView];
+    UIScrollView *addressView = [[UIScrollView alloc] init];
+    addressView.showsHorizontalScrollIndicator = NO;
+    addressView.showsVerticalScrollIndicator = NO;
+    [formView addSubview:addressView];
     
-    [addressTextView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(contactLabel.mas_bottom);
-        make.left.equalTo(imageView.mas_right).offset(4);
-        make.right.equalTo(superview.mas_right).offset(-24);
-        make.bottom.equalTo(superview.mas_bottom).offset(-padding);
+    [addressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(padding);
+        make.left.equalTo(addressIcon.mas_right).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-30);
+        make.height.equalTo(@20);
     }];
     
-    return cell;
-}
-
-- (UITableViewCell *) cellRemark: (UITableViewCell *) cell
-{
-    //图片
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"caseVoice"];
-    [cell addSubview:imageView];
+    //地址文本
+    addressLabel = [[UILabel alloc] init];
+    addressLabel.font = FONT_MIDDLE;
+    [addressView addSubview:addressLabel];
     
-    float padding = 5;
-    
-    UIView *superview = cell;
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(superview.mas_left).offset(padding);
+    superview = addressView;
+    [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(superview.mas_height);
+    }];
+    
+    //分割线
+    UIView *addressBorder = [[UIView alloc] init];
+    addressBorder.backgroundColor = COLOR_MAIN_BORDER;
+    [self addSubview:addressBorder];
+    
+    superview = formView;
+    [addressBorder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(39.5);
+        make.left.equalTo(superview.mas_left).offset(15);
+        make.right.equalTo(superview.mas_right).offset(-30);
+        make.height.equalTo(@0.5);
+    }];
+    
+    //联系人图标
+    UIImageView *contactIcon = [[UIImageView alloc] init];
+    contactIcon.image = [UIImage imageNamed:@"caseCustomer"];
+    [formView addSubview:contactIcon];
+    
+    [contactIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(addressBorder.mas_bottom).offset(padding);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.width.equalTo(@12);
+        make.height.equalTo(@20);
+    }];
+    
+    //联系人文本
+    contactLabel = [[UILabel alloc] init];
+    contactLabel.font = FONT_MIDDLE_BOLD;
+    [formView addSubview:contactLabel];
+    
+    [contactLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(addressBorder.mas_bottom).offset(padding);
+        make.left.equalTo(contactIcon.mas_right).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.height.equalTo(@20);
+    }];
+    
+    //选择地址
+    UIButton *addressButton = [[UIButton alloc] init];
+    [addressButton addTarget:self action:@selector(actionAddress) forControlEvents:UIControlEventTouchUpInside];
+    [formView addSubview:addressButton];
+    
+    [addressButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(superview.mas_right);
+        make.centerY.equalTo(superview.mas_top).offset(40);
+        make.width.equalTo(@30);
+        make.height.equalTo(@80);
+    }];
+    
+    UIImageView *chooseIcon = [[UIImageView alloc] init];
+    chooseIcon.image = [UIImage imageNamed:@"chooseAddress"];
+    [addressButton addSubview:chooseIcon];
+    
+    [chooseIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(addressButton.mas_centerX);
+        make.centerY.equalTo(addressButton.mas_centerY);
         
-        make.width.equalTo(@20);
+        make.width.equalTo(@10);
+        make.height.equalTo(@20);
+    }];
+    
+    //分割线
+    UIView *contactBorder = [[UIView alloc] init];
+    contactBorder.backgroundColor = COLOR_MAIN_BORDER;
+    [self addSubview:contactBorder];
+    
+    [contactBorder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(addressBorder.mas_bottom).offset(39.5);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(@0.5);
+    }];
+    
+    //留言图标
+    UIImageView *remarkIcon = [[UIImageView alloc] init];
+    remarkIcon.image = [UIImage imageNamed:@"caseRemark"];
+    [formView addSubview:remarkIcon];
+    
+    [remarkIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contactBorder.mas_bottom).offset(padding);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.width.equalTo(@12);
         make.height.equalTo(@20);
     }];
     
     //输入框
     remarkTextView = [[UITextView alloc] init];
-    remarkTextView.placeholder = @"给工作人员留言";
-    remarkTextView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
-    remarkTextView.layer.cornerRadius = 3.0;
+    remarkTextView.placeholder = @"给为您服务的工作人员留言";
     remarkTextView.font = FONT_MIDDLE;
-    remarkTextView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    remarkTextView.layer.borderWidth = 0.5f;
     remarkTextView.delegate = self;
-    [cell addSubview:remarkTextView];
+    remarkTextView.contentInset = UIEdgeInsetsMake(-5, -5, 0, 0);
+    [formView addSubview:remarkTextView];
     
+    superview = formView;
     [remarkTextView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerY.equalTo(superview.mas_centerY);
-        make.left.equalTo(imageView.mas_right).offset(padding);
+        make.top.equalTo(superview.mas_top).offset(90);
+        make.left.equalTo(remarkIcon.mas_right).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-10);
-        
-        make.height.equalTo(@65);
+        make.bottom.equalTo(superview.mas_bottom).offset(-10);
     }];
     
     //关闭键盘Toolbar
@@ -185,7 +193,44 @@
     [keyboardToolbar setItems:buttonsArray];
     [remarkTextView setInputAccessoryView:keyboardToolbar];
     
-    return cell;
+    //呼叫按钮
+    UIButton *button = [AppUIUtil makeButton:@"呼叫"];
+    [button addTarget:self action:@selector(actionSubmit) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+    
+    superview = self;
+    [button mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(formView.mas_bottom).offset(20);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
+    }];
+    
+    return self;
+}
+
+#pragma mark - RenderData
+- (void) renderData
+{
+    NSString *name = [self getData:@"name"];
+    if (!name) name = @"";
+    NSString *mobile = [self getData:@"mobile"];
+    NSString *address = [self getData:@"address"];
+    
+    //显示联系人
+    contactLabel.text = [NSString stringWithFormat:@"%@  %@", name, mobile];
+    
+    //是否有地址
+    if (address) {
+        contactLabel.hidden = NO;
+        addressLabel.text = address;
+        addressLabel.textColor = [UIColor blackColor];
+    } else {
+        contactLabel.hidden = YES;
+        addressLabel.text = @"请选择服务地址";
+        addressLabel.textColor = [UIColor redColor];
+    }
 }
 
 #pragma mark - TextView

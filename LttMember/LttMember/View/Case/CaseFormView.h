@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppTableView.h"
+#import "AppView.h"
 
 @protocol CaseFormViewDelegate <NSObject>
 
@@ -15,7 +15,7 @@
 
 @end
 
-@interface CaseFormView : AppTableView
+@interface CaseFormView : AppView
 
 @property (retain, nonatomic) id<CaseFormViewDelegate> delegate;
 
