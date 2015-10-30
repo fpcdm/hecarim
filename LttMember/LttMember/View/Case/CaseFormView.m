@@ -150,8 +150,8 @@
     [remarkIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contactBorder.mas_bottom).offset(padding + 5);
         make.left.equalTo(superview.mas_left).offset(padding);
-        make.width.equalTo(@12);
-        make.height.equalTo(@12);
+        make.width.equalTo(@14);
+        make.height.equalTo(@14);
     }];
     
     //输入框
@@ -165,7 +165,7 @@
     superview = formView;
     [remarkTextView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(superview.mas_top).offset(90);
-        make.left.equalTo(remarkIcon.mas_right).offset(padding);
+        make.left.equalTo(remarkIcon.mas_right).offset(padding - 2);
         make.right.equalTo(superview.mas_right).offset(-10);
         make.bottom.equalTo(superview.mas_bottom).offset(-10);
     }];
