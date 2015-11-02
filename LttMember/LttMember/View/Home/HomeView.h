@@ -35,6 +35,10 @@
 - (void) reloadCategories;
 - (void) reloadTypes;
 
+//切换二级分类
+- (void) showProperties;
+- (void) clearProperties;
+
 //重新保存当前的分类
 - (void) saveCategories;
 

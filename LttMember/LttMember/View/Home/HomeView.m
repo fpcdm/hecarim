@@ -10,8 +10,9 @@
 #import "CategoryEntity.h"
 #import "SpringBoardButton.h"
 #import "TAPageControl.h"
+#import "CasePropertyView.h"
 
-@interface HomeView () <SpringBoardButtonDelegate, UIScrollViewDelegate, TAPageControlDelegate>
+@interface HomeView () <SpringBoardButtonDelegate, UIScrollViewDelegate, TAPageControlDelegate, CasePropertyViewDelegate>
 
 @end
 
@@ -25,6 +26,7 @@
     
     UIView *recommendView;
     UIScrollView *categoryView;
+    CasePropertyView *propertyView;
     
     NSMutableArray *recommendBtns;
     NSMutableArray *categoryBtns;
@@ -467,6 +469,9 @@
 #pragma mark - reloadTypes
 - (void) reloadTypes
 {
+    //去掉二级分类
+    [self clearProperties];
+    
     //移除旧的服务列表
     if (typeBtns && [typeBtns count] > 0) {
         for (SpringBoardButton *button in typeBtns) {
@@ -819,6 +824,59 @@
             }
             [categoryView setContentOffset:contentOffset animated:YES];
         }
+    }
+}
+
+#pragma mark - reloadProperties
+- (void) showProperties
+{
+    //显示二级分类
+    typeView.hidden = YES;
+    if (propertyView) {
+        [propertyView removeFromSuperview];
+    }
+    
+    //获取参数
+    NSArray *properties = [self getData:@"properties"];
+    
+    //属性容器
+    propertyView = [[CasePropertyView alloc] init];
+    propertyView.delegate = self;
+    propertyView.backgroundColor = COLOR_MAIN_CLEAR;
+    [middleView addSubview:propertyView];
+    
+    UIView *superview = middleView;
+    [propertyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(recommendView.mas_bottom);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom).offset(-80);
+    }];
+    
+    [propertyView setData:@"properties" value:properties];
+    [propertyView renderData];
+}
+
+- (void) clearProperties
+{
+    //隐藏二级分类
+    if (propertyView) {
+        [propertyView removeFromSuperview];
+    }
+    
+    if (typeView) {
+        typeView.hidden = NO;
+    }
+}
+
+- (void) actionSelected:(PropertyEntity *)property
+{
+    //取消
+    if ([@-1 isEqualToNumber:property.id]) {
+        [self clearProperties];
+    //非取消
+    } else {
+        [self.delegate actionCase:property.id];
     }
 }
 

@@ -19,22 +19,6 @@
     self = [super init];
     if (!self) return nil;
     
-    //添加背景图
-    UIImageView *bgView = [[UIImageView alloc] init];
-    bgView.image = [UIImage imageNamed:@"homePopupBg"];
-    [self addSubview:bgView];
-    
-    UIView *superview = self;
-    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom);
-    }];
-    
-    //表格放到上面
-    [self bringSubviewToFront:self.collectionView];
-    
     //设置滚动视图
     self.collectionView.scrollEnabled = YES;
     self.collectionView.backgroundColor = COLOR_MAIN_CLEAR;
@@ -49,7 +33,7 @@
     NSMutableArray *section = [NSMutableArray array];
     
     //计算宽度
-    CGFloat cellWidth = (SCREEN_WIDTH - 70) / 4;
+    CGFloat cellWidth = (SCREEN_WIDTH - 50) / 4;
     
     //循环属性
     NSArray *properties = [self getData:@"properties"];
@@ -58,6 +42,13 @@
             [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @(cellWidth), @"data": property}];
         }
     }
+    
+    //添加取消图标
+    PropertyEntity *cancelProperty = [[PropertyEntity alloc] init];
+    cancelProperty.id = @-1;
+    cancelProperty.name = @"取消";
+    cancelProperty.icon = @"homeItemCancel";
+    [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @(cellWidth), @"data": cancelProperty}];
     
     self.collectionData = [[NSMutableArray alloc] initWithObjects:section,nil];
     [self.collectionView reloadData];
@@ -79,7 +70,11 @@
     [cell addSubview:imageView];
     
     PropertyEntity *property = [cellData objectForKey:@"data"];
-    [property iconView:imageView];
+    if ([@-1 isEqualToNumber:property.id]) {
+        imageView.image = [UIImage imageNamed:property.icon];
+    } else {
+        [property iconView:imageView];
+    }
     
     UIView *superview = cell;
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {

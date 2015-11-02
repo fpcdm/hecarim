@@ -29,7 +29,7 @@ static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
 static NSMutableDictionary *caseTypes = nil;
 
-@interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate, CNPPopupControllerDelegate, CasePropertyViewDelegate>
+@interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate, CNPPopupControllerDelegate>
 
 @end
 
@@ -81,6 +81,9 @@ static NSMutableDictionary *caseTypes = nil;
         [LocationUtil sharedInstance].delegate = self;
         [[LocationUtil sharedInstance] restartUpdate];
     }
+    
+    //清除属性
+    [homeView clearProperties];
     
     [self initData];
 }
@@ -271,7 +274,8 @@ static NSMutableDictionary *caseTypes = nil;
         //判断是否启用属性
         NSArray *properties = result ? result : @[];
         if ([properties count] > 0) {
-            [self showPopupProperty:properties];
+            //当前区域切换
+            [self showProperties:properties];
         } else {
             [self showCaseForm];
         }
@@ -296,52 +300,10 @@ static NSMutableDictionary *caseTypes = nil;
     [self pushViewController:viewController animated:YES];
 }
 
-- (void)showPopupProperty:(NSArray *)properties
+- (void)showProperties:(NSArray *)properties
 {
-    //属性视图，最多三行，超过滚动
-    NSInteger itemLine = (int)([properties count] / 4) + 1;
-    if (itemLine > 3) itemLine = 3;
-    
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 20, itemLine * 95 + 10)];
-    customView.alpha = 0.9;
-    CasePropertyView *propertyView = [[CasePropertyView alloc] init];
-    propertyView.delegate = self;
-    propertyView.frame = [customView bounds];
-    [customView addSubview:propertyView];
-    
-    [propertyView setData:@"properties" value:properties];
-    [propertyView renderData];
-    
-    //设置弹出框主题
-    CNPPopupTheme *popupTheme = [[CNPPopupTheme alloc] init];
-    popupTheme.backgroundColor = [UIColor clearColor];
-    popupTheme.cornerRadius = 0;
-    popupTheme.popupContentInsets = UIEdgeInsetsZero;
-    popupTheme.popupStyle = CNPPopupStyleCentered;
-    popupTheme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
-    popupTheme.dismissesOppositeDirection = NO;
-    popupTheme.maskType = CNPPopupMaskTypeDimmed;
-    popupTheme.shouldDismissOnBackgroundTouch = YES;
-    popupTheme.movesAboveKeyboard = YES;
-    popupTheme.contentVerticalPadding = 0;
-    popupTheme.maxPopupWidth = SCREEN_WIDTH - 20;
-    
-    //显示弹出框
-    popupController = [[CNPPopupController alloc] initWithContents:@[customView]];
-    popupController.theme = popupTheme;
-    popupController.theme.popupStyle = CNPPopupStyleCentered;
-    popupController.delegate = self;
-    [popupController presentPopupControllerAnimated:YES];
-}
-
-- (void)actionSelected:(PropertyEntity *)property
-{
-    //隐藏弹框
-    [popupController dismissPopupControllerAnimated:NO];
-    
-    //跳转表单页面
-    propertyId = property.id;
-    [self showCaseForm];
+    [homeView setData:@"properties" value:properties];
+    [homeView showProperties];
 }
 
 #pragma mark - Action
