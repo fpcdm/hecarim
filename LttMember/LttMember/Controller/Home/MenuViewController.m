@@ -40,12 +40,12 @@
         userImageView.layer.shouldRasterize = YES;
         userImageView.clipsToBounds = YES;
         
-        userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
+        userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 200, 24)];
         userNameLabel.text = @"未登陆";
         userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
         userNameLabel.backgroundColor = [UIColor clearColor];
         userNameLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-        [userNameLabel sizeToFit];
+        userNameLabel.textAlignment = NSTextAlignmentCenter;
         userNameLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
         [view addSubview:userImageView];
@@ -72,7 +72,6 @@
                     nil];
         
         userNameLabel.text = @"未登录";
-        [userNameLabel sizeToFit];
         userImageView.image = [UIImage imageNamed:@"nopic"];
         //已登录
     } else {
@@ -83,7 +82,6 @@
                     nil];
         
         userNameLabel.text = [user displayName];
-        [userNameLabel sizeToFit];
         [user avatarView:userImageView];
     }
 }
