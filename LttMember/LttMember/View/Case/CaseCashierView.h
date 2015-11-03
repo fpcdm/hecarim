@@ -10,6 +10,10 @@
 
 @protocol CaseCashierViewDelegate <NSObject>
 
+- (void)actionWeixinQrcode;
+- (void)actionAlipayQrcode;
+- (void)actionUseMoney;
+
 @end
 
 @interface CaseCashierView : AppView

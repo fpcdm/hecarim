@@ -23,7 +23,7 @@
 #import "UIView+Loading.h"
 #import "LttAppDelegate.h"
 
-@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseGoodsViewDelegate, CaseCommentViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
+@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseGoodsViewDelegate, CaseCashierViewDelegate, CasePayedViewDelegate, CaseCommentViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
 
 @end
 
@@ -197,6 +197,32 @@
     }
 }
 
+- (void)cashierView
+{
+    CaseCashierView *cashierView = [[CaseCashierView alloc] init];
+    cashierView.delegate = self;
+    self.view = cashierView;
+    
+    self.navigationItem.title = @"两条腿收银台";
+    
+    //显示数据
+    [cashierView setData:@"intention" value:intention];
+    [cashierView renderData];
+}
+
+- (void)payedView
+{
+    CasePayedView *payedView = [[CasePayedView alloc] init];
+    payedView.delegate = self;
+    self.view = payedView;
+    
+    self.navigationItem.title = @"支付确认";
+    
+    //显示数据
+    [payedView setData:@"intention" value:intention];
+    [payedView renderData];
+}
+
 #pragma mark - RemoteNotification
 //处理远程通知钩子（当前需求时自动切换页面）
 - (void) handleRemoteNotification:(NSString *)message type:(NSString *)type data:(NSString *)data
@@ -277,25 +303,66 @@
 
 - (void)actionPay
 {
-    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
-    intentionEntity.id = self.caseId;
-    
-    NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
-    
-    [self showLoading:TIP_REQUEST_MESSAGE];
-    
-    //调用接口
-    CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    [caseHandler updateIntentionStatus:intentionEntity param:param success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            intention.status = CASE_STATUS_PAYED;
+    [self cashierView];
+}
+
+//微信扫码
+- (void)actionWeixinQrcode
+{
+    //检查微信扫码
+    NSURL *url = [NSURL URLWithString:URL_SCHEME_WEIXIN_QRCODE];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+        [self payedView];
+    } else {
+        [self showError:@"请先安装微信再扫码支付哦~亲！"];
+    }
+}
+
+//支付宝扫码
+- (void)actionAlipayQrcode
+{
+    //检查微信扫码
+    NSURL *url = [NSURL URLWithString:URL_SCHEME_ALIPAY_QRCODE];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+        [self payedView];
+    } else {
+        [self showError:@"请先安装支付宝再扫码支付哦~亲！"];
+    }
+}
+
+//现金支付
+- (void)actionUseMoney
+{
+    [self payedView];
+}
+
+//确认付款完成
+- (void)actionConfirmPayed
+{
+    //检测需求状态是否有修改
+    [self loadData:^(id object){
+        //已经支付完成
+        if ([intention.status isEqualToString:CASE_STATUS_PAYED] ||
+            [intention.status isEqualToString:CASE_STATUS_SUCCESS]) {
             [self intentionView];
-        }];
+        //还未支付完成
+        } else {
+            [self showError:@"请等待商户确认收款成功哦~亲！"];
+        }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
 }
 
+//重新选择支付方式
+- (void)actionRechooseMethod
+{
+    [self cashierView];
+}
+
+//评价
 - (void)actionComment:(int)value
 {
     if (value < 1) {

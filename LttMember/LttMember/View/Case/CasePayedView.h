@@ -10,6 +10,9 @@
 
 @protocol CasePayedViewDelegate <NSObject>
 
+- (void)actionConfirmPayed;
+- (void)actionRechooseMethod;
+
 @end
 
 @interface CasePayedView : AppView

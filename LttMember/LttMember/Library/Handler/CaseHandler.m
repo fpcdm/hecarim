@@ -313,19 +313,6 @@
     }];
 }
 
-- (void) updateIntentionStatus:(CaseEntity *)intention param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    //调用接口
-    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    
-    NSString *restPath = [sharedClient formatPath:@"cases/status/:id" object:intention];
-    [sharedClient postObject:intention path:restPath param:param success:^(NSArray *result){
-        success(result);
-    } failure:^(ErrorEntity *error){
-        failure(error);
-    }];
-}
-
 - (void) addIntentionEvaluation:(CaseEntity *)intention success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //登录接口调用

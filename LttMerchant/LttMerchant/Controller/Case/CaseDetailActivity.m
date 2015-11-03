@@ -451,6 +451,14 @@
 //服务完成
 - (void)actionFinishCase:(SamuraiSignal *)signal
 {
+    //至少添加一个商品和服务
+    NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
+    NSInteger servicesCount = intention.services ? [intention.services count] : 0;
+    if (goodsCount < 1 && servicesCount < 1) {
+        [self showError:@"请至少添加一个商品或服务"];
+        return;
+    }
+    
     CaseEntity *caseEntity = [[CaseEntity alloc] init];
     caseEntity.id = self.caseId;
     

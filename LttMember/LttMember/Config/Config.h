@@ -66,6 +66,10 @@
 //汽车金融
 #define LTT_TYPE_AUTOFINANCE 4
 
+//支付URL Scheme
+#define URL_SCHEME_WEIXIN_QRCODE @"weixin://dl/scan"
+#define URL_SCHEME_ALIPAY_QRCODE @"alipayqr://platformapi/startapp?saId=10000007"
+
 //需求状态
 #define CASE_STATUS_NEW @"new"
 #define CASE_STATUS_LOCKED @"locked"
