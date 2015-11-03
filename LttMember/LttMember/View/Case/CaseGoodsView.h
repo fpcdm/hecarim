@@ -8,14 +8,14 @@
 
 #import "AppView.h"
 
-@protocol CaseTopayViewDelegate <NSObject>
+@protocol CaseGoodsViewDelegate <NSObject>
 
 - (void)actionPay;
 
 @end
 
-@interface CaseTopayView : AppView
+@interface CaseGoodsView : AppView
 
-@property (retain,nonatomic) id<CaseTopayViewDelegate> delegate;
+@property (retain,nonatomic) id<CaseGoodsViewDelegate> delegate;
 
 @end

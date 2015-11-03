@@ -11,8 +11,10 @@
 #import "CaseNewView.h"
 #import "CaseLockedView.h"
 #import "CaseConfirmedView.h"
-#import "CaseTopayView.h"
+#import "CaseGoodsView.h"
+#import "CaseCashierView.h"
 #import "CasePayedView.h"
+#import "CaseCommentView.h"
 #import "CaseSuccessView.h"
 #import "CaseDetailView.h"
 #import "TimerUtil.h"
@@ -21,7 +23,7 @@
 #import "UIView+Loading.h"
 #import "LttAppDelegate.h"
 
-@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseTopayViewDelegate, CasePayedViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
+@interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseGoodsViewDelegate, CaseCommentViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
 
 @end
 
@@ -157,7 +159,7 @@
         //停止地图
         [self stopMap];
         
-        CaseTopayView *topayView = [[CaseTopayView alloc] init];
+        CaseGoodsView *topayView = [[CaseGoodsView alloc] init];
         topayView.delegate = self;
         self.view = topayView;
         
@@ -167,7 +169,7 @@
         [topayView setData:@"intention" value:intention];
         [topayView renderData];
     } else if ([intention.status isEqualToString:CASE_STATUS_PAYED]) {
-        CasePayedView *receivedView = [[CasePayedView alloc] init];
+        CaseCommentView *receivedView = [[CaseCommentView alloc] init];
         receivedView.delegate = self;
         self.view = receivedView;
         

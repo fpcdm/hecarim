@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseTopayView.h"
+#import "CaseGoodsView.h"
 #import "CaseEntity.h"
 
-@implementation CaseTopayView
+@implementation CaseGoodsView
 {
     UILabel *titleLabel;
     UIView *orderView;

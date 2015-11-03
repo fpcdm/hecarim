@@ -36,9 +36,9 @@
 		2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5831B5DEFEE007947D0 /* CaseListView.m */; };
 		2F16E5AC1B5DEFEE007947D0 /* CaseLockedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5851B5DEFEE007947D0 /* CaseLockedView.m */; };
 		2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5871B5DEFEE007947D0 /* CaseNewView.m */; };
-		2F16E5AE1B5DEFEE007947D0 /* CasePayedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5891B5DEFEE007947D0 /* CasePayedView.m */; };
+		2F16E5AE1B5DEFEE007947D0 /* CaseCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5891B5DEFEE007947D0 /* CaseCommentView.m */; };
 		2F16E5AF1B5DEFEE007947D0 /* CaseSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E58B1B5DEFEE007947D0 /* CaseSuccessView.m */; };
-		2F16E5B01B5DEFEE007947D0 /* CaseTopayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E58D1B5DEFEE007947D0 /* CaseTopayView.m */; };
+		2F16E5B01B5DEFEE007947D0 /* CaseGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E58D1B5DEFEE007947D0 /* CaseGoodsView.m */; };
 		2F16E5B11B5DEFEE007947D0 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5901B5DEFEE007947D0 /* HomeView.m */; };
 		2F16E5B21B5DEFEE007947D0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5921B5DEFEE007947D0 /* LoginView.m */; };
 		2F16E5B31B5DEFEE007947D0 /* RegisterCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5941B5DEFEE007947D0 /* RegisterCodeView.m */; };
@@ -109,6 +109,8 @@
 		2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22391B3A4D0300428742 /* TSMessageView.m */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
+		2F593C641BE85AE400698AFA /* CaseCashierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F593C631BE85AE400698AFA /* CaseCashierView.m */; };
+		2F593C671BE85BEE00698AFA /* CasePayedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F593C661BE85BEE00698AFA /* CasePayedView.m */; };
 		2F5C8B251BD8C8A300EF1586 /* CaseCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C8B241BD8C8A300EF1586 /* CaseCategoryViewController.m */; };
 		2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C8B271BD8C9A700EF1586 /* CaseCategoryView.m */; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
@@ -308,12 +310,12 @@
 		2F16E5851B5DEFEE007947D0 /* CaseLockedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseLockedView.m; sourceTree = "<group>"; };
 		2F16E5861B5DEFEE007947D0 /* CaseNewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseNewView.h; sourceTree = "<group>"; };
 		2F16E5871B5DEFEE007947D0 /* CaseNewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseNewView.m; sourceTree = "<group>"; };
-		2F16E5881B5DEFEE007947D0 /* CasePayedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CasePayedView.h; sourceTree = "<group>"; };
-		2F16E5891B5DEFEE007947D0 /* CasePayedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CasePayedView.m; sourceTree = "<group>"; };
+		2F16E5881B5DEFEE007947D0 /* CaseCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseCommentView.h; sourceTree = "<group>"; };
+		2F16E5891B5DEFEE007947D0 /* CaseCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseCommentView.m; sourceTree = "<group>"; };
 		2F16E58A1B5DEFEE007947D0 /* CaseSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseSuccessView.h; sourceTree = "<group>"; };
 		2F16E58B1B5DEFEE007947D0 /* CaseSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseSuccessView.m; sourceTree = "<group>"; };
-		2F16E58C1B5DEFEE007947D0 /* CaseTopayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTopayView.h; sourceTree = "<group>"; };
-		2F16E58D1B5DEFEE007947D0 /* CaseTopayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTopayView.m; sourceTree = "<group>"; };
+		2F16E58C1B5DEFEE007947D0 /* CaseGoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseGoodsView.h; sourceTree = "<group>"; };
+		2F16E58D1B5DEFEE007947D0 /* CaseGoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseGoodsView.m; sourceTree = "<group>"; };
 		2F16E58F1B5DEFEE007947D0 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		2F16E5901B5DEFEE007947D0 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		2F16E5911B5DEFEE007947D0 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -436,6 +438,10 @@
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F55340F1B4FC6CD00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534101B4FC6CD00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
+		2F593C621BE85AE400698AFA /* CaseCashierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseCashierView.h; sourceTree = "<group>"; };
+		2F593C631BE85AE400698AFA /* CaseCashierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseCashierView.m; sourceTree = "<group>"; };
+		2F593C651BE85BEE00698AFA /* CasePayedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CasePayedView.h; sourceTree = "<group>"; };
+		2F593C661BE85BEE00698AFA /* CasePayedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CasePayedView.m; sourceTree = "<group>"; };
 		2F5C8B231BD8C8A300EF1586 /* CaseCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseCategoryViewController.h; sourceTree = "<group>"; };
 		2F5C8B241BD8C8A300EF1586 /* CaseCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseCategoryViewController.m; sourceTree = "<group>"; };
 		2F5C8B261BD8C9A700EF1586 /* CaseCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseCategoryView.h; sourceTree = "<group>"; };
@@ -915,10 +921,14 @@
 				2F16E5851B5DEFEE007947D0 /* CaseLockedView.m */,
 				2F16E57E1B5DEFEE007947D0 /* CaseConfirmedView.h */,
 				2F16E57F1B5DEFEE007947D0 /* CaseConfirmedView.m */,
-				2F16E58C1B5DEFEE007947D0 /* CaseTopayView.h */,
-				2F16E58D1B5DEFEE007947D0 /* CaseTopayView.m */,
-				2F16E5881B5DEFEE007947D0 /* CasePayedView.h */,
-				2F16E5891B5DEFEE007947D0 /* CasePayedView.m */,
+				2F16E58C1B5DEFEE007947D0 /* CaseGoodsView.h */,
+				2F16E58D1B5DEFEE007947D0 /* CaseGoodsView.m */,
+				2F593C621BE85AE400698AFA /* CaseCashierView.h */,
+				2F593C631BE85AE400698AFA /* CaseCashierView.m */,
+				2F593C651BE85BEE00698AFA /* CasePayedView.h */,
+				2F593C661BE85BEE00698AFA /* CasePayedView.m */,
+				2F16E5881B5DEFEE007947D0 /* CaseCommentView.h */,
+				2F16E5891B5DEFEE007947D0 /* CaseCommentView.m */,
 				2F16E58A1B5DEFEE007947D0 /* CaseSuccessView.h */,
 				2F16E58B1B5DEFEE007947D0 /* CaseSuccessView.m */,
 				2F7F8C081B7C2C0300EF4938 /* CaseDetailView.h */,
@@ -2023,16 +2033,18 @@
 				2F6D3E161B312164007A4159 /* ActionSheetStringPicker.m in Sources */,
 				2F16E5A11B5DEFEE007947D0 /* AddressView.m in Sources */,
 				2F16E5B41B5DEFEE007947D0 /* RegisterExistView.m in Sources */,
+				2F593C641BE85AE400698AFA /* CaseCashierView.m in Sources */,
 				2FED7D9D1B1EA2D300306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F16E6341B5DF162007947D0 /* AppViewController.m in Sources */,
 				2FED7D9C1B1EA2D300306A11 /* UIImage+MultiFormat.m in Sources */,
 				2FED7D951B1EA2D300306A11 /* SDWebImageDecoder.m in Sources */,
 				2FED7E0C1B1EA79300306A11 /* DDASLLogCapture.m in Sources */,
+				2F593C671BE85BEE00698AFA /* CasePayedView.m in Sources */,
 				2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */,
 				2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */,
 				2BB0C0A01BDF55F900293737 /* ForgetPasswordViewController.m in Sources */,
-				2F16E5AE1B5DEFEE007947D0 /* CasePayedView.m in Sources */,
+				2F16E5AE1B5DEFEE007947D0 /* CaseCommentView.m in Sources */,
 				2F16E63D1B5DF162007947D0 /* ModelEntity.m in Sources */,
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
@@ -2041,7 +2053,7 @@
 				2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */,
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
 				2F16E5A71B5DEFEE007947D0 /* SuggestionView.m in Sources */,
-				2F16E5B01B5DEFEE007947D0 /* CaseTopayView.m in Sources */,
+				2F16E5B01B5DEFEE007947D0 /* CaseGoodsView.m in Sources */,
 				2F16E5F01B5DF08F007947D0 /* SuggestionViewController.m in Sources */,
 				2F16E6351B5DF162007947D0 /* AddressEntity.m in Sources */,
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
