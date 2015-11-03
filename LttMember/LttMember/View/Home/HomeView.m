@@ -182,7 +182,7 @@
     typeView.tag = 2;
     typeView.showsHorizontalScrollIndicator = NO;
     typeView.showsVerticalScrollIndicator = NO;
-    [typeView setPagingEnabled:YES];
+    [typeView setPagingEnabled:NO];
     [typeView setSpringBoardDelegate:self];
     [middleView addSubview:typeView];
     
@@ -229,7 +229,7 @@
     categoryView.delegate = self;
     categoryView.showsHorizontalScrollIndicator = NO;
     categoryView.showsVerticalScrollIndicator = NO;
-    [categoryView setPagingEnabled:YES];
+    [categoryView setPagingEnabled:NO];
     [categoryView setSpringBoardDelegate:self];
     [bottomView addSubview:categoryView];
     

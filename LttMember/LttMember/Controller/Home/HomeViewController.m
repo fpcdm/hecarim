@@ -260,12 +260,12 @@ static NSMutableDictionary *caseTypes = nil;
 - (void)actionCase:(NSNumber *)type
 {
     //查询属性列表
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [homeView.typeView showIndicator];
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
     categoryEntity.id = type;
     [caseHandler queryProperties:categoryEntity success:^(NSArray *result) {
-        [self hideLoading];
+        [homeView.typeView hideIndicator];
         
         //当前所选类型
         typeId = type;
@@ -280,6 +280,8 @@ static NSMutableDictionary *caseTypes = nil;
             [self showCaseForm];
         }
     } failure:^(ErrorEntity *error) {
+        [homeView.typeView hideIndicator];
+        
         [self showError:error.message];
     }];
 }
