@@ -308,6 +308,12 @@ static NSMutableDictionary *caseTypes = nil;
     [homeView showProperties];
 }
 
+- (void)actionProperty:(PropertyEntity *)property
+{
+    propertyId = property.id;
+    [self showCaseForm];
+}
+
 #pragma mark - Action
 - (void)actionLogin
 {

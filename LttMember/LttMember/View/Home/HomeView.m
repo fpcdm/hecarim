@@ -876,7 +876,7 @@
         [self clearProperties];
     //非取消
     } else {
-        [self.delegate actionCase:property.id];
+        [self.delegate actionProperty:property];
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppView.h"
+#import "PropertyEntity.h"
 
 @protocol HomeViewDelegate <NSObject>
 
@@ -21,6 +22,7 @@
 - (void)actionAddType: (NSNumber *) categoryId;
 - (void)actionSaveCategories: (NSArray *) categories;
 - (void)actionSaveTypes: (NSNumber *) categoryId types: (NSArray *) types;
+- (void)actionProperty:(PropertyEntity *)property;
 
 @end
 
