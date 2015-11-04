@@ -16,6 +16,10 @@
 
 - (NSDate *) getSmsTime;
 
+- (void) setCityCode: (NSString *) cityCode;
+
+- (NSString *) getCityCode;
+
 @end
 
 //UserEntity分类

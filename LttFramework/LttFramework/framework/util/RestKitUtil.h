@@ -31,6 +31,8 @@ typedef void (^RestKitErrorBlock)(ErrorEntity *error);
 
 - (void) setClientType: (NSString *) clientType;
 
+- (void) setCityCode: (NSString *) cityCode;
+
 - (NSString *) formatPath: (NSString *) path  object: (id) object;
 
 - (RKRequestDescriptor *) addRequestDescriptor: (Class) objectClass mappingParam: (id) param;

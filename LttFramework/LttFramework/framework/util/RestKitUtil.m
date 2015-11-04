@@ -17,6 +17,7 @@ static RestKitUtil *sharedClient = nil;
 {
     RKObjectManager *manager;
     NSString *client;
+    NSString *city;
 }
 
 #pragma mark - Static Methods
@@ -49,6 +50,11 @@ static RestKitUtil *sharedClient = nil;
 - (void) setClientType:(NSString *)clientType;
 {
     client = clientType;
+}
+
+- (void) setCityCode:(NSString *)cityCode
+{
+    city = cityCode;
 }
 
 - (NSString *) formatPath: (NSString *) path  object: (id) object
@@ -219,6 +225,11 @@ static RestKitUtil *sharedClient = nil;
 {
     //客户端类型
     [manager.HTTPClient setDefaultHeader:@"Client" value:client];
+    
+    //城市编码
+    if (city) {
+        [manager.HTTPClient setDefaultHeader:@"City-Code" value:city];
+    }
     
     //获取token
     UserEntity *user = [[StorageUtil sharedStorage] getUser];

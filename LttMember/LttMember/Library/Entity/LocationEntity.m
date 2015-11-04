@@ -22,4 +22,6 @@
 
 @synthesize city;
 
+@synthesize cityCode;
+
 @end

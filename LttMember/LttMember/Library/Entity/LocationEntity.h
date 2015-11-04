@@ -22,4 +22,6 @@
 
 @property (retain, nonatomic) NSString *city;
 
+@property (retain, nonatomic) NSString *cityCode;
+
 @end

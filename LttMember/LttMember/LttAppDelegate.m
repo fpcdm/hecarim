@@ -59,6 +59,12 @@
     //初始化客户端类型
     [[RestKitUtil sharedClient] setClientType:LTT_CLIENT_TYPE];
     
+    //检查城市缓存
+    NSString *cityCode = [[StorageUtil sharedStorage] getCityCode];
+    if (cityCode) {
+        [[RestKitUtil sharedClient] setCityCode:cityCode];
+    }
+    
     //调试功能
 #ifdef LTT_DEBUG
     if (IS_DEBUG) {

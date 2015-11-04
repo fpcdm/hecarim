@@ -25,6 +25,7 @@
 static NSString *lastAddress = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
+static NSString *cityCode = nil;
 static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
 static NSMutableDictionary *caseTypes = nil;
@@ -203,6 +204,24 @@ static NSMutableDictionary *caseTypes = nil;
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler queryLocation:locationEntity success:^(NSArray *result){
         LocationEntity *location = [result firstObject];
+        
+        //获取城市编码，只获取一次
+        if (!cityCode) {
+            if (location.cityCode && [location.cityCode length] > 0) {
+                cityCode = location.cityCode;
+                
+                //城市有变动自动刷新
+                NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
+                if (!oldCity || ![oldCity isEqualToString:cityCode]) {
+                    //todo: 自动刷新当前页面
+                }
+                
+                //记录城市缓存
+                [[StorageUtil sharedStorage] setCityCode:cityCode];
+                //设置城市头
+                [[RestKitUtil sharedClient] setCityCode:cityCode];
+            }
+        }
         
         //获取位置
         if (location.detailAddress && [location.detailAddress length] > 0) {

@@ -38,6 +38,32 @@
     return time;
 }
 
+- (void) setCityCode:(NSString *)cityCode
+{
+    if (cityCode) {
+        [[self storage] setObject:cityCode forKey:@"city_code"];
+        [[self storage] synchronize];
+        
+        NSLog(@"set city code: %@", cityCode);
+    } else {
+        [[self storage] removeObjectForKey:@"city_code"];
+        [[self storage] synchronize];
+        
+        NSLog(@"delete city code");
+    }
+}
+
+- (NSString *) getCityCode
+{
+    NSString *cityCode = (NSString *) [[self storage] objectForKey:@"city_code"];
+    if (!cityCode) {
+        return nil;
+    }
+    
+    NSLog(@"get city code: %@", cityCode);
+    return cityCode;
+}
+
 @end
 
 //UserEntity分类
