@@ -239,6 +239,8 @@
         $(@"#editGoods").ATTR(@"visibility", @"hidden");
         $(@"#editServices").ATTR(@"visibility", @"hidden");
         
+        $(@"#payContainer").ATTR(@"display", @"none");
+        
         $(@"#competeButton").ATTR(@"display", @"block");
         $(@"#startButton").ATTR(@"display", @"none");
         $(@"#finishButton").ATTR(@"display", @"none");
@@ -256,6 +258,8 @@
         
         $(@"#editGoods").ATTR(@"visibility", @"visible");
         $(@"#editServices").ATTR(@"visibility", @"visible");
+        
+        $(@"#payContainer").ATTR(@"display", @"none");
         
         $(@"#competeButton").ATTR(@"display", @"none");
         $(@"#startButton").ATTR(@"display", @"block");
@@ -275,6 +279,8 @@
         $(@"#editGoods").ATTR(@"visibility", @"visible");
         $(@"#editServices").ATTR(@"visibility", @"visible");
         
+        $(@"#payContainer").ATTR(@"display", @"none");
+        
         $(@"#competeButton").ATTR(@"display", @"none");
         $(@"#startButton").ATTR(@"display", @"none");
         $(@"#finishButton").ATTR(@"display", @"block");
@@ -289,16 +295,21 @@
         if (remarkView) [remarkView removeFromSuperview];
         
         $(@"#consumeContainer").ATTR(@"display", @"none");
-        $(@"#goodsContainer").ATTR(@"display", @"block");
-        $(@"#servicesContainer").ATTR(@"display", @"block");
+        $(@"#goodsContainer").ATTR(@"display", @"none");
+        $(@"#servicesContainer").ATTR(@"display", @"none");
         
         $(@"#editGoods").ATTR(@"visibility", @"hidden");
         $(@"#editServices").ATTR(@"visibility", @"hidden");
+        
+        $(@"#payContainer").ATTR(@"display", @"block");
         
         $(@"#competeButton").ATTR(@"display", @"none");
         $(@"#startButton").ATTR(@"display", @"none");
         $(@"#finishButton").ATTR(@"display", @"none");
         $(@"#cancelButton").ATTR(@"display", @"none");
+        
+        //切换到选择支付方式
+        [self payView];
         
     } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
         $(@"#editCase").ATTR(@"visibility", @"hidden");
@@ -314,6 +325,8 @@
         
         $(@"#editGoods").ATTR(@"visibility", @"hidden");
         $(@"#editServices").ATTR(@"visibility", @"hidden");
+        
+        $(@"#payContainer").ATTR(@"display", @"none");
         
         $(@"#competeButton").ATTR(@"display", @"none");
         $(@"#startButton").ATTR(@"display", @"none");
@@ -335,6 +348,8 @@
         $(@"#editGoods").ATTR(@"visibility", @"hidden");
         $(@"#editServices").ATTR(@"visibility", @"hidden");
         
+        $(@"#payContainer").ATTR(@"display", @"none");
+        
         $(@"#competeButton").ATTR(@"display", @"none");
         $(@"#startButton").ATTR(@"display", @"none");
         $(@"#finishButton").ATTR(@"display", @"none");
@@ -344,6 +359,75 @@
     
     //重新布局
     [self relayout];
+}
+
+//显示支付方式视图
+- (void)payView
+{
+    UIView *payContainer = $(@"#payContainer").firstView;
+    
+    //微信扫码支付
+    UIButton *weixinQrcodeButton = [self makeButton:@{
+                                                      @"icon": @"methodWeixinQrcode",
+                                                      @"text": @"微信扫码"
+                                                      }];
+    [payContainer addSubview:weixinQrcodeButton];
+    
+    UIView *superview = payContainer;
+    [weixinQrcodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(@60);
+    }];
+    
+}
+
+- (UIButton *)makeButton:(NSDictionary *)param
+{
+    UIButton *button = [[UIButton alloc] init];
+    button.backgroundColor = COLOR_MAIN_WHITE;
+    button.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    button.layer.borderWidth = 0.5f;
+    
+    //图标
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:[param objectForKey:@"icon"]];
+    [button addSubview:imageView];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(button.mas_top).offset(10);
+        make.left.equalTo(button.mas_left).offset(10);
+        make.width.equalTo(@40);
+        make.height.equalTo(@40);
+    }];
+    
+    //文字
+    UILabel *textLabel = [[UILabel alloc] init];
+    textLabel.text = [param objectForKey:@"text"];
+    textLabel.font = FONT_MAIN_BOLD;
+    textLabel.textColor = COLOR_MAIN_BLACK;
+    [button addSubview:textLabel];
+    
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(button.mas_centerY);
+        make.left.equalTo(imageView.mas_right).offset(10);
+        make.height.equalTo(@20);
+    }];
+    
+    //箭头
+    UIImageView *chooseView = [[UIImageView alloc] init];
+    chooseView.image = [UIImage imageNamed:@"chooseMethod"];
+    [button addSubview:chooseView];
+    
+    [chooseView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(button.mas_centerY);
+        make.right.equalTo(button.mas_right).offset(-10);
+        make.width.equalTo(@10);
+        make.height.equalTo(@20);
+    }];
+    
+    return button;
 }
 
 #pragma mark - Action
@@ -482,6 +566,7 @@
     }];
 }
 
+//编辑基本信息
 - (void)actionEditCase:(SamuraiSignal *)signal
 {
     CaseEditActivity *viewController = [[CaseEditActivity alloc] init];
@@ -489,6 +574,7 @@
     [self pushViewController:viewController animated:YES];
 }
 
+//编辑商品
 - (void)actionEditGoods:(SamuraiSignal *)signal
 {
     GoodsListActivity *viewController = [[GoodsListActivity alloc] init];
@@ -505,6 +591,7 @@
     [self pushViewController:viewController animated:YES];
 }
 
+//编辑服务
 - (void)actionEditServices:(SamuraiSignal *)signal
 {
     ServiceListActivity *viewController = [[ServiceListActivity alloc] init];
@@ -519,6 +606,36 @@
         }
     };
     [self pushViewController:viewController animated:YES];
+}
+
+//微信扫码支付
+- (void)actionWeixinQrcode
+{
+    
+}
+
+//支付宝扫码支付
+- (void)actionAlipayQrcode
+{
+    
+}
+
+//现金支付
+- (void)actionUseMoney
+{
+    
+}
+
+//确认现金支付
+- (void)actionConfirmPayed
+{
+    
+}
+
+//重新选择支付方式
+- (void)actionChooseMethod
+{
+    
 }
 
 @end

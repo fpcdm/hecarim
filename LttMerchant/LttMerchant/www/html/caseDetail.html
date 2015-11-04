@@ -156,14 +156,14 @@
         }
         
         .case-detail .header-button {
-            width: 50px;
+            width: 106px;
             height: 22px;
             margin-top: -3px;
             font-size: 14px;
-            background-color: white;
-            color: black;
             border-radius: 3px;
-            border: 0.5px solid #b2b2b2;
+            border: 0.5px solid white;
+            background-color: #0199FF;
+            color: white;
         }
         
         .table-empty {
@@ -225,9 +225,17 @@
             height: 20px;
             margin-top: 5px;
             margin-bottom: 5px;
+            z-index: 100;
         }
         
         .case-button {
+            margin-bottom: 10px;
+        }
+        
+        .case-pay {
+            width: 100%;
+            height: 220px;
+            background: #eeeeee;
             margin-bottom: 10px;
         }
         
@@ -314,7 +322,7 @@
             
             <div class="table-header">
                 <label class="header-title">商品</label>
-                <UIButton id="editGoods" onclick="@selector(actionEditGoods:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
+                <UIButton id="editGoods" onclick="@selector(actionEditGoods:)" class="header-button content-right" style="visibility:hidden;">编辑商品信息</UIButton>
             </div>
             
             <UITableView id="goodsTable" name="goodsList" class="table table-goods" columns="1" is-vertical>
@@ -348,7 +356,7 @@
             
             <div class="table-header">
                 <label class="header-title">上门服务</label>
-                <UIButton id="editServices" onclick="@selector(actionEditServices:)" class="header-button content-right" style="visibility:hidden;">编辑</UIButton>
+                <UIButton id="editServices" onclick="@selector(actionEditServices:)" class="header-button content-right" style="visibility:hidden;">编辑服务信息</UIButton>
             </div>
             
             <UITableView id="servicesTable" name="servicesList" class="table" columns="1" is-vertical>
@@ -368,6 +376,9 @@
                     <label class="font-bold" name="servicesAmount">￥0.00</label>
                 </div>
             </div>
+        </div>
+        
+        <div id="payContainer" class="case-pay" style="display:none;">
         </div>
         
         <UIButton id="competeButton" onclick="@selector(actionCompeteCase:)" class="primary-button case-button" style="display:none;">接单</UIButton>

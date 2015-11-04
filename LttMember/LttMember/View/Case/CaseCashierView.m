@@ -162,8 +162,8 @@
     [chooseView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(button.mas_centerY);
         make.right.equalTo(button.mas_right).offset(-10);
-        make.width.equalTo(@12);
-        make.height.equalTo(@12);
+        make.width.equalTo(@10);
+        make.height.equalTo(@20);
     }];
     
     //边框
