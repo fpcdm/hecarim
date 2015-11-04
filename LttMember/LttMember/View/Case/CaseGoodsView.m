@@ -44,7 +44,7 @@
     [self addSubview:payButton];
     
     [payButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(superview.mas_bottom).offset(-5);
+        make.bottom.equalTo(superview.mas_bottom).offset(-10);
         make.left.equalTo(superview.mas_left).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
         
@@ -81,7 +81,8 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.backgroundColor = COLOR_MAIN_BG;
     scrollView.scrollEnabled = YES;
-    scrollView.showsVerticalScrollIndicator = YES;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:scrollView];
     
     UIView *superview = self;
@@ -90,7 +91,7 @@
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         
-        make.bottom.equalTo(superview.mas_bottom).offset(-60);
+        make.bottom.equalTo(superview.mas_bottom).offset(-65);
     }];
     
     //详情容器
