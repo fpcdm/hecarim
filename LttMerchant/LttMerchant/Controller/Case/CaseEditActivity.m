@@ -7,22 +7,34 @@
 //
 
 #import "CaseEditActivity.h"
-#import "UITextView+Placeholder.h"
+#import "CaseEditView.h"
 
-@interface CaseEditActivity ()
+@interface CaseEditActivity ()<CaseEditViewDelegate>
 
 @property (nonatomic, strong) UITextView *caseRemark;
 
 @end
 
 @implementation CaseEditActivity
+{
+    CaseEditView *caseEditView;
+}
 
 @synthesize intention;
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     [super viewDidLoad];
+    self.navigationItem.title = @"服务单编辑";
+    
+    caseEditView = [[CaseEditView alloc] init];
+    caseEditView.delegate = self;
+    
+    self.view = caseEditView;
+    self.view.backgroundColor = COLOR_MAIN_BG;
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -31,35 +43,23 @@
     [self loadCase];
 }
 
-- (NSString *) templateName
-{
-    return @"caseEdit.html";
-}
-
-#pragma mark - View
-- (void)onTemplateLoaded
-{
-    //添加备注
-    self.caseRemark.placeholder = @"备注";
-}
-
 #pragma mark - reloadData
 - (void) reloadData
 {
-    [super reloadData];
+    //设置参数
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.no = self.intention.no;
+    caseEntity.status = self.intention.status;
+    caseEntity.createTime = self.intention.createTime;
+    caseEntity.totalAmount = self.intention.totalAmount;
+    [caseEditView setData:@"caseEntity" value:caseEntity];
     
-    self.scope[@"form"] = @{
-                                  @"remark": @""
-                                  };
-    
-    //重新布局
-    [self relayout];
+    [caseEditView renderData];
 }
 
 #pragma mark - Action
-- (void) actionSave: (SamuraiSignal *)signal
+- (void) actionSave: (NSString *)remark
 {
-    NSString *remark = self.caseRemark.text;
     if (!remark || [remark length] < 1) {
         [self showError:@"请填写服务单备注哦~亲！"];
         return;
