@@ -9,8 +9,9 @@
 #import "HomeActivity.h"
 #import "CaseListActivity.h"
 #import "LocationUtil.h"
+#import "HomeView.h"
 
-@interface HomeActivity ()
+@interface HomeActivity ()<HomeViewDelegate>
 
 @end
 
@@ -20,38 +21,24 @@
 {
     isIndexNavBar = YES;
     isMenuEnabled = YES;
+    
     [super viewDidLoad];
+    
+    HomeView *homeView = [[HomeView alloc] init];
+    homeView.delegate = self;
+    self.navigationItem.title = @"两条腿工作台";
+    self.view = homeView;
+    self.view.backgroundColor = COLOR_MAIN_BG;
+    
     
     //刷新gps
     [[LocationUtil sharedInstance] restartUpdate];
 }
 
-- (NSString *) templateName
-{
-    return @"home.html";
-}
 
-#pragma mark - 
-- (void)onTemplateLoading
-{
-}
-
-- (void)onTemplateLoaded
-{
-}
-
-- (void)onTemplateFailed
-{
-    
-}
-
-- (void)onTemplateCancelled
-{
-    
-}
 
 #pragma mark - Action
-- (void)actionCaseList: (SamuraiSignal *) signal
+- (void)actionCaseList
 {
     CaseListActivity *viewController = [[CaseListActivity alloc] init];
     [self pushViewController:viewController animated:YES];
