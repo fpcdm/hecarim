@@ -11,18 +11,23 @@
 #import "ServiceEntity.h"
 #import "GoodsHandler.h"
 #import "CaseHandler.h"
+#import "ServiceFromView.h"
 
-@interface ServiceFormActivity ()
+@interface ServiceFormActivity ()<ServiceFromViewDelegate>
 
 @end
 
 @implementation ServiceFormActivity
+{
+    ServiceFromView *serviceFromView;
+}
 
 @synthesize intention;
 
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     [super viewDidLoad];
+    [self setCaseNoAndStatusName];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -30,41 +35,46 @@
     [super viewDidAppear:animated];
     
     [self loadCase];
+    
 }
 
-- (NSString *)templateName
+- (void)setCaseNoAndStatusName
 {
-    return @"serviceForm.html";
+    serviceFromView = [[ServiceFromView alloc] init];
+    serviceFromView.delegate = self;
+    
+    self.navigationItem.title = @"服务添加";
+    self.view = serviceFromView;
+    self.view.backgroundColor = COLOR_MAIN_BG;
+    
+
 }
 
 #pragma mark - reloadData
 - (void) reloadData
 {
-    [super reloadData];
-    
-    //重新布局
-    [self relayout];
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.no = self.intention.no;
+    caseEntity.status = self.intention.status;
+    [serviceFromView setData:@"caseEntity" value:caseEntity];
+    [serviceFromView renderData];
 }
 
 #pragma mark - Action
-- (void) actionSave: (SamuraiSignal *) signal
+- (void)actionSave:(NSString *)remark price:(NSString *)price
 {
     //内容
-    UITextField *remarkField = (UITextField *) $(@"#remarkField").firstView;
-    NSString *remark = remarkField.text;
     if (![ValidateUtil isRequired:remark]) {
         [self showError:@"请先填写内容哦~亲！"];
         return;
     }
     
     //价格
-    UITextField *priceField = (UITextField *) $(@"#priceField").firstView;
-    NSString *priceStr = priceField.text;
-    if (![ValidateUtil isRequired:priceStr]) {
+    if (![ValidateUtil isRequired:price]) {
         [self showError:@"请先填写价格哦~亲！"];
         return;
     }
-    if (![ValidateUtil isPositiveNumber:priceStr]) {
+    if (![ValidateUtil isPositiveNumber:price]) {
         [self showError:@"价格填写不正确哦~亲！"];
         return;
     }
@@ -87,7 +97,7 @@
     currentService.typeId = @(LTT_SERVICE_CATEGORYID);
     currentService.typeName = LTT_SERVICE_CATEGORYNAME;
     currentService.name = remark;
-    currentService.price = [NSNumber numberWithFloat:[priceStr floatValue]];
+    currentService.price = [NSNumber numberWithFloat:[price floatValue]];
     [serviceList addObject:currentService];
     
     //转换数据
