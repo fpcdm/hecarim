@@ -757,7 +757,7 @@
     CaseEntity *caseEntity = [[CaseEntity alloc] init];
     caseEntity.id = self.caseId;
     
-    NSDictionary *param = @{@"pay_way": PAY_WAY_WEIXIN};
+    NSDictionary *param = @{@"pay_way": payment};
     
     [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
     

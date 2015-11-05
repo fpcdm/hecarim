@@ -32,6 +32,9 @@
     CaseEntity *intention;
     TimerUtil *timerUtil;
     long timer;
+    
+    //支付方式列表
+    NSArray *payments;
 }
 
 - (void)loadView
@@ -206,6 +209,7 @@
     self.navigationItem.title = @"两条腿收银台";
     
     //显示数据
+    [cashierView setData:@"payments" value:payments];
     [cashierView setData:@"intention" value:intention];
     [cashierView renderData];
 }
@@ -303,7 +307,51 @@
 
 - (void)actionPay
 {
-    [self cashierView];
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    NSDictionary *param = @{@"is_online": @"no"};
+    [caseHandler queryPayments:param success:^(NSArray *result) {
+        [self hideLoading];
+        
+        payments = result;
+        [self cashierView];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+}
+
+//修改支付方式公用方法
+- (void)actionUpdatePayment:(NSString *)payment success:(CallbackBlock)success
+{
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.id = self.caseId;
+    
+    NSDictionary *param = @{@"pay_way": payment};
+    
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //调用接口
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler updateCasePayment:caseEntity param:param success:^(NSArray *result){
+        [self hideLoading];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        //是否已经支付
+        if (error.code == 1100) {
+            [self showSuccess:@"您已经支付完成了哦~亲！" callback:^{
+                //检测需求状态是否有修改
+                [self loadData:^(id object){
+                    [self intentionView];
+                } failure:^(ErrorEntity *error){
+                    [self showError:error.message];
+                }];
+            }];
+        } else {
+            [self showError:error.message];
+        }
+    }];
 }
 
 //微信扫码
@@ -312,8 +360,10 @@
     //检查微信扫码
     NSURL *url = [NSURL URLWithString:URL_SCHEME_WEIXIN_QRCODE];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
-        [self payedView];
+        [self actionUpdatePayment:PAY_WAY_WEIXIN success:^(id object) {
+            [[UIApplication sharedApplication] openURL:url];
+            [self payedView];
+        }];
     } else {
         [self showError:@"请先安装微信再扫码支付哦~亲！"];
     }
@@ -325,8 +375,10 @@
     //检查微信扫码
     NSURL *url = [NSURL URLWithString:URL_SCHEME_ALIPAY_QRCODE];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
-        [self payedView];
+        [self actionUpdatePayment:PAY_WAY_ALIPAY success:^(id object) {
+            [[UIApplication sharedApplication] openURL:url];
+            [self payedView];
+        }];
     } else {
         [self showError:@"请先安装支付宝再扫码支付哦~亲！"];
     }
@@ -335,7 +387,9 @@
 //现金支付
 - (void)actionUseMoney
 {
-    [self payedView];
+    [self actionUpdatePayment:PAY_WAY_CASH success:^(id object) {
+        [self payedView];
+    }];
 }
 
 //确认付款完成

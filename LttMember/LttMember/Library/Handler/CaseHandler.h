@@ -36,6 +36,12 @@
 
 - (void) cancelIntention: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//支付方式列表
+- (void) queryPayments: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//修改支付方式
+- (void) updateCasePayment: (CaseEntity *) intention param:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 //提交评价
 - (void) addIntentionEvaluation: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 

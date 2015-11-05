@@ -191,6 +191,9 @@
                                    @"user_name": @"userName",
                                    @"user_mobile": @"userMobile",
                                    @"user_avatar": @"userAvatar",
+                                   @"is_online_pay": @"isOnlinePay",
+                                   @"pay_way": @"payWay",
+                                   @"qrcode_url": @"qrcodeUrl",
                                    @"goods": @"goodsParam",
                                    @"services": @"servicesParam"
                                    };
@@ -307,6 +310,37 @@
     
     NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"cases/info/:id" object:intention];
     [sharedClient deleteObject:intention path:restPath param:nil success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) queryPayments:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"key": @"data", @"name": @"info"} keyPath:@"list"];
+    
+    NSString *restPath = @"pay/list";
+    [sharedClient getObject:[ResultEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) updateCasePayment:(CaseEntity *)intention param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/payment/:id" object:intention];
+    [sharedClient postObject:intention path:restPath param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
         failure(error);

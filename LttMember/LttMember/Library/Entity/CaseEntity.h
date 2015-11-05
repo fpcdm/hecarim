@@ -54,6 +54,12 @@
 
 @property (nonatomic, retain) NSString *userAvatar;
 
+@property (nonatomic, retain) NSNumber *isOnlinePay;
+
+@property (nonatomic, retain) NSString *payWay;
+
+@property (nonatomic, retain) NSString *qrcodeUrl;
+
 @property (nonatomic, retain) NSNumber *totalAmount;
 
 @property (nonatomic, retain) NSNumber *goodsAmount;

@@ -70,6 +70,11 @@
 #define URL_SCHEME_WEIXIN_QRCODE @"weixin://dl/scan"
 #define URL_SCHEME_ALIPAY_QRCODE @"alipayqr://platformapi/startapp?saId=10000007"
 
+//支付方式列表
+#define PAY_WAY_WEIXIN @"weixin"
+#define PAY_WAY_ALIPAY @"alipay"
+#define PAY_WAY_CASH   @"cash"
+
 //需求状态
 #define CASE_STATUS_NEW @"new"
 #define CASE_STATUS_LOCKED @"locked"

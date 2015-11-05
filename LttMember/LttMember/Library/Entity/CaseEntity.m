@@ -17,6 +17,7 @@
 buyerName, buyerMobile, buyerAddress, customerRemark,
 staffId, staffName, staffMobile, staffAvatar, staffRemark,
 userId, userName, userMobile, userAvatar,
+isOnlinePay, payWay, qrcodeUrl,
 totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 
 @synthesize addressId;

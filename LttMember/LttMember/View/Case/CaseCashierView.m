@@ -8,6 +8,7 @@
 
 #import "CaseCashierView.h"
 #import "CaseEntity.h"
+#import "ResultEntity.h"
 
 @implementation CaseCashierView
 {
@@ -36,6 +37,15 @@
         make.height.equalTo(@20);
     }];
     
+    return self;
+}
+
+- (void)renderData
+{
+    //支付金额
+    CaseEntity *intention = [self getData:@"intention"];
+    amountLabel.text = [NSString stringWithFormat:@"您需要支付%.2f元", [intention.totalAmount floatValue]];
+    
     //请选择支付方式
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.font = FONT_MAIN;
@@ -43,6 +53,7 @@
     titleLabel.text = @"请选择支付方式";
     [self addSubview:titleLabel];
     
+    UIView *superview = self;
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(amountLabel.mas_bottom).offset(20);
         make.left.equalTo(superview.mas_left).offset(10);
@@ -60,55 +71,62 @@
         make.height.equalTo(@0.5);
     }];
     
-    //微信扫码支付
-    weixinQrcodeButton = [self makeButton:@{
-                                            @"icon": @"methodWeixinQrcode",
-                                            @"text": @"微信扫码支付",
-                                            @"detail": @"扫描微信二维码进行安全支付"
-                                            }];
-    [weixinQrcodeButton addTarget:self action:@selector(actionWeixinQrcode) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:weixinQrcodeButton];
+    UIView *separatorView = nil;
     
-    [weixinQrcodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(titleSeperator.mas_bottom);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@60);
-    }];
-    
-    //支付宝扫码支付
-    alipayQrcodeButton = [self makeButton:@{
-                                            @"icon": @"methodAlipayQrcode",
-                                            @"text": @"支付宝扫码支付",
-                                            @"detail": @"扫描支付宝二维码进行安全支付"
-                                            }];
-    [alipayQrcodeButton addTarget:self action:@selector(actionAlipayQrcode) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:alipayQrcodeButton];
-    
-    [alipayQrcodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weixinQrcodeButton.mas_bottom);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@60);
-    }];
-    
-    //现金支付
-    moneyButton = [self makeButton:@{
-                                            @"icon": @"methodMoney",
-                                            @"text": @"现金支付",
-                                            @"detail": @"支付现金给工作人员"
-                                            }];
-    [moneyButton addTarget:self action:@selector(actionUseMoney) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:moneyButton];
-    
-    [moneyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(alipayQrcodeButton.mas_bottom);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@60);
-    }];
-    
-    return self;
+    //循环输出支付方式
+    NSArray *payments = [self getData:@"payments"];
+    for (ResultEntity* payment in payments) {
+        //当前支付按钮
+        UIView *paymentButton = nil;
+        
+        //判断支付方式
+        if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {
+            //微信扫码支付
+            weixinQrcodeButton = [self makeButton:@{
+                                                    @"icon": @"methodWeixinQrcode",
+                                                    @"text": @"微信扫码支付",
+                                                    @"detail": @"扫描微信二维码进行安全支付"
+                                                    }];
+            [weixinQrcodeButton addTarget:self action:@selector(actionWeixinQrcode) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:weixinQrcodeButton];
+            
+            paymentButton = weixinQrcodeButton;
+        } else if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {
+            //支付宝扫码支付
+            alipayQrcodeButton = [self makeButton:@{
+                                                    @"icon": @"methodAlipayQrcode",
+                                                    @"text": @"支付宝扫码支付",
+                                                    @"detail": @"扫描支付宝二维码进行安全支付"
+                                                    }];
+            [alipayQrcodeButton addTarget:self action:@selector(actionAlipayQrcode) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:alipayQrcodeButton];
+            
+            paymentButton = alipayQrcodeButton;
+        } else if ([PAY_WAY_CASH isEqualToString:payment.data]) {
+            //现金支付
+            moneyButton = [self makeButton:@{
+                                             @"icon": @"methodMoney",
+                                             @"text": @"现金支付",
+                                             @"detail": @"支付现金给工作人员"
+                                             }];
+            [moneyButton addTarget:self action:@selector(actionUseMoney) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:moneyButton];
+            
+            paymentButton = moneyButton;
+        }
+        
+        //按钮输出
+        if (paymentButton) {
+            [paymentButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(separatorView ? separatorView.mas_bottom : titleSeperator.mas_bottom);
+                make.left.equalTo(superview.mas_left);
+                make.right.equalTo(superview.mas_right);
+                make.height.equalTo(@60);
+            }];
+            
+            separatorView = paymentButton;
+        }
+    }
 }
 
 - (UIButton *)makeButton:(NSDictionary *)param
@@ -179,12 +197,6 @@
     }];
     
     return button;
-}
-
-- (void)renderData
-{
-    CaseEntity *intention = [self getData:@"intention"];
-    amountLabel.text = [NSString stringWithFormat:@"您需要支付%.2f元", [intention.totalAmount floatValue]];
 }
 
 #pragma mark - Action
