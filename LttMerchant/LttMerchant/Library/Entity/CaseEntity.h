@@ -58,6 +58,12 @@
 
 @property (nonatomic, retain) NSString *userAvatar;
 
+@property (nonatomic, retain) NSNumber *isOnlinePay;
+
+@property (nonatomic, retain) NSString *payWay;
+
+@property (nonatomic, retain) NSString *qrcodeUrl;
+
 @property (nonatomic, retain) NSNumber *totalAmount;
 
 @property (nonatomic, retain) NSNumber *goodsAmount;
@@ -77,6 +83,8 @@
 - (UIColor *)statusColor;
 
 - (BOOL) isFail;
+
+- (void) qrcodeImageView:(UIImageView *)imageView way:(NSString *)way failure:(void (^)())failure;
 
 //格式化商品供表单提交用
 - (NSDictionary *) formatFormGoods;

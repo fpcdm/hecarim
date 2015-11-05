@@ -59,6 +59,11 @@
 //服务
 #define LTT_TRADE_SERVICE 2
 
+//支付方式列表
+#define PAY_WAY_WEIXIN @"weixin"
+#define PAY_WAY_ALIPAY @"alipay"
+#define PAY_WAY_CASH   @"cash"
+
 //用户TOKEN过期
 #define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
 

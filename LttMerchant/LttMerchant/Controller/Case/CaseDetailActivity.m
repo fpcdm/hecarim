@@ -15,7 +15,7 @@
 #import "ConsumeHistoryActivity.h"
 #import "CaseErrorView.h"
 
-@interface CaseDetailActivity ()
+@interface CaseDetailActivity () <UIActionSheetDelegate>
 
 @property (nonatomic, strong) UITableView *consumeTable;
 
@@ -32,6 +32,19 @@
     
     //返回页面是否需要重新加载
     BOOL needReload;
+    
+    //支付区域按钮
+    UIButton *weixinQrcodeButton;
+    UIButton *alipayQrcodeButton;
+    UIButton *moneyButton;
+    UIView *qrcodeView;
+    UIImageView *qrcodeImage;
+    UIButton *moneyConfirmButton;
+    UIButton *qrcodeChooseButton;
+    UIButton *moneyChooseButton;
+    
+    //支付方式列表
+    NSArray *payments;
 }
 
 @synthesize intention;
@@ -309,7 +322,7 @@
         $(@"#cancelButton").ATTR(@"display", @"none");
         
         //切换到选择支付方式
-        [self payView];
+        [self loadPaymentView];
         
     } else if ([CASE_STATUS_PAYED isEqualToString:intention.status]) {
         $(@"#editCase").ATTR(@"visibility", @"hidden");
@@ -361,26 +374,156 @@
     [self relayout];
 }
 
+//加载支付列表，显示视图
+- (void)loadPaymentView
+{
+    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    NSDictionary *param = @{@"is_online": @"no"};
+    [caseHandler queryPayments:param success:^(NSArray *result) {
+        [self hideLoading];
+        
+        payments = result;
+        [self paymentView];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+}
+
 //显示支付方式视图
-- (void)payView
+- (void)paymentView
 {
     UIView *payContainer = $(@"#payContainer").firstView;
-    
-    //微信扫码支付
-    UIButton *weixinQrcodeButton = [self makeButton:@{
-                                                      @"icon": @"methodWeixinQrcode",
-                                                      @"text": @"微信扫码"
-                                                      }];
-    [payContainer addSubview:weixinQrcodeButton];
-    
     UIView *superview = payContainer;
-    [weixinQrcodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *separatorView = nil;
+    
+    //循环输出支付方式
+    for (ResultEntity* payment in payments) {
+        //当前支付按钮
+        UIView *paymentButton = nil;
+        
+        //判断支付方式
+        if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {
+            //微信扫码支付
+            weixinQrcodeButton = [self makeButton:@{
+                                                    @"icon": @"methodWeixinQrcode",
+                                                    @"text": @"微信扫码"
+                                                    }];
+            [weixinQrcodeButton addTarget:self action:@selector(actionWeixinQrcode) forControlEvents:UIControlEventTouchUpInside];
+            [payContainer addSubview:weixinQrcodeButton];
+            
+            paymentButton = weixinQrcodeButton;
+        } else if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {
+            //支付宝扫码支付
+            alipayQrcodeButton = [self makeButton:@{
+                                                    @"icon": @"methodAlipayQrcode",
+                                                    @"text": @"支付宝扫码"
+                                                    }];
+            [alipayQrcodeButton addTarget:self action:@selector(actionAlipayQrcode) forControlEvents:UIControlEventTouchUpInside];
+            [payContainer addSubview:alipayQrcodeButton];
+            
+            paymentButton = alipayQrcodeButton;
+        } else if ([PAY_WAY_CASH isEqualToString:payment.data]) {
+            //现金支付
+            moneyButton = [self makeButton:@{
+                                             @"icon": @"methodMoney",
+                                             @"text": @"现金支付"
+                                             }];
+            [moneyButton addTarget:self action:@selector(actionUseMoney) forControlEvents:UIControlEventTouchUpInside];
+            [payContainer addSubview:moneyButton];
+            
+            paymentButton = moneyButton;
+        }
+        
+        //按钮输出
+        if (paymentButton) {
+            [paymentButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                if (separatorView) {
+                    make.top.equalTo(separatorView.mas_bottom).offset(10);
+                } else {
+                    make.top.equalTo(superview.mas_top);
+                }
+                make.left.equalTo(superview.mas_left);
+                make.right.equalTo(superview.mas_right);
+                make.height.equalTo(@60);
+            }];
+            
+            separatorView = paymentButton;
+        }
+    }
+    
+    //二维码视图
+    qrcodeView = [[UIView alloc] init];
+    qrcodeView.backgroundColor = COLOR_MAIN_WHITE;
+    qrcodeView.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    qrcodeView.layer.borderWidth = 0.5f;
+    qrcodeView.hidden = YES;
+    [payContainer addSubview:qrcodeView];
+    
+    [qrcodeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@60);
+        make.height.equalTo(@170);
     }];
     
+    qrcodeImage = [[UIImageView alloc] init];
+    [qrcodeView addSubview:qrcodeImage];
+    
+    [qrcodeImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(qrcodeView.mas_top).offset(10);
+        make.centerX.equalTo(qrcodeView.mas_centerX);
+        make.height.equalTo(@150);
+        make.width.equalTo(@150);
+    }];
+    
+    //二维码重新选择按钮
+    qrcodeChooseButton = [AppUIUtil makeButton:@"选择其它支付方式"];
+    qrcodeChooseButton.backgroundColor = COLOR_MAIN_WHITE;
+    qrcodeChooseButton.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    qrcodeChooseButton.layer.borderWidth = 0.5f;
+    qrcodeChooseButton.hidden = YES;
+    [qrcodeChooseButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+    [qrcodeChooseButton addTarget:self action:@selector(actionChooseMethod) forControlEvents:UIControlEventTouchUpInside];
+    [payContainer addSubview:qrcodeChooseButton];
+    
+    [qrcodeChooseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(qrcodeView.mas_bottom).offset(10);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.height.equalTo(@40);
+    }];
+    
+    //确认现金支付按钮
+    moneyConfirmButton = [AppUIUtil makeButton:@"确认用户已付款完成支付"];
+    moneyConfirmButton.hidden = YES;
+    [moneyConfirmButton addTarget:self action:@selector(actionConfirmPayed) forControlEvents:UIControlEventTouchUpInside];
+    [payContainer addSubview:moneyConfirmButton];
+    
+    [moneyConfirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(10);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.height.equalTo(@40);
+    }];
+    
+    //现金支付重新选择按钮
+    moneyChooseButton = [AppUIUtil makeButton:@"选择其它支付方式"];
+    moneyChooseButton.backgroundColor = COLOR_MAIN_WHITE;
+    moneyChooseButton.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    moneyChooseButton.layer.borderWidth = 0.5f;
+    moneyChooseButton.hidden = YES;
+    [moneyChooseButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+    [moneyChooseButton addTarget:self action:@selector(actionChooseMethod) forControlEvents:UIControlEventTouchUpInside];
+    [payContainer addSubview:moneyChooseButton];
+    
+    [moneyChooseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(moneyConfirmButton.mas_bottom).offset(20);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.height.equalTo(@40);
+    }];
 }
 
 - (UIButton *)makeButton:(NSDictionary *)param
@@ -608,34 +751,157 @@
     [self pushViewController:viewController animated:YES];
 }
 
+//修改支付方式公用方法
+- (void)actionUpdatePayment:(NSString *)payment success:(CallbackBlock)success
+{
+    CaseEntity *caseEntity = [[CaseEntity alloc] init];
+    caseEntity.id = self.caseId;
+    
+    NSDictionary *param = @{@"pay_way": PAY_WAY_WEIXIN};
+    
+    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    
+    //调用接口
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler updateCasePayment:caseEntity param:param success:^(NSArray *result){
+        [self hideLoading];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        //是否已经支付
+        if (error.code == 1100) {
+            [self showSuccess:@"该服务单已经支付完成了哦~亲！" callback:^{
+                //标记列表刷新
+                if (self.callbackBlock) {
+                    self.callbackBlock(@1);
+                }
+                
+                [self reloadCase];
+            }];
+        } else {
+            [self showError:error.message];
+        }
+    }];
+}
+
 //微信扫码支付
 - (void)actionWeixinQrcode
 {
-    
+    [self actionUpdatePayment:PAY_WAY_WEIXIN success:^(id object) {
+        if (weixinQrcodeButton) weixinQrcodeButton.hidden = YES;
+        if (alipayQrcodeButton) alipayQrcodeButton.hidden = YES;
+        if (moneyButton) moneyButton.hidden = YES;
+        
+        qrcodeView.hidden = NO;
+        qrcodeChooseButton.hidden = NO;
+        moneyConfirmButton.hidden = YES;
+        moneyChooseButton.hidden = YES;
+        
+        //微信二维码
+        [intention qrcodeImageView:qrcodeImage way:PAY_WAY_WEIXIN failure:^{
+            [self showError:@"二维码生成失败，请重试！"];
+        }];
+    }];
 }
 
 //支付宝扫码支付
 - (void)actionAlipayQrcode
 {
-    
+    [self actionUpdatePayment:PAY_WAY_ALIPAY success:^(id object) {
+        if (weixinQrcodeButton) weixinQrcodeButton.hidden = YES;
+        if (alipayQrcodeButton) alipayQrcodeButton.hidden = YES;
+        if (moneyButton) moneyButton.hidden = YES;
+        
+        qrcodeView.hidden = NO;
+        qrcodeChooseButton.hidden = NO;
+        moneyConfirmButton.hidden = YES;
+        moneyChooseButton.hidden = YES;
+        
+        //支付宝二维码
+        [intention qrcodeImageView:qrcodeImage way:PAY_WAY_ALIPAY failure:^{
+            [self showError:@"二维码生成失败，请重试！"];
+        }];
+    }];
 }
 
 //现金支付
 - (void)actionUseMoney
 {
-    
-}
-
-//确认现金支付
-- (void)actionConfirmPayed
-{
-    
+    [self actionUpdatePayment:PAY_WAY_CASH success:^(id object) {
+        if (weixinQrcodeButton) weixinQrcodeButton.hidden = YES;
+        if (alipayQrcodeButton) alipayQrcodeButton.hidden = YES;
+        if (moneyButton) moneyButton.hidden = YES;
+        
+        qrcodeView.hidden = YES;
+        qrcodeChooseButton.hidden = YES;
+        moneyConfirmButton.hidden = NO;
+        moneyChooseButton.hidden = NO;
+        
+        //清除二维码
+        qrcodeImage.image = nil;
+    }];
 }
 
 //重新选择支付方式
 - (void)actionChooseMethod
 {
+    if (weixinQrcodeButton) weixinQrcodeButton.hidden = NO;
+    if (alipayQrcodeButton) alipayQrcodeButton.hidden = NO;
+    if (moneyButton) moneyButton.hidden = NO;
     
+    qrcodeView.hidden = YES;
+    qrcodeChooseButton.hidden = YES;
+    moneyConfirmButton.hidden = YES;
+    moneyChooseButton.hidden = YES;
+}
+
+//确认现金支付
+- (void)actionConfirmPayed
+{
+    UIActionSheet *sheet = [UIActionSheet alloc];
+    
+    sheet = [sheet initWithTitle:@"你确认已经收到用户现金，支付成功了吗？" delegate:self cancelButtonTitle: @"未收款" destructiveButtonTitle:@"已收款" otherButtonTitles:nil];
+    
+    sheet.tag = 1;
+    [sheet showInView:self.view];
+}
+
+//弹出sheet
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag != 1) return;
+    
+    switch (buttonIndex) {
+        //确定
+        case 0:
+        {
+            CaseEntity *caseEntity = [[CaseEntity alloc] init];
+            caseEntity.id = self.caseId;
+            
+            NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
+            
+            [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+            
+            //调用接口
+            CaseHandler *caseHandler = [[CaseHandler alloc] init];
+            [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
+                [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+                    //标记列表刷新
+                    if (self.callbackBlock) {
+                        self.callbackBlock(@1);
+                    }
+                    
+                    [self reloadCase];
+                }];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
+        }
+            break;
+        //取消
+        default:
+            break;
+    }
 }
 
 @end

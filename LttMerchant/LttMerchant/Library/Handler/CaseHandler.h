@@ -25,6 +25,12 @@
 
 - (void) updateCaseStatus: (CaseEntity *) caseEntity param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//支付方式列表
+- (void) queryPayments: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//修改支付方式
+- (void) updateCasePayment: (CaseEntity *) caseEntity param:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 //添加需求商品
 - (void) addCaseGoods: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
 

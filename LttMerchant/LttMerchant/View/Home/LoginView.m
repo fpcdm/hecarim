@@ -138,20 +138,19 @@
     }];
 
     //商户注册
-    UIButton *regBtn = [AppUIUtil makeButton:@"商户注册" font:FONT_MIDDLE];
-    regBtn.backgroundColor = [UIColor clearColor];
+    UIButton *regBtn = [AppUIUtil makeButton:@"商户注册"];
+    regBtn.backgroundColor = COLOR_MAIN_WHITE;
     regBtn.layer.borderWidth = 1.0f;
     regBtn.layer.borderColor = [UIColor colorWithHexString:@"0199FF"].CGColor;
     [regBtn setTitleColor:[UIColor colorWithHexString:@"0199FF"] forState:UIControlStateNormal];
     
-    
-    [regBtn addTarget:self action:@selector(actionForgetPassword) forControlEvents:UIControlEventTouchUpInside];
+    [regBtn addTarget:self action:@selector(actionRegister) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:regBtn];
     
     [regBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(button.mas_bottom).offset(10);
-        make.centerX.equalTo(superView.mas_centerX);
-        make.width.equalTo(@100);
+        make.top.equalTo(button.mas_bottom).offset(20);
+        make.left.equalTo(uiView.mas_left).offset(10);
+        make.right.equalTo(uiView.mas_right).offset(-10);
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     

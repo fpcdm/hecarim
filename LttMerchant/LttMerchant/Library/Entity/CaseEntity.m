@@ -9,6 +9,8 @@
 #import "CaseEntity.h"
 #import "GoodsEntity.h"
 #import "ServiceEntity.h"
+#import "UIImageView+WebCache.h"
+#import "UIView+Loading.h"
 
 @implementation CaseEntity
 
@@ -16,6 +18,7 @@
             buyerName, buyerMobile, buyerAddress, customerRemark,
             staffId, staffName, staffMobile, staffAvatar, staffRemark,
             userId, userName, userMobile, userAvatar, userAppellation,
+            isOnlinePay, payWay, qrcodeUrl,
             totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesParam;
 
 - (NSString *)statusName
@@ -57,6 +60,32 @@
 - (BOOL) isFail
 {
     return [CASE_STATUS_MEMBER_CANCEL isEqualToString:self.status] || [CASE_STATUS_MERCHANT_CANCEL isEqualToString:self.status];
+}
+
+- (void) qrcodeImageView:(UIImageView *)imageView way:(NSString *)way failure:(void (^)())failure
+{
+    //参数检查
+    if (!way || !self.qrcodeUrl || [self.qrcodeUrl length] < 1) {
+        imageView.image = nil;
+        return;
+    }
+    
+    //替换字符
+    NSString *imageUrl = [self.qrcodeUrl stringByReplacingOccurrencesOfString:@"*#pay_way#*" withString:way];
+    NSLog(@"二维码图片地址：%@", imageUrl);
+    
+    [imageView showIndicator];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
+                 placeholderImage:nil
+                          options:SDWebImageRefreshCached
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                            [imageView hideIndicator];
+                            
+                            //是否加载错误
+                            if (error) {
+                                failure();
+                            }
+                          }];
 }
 
 - (NSDictionary *) formatFormGoods

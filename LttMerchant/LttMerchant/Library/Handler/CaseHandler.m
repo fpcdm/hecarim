@@ -41,6 +41,9 @@
                                    @"user_mobile": @"userMobile",
                                    @"user_avatar": @"userAvatar",
                                    @"user_appellation": @"userAppellation",
+                                   @"is_online_pay": @"isOnlinePay",
+                                   @"pay_way": @"payWay",
+                                   @"qrcode_url": @"qrcodeUrl",
                                    @"goods": @"goodsParam",
                                    @"services": @"servicesParam"
                                    };
@@ -175,6 +178,37 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
     NSString *restPath = [sharedClient formatPath:@"cases/status/:id" object:caseEntity];
+    [sharedClient postObject:caseEntity path:restPath param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
+- (void) queryPayments:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"key": @"data", @"name": @"info"} keyPath:@"list"];
+    
+    NSString *restPath = @"pay/list";
+    [sharedClient getObject:[ResultEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) updateCasePayment:(CaseEntity *)caseEntity param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSString *restPath = [sharedClient formatPath:@"cases/payment/:id" object:caseEntity];
     [sharedClient postObject:caseEntity path:restPath param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
