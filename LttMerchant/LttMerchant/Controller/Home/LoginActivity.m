@@ -16,12 +16,10 @@
 #import "PickerUtil.h"
 #import "ForgetPasswordViewController.h"
 #import "RegisterViewController.h"
+#import "LoginView.h"
 
-@interface LoginActivity ()
+@interface LoginActivity ()<LoginViewDelegate>
 
-@property (nonatomic, strong) UITextField *mobileField;
-
-@property (nonatomic, strong) UITextField *passwordField;
 
 @end
 
@@ -31,6 +29,13 @@
     isMenuEnabled = NO;
     hideBackButton = YES;
     [super viewDidLoad];
+    
+    LoginView *loginView = [[LoginView alloc] init];
+    loginView.delegate = self;
+    self.view = loginView;
+    self.navigationItem.title = @"两条腿工作台登陆";
+    
+    self.view.backgroundColor = COLOR_MAIN_BG;
     
     //调试功能
 #ifdef LTT_DEBUG
@@ -48,29 +53,6 @@
     if (self.tokenExpired) {
         [self showError:ERROR_TOKEN_EXPIRED];
     }
-}
-
-- (NSString *) templateName {
-    return @"login.html";
-}
-
-#pragma mark -
-- (void)onTemplateLoading
-{
-}
-
-- (void)onTemplateLoaded
-{
-}
-
-- (void)onTemplateFailed
-{
-    
-}
-
-- (void)onTemplateCancelled
-{
-    
 }
 
 #pragma mark - Debug
@@ -111,12 +93,9 @@
 #endif
 
 #pragma mark - Action
-- (void)actionLogin:(SamuraiSignal *)signal
+- (void)actionLogin:(UserEntity *)user
 {
     //记录用户信息
-    UserEntity *user = [[UserEntity alloc] init];
-    user.mobile = self.mobileField.text;
-    user.password = self.passwordField.text;
     user.type = USER_TYPE_MERCHANT;
     user.deviceType = @"ios";
     user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
@@ -170,7 +149,7 @@
 }
 
 //找回密码
--(void)actionForgetPassword
+- (void)actionForgetPassword
 {
     ForgetPasswordViewController *viewController = [[ForgetPasswordViewController alloc] init];
     [self pushViewController:viewController animated:YES];
