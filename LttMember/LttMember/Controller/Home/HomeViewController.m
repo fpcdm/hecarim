@@ -25,7 +25,6 @@
 static NSString *lastAddress = nil;
 static NSNumber *lastService = nil;
 static NSDate   *lastDate = nil;
-static NSString *cityCode = nil;
 static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
 static NSMutableDictionary *caseTypes = nil;
@@ -49,7 +48,7 @@ static NSMutableDictionary *caseTypes = nil;
     //二级分类
     CNPPopupController *popupController;
     
-#ifdef LTT_DEBUG
+#if TARGET_IPHONE_SIMULATOR
     //模拟城市切换
     CLLocationCoordinate2D debugPosition;
 #endif
@@ -200,7 +199,7 @@ static NSMutableDictionary *caseTypes = nil;
 - (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
 //模拟城市切换
-#ifdef LTT_DEBUG
+#if TARGET_IPHONE_SIMULATOR
     if (IS_DEBUG) {
         [self debugGps];
         position = debugPosition;
@@ -219,21 +218,18 @@ static NSMutableDictionary *caseTypes = nil;
     [helperHandler queryLocation:locationEntity success:^(NSArray *result){
         LocationEntity *location = [result firstObject];
         
-        //获取城市编码，只获取一次
-        if (!cityCode) {
-            if (location.cityCode && [location.cityCode length] > 0) {
-                cityCode = location.cityCode;
-                
-                //城市有变动自动刷新
-                NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
-                if (!oldCity || ![oldCity isEqualToString:cityCode]) {
-                    //todo: 自动刷新当前页面
-                }
-                
+        //城市是否有变化
+        if (location.cityCode && [location.cityCode length] > 0) {
+            //城市有变动自动刷新
+            NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
+            if (!oldCity || ![oldCity isEqualToString:location.cityCode]) {
                 //记录城市缓存
-                [[StorageUtil sharedStorage] setCityCode:cityCode];
+                [[StorageUtil sharedStorage] setCityCode:location.cityCode];
                 //设置城市头
-                [[RestKitUtil sharedClient] setCityCode:cityCode];
+                [[RestKitUtil sharedClient] setCityCode:location.cityCode];
+                
+                //重新加载城市
+                [self refreshCityView];
             }
         }
         
@@ -271,7 +267,7 @@ static NSMutableDictionary *caseTypes = nil;
 - (void)updateLocationError:(NSError *)error
 {
 //模拟城市切换
-#ifdef LTT_DEBUG
+#if TARGET_IPHONE_SIMULATOR
     if (IS_DEBUG) {
         [self updateLocationSuccess:debugPosition];
         return;
@@ -298,7 +294,7 @@ static NSMutableDictionary *caseTypes = nil;
 }
 
 //模拟城市切换
-#ifdef LTT_DEBUG
+#if TARGET_IPHONE_SIMULATOR
 - (void) debugGps
 {
     if (IS_DEBUG) {
@@ -315,6 +311,16 @@ static NSMutableDictionary *caseTypes = nil;
     }
 }
 #endif
+
+#pragma mark - City
+//切换城市
+- (void)refreshCityView
+{
+    //刷新城市服务列表
+    if (categoryId) {
+        [self actionCategory:categoryId];
+    }
+}
 
 #pragma mark - Case
 - (void)actionCase:(NSNumber *)type
@@ -412,33 +418,27 @@ static NSMutableDictionary *caseTypes = nil;
     
     //缓存是否存在
     NSString *idStr = [NSString stringWithFormat:@"%@", id];
-    NSArray *idTypes = [caseTypes objectForKey:idStr];
-    if (idTypes != nil) {
-        //重新加载项目
-        NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:idTypes];
-        [self performSelector:@selector(reloadTypes:) withObject:categoryTypes afterDelay:totalInterval];
-    } else {
-        NSDate *beginDate = [NSDate date];
+    //切换城市换服务列表，不使用缓存
+    NSDate *beginDate = [NSDate date];
+    
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    NSDictionary *param = @{@"category_id": id};
+    [caseHandler queryTypes:param success:^(NSArray *result) {
+        //设置缓存
+        [caseTypes setObject:result forKey:idStr];
         
-        CaseHandler *caseHandler = [[CaseHandler alloc] init];
-        NSDictionary *param = @{@"category_id": id};
-        [caseHandler queryTypes:param success:^(NSArray *result) {
-            //设置缓存
-            [caseTypes setObject:result forKey:idStr];
-            
-            //重新加载项目
-            NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
-            
-            //延迟显示
-            NSTimeInterval loadInterval = [TimerUtil timeInterval:beginDate];
-            NSTimeInterval loadDelay = loadInterval >= totalInterval ? 0.001 : totalInterval - loadInterval;
-            [self performSelector:@selector(reloadTypes:) withObject:categoryTypes afterDelay:loadDelay];
-        } failure:^(ErrorEntity *error) {
-            [homeView.typeView hideIndicator];
-            
-            [self showError:error.message];
-        }];
-    }
+        //重新加载项目
+        NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
+        
+        //延迟显示
+        NSTimeInterval loadInterval = [TimerUtil timeInterval:beginDate];
+        NSTimeInterval loadDelay = loadInterval >= totalInterval ? 0.001 : totalInterval - loadInterval;
+        [self performSelector:@selector(reloadTypes:) withObject:categoryTypes afterDelay:loadDelay];
+    } failure:^(ErrorEntity *error) {
+        [homeView.typeView hideIndicator];
+        
+        [self showError:error.message];
+    }];
 }
 
 - (void)reloadTypes: (NSMutableArray *)types
