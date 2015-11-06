@@ -33,6 +33,8 @@
     TimerUtil *timerUtil;
     long timer;
     
+    UIBarButtonItem *refreshButton;
+    
     //支付方式列表
     NSArray *payments;
 }
@@ -51,6 +53,12 @@
     [super viewDidLoad];
     
     self.navigationItem.title = TIP_LOADING_MESSAGE;
+    
+    //刷新按钮
+    refreshButton = [AppUIUtil makeBarButtonItem:@"刷新" highlighted:isIndexNavBar];
+    refreshButton.target = self;
+    refreshButton.action = @selector(refreshCase);
+    self.navigationItem.rightBarButtonItem = refreshButton;
 }
 
 //查询状态切换视图
@@ -58,11 +66,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self loadData:^(id object){
-        [self intentionView];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
+    [self reloadCase];
 }
 
 //关闭计时器
@@ -76,6 +80,35 @@
     
     //停止地图
     [self stopMap];
+}
+
+//刷新需求，有加载效果
+- (void) refreshCase
+{
+    [self showLoading:@"正在刷新"];
+    
+    //需求当前状态
+    NSString *oldStatus = intention ? intention.status : nil;
+    [self loadData:^(id object){
+        [self loadingSuccess:@"刷新完成" callback:^{
+            //检测需求状态是否变化
+            if (![intention.status isEqualToString:oldStatus]) {
+                [self intentionView];
+            }
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+//重载需求，无加载效果
+- (void) reloadCase
+{
+    [self loadData:^(id object){
+        [self intentionView];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 //停止地图
@@ -258,11 +291,7 @@
     [appDelegate clearNotifications];
     
     //需求状态变化
-    [self loadData:^(id object){
-        [self intentionView];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
+    [self reloadCase];
 }
 
 #pragma mark - Action
@@ -342,11 +371,7 @@
         if (error.code == 1100) {
             [self showSuccess:@"您已经支付完成了哦~亲！" callback:^{
                 //检测需求状态是否有修改
-                [self loadData:^(id object){
-                    [self intentionView];
-                } failure:^(ErrorEntity *error){
-                    [self showError:error.message];
-                }];
+                [self reloadCase];
             }];
         } else {
             [self showError:error.message];

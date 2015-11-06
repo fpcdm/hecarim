@@ -76,7 +76,7 @@
     //姓名
     nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
-    nameLabel.textColor = COLOR_MAIN_BLACK;
+    nameLabel.textColor = COLOR_MAIN_HIGHLIGHT;
     nameLabel.font = [UIFont boldSystemFontOfSize:20];
     [self addSubview:nameLabel];
     

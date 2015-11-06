@@ -44,7 +44,7 @@
     [self addSubview:payButton];
     
     [payButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(superview.mas_bottom).offset(-10);
+        make.bottom.equalTo(superview.mas_bottom).offset(-45);
         make.left.equalTo(superview.mas_left).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
         
@@ -91,7 +91,7 @@
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
         
-        make.bottom.equalTo(superview.mas_bottom).offset(-65);
+        make.bottom.equalTo(superview.mas_bottom).offset(-100);
     }];
     
     //详情容器

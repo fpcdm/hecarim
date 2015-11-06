@@ -79,7 +79,7 @@
 - (void) onTemplateLoaded
 {
     //动态计算表格容器高度
-    float containerHeight = SCREEN_AVAILABLE_HEIGHT - 120;
+    float containerHeight = SCREEN_AVAILABLE_HEIGHT - 150;
     $(@"#tableContainer").ATTR(@"height", [NSString stringWithFormat:@"%lfpx", containerHeight]);
     
     //显示添加按钮

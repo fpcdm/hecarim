@@ -140,7 +140,7 @@
     //商户注册
     UIButton *regBtn = [AppUIUtil makeButton:@"商户注册"];
     regBtn.backgroundColor = COLOR_MAIN_WHITE;
-    regBtn.layer.borderWidth = 1.0f;
+    regBtn.layer.borderWidth = 0.5f;
     regBtn.layer.borderColor = [UIColor colorWithHexString:@"0199FF"].CGColor;
     [regBtn setTitleColor:[UIColor colorWithHexString:@"0199FF"] forState:UIControlStateNormal];
     
@@ -148,7 +148,7 @@
     [self addSubview:regBtn];
     
     [regBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(button.mas_bottom).offset(20);
+        make.top.equalTo(button.mas_bottom).offset(30);
         make.left.equalTo(uiView.mas_left).offset(10);
         make.right.equalTo(uiView.mas_right).offset(-10);
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
