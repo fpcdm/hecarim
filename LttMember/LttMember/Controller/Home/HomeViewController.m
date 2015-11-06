@@ -48,6 +48,12 @@ static NSMutableDictionary *caseTypes = nil;
     
     //二级分类
     CNPPopupController *popupController;
+    
+#ifdef LTT_DEBUG
+    //模拟城市切换
+    CLLocationCoordinate2D debugPosition;
+#endif
+    
 }
 
 - (void)loadView
@@ -193,6 +199,14 @@ static NSMutableDictionary *caseTypes = nil;
 #pragma mark - GPS
 - (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
+//模拟城市切换
+#ifdef LTT_DEBUG
+    if (IS_DEBUG) {
+        [self debugGps];
+        position = debugPosition;
+    }
+#endif
+    
     //停止监听GPS
     [[LocationUtil sharedInstance] stopUpdate];
     
@@ -256,6 +270,14 @@ static NSMutableDictionary *caseTypes = nil;
 
 - (void)updateLocationError:(NSError *)error
 {
+//模拟城市切换
+#ifdef LTT_DEBUG
+    if (IS_DEBUG) {
+        [self updateLocationSuccess:debugPosition];
+        return;
+    }
+#endif
+    
     if (lastAddress) return;
     
     //重置数据
@@ -274,6 +296,25 @@ static NSMutableDictionary *caseTypes = nil;
     //刷新视图
     [self renderView];
 }
+
+//模拟城市切换
+#ifdef LTT_DEBUG
+- (void) debugGps
+{
+    if (IS_DEBUG) {
+        //南宁
+        if (debugPosition.latitude == 29.587263) {
+            debugPosition = CLLocationCoordinate2DMake(22.818677, 108.371073);
+        //北京
+        } else if (debugPosition.latitude == 22.818677) {
+            debugPosition = CLLocationCoordinate2DMake(39.915599, 116.426116);
+        //重庆
+        } else {
+            debugPosition = CLLocationCoordinate2DMake(29.587263, 106.493928);
+        }
+    }
+}
+#endif
 
 #pragma mark - Case
 - (void)actionCase:(NSNumber *)type
