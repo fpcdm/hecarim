@@ -50,6 +50,7 @@
     if ([@"photo" isEqualToString:id]) {
         UIImageView *imageView = [UIImageView new];
         imageView.layer.cornerRadius = 20;
+        imageView.clipsToBounds = YES;
         [user avatarView:imageView];
         [cell addSubview:imageView];
         

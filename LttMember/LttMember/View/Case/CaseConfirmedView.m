@@ -62,6 +62,7 @@
     //头像
     avatarView = [[UIImageView alloc] init];
     avatarView.layer.cornerRadius = 25;
+    avatarView.clipsToBounds = YES;
     [self addSubview:avatarView];
     
     int padding = 10;

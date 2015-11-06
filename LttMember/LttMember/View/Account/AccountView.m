@@ -72,6 +72,7 @@
     //info
     if ([@"info" isEqualToString:id]) {
         imageView.layer.cornerRadius = 20;
+        imageView.clipsToBounds = YES;
         [cell addSubview:imageView];
         
         [imageView mas_makeConstraints:^(MASConstraintMaker *make){
