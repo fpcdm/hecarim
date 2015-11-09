@@ -42,6 +42,19 @@
         make.height.equalTo(@160);
     }];
     
+    //选择地址事件
+    UIButton *formButton = [[UIButton alloc] init];
+    formButton.backgroundColor = COLOR_MAIN_CLEAR;
+    [formButton addTarget:self action:@selector(actionAddress) forControlEvents:UIControlEventTouchUpInside];
+    [formView addSubview:formButton];
+    
+    [formButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(formView.mas_top);
+        make.left.equalTo(formView.mas_left);
+        make.right.equalTo(formView.mas_right);
+        make.height.equalTo(@80);
+    }];
+    
     //地址图标
     UIImageView *addressIcon = [[UIImageView alloc] init];
     addressIcon.image = [UIImage imageNamed:@"caseAddress"];
@@ -106,25 +119,14 @@
         make.height.equalTo(@20);
     }];
     
-    //选择地址
-    UIButton *addressButton = [[UIButton alloc] init];
-    [addressButton addTarget:self action:@selector(actionAddress) forControlEvents:UIControlEventTouchUpInside];
-    [formView addSubview:addressButton];
-    
-    [addressButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(superview.mas_right);
-        make.centerY.equalTo(superview.mas_top).offset(40);
-        make.width.equalTo(@30);
-        make.height.equalTo(@80);
-    }];
-    
+    //选择地址图标
     UIImageView *chooseIcon = [[UIImageView alloc] init];
     chooseIcon.image = [UIImage imageNamed:@"chooseAddress"];
-    [addressButton addSubview:chooseIcon];
+    [formView addSubview:chooseIcon];
     
     [chooseIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(addressButton.mas_centerX);
-        make.centerY.equalTo(addressButton.mas_centerY);
+        make.centerX.equalTo(superview.mas_right).offset(-15);
+        make.centerY.equalTo(superview.mas_top).offset(40);
         
         make.width.equalTo(@10);
         make.height.equalTo(@20);
