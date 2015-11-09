@@ -379,8 +379,8 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
             [self.button sizeToFit];
             self.button.frame = CGRectMake(screenWidth - padding - self.button.frame.size.width,
                                            0.0,
-                                           self.button.frame.size.width,
-                                           31.0);
+                                           self.button.frame.size.width + 20,
+                                           41.0);
             
             [self addSubview:self.button];
             
