@@ -210,6 +210,7 @@
         self.view = receivedView;
         
         self.navigationItem.title = @"服务完成";
+        self.navigationItem.rightBarButtonItem = nil;
         
         //显示数据
         [receivedView setData:@"intention" value:intention];
@@ -221,6 +222,7 @@
         self.view = detailView;
         
         self.navigationItem.title = @"服务单详情";
+        self.navigationItem.rightBarButtonItem = nil;
         
         //显示数据
         [detailView setData:@"intention" value:intention];
