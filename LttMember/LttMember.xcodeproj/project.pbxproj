@@ -115,6 +115,7 @@
 		2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C8B271BD8C9A700EF1586 /* CaseCategoryView.m */; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
 		2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */; };
+		2F66301A1BF1BF950025112C /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6630191BF1BF950025112C /* UINavigationController+Vertical.m */; };
 		2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A21B4B70B900E0F774 /* LocationUtil.m */; };
 		2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */; };
 		2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
@@ -451,6 +452,8 @@
 		2F5FDDDA1B5F3E1800CBF2A7 /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
 		2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
 		2F6611461B0C697C0008D500 /* LttMember.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttMember.pch; sourceTree = "<group>"; };
+		2F6630181BF1BF950025112C /* UINavigationController+Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Vertical.h"; sourceTree = "<group>"; };
+		2F6630191BF1BF950025112C /* UINavigationController+Vertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Vertical.m"; sourceTree = "<group>"; };
 		2F6796A11B4B70B900E0F774 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
 		2F6796A21B4B70B900E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F6796AA1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
@@ -1377,6 +1380,8 @@
 				2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */,
 				2F6910A21B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.h */,
 				2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */,
+				2F6630181BF1BF950025112C /* UINavigationController+Vertical.h */,
+				2F6630191BF1BF950025112C /* UINavigationController+Vertical.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -2128,6 +2133,7 @@
 				2F6B0C281B395782000123BF /* AXRatingView.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
+				2F66301A1BF1BF950025112C /* UINavigationController+Vertical.m in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */,
