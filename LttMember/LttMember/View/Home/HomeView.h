@@ -15,6 +15,7 @@
 - (void)actionLogin;
 - (void)actionMenu;
 - (void)actionGps;
+- (void)actionCity;
 - (void)actionCategory: (NSNumber *) id;
 - (void)actionCase: (NSNumber *) type;
 - (void)actionError: (NSString *) message;

@@ -87,6 +87,8 @@
     currentAddress.name = [user displayName];
     currentAddress.mobile = user.mobile;
     currentAddress.address = caseEntity.buyerAddress;
+    //todo
+    currentAddress.isEnable = @1;
     return currentAddress;
 }
 

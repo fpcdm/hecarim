@@ -153,7 +153,7 @@
 - (void) queryUserAddresses:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"countyId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name"} keyPath:@"list"];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AddressEntity class] mappingParam:@{@"address_id": @"id", @"address":@"address", @"area":@"countyName", @"area_code":@"countyId", @"city":@"cityName",@"city_code":@"cityId",@"is_default":@"isDefault",@"mobile":@"mobile",@"province":@"provinceName", @"province_code":@"provinceId",@"street":@"streetName", @"street_code":@"streetId", @"truename":@"name", @"is_enable":@"isEnable"} keyPath:@"list"];
     
     NSString *restPath = @"member/addresses";
     [sharedClient getObject:[AddressEntity new] path:restPath param:param success:^(NSArray *result){
@@ -174,7 +174,9 @@
         if ([result count] > 0) {
             AddressEntity *defaultAddress = nil;
             for (AddressEntity *address in result) {
-                if (address.isDefault && [address.isDefault isEqualToNumber:@1]) {
+                //仅当默认城市存在且可选时才使用此地址
+                if (address.isDefault && [@1 isEqualToNumber:address.isDefault]
+                    && address.isEnable && [@1 isEqualToNumber:address.isEnable]) {
                     defaultAddress = address;
                     break;
                 }

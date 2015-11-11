@@ -10,7 +10,7 @@
 
 @implementation AddressEntity
 
-@synthesize id, isDefault, name, mobile, provinceId, provinceName, cityId, cityName, countyId, countyName, streetId, streetName, address;
+@synthesize id, isDefault, name, mobile, provinceId, provinceName, cityId, cityName, countyId, countyName, streetId, streetName, address, isEnable;
 
 - (NSString *)areaName
 {

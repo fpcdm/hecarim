@@ -24,4 +24,6 @@
 
 @synthesize cityCode;
 
+@synthesize isDefault;
+
 @end

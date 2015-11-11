@@ -24,4 +24,6 @@
 
 @property (retain, nonatomic) NSString *cityCode;
 
+@property (retain, nonatomic) NSNumber *isDefault;
+
 @end

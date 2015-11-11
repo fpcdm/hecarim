@@ -19,6 +19,7 @@
 @implementation HomeView
 {
     UILabel *addressLabel;
+    UIButton *cityButton;
     
     UIImageView *topView;
     UIImageView *middleView;
@@ -90,6 +91,22 @@
         make.height.equalTo(@16);
     }];
     
+    //城市切换按钮
+    cityButton = [[UIButton alloc] init];
+    cityButton.titleLabel.font = FONT_SMALL;
+    [cityButton setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
+    [cityButton setTitle:@"切换城市" forState:UIControlStateNormal];
+    [cityButton sizeToFit];
+    [cityButton addTarget:self action:@selector(actionCity) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:cityButton];
+    
+    superview = topView;
+    [cityButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5 + 7);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.height.equalTo(@12);
+    }];
+    
     //当前位置
     UIButton *locationButton = [[UIButton alloc] init];
     locationButton.backgroundColor = [UIColor clearColor];
@@ -100,7 +117,7 @@
     [locationButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5);
         make.left.equalTo(menuButton.mas_right).offset(10);
-        make.right.equalTo(superview.mas_right).offset(-10);
+        make.right.equalTo(cityButton.mas_left).offset(-10);
         make.height.equalTo(@25);
     }];
     
@@ -262,6 +279,13 @@
         addressLabel.text = address;
     } else if (gps) {
         addressLabel.text = gps;
+    }
+    
+    //显示城市
+    NSString *city = [self getData:@"city"];
+    if (city && [city length] > 0) {
+        [cityButton setTitle:city forState:UIControlStateNormal];
+        [cityButton sizeToFit];
     }
 }
 
@@ -961,6 +985,11 @@
 - (void)actionGps
 {
     [self.delegate actionGps];
+}
+
+- (void)actionCity
+{
+    [self.delegate actionCity];
 }
 
 - (void)actionError: (NSString *) message

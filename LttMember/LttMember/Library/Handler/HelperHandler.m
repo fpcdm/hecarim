@@ -10,6 +10,23 @@
 
 @implementation HelperHandler
 
+- (void)queryOpenCities:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[LocationEntity class] mappingParam:@{@"city_code": @"cityCode", @"city_name": @"city", @"is_default": @"isDefault"}];
+    
+    [sharedClient getObject:[LocationEntity new] path:@"base/cities" param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void)queryLocation:(LocationEntity *)location success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //登录接口调用

@@ -36,6 +36,8 @@
 
 @property (retain, nonatomic) NSString *address;
 
+@property (retain, nonatomic) NSNumber *isEnable;
+
 - (NSString *)areaName;
 
 @end

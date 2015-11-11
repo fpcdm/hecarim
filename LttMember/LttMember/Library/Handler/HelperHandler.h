@@ -14,6 +14,14 @@
 @interface HelperHandler : BaseHandler
 
 /**
+ *  查询开通城市列表
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryOpenCities: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
  *  查询用户位置
  *
  *  @param location GPS坐标
@@ -57,7 +65,6 @@
  *  @param failure 失败回调
  */
 - (void) verifyMobileCode: (NSString *) mobile code: (NSString *) code success: (SuccessBlock) success failure: (FailedBlock) failure;
-
 
 /**
  *  重置密码

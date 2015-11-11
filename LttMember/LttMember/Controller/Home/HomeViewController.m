@@ -20,10 +20,10 @@
 #import "CaseCategoryViewController.h"
 #import "CNPPopupController.h"
 #import "CasePropertyView.h"
+#import "AddressEntity.h"
 
 //GPS数据缓存，优化GPS耗电
-static NSString *lastAddress = nil;
-static NSNumber *lastService = nil;
+static LocationEntity *lastLocation = nil;
 static NSDate   *lastDate = nil;
 static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
@@ -44,6 +44,8 @@ static NSMutableDictionary *caseTypes = nil;
     NSNumber *categoryId;
     NSNumber *typeId;
     NSNumber *propertyId;
+    
+    BOOL isFirstCity;
     
     //二级分类
     CNPPopupController *popupController;
@@ -76,6 +78,11 @@ static NSMutableDictionary *caseTypes = nil;
     [homeView setLogin:[self isLogin]];
     
     self.navigationItem.title = @"两条腿";
+    
+    //初始化缓存数据
+    if (!lastLocation) {
+        lastLocation = [[LocationEntity alloc] init];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -83,7 +90,7 @@ static NSMutableDictionary *caseTypes = nil;
     [super viewWillAppear:animated];
     
     //定位失败，重新定位
-    if (!lastAddress) {
+    if (!lastLocation.detailAddress) {
         [LocationUtil sharedInstance].delegate = self;
         [[LocationUtil sharedInstance] restartUpdate];
     }
@@ -91,7 +98,36 @@ static NSMutableDictionary *caseTypes = nil;
     //清除属性
     [homeView clearProperties];
     
-    [self initData];
+    //查询默认城市
+    NSString *cityCode = [[StorageUtil sharedStorage] getCityCode];
+    if (!cityCode || [cityCode length] < 1) {
+        HelperHandler *helperHandler = [[HelperHandler alloc] init];
+        [helperHandler queryOpenCities:nil success:^(NSArray *result) {
+            //标记第一次加载，定位城市会覆盖
+            isFirstCity = YES;
+            
+            //获取默认城市
+            for (LocationEntity *location in result) {
+                if (location.isDefault && [@1 isEqualToNumber:location.isDefault]) {
+                    //记录城市缓存
+                    [[StorageUtil sharedStorage] setCityCode:location.cityCode];
+                    //记录城市缓存
+                    [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:location.city];
+                    //设置城市头
+                    [[RestKitUtil sharedClient] setCityCode:location.cityCode];
+                    break;
+                }
+            }
+            
+            [self initData];
+        } failure:^(ErrorEntity *error) {
+            [self showError:error.message];
+        }];
+    } else {
+        isFirstCity = NO;
+        
+        [self initData];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -163,9 +199,14 @@ static NSMutableDictionary *caseTypes = nil;
 //渲染视图
 - (void) renderView
 {
-    [homeView setData:@"address" value:lastAddress];
+    //城市名称
+    NSString *cityName = [[StorageUtil sharedStorage] getData:LTT_STORAGE_KEY_CITY_NAME];
+    [homeView setData:@"city" value:cityName];
+    
+    //地址信息
+    [homeView setData:@"address" value:lastLocation.detailAddress];
     [homeView setData:@"gps" value:gpsStatus];
-    [homeView setData:@"count" value:lastService ? lastService : @-1];
+    [homeView setData:@"count" value:lastLocation.serviceNumber ? lastLocation.serviceNumber : @-1];
     [homeView renderData];
 }
 
@@ -174,7 +215,7 @@ static NSMutableDictionary *caseTypes = nil;
     //定时器间隔：30秒钟，GPS刷新间隔：1分钟，因为手工GPS会重置最后刷新时间
     gpsTimer = [TimerUtil repeatTimer:(USER_LOCATION_INTERVAL / 2) block:^{
         //定位成功检查GPS刷新间隔
-        if (lastAddress) {
+        if (lastLocation.detailAddress) {
             NSTimeInterval timeInterval = [TimerUtil timeInterval:lastDate];
             if (timeInterval > 0 && timeInterval < (USER_LOCATION_INTERVAL - 1)) {
                 NSLog(@"未到GPS刷新时间");
@@ -193,6 +234,27 @@ static NSMutableDictionary *caseTypes = nil;
         //刷新一次gps
         [[LocationUtil sharedInstance] restartUpdate];
     } queue:dispatch_get_main_queue()];
+}
+
+//获取当前定位地址对象
+- (AddressEntity *) currentAddress
+{
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    
+    AddressEntity *currentAddress = [[AddressEntity alloc] init];
+    currentAddress.name = [user displayName];
+    currentAddress.mobile = user.mobile;
+    currentAddress.address = lastLocation.detailAddress;
+    
+    //定位城市是否可用，是否是当前城市并且在开通城市列表中
+    NSString *cityCode = [[StorageUtil sharedStorage] getCityCode];
+    if (cityCode && lastLocation.cityCode && [cityCode isEqualToString:lastLocation.cityCode]) {
+        currentAddress.isEnable = @1;
+    } else {
+        currentAddress.isEnable = @0;
+    }
+    
+    return currentAddress;
 }
 
 #pragma mark - GPS
@@ -225,6 +287,8 @@ static NSMutableDictionary *caseTypes = nil;
             if (!oldCity || ![oldCity isEqualToString:location.cityCode]) {
                 //记录城市缓存
                 [[StorageUtil sharedStorage] setCityCode:location.cityCode];
+                //记录城市缓存
+                [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:location.city];
                 //设置城市头
                 [[RestKitUtil sharedClient] setCityCode:location.cityCode];
                 
@@ -235,7 +299,8 @@ static NSMutableDictionary *caseTypes = nil;
         
         //获取位置
         if (location.detailAddress && [location.detailAddress length] > 0) {
-            lastAddress = location.detailAddress;
+            lastLocation.detailAddress = location.detailAddress;
+            lastLocation.cityCode = location.cityCode;
             gpsStatus = nil;
         } else {
             gpsStatus = @"获取位置失败";
@@ -247,7 +312,7 @@ static NSMutableDictionary *caseTypes = nil;
             
             //获取位置
             if (location.serviceNumber) {
-                lastService = location.serviceNumber;
+                lastLocation.serviceNumber = location.serviceNumber;
             }
             
             //刷新视图
@@ -274,11 +339,12 @@ static NSMutableDictionary *caseTypes = nil;
     }
 #endif
     
-    if (lastAddress) return;
+    if (lastLocation.detailAddress) return;
     
     //重置数据
-    lastAddress = nil;
-    lastService = nil;
+    lastLocation.detailAddress = nil;
+    lastLocation.cityCode = nil;
+    lastLocation.serviceNumber = nil;
     
     //失败原因
     if ([error code] == kCLErrorDenied) {
@@ -358,7 +424,7 @@ static NSMutableDictionary *caseTypes = nil;
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.typeId = typeId;
     intentionEntity.propertyId = propertyId ? propertyId : @0;
-    intentionEntity.buyerAddress = lastAddress;
+    intentionEntity.buyerAddress = lastLocation.detailAddress;
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
@@ -402,6 +468,11 @@ static NSMutableDictionary *caseTypes = nil;
     [LocationUtil sharedInstance].delegate = self;
     //刷新GPS
     [[LocationUtil sharedInstance] restartUpdate];
+}
+
+- (void)actionCity
+{
+    
 }
 
 - (void)actionCategory:(NSNumber *)id

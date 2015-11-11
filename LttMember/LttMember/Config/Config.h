@@ -61,6 +61,7 @@
 
 //需求类型缓存KEY
 #define LTT_STORAGE_KEY_CASE_TYPES @"case_types"
+#define LTT_STORAGE_KEY_CITY_NAME @"city_name"
 
 //需求类型
 //汽车金融
