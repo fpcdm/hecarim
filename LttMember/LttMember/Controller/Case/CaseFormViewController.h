@@ -8,9 +8,13 @@
 
 #import "AppUserViewController.h"
 #import "CaseEntity.h"
+#import "AddressEntity.h"
 
 @interface CaseFormViewController : AppUserViewController
 
 @property (nonatomic, retain) CaseEntity *caseEntity;
+
+//当前定位城市
+@property (nonatomic, retain) AddressEntity *currentAddress;
 
 @end

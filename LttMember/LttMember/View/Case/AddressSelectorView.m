@@ -19,7 +19,7 @@
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
     tipLabel.text = @"说明：非当前城市地址不能作为服务地址";
     tipLabel.font = FONT_MIDDLE;
-    tipLabel.textColor = COLOR_MAIN_BUTTON_BG;
+    tipLabel.textColor = [UIColor redColor];
     tipLabel.textAlignment = NSTextAlignmentCenter;
     self.tableView.tableFooterView = tipLabel;
     

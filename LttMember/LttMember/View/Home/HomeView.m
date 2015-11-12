@@ -93,7 +93,7 @@
     
     //城市切换按钮
     cityButton = [[UIButton alloc] init];
-    cityButton.titleLabel.font = FONT_SMALL;
+    cityButton.titleLabel.font = FONT_MIDDLE;
     [cityButton setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [cityButton setTitle:@"切换城市" forState:UIControlStateNormal];
     [cityButton sizeToFit];
@@ -102,9 +102,9 @@
     
     superview = topView;
     [cityButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5 + 7);
+        make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5 + 5.5);
         make.right.equalTo(superview.mas_right).offset(-10);
-        make.height.equalTo(@12);
+        make.height.equalTo(@14);
     }];
     
     //当前位置

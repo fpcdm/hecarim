@@ -46,6 +46,7 @@ static NSMutableDictionary *caseTypes = nil;
     NSNumber *propertyId;
     
     BOOL isFirstCity;
+    NSArray *openCities;
     
     //二级分类
     CNPPopupController *popupController;
@@ -105,6 +106,7 @@ static NSMutableDictionary *caseTypes = nil;
         [helperHandler queryOpenCities:nil success:^(NSArray *result) {
             //标记第一次加载，定位城市会覆盖
             isFirstCity = YES;
+            openCities = result;
             
             //获取默认城市
             for (LocationEntity *location in result) {
@@ -236,27 +238,6 @@ static NSMutableDictionary *caseTypes = nil;
     } queue:dispatch_get_main_queue()];
 }
 
-//获取当前定位地址对象
-- (AddressEntity *) currentAddress
-{
-    UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    
-    AddressEntity *currentAddress = [[AddressEntity alloc] init];
-    currentAddress.name = [user displayName];
-    currentAddress.mobile = user.mobile;
-    currentAddress.address = lastLocation.detailAddress;
-    
-    //定位城市是否可用，是否是当前城市并且在开通城市列表中
-    NSString *cityCode = [[StorageUtil sharedStorage] getCityCode];
-    if (cityCode && lastLocation.cityCode && [cityCode isEqualToString:lastLocation.cityCode]) {
-        currentAddress.isEnable = @1;
-    } else {
-        currentAddress.isEnable = @0;
-    }
-    
-    return currentAddress;
-}
-
 #pragma mark - GPS
 - (void) updateLocationSuccess:(CLLocationCoordinate2D)position
 {
@@ -280,20 +261,34 @@ static NSMutableDictionary *caseTypes = nil;
     [helperHandler queryLocation:locationEntity success:^(NSArray *result){
         LocationEntity *location = [result firstObject];
         
-        //城市是否有变化
-        if (location.cityCode && [location.cityCode length] > 0) {
-            //城市有变动自动刷新
-            NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
-            if (!oldCity || ![oldCity isEqualToString:location.cityCode]) {
-                //记录城市缓存
-                [[StorageUtil sharedStorage] setCityCode:location.cityCode];
-                //记录城市缓存
-                [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:location.city];
-                //设置城市头
-                [[RestKitUtil sharedClient] setCityCode:location.cityCode];
-                
-                //重新加载城市
-                [self refreshCityView];
+        //首次检查定位城市是否不同
+        if (isFirstCity && location.cityCode && [location.cityCode length] > 0) {
+            //定位位置仅在第一次使用为当前城市
+            isFirstCity = NO;
+            
+            //是否在开通城市列表中
+            BOOL isOpenCity = NO;
+            for (LocationEntity *openCity in openCities) {
+                if (openCity.cityCode && [openCity.cityCode isEqualToString:location.cityCode]) {
+                    isOpenCity = YES;
+                    break;
+                }
+            }
+            
+            //在开通城市列表并且城市有变化
+            if (isOpenCity) {
+                NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
+                if (!oldCity || ![oldCity isEqualToString:location.cityCode]) {
+                    //记录城市缓存
+                    [[StorageUtil sharedStorage] setCityCode:location.cityCode];
+                    //记录城市缓存
+                    [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:location.city];
+                    //设置城市头
+                    [[RestKitUtil sharedClient] setCityCode:location.cityCode];
+                    
+                    //重新加载城市
+                    [self refreshCityView];
+                }
             }
         }
         
@@ -418,19 +413,48 @@ static NSMutableDictionary *caseTypes = nil;
     }];
 }
 
+//获取当前定位地址对象
+- (AddressEntity *) currentAddress
+{
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    
+    AddressEntity *currentAddress = [[AddressEntity alloc] init];
+    currentAddress.name = [user displayName];
+    currentAddress.mobile = user.mobile;
+    currentAddress.address = lastLocation.detailAddress;
+    
+    //定位城市是否可用
+    NSString *cityCode = [[StorageUtil sharedStorage] getCityCode];
+    //没有设置城市，则可以使用定位地址
+    if (!cityCode) {
+        currentAddress.isEnable = @1;
+        //定位城市和设置的城市相同，可以使用定位地址
+    } else if (lastLocation.cityCode && [cityCode isEqualToString:lastLocation.cityCode]) {
+        currentAddress.isEnable = @1;
+    } else {
+        currentAddress.isEnable = @0;
+    }
+    
+    return currentAddress;
+}
+
 - (void)showCaseForm
 {
+    //当前定位地址
+    AddressEntity *currentAddress = [self currentAddress];
+    
     //获取参数
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.typeId = typeId;
     intentionEntity.propertyId = propertyId ? propertyId : @0;
-    intentionEntity.buyerAddress = lastLocation.detailAddress;
+    intentionEntity.buyerAddress = [@1 isEqualToNumber:currentAddress.isEnable] ? currentAddress.address : nil;
     
     NSLog(@"intention: %@", [intentionEntity toDictionary]);
     
     //跳转表单页面
     CaseFormViewController *viewController = [[CaseFormViewController alloc] init];
     viewController.caseEntity = intentionEntity;
+    viewController.currentAddress = currentAddress;
     [self pushViewController:viewController animated:YES];
 }
 

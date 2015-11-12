@@ -15,6 +15,7 @@
 @implementation CaseFormView
 {
     UILabel *addressLabel;
+    UIView *addressBorder;
     UILabel *contactLabel;
     UITextView *remarkTextView;
 }
@@ -81,6 +82,9 @@
         make.height.equalTo(@20);
     }];
     
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionAddress)];
+    [addressView addGestureRecognizer:gesture];
+    
     //地址文本
     addressLabel = [[UILabel alloc] init];
     addressLabel.font = FONT_MIDDLE;
@@ -95,7 +99,7 @@
     }];
     
     //分割线
-    UIView *addressBorder = [[UIView alloc] init];
+    addressBorder = [[UIView alloc] init];
     addressBorder.backgroundColor = COLOR_MAIN_BORDER;
     [self addSubview:addressBorder];
     
@@ -214,10 +218,12 @@
     //是否有地址
     if (address) {
         contactLabel.hidden = NO;
+        addressBorder.hidden = NO;
         addressLabel.text = address;
         addressLabel.textColor = [UIColor blackColor];
     } else {
         contactLabel.hidden = YES;
+        addressBorder.hidden = YES;
         addressLabel.text = @"请选择服务地址";
         addressLabel.textColor = [UIColor redColor];
     }

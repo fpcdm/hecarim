@@ -14,10 +14,21 @@
 {
     //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[LocationEntity class] mappingParam:@{@"city_code": @"cityCode", @"city_name": @"city", @"is_default": @"isDefault"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[LocationEntity class] mappingParam:@{@"city_code": @"cityCode", @"city_name": @"city", @"is_default": @"isDefault"} keyPath:@"list"];
     
     [sharedClient getObject:[LocationEntity new] path:@"base/cities" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        //处理city名称，去掉最后的市
+        if ([result count] > 0) {
+            for (LocationEntity *entity in result) {
+                if (entity.city && entity.city.length > 0) {
+                    if ([[entity.city substringFromIndex:(entity.city.length - 1)] isEqualToString:@"市"]) {
+                        entity.city = [entity.city substringToIndex:entity.city.length - 1];
+                    }
+                }
+            }
+        }
         
         success(result);
     } failure:^(ErrorEntity *error){

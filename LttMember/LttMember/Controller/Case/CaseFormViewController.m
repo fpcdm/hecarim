@@ -11,7 +11,6 @@
 #import "CaseViewController.h"
 #import "CaseHandler.h"
 #import "AddressSelectorViewController.h"
-#import "AddressEntity.h"
 #import "ValidateUtil.h"
 #import "UserHandler.h"
 
@@ -50,7 +49,7 @@
             address = [result firstObject];
             [self renderView];
         } else {
-            address = [self currentAddress];
+            address = self.currentAddress;
             [self renderView];
         }
     } failure:^(ErrorEntity *error){
@@ -72,24 +71,15 @@
     } else {
         [formView setData:@"name" value:address.name];
         [formView setData:@"mobile" value:address.mobile];
-        [formView setData:@"address" value:address.address];
+        if (address.isEnable && [@1 isEqualToNumber:address.isEnable]) {
+            [formView setData:@"address" value:address.address];
+        } else {
+            [formView setData:@"address" value:nil];
+        }
         [formView renderData];
         
         caseEntity.addressId = nil;
     }
-}
-
-- (AddressEntity *) currentAddress
-{
-    UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    
-    AddressEntity *currentAddress = [[AddressEntity alloc] init];
-    currentAddress.name = [user displayName];
-    currentAddress.mobile = user.mobile;
-    currentAddress.address = caseEntity.buyerAddress;
-    //todo
-    currentAddress.isEnable = @1;
-    return currentAddress;
 }
 
 #pragma mark - Action
@@ -97,7 +87,7 @@
 {
     AddressSelectorViewController *viewController = [[AddressSelectorViewController alloc] init];
     //获取当前地址
-    viewController.currentAddress = [self currentAddress];
+    viewController.currentAddress = self.currentAddress;
     viewController.callbackBlock = ^(AddressEntity *newAddress){
         NSLog(@"选择的地址：%@", [newAddress toDictionary]);
         
