@@ -107,6 +107,8 @@
 		2F2F224D1B3A4D0300428742 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22351B3A4D0300428742 /* TSBlurView.m */; };
 		2F2F224E1B3A4D0300428742 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22371B3A4D0300428742 /* TSMessage.m */; };
 		2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22391B3A4D0300428742 /* TSMessageView.m */; };
+		2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39B3861BF43C9000234ACF /* CityViewController.m */; };
+		2F39B38A1BF43D9D00234ACF /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39B3891BF43D9D00234ACF /* CityView.m */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
 		2F593C641BE85AE400698AFA /* CaseCashierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F593C631BE85AE400698AFA /* CaseCashierView.m */; };
@@ -436,6 +438,10 @@
 		2F2F22371B3A4D0300428742 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2F2F22381B3A4D0300428742 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2F2F22391B3A4D0300428742 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2F39B3851BF43C9000234ACF /* CityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewController.h; sourceTree = "<group>"; };
+		2F39B3861BF43C9000234ACF /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
+		2F39B3881BF43D9D00234ACF /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
+		2F39B3891BF43D9D00234ACF /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F55340F1B4FC6CD00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534101B4FC6CD00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
@@ -945,6 +951,8 @@
 			children = (
 				2F16E58F1B5DEFEE007947D0 /* HomeView.h */,
 				2F16E5901B5DEFEE007947D0 /* HomeView.m */,
+				2F39B3881BF43D9D00234ACF /* CityView.h */,
+				2F39B3891BF43D9D00234ACF /* CityView.m */,
 				2F16E5911B5DEFEE007947D0 /* LoginView.h */,
 				2F16E5921B5DEFEE007947D0 /* LoginView.m */,
 				2F16E5931B5DEFEE007947D0 /* RegisterCodeView.h */,
@@ -1030,6 +1038,8 @@
 			children = (
 				2F16E5DC1B5DF08F007947D0 /* HomeViewController.h */,
 				2F16E5DD1B5DF08F007947D0 /* HomeViewController.m */,
+				2F39B3851BF43C9000234ACF /* CityViewController.h */,
+				2F39B3861BF43C9000234ACF /* CityViewController.m */,
 				2F16E5DE1B5DF08F007947D0 /* LoginViewController.h */,
 				2F16E5DF1B5DF08F007947D0 /* LoginViewController.m */,
 				2F16E5E01B5DF08F007947D0 /* LttNavigationController.h */,
@@ -1997,6 +2007,7 @@
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
 				2FB72F691BB928BA00CB8E62 /* BaseCollectionView.m in Sources */,
 				2F16E5EF1B5DF08F007947D0 /* SettingViewController.m in Sources */,
+				2F39B38A1BF43D9D00234ACF /* CityView.m in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
 				2FED7D931B1EA2D300306A11 /* SDImageCache.m in Sources */,
 				2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */,
@@ -2033,6 +2044,7 @@
 				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
 				2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */,
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
+				2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */,
 				2F16E5F21B5DF08F007947D0 /* CaseFormViewController.m in Sources */,
 				2F16E5EC1B5DF08F007947D0 /* ProfileViewController.m in Sources */,
 				2F6D3E161B312164007A4159 /* ActionSheetStringPicker.m in Sources */,

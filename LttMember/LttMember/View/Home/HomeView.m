@@ -96,7 +96,7 @@
     cityButton.titleLabel.font = FONT_MIDDLE;
     [cityButton setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [cityButton setTitle:@"切换城市" forState:UIControlStateNormal];
-    [cityButton sizeToFit];
+    [cityButton.titleLabel sizeToFit];
     [cityButton addTarget:self action:@selector(actionCity) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:cityButton];
     
@@ -285,7 +285,7 @@
     NSString *city = [self getData:@"city"];
     if (city && [city length] > 0) {
         [cityButton setTitle:city forState:UIControlStateNormal];
-        [cityButton sizeToFit];
+        [cityButton.titleLabel sizeToFit];
     }
 }
 

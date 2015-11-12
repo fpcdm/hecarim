@@ -22,8 +22,6 @@
     //设置滚动视图
     self.collectionView.scrollEnabled = YES;
     self.collectionView.backgroundColor = COLOR_MAIN_CLEAR;
-    self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.showsVerticalScrollIndicator = NO;
     
     return self;
 }

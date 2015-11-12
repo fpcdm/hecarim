@@ -21,6 +21,8 @@
 #import "CNPPopupController.h"
 #import "CasePropertyView.h"
 #import "AddressEntity.h"
+#import "CityViewController.h"
+#import "UINavigationController+Vertical.h"
 
 //GPS数据缓存，优化GPS耗电
 static LocationEntity *lastLocation = nil;
@@ -56,6 +58,8 @@ static NSMutableDictionary *caseTypes = nil;
     CLLocationCoordinate2D debugPosition;
 #endif
     
+    //选择城市
+    CityViewController *cityViewController;
 }
 
 - (void)loadView
@@ -111,12 +115,7 @@ static NSMutableDictionary *caseTypes = nil;
             //获取默认城市
             for (LocationEntity *location in result) {
                 if (location.isDefault && [@1 isEqualToNumber:location.isDefault]) {
-                    //记录城市缓存
-                    [[StorageUtil sharedStorage] setCityCode:location.cityCode];
-                    //记录城市缓存
-                    [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:location.city];
-                    //设置城市头
-                    [[RestKitUtil sharedClient] setCityCode:location.cityCode];
+                    [self saveCity:location.cityCode cityName:location.city];
                     break;
                 }
             }
@@ -280,11 +279,7 @@ static NSMutableDictionary *caseTypes = nil;
                 NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
                 if (!oldCity || ![oldCity isEqualToString:location.cityCode]) {
                     //记录城市缓存
-                    [[StorageUtil sharedStorage] setCityCode:location.cityCode];
-                    //记录城市缓存
-                    [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:location.city];
-                    //设置城市头
-                    [[RestKitUtil sharedClient] setCityCode:location.cityCode];
+                    [self saveCity:location.cityCode cityName:location.city];
                     
                     //重新加载城市
                     [self refreshCityView];
@@ -296,7 +291,14 @@ static NSMutableDictionary *caseTypes = nil;
         if (location.detailAddress && [location.detailAddress length] > 0) {
             lastLocation.detailAddress = location.detailAddress;
             lastLocation.cityCode = location.cityCode;
+            lastLocation.city = location.city;
             gpsStatus = nil;
+            
+            //刷新选择城市
+            if (cityViewController) {
+                cityViewController.gpsLocation = lastLocation;
+                [cityViewController reloadView];
+            }
         } else {
             gpsStatus = @"获取位置失败";
         }
@@ -339,6 +341,7 @@ static NSMutableDictionary *caseTypes = nil;
     //重置数据
     lastLocation.detailAddress = nil;
     lastLocation.cityCode = nil;
+    lastLocation.city = nil;
     lastLocation.serviceNumber = nil;
     
     //失败原因
@@ -365,6 +368,9 @@ static NSMutableDictionary *caseTypes = nil;
         //北京
         } else if (debugPosition.latitude == 22.818677) {
             debugPosition = CLLocationCoordinate2DMake(39.915599, 116.426116);
+        //安庆
+        } else if (debugPosition.latitude == 39.915599) {
+            debugPosition = CLLocationCoordinate2DMake(30.915599, 116.426116);
         //重庆
         } else {
             debugPosition = CLLocationCoordinate2DMake(29.587263, 106.493928);
@@ -374,7 +380,18 @@ static NSMutableDictionary *caseTypes = nil;
 #endif
 
 #pragma mark - City
-//切换城市
+//设置城市
+- (void)saveCity:(NSString *)cityCode cityName:(NSString *)cityName
+{
+    //记录城市缓存
+    [[StorageUtil sharedStorage] setCityCode:cityCode];
+    //记录城市缓存
+    [[StorageUtil sharedStorage] setData:LTT_STORAGE_KEY_CITY_NAME object:cityName];
+    //设置城市头
+    [[RestKitUtil sharedClient] setCityCode:cityCode];
+}
+
+//切换城市视图
 - (void)refreshCityView
 {
     //刷新城市服务列表
@@ -428,7 +445,7 @@ static NSMutableDictionary *caseTypes = nil;
     //没有设置城市，则可以使用定位地址
     if (!cityCode) {
         currentAddress.isEnable = @1;
-        //定位城市和设置的城市相同，可以使用定位地址
+    //定位城市和设置的城市相同，可以使用定位地址
     } else if (lastLocation.cityCode && [cityCode isEqualToString:lastLocation.cityCode]) {
         currentAddress.isEnable = @1;
     } else {
@@ -496,7 +513,34 @@ static NSMutableDictionary *caseTypes = nil;
 
 - (void)actionCity
 {
+    cityViewController = [[CityViewController alloc] init];
+    cityViewController.gpsLocation = lastLocation;
     
+    //解决循环引用
+    __block HomeViewController *homeViewController = self;
+    cityViewController.callbackBlock = ^(LocationEntity *city){
+        //关闭控制器
+        cityViewController = nil;
+        
+        //选择城市
+        if (city) {
+            NSString *oldCity = [[StorageUtil sharedStorage] getCityCode];
+            if (!oldCity || ![oldCity isEqualToString:city.cityCode]) {
+                //记录城市缓存
+                [homeViewController saveCity:city.cityCode cityName:city.city];
+                
+                //刷新城市显示
+                [homeViewController renderView];
+                
+                //重新加载城市
+                [homeViewController refreshCityView];
+            }
+        }
+        
+        //释放引用
+        homeViewController = nil;
+    };
+    [self.navigationController pushViewController:cityViewController animated:YES vertical:YES];
 }
 
 - (void)actionCategory:(NSNumber *)id

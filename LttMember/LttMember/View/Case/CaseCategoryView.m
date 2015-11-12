@@ -39,8 +39,6 @@
     self.collectionView.scrollEnabled = YES;
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.backgroundColor = COLOR_MAIN_CLEAR;
-    self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.showsVerticalScrollIndicator = NO;
     
     //初始化数据
     selectCategories = [NSMutableArray array];

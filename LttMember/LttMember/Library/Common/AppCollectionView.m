@@ -15,6 +15,8 @@
     //全局背景色
     self.collectionView.backgroundColor = COLOR_MAIN_BG;
     self.collectionView.scrollEnabled = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.showsVerticalScrollIndicator = NO;
 }
 
 @end
