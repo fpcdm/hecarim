@@ -104,23 +104,5 @@
     }];
 }
 
-//商户注册
-- (void) registerWithUser:(UserEntity *)user vCode:(NSString *)vCode success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    //调用接口
-    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id":@"id"}];
-    
-    NSString *restPath = [sharedClient formatPath:@"user/merchant" object:user];
-    
-    NSDictionary *param = @{@"merchant_name":user.name ? user.name : @"",@"contacter":user.nickname ? user.nickname : @"",@"mobile":user.mobile ? user.mobile : @"",@"password": user.password ? user.password : @"",@"vcode" : vCode ? vCode : @""};
-    [sharedClient putObject:user path:restPath param:param success:^(NSArray *result) {
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        success(result);
-    } failure:^(ErrorEntity *error) {
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        failure(error);
-    }];
-}
 
 @end
