@@ -9,16 +9,17 @@
 #import "RegisterViewController.h"
 #import "RegisterMobileView.h"
 #import "RegisterExistView.h"
-#import "RegisterCodeView.h"
 #import "RegisterPasswordView.h"
 #import "RegisterSuccessView.h"
+#import "RegisterInfoView.h"
 #import "ValidateUtil.h"
 #import "UIViewController+BackButtonHandler.h"
 #import "UserHandler.h"
 #import "HelperHandler.h"
 #import "TimerUtil.h"
 #import "LoginActivity.h"
-@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate, RegisterSuccessViewDelegate>
+#import "MerchantHandler.h"
+@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate>
 
 @end
 
@@ -58,7 +59,9 @@
 {
     RegisterMobileView *currentView = [[RegisterMobileView alloc] init];
     currentView.delegate = self;
+    sendButton = currentView.sendButton;
     self.navigationItem.title = @"商户注册";
+    [self checkButton];
     return currentView;
 }
 
@@ -70,11 +73,11 @@
     return currentView;
 }
 
-- (RegisterCodeView *) mobileCodeView
+- (RegisterInfoView *) infoInputView
 {
-    RegisterCodeView *currentView = [[RegisterCodeView alloc] init];
+    RegisterInfoView *currentView = [[RegisterInfoView alloc] init];
     currentView.delegate = self;
-    self.navigationItem.title = @"注册";
+    self.navigationItem.title = @"设置商户信息";
     return currentView;
 }
 
@@ -82,7 +85,7 @@
 {
     RegisterPasswordView *currentView = [[RegisterPasswordView alloc] init];
     currentView.delegate = self;
-    self.navigationItem.title = @"设置商户信息";
+    self.navigationItem.title = @"帐号密码";
     return currentView;
 }
 
@@ -180,7 +183,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.view isMemberOfClass:[RegisterExistView class]]) {
         [self popView:[self mobileInputView] animated:YES completion:nil];
-    } else if ([self.view isMemberOfClass:[RegisterCodeView class]]) {
+    } else if ([self.view isMemberOfClass:[RegisterInfoView class]]) {
         [self popView:[self mobileInputView] animated:YES completion:nil];
     } else if ([self.view isMemberOfClass:[RegisterPasswordView class]]) {
         [self popView:[self mobileInputView] animated:YES completion:nil];
@@ -191,9 +194,85 @@
 }
 
 #pragma mark - Action
-- (void) actionCheckMobile:(NSString *)inputMobile
+- (void) actionCheckMobile:(NSString *)inputMobile code:(NSString *)code
 {
     //参数检查
+    if (![ValidateUtil isRequired:inputMobile]) {
+        [self showError:ERROR_MOBILE_REQUIRED];
+        return;
+    }
+    if (![ValidateUtil isMobile:inputMobile]) {
+        [self showError:ERROR_MOBILE_FORMAT];
+        return;
+    }
+    if (![ValidateUtil isRequired:code]) {
+        [self showError:ERROR_MOBILECODE_REQUIRED];
+        return;
+    }
+    
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //检查手机号是否已经注册
+    HelperHandler *helperHandler = [[HelperHandler alloc] init];
+    [helperHandler checkMobile:inputMobile success:^(NSArray *result){
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            ResultEntity *checkResult = [result firstObject];
+            
+            mobile = inputMobile;
+            mobileStatus = checkResult.data;
+            NSLog(@"check mobile result: %@", checkResult.data);
+            if ([@"registered" isEqualToString:mobileStatus]) {
+                RegisterExistView *existView = [self mobileExistView];
+                [self pushView:existView animated:YES completion:^{
+                    [existView setData:@"mobile" value:mobile];
+                    [existView renderData];
+                }];
+            } else {
+                //检查校验码是否正确
+                HelperHandler *helperHandler = [[HelperHandler alloc] init];
+                [helperHandler verifyMobileCode:inputMobile code:code success:^(NSArray *result){
+                    [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                        ResultEntity *verifyResult = [result firstObject];
+                        vCode = verifyResult.data;
+                        NSLog(@"安全码是：%@",vCode);
+                        
+                        [self userType];
+                    }];
+                } failure:^(ErrorEntity *error){
+                    [self showError:error.message];
+                }];
+            }
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
+}
+
+- (void)userType
+{
+    //未注册,去到填写密码视图
+    if ([@"unregistered" isEqualToString:mobileStatus]) {
+        [self pushView:[self mobilePasswordView] animated:YES completion:nil];
+    } else {
+        RegisterInfoView *infoView = [self infoInputView];
+        [self pushView:infoView animated:YES completion:nil];
+        [infoView setTipViewHide:YES];
+    }
+}
+
+- (void) actionLogin
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) actionSend: (NSString *)inputMobile
+{
+    //未到发送时间
+    int timeLeft = [self getSmsTimeLeft];
+    if (timeLeft != -1) {
+        return;
+    }
+    
     if (![ValidateUtil isRequired:inputMobile]) {
         [self showError:ERROR_MOBILE_REQUIRED];
         return;
@@ -221,19 +300,14 @@
                     [existView renderData];
                 }];
             } else {
-                RegisterCodeView *codeView = [self mobileCodeView];
-                [self pushView:codeView animated:YES completion:^{
-                    [codeView setData:@"mobile" value:mobile];
-                    [codeView renderData];
-                    
-                    //发送短信验证码
-                    sendButton = codeView.sendButton;
-                    [self sendSms:^(id object){
-                        [self checkButton];
-                    } failure:^(ErrorEntity *error){
-                        [self checkButton];
-                        [self showError:error.message];
-                    }];
+                //发送短信验证码
+//                RegisterMobileView *mobileView = [self mobileInputView];
+//                sendButton = mobileView.sendButton;
+                [self sendSms:^(id object){
+                    [self checkButton];
+                } failure:^(ErrorEntity *error){
+                    [self checkButton];
+                    [self showError:error.message];
                 }];
             }
         }];
@@ -241,92 +315,86 @@
         [self showError:error.message];
     }];
 }
+//
+//- (void) actionVerifyCode:(NSString *)code
+//{
+//    if (![ValidateUtil isRequired:code]) {
+//        [self showError:ERROR_MOBILECODE_REQUIRED];
+//        return;
+//    }
+//    
+//    [self showLoading:TIP_REQUEST_MESSAGE];
+//    
+//    HelperHandler *helperHandler = [[HelperHandler alloc] init];
+//    [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
+//        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+//            ResultEntity *verifyResult = [result firstObject];
+//            vCode = verifyResult.data;
+//            NSLog(@"安全码是：%@",vCode);
+//            RegisterPasswordView *passwordView = [self mobilePasswordView];
+//            [self pushView:passwordView animated:YES completion:^{
+//                [passwordView setData:@"mobileStatus" value:mobileStatus];
+//            }];
+//        }];
+//    } failure:^(ErrorEntity *error){
+//        [self showError:error.message];
+//    }];
+//}
 
-- (void) actionLogin
+- (void)actionSendPassword:(NSString *)pwd confirmPwd:(NSString *)confirmPwd
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void) actionSend
-{
-    //未到发送时间
-    int timeLeft = [self getSmsTimeLeft];
-    if (timeLeft != -1) {
+    if (![ValidateUtil isRequired:pwd]) {
+        [self showError:ERROR_PASSWORD_REQUIRED];
         return;
     }
-    
-    //发送短信验证码
-    [self sendSms:^(id object){
-        [self checkButton];
-    } failure:^(ErrorEntity *error){
-        [self checkButton];
-        [self showError:error.message];
-    }];
-}
-
-- (void) actionVerifyCode:(NSString *)code
-{
-    if (![ValidateUtil isRequired:code]) {
-        [self showError:ERROR_MOBILECODE_REQUIRED];
+    if (![ValidateUtil isLengthBetween:pwd from:6 to:20]) {
+        [self showError:ERROR_PASSWORD_LENGTH];
         return;
     }
-    
-    [self showLoading:TIP_REQUEST_MESSAGE];
-    
-    HelperHandler *helperHandler = [[HelperHandler alloc] init];
-    [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            ResultEntity *verifyResult = [result firstObject];
-            vCode = verifyResult.data;
-            NSLog(@"安全码是：%@",vCode);
-            RegisterPasswordView *passwordView = [self mobilePasswordView];
-            [self pushView:passwordView animated:YES completion:^{
-                [passwordView setData:@"mobileStatus" value:mobileStatus];
-                [passwordView renderData];
-            }];
-        }];
-    } failure:^(ErrorEntity *error){
-        [self showError:error.message];
-    }];
+    if (![confirmPwd isEqualToString:pwd]) {
+        [self showError:@"两次密码不相等哦~亲！"];
+        return;
+    }
+    password = pwd;
+    RegisterInfoView *infoView = [self infoInputView];
+    [self pushView:infoView animated:YES completion:nil];
+    [infoView setTipViewHide:NO];
 }
 
 
 //商户注册验证
-- (void)actionRegister:(UserEntity *)user
+- (void)actoinRegister:(MerchantEntity *)merchant
 {
-    NSString *merchantName = [user.name trim];
+    NSString *merchantName = [merchant.merchant_name trim];
     if (![ValidateUtil isRequired:merchantName]) {
         [self showError:ERROR_MERCHANT_REQUIRED];
         return;
     }
-    
-    NSString *contactName = [user.nickname trim];
+    NSString *merchantAddress = [merchant.merchant_address trim];
+    if (![ValidateUtil isRequired:merchantAddress]) {
+        [self showError:ERROR_MERCHANTADDRESS_REQUIRED];
+        return;
+    }
+    NSString *contactName = [merchant.contacter trim];
     if (![ValidateUtil isRequired:contactName]) {
         [self showError:ERROR_CONTACT_REQUIRED];
         return;
     }
-    
-    if ([mobileStatus isEqualToString:@"unregistered"]) {
-        NSString *inputPassword = [user.password trim];
-        if (![ValidateUtil isRequired:inputPassword]) {
-            [self showError:ERROR_PASSWORD_REQUIRED];
-            return;
-        }
-        
-        if (![ValidateUtil isLengthBetween:inputPassword from:6 to:20]) {
-            [self showError:ERROR_PASSWORD_LENGTH];
-            return;
-        }
+    NSString *contacterId = [merchant.contacter_id trim];
+    if (![ValidateUtil isRequired:contacterId]) {
+        [self showError:ERROR_CONTACTID_REQUIRED];
+        return;
     }
     
     [self showLoading:TIP_REQUEST_MESSAGE];
     
-    user.mobile = mobile;
+    merchant.mobile = mobile;
+    merchant.password = password;
     
     //注册用户
     
-    UserHandler *userHandler = [[UserHandler alloc] init];
-    [userHandler registerWithUser:user vCode:vCode success:^(NSArray *result){
+    MerchantHandler *merchantHandler = [[MerchantHandler alloc] init];
+    [merchantHandler registerWithUser:merchant vCode:vCode success:^(NSArray *result){
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             
             [self pushView:[self mobileSuccessView] animated:YES completion:nil];
