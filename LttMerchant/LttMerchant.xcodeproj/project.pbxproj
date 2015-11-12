@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2B759E951BE7032000CBAD28 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B759E941BE7032000CBAD28 /* HomeView.m */; };
 		2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346F61BE0B422001530F0 /* RegisterViewController.m */; };
-		2B8347021BE0B4CE001530F0 /* RegisterCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346F91BE0B4CE001530F0 /* RegisterCodeView.m */; };
 		2B8347031BE0B4CE001530F0 /* RegisterExistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */; };
 		2B8347041BE0B4CE001530F0 /* RegisterMobileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FD1BE0B4CE001530F0 /* RegisterMobileView.m */; };
 		2B8347051BE0B4CE001530F0 /* RegisterPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FF1BE0B4CE001530F0 /* RegisterPasswordView.m */; };
@@ -17,6 +16,9 @@
 		2B942BA31BE74257009CA6A0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B942BA21BE74257009CA6A0 /* LoginView.m */; };
 		2BCED6771BE854D10011F1FF /* ServiceFromView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCED6761BE854D10011F1FF /* ServiceFromView.m */; };
 		2BCED67A1BE8A8090011F1FF /* CaseEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCED6791BE8A8090011F1FF /* CaseEditView.m */; };
+		2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */; };
+		2BD4FAD91BF47977003B727B /* MerchantEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD81BF47977003B727B /* MerchantEntity.m */; };
+		2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FADB1BF47D94003B727B /* MerchantHandler.m */; };
 		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
 		2F02FB6E1BABE1B100D7D68F /* CaseErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F02FB6D1BABE1B100D7D68F /* CaseErrorView.m */; };
 		2F02FB701BABE5DE00D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB6F1BABE5DE00D7D68F /* libxml2.tbd */; };
@@ -595,8 +597,6 @@
 		2B759E941BE7032000CBAD28 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		2B8346F51BE0B422001530F0 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2B8346F61BE0B422001530F0 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		2B8346F81BE0B4CE001530F0 /* RegisterCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterCodeView.h; sourceTree = "<group>"; };
-		2B8346F91BE0B4CE001530F0 /* RegisterCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterCodeView.m; sourceTree = "<group>"; };
 		2B8346FA1BE0B4CE001530F0 /* RegisterExistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterExistView.h; sourceTree = "<group>"; };
 		2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterExistView.m; sourceTree = "<group>"; };
 		2B8346FC1BE0B4CE001530F0 /* RegisterMobileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterMobileView.h; sourceTree = "<group>"; };
@@ -611,6 +611,12 @@
 		2BCED6761BE854D10011F1FF /* ServiceFromView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFromView.m; sourceTree = "<group>"; };
 		2BCED6781BE8A8090011F1FF /* CaseEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseEditView.h; sourceTree = "<group>"; };
 		2BCED6791BE8A8090011F1FF /* CaseEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEditView.m; sourceTree = "<group>"; };
+		2BD4FAD41BF43F96003B727B /* RegisterInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterInfoView.h; sourceTree = "<group>"; };
+		2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterInfoView.m; sourceTree = "<group>"; };
+		2BD4FAD71BF47977003B727B /* MerchantEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantEntity.h; sourceTree = "<group>"; };
+		2BD4FAD81BF47977003B727B /* MerchantEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantEntity.m; sourceTree = "<group>"; };
+		2BD4FADA1BF47D94003B727B /* MerchantHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantHandler.h; sourceTree = "<group>"; };
+		2BD4FADB1BF47D94003B727B /* MerchantHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantHandler.m; sourceTree = "<group>"; };
 		2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F02FB6C1BABE1B100D7D68F /* CaseErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseErrorView.h; sourceTree = "<group>"; };
@@ -1987,6 +1993,8 @@
 				2F0E37DC1B6B62E200CFE2E6 /* CaseEntity.m */,
 				2F81ADEE1B9D900C00E381B0 /* ConsumeEntity.h */,
 				2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */,
+				2BD4FAD71BF47977003B727B /* MerchantEntity.h */,
+				2BD4FAD81BF47977003B727B /* MerchantEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -2002,6 +2010,8 @@
 				2F0E37DF1B6B66B100CFE2E6 /* CaseHandler.m */,
 				2F55F6A91BDF130700A89174 /* HelperHandler.h */,
 				2F55F6AA1BDF130700A89174 /* HelperHandler.m */,
+				2BD4FADA1BF47D94003B727B /* MerchantHandler.h */,
+				2BD4FADB1BF47D94003B727B /* MerchantHandler.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -2093,12 +2103,12 @@
 			children = (
 				2B8346FC1BE0B4CE001530F0 /* RegisterMobileView.h */,
 				2B8346FD1BE0B4CE001530F0 /* RegisterMobileView.m */,
-				2B8346F81BE0B4CE001530F0 /* RegisterCodeView.h */,
-				2B8346F91BE0B4CE001530F0 /* RegisterCodeView.m */,
 				2B8346FA1BE0B4CE001530F0 /* RegisterExistView.h */,
 				2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */,
 				2B8346FE1BE0B4CE001530F0 /* RegisterPasswordView.h */,
 				2B8346FF1BE0B4CE001530F0 /* RegisterPasswordView.m */,
+				2BD4FAD41BF43F96003B727B /* RegisterInfoView.h */,
+				2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */,
 				2B8347001BE0B4CE001530F0 /* RegisterSuccessView.h */,
 				2B8347011BE0B4CE001530F0 /* RegisterSuccessView.m */,
 				2F55F69F1BDF12F400A89174 /* ForgetPasswordView.h */,
@@ -4242,6 +4252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */,
+				2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */,
 				2F78FADC1B75B1F30009F349 /* ServiceInspector.m in Sources */,
 				2F78FB261B75B1F40009F349 /* Samurai_CSSNumberVmax.m in Sources */,
 				2F78FAC11B75B1F30009F349 /* Samurai_Metric.m in Sources */,
@@ -4322,7 +4333,6 @@
 				2FED7DC11B1EA2E100306A11 /* SDWebImageDecoder.m in Sources */,
 				2F90007C1B1D91470040D97B /* MASViewAttribute.m in Sources */,
 				2F78FA641B75B1F30009F349 /* Samurai_Assert.m in Sources */,
-				2B8347021BE0B4CE001530F0 /* RegisterCodeView.m in Sources */,
 				2F78FA9E1B75B1F30009F349 /* Samurai_UITableViewCell.m in Sources */,
 				2F78FA551B75B1F30009F349 /* Samurai_Config(Phone).m in Sources */,
 				2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */,
@@ -4331,6 +4341,7 @@
 				2F78FB511B75B1F40009F349 /* Samurai_HtmlElementButton.m in Sources */,
 				2F6D3EFF1B3128CC007A4159 /* ActionSheetLocalePicker.m in Sources */,
 				2F78FA731B75B1F30009F349 /* Samurai_Core.m in Sources */,
+				2BD4FAD91BF47977003B727B /* MerchantEntity.m in Sources */,
 				2F7B607B1B7AF24900F65729 /* GoodsListView.m in Sources */,
 				2F78FA8A1B75B1F30009F349 /* Signal+View.m in Sources */,
 				2F78FB411B75B1F40009F349 /* Samurai_HtmlDocument.m in Sources */,
@@ -4379,6 +4390,7 @@
 				2F78FAEE1B75B1F30009F349 /* NSObject+AutoRuntime.m in Sources */,
 				2F78FB191B75B1F40009F349 /* Samurai_CSSNumberKhz.m in Sources */,
 				2F78FB711B75B1F40009F349 /* Samurai_HtmlElementInputPassword.m in Sources */,
+				2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */,
 				2F90015D1B1D9D680040D97B /* UIViewController+REFrostedViewController.m in Sources */,
 				2F78FB2B1B75B1F40009F349 /* Samurai_CSSString.m in Sources */,
 				2F78FBA61B75B1F40009F349 /* Samurai_HtmlRenderWorklet_30UpdateFrame.m in Sources */,
