@@ -55,7 +55,7 @@
     userField.placeholder = @"请输入手机号";
     userField.font = FONT_MAIN;
     userField.textColor = COLOR_MAIN_BLACK;
-    userField.clearButtonMode = UITextFieldViewModeAlways;
+    userField.clearButtonMode = UITextFieldViewModeWhileEditing;
     userField.keyboardType = UIKeyboardTypeNumberPad;
     [uiView addSubview:userField];
     
@@ -98,7 +98,7 @@
     passwordField.placeholder = @"请输入密码";
     passwordField.font = FONT_MAIN;
     passwordField.textColor = COLOR_MAIN_BLACK;
-    passwordField.clearButtonMode = UITextFieldViewModeAlways;
+    passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     passwordField.secureTextEntry = YES;
     [uiView addSubview:passwordField];
     

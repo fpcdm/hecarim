@@ -51,7 +51,7 @@
     mobileField.placeholder = @"请输入手机号";
     mobileField.font = FONT_MAIN;
     //定义编辑时显示清除按钮效果
-    mobileField.clearButtonMode = YES;
+    mobileField.clearButtonMode = UITextFieldViewModeWhileEditing;
     //设置为数字键盘
     mobileField.keyboardType = UIKeyboardTypeNumberPad;
     [self addSubview:mobileField];
@@ -74,8 +74,6 @@
         
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
-
-
     
     return self;
 }

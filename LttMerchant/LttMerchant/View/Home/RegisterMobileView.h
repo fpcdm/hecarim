@@ -10,12 +10,15 @@
 
 @protocol RegisterMobileViewDelegate <NSObject>
 
-- (void) actionCheckMobile:(NSString *)mobile;
+- (void) actionCheckMobile:(NSString *)mobile code:(NSString *)code;
+- (void) actionSend:(NSString *)mobile;
 
 @end
 
 @interface RegisterMobileView : AppView
 
 @property (retain, nonatomic) id<RegisterMobileViewDelegate> delegate;
+
+@property (retain, nonatomic) UIButton *sendButton;
 
 @end

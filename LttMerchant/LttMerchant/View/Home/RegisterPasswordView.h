@@ -10,7 +10,7 @@
 
 @protocol RegisterPasswordViewDelegate <NSObject>
 
--(void)actionRegister:(UserEntity *)user;
+-(void)actionSendPassword:(NSString *)pwd confirmPwd:(NSString *)confirmPwd;
 
 @end
 
