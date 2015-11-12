@@ -114,8 +114,10 @@
 #define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
 #define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
 #define ERROR_MOBILE_NOTFOUND @"该手机号不存在哦~亲！"
-#define ERROR_MERCHANT_REQUIRED @"请填写商户名称哦~亲！"
-#define ERROR_CONTACT_REQUIRED @"请填写联系人哦~亲"
+#define ERROR_MERCHANT_REQUIRED @"请填写单位名称哦~亲！"
+#define ERROR_MERCHANTADDRESS_REQUIRED @"请填写单位地址哦~亲！"
+#define ERROR_CONTACT_REQUIRED @"请填写负责人哦~亲"
+#define ERROR_CONTACTID_REQUIRED @"请填写负责人身份证哦~亲"
 
 #define TIP_LOADING_MESSAGE @"加载中"
 #define TIP_LOADING_SUCCESS @"加载完成"
