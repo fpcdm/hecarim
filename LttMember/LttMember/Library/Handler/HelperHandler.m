@@ -38,6 +38,23 @@
     }];
 }
 
+- (void)queryAdverts:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AdvertEntity class] mappingParam:@{@"img": @"image", @"title": @"title"} keyPath:@"list"];
+    
+    [sharedClient getObject:[AdvertEntity new] path:@"base/advert" param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void)queryLocation:(LocationEntity *)location success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //登录接口调用

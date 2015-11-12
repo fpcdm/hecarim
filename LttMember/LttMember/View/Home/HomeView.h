@@ -38,6 +38,8 @@
 - (void) reloadCategories;
 - (void) reloadTypes;
 
+- (void) reloadAds;
+
 //切换二级分类
 - (void) showProperties;
 - (void) clearProperties;

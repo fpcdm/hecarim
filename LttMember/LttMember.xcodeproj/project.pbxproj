@@ -117,6 +117,7 @@
 		2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C8B271BD8C9A700EF1586 /* CaseCategoryView.m */; };
 		2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */; };
 		2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */; };
+		2F60BE3E1BF4944900BD99CC /* AdvertEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60BE3D1BF4944900BD99CC /* AdvertEntity.m */; };
 		2F66301A1BF1BF950025112C /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6630191BF1BF950025112C /* UINavigationController+Vertical.m */; };
 		2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A21B4B70B900E0F774 /* LocationUtil.m */; };
 		2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */; };
@@ -457,6 +458,8 @@
 		2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+RefreshLoading.m"; sourceTree = "<group>"; };
 		2F5FDDDA1B5F3E1800CBF2A7 /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
 		2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
+		2F60BE3C1BF4944900BD99CC /* AdvertEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertEntity.h; sourceTree = "<group>"; };
+		2F60BE3D1BF4944900BD99CC /* AdvertEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertEntity.m; sourceTree = "<group>"; };
 		2F6611461B0C697C0008D500 /* LttMember.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttMember.pch; sourceTree = "<group>"; };
 		2F6630181BF1BF950025112C /* UINavigationController+Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Vertical.h"; sourceTree = "<group>"; };
 		2F6630191BF1BF950025112C /* UINavigationController+Vertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Vertical.m"; sourceTree = "<group>"; };
@@ -1110,6 +1113,8 @@
 				2F16E6221B5DF162007947D0 /* ServiceEntity.m */,
 				2FB72F5B1BB8D3A200CB8E62 /* PropertyEntity.h */,
 				2FB72F5C1BB8D3A200CB8E62 /* PropertyEntity.m */,
+				2F60BE3C1BF4944900BD99CC /* AdvertEntity.h */,
+				2F60BE3D1BF4944900BD99CC /* AdvertEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -2042,6 +2047,7 @@
 				2F16E5A81B5DEFEE007947D0 /* AddressSelectorView.m in Sources */,
 				2FED7D9E1B1EA2D300306A11 /* UIImageView+WebCache.m in Sources */,
 				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
+				2F60BE3E1BF4944900BD99CC /* AdvertEntity.m in Sources */,
 				2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */,
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */,

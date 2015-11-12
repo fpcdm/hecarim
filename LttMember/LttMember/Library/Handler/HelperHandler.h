@@ -10,6 +10,7 @@
 #import "LocationEntity.h"
 #import "AreaEntity.h"
 #import "UserEntity.h"
+#import "AdvertEntity.h"
 
 @interface HelperHandler : BaseHandler
 
@@ -20,6 +21,14 @@
  *  @param failure 失败回调
  */
 - (void) queryOpenCities: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  查询广告列表
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryAdverts: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
  *  查询用户位置

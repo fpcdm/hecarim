@@ -30,6 +30,7 @@ static NSDate   *lastDate = nil;
 static NSMutableArray *caseRecommends = nil;
 static NSMutableArray *caseCategories = nil;
 static NSMutableDictionary *caseTypes = nil;
+static NSArray *slideAdverts = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate, CNPPopupControllerDelegate>
 
@@ -144,6 +145,23 @@ static NSMutableDictionary *caseTypes = nil;
 
 - (void)initData
 {
+    //获取广告列表
+    if (!slideAdverts) {
+        HelperHandler *helperHandler = [[HelperHandler alloc] init];
+        NSDictionary *param = @{@"position": @"slide"};
+        [helperHandler queryAdverts:param success:^(NSArray *result) {
+            slideAdverts = result;
+            
+            [homeView setData:@"adverts" value:slideAdverts];
+            [homeView reloadAds];
+        } failure:^(ErrorEntity *error) {
+            [self showError:error.message];
+        }];
+    } else {
+        [homeView setData:@"adverts" value:slideAdverts];
+        [homeView reloadAds];
+    }
+    
     //获取推荐列表
     if (!caseRecommends) {
         CaseHandler *caseHandler = [[CaseHandler alloc] init];

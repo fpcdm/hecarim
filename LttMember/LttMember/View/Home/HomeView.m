@@ -11,6 +11,7 @@
 #import "SpringBoardButton.h"
 #import "TAPageControl.h"
 #import "CasePropertyView.h"
+#import "AdvertEntity.h"
 
 @interface HomeView () <SpringBoardButtonDelegate, UIScrollViewDelegate, TAPageControlDelegate, CasePropertyViewDelegate>
 
@@ -18,6 +19,10 @@
 
 @implementation HomeView
 {
+    UIScrollView *adView;
+    NSArray *imagesData;
+    TAPageControl *adPageControl;
+    
     UILabel *addressLabel;
     UIButton *cityButton;
     
@@ -39,7 +44,7 @@
     UIButton *categoryButton;
     NSMutableArray *categories;
     NSMutableArray *types;
-    TAPageControl *pageControl;
+    TAPageControl *categoryPageControl;
 }
 
 @synthesize typeView;
@@ -64,7 +69,8 @@
     
     //顶部容器
     topView = [[UIImageView alloc] init];
-    topView.image = [UIImage imageNamed:@"homeAd"];
+    topView.image = [UIImage imageNamed:@"homeBg"];
+    topView.alpha = 0.9;
     topView.userInteractionEnabled = YES;
     [self addSubview:topView];
     
@@ -75,6 +81,28 @@
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(@(imageHeight));
     }];
+    
+    //幻灯片
+    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, imageHeight)];
+    adView.tag = 2;
+    adView.scrollEnabled = YES;
+    adView.pagingEnabled = YES;
+    adView.showsHorizontalScrollIndicator = NO;
+    adView.showsVerticalScrollIndicator = NO;
+    adView.delegate = self;
+    [topView addSubview:adView];
+    
+    //默认没有图片
+    adView.contentSize = CGSizeMake(SCREEN_WIDTH * 0, imageHeight);
+    
+    //图片控件
+    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, imageHeight - 30, SCREEN_WIDTH, 30)];
+    adPageControl.tag = 2;
+    adPageControl.alpha = 0.8;
+    adPageControl.dotSize = CGSizeMake(5, 5);
+    adPageControl.numberOfPages = imagesData.count;
+    adPageControl.delegate = self;
+    [topView addSubview:adPageControl];
     
     //菜单图标
     UIButton *menuButton = [[UIButton alloc] init];
@@ -257,6 +285,33 @@
         make.right.equalTo(superview.mas_right);
         make.bottom.equalTo(superview.mas_bottom);
     }];
+}
+
+#pragma mark - Ads
+- (void) reloadAds
+{
+    //删除原图片
+    for (UIView *imageView in adView.subviews) {
+        [imageView removeFromSuperview];
+    }
+    
+    //重新设置数据
+    imagesData = [self getData:@"adverts"];
+    
+    //添加图片
+    CGFloat imageHeight = SCREEN_WIDTH * 0.548;
+    [imagesData enumerateObjectsUsingBlock:^(AdvertEntity *advert, NSUInteger idx, BOOL *stop){
+        //图片容器
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.layer.masksToBounds = YES;
+        [adView addSubview:imageView];
+        
+        //异步加载图片
+        [advert imageView:imageView];
+    }];
+    adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
+    adPageControl.numberOfPages = imagesData.count;
 }
 
 #pragma mark - setLogin
@@ -459,18 +514,19 @@
     categoryView.contentSize = CGSizeMake(contentX, buttonHeight);
     
     //移除旧控件
-    if (pageControl) {
-        [pageControl removeFromSuperview];
-        pageControl = nil;
+    if (categoryPageControl) {
+        [categoryPageControl removeFromSuperview];
+        categoryPageControl = nil;
     }
     
     //切换控件
-    pageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
-    pageControl.alpha = 0.8;
-    pageControl.dotSize = CGSizeMake(5, 5);
-    pageControl.numberOfPages = (int)((categoriesCount - 1) / buttonSize) + 1;
-    pageControl.delegate = self;
-    [bottomView addSubview:pageControl];
+    categoryPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+    categoryPageControl.tag = 1;
+    categoryPageControl.alpha = 0.8;
+    categoryPageControl.dotSize = CGSizeMake(5, 5);
+    categoryPageControl.numberOfPages = (int)((categoriesCount - 1) / buttonSize) + 1;
+    categoryPageControl.delegate = self;
+    [bottomView addSubview:categoryPageControl];
     
     //默认选中第一个
     if ([categories count] > 2) {
@@ -481,13 +537,26 @@
 #pragma mark - TAPageControl
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView
 {
-    NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
-    pageControl.currentPage = pageIndex;
+    //场景
+    if (_scrollView.tag == 1) {
+        NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
+        categoryPageControl.currentPage = pageIndex;
+    //幻灯片
+    } else {
+        NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
+        adPageControl.currentPage = pageIndex;
+    }
 }
 
 - (void)TAPageControl:(TAPageControl *)pageControl didSelectPageAtIndex:(NSInteger)index
 {
-    [categoryView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
+    //场景
+    if (pageControl.tag == 1) {
+        [categoryView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
+    //幻灯片
+    } else {
+        [adView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
+    }
 }
 
 #pragma mark - reloadTypes
