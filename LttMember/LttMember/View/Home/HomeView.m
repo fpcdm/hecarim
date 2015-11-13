@@ -69,7 +69,7 @@
     
     //顶部容器
     topView = [[UIImageView alloc] init];
-    topView.image = [UIImage imageNamed:@"homeBg"];
+    topView.image = [UIImage imageNamed:@"homeAdBg"];
     topView.alpha = 0.9;
     topView.userInteractionEnabled = YES;
     [self addSubview:topView];
@@ -104,36 +104,72 @@
     adPageControl.delegate = self;
     [topView addSubview:adPageControl];
     
+    //菜单背景
+    UIImageView *menuBg = [[UIImageView alloc] init];
+    menuBg.image = [UIImage imageNamed:@"homeMenuBg"];
+    menuBg.alpha = 0.5;
+    [topView addSubview:menuBg];
+    
+    superview = topView;
+    [menuBg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(statusHeight);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(@30);
+    }];
+    
     //菜单图标
     UIButton *menuButton = [[UIButton alloc] init];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"homeMenu"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"homeMenu"] forState:UIControlStateHighlighted];
+    menuButton.backgroundColor = COLOR_MAIN_CLEAR;
     [menuButton addTarget:self action:@selector(actionMenu) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview: menuButton];
     
-    superview = topView;
     [menuButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(statusHeight + 7);
-        make.left.equalTo(superview.mas_left).offset(10);
+        make.top.equalTo(superview.mas_top).offset(statusHeight);
+        make.left.equalTo(superview.mas_left);
+        make.width.equalTo(@40);
+        make.height.equalTo(@30);
+    }];
+    
+    UIImageView *menuImage = [[UIImageView alloc] init];
+    menuImage.image = [UIImage imageNamed:@"homeMenu"];
+    [menuButton addSubview:menuImage];
+    
+    [menuImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(menuButton.mas_top).offset(7);
+        make.left.equalTo(menuButton.mas_left).offset(10);
         make.width.equalTo(@20);
         make.height.equalTo(@16);
     }];
     
     //城市切换按钮
     cityButton = [[UIButton alloc] init];
+    cityButton.backgroundColor = COLOR_MAIN_CLEAR;
     cityButton.titleLabel.font = FONT_MIDDLE;
-    [cityButton setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [cityButton setTitle:@"切换城市" forState:UIControlStateNormal];
-    [cityButton.titleLabel sizeToFit];
+    [cityButton setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [cityButton addTarget:self action:@selector(actionCity) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:cityButton];
     
     superview = topView;
     [cityButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5 + 5.5);
-        make.right.equalTo(superview.mas_right).offset(-10);
-        make.height.equalTo(@14);
+        make.top.equalTo(superview.mas_top).offset(statusHeight);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(@30);
     }];
+    
+    UIImageView *chooseCityImage = [[UIImageView alloc] init];
+    chooseCityImage.image = [UIImage imageNamed:@"homeChooseCity"];
+    [cityButton addSubview:chooseCityImage];
+    
+    superview = cityButton;
+    [chooseCityImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(superview.mas_right).offset(-6);
+        make.centerY.equalTo(superview.mas_centerY);
+        make.height.equalTo(@7);
+        make.width.equalTo(@7);
+    }];
+    [self adjustCityButton];
     
     //当前位置
     UIButton *locationButton = [[UIButton alloc] init];
@@ -144,8 +180,8 @@
     superview = topView;
     [locationButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5);
-        make.left.equalTo(menuButton.mas_right).offset(10);
-        make.right.equalTo(cityButton.mas_left).offset(-10);
+        make.left.equalTo(menuButton.mas_right);
+        make.right.equalTo(cityButton.mas_left).offset(5);
         make.height.equalTo(@25);
     }];
     
@@ -287,6 +323,16 @@
     }];
 }
 
+- (void)adjustCityButton
+{
+    [cityButton.titleLabel sizeToFit];
+    CGFloat buttonWidth = cityButton.titleLabel.frame.size.width + 30;
+    
+    [cityButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(buttonWidth));
+    }];
+}
+
 #pragma mark - Ads
 - (void) reloadAds
 {
@@ -340,7 +386,7 @@
     NSString *city = [self getData:@"city"];
     if (city && [city length] > 0) {
         [cityButton setTitle:city forState:UIControlStateNormal];
-        [cityButton.titleLabel sizeToFit];
+        [self adjustCityButton];
     }
 }
 

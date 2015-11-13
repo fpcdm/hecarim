@@ -20,7 +20,7 @@
     
     //添加背景图
     UIImageView *bgView = [[UIImageView alloc] init];
-    bgView.image = [UIImage imageNamed:@"homeCategoryBg"];
+    bgView.image = [UIImage imageNamed:@"homeBg"];
     bgView.alpha = 0.9;
     [self addSubview:bgView];
     
