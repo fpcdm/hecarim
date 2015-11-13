@@ -20,7 +20,7 @@
 @implementation HomeView
 {
     UIScrollView *adView;
-    NSArray *imagesData;
+    NSMutableArray *imagesData;
     TAPageControl *adPageControl;
     
     UILabel *addressLabel;
@@ -90,7 +90,7 @@
     [topView addSubview:adView];
     
     //默认没有图片
-    imagesData = @[@"homeAd.jpg"];
+    imagesData = [NSMutableArray arrayWithArray:@[@"homeAd.jpg"]];
     [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
         //图片容器
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
@@ -364,13 +364,19 @@
 - (void) reloadAds
 {
     //重新设置数据
-    imagesData = [self getData:@"adverts"];
+    imagesData = [NSMutableArray arrayWithArray:[self getData:@"adverts"]];
     if (!imagesData || [imagesData count] < 1) return;
     
     //删除原图片
     for (UIView *imageView in adView.subviews) {
         [imageView removeFromSuperview];
     }
+    
+    //多添加首尾图片循环滚动
+    AdvertEntity *firstAdvert = [imagesData firstObject];
+    AdvertEntity *lastAdvert = [imagesData lastObject];
+    [imagesData insertObject:lastAdvert atIndex:0];
+    [imagesData addObject:firstAdvert];
     
     //添加图片
     CGFloat imageHeight = SCREEN_WIDTH * 0.548;
@@ -385,7 +391,9 @@
         [advert imageView:imageView];
     }];
     adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
-    adPageControl.numberOfPages = imagesData.count;
+    //默认滚动一屏，实现左循环滚动
+    adView.contentOffset = CGPointMake(SCREEN_WIDTH, adView.contentOffset.y);
+    adPageControl.numberOfPages = imagesData.count - 2;
 }
 
 #pragma mark - setLogin
@@ -615,10 +623,26 @@
     if (_scrollView.tag == 1) {
         NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
         categoryPageControl.currentPage = pageIndex;
-    //幻灯片
+    //幻灯片，循环滚动
     } else {
-        NSInteger pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH;
-        adPageControl.currentPage = pageIndex;
+        CGFloat pageIndex = _scrollView.contentOffset.x / SCREEN_WIDTH - 1;
+        //左循环滚动
+        if (pageIndex < 0) {
+            if (pageIndex > -1) return;
+            
+            //设置当前页数并滚动
+            adPageControl.currentPage = adPageControl.numberOfPages - 1;
+            [_scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * adPageControl.numberOfPages, _scrollView.contentOffset.y) animated:NO];
+        //右循环滚动
+        } else if (pageIndex > adPageControl.numberOfPages -1) {
+            if (pageIndex < adPageControl.numberOfPages) return;
+            
+            //设置当前页数并滚动，默认滚动一屏
+            adPageControl.currentPage = 0;
+            [_scrollView setContentOffset:CGPointMake(SCREEN_WIDTH, _scrollView.contentOffset.y) animated:NO];
+        } else {
+            adPageControl.currentPage = (int) pageIndex;
+        }
     }
 }
 
@@ -627,9 +651,9 @@
     //场景
     if (pageControl.tag == 1) {
         [categoryView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
-    //幻灯片
+    //幻灯片，循环滚动
     } else {
-        [adView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index, 0, SCREEN_WIDTH, 120) animated:YES];
+        [adView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * index + SCREEN_WIDTH, 0, SCREEN_WIDTH, 120) animated:YES];
     }
 }
 
