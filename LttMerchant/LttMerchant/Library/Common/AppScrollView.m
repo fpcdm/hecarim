@@ -13,7 +13,7 @@
 - (void) customScrollView
 {
     //全局背景色
-    self.scrollView.backgroundColor = COLOR_MAIN_BLUE;
+    self.scrollView.backgroundColor = COLOR_MAIN_BG;
 }
 
 @end
