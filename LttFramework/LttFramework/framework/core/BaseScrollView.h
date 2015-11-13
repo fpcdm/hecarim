@@ -12,6 +12,10 @@
 
 @property (retain, nonatomic) UIScrollView *scrollView;
 
+@property (retain, nonatomic) UIView *contentView;
+
+@property (nonatomic) CGSize contentSize;
+
 //加载主ScrollView
 - (UIScrollView *)loadScrollView;
 

@@ -26,9 +26,9 @@
     UILabel *addressLabel;
     UIButton *cityButton;
     
-    UIImageView *topView;
-    UIImageView *middleView;
-    UIImageView *bottomView;
+    UIView *topView;
+    UIView *middleView;
+    UIView *bottomView;
     
     UIView *recommendView;
     UIScrollView *categoryView;
@@ -68,10 +68,7 @@
     CGFloat statusHeight = SCREEN_STATUSBAR_HEIGHT;
     
     //顶部容器
-    topView = [[UIImageView alloc] init];
-    topView.image = [UIImage imageNamed:@"homeAdBg"];
-    topView.alpha = 0.9;
-    topView.userInteractionEnabled = YES;
+    topView = [[UIView alloc] init];
     [self addSubview:topView];
     
     UIView *superview = self;
@@ -93,7 +90,16 @@
     [topView addSubview:adView];
     
     //默认没有图片
-    adView.contentSize = CGSizeMake(SCREEN_WIDTH * 0, imageHeight);
+    imagesData = @[@"homeAd.jpg"];
+    [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
+        //图片容器
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.image = [UIImage imageNamed:imageName];
+        imageView.layer.masksToBounds = YES;
+        [adView addSubview:imageView];
+    }];
+    adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
     
     //图片控件
     adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, imageHeight - 30, SCREEN_WIDTH, 30)];
@@ -229,14 +235,24 @@
 
 - (void) middleView
 {
-    //中部容器
-    middleView = [[UIImageView alloc] init];
-    middleView.image = [UIImage imageNamed:@"homeBg"];
-    middleView.alpha = 0.9;
-    middleView.userInteractionEnabled = YES;
-    [self addSubview:middleView];
+    //中部背景
+    UIImageView *middleBgView = [[UIImageView alloc] init];
+    middleBgView.image = [UIImage imageNamed:@"homeBg"];
+    middleBgView.alpha = 0.9;
+    [self addSubview:middleBgView];
     
     UIView *superview = self;
+    [middleBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(topView.mas_bottom);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+    }];
+    
+    //中部容器
+    middleView = [[UIView alloc] init];
+    [self addSubview:middleView];
+    
     [middleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topView.mas_bottom);
         make.left.equalTo(superview.mas_left);
@@ -289,13 +305,24 @@
     //计算高度
     CGFloat bottomHeight = 80;
     
-    //底部容器
-    bottomView = [[UIImageView alloc] init];
-    bottomView.image = [UIImage imageNamed:@"homeGroupBg"];
-    bottomView.userInteractionEnabled = YES;
-    [self addSubview:bottomView];
+    //底部背景
+    UIImageView *bottomBgView = [[UIImageView alloc] init];
+    bottomBgView.image = [UIImage imageNamed:@"homeGroupBg"];
+    bottomBgView.alpha = 0.2;
+    [self addSubview:bottomBgView];
     
     UIView *superview = self;
+    [bottomBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@(bottomHeight));
+    }];
+    
+    //底部容器
+    bottomView = [[UIView alloc] init];
+    [self addSubview:bottomView];
+    
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
@@ -336,13 +363,14 @@
 #pragma mark - Ads
 - (void) reloadAds
 {
+    //重新设置数据
+    imagesData = [self getData:@"adverts"];
+    if (!imagesData || [imagesData count] < 1) return;
+    
     //删除原图片
     for (UIView *imageView in adView.subviews) {
         [imageView removeFromSuperview];
     }
-    
-    //重新设置数据
-    imagesData = [self getData:@"adverts"];
     
     //添加图片
     CGFloat imageHeight = SCREEN_WIDTH * 0.548;
