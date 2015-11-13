@@ -48,7 +48,7 @@
      ****************************************************************/
     
     if (self.tableData == nil) {
-        self.tableData = [[NSMutableArray alloc] initWithObjects:nil];
+        self.tableData = [NSMutableArray array];
     }
     
     //默认TableView

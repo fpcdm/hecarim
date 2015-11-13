@@ -126,6 +126,9 @@
 		2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD781B1D5EB500797799 /* BaseEntity.m */; };
 		2F74CD821B1D5F8100797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD811B1D5F8100797799 /* BaseView.m */; };
 		2F74DF911B6F56F9002FAF4E /* CaseBaseActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74DF901B6F56F9002FAF4E /* CaseBaseActivity.m */; };
+		2F74E2971BF5897900C7A7EB /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74E2961BF5897900C7A7EB /* BaseCollectionView.m */; };
+		2F74E29A1BF58A6900C7A7EB /* BaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74E2991BF58A6900C7A7EB /* BaseScrollView.m */; };
+		2F74E29D1BF5907600C7A7EB /* AppScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74E29C1BF5907600C7A7EB /* AppScrollView.m */; };
 		2F78FA551B75B1F30009F349 /* Samurai_Config(Phone).m in Sources */ = {isa = PBXBuildFile; fileRef = 2F78F7401B75B1F20009F349 /* Samurai_Config(Phone).m */; };
 		2F78FA561B75B1F30009F349 /* Samurai_Config(Simulator).m in Sources */ = {isa = PBXBuildFile; fileRef = 2F78F7421B75B1F20009F349 /* Samurai_Config(Simulator).m */; };
 		2F78FA571B75B1F30009F349 /* Samurai_Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F78F7441B75B1F20009F349 /* Samurai_Config.m */; };
@@ -812,6 +815,12 @@
 		2F74CD811B1D5F8100797799 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		2F74DF8F1B6F56F9002FAF4E /* CaseBaseActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseBaseActivity.h; sourceTree = "<group>"; };
 		2F74DF901B6F56F9002FAF4E /* CaseBaseActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CaseBaseActivity.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2F74E2951BF5897900C7A7EB /* BaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionView.h; sourceTree = "<group>"; };
+		2F74E2961BF5897900C7A7EB /* BaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionView.m; sourceTree = "<group>"; };
+		2F74E2981BF58A6900C7A7EB /* BaseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScrollView.h; sourceTree = "<group>"; };
+		2F74E2991BF58A6900C7A7EB /* BaseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScrollView.m; sourceTree = "<group>"; };
+		2F74E29B1BF5907600C7A7EB /* AppScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppScrollView.h; sourceTree = "<group>"; };
+		2F74E29C1BF5907600C7A7EB /* AppScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppScrollView.m; sourceTree = "<group>"; };
 		2F78F73D1B75B1F20009F349 /* _pragma_pop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _pragma_pop.h; sourceTree = "<group>"; };
 		2F78F73E1B75B1F20009F349 /* _pragma_push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _pragma_push.h; sourceTree = "<group>"; };
 		2F78F73F1B75B1F20009F349 /* Samurai_Config(Phone).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Samurai_Config(Phone).h"; sourceTree = "<group>"; };
@@ -1964,6 +1973,8 @@
 				2F16E66C1B5DF84B007947D0 /* AppExtension.m */,
 				2F16E66D1B5DF84B007947D0 /* AppTableView.h */,
 				2F16E66E1B5DF84B007947D0 /* AppTableView.m */,
+				2F74E29B1BF5907600C7A7EB /* AppScrollView.h */,
+				2F74E29C1BF5907600C7A7EB /* AppScrollView.m */,
 				2F16E6711B5DF84B007947D0 /* AppUIUtil.h */,
 				2F16E6721B5DF84B007947D0 /* AppUIUtil.m */,
 				2F16E6731B5DF84B007947D0 /* AppView.h */,
@@ -3575,8 +3586,12 @@
 			children = (
 				2F74CD801B1D5F8100797799 /* BaseView.h */,
 				2F74CD811B1D5F8100797799 /* BaseView.m */,
+				2F74E2981BF58A6900C7A7EB /* BaseScrollView.h */,
+				2F74E2991BF58A6900C7A7EB /* BaseScrollView.m */,
 				2F4E69481B3AB95F00F4E425 /* BaseTableView.h */,
 				2F4E69491B3AB95F00F4E425 /* BaseTableView.m */,
+				2F74E2951BF5897900C7A7EB /* BaseCollectionView.h */,
+				2F74E2961BF5897900C7A7EB /* BaseCollectionView.m */,
 				2F74CD771B1D5EB500797799 /* BaseEntity.h */,
 				2F74CD781B1D5EB500797799 /* BaseEntity.m */,
 				2FCAF84F1B201FD100F3B084 /* BaseHandler.h */,
@@ -4328,6 +4343,7 @@
 				2F90015F1B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F78FA941B75B1F30009F349 /* Samurai_UICollectionViewCell.m in Sources */,
 				2F5534141B4FCD5F00B98CA4 /* FileEntity.m in Sources */,
+				2F74E29D1BF5907600C7A7EB /* AppScrollView.m in Sources */,
 				2F78FA801B75B1F30009F349 /* Samurai_Model.m in Sources */,
 				2F78FB5A1B75B1F40009F349 /* Samurai_HtmlElementDiv.m in Sources */,
 				2FED7DC11B1EA2E100306A11 /* SDWebImageDecoder.m in Sources */,
@@ -4420,6 +4436,7 @@
 				2FED7DBE1B1EA2E100306A11 /* NSData+ImageContentType.m in Sources */,
 				2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */,
 				2F78FAD71B75B1F30009F349 /* ServiceGestureViewSwipe.m in Sources */,
+				2F74E2971BF5897900C7A7EB /* BaseCollectionView.m in Sources */,
 				2F78FA7E1B75B1F30009F349 /* Samurai_ModelInstance.m in Sources */,
 				2F78FB8B1B75B1F40009F349 /* Samurai_HtmlElementTextarea.m in Sources */,
 				2F78FA781B75B1F30009F349 /* Samurai_Signal.m in Sources */,
@@ -4575,6 +4592,7 @@
 				2F78FAF21B75B1F30009F349 /* NSString+EMAdditions.m in Sources */,
 				2F78FBDF1B75C0470009F349 /* RefreshTableView.m in Sources */,
 				2F2F227B1B3A52FE00428742 /* TSBlurView.m in Sources */,
+				2F74E29A1BF58A6900C7A7EB /* BaseScrollView.m in Sources */,
 				2F78FB6A1B75B1F40009F349 /* Samurai_HtmlElementHtml.m in Sources */,
 				2F78FB811B75B1F40009F349 /* Samurai_HtmlElementSection.m in Sources */,
 				2F78FA5B1B75B1F30009F349 /* NSBundle+Extension.m in Sources */,

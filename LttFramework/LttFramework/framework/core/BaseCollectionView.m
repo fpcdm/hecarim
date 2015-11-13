@@ -42,7 +42,7 @@
      ****************************************************************/
     
     if (self.collectionData == nil) {
-        self.collectionData = [[NSMutableArray alloc] initWithObjects:nil];
+        self.collectionData = [NSMutableArray array];
     }
     
     //默认CollectionView

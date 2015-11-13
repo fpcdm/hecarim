@@ -155,6 +155,7 @@
 		2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F7057FC1B4665F3000DBEB8 /* Images.xcassets */; };
 		2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD751B1D5E9500797799 /* BaseEntity.m */; };
 		2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74CD7E1B1D5F6D00797799 /* BaseView.m */; };
+		2F74E2A01BF591D800C7A7EB /* BaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74E29F1BF591D800C7A7EB /* BaseScrollView.m */; };
 		2F7993741BE0763900399632 /* NotificationButtonBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7993721BE0763900399632 /* NotificationButtonBackground2.png */; };
 		2F7993751BE0763900399632 /* NotificationButtonBackground2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7993731BE0763900399632 /* NotificationButtonBackground2@2x.png */; };
 		2F79938B1BE0BD2000399632 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79938A1BE0BD2000399632 /* CNPPopupController.m */; };
@@ -536,6 +537,8 @@
 		2F74CD751B1D5E9500797799 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		2F74CD7D1B1D5F6D00797799 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		2F74CD7E1B1D5F6D00797799 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		2F74E29E1BF591D800C7A7EB /* BaseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScrollView.h; sourceTree = "<group>"; };
+		2F74E29F1BF591D800C7A7EB /* BaseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScrollView.m; sourceTree = "<group>"; };
 		2F7993721BE0763900399632 /* NotificationButtonBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationButtonBackground2.png; sourceTree = "<group>"; };
 		2F7993731BE0763900399632 /* NotificationButtonBackground2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationButtonBackground2@2x.png"; sourceTree = "<group>"; };
 		2F7993891BE0BD2000399632 /* CNPPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNPPopupController.h; sourceTree = "<group>"; };
@@ -1364,6 +1367,8 @@
 				2FBF3F6D1B281CA400C0DC54 /* BaseTableView.m */,
 				2FB72F671BB928BA00CB8E62 /* BaseCollectionView.h */,
 				2FB72F681BB928BA00CB8E62 /* BaseCollectionView.m */,
+				2F74E29E1BF591D800C7A7EB /* BaseScrollView.h */,
+				2F74E29F1BF591D800C7A7EB /* BaseScrollView.m */,
 				2F74CD741B1D5E9500797799 /* BaseEntity.h */,
 				2F74CD751B1D5E9500797799 /* BaseEntity.m */,
 				2FCAF8401B20117D00F3B084 /* BaseHandler.h */,
@@ -2049,6 +2054,7 @@
 				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
 				2F60BE3E1BF4944900BD99CC /* AdvertEntity.m in Sources */,
 				2FCAF8701B2025A000F3B084 /* NotificationUtil.m in Sources */,
+				2F74E2A01BF591D800C7A7EB /* BaseScrollView.m in Sources */,
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */,
 				2F16E5F21B5DF08F007947D0 /* CaseFormViewController.m in Sources */,
