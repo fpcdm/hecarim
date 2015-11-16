@@ -6,16 +6,18 @@
 //  Copyright © 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppView.h"
+#import "AppScrollView.h"
 #import "MerchantEntity.h"
 
 @protocol RegisterInfoViewDelegate <NSObject>
 
 - (void)actoinRegister:(MerchantEntity *)merchant;
 
+- (void)actionUploadImage:(NSString *)imgTag;
+
 @end
 
-@interface RegisterInfoView : AppView
+@interface RegisterInfoView : AppScrollView
 
 @property (retain , nonatomic) id<RegisterInfoViewDelegate>delegate;
 
