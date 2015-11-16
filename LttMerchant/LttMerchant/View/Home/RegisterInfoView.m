@@ -280,15 +280,20 @@
     licenseImage = [[UIImageView alloc] init];
     licenseImage.layer.cornerRadius = 3.0f;
     licenseImage.clipsToBounds = YES;
+    licenseImage.contentMode = UIViewContentModeScaleAspectFit;
     [licenseBtn addSubview:licenseImage];
     
     [licenseImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(licenseBtn.mas_centerX);
         make.centerY.equalTo(licenseBtn.mas_centerY);
+        make.top.equalTo(licenseBtn.mas_top).offset(1);
+        make.left.equalTo(licenseBtn.mas_left).offset(1);
+        make.right.equalTo(licenseBtn.mas_right).offset(-1);
+        make.bottom.equalTo(licenseBtn.mas_bottom).offset(-1);
     }];
 
     //加图片
-    licenseImageJ = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nopic"]];
+    licenseImageJ = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_add"]];
     
     [licenseBtn addSubview:licenseImageJ];
     
@@ -333,16 +338,21 @@
     
     cardImage = [[UIImageView alloc] init];
     cardImage.layer.cornerRadius = 3.0f;
-    licenseImage.clipsToBounds = YES;
+    cardImage.clipsToBounds = YES;
+    cardImage.contentMode = UIViewContentModeScaleAspectFit;
     [cardBtn addSubview:cardImage];
     
     [cardImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(cardBtn.mas_centerX);
         make.centerY.equalTo(cardBtn.mas_centerY);
+        make.top.equalTo(cardBtn.mas_top).offset(1);
+        make.left.equalTo(cardBtn.mas_left).offset(1);
+        make.right.equalTo(cardBtn.mas_right).offset(-1);
+        make.bottom.equalTo(cardBtn.mas_bottom).offset(-1);
     }];
     
     //身份证加图片
-    cardImageJ = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nopic"]];
+    cardImageJ = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_add"]];
     [cardBtn addSubview:cardImageJ];
     
     [cardImageJ mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -442,11 +452,9 @@
     MerchantEntity *merEntity = [self getData:@"merEntity"];
     if ([@"license" isEqualToString:merEntity.type]) {
         licenseImageJ.hidden = YES;
-        [self setImageWidthAndHeight:merEntity.avatar imageView:licenseImage];
         [merEntity imageView:licenseImage];
     } else if ([@"card" isEqualToString:merEntity.type]) {
         cardImageJ.hidden = YES;
-        [self setImageWidthAndHeight:merEntity.avatar imageView:cardImage];
         [merEntity imageView:cardImage];
     }}
 
