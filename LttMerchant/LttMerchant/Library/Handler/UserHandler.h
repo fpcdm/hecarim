@@ -63,4 +63,7 @@
  * @param failure
  */
 - (void) queryConsumeHistory: (UserEntity *)user param: (NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
+
+
+
 @end

@@ -49,4 +49,15 @@
  */
 - (void) resetPassword: (UserEntity *) user vCode: (NSString *) vCode success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+
+/**
+ *  上传图片
+ *
+ *  @param uploadImg  图片
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) uploadImage: (FileEntity *) uploadImg success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+
 @end

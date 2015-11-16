@@ -73,4 +73,21 @@
     }];
 }
 
+//上传图片
+- (void) uploadImage:(FileEntity *)uploadImg success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[FileEntity class] mappingParam:@{@"image_url": @"url"}];
+    
+    [sharedClient postFile:uploadImg path:@"upload/image" param:nil success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+    
+}
 @end

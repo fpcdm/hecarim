@@ -26,7 +26,9 @@
                             @"contacter_id":merchant.contacter_id ? merchant.contacter_id : @"",
                             @"mobile":merchant.mobile ? merchant.mobile : @"",
                             @"password": merchant.password ? merchant.password : @"",
-                            @"vcode" : vCode ? vCode : @""
+                            @"vcode" : vCode ? vCode : @"",
+                            @"license_img" : merchant.licenseUrl ? merchant.licenseUrl : @"",
+                            @"contacter_id_img" : merchant.cardUrl ? merchant.cardUrl : @""
                             };
     [sharedClient putObject:merchant path:restPath param:param success:^(NSArray *result) {
         [sharedClient removeResponseDescriptor:responseDescriptor];
