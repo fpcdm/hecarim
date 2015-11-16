@@ -19,7 +19,7 @@
 #import "TimerUtil.h"
 #import "LoginActivity.h"
 #import "MerchantHandler.h"
-@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate>
+@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
 
@@ -32,6 +32,11 @@
     UIButton *sendButton;
     TimerUtil *timerUtil;
     NSString *vCode;
+    
+    NSString *imageTag;
+    
+    NSString *licenseUrl;
+    NSString *cardUrl;
 }
 
 - (void)loadView
@@ -77,6 +82,7 @@
 {
     RegisterInfoView *currentView = [[RegisterInfoView alloc] init];
     currentView.delegate = self;
+    [currentView setTipViewHide:NO];
     self.navigationItem.title = @"设置商户信息";
     return currentView;
 }
@@ -301,8 +307,6 @@
                 }];
             } else {
                 //发送短信验证码
-//                RegisterMobileView *mobileView = [self mobileInputView];
-//                sendButton = mobileView.sendButton;
                 [self sendSms:^(id object){
                     [self checkButton];
                 } failure:^(ErrorEntity *error){
@@ -315,31 +319,6 @@
         [self showError:error.message];
     }];
 }
-//
-//- (void) actionVerifyCode:(NSString *)code
-//{
-//    if (![ValidateUtil isRequired:code]) {
-//        [self showError:ERROR_MOBILECODE_REQUIRED];
-//        return;
-//    }
-//    
-//    [self showLoading:TIP_REQUEST_MESSAGE];
-//    
-//    HelperHandler *helperHandler = [[HelperHandler alloc] init];
-//    [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
-//        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-//            ResultEntity *verifyResult = [result firstObject];
-//            vCode = verifyResult.data;
-//            NSLog(@"安全码是：%@",vCode);
-//            RegisterPasswordView *passwordView = [self mobilePasswordView];
-//            [self pushView:passwordView animated:YES completion:^{
-//                [passwordView setData:@"mobileStatus" value:mobileStatus];
-//            }];
-//        }];
-//    } failure:^(ErrorEntity *error){
-//        [self showError:error.message];
-//    }];
-//}
 
 - (void)actionSendPassword:(NSString *)pwd confirmPwd:(NSString *)confirmPwd
 {
@@ -386,10 +365,21 @@
         return;
     }
     
+    if (![ValidateUtil isRequired:licenseUrl]) {
+        [self showError:@"营业执照不能为空哦~亲！"];
+        return;
+    }
+    if (![ValidateUtil isRequired:cardUrl]) {
+        [self showError:@"身份证正面照不能为空哦~亲！"];
+        return;
+    }
+    
     [self showLoading:TIP_REQUEST_MESSAGE];
     
     merchant.mobile = mobile;
     merchant.password = password;
+    merchant.licenseUrl = licenseUrl;
+    merchant.cardUrl = cardUrl;
     
     //注册用户
     
@@ -402,6 +392,92 @@
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSUInteger sourceType = 0;
+    //检查照相机是否可用
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES) {
+        if (buttonIndex == 2) return;
+        if (buttonIndex == 0) {
+            sourceType = UIImagePickerControllerSourceTypeCamera;
+        } else if (buttonIndex == 1) {
+            sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        }
+    } else {
+        if (buttonIndex == 1) return;
+        sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = sourceType;
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    
+    [self presentViewController:picker animated:YES completion:^(void){}];
+}
+
+// 选择图片
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self dismissViewControllerAnimated:YES completion: ^(void){}];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //上传图片
+    FileEntity *imageEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
+    imageEntity.field = @"file";
+    imageEntity.name = @"upload.jpg";
+    
+    
+    HelperHandler *helperHandler = [[HelperHandler alloc] init];
+    [helperHandler uploadImage:imageEntity success:^(NSArray *result){
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            FileEntity *imageEntity = [result firstObject];
+            NSLog(@"图片上传成功：%@", imageEntity.url);
+            
+            //保存头像
+            MerchantEntity *merEntity = [[MerchantEntity alloc] init];
+            merEntity.avatar = imageEntity.url;
+            merEntity.type = imageTag;
+            if ([@"license" isEqualToString:imageTag]) {
+                licenseUrl = imageEntity.url;
+            } else if ([@"card" isEqualToString:imageTag]) {
+                cardUrl = imageEntity.url;
+            }
+
+            RegisterInfoView *infoView = (RegisterInfoView *) self.view;
+            [infoView setData:@"merEntity" value:merEntity];
+            [infoView renderData];
+            
+            //回调上级
+            if (self.callbackBlock) {
+                self.callbackBlock(merEntity);
+            }
+        }];
+    } failure:^(ErrorEntity *error){
+        NSLog(@"图片上传失败：%@", error.message);
+        [self showError:error.message];
+    }];
+}
+
+
+- (void)actionUploadImage:(NSString *)imgTag
+{
+    UIActionSheet *sheet = [UIActionSheet alloc];
+    
+    //检查照相机是否可用
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES) {
+        sheet = [sheet initWithTitle:nil delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从相册选择", nil];
+    } else {
+        sheet = [sheet initWithTitle:nil delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"从相册选择" otherButtonTitles:nil];
+    }
+    imageTag = imgTag;
+    [sheet showInView:self.view];
+
 }
 
 
