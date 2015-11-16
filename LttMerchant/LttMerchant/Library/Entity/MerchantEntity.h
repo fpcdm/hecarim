@@ -18,4 +18,10 @@
 
 @property (retain , nonatomic) NSString *merchant_name;
 
+@property (retain , nonatomic) NSString *licenseUrl;
+
+@property (retain , nonatomic) NSString *cardUrl;
+
+- (void) imageView:(UIImageView *)view;
+
 @end
