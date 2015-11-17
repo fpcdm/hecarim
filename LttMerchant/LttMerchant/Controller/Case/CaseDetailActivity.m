@@ -394,6 +394,12 @@
 //显示支付方式视图
 - (void)paymentView
 {
+    //刷新按钮
+    UIBarButtonItem *refreshButton = [AppUIUtil makeBarButtonItem:@"刷新" highlighted:isIndexNavBar];
+    refreshButton.target = self;
+    refreshButton.action = @selector(refreshCaseStatus);
+    self.navigationItem.rightBarButtonItem = refreshButton;
+    
     UIView *payContainer = $(@"#payContainer").firstView;
     UIView *superview = payContainer;
     UIView *separatorView = nil;
@@ -571,6 +577,37 @@
     }];
     
     return button;
+}
+
+//刷新需求，有加载效果
+- (void) refreshCaseStatus
+{
+    [self showLoading:@"正在刷新"];
+    
+    //需求当前状态
+    NSString *oldStatus = intention ? intention.status : nil;
+    
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.id = self.caseId;
+    
+    //调用接口
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryCase:intentionEntity success:^(NSArray *result){
+        CaseEntity *resultIntention = [result firstObject];
+        [self loadingSuccess:@"刷新完成" callback:^{
+            //检测需求状态是否变化
+            if (![resultIntention.status isEqualToString:oldStatus]) {
+                //标记列表刷新
+                if (self.callbackBlock) {
+                    self.callbackBlock(@1);
+                }
+                
+                [self reloadCase];
+            }
+        }];
+    } failure:^(ErrorEntity *error){
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action
@@ -797,6 +834,8 @@
         moneyConfirmButton.hidden = YES;
         moneyChooseButton.hidden = YES;
         
+        self.navigationItem.title = @"微信扫码支付";
+        
         //微信二维码
         [intention qrcodeImageView:qrcodeImage way:PAY_WAY_WEIXIN failure:^{
             [self showError:@"二维码生成失败，请重试！"];
@@ -816,6 +855,8 @@
         qrcodeChooseButton.hidden = NO;
         moneyConfirmButton.hidden = YES;
         moneyChooseButton.hidden = YES;
+        
+        self.navigationItem.title = @"支付宝扫码支付";
         
         //支付宝二维码
         [intention qrcodeImageView:qrcodeImage way:PAY_WAY_ALIPAY failure:^{
@@ -837,6 +878,8 @@
         moneyConfirmButton.hidden = NO;
         moneyChooseButton.hidden = NO;
         
+        self.navigationItem.title = @"现金支付";
+        
         //清除二维码
         qrcodeImage.image = nil;
     }];
@@ -853,6 +896,8 @@
     qrcodeChooseButton.hidden = YES;
     moneyConfirmButton.hidden = YES;
     moneyChooseButton.hidden = YES;
+    
+    self.navigationItem.title = @"服务单详情";
 }
 
 //确认现金支付
