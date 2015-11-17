@@ -80,6 +80,7 @@
     //头像
     imageView = [UIImageView new];
     imageView.layer.cornerRadius = 45;
+    imageView.clipsToBounds = YES;
     [customerView addSubview:imageView];
     
     [imageView mas_makeConstraints:^(MASConstraintMaker *make){
