@@ -115,7 +115,7 @@
     forgetPwdBtn.layer.borderWidth = 0.0f;
     forgetPwdBtn.titleLabel.font = FONT_MIDDLE;
     [forgetPwdBtn addTarget:self action:@selector(actionForgetPassword) forControlEvents:UIControlEventTouchUpInside];
-    [forgetPwdBtn setTitle:@"找回密码" forState:UIControlStateNormal];
+    [forgetPwdBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
     [forgetPwdBtn setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
     [self addSubview:forgetPwdBtn];
     

@@ -173,8 +173,7 @@
             [forgetView renderData];
         }];
     }else{
-        LoginActivity *loginView = [[LoginActivity alloc] init];
-        [self pushViewController:loginView animated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     return NO;
 }
