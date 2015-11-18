@@ -425,7 +425,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-//    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //上传图片
     FileEntity *imageEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
