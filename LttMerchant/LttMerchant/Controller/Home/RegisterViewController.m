@@ -413,7 +413,7 @@
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = sourceType;
     picker.delegate = self;
-    picker.allowsEditing = YES;
+    picker.allowsEditing = NO;
     
     [self presentViewController:picker animated:YES completion:^(void){}];
 }
@@ -425,13 +425,13 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+//    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //上传图片
     FileEntity *imageEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
     imageEntity.field = @"file";
     imageEntity.name = @"upload.jpg";
-    
+
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler uploadImage:imageEntity success:^(NSArray *result){
