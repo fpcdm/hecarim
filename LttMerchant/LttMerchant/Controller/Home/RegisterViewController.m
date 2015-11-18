@@ -423,7 +423,7 @@
 {
     [self dismissViewControllerAnimated:YES completion: ^(void){}];
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [self showLoading:TIP_REQUEST_MESSAGE];
     
