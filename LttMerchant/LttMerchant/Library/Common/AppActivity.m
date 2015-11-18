@@ -13,15 +13,20 @@
 #import "REFrostedViewController.h"
 #import "MenuViewController.h"
 #import "NotificationUtil.h"
-#import "CaseListActivity.h"
 #import "CaseDetailActivity.h"
 #import "AppView.h"
+#import "CNPPopupController.h"
+#import "CasePopupView.h"
 
-@interface AppActivity ()
+@interface AppActivity () <CNPPopupControllerDelegate, CasePopupViewDelegate>
 
 @end
 
 @implementation AppActivity
+{
+    CNPPopupController *popupController;
+    CasePopupView *casePopupView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -205,22 +210,33 @@
     }
 }
 
+//清除消息数量及消息
+- (void) clearRemoteNotifications
+{
+    //取消消息
+    [NotificationUtil cancelRemoteNotifications];
+    //清空服务器数量
+    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
+    [appDelegate clearNotifications];
+}
+
 //处理远程通知钩子（默认顶部弹出框）
 - (void) handleRemoteNotification:(NSString *)message type:(NSString *)type data:(NSString *)data
 {
+    //新订单单独处理
+    if ([@"CASE_CREATED" isEqualToString:type]) {
+        NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
+        [self handleCaseNewNotification:message caseId:caseId];
+        return;
+    }
+    
+    //其它推送采用弹出框方式
     [self showNotification:message callback:^{
-        //取消消息
-        [NotificationUtil cancelRemoteNotifications];
-        //清空服务器数量
-        LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
-        [appDelegate clearNotifications];
+        //清除消息数量及消息
+        [self clearRemoteNotifications];
         
-        //根据需求类型处理
-        if ([@"CASE_CREATED" isEqualToString:type]) {
-            CaseListActivity *viewController = [[CaseListActivity alloc] init];
-            [self toggleViewController:viewController animated:YES];
         //已支付，已完成
-        } else if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {
+        if ([@"CASE_PAYED" isEqualToString:type] || [@"CASE_SUCCESS" isEqualToString:type]) {
             //跳转详情页面
             if (data) {
                 NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
@@ -233,6 +249,106 @@
         
         //隐藏弹出框
         [self hideDialog];
+    }];
+}
+
+//处理新订单通知钩子
+- (void) handleCaseNewNotification:(NSString *)message caseId:(NSNumber *)caseId
+{
+    //弹框已经存在，忽略消息
+    if (popupController) return;
+    
+    //清除消息数量及消息，只弹出一次
+    [self clearRemoteNotifications];
+    
+    //调用接口
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.id = caseId;
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryCase:intentionEntity success:^(NSArray *result){
+        [self showPopupController:message intention:[result firstObject]];
+    } failure:^(ErrorEntity *error){
+        [self showError:LocalString(@"TIP_CHALLENGE_LOSE")];
+    }];
+}
+
+#pragma mark - Popup
+- (void)showPopupController:(NSString *)message intention:(CaseEntity *)newIntention
+{
+    //弹出框容器
+    UIView *popupView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_AVAILABLE_HEIGHT)];
+    
+    //弹出视图
+    casePopupView = [[CasePopupView alloc] init];
+    casePopupView.delegate = self;
+    [popupView addSubview:casePopupView];
+    
+    [casePopupView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(popupView).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    
+    //加载数据
+    [casePopupView setData:@"title" value:message];
+    [casePopupView setData:@"intention" value:newIntention];
+    [casePopupView renderData];
+    
+    //显示弹出框
+    popupController = [[CNPPopupController alloc] initWithContents:@[popupView]];
+    popupController.theme = [CNPPopupTheme defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleActionSheet;
+    popupController.theme.cornerRadius = 0;
+    popupController.theme.popupContentInsets = UIEdgeInsetsZero;
+    popupController.theme.presentationStyle = CNPPopupPresentationStyleSlideInFromTop;
+    popupController.theme.maskType = CNPPopupMaskTypeDimmed;
+    popupController.theme.contentVerticalPadding = 0;
+    popupController.theme.maxPopupWidth = SCREEN_WIDTH;
+    popupController.theme.shouldDismissOnBackgroundTouch = YES;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
+}
+
+- (void)popupControllerDidDismiss:(CNPPopupController *)controller
+{
+    popupController = nil;
+    casePopupView = nil;
+}
+
+- (void)actionPopupMobile:(NSString *)mobile
+{
+    NSString *telString = [NSString stringWithFormat:@"telprompt://%@", mobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
+}
+
+- (void)actionPopupClose
+{
+    [popupController dismissPopupControllerAnimated:YES];
+}
+
+- (void)actionPopupCompete:(NSNumber *)caseId
+{
+    //开始抢单
+    [casePopupView startCompete];
+    
+    //获取数据
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.id = caseId;
+    
+    //调用接口
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler competeCase:intentionEntity success:^(NSArray *result){
+        //抢单成功
+        [casePopupView finishCompete];
+        
+        //关闭弹出框
+        [popupController dismissPopupControllerAnimated:YES];
+        
+        //详情页面
+        CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
+        viewController.caseId = caseId;
+        [self toggleViewController:viewController animated:YES];
+    } failure:^(ErrorEntity *error){
+        [popupController dismissPopupControllerAnimated:YES];
+        [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
     }];
 }
 

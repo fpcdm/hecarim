@@ -21,3 +21,4 @@
 "TIP_CHALLENGE_START" = "开始抢单";
 "TIP_CHALLENGE_SUCCESS" = "抢单成功";
 "TIP_CHALLENGE_FAIL" = "抢单失败，下次手快点哦~亲！";
+"TIP_CHALLENGE_LOSE" = "该需求已被处理，你来晚了哦~亲！";
