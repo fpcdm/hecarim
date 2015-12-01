@@ -11,6 +11,7 @@
 #import "RegisterExistView.h"
 #import "RegisterCodeView.h"
 #import "RegisterPasswordView.h"
+#import "RegisterRecommendView.h"
 #import "RegisterSuccessView.h"
 #import "ValidateUtil.h"
 #import "UIViewController+BackButtonHandler.h"
@@ -19,7 +20,7 @@
 #import "HomeViewController.h"
 #import "TimerUtil.h"
 
-@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate, RegisterSuccessViewDelegate>
+@interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate,RegisterRecommendViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate>
 
 @end
 
@@ -28,9 +29,11 @@
     NSString *mobile;
     NSString *mobileStatus;
     NSString *password;
+    NSString *referenceMobile;
     
     UIButton *sendButton;
     TimerUtil *timerUtil;
+    RegisterRecommendView *recommendView;
 }
 
 - (void)loadView
@@ -83,6 +86,21 @@
     currentView.delegate = self;
     self.navigationItem.title = @"设置登陆密码";
     return currentView;
+}
+
+- (RegisterRecommendView *) recommendView
+{
+    recommendView = [[RegisterRecommendView alloc] init];
+    recommendView.delegate = self;
+    self.navigationItem.title = @"我的推荐人";
+    
+    //跳转注册成功视图
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"跳过"
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(actionRegisterSuccess)];
+    
+    return recommendView;
 }
 
 - (RegisterSuccessView *) mobileSuccessView
@@ -190,8 +208,10 @@
             sendButton = codeView.sendButton;
             [self checkButton];
         }];
+    } else if ([self.view isMemberOfClass:[RegisterRecommendView class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.view isMemberOfClass:[RegisterSuccessView class]]) {
-        [self popView:[self mobilePasswordView] animated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     return NO;
 }
@@ -287,12 +307,19 @@
             //刷新菜单
             [self refreshMenu];
             
-            HomeViewController *viewController = [[HomeViewController alloc] init];
-            [self toggleViewController:viewController animated:YES];
+            [self pushView:[self recommendView] animated:YES completion:nil];
+            
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+//返回首页
+- (void)actionHome
+{
+    HomeViewController *viewController = [[HomeViewController alloc] init];
+    [self toggleViewController:viewController animated:YES];
 }
 
 - (void) actionSend
@@ -356,12 +383,70 @@
     
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler registerWithUser:user success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            [self pushView:[self mobileSuccessView] animated:YES completion:nil];
-        }];
+        [self hideLoading];
+        [self actionAutoLogin];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+//推荐人页面
+- (void)actionRegisterSuccess
+{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] init];
+    [self pushView:[self mobileSuccessView] animated:YES completion:nil];
+}
+
+- (void)actionRecommend:(NSString *)recommendMobile
+{
+    if (![ValidateUtil isRequired:recommendMobile]) {
+        [self showError:ERROR_MOBILE_REQUIRED];
+        return;
+    }
+    if (![ValidateUtil isMobile:recommendMobile]) {
+        [self showError:ERROR_MOBILE_FORMAT];
+        return;
+    }
+    referenceMobile = recommendMobile;
+    [recommendView hideKeyboard];
+    [self showSheet:recommendMobile];
+    
+}
+
+- (void)showSheet:(NSString *)recommendMobile
+{
+    UIActionSheet *sheet = [UIActionSheet alloc];
+    
+    sheet = [sheet initWithTitle:[NSString stringWithFormat:@"你输入的推荐人手机为\n%@\n推荐人一旦提交就不能修改，你确认提交吗？",recommendMobile] delegate:self cancelButtonTitle: @"取消" destructiveButtonTitle:@"确认" otherButtonTitles:nil];
+    
+    sheet.tag = 1;
+    [sheet showInView:self.view];
+
+}
+
+//弹出sheet
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag != 1) return;
+    
+    switch (buttonIndex) {
+        //确定
+        case 0:
+        {
+            //调用添加推荐人手机号接口
+            UserHandler *userHandler = [[UserHandler alloc] init];
+            [userHandler setReferee:referenceMobile success:^(NSArray *result) {
+                [self popView:[self mobileSuccessView] animated:YES completion:nil];
+            } failure:^(ErrorEntity *error) {
+                [self showError:error.message];
+            }];
+        }
+            break;
+        //取消
+        default:
+            NSLog(@"取消");
+            break;
+    }
 }
 
 @end
