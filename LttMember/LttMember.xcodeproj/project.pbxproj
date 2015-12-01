@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B001AF61C0D6C6E0026F948 /* RegisterRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B001AF51C0D6C6E0026F948 /* RegisterRecommendView.m */; };
 		2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */; };
 		2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0951BDF55E600293737 /* ForgetPasswordView.m */; };
 		2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0971BDF55E600293737 /* ResetPasswordSuccess.m */; };
@@ -264,6 +265,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B001AF41C0D6C6E0026F948 /* RegisterRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRecommendView.h; sourceTree = "<group>"; };
+		2B001AF51C0D6C6E0026F948 /* RegisterRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRecommendView.m; sourceTree = "<group>"; };
 		2BB0C0921BDF55E600293737 /* ForgetPasswordCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCodeView.h; sourceTree = "<group>"; };
 		2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCodeView.m; sourceTree = "<group>"; };
 		2BB0C0941BDF55E600293737 /* ForgetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordView.h; sourceTree = "<group>"; };
@@ -989,6 +992,8 @@
 				2F16E5981B5DEFEE007947D0 /* RegisterMobileView.m */,
 				2F16E5991B5DEFEE007947D0 /* RegisterPasswordView.h */,
 				2F16E59A1B5DEFEE007947D0 /* RegisterPasswordView.m */,
+				2B001AF41C0D6C6E0026F948 /* RegisterRecommendView.h */,
+				2B001AF51C0D6C6E0026F948 /* RegisterRecommendView.m */,
 				2F16E59B1B5DEFEE007947D0 /* RegisterSuccessView.h */,
 				2F16E59C1B5DEFEE007947D0 /* RegisterSuccessView.m */,
 				2BB0C0961BDF55E600293737 /* ResetPasswordSuccess.h */,
@@ -2111,6 +2116,7 @@
 				2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F6D3E521B312765007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2F6D3E531B312765007A4159 /* MJRefreshAutoNormalFooter.m in Sources */,
+				2B001AF61C0D6C6E0026F948 /* RegisterRecommendView.m in Sources */,
 				2F6D3E541B312765007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
 				2F6D3E4E1B312765007A4159 /* MJRefreshBackFooter.m in Sources */,
 				2F6D3E551B312765007A4159 /* MJRefreshBackGifFooter.m in Sources */,
