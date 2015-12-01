@@ -125,6 +125,7 @@
 		2F68EEAE1C0D49E500FDC346 /* RecommendShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEAD1C0D49E500FDC346 /* RecommendShareView.m */; };
 		2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */; };
 		2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */; };
+		2F68EEBA1C0D5A4C00FDC346 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB91C0D5A4C00FDC346 /* ShareViewController.m */; };
 		2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
 		2F6B0C281B395782000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C271B395782000123BF /* AXRatingView.m */; };
 		2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D16F41B70938000C4A667 /* PickerUtil.m */; };
@@ -480,6 +481,8 @@
 		2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		2F68EEB21C0D4CBD00FDC346 /* RecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
 		2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
+		2F68EEB81C0D5A4C00FDC346 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		2F68EEB91C0D5A4C00FDC346 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		2F6910A21B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+AutoLayoutFix.h"; sourceTree = "<group>"; };
 		2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
 		2F6B0C261B395782000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
@@ -1038,6 +1041,8 @@
 				2F68EEAA1C0D490700FDC346 /* RecommendShareViewController.m */,
 				2F68EEAF1C0D4C5F00FDC346 /* RecommendViewController.h */,
 				2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */,
+				2F68EEB81C0D5A4C00FDC346 /* ShareViewController.h */,
+				2F68EEB91C0D5A4C00FDC346 /* ShareViewController.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -2129,6 +2134,7 @@
 				2F16E6361B5DF162007947D0 /* AreaEntity.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */,
+				2F68EEBA1C0D5A4C00FDC346 /* ShareViewController.m in Sources */,
 				2F6D3E5C1B312765007A4159 /* MJRefreshConst.m in Sources */,
 				2F16E5F11B5DF08F007947D0 /* AddressSelectorViewController.m in Sources */,
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
