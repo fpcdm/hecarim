@@ -24,6 +24,8 @@
 
 - (void)actionSuggestion;
 
+- (void)actionRecommendShare;
+
 @end
 
 @interface AccountView : AppTableView

@@ -14,6 +14,7 @@
 #import "SafetyViewController.h"
 #import "AddressViewController.h"
 #import "SuggestionViewController.h"
+#import "RecommendShareViewController.h"
 #import "UserHandler.h"
 
 @interface AccountViewController () <AccountViewDelegate>
@@ -123,6 +124,12 @@
 - (void)actionSuggestion
 {
     SuggestionViewController *viewController = [[SuggestionViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionRecommendShare
+{
+    RecommendShareViewController *viewController = [[RecommendShareViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"管理我的地址";
+    self.navigationItem.title = @"我的地址";
     
     UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonSystemItem:UIBarButtonSystemItemAdd];
     barButtonItem.target = self;

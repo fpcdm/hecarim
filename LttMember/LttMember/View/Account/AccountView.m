@@ -25,12 +25,14 @@
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
-                        @{@"id" : @"info", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"", @"height": @60},
+                        @{@"id" : @"info", @"type" : @"custom", @"action": @"actionProfile", @"image": @"", @"text" : @"", @"height": @60},
                         ],
                       @[
-                        @{@"id" : @"address", @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"管理我的地址"},
-                        @{@"id" : @"profile", @"type" : @"action", @"action": @"actionProfile", @"image": @"", @"text" : @"个人资料"},
+                        @{@"id" : @"address", @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"我的地址"},
                         @{@"id" : @"safety", @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全"},
+                        ],
+                      @[
+                        @{@"id" : @"recommend", @"type" : @"action", @"action": @"actionRecommendShare", @"image": @"", @"text" : @"推荐与分享"},
                         ],
                       @[
                         @{@"id" : @"feedback", @"type" : @"action", @"action": @"actionSuggestion", @"image": @"", @"text" : @"意见反馈"},
@@ -71,6 +73,8 @@
     NSString *id = [cellData objectForKey:@"id"];
     //info
     if ([@"info" isEqualToString:id]) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         imageView.layer.cornerRadius = 20;
         imageView.clipsToBounds = YES;
         [cell addSubview:imageView];
@@ -138,6 +142,11 @@
 - (void)actionSuggestion
 {
     [self.delegate actionSuggestion];
+}
+
+- (void)actionRecommendShare
+{
+    [self.delegate actionRecommendShare];
 }
 
 @end

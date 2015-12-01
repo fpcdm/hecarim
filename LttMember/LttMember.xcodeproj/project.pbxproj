@@ -121,6 +121,10 @@
 		2F66301A1BF1BF950025112C /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6630191BF1BF950025112C /* UINavigationController+Vertical.m */; };
 		2F6796A31B4B70B900E0F774 /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796A21B4B70B900E0F774 /* LocationUtil.m */; };
 		2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */; };
+		2F68EEAB1C0D490700FDC346 /* RecommendShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEAA1C0D490700FDC346 /* RecommendShareViewController.m */; };
+		2F68EEAE1C0D49E500FDC346 /* RecommendShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEAD1C0D49E500FDC346 /* RecommendShareView.m */; };
+		2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */; };
+		2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */; };
 		2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */; };
 		2F6B0C281B395782000123BF /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C271B395782000123BF /* AXRatingView.m */; };
 		2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D16F41B70938000C4A667 /* PickerUtil.m */; };
@@ -468,6 +472,14 @@
 		2F6796A21B4B70B900E0F774 /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2F6796AA1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		2F68EEA91C0D490700FDC346 /* RecommendShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendShareViewController.h; sourceTree = "<group>"; };
+		2F68EEAA1C0D490700FDC346 /* RecommendShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendShareViewController.m; sourceTree = "<group>"; };
+		2F68EEAC1C0D49E500FDC346 /* RecommendShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendShareView.h; sourceTree = "<group>"; };
+		2F68EEAD1C0D49E500FDC346 /* RecommendShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendShareView.m; sourceTree = "<group>"; };
+		2F68EEAF1C0D4C5F00FDC346 /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
+		2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
+		2F68EEB21C0D4CBD00FDC346 /* RecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
+		2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
 		2F6910A21B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+AutoLayoutFix.h"; sourceTree = "<group>"; };
 		2F6910A31B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AutoLayoutFix.m"; sourceTree = "<group>"; };
 		2F6B0C261B395782000123BF /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
@@ -913,6 +925,10 @@
 				2F16E5781B5DEFEE007947D0 /* SettingView.m */,
 				2F16E5791B5DEFEE007947D0 /* SuggestionView.h */,
 				2F16E57A1B5DEFEE007947D0 /* SuggestionView.m */,
+				2F68EEAC1C0D49E500FDC346 /* RecommendShareView.h */,
+				2F68EEAD1C0D49E500FDC346 /* RecommendShareView.m */,
+				2F68EEB21C0D4CBD00FDC346 /* RecommendView.h */,
+				2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1018,6 +1034,10 @@
 				2F16E5CF1B5DF08F007947D0 /* SettingViewController.m */,
 				2F16E5D01B5DF08F007947D0 /* SuggestionViewController.h */,
 				2F16E5D11B5DF08F007947D0 /* SuggestionViewController.m */,
+				2F68EEA91C0D490700FDC346 /* RecommendShareViewController.h */,
+				2F68EEAA1C0D490700FDC346 /* RecommendShareViewController.m */,
+				2F68EEAF1C0D4C5F00FDC346 /* RecommendViewController.h */,
+				2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -2083,6 +2103,7 @@
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
 				2F16E5A71B5DEFEE007947D0 /* SuggestionView.m in Sources */,
 				2F16E5B01B5DEFEE007947D0 /* CaseGoodsView.m in Sources */,
+				2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */,
 				2F16E5F01B5DF08F007947D0 /* SuggestionViewController.m in Sources */,
 				2F16E6351B5DF162007947D0 /* AddressEntity.m in Sources */,
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
@@ -2095,6 +2116,7 @@
 				2FED7D991B1EA2D300306A11 /* SDWebImagePrefetcher.m in Sources */,
 				2F16E5A01B5DEFEE007947D0 /* AddressFormView.m in Sources */,
 				2F7F8C0A1B7C2C0300EF4938 /* CaseDetailView.m in Sources */,
+				2F68EEAE1C0D49E500FDC346 /* RecommendShareView.m in Sources */,
 				2F16E5B71B5DEFEE007947D0 /* RegisterSuccessView.m in Sources */,
 				2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */,
 				2FED7D9B1B1EA2D300306A11 /* UIImage+GIF.m in Sources */,
@@ -2130,6 +2152,7 @@
 				2F16E5F41B5DF08F007947D0 /* CaseViewController.m in Sources */,
 				2F16E6301B5DF162007947D0 /* AppTableView.m in Sources */,
 				2F16E6321B5DF162007947D0 /* AppUserViewController.m in Sources */,
+				2F68EEAB1C0D490700FDC346 /* RecommendShareViewController.m in Sources */,
 				2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */,
 				2F6D3E5D1B312765007A4159 /* UIScrollView+MJExtension.m in Sources */,
 				2F9000431B1D8B930040D97B /* MBProgressHUD.m in Sources */,
@@ -2144,6 +2167,7 @@
 				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
 				2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */,
+				2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */,
 				2F16E5AA1B5DEFEE007947D0 /* CaseFormView.m in Sources */,
 				2F79938B1BE0BD2000399632 /* CNPPopupController.m in Sources */,
 				2FED7D9F1B1EA2D300306A11 /* UIView+WebCacheOperation.m in Sources */,
