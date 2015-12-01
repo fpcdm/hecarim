@@ -1737,10 +1737,10 @@
 		2FD7957F1AE7ACC900D51FB0 = {
 			isa = PBXGroup;
 			children = (
-				9CB345F8FF6391BAA4D3F5E4 /* Frameworks */,
-				2F800AF31B1D50EE006189EF /* LttFramework */,
 				2FD7958A1AE7ACC900D51FB0 /* LttMember */,
 				2FD795A41AE7ACC900D51FB0 /* LttMemberTests */,
+				2F800AF31B1D50EE006189EF /* LttFramework */,
+				9CB345F8FF6391BAA4D3F5E4 /* Frameworks */,
 				2FD795891AE7ACC900D51FB0 /* Products */,
 			);
 			sourceTree = "<group>";
