@@ -223,7 +223,6 @@
 
 - (void)addSuggestion:(NSString *)suggestion success:(SuccessBlock)success failure:(FailedBlock)failure
 {
-    //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
     NSDictionary *param = @{@"contents":(suggestion ? suggestion : @"")};
@@ -238,7 +237,6 @@
 
 - (void)addDevice:(DeviceEntity *)device success:(SuccessBlock)success failure:(FailedBlock)failure
 {
-    //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[DeviceEntity class] mappingParam:@{@"token": @"device_token", @"type": @"device_type"}];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[DeviceEntity class] mappingParam:@{@"device_id": @"id"}];
@@ -258,7 +256,6 @@
 
 - (void)clearNotifications:(DeviceEntity *)device success:(SuccessBlock)success failure:(FailedBlock)failure
 {
-    //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
     NSString *restPath = [[RestKitUtil sharedClient] formatPath:@"base/badge/:id" object:device];
@@ -288,7 +285,6 @@
 
 - (void) uploadAvatar:(FileEntity *)avatar success:(SuccessBlock)success failure:(FailedBlock)failure
 {
-    //登录接口调用
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[FileEntity class] mappingParam:@{@"image_url": @"url"}];
     
@@ -302,6 +298,35 @@
         failure(error);
     }];
     
+}
+
+- (void) getReferee:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"mobile": @"mobile"}];
+    
+    [sharedClient getObject:[UserEntity new] path:@"member/promotion" param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) setReferee:(NSString *)mobile success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{@"reference":(mobile ? mobile : @"")};
+    
+    [sharedClient putObject:[UserEntity new] path:@"member/promotion" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
 }
 
 @end

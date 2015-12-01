@@ -165,4 +165,20 @@
  */
 - (void) uploadAvatar: (FileEntity *) avatar success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  获取用户推荐人
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) getReferee: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  设置用户推荐人
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) setReferee: (NSString *) mobile success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 @end
