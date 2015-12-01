@@ -10,6 +10,8 @@
 
 @protocol RecommendViewDelegate <NSObject>
 
+- (void)actionRecommend: (NSString *)mobile;
+
 @end
 
 @interface RecommendView : AppView
