@@ -68,7 +68,7 @@
 
 - (void)actionHome
 {
-    [self.delegate actionAutoLogin];
+    [self.delegate actionHome];
 }
 
 @end

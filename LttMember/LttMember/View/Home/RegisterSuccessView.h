@@ -10,7 +10,7 @@
 
 @protocol RegisterSuccessViewDelegate <NSObject>
 
-- (void) actionAutoLogin;
+- (void) actionHome;
 
 @end
 
