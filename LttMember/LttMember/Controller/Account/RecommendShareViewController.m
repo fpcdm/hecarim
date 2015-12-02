@@ -9,6 +9,7 @@
 #import "RecommendShareViewController.h"
 #import "RecommendShareView.h"
 #import "RecommendViewController.h"
+#import "UMSocial.h"
 
 @interface RecommendShareViewController () <RecommendShareViewDelegate>
 
@@ -41,7 +42,19 @@
 
 - (void)actionShare
 {
+    //设置标题
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = UMENG_SHARE_TITLE;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = UMENG_SHARE_TITLE;
+    [UMSocialData defaultData].extConfig.qqData.title = UMENG_SHARE_TITLE;
+    [UMSocialData defaultData].extConfig.qzoneData.title = UMENG_SHARE_TITLE;
     
+    //设置消息
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:UMENG_SHARE_APPKEY
+                                      shareText:UMENG_SHARE_TEXT
+                                     shareImage:[UIImage imageNamed:@"icon"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone,UMShareToSina,UMShareToSms,UMShareToEmail,nil]
+                                       delegate:nil];
 }
 
 @end

@@ -11,9 +11,6 @@
 #define LttMember_Config_debug_h
 
 #pragma mark - 开发环境
-//百度推送KEY
-#define BAIDU_PUSH_APIKEY @"6quFPwgdpb68P413HWODHGmQ"
-
 //调试缓存KEY
 #define DEBUG_LTT_REST_SERVER_KEY @"debug_rest_server"
 

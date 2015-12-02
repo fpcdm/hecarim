@@ -63,6 +63,29 @@
 #define LTT_STORAGE_KEY_CASE_TYPES @"case_types"
 #define LTT_STORAGE_KEY_CITY_NAME @"city_name"
 
+/*** 友盟分享配置 ***/
+//友盟分享AppKey
+#define UMENG_SHARE_APPKEY @"565e4a2967e58e0784006595"
+//友盟分享链接，根据平台自动跳转
+#define UMENG_SHARE_URL @"http://www.lttok.com/mobile"
+//友盟分享标题
+#define UMENG_SHARE_TITLE @"我在使用两条腿手机客户端"
+//友盟分享内容
+#define UMENG_SHARE_TEXT @"中国同城送货上门服务第一品牌。\n中国首家专注提供同城上门服务的服务品牌。\nhttp://www.lttok.com/mobile"
+//友盟微信APPID，还需要替换URL schemes中的APPID
+#define UMENG_WEIXIN_APPID @"wxdc1e388c3822c80b"
+//友盟微信APPKEY
+#define UMENG_WEIXIN_APPKEY @"a393c1527aaccb95f3a4c88d6d1455f6"
+//友盟新浪微博APPKEY，还需要替换URL schemes中的APPKEY
+#define UMENG_SINA_APPKEY @"3921700954"
+//友盟新浪回调地址
+#define UMENG_SINA_REDIRECTURL @"http://sns.whalecloud.com/sina2/callback"
+//友盟QQ和空间APPID，还需要替换URL schemes中的"tencent"+appId和"QQ"+appId转换成十六进制（不足8位前面补0）
+#define UMENG_QQ_APPID @"100424468"
+//友盟QQ和空间APPKEY
+#define UMENG_QQ_APPKEY @"c7394704798a158208a74ab60104f0ba"
+/*** 友盟分享配置 ***/
+
 //需求类型
 //汽车金融
 #define LTT_TYPE_AUTOFINANCE 4

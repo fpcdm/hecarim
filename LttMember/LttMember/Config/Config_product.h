@@ -11,7 +11,5 @@
 #define LttMember_Config_product_h
 
 #pragma mark - 正式环境
-//百度推送KEY
-#define BAIDU_PUSH_APIKEY @"6quFPwgdpb68P413HWODHGmQ"
 
 #endif
