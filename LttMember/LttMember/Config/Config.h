@@ -65,7 +65,7 @@
 
 /*** 友盟分享配置 ***/
 //友盟分享AppKey
-#define UMENG_SHARE_APPKEY @"565e4a2967e58e0784006595"
+#define UMENG_SHARE_APPKEY @"565fac3567e58efb80001b98"
 //友盟分享链接，根据平台自动跳转
 #define UMENG_SHARE_URL @"http://www.lttok.com/mobile"
 //友盟分享标题
@@ -77,13 +77,13 @@
 //友盟微信APPKEY
 #define UMENG_WEIXIN_APPKEY @"a393c1527aaccb95f3a4c88d6d1455f6"
 //友盟新浪微博APPKEY，还需要替换URL schemes中的APPKEY
-#define UMENG_SINA_APPKEY @"3921700954"
+#define UMENG_SINA_APPKEY @"3881161679"
 //友盟新浪回调地址
 #define UMENG_SINA_REDIRECTURL @"http://sns.whalecloud.com/sina2/callback"
 //友盟QQ和空间APPID，还需要替换URL schemes中的"tencent"+appId和"QQ"+appId转换成十六进制（不足8位前面补0）
-#define UMENG_QQ_APPID @"100424468"
+#define UMENG_QQ_APPID @"1104927007"
 //友盟QQ和空间APPKEY
-#define UMENG_QQ_APPKEY @"c7394704798a158208a74ab60104f0ba"
+#define UMENG_QQ_APPKEY @"NdITOjuOyAwG3c16"
 /*** 友盟分享配置 ***/
 
 //需求类型
