@@ -310,6 +310,9 @@
     //设置分享到QQ空间的应用Id，和分享url链接，并设置支持没有客户端情况下使用SSO授权
     [UMSocialQQHandler setQQWithAppId:UMENG_QQ_APPID appKey:UMENG_QQ_APPKEY url:UMENG_SHARE_URL];
     [UMSocialQQHandler setSupportWebView:YES];
+    
+    //隐藏没有安装的平台
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone,UMShareToSina]];
 }
 
 //友盟回调

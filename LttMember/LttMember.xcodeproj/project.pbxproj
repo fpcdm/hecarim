@@ -2539,8 +2539,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../LttFramework/Products",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMember/LttMember.pch;
@@ -2556,13 +2556,13 @@
 					"$(PROJECT_DIR)/LttMember",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/Wechat",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Sina",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/Wechat",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Sina",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttMember;
@@ -2581,8 +2581,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../LttFramework/Products",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMember/LttMember.pch;
@@ -2598,13 +2598,13 @@
 					"$(PROJECT_DIR)/LttMember",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/Wechat",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Sina",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/frameworks/Wechat",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Sina",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttMember;
