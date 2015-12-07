@@ -11,6 +11,7 @@
 @protocol RegisterMobileViewDelegate <NSObject>
 
 - (void) actionCheckMobile:(NSString *)mobile code:(NSString *)code;
+
 - (void) actionSend:(NSString *)mobile;
 
 @end

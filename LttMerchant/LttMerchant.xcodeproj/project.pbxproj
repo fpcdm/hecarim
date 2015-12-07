@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B29D9291C02C56600FEBA5B /* GoodsContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29D9281C02C56600FEBA5B /* GoodsContainerView.m */; };
 		2B759E951BE7032000CBAD28 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B759E941BE7032000CBAD28 /* HomeView.m */; };
 		2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346F61BE0B422001530F0 /* RegisterViewController.m */; };
 		2B8347031BE0B4CE001530F0 /* RegisterExistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */; };
@@ -15,14 +14,15 @@
 		2B8347051BE0B4CE001530F0 /* RegisterPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FF1BE0B4CE001530F0 /* RegisterPasswordView.m */; };
 		2B8347061BE0B4CE001530F0 /* RegisterSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8347011BE0B4CE001530F0 /* RegisterSuccessView.m */; };
 		2B942BA31BE74257009CA6A0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B942BA21BE74257009CA6A0 /* LoginView.m */; };
-		2B96BBF71BFC75DF004461F4 /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B96BBF11BFC75DF004461F4 /* GoodsView.m */; };
-		2B96BBF81BFC75DF004461F4 /* ServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B96BBF31BFC75DF004461F4 /* ServiceView.m */; };
-		2B96BBF91BFC75DF004461F4 /* GoodsFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B96BBF51BFC75DF004461F4 /* GoodsFormView.m */; };
-		2BCEBE631C045C5D00E9BDB6 /* CaseDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEBE621C045C5D00E9BDB6 /* CaseDetailView.m */; };
+		2BBBBF5A1C153731001DFAB8 /* CaseDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF491C153731001DFAB8 /* CaseDetailView.m */; };
+		2BBBBF5C1C153731001DFAB8 /* GoodsContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF4D1C153731001DFAB8 /* GoodsContainerView.m */; };
+		2BBBBF5D1C153731001DFAB8 /* GoodsFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF4F1C153731001DFAB8 /* GoodsFormView.m */; };
+		2BBBBF5F1C153731001DFAB8 /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF531C153731001DFAB8 /* GoodsView.m */; };
+		2BBBBF601C153731001DFAB8 /* PaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF551C153731001DFAB8 /* PaymentView.m */; };
+		2BBBBF611C153731001DFAB8 /* ServicesContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF571C153731001DFAB8 /* ServicesContainerView.m */; };
+		2BBBBF621C153731001DFAB8 /* ServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBBBF591C153731001DFAB8 /* ServiceView.m */; };
 		2BCED6771BE854D10011F1FF /* ServiceFromView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCED6761BE854D10011F1FF /* ServiceFromView.m */; };
 		2BCED67A1BE8A8090011F1FF /* CaseEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCED6791BE8A8090011F1FF /* CaseEditView.m */; };
-		2BD43D7A1C0544C4000782C8 /* ServicesContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD43D791C0544C4000782C8 /* ServicesContainerView.m */; };
-		2BD43D7D1C05A690000782C8 /* PaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD43D7C1C05A690000782C8 /* PaymentView.m */; };
 		2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */; };
 		2BD4FAD91BF47977003B727B /* MerchantEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD81BF47977003B727B /* MerchantEntity.m */; };
 		2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FADB1BF47D94003B727B /* MerchantHandler.m */; };
@@ -603,8 +603,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B29D9271C02C56600FEBA5B /* GoodsContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsContainerView.h; sourceTree = "<group>"; };
-		2B29D9281C02C56600FEBA5B /* GoodsContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsContainerView.m; sourceTree = "<group>"; };
 		2B759E931BE7032000CBAD28 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		2B759E941BE7032000CBAD28 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		2B8346F51BE0B422001530F0 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -619,22 +617,24 @@
 		2B8347011BE0B4CE001530F0 /* RegisterSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSuccessView.m; sourceTree = "<group>"; };
 		2B942BA11BE74257009CA6A0 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		2B942BA21BE74257009CA6A0 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
-		2B96BBF11BFC75DF004461F4 /* GoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
-		2B96BBF21BFC75DF004461F4 /* GoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
-		2B96BBF31BFC75DF004461F4 /* ServiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceView.m; sourceTree = "<group>"; };
-		2B96BBF41BFC75DF004461F4 /* ServiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceView.h; sourceTree = "<group>"; };
-		2B96BBF51BFC75DF004461F4 /* GoodsFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsFormView.m; sourceTree = "<group>"; };
-		2B96BBF61BFC75DF004461F4 /* GoodsFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsFormView.h; sourceTree = "<group>"; };
-		2BCEBE611C045C5D00E9BDB6 /* CaseDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailView.h; sourceTree = "<group>"; };
-		2BCEBE621C045C5D00E9BDB6 /* CaseDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailView.m; sourceTree = "<group>"; };
+		2BBBBF481C153731001DFAB8 /* CaseDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailView.h; sourceTree = "<group>"; };
+		2BBBBF491C153731001DFAB8 /* CaseDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailView.m; sourceTree = "<group>"; };
+		2BBBBF4C1C153731001DFAB8 /* GoodsContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsContainerView.h; sourceTree = "<group>"; };
+		2BBBBF4D1C153731001DFAB8 /* GoodsContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsContainerView.m; sourceTree = "<group>"; };
+		2BBBBF4E1C153731001DFAB8 /* GoodsFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsFormView.h; sourceTree = "<group>"; };
+		2BBBBF4F1C153731001DFAB8 /* GoodsFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsFormView.m; sourceTree = "<group>"; };
+		2BBBBF521C153731001DFAB8 /* GoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
+		2BBBBF531C153731001DFAB8 /* GoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
+		2BBBBF541C153731001DFAB8 /* PaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentView.h; sourceTree = "<group>"; };
+		2BBBBF551C153731001DFAB8 /* PaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentView.m; sourceTree = "<group>"; };
+		2BBBBF561C153731001DFAB8 /* ServicesContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesContainerView.h; sourceTree = "<group>"; };
+		2BBBBF571C153731001DFAB8 /* ServicesContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesContainerView.m; sourceTree = "<group>"; };
+		2BBBBF581C153731001DFAB8 /* ServiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceView.h; sourceTree = "<group>"; };
+		2BBBBF591C153731001DFAB8 /* ServiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceView.m; sourceTree = "<group>"; };
 		2BCED6751BE854D10011F1FF /* ServiceFromView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceFromView.h; sourceTree = "<group>"; };
 		2BCED6761BE854D10011F1FF /* ServiceFromView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFromView.m; sourceTree = "<group>"; };
 		2BCED6781BE8A8090011F1FF /* CaseEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseEditView.h; sourceTree = "<group>"; };
 		2BCED6791BE8A8090011F1FF /* CaseEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseEditView.m; sourceTree = "<group>"; };
-		2BD43D781C0544C4000782C8 /* ServicesContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesContainerView.h; sourceTree = "<group>"; };
-		2BD43D791C0544C4000782C8 /* ServicesContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesContainerView.m; sourceTree = "<group>"; };
-		2BD43D7B1C05A690000782C8 /* PaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentView.h; sourceTree = "<group>"; };
-		2BD43D7C1C05A690000782C8 /* PaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentView.m; sourceTree = "<group>"; };
 		2BD4FAD41BF43F96003B727B /* RegisterInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterInfoView.h; sourceTree = "<group>"; };
 		2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterInfoView.m; sourceTree = "<group>"; };
 		2BD4FAD71BF47977003B727B /* MerchantEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantEntity.h; sourceTree = "<group>"; };
@@ -2060,24 +2060,26 @@
 		2F16E6921B5DF84B007947D0 /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				2BD43D7B1C05A690000782C8 /* PaymentView.h */,
-				2BD43D7C1C05A690000782C8 /* PaymentView.m */,
 				2FAA3B841BFC1AAA006B92E1 /* CasePopupView.h */,
+				2BBBBF481C153731001DFAB8 /* CaseDetailView.h */,
+				2BBBBF491C153731001DFAB8 /* CaseDetailView.m */,
+				2BBBBF4C1C153731001DFAB8 /* GoodsContainerView.h */,
+				2BBBBF4D1C153731001DFAB8 /* GoodsContainerView.m */,
+				2BBBBF4E1C153731001DFAB8 /* GoodsFormView.h */,
+				2BBBBF4F1C153731001DFAB8 /* GoodsFormView.m */,
+				2BBBBF521C153731001DFAB8 /* GoodsView.h */,
+				2BBBBF531C153731001DFAB8 /* GoodsView.m */,
+				2BBBBF541C153731001DFAB8 /* PaymentView.h */,
+				2BBBBF551C153731001DFAB8 /* PaymentView.m */,
+				2BBBBF561C153731001DFAB8 /* ServicesContainerView.h */,
+				2BBBBF571C153731001DFAB8 /* ServicesContainerView.m */,
+				2BBBBF581C153731001DFAB8 /* ServiceView.h */,
+				2BBBBF591C153731001DFAB8 /* ServiceView.m */,
 				2FAA3B851BFC1AAA006B92E1 /* CasePopupView.m */,
 				2F66973F1B8185C6004BF473 /* CaseListView.h */,
 				2F6697401B8185C6004BF473 /* CaseListView.m */,
 				2BCED6781BE8A8090011F1FF /* CaseEditView.h */,
 				2BCED6791BE8A8090011F1FF /* CaseEditView.m */,
-				2BCEBE611C045C5D00E9BDB6 /* CaseDetailView.h */,
-				2BCEBE621C045C5D00E9BDB6 /* CaseDetailView.m */,
-				2B29D9271C02C56600FEBA5B /* GoodsContainerView.h */,
-				2B29D9281C02C56600FEBA5B /* GoodsContainerView.m */,
-				2BD43D781C0544C4000782C8 /* ServicesContainerView.h */,
-				2BD43D791C0544C4000782C8 /* ServicesContainerView.m */,
-				2B96BBF61BFC75DF004461F4 /* GoodsFormView.h */,
-				2B96BBF51BFC75DF004461F4 /* GoodsFormView.m */,
-				2B96BBF21BFC75DF004461F4 /* GoodsView.h */,
-				2B96BBF11BFC75DF004461F4 /* GoodsView.m */,
 				2F4347EB1B7A271200D96AB6 /* ServiceListView.h */,
 				2F4347EC1B7A271200D96AB6 /* ServiceListView.m */,
 				2F7B60791B7AF24900F65729 /* GoodsListView.h */,
@@ -2088,8 +2090,6 @@
 				2F02FB6D1BABE1B100D7D68F /* CaseErrorView.m */,
 				2BCED6751BE854D10011F1FF /* ServiceFromView.h */,
 				2BCED6761BE854D10011F1FF /* ServiceFromView.m */,
-				2B96BBF41BFC75DF004461F4 /* ServiceView.h */,
-				2B96BBF31BFC75DF004461F4 /* ServiceView.m */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -4314,6 +4314,7 @@
 				2F78FADC1B75B1F30009F349 /* ServiceInspector.m in Sources */,
 				2F78FB261B75B1F40009F349 /* Samurai_CSSNumberVmax.m in Sources */,
 				2F78FAC11B75B1F30009F349 /* Samurai_Metric.m in Sources */,
+				2BBBBF5D1C153731001DFAB8 /* GoodsFormView.m in Sources */,
 				2F78FA881B75B1F30009F349 /* Samurai_Service.m in Sources */,
 				2F78FACE1B75B1F30009F349 /* ServiceBorderHook.m in Sources */,
 				2F78FA981B75B1F30009F349 /* Samurai_UIProgressView.m in Sources */,
@@ -4326,7 +4327,6 @@
 				2F78FBA81B75B1F40009F349 /* Samurai_HtmlRenderWorklet_50Finish.m in Sources */,
 				2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */,
 				2F78FAAD1B75B1F30009F349 /* Samurai_DomNode.m in Sources */,
-				2BD43D7D1C05A690000782C8 /* PaymentView.m in Sources */,
 				2F78FA861B75B1F30009F349 /* Samurai_ServiceInstance.m in Sources */,
 				2F78FAE21B75B1F30009F349 /* ServiceMonitorCPUModel.m in Sources */,
 				2F55F69B1BDF12D000A89174 /* ForgetPasswordViewController.m in Sources */,
@@ -4375,7 +4375,6 @@
 				2F78FB9C1B75B1F40009F349 /* Samurai_HtmlRenderTable.m in Sources */,
 				2F90007B1B1D91470040D97B /* MASLayoutConstraint.m in Sources */,
 				2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */,
-				2BCEBE631C045C5D00E9BDB6 /* CaseDetailView.m in Sources */,
 				2F9000791B1D91470040D97B /* MASConstraint.m in Sources */,
 				2F6D3F051B3128CC007A4159 /* MJRefreshComponent.m in Sources */,
 				2F16E6B01B5DF84B007947D0 /* GoodsEntity.m in Sources */,
@@ -4416,6 +4415,7 @@
 				2F78FB211B75B1F40009F349 /* Samurai_CSSNumberRad.m in Sources */,
 				2F78FAA31B75B1F30009F349 /* Samurai_UIWebView.m in Sources */,
 				2F78FACF1B75B1F30009F349 /* ServiceBorderLayer.m in Sources */,
+				2BBBBF601C153731001DFAB8 /* PaymentView.m in Sources */,
 				2F6D3F131B3128CC007A4159 /* UIScrollView+MJExtension.m in Sources */,
 				2F78FB071B75B1F40009F349 /* Samurai_CSSArray.m in Sources */,
 				2F78FA761B75B1F30009F349 /* Samurai_NotificationBus.m in Sources */,
@@ -4491,7 +4491,6 @@
 				2F78FB761B75B1F40009F349 /* Samurai_HtmlElementLabel.m in Sources */,
 				2F78FB461B75B1F40009F349 /* Samurai_HtmlDocumentWorklet_40MergeStyleTree.m in Sources */,
 				2F78FB131B75B1F40009F349 /* Samurai_CSSNumberEm.m in Sources */,
-				2B96BBF71BFC75DF004461F4 /* GoodsView.m in Sources */,
 				2F6D3F081B3128CC007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2F6ADD821B6B0FDF00BFFD8B /* CaseEditActivity.m in Sources */,
 				2F78FAB71B75B1F30009F349 /* Samurai_Workflow.m in Sources */,
@@ -4573,6 +4572,7 @@
 				2F78FA5C1B75B1F30009F349 /* NSData+Extension.m in Sources */,
 				2F78FB631B75B1F40009F349 /* Samurai_HtmlElementH3.m in Sources */,
 				2F78FAEB1B75B1F30009F349 /* ServiceTapspotWindow.m in Sources */,
+				2BBBBF611C153731001DFAB8 /* ServicesContainerView.m in Sources */,
 				2F78FA621B75B1F30009F349 /* NSObject+Extension.m in Sources */,
 				2F78FADA1B75B1F30009F349 /* ServiceGridsWindow.m in Sources */,
 				2F6D3F011B3128CC007A4159 /* DistancePickerView.m in Sources */,
@@ -4662,9 +4662,9 @@
 				2F78FBA11B75B1F40009F349 /* Samurai_HtmlRenderStoreScope.m in Sources */,
 				2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2F78FA9B1B75B1F30009F349 /* Samurai_UIStepper.m in Sources */,
-				2B29D9291C02C56600FEBA5B /* GoodsContainerView.m in Sources */,
 				2F78FB581B75B1F40009F349 /* Samurai_HtmlElementDd.m in Sources */,
 				2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */,
+				2BBBBF621C153731001DFAB8 /* ServiceView.m in Sources */,
 				2FED7DC51B1EA2E100306A11 /* SDWebImagePrefetcher.m in Sources */,
 				2F78FB681B75B1F40009F349 /* Samurai_HtmlElementHgroup.m in Sources */,
 				2FCAF86D1B20251800F3B084 /* NotificationUtil.m in Sources */,
@@ -4674,6 +4674,7 @@
 				2F6D3F0E1B3128CC007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2FED7DC01B1EA2E100306A11 /* SDWebImageCompat.m in Sources */,
 				2F78FADF1B75B1F30009F349 /* JBChartView.m in Sources */,
+				2BBBBF5C1C153731001DFAB8 /* GoodsContainerView.m in Sources */,
 				2F78FA651B75B1F30009F349 /* Samurai_Debug.m in Sources */,
 				2F90007F1B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2B942BA31BE74257009CA6A0 /* LoginView.m in Sources */,
@@ -4755,7 +4756,6 @@
 				2F78FBB41B75B1F40009F349 /* tag.c in Sources */,
 				2F78FA571B75B1F30009F349 /* Samurai_Config.m in Sources */,
 				2F5FDDE71B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */,
-				2B96BBF91BFC75DF004461F4 /* GoodsFormView.m in Sources */,
 				2F800B101B1D529F006189EF /* README.md in Sources */,
 				2FED7E2D1B1EA87800306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F78FB271B75B1F40009F349 /* Samurai_CSSNumberVmin.m in Sources */,
@@ -4774,6 +4774,7 @@
 				2F78FA771B75B1F30009F349 /* Samurai_NotificationCenter.m in Sources */,
 				2F78FB391B75B1F40009F349 /* UISwitch+Html.m in Sources */,
 				2F78FB821B75B1F40009F349 /* Samurai_HtmlElementSelect.m in Sources */,
+				2BBBBF5A1C153731001DFAB8 /* CaseDetailView.m in Sources */,
 				2F78FB7D1B75B1F40009F349 /* Samurai_HtmlElementOutput.m in Sources */,
 				2F78FB081B75B1F40009F349 /* Samurai_CSSColor.m in Sources */,
 				2F78FAE01B75B1F30009F349 /* JBLineChartView.m in Sources */,
@@ -4796,7 +4797,6 @@
 				2F6D3EFB1B3128CC007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F78FA971B75B1F30009F349 /* Samurai_UIPageControl.m in Sources */,
 				2F78FAC91B75B1F30009F349 /* Samurai_Vendor.m in Sources */,
-				2BD43D7A1C0544C4000782C8 /* ServicesContainerView.m in Sources */,
 				2F78FB1B1B75B1F40009F349 /* Samurai_CSSNumberMs.m in Sources */,
 				2F78FA611B75B1F30009F349 /* NSMutableSet+Extension.m in Sources */,
 				2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */,
@@ -4821,6 +4821,7 @@
 				2F78FB291B75B1F40009F349 /* Samurai_CSSObject.m in Sources */,
 				2F9000481B1D91380040D97B /* UIViewController+Ltt.m in Sources */,
 				2F16E6A51B5DF84B007947D0 /* MenuViewController.m in Sources */,
+				2BBBBF5F1C153731001DFAB8 /* GoodsView.m in Sources */,
 				2F6D3F0F1B3128CC007A4159 /* MJRefreshNormalHeader.m in Sources */,
 				2F78FA7A1B75B1F30009F349 /* Samurai_SignalKVO.m in Sources */,
 				2F9001581B1D9D680040D97B /* RECommonFunctions.m in Sources */,
@@ -4828,7 +4829,6 @@
 				2F78FAAB1B75B1F30009F349 /* Samurai_ViewController.m in Sources */,
 				2F78FB6E1B75B1F40009F349 /* Samurai_HtmlElementInputFile.m in Sources */,
 				2FED7E2E1B1EA87800306A11 /* DDASLLogCapture.m in Sources */,
-				2B96BBF81BFC75DF004461F4 /* ServiceView.m in Sources */,
 				2FED7DC41B1EA2E100306A11 /* SDWebImageManager.m in Sources */,
 				2F78FBA21B75B1F40009F349 /* Samurai_HtmlRenderStyle.m in Sources */,
 				2F78FB731B75B1F40009F349 /* Samurai_HtmlElementInputReset.m in Sources */,

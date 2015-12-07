@@ -197,9 +197,4 @@
     [self.delegate actionSend:mobileField.text];
 }
 
-////校验码验证
-//- (void)actionVerifyCode
-//{
-//    [self.delegate actionVerifyCode:codeField.text];
-//}
 @end

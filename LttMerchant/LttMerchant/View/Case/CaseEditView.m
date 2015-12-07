@@ -17,7 +17,6 @@
     UILabel *timeLabel;
     UILabel *totalLabel;
     UITextView *caseRemark;
-
 }
 
 - (id)init
@@ -150,7 +149,6 @@
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
-    
     //关闭键盘Toolbar
     UIToolbar *keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 35)];
     [keyboardToolbar setBarStyle:UIBarStyleDefault];
@@ -162,7 +160,6 @@
     [keyboardToolbar setItems:buttonsArray];
     [caseRemark setInputAccessoryView:keyboardToolbar];
 
-    
     return self;
 }
 

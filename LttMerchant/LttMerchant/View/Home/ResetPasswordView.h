@@ -10,8 +10,6 @@
 
 @protocol ResetPasswordViewDelegate <NSObject>
 
-@required
-
 - (void)actionResetPassword:(NSString *) newPassword reNewPassword:(NSString *)reNewPassword;
 
 @end
