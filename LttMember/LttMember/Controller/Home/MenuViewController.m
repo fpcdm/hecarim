@@ -67,8 +67,8 @@
     //未登录
     if (!user) {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeViewController"],
-                    @[@"登陆", @"LoginViewController"],
+                    @[@"首页", @"HomeViewController", @"show"],
+                    @[@"登陆", @"LoginViewController", @"show"],
                     nil];
         
         userNameLabel.text = @"未登录";
@@ -76,9 +76,10 @@
         //已登录
     } else {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeViewController"],
-                    @[@"服务单", @"CaseListViewController"],
-                    @[@"账户", @"AccountViewController"],
+                    @[@"首页", @"HomeViewController", @"show"],
+                    @[@"服务单", @"CaseListViewController", @"show"],
+                    @[@"账户", @"AccountViewController", @"push"],
+                    @[@"分享", @"RecommendShareViewController", @"push"],
                     nil];
         
         userNameLabel.text = [user displayName];
@@ -129,10 +130,14 @@
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
     
     AppViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
-    
-    //切换viewController
     UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
-    [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    
+    //根据方式切换viewController
+    if ([@"push" isEqualToString:[menu objectAtIndex:2]]) {
+        [navigationController pushViewController:viewController animated:YES];
+    } else {
+        [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
+    }
     
     [self.frostedViewController hideMenuViewController];
 }

@@ -10,20 +10,49 @@
 
 @implementation AddressView
 
+- (id) init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    //空视图
+    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    emptyView.backgroundColor = COLOR_MAIN_BG;
+    
+    UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 20)];
+    emptyLabel.text = @"暂时没有可用服务地址";
+    emptyLabel.font = FONT_MAIN;
+    emptyLabel.textColor = COLOR_MAIN_DARK;
+    emptyLabel.textAlignment = NSTextAlignmentCenter;
+    [emptyView addSubview:emptyLabel];
+    
+    self.tableView.tableFooterView = emptyView;
+    self.tableView.tableFooterView.hidden = YES;
+    
+    return self;
+}
+
 #pragma mark - RenderData
 - (void)renderData
 {
     NSMutableArray *addressList = [self getData:@"addressList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     
-    if (addressList != nil) {
+    //有数据
+    if (addressList != nil && [addressList count] > 0) {
         for (AddressEntity *address in addressList) {
             [tableData addObject:@{@"id" : @"address", @"type" : @"custom", @"action": @"actionDetail:", @"height":@90, @"data": address}];
         }
+        
+        self.tableView.tableFooterView.hidden = YES;
+        self.tableView.scrollEnabled = YES;
+    //空数据
+    } else {
+        self.tableView.tableFooterView.hidden = NO;
+        self.tableView.scrollEnabled = NO;
     }
-    self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
     
-    self.tableView.scrollEnabled = YES;
+    self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
     [self.tableView reloadData];
 }
 

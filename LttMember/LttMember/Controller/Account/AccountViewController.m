@@ -15,7 +15,9 @@
 #import "AddressViewController.h"
 #import "SuggestionViewController.h"
 #import "RecommendShareViewController.h"
+#import "HomeViewController.h"
 #import "UserHandler.h"
+#import "UIViewController+BackButtonHandler.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -40,17 +42,26 @@
 
 - (void)viewDidLoad
 {
-    isMenuEnabled = YES;
-    hideBackButton = YES;
+    isMenuEnabled = NO;
+    hideBackButton = NO;
     isIndexNavBar = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"账户";
     
-    UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
-    barButtonItem.target = self;
-    barButtonItem.action = @selector(actionSetting);
-    self.navigationItem.rightBarButtonItem = barButtonItem;
+    UIBarButtonItem *rightButtonItem = [AppUIUtil makeBarButtonItem:@"设置" highlighted:isIndexNavBar];
+    rightButtonItem.target = self;
+    rightButtonItem.action = @selector(actionSetting);
+    self.navigationItem.rightBarButtonItem = rightButtonItem;
+}
+
+#pragma mark - Home
+- (BOOL)navigationShouldPopOnBackButton
+{
+    HomeViewController *viewController = [[HomeViewController alloc] init];
+    [self toggleViewController:viewController animated:YES];
+    
+    return NO;
 }
 
 #pragma mark - Action
