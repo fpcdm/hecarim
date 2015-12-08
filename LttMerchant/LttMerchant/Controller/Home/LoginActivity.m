@@ -33,6 +33,7 @@
     LoginView *loginView = [[LoginView alloc] init];
     loginView.delegate = self;
     self.view = loginView;
+    
     self.navigationItem.title = @"两条腿工作台登陆";
     
     self.view.backgroundColor = COLOR_MAIN_BG;

@@ -30,7 +30,6 @@
     self.view = homeView;
     self.view.backgroundColor = COLOR_MAIN_BG;
     
-    
     //刷新gps
     [[LocationUtil sharedInstance] restartUpdate];
 }

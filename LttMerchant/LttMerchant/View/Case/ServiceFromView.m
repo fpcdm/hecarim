@@ -114,7 +114,7 @@
     contentField.placeholder = @"请输入内容";
     contentField.textColor = COLOR_MAIN_BLACK;
     contentField.font = FONT_MAIN;
-    contentField.clearButtonMode = UITextFieldViewModeAlways;
+    contentField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [contentView addSubview:contentField];
     
     [contentField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -155,7 +155,7 @@
     priceField.placeholder = @"请输入价格";
     priceField.textColor = COLOR_MAIN_BLACK;
     priceField.font = FONT_MAIN;
-    priceField.clearButtonMode = UITextFieldViewModeAlways;
+    priceField.clearButtonMode = UITextFieldViewModeWhileEditing;
     priceField.keyboardType = UIKeyboardTypeDecimalPad;
     [priceView addSubview:priceField];
     

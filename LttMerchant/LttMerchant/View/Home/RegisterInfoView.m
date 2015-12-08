@@ -7,6 +7,11 @@
 //
 
 #import "RegisterInfoView.h"
+#import "TPKeyboardAvoidingScrollView.h"
+
+@interface RegisterInfoView ()<UITextFieldDelegate>
+
+@end
 
 @implementation RegisterInfoView
 {
@@ -27,13 +32,24 @@
     
     UIButton *licenseBtn;
     UIButton *cardBtn;
+    CGFloat _totalYOffset;
+}
+
+- (UIScrollView *)loadScrollView
+{
+    TPKeyboardAvoidingScrollView *scrollView = [[TPKeyboardAvoidingScrollView alloc] init];
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.scrollEnabled = YES;
+    scrollView.pagingEnabled = NO;
+    return scrollView;
 }
 
 - (id)init
 {
     self = [super init];
     if (!self) return nil;
-    
+
     superView = self.contentView;
     padding = 10;
     imgHeight = 100;
@@ -279,6 +295,7 @@
     //营业执照图片
     licenseImage = [[UIImageView alloc] init];
     licenseImage.layer.cornerRadius = 3.0f;
+    //子视图被剪切到父视图的边界
     licenseImage.clipsToBounds = YES;
     licenseImage.contentMode = UIViewContentModeScaleAspectFit;
     [licenseBtn addSubview:licenseImage];
@@ -374,32 +391,8 @@
         make.right.equalTo(superView.mas_right).offset(-padding);
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
-    
-    
-    //关闭键盘Toolbar
-    UIToolbar *keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 35)];
-    [keyboardToolbar setBarStyle:UIBarStyleDefault];
-    
-    UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyboard)];
-    NSArray *buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
-    
-    [keyboardToolbar setItems:buttonsArray];
-    [companyField setInputAccessoryView:keyboardToolbar];
-    [addressField setInputAccessoryView:keyboardToolbar];
-    [picField setInputAccessoryView:keyboardToolbar];
-    [cardField setInputAccessoryView:keyboardToolbar];
 
     return self;
-}
-
-
-- (void)dismissKeyboard
-{
-    [companyField resignFirstResponder];
-    [addressField resignFirstResponder];
-    [picField resignFirstResponder];
-    [cardField resignFirstResponder];
 }
 
 - (void)setTipViewHide:(BOOL)type
@@ -421,6 +414,7 @@
     }
     CGFloat height = 52 * 4 + 10 * 10 + 102 * 2 + 45 + 20 * 2 + tipHeight;
     self.contentSize = CGSizeMake(SCREEN_WIDTH, height);
+    
 }
 
 - (void)actoinMercantRegister
@@ -437,14 +431,12 @@
 - (void)actionUploadLisense
 {
     [self.delegate actionUploadImage:@"license"];
-    NSLog(@"上传营业执照");
 }
 
 //上传身份证正面图
 - (void)actionUploadCard
 {
     [self.delegate actionUploadImage:@"card"];
-    NSLog(@"上传身份证正面");
 }
 
 - (void)renderData
@@ -456,27 +448,7 @@
     } else if ([@"card" isEqualToString:merEntity.type]) {
         cardImageJ.hidden = YES;
         [merEntity imageView:cardImage];
-    }}
-
-//设置图片宽高度
-- (void)setImageWidthAndHeight:(NSString *)url imageView:(UIImageView *)imageView
-{
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-    CGFloat w = image.size.width;
-    CGFloat h = image.size.height;
-    CGFloat screenWidth = SCREEN_WIDTH - padding * 2 - 2;
-    if (w >= h && w >= screenWidth) {
-        CGFloat height = (imgHeight / w) * h;
-        [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@(screenWidth));
-            make.height.equalTo(@(height));
-        }];
-    } else if (w <= h && h >= imgHeight) {
-        CGFloat width = (screenWidth / h) * w;
-        [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(imgHeight));
-            make.width.equalTo(@(width));
-        }];
     }
 }
+
 @end

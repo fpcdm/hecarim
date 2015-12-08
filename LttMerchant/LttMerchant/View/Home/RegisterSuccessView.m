@@ -54,7 +54,6 @@
     [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(successLabel.mas_bottom).offset(padding);
         make.centerX.equalTo(superview.mas_centerX);
-//        make.height.equalTo(@16);
     }];
 
     
