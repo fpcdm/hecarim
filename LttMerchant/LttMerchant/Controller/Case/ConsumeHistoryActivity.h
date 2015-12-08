@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppActivity.h"
+#import "AppViewController.h"
 #import "CaseEntity.h"
 
-@interface ConsumeHistoryActivity : AppActivity
+@interface ConsumeHistoryActivity : AppViewController
 
 @property (retain, nonatomic) CaseEntity *intention;
 

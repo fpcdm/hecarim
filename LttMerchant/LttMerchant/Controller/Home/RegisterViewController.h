@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppActivity.h"
+#import "AppViewController.h"
 
-@interface RegisterViewController : AppActivity
+@interface RegisterViewController : AppViewController
 
 @end

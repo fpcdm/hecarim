@@ -90,14 +90,6 @@
 //渲染需求头数据
 - (void) renderCaseData
 {
-    NSString *totalAmount = self.intention.totalAmount && [self.intention.totalAmount floatValue] > 0.0 ? [NSString stringWithFormat:@"￥%.2f", [self.intention.totalAmount floatValue]] : @"-";
-    self.scope[@"case"] = @{
-                                  @"no": self.intention.no,
-                                  @"status": self.intention.status,
-                                  @"statusName": self.intention.statusName,
-                                  @"time": self.intention.createTime,
-                                  @"totalAmount":totalAmount
-                                  };
 }
 
 @end

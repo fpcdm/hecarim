@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppActivity.h"
+#import "AppViewController.h"
 
-@interface LoginActivity : AppActivity
+@interface LoginActivity : AppViewController
 
 @property (assign, nonatomic) BOOL tokenExpired;
 

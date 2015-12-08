@@ -6,9 +6,9 @@
 //  Copyright © 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppActivity.h"
+#import "AppViewController.h"
 
-@interface ForgetPasswordViewController : AppActivity
+@interface ForgetPasswordViewController : AppViewController
 
 
 @end
