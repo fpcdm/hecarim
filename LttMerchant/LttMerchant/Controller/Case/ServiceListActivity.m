@@ -8,10 +8,10 @@
 
 #import "ServiceListActivity.h"
 #import "ServiceFormActivity.h"
+#import "ServiceListView.h"
 #import "DLRadioButton.h"
-#import "ServiceView.h"
 
-@interface ServiceListActivity ()<ServiceViewDelegate>
+@interface ServiceListActivity ()
 
 @end
 
@@ -20,11 +20,14 @@
     //返回页面是否需要刷新
     BOOL needRefresh;
     
+    //表格视图
+    ServiceListView *listView;
+    
     //服务数据
     NSMutableArray *services;
     
-    //服务列表
-    ServiceView *serviceView;
+    //全选按钮
+    DLRadioButton *radioButton;
 }
 
 @synthesize intention;
@@ -40,14 +43,7 @@
     UIBarButtonItem *editButtonItem = [AppUIUtil makeBarButtonItem:@"编辑" highlighted:YES];
     editButtonItem.target = self;
     editButtonItem.action = @selector(actionEditTable:);
-    
-    serviceView = [[ServiceView alloc] init];
-    serviceView.delegate = self;
-    self.view = serviceView;
-    self.view.backgroundColor = COLOR_MAIN_BG;
-    
     self.navigationItem.rightBarButtonItem = editButtonItem;
-    self.navigationItem.title = @"服务列表";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -71,39 +67,65 @@
     }
 }
 
+- (NSString *)templateName
+{
+    return @"serviceList.html";
+}
+
+#pragma mark - Template
+- (void) onTemplateLoaded
+{
+    //动态计算表格容器高度
+    float containerHeight = SCREEN_AVAILABLE_HEIGHT - 150;
+    $(@"#tableContainer").ATTR(@"height", [NSString stringWithFormat:@"%lfpx", containerHeight]);
+    
+    //显示添加按钮
+    $(@"#addButton").ATTR(@"visibility", @"visbile");
+    
+    //全选按钮样式
+    radioButton = (DLRadioButton *) $(@"#radioButton").firstView;
+    radioButton.iconColor = [UIColor colorWithHexString:@"CBCBCB"];
+    radioButton.iconSize = 18;
+    radioButton.iconStrokeWidth = 1.0f;
+    
+    //初始化表格
+    listView = [[ServiceListView alloc] init];
+    listView.frame = CGRectMake(0, 0, SCREEN_WIDTH, containerHeight);
+    [$(@"#tableContainer").firstView addSubview:listView];
+}
 
 #pragma mark - reloadData
 - (void) reloadData
 {
+    [super reloadData];
+    
     //刷新表格
     [self refreshTable];
     
     //切换按钮
     [self toggleButton];
     
-    //设置头部信息
-    CaseEntity *caseEntity = [[CaseEntity alloc] init];
-    caseEntity.no = self.intention.no;
-    caseEntity.status = self.intention.status;
-    [serviceView setData:@"caseEntity" value:caseEntity];
-    [serviceView setCaseNo];
+    //重新布局
+    [self relayout];
 }
 
 //刷新表格
 - (void) refreshTable
 {
-    [serviceView setData:@"services" value:services];
-    [serviceView renderData];
+    [listView setData:@"services" value:services];
+    [listView renderData];
 }
 
 //切换按钮
 - (void) toggleButton
 {
     //切换控件
-    if (serviceView.listView.tableView.editing == YES) {
-        [serviceView setButtonAndButtomShowHide:YES];
+    if (listView.tableView.editing == YES) {
+        $(@"#addButton").ATTR(@"visibility", @"hidden");
+        $(@"#editButton").ATTR(@"visibility", @"visbile");
     } else {
-        [serviceView setButtonAndButtomShowHide:NO];
+        $(@"#addButton").ATTR(@"visibility", @"visible");
+        $(@"#editButton").ATTR(@"visibility", @"hidden");
     }
 }
 
@@ -112,15 +134,15 @@
 - (void) actionEditTable: (UIBarButtonItem *) barButtonItem
 {
     //编辑
-    if (serviceView.listView.tableView.editing == NO) {
-        serviceView.listView.tableView.editing = YES;
+    if (listView.tableView.editing == NO) {
+        listView.tableView.editing = YES;
         
         [barButtonItem setTitle:@"完成"];
         
         [self toggleButton];
     } else {
         CallbackBlock callback = ^(id object){
-            serviceView.listView.tableView.editing = NO;
+            listView.tableView.editing = NO;
             
             [barButtonItem setTitle:@"编辑"];
             
@@ -172,7 +194,7 @@
     }];
 }
 
-- (void) actionAddService
+- (void) actionAddService: (SamuraiSignal *) signal
 {
     ServiceFormActivity *activity = [[ServiceFormActivity alloc] init];
     activity.caseId = self.caseId;
@@ -190,34 +212,34 @@
     [self pushViewController:activity animated:YES];
 }
 
-- (void) actionChooseAll:(DLRadioButton *)radio
+- (void) actionChooseAll: (SamuraiSignal *) signal
 {
-    NSArray *selectedRows = [serviceView.listView.tableView indexPathsForSelectedRows];
+    NSArray *selectedRows = [listView.tableView indexPathsForSelectedRows];
     NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
     
     //已经全选
     if (selectedCount >= [services count]) {
-        radio.selected = NO;
+        radioButton.selected = NO;
         //获取所有单元格(indexPathsForVisibleRows只含有可见行，不含有滚动后可见的)
         for (int section = 0; section < [services count]; section++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
-            [serviceView.listView.tableView deselectRowAtIndexPath:indexPath animated:NO];
+            [listView.tableView deselectRowAtIndexPath:indexPath animated:NO];
         }
     //未全选
     } else {
-        radio.selected = YES;
+        radioButton.selected = YES;
         //获取所有单元格(indexPathsForVisibleRows只含有可见行，不含有滚动后可见的)
         for (int section = 0; section < [services count]; section++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
-            [serviceView.listView.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [listView.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     }
 }
 
-- (void) actionDeleteServices: (DLRadioButton *) radio
+- (void) actionDeleteServices: (SamuraiSignal *) signal
 {
     //检查选中
-    NSArray *selectedRows = [serviceView.listView.tableView indexPathsForSelectedRows];
+    NSArray *selectedRows = [listView.tableView indexPathsForSelectedRows];
     NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
     
     if (selectedCount < 1) {
@@ -236,7 +258,7 @@
     [self refreshTable];
     
     //取消全选
-    radio.selected = NO;
+    radioButton.selected = NO;
 }
 
 @end

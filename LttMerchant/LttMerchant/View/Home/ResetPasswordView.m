@@ -30,7 +30,7 @@
     passwordField.placeholder = @"请输入新密码";
     passwordField.font = FONT_MAIN;
     passwordField.secureTextEntry = YES;
-    passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    passwordField.clearButtonMode = YES;
     passwordField.layer.borderWidth = 0.5f;
     passwordField.layer.borderColor = CGCOLOR_MAIN_BORDER;
     [self addSubview:passwordField];
@@ -49,7 +49,7 @@
     rePasswordField.placeholder = @"请确认新密码";
     rePasswordField.font = FONT_MAIN;
     rePasswordField.secureTextEntry = YES;
-    rePasswordField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    rePasswordField.clearButtonMode = YES;
     rePasswordField.layer.borderWidth = 0.5f;
     rePasswordField.layer.borderColor = CGCOLOR_MAIN_BORDER;
     [self addSubview:rePasswordField];

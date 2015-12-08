@@ -19,7 +19,6 @@
 #import "TimerUtil.h"
 #import "LoginActivity.h"
 #import "MerchantHandler.h"
-
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
@@ -341,6 +340,7 @@
     [infoView setTipViewHide:NO];
 }
 
+
 //商户注册验证
 - (void)actoinRegister:(MerchantEntity *)merchant
 {
@@ -382,9 +382,11 @@
     merchant.cardUrl = cardUrl;
     
     //注册用户
+    
     MerchantHandler *merchantHandler = [[MerchantHandler alloc] init];
     [merchantHandler registerWithUser:merchant vCode:vCode success:^(NSArray *result){
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            
             [self pushView:[self mobileSuccessView] animated:YES completion:nil];
         }];
     } failure:^(ErrorEntity *error){
@@ -461,6 +463,7 @@
         [self showError:error.message];
     }];
 }
+
 
 - (void)actionUploadImage:(NSString *)imgTag
 {

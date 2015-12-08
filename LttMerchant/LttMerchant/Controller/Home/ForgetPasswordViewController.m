@@ -45,7 +45,6 @@
     [super viewDidLoad];
 }
 
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -63,6 +62,7 @@
     return forgetPasswordView;
 }
 
+//手机号验证
 #pragma mark - Action
 //跳转到登录界面
 - (void)actionLogin
@@ -71,7 +71,6 @@
     [self pushViewController:loginView animated:YES];
 }
 
-//手机号验证
 - (void) actionCheckMobile:(NSString *)inputMobile
 {
     //参数检查
@@ -131,6 +130,8 @@
 
     return currentView;
 }
+
+
 
 //重置密码界面视图
 - (ResetPasswordView *)resetPwdView
@@ -321,6 +322,7 @@
     }];
     
 }
+
 
 - (void)actionResetPassword:(NSString *)newPassword reNewPassword:(NSString *)reNewPassword
 {

@@ -74,11 +74,6 @@
     NSString *imageUrl = [self.qrcodeUrl stringByReplacingOccurrencesOfString:@"*#pay_way#*" withString:way];
     NSLog(@"二维码图片地址：%@", imageUrl);
     
-    //增加随机字符串防止图片缓存
-    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyyMMddHHmmss"];
-    imageUrl = [NSString stringWithFormat:@"%@&t=%@", imageUrl, [dateFormat stringFromDate:[NSDate date]]];
-    
     [imageView showIndicator];
     [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
                  placeholderImage:nil

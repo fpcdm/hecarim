@@ -13,9 +13,13 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "SKDropDown.h"
-#import "GoodsFormView.h"
 
-@interface GoodsFormActivity () <SKDropDownDelegate,GoodsFormViewDelegate>
+@interface GoodsFormActivity () <SKDropDownDelegate>
+
+@property (nonatomic, strong) UITableView *specTable;
+@property (nonatomic, strong) UIButton *brandButton;
+@property (nonatomic, strong) UIButton *modelButton;
+@property (nonatomic, strong) UILabel *goodsPrice;
 
 @end
 
@@ -29,14 +33,10 @@
     BrandEntity *brand;
     ModelEntity *model;
     GoodsEntity *goods;
-    GoodsFormView *goodsFormView;
     
     SKDropDown *categoryDropDown;
     SKDropDown *brandDropDown;
     SKDropDown *modelDropDown;
-    
-    UIButton *brandButton;
-    UIButton *modelButton;
     
     NSNumber *priceId;
 }
@@ -46,13 +46,6 @@
 - (void)viewDidLoad {
     isIndexNavBar = YES;
     [super viewDidLoad];
-    goodsFormView = [[GoodsFormView alloc] init];
-    brandButton = goodsFormView.brandButton;
-    modelButton = goodsFormView.modelButton;
-    goodsFormView.delegate = self;
-    self.view = goodsFormView;
-    self.view.backgroundColor = COLOR_MAIN_BG;
-    self.navigationItem.title = @"商品添加";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,35 +58,72 @@
     }];
 }
 
+- (NSString *)templateName
+{
+    return @"goodsForm.html";
+}
+
+- (void)onTemplateLoaded
+{
+    self.specTable.scrollEnabled = NO;
+    
+    [self.brandButton setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateDisabled];
+    self.brandButton.enabled = NO;
+    
+    [self.modelButton setTitleColor:COLOR_MAIN_GRAY forState:UIControlStateDisabled];
+    self.modelButton.enabled = NO;
+}
+
 #pragma mark - reloadData
 - (void) reloadData
 {
-    CaseEntity *caseEntity = [[CaseEntity alloc] init];
-    caseEntity.no = self.intention.no;
-    caseEntity.status = self.intention.status;
-    [goodsFormView setData:@"caseEntity" value:caseEntity];
-    [goodsFormView setCaseNo];
+    [super reloadData];
     
-}
-
-- (void)reloadSpec
-{
     //规格列表
     NSInteger specCount = goods && goods.specList ? [goods.specList count] : 0;
-    NSMutableArray *specs = [NSMutableArray array];
+    self.scope[@"specs"] = @{
+                                   @"list":({
+                                       NSMutableArray *specs = [NSMutableArray array];
+                                       
+                                       //已选型号
+                                       if (specCount > 0) {
+                                           for (SpecEntity *specEntity in goods.specList) {
+                                               [specs addObject:@{
+                                                                  @"info": @"",
+                                                                  @"name": specEntity.name ? specEntity.name : @"",
+                                                                  @"list": specEntity.children ? specEntity.children : @[]
+                                                                  }];
+                                           }
+                                       } else {
+                                           [specs addObject:@{
+                                                              @"info": @"请先选择品牌型号",
+                                                              @"name": @"",
+                                                              @"list": @[]
+                                                              }];
+                                       }
+                                       
+                                       specs;
+                                   })
+                                   
+                                   };
     
-    //已选型号
+    //自动切换样式并计算高度
     if (specCount > 0) {
-        for (SpecEntity *specEntity in goods.specList) {
-            [specs addObject:@{
-                               @"info": @"",
-                               @"name": specEntity.name ? specEntity.name : @"",
-                               @"list": specEntity.children ? specEntity.children : @[]
-                               }];
+        $(@"#specTable").ATTR(@"height", [NSString stringWithFormat:@"%@px", @(specCount * 60)]);
+    } else {
+        $(@"#specTable").ATTR(@"height", @"60px");
+        //修正无规格重载table时，Samurai渲染错乱问题
+        NSArray *specCells = $(@".specCell").views;
+        for (UIView *specCell in specCells) {
+            //移除未释放的cell
+            [specCell removeFromSuperview];
         }
     }
-    [goodsFormView setData:@"spexBox" value:specs];
-    [goodsFormView specBox];
+    
+    [_specTable reloadData];
+    
+    //重新布局
+    [self relayout];
 }
 
 #pragma mark - DropDown
@@ -148,7 +178,7 @@
 - (void) dropDown:(SKDropDown *)_dropDown didSelectRow:(NSIndexPath *)indexPath
 {
     switch (_dropDown.tag) {
-            //选择分类
+        //选择分类
         case 1:
         {
             category = [categoryList objectAtIndex:indexPath.row];
@@ -160,23 +190,22 @@
             brandList = nil;
             modelList = nil;
             
-            [brandButton setTitle:@"请选择" forState:UIControlStateNormal];
-            [brandButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
-            brandButton.enabled = YES;
+            [self.brandButton setTitle:@"请选择" forState:UIControlStateNormal];
+            self.brandButton.enabled = YES;
             
-            [modelButton setTitle:@"请选择" forState:UIControlStateNormal];
-            modelButton.enabled = NO;
+            [self.modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            self.modelButton.enabled = NO;
             
             if (goods) {
                 goods = nil;
                 priceId = nil;
-                [self reloadSpec];
+                [self reloadData];
                 
-                [goodsFormView setGoodsPrice:@"￥0"];
+                self.goodsPrice.text = @"￥0";
             }
         }
             break;
-            //选择品牌
+        //选择品牌
         case 2:
         {
             brand = [brandList objectAtIndex:indexPath.row];
@@ -186,20 +215,19 @@
             model = nil;
             modelList = nil;
             
-            [modelButton setTitle:@"请选择" forState:UIControlStateNormal];
-            [modelButton setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
-            modelButton.enabled = YES;
+            [self.modelButton setTitle:@"请选择" forState:UIControlStateNormal];
+            self.modelButton.enabled = YES;
             
             if (goods) {
                 goods = nil;
                 priceId = nil;
-                [self reloadSpec];
+                [self reloadData];
                 
-                [goodsFormView setGoodsPrice:@"￥0"];
+                self.goodsPrice.text = @"￥0";
             }
         }
             break;
-            //选择型号
+        //选择型号
         default:
         {
             model = [modelList objectAtIndex:indexPath.row];
@@ -220,11 +248,11 @@
                 goods = nil;
                 priceId = nil;
                 
-                [goodsFormView setGoodsPrice:@"￥0"];
+                self.goodsPrice.text = @"￥0";
                 
                 //没有商品
                 if ([result count] < 1) {
-                    [self reloadSpec];
+                    [self reloadData];
                     
                     [self showError:@"该型号暂无商品"];
                     return;
@@ -232,7 +260,7 @@
                 
                 goods = [result firstObject];
                 
-                [self reloadSpec];
+                [self reloadData];
             } failure:^(ErrorEntity *error){
                 [self showError:error.message];
             }];
@@ -242,8 +270,10 @@
 }
 
 #pragma mark - Action
-- (void) actionChooseCategory:(UIButton *)sender
+- (void) actionChooseCategory: (SamuraiSignal *) signal
 {
+    UIButton *sender = (UIButton *) signal.sourceView;
+    
     //显示dropDown
     if (categoryDropDown == nil) {
         //加载分类列表
@@ -279,13 +309,15 @@
     }
 }
 
-- (void) actionChooseBrand: (UIButton *) sender
+- (void) actionChooseBrand: (SamuraiSignal *) signal
 {
     //参数检查
     if (!category) {
         [self showError:@"请先选择商品类别哦~亲！"];
         return;
     }
+    
+    UIButton *sender = (UIButton *) signal.sourceView;
     
     //显示dropDown
     if (brandDropDown == nil) {
@@ -310,14 +342,14 @@
         } failure:^(ErrorEntity *error){
             [self showError:error.message];
         }];
-        //隐藏dropDown
+    //隐藏dropDown
     } else {
         [brandDropDown hideDropDown:sender];
         brandDropDown = nil;
     }
 }
 
-- (void) actionChooseModel: (UIButton *) sender
+- (void) actionChooseModel: (SamuraiSignal *) signal
 {
     //参数检查
     if (!brand) {
@@ -325,6 +357,7 @@
         return;
     }
     
+    UIButton *sender = (UIButton *) signal.sourceView;
     
     //显示dropDown
     if (modelDropDown == nil) {
@@ -349,7 +382,7 @@
         } failure:^(ErrorEntity *error){
             [self showError:error.message];
         }];
-        //隐藏dropDown
+    //隐藏dropDown
     } else {
         [modelDropDown hideDropDown:sender];
         modelDropDown = nil;
@@ -357,10 +390,28 @@
 }
 
 //规格改变事件
-- (void) actionChooseSpec: (NSMutableArray *) specData
+- (void) actionChooseSpec: (SamuraiSignal *) signal
 {
+    //获取所有规格隐藏按钮
+    NSArray *specButtons = $(@"#specButton").views;
+    //拼装选中规格
+    NSMutableArray *specIds = [[NSMutableArray alloc] init];
+    for (UIButton *specButton in specButtons) {
+        NSString *specValue = specButton.titleLabel.text ? specButton.titleLabel.text : nil;
+        if (specValue && [specValue length] > 0) {
+            [specIds addObject:specValue];
+        }
+    }
+    
+    //是否选中完成
+    if ([specIds count] < [specButtons count]) {
+        priceId = nil;
+        self.goodsPrice.text = @"￥0";
+        return;
+    }
+    
     //选中完成，获取当前价格id
-    NSString *specIdsStr = [specData componentsJoinedByString:@","];
+    NSString *specIdsStr = [specIds componentsJoinedByString:@","];
     NSArray *priceList = goods.priceList;
     NSDictionary *priceItem = nil;
     if (priceList) {
@@ -376,16 +427,45 @@
     if (priceItem) {
         priceId = [priceItem objectForKey:@"price_id"];
         NSNumber *price = [priceItem objectForKey:@"goods_price"];
-        [goodsFormView setGoodsPrice:[NSString stringWithFormat:@"￥%@", price]];
+        self.goodsPrice.text = [NSString stringWithFormat:@"￥%@", price];
     } else {
         priceId = nil;
-        [goodsFormView setGoodsPrice:@"￥0"];
+        self.goodsPrice.text = @"￥0";
         return;
     }
 }
 
-//保存商品
-- (void) actionSave: (NSInteger)number
+- (void) actionGoodsNumberPlus: (SamuraiSignal *) signal
+{
+    UILabel *numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
+    NSInteger number = [self getGoodsNumber:numberLabel];
+    
+    number++;
+    numberLabel.text = [NSString stringWithFormat:@"%ld", number];
+}
+
+- (void) actionGoodsNumberMinus: (SamuraiSignal *) signal
+{
+    UILabel *numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
+    NSInteger number = [self getGoodsNumber:numberLabel];
+    
+    number--;
+    if (number < 1) number = 1;
+    numberLabel.text = [NSString stringWithFormat:@"%ld", number];
+}
+
+//获取商品数量
+- (NSInteger) getGoodsNumber: (UILabel *) numberLabel
+{
+    if (!numberLabel) {
+        numberLabel = (UILabel *) $(@"#goodsNumber").firstView;
+    }
+    NSString *numberStr = [numberLabel.text trim];
+    NSInteger number = [numberStr length] > 0 ? [numberStr integerValue] : 1;
+    return number;
+}
+
+- (void) actionSave: (SamuraiSignal *) signal
 {
     //参数检查
     if (!category) {
@@ -417,6 +497,7 @@
     //添加当前商品
     GoodsEntity *currentGoods = [[GoodsEntity alloc] init];
     currentGoods.id = goods.id;
+    NSInteger number = [self getGoodsNumber:nil];
     currentGoods.number = [NSNumber numberWithInteger:number];
     currentGoods.priceId = priceId;
     [goodsList addObject:currentGoods];
@@ -443,7 +524,7 @@
         } failure:^(ErrorEntity *error){
             [self showError:error.message];
         }];
-        //编辑
+    //编辑
     } else {
         [caseHandler editCaseGoods:postCase success:^(NSArray *result){
             [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{

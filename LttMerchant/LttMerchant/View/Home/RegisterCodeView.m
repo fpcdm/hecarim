@@ -1,18 +1,19 @@
 //
-//  RegisterMobileView.m
+//  RegisterCodeView.m
 //  LttMember
 //
 //  Created by wuyong on 15/7/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "RegisterMobileView.h"
+#import "RegisterCodeView.h"
 
-@implementation RegisterMobileView
+@implementation RegisterCodeView
 {
-    UITextField *mobileField;
+    UILabel *tipLabel;
     UITextField *codeField;
 }
+
 @synthesize sendButton;
 
 - (id)init
@@ -20,55 +21,17 @@
     self = [super init];
     if (!self) return nil;
     
-    //输入视图
-    UIView *inputView = [UIView new];
-    inputView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
-    inputView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    inputView.layer.cornerRadius = 3.0f;
-    inputView.layer.borderWidth = 0.5f;
-    [self addSubview:inputView];
+    //提示标题
+    tipLabel = [[UILabel alloc] init];
+    tipLabel.font = FONT_MIDDLE;
+    [self addSubview:tipLabel];
     
     UIView *superview = self;
     int padding = 10;
-    [inputView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(20);
-        make.left.equalTo(superview.mas_left).offset(padding);
-        make.right.equalTo(superview.mas_right).offset(-padding);
-        
-        make.height.equalTo(@50);
-    }];
-    
-    //手机号
-    UILabel *mobileLabel = [UILabel new];
-    mobileLabel.text = @"手机号";
-    mobileLabel.font = FONT_MAIN;
-    [inputView addSubview:mobileLabel];
-    
-    superview = inputView;
-    [mobileLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(superview.mas_left).offset(padding);
+    [tipLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(superview.mas_top).offset(padding);
-        
-        make.height.equalTo(@30);
-        make.width.equalTo(@50);
+        make.centerX.equalTo(superview.mas_centerX);
     }];
-    
-    //手机号输入框
-    mobileField = [AppUIUtil makeTextField];
-    mobileField.keyboardType = UIKeyboardTypeNumberPad;
-    mobileField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    mobileField.placeholder = @"请输入手机号码";
-    mobileField.font = FONT_MAIN;
-    [inputView addSubview:mobileField];
-    
-    [mobileField mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(superview.mas_top).offset(padding);
-        make.left.equalTo(mobileLabel.mas_right);
-        make.right.equalTo(superview.mas_right).offset(-padding);
-        
-        make.height.equalTo(@30);
-    }];
-    
     
     //发送按钮
     sendButton = [[UIButton alloc] init];
@@ -85,24 +48,23 @@
     
     [sendButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.right.equalTo(superview.mas_right).offset(-padding);
-        make.top.equalTo(inputView.mas_bottom).offset(padding + 7);
+        make.top.equalTo(tipLabel.mas_bottom).offset(padding + 7);
         
         make.height.equalTo(@35);
         make.width.equalTo(@100);
     }];
-
     
     //输入视图
-    UIView *codeView = [UIView new];
-    codeView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
-    codeView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    codeView.layer.cornerRadius = 3.0f;
-    codeView.layer.borderWidth = 0.5f;
-    [self addSubview:codeView];
+    UIView *inputView = [UIView new];
+    inputView.layer.backgroundColor = CGCOLOR_MAIN_WHITE;
+    inputView.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    inputView.layer.cornerRadius = 3.0f;
+    inputView.layer.borderWidth = 0.5f;
+    [self addSubview:inputView];
     
-    [codeView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(inputView.mas_bottom).offset(padding);
-        make.left.equalTo(inputView.mas_left);
+    [inputView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(tipLabel.mas_bottom).offset(padding);
+        make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(sendButton.mas_left).offset(-padding);
         
         make.height.equalTo(@50);
@@ -111,12 +73,11 @@
     //效验码
     UILabel *codeLabel = [UILabel new];
     codeLabel.text = @"效验码";
-    codeLabel.textColor = COLOR_MAIN_BLACK;
     codeLabel.backgroundColor = [UIColor clearColor];
     codeLabel.font = FONT_MAIN;
-    [codeView addSubview:codeLabel];
+    [inputView addSubview:codeLabel];
     
-    superview = codeView;
+    superview = inputView;
     [codeLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(superview.mas_left).offset(padding);
         make.top.equalTo(superview.mas_top).offset(padding);
@@ -128,10 +89,9 @@
     //验证码输入框
     codeField = [AppUIUtil makeTextField];
     codeField.keyboardType = UIKeyboardTypeNumberPad;
-    codeField.clearButtonMode = UITextFieldViewModeWhileEditing;
     codeField.placeholder = @"短信效验码";
     codeField.font = FONT_MAIN;
-    [codeView addSubview:codeField];
+    [inputView addSubview:codeField];
     
     [codeField mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(superview.mas_top).offset(padding);
@@ -143,12 +103,12 @@
     
     //按钮
     UIButton *button = [AppUIUtil makeButton:@"下一步"];
-    [button addTarget:self action:@selector(actionNext) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(actionVerifyCode) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     
     superview = self;
     [button mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(codeView.mas_bottom).offset(padding);
+        make.top.equalTo(inputView.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
@@ -184,22 +144,21 @@
     return self;
 }
 
-#pragma mark - Action
-//下一步
-- (void)actionNext
+- (void) renderData
 {
-    [self.delegate actionCheckMobile:mobileField.text code:codeField.text];
+    NSString *mobile = [self getData:@"mobile"];
+    tipLabel.text = [NSString stringWithFormat:@"请输入手机号%@收到的短信效验码", mobile];
 }
 
-//发送校验码
+#pragma mark - Action
 - (void)actionSend
 {
-    [self.delegate actionSend:mobileField.text];
+    [self.delegate actionSend];
 }
 
-////校验码验证
-//- (void)actionVerifyCode
-//{
-//    [self.delegate actionVerifyCode:codeField.text];
-//}
+- (void)actionVerifyCode
+{
+    [self.delegate actionVerifyCode:codeField.text];
+}
+
 @end

@@ -79,7 +79,7 @@
     codeField = [AppUIUtil makeTextField];
     codeField.placeholder = @"请输入校验码";
     codeField.font = FONT_MAIN;
-    codeField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    codeField.clearButtonMode = YES;
     codeField.keyboardType = UIKeyboardTypeNumberPad;
     [inputView addSubview:codeField];
     
