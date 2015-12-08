@@ -352,6 +352,7 @@
     
     //消费记录
     recordBtn = [[UIButton alloc] init];
+    recordBtn.hidden = YES;
     recordBtn.layer.borderWidth = 0.5f;
     recordBtn.layer.borderColor = CGCOLOR_MAIN_BORDER;
     recordBtn.backgroundColor = COLOR_MAIN_WHITE;
