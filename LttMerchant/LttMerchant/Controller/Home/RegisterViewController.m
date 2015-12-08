@@ -17,7 +17,7 @@
 #import "UserHandler.h"
 #import "HelperHandler.h"
 #import "TimerUtil.h"
-#import "LoginActivity.h"
+#import "LoginViewController.h"
 #import "MerchantHandler.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>

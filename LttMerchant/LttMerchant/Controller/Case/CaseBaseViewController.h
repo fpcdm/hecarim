@@ -1,5 +1,5 @@
 //
-//  CaseBaseActivity.h
+//  CaseBaseViewController.h
 //  LttMerchant
 //
 //  Created by wuyong on 15/8/3.
@@ -10,7 +10,7 @@
 #import "CaseHandler.h"
 #import "CaseEntity.h"
 
-@interface CaseBaseActivity : AppViewController
+@interface CaseBaseViewController : AppViewController
 
 @property (retain, nonatomic) NSNumber *caseId;
 

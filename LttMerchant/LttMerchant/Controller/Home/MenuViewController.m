@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "LttNavigationController.h"
 #import "AppExtension.h"
-#import "CaseListActivity.h"
+#import "CaseListViewController.h"
 #import "UserHandler.h"
 
 @interface MenuViewController ()
@@ -68,8 +68,8 @@
     //未登录
     if (!user) {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeActivity"],
-                    @[@"登陆", @"LoginActivity"],
+                    @[@"首页", @"HomeViewController"],
+                    @[@"登陆", @"LoginViewController"],
                     nil];
         
         userNameLabel.text = @"未登录";
@@ -77,9 +77,9 @@
         //已登录
     } else {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeActivity"],
-                    @[@"服务单", @"CaseListActivity"],
-                    @[@"退出", @"LoginActivity", @"logout"],
+                    @[@"首页", @"HomeViewController"],
+                    @[@"服务单", @"CaseListViewController"],
+                    @[@"退出", @"LoginViewController", @"logout"],
                     nil];
         
         userNameLabel.text = user.name ? user.name : user.mobile;

@@ -1,20 +1,20 @@
 //
-//  ConsumeHistoryActivity.m
+//  ConsumeHistoryViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/9/7.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "ConsumeHistoryActivity.h"
+#import "ConsumeHistoryViewController.h"
 #import "ConsumeHistoryView.h"
 #import "UserHandler.h"
 
-@interface ConsumeHistoryActivity () <ConsumeHistoryViewDelegate>
+@interface ConsumeHistoryViewController () <ConsumeHistoryViewDelegate>
 
 @end
 
-@implementation ConsumeHistoryActivity
+@implementation ConsumeHistoryViewController
 {
     ConsumeHistoryView *historyView;
     NSMutableArray *historyList;

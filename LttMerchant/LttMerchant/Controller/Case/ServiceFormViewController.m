@@ -1,23 +1,23 @@
 //
-//  ServiceFormActivity.m
+//  ServiceFormViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/31.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "ServiceFormActivity.h"
+#import "ServiceFormViewController.h"
 #import "CategoryEntity.h"
 #import "ServiceEntity.h"
 #import "GoodsHandler.h"
 #import "CaseHandler.h"
 #import "ServiceFromView.h"
 
-@interface ServiceFormActivity ()<ServiceFromViewDelegate>
+@interface ServiceFormViewController ()<ServiceFromViewDelegate>
 
 @end
 
-@implementation ServiceFormActivity
+@implementation ServiceFormViewController
 {
     ServiceFromView *serviceFromView;
 }

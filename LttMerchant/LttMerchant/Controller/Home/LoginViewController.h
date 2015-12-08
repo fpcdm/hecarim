@@ -1,5 +1,5 @@
 //
-//  LoginActivity.h
+//  LoginViewController.h
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/30.
@@ -8,7 +8,7 @@
 
 #import "AppViewController.h"
 
-@interface LoginActivity : AppViewController
+@interface LoginViewController : AppViewController
 
 @property (assign, nonatomic) BOOL tokenExpired;
 

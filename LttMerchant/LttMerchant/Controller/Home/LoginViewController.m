@@ -1,16 +1,16 @@
 //
-//  LoginActivity.m
+//  LoginViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/30.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "LoginActivity.h"
+#import "LoginViewController.h"
 #import "UserEntity.h"
 #import "ValidateUtil.h"
 #import "AppExtension.h"
-#import "HomeActivity.h"
+#import "HomeViewController.h"
 #import "UserHandler.h"
 #import "AppUIUtil.h"
 #import "PickerUtil.h"
@@ -18,12 +18,12 @@
 #import "RegisterViewController.h"
 #import "LoginView.h"
 
-@interface LoginActivity ()<LoginViewDelegate>
+@interface LoginViewController ()<LoginViewDelegate>
 
 
 @end
 
-@implementation LoginActivity
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     isMenuEnabled = NO;
@@ -140,7 +140,7 @@
             //刷新菜单
             [self refreshMenu];
             
-            HomeActivity *viewController = [[HomeActivity alloc] init];
+            HomeViewController *viewController = [[HomeViewController alloc] init];
             [self toggleViewController:viewController animated:YES];
         }];
         

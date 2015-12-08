@@ -1,18 +1,18 @@
 //
-//  CaseBaseActivity.m
+//  CaseBaseViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/8/3.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseBaseActivity.h"
+#import "CaseBaseViewController.h"
 
-@interface CaseBaseActivity ()
+@interface CaseBaseViewController ()
 
 @end
 
-@implementation CaseBaseActivity
+@implementation CaseBaseViewController
 
 #pragma mark - View
 - (void)onTemplateLoading

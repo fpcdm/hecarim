@@ -1,12 +1,12 @@
 //
-//  GoodsFormActivity.m
+//  GoodsFormViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/31.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "GoodsFormActivity.h"
+#import "GoodsFormViewController.h"
 #import "CategoryEntity.h"
 #import "GoodsHandler.h"
 #import "BrandEntity.h"
@@ -15,11 +15,11 @@
 #import "SKDropDown.h"
 #import "GoodsFormView.h"
 
-@interface GoodsFormActivity () <SKDropDownDelegate,GoodsFormViewDelegate>
+@interface GoodsFormViewController () <SKDropDownDelegate,GoodsFormViewDelegate>
 
 @end
 
-@implementation GoodsFormActivity
+@implementation GoodsFormViewController
 {
     NSArray *categoryList;
     NSArray *brandList;

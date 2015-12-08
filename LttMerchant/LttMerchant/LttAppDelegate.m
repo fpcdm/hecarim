@@ -9,8 +9,8 @@
 #import "LttAppDelegate.h"
 #import "LttNavigationController.h"
 #import "MenuViewController.h"
-#import "LoginActivity.h"
-#import "HomeActivity.h"
+#import "LoginViewController.h"
+#import "HomeViewController.h"
 #import "AppExtension.h"
 #import "NotificationUtil.h"
 #import "UserHandler.h"
@@ -75,9 +75,9 @@
     //是否登录
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     if (!user) {
-        viewController = [[LoginActivity alloc] init];
+        viewController = [[LoginViewController alloc] init];
     } else {
-        viewController = [[HomeActivity alloc] init];
+        viewController = [[HomeViewController alloc] init];
     }
     
     navigationController = [[LttNavigationController alloc] initWithRootViewController:viewController];
@@ -103,7 +103,7 @@
             //清除用户信息
             [[StorageUtil sharedStorage] setUser:nil];
             
-            LoginActivity *loginViewController = [[LoginActivity alloc] init];
+            LoginViewController *loginViewController = [[LoginViewController alloc] init];
             loginViewController.tokenExpired = YES;
             [navigationController pushViewController:loginViewController animated:YES];
             return NO;

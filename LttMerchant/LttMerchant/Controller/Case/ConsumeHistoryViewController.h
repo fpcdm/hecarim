@@ -1,5 +1,5 @@
 //
-//  ConsumeHistoryActivity.h
+//  ConsumeHistoryViewController.h
 //  LttMerchant
 //
 //  Created by wuyong on 15/9/7.
@@ -9,7 +9,7 @@
 #import "AppViewController.h"
 #import "CaseEntity.h"
 
-@interface ConsumeHistoryActivity : AppViewController
+@interface ConsumeHistoryViewController : AppViewController
 
 @property (retain, nonatomic) CaseEntity *intention;
 

@@ -1,23 +1,23 @@
 //
-//  CaseListActivity.m
+//  CaseListViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/21.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseListActivity.h"
+#import "CaseListViewController.h"
 #import "CaseListView.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
-#import "CaseDetailActivity.h"
+#import "CaseDetailViewController.h"
 #import "LocationUtil.h"
 
-@interface CaseListActivity () <CaseListViewDelegate>
+@interface CaseListViewController () <CaseListViewDelegate>
 
 @end
 
-@implementation CaseListActivity
+@implementation CaseListViewController
 {
     CaseListView *listView;
     NSMutableArray *caseList;
@@ -176,7 +176,7 @@
     if ([intention isFail]) return;
     
     //显示需求
-    CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
+    CaseDetailViewController *viewController = [[CaseDetailViewController alloc] init];
     viewController.caseId = intention.id;
     viewController.callbackBlock = ^(id object){
         //标记可刷新

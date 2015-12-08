@@ -1,21 +1,21 @@
 //
-//  ServiceListActivity.m
+//  ServiceListViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/31.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "ServiceListActivity.h"
-#import "ServiceFormActivity.h"
+#import "ServiceListViewController.h"
+#import "ServiceFormViewController.h"
 #import "DLRadioButton.h"
 #import "ServiceView.h"
 
-@interface ServiceListActivity ()<ServiceViewDelegate>
+@interface ServiceListViewController ()<ServiceViewDelegate>
 
 @end
 
-@implementation ServiceListActivity
+@implementation ServiceListViewController
 {
     //返回页面是否需要刷新
     BOOL needRefresh;
@@ -174,7 +174,7 @@
 
 - (void) actionAddService
 {
-    ServiceFormActivity *activity = [[ServiceFormActivity alloc] init];
+    ServiceFormViewController *activity = [[ServiceFormViewController alloc] init];
     activity.caseId = self.caseId;
     activity.callbackBlock = ^(id object){
         //标记可刷新

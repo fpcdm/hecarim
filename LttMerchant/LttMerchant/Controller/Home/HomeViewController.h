@@ -1,5 +1,5 @@
 //
-//  CaseListActivity.h
+//  HomeViewController.h
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/21.
@@ -8,6 +8,6 @@
 
 #import "AppViewController.h"
 
-@interface CaseListActivity : AppViewController
+@interface HomeViewController : AppViewController
 
 @end

@@ -1,5 +1,5 @@
 //
-//  AppActivity.m
+//  AppViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/21.
@@ -13,7 +13,7 @@
 #import "REFrostedViewController.h"
 #import "MenuViewController.h"
 #import "NotificationUtil.h"
-#import "CaseDetailActivity.h"
+#import "CaseDetailViewController.h"
 #import "AppView.h"
 #import "CNPPopupController.h"
 #import "CasePopupView.h"
@@ -217,7 +217,7 @@
             if (data) {
                 NSNumber *caseId = [NSNumber numberWithInteger:[data integerValue]];
                 
-                CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
+                CaseDetailViewController *viewController = [[CaseDetailViewController alloc] init];
                 viewController.caseId = caseId;
                 [self toggleViewController:viewController animated:YES];
             }
@@ -319,7 +319,7 @@
         [popupController dismissPopupControllerAnimated:YES];
         
         //详情页面
-        CaseDetailActivity *viewController = [[CaseDetailActivity alloc] init];
+        CaseDetailViewController *viewController = [[CaseDetailViewController alloc] init];
         viewController.caseId = caseId;
         [self toggleViewController:viewController animated:YES];
     } failure:^(ErrorEntity *error){

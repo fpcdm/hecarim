@@ -6,16 +6,16 @@
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "HomeActivity.h"
-#import "CaseListActivity.h"
+#import "HomeViewController.h"
+#import "CaseListViewController.h"
 #import "LocationUtil.h"
 #import "HomeView.h"
 
-@interface HomeActivity ()<HomeViewDelegate>
+@interface HomeViewController ()<HomeViewDelegate>
 
 @end
 
-@implementation HomeActivity
+@implementation HomeViewController
 
 - (void)viewDidLoad
 {
@@ -39,7 +39,7 @@
 #pragma mark - Action
 - (void)actionCaseList
 {
-    CaseListActivity *viewController = [[CaseListActivity alloc] init];
+    CaseListViewController *viewController = [[CaseListViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

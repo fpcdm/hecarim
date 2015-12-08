@@ -1,5 +1,5 @@
 //
-//  AppActivity.h
+//  AppViewController.h
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/21.

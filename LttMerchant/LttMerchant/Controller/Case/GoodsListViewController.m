@@ -1,22 +1,22 @@
 //
-//  GoodsListActivity.m
+//  GoodsListViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/31.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "GoodsListActivity.h"
-#import "GoodsFormActivity.h"
+#import "GoodsListViewController.h"
+#import "GoodsFormViewController.h"
 #import "AppUIUtil.h"
 #import "DLRadioButton.h"
 #import "GoodsView.h"
 
-@interface GoodsListActivity ()<GoodsViewDelegate>
+@interface GoodsListViewController ()<GoodsViewDelegate>
 
 @end
 
-@implementation GoodsListActivity
+@implementation GoodsListViewController
 {
     //返回页面是否需要刷新
     BOOL needRefresh;
@@ -172,7 +172,7 @@
 
 - (void) actionAddGoods
 {
-    GoodsFormActivity *activity = [[GoodsFormActivity alloc] init];
+    GoodsFormViewController *activity = [[GoodsFormViewController alloc] init];
     activity.caseId = self.caseId;
     activity.callbackBlock = ^(id object){
         //标记可刷新

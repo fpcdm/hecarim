@@ -1,26 +1,26 @@
 //
-//  CaseDetailActivity.m
+//  CaseDetailViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/28.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseDetailActivity.h"
+#import "CaseDetailViewController.h"
 #import "ServiceEntity.h"
-#import "CaseListActivity.h"
-#import "CaseEditActivity.h"
-#import "GoodsListActivity.h"
-#import "ServiceListActivity.h"
-#import "ConsumeHistoryActivity.h"
+#import "CaseListViewController.h"
+#import "CaseEditViewController.h"
+#import "GoodsListViewController.h"
+#import "ServiceListViewController.h"
+#import "ConsumeHistoryViewController.h"
 #import "CaseErrorView.h"
 #import "CaseDetailView.h"
 
-@interface CaseDetailActivity () <UIActionSheetDelegate,CaseDetailViewDelegate>
+@interface CaseDetailViewController () <UIActionSheetDelegate,CaseDetailViewDelegate>
 
 @end
 
-@implementation CaseDetailActivity
+@implementation CaseDetailViewController
 {
     //返回页面是否需要刷新
     BOOL needRefresh;
@@ -85,7 +85,7 @@
 - (void) reloadCase
 {
     //切换控制器
-    CaseDetailActivity *activity = [[CaseDetailActivity alloc] init];
+    CaseDetailViewController *activity = [[CaseDetailViewController alloc] init];
     activity.caseId = self.caseId;
     [self refreshViewController:activity animated:NO];
 }
@@ -281,7 +281,7 @@
 //消费记录
 - (void)actionConsumeHistory
 {
-    ConsumeHistoryActivity *viewController = [[ConsumeHistoryActivity alloc] init];
+    ConsumeHistoryViewController *viewController = [[ConsumeHistoryViewController alloc] init];
     viewController.intention = intention;
     [self pushViewController:viewController animated:YES];
 }
@@ -329,7 +329,7 @@
                 self.callbackBlock(@1);
             }
             //跳转首页
-            CaseListActivity *viewController = [[CaseListActivity alloc] init];
+            CaseListViewController *viewController = [[CaseListViewController alloc] init];
             [self toggleViewController:viewController animated:YES];
         }];
     } failure:^(ErrorEntity *error){
@@ -400,7 +400,7 @@
 //编辑基本信息
 - (void)actionEditCase
 {
-    CaseEditActivity *viewController = [[CaseEditActivity alloc] init];
+    CaseEditViewController *viewController = [[CaseEditViewController alloc] init];
     viewController.caseId = self.caseId;
     [self pushViewController:viewController animated:YES];
 }
@@ -408,7 +408,7 @@
 //编辑商品
 - (void)actionEditGoods
 {
-    GoodsListActivity *viewController = [[GoodsListActivity alloc] init];
+    GoodsListViewController *viewController = [[GoodsListViewController alloc] init];
     viewController.caseId = self.caseId;
     viewController.callbackBlock = ^(id object){
         //标记可重载
@@ -425,7 +425,7 @@
 //编辑服务
 - (void)actionEditServices
 {
-    ServiceListActivity *viewController = [[ServiceListActivity alloc] init];
+    ServiceListViewController *viewController = [[ServiceListViewController alloc] init];
     viewController.caseId = self.caseId;
     viewController.callbackBlock = ^(id object){
         //标记可重载

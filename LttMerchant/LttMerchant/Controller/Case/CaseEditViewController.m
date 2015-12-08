@@ -1,21 +1,21 @@
 //
-//  CaseEditActivity.m
+//  CaseEditViewController.m
 //  LttMerchant
 //
 //  Created by wuyong on 15/7/31.
 //  Copyright (c) 2015年 Gilbert. All rights reserved.
 //
 
-#import "CaseEditActivity.h"
+#import "CaseEditViewController.h"
 #import "CaseEditView.h"
 
-@interface CaseEditActivity ()<CaseEditViewDelegate>
+@interface CaseEditViewController ()<CaseEditViewDelegate>
 
 @property (nonatomic, strong) UITextView *caseRemark;
 
 @end
 
-@implementation CaseEditActivity
+@implementation CaseEditViewController
 {
     CaseEditView *caseEditView;
 }

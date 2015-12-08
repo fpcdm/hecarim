@@ -16,7 +16,7 @@
 #import "ResetPasswordView.h"
 #import "ResetPasswordSuccess.h"
 #import "UIViewController+BackButtonHandler.h"
-#import "LoginActivity.h"
+#import "LoginViewController.h"
 #import "AppExtension.h"
 
 @interface ForgetPasswordViewController ()<ForgetPasswordViewDelegate,ForgetPasswordCodeViewDelegate,ResetPasswordSuccessDelegate,ResetPasswordViewDelegate>
@@ -67,7 +67,7 @@
 //跳转到登录界面
 - (void)actionLogin
 {
-    LoginActivity *loginView = [[LoginActivity alloc] init];
+    LoginViewController *loginView = [[LoginViewController alloc] init];
     [self pushViewController:loginView animated:YES];
 }
 
