@@ -228,6 +228,47 @@ static NSMutableDictionary *globalDefines = nil;
     }
 }
 
+#pragma mark - view
+- (UILabel *)labelView
+{
+    if ([view isKindOfClass:[UILabel class]]) {
+        return (UILabel *)view;
+    }
+    return nil;
+}
+
+- (UIButton *)buttonView
+{
+    if ([view isKindOfClass:[UIButton class]]) {
+        return (UIButton *)view;
+    }
+    return nil;
+}
+
+- (UITextField *)textFieldView
+{
+    if ([view isKindOfClass:[UITextField class]]) {
+        return (UITextField *)view;
+    }
+    return nil;
+}
+
+- (UITextView *)textView
+{
+    if ([view isKindOfClass:[UITextView class]]) {
+        return (UITextView *)view;
+    }
+    return nil;
+}
+
+- (UIImageView *)imageView
+{
+    if ([view isKindOfClass:[UIImageView class]]) {
+        return (UIImageView *)view;
+    }
+    return nil;
+}
+
 #pragma mark - style
 - (NSString *)background
 {
@@ -241,8 +282,7 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (NSString *)backgroundColor
 {
-    UIColor *backgroundColor = view.backgroundColor;
-    return backgroundColor ? [UIColor stringFromColor:backgroundColor] : nil;
+    return nil;
 }
 
 - (void)setBackgroundColor:(NSString *)backgroundColor
@@ -252,24 +292,14 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (NSString *)color
 {
-    NSString *color = nil;
-    
-    SEL selector = @selector(textColor);
-    if ([view respondsToSelector:selector]) {
-        UIColor *textColor = [view performSelector:selector];
-        if (textColor) {
-            color = [UIColor stringFromColor:textColor];
-        }
-    }
-    
-    return color;
+    return nil;
 }
 
 - (void)setColor:(NSString *)color
 {
-    SEL selector = @selector(setTextColor:);
-    if ([view respondsToSelector:selector]) {
-        [view performSelector:selector withObject:[UIColor colorWithValue:color]];
+    UILabel *labelView = [self labelView];
+    if (labelView) {
+        labelView.textColor = [UIColor colorWithValue:color];
     }
 }
 
@@ -280,7 +310,7 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setOpacity:(NSString *)opacity
 {
-    
+    view.layer.opacity = [opacity floatValue];
 }
 
 - (NSString *)fontSize
@@ -290,7 +320,18 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setFontSize:(NSString *)fontSize
 {
+    UIFont *font = nil;
+    NSString *fontWeight = [self css:@"font-weight"];
+    if (fontWeight && [@"bold" isEqualToString:fontWeight]) {
+        font = [UIFont boldSystemFontOfSize:[fontSize floatValue]];
+    } else {
+        font = [UIFont systemFontOfSize:[fontSize floatValue]];
+    }
     
+    UILabel *labelView = [self labelView];
+    if (labelView) {
+        labelView.font = font;
+    }
 }
 
 - (NSString *)fontWeight
@@ -300,7 +341,21 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setFontWeight:(NSString *)fontWeight
 {
+    UIFont *font = nil;
+    NSString *fontSize = [self css:@"font-size"];
+    if (!fontSize) {
+        fontSize = [NSString stringWithFormat:@"%lf", [UIFont systemFontSize]];
+    }
+    if ([@"bold" isEqualToString:fontWeight]) {
+        font = [UIFont boldSystemFontOfSize:[fontSize floatValue]];
+    } else {
+        font = [UIFont systemFontOfSize:[fontSize floatValue]];
+    }
     
+    UILabel *labelView = [self labelView];
+    if (labelView) {
+        labelView.font = font;
+    }
 }
 
 - (NSString *)borderWidth
@@ -310,7 +365,7 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setBorderWidth:(NSString *)borderWidth
 {
-    
+    view.layer.borderWidth = [borderWidth floatValue];
 }
 
 - (NSString *)borderColor
@@ -320,7 +375,8 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setBorderColor:(NSString *)borderColor
 {
-    
+    UIColor *color = [UIColor colorWithValue:borderColor];
+    view.layer.borderColor = color ? color.CGColor : nil;
 }
 
 - (NSString *)borderRadius
@@ -330,7 +386,8 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setBorderRadius:(NSString *)borderRadius
 {
-    
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = [borderRadius floatValue];
 }
 
 - (NSString *)textAlign
@@ -340,7 +397,25 @@ static NSMutableDictionary *globalDefines = nil;
 
 - (void)setTextAlign:(NSString *)textAlign
 {
+    NSTextAlignment textAlignment = -1;
+    BOOL hasValue = NO;
+    if ([@"center" isEqualToString:textAlign]) {
+        textAlignment = NSTextAlignmentCenter;
+        hasValue = YES;
+    } else if ([@"left" isEqualToString:textAlign]) {
+        textAlignment = NSTextAlignmentLeft;
+        hasValue = YES;
+    } else if ([@"right" isEqualToString:textAlign]) {
+        textAlignment = NSTextAlignmentRight;
+        hasValue = YES;
+    }
     
+    if (hasValue) {
+        UILabel *labelView = [self labelView];
+        if (labelView) {
+            labelView.textAlignment = textAlignment;
+        }
+    }
 }
 
 @end

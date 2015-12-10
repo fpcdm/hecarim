@@ -1,5 +1,5 @@
 //
-//  FrontendDom.h
+//  FrontendJs.h
 //  LttMember
 //
 //  Created by wuyong on 15/12/8.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FrontendDom : NSObject
+@interface FrontendJs : NSObject
 
 @property (retain, nonatomic, readonly) UIView *view;
 

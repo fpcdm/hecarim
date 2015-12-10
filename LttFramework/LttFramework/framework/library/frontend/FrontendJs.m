@@ -1,14 +1,14 @@
 //
-//  FrontendDom.m
+//  FrontendJs.m
 //  LttMember
 //
 //  Created by wuyong on 15/12/8.
 //  Copyright © 2015年 Gilbert. All rights reserved.
 //
 
-#import "FrontendDom.h"
+#import "FrontendJs.h"
 
-@implementation FrontendDom
+@implementation FrontendJs
 
 @synthesize view;
 

@@ -89,6 +89,12 @@
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F27A69A1C19573700D59588 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6991C19573700D59588 /* ThirdLoginViewController.m */; };
 		2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A69C1C19574300D59588 /* ThirdLoginView.m */; };
+		2F27A6E01C19744400D59588 /* FrontendCss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6D51C19744400D59588 /* FrontendCss.m */; };
+		2F27A6E11C19744400D59588 /* FrontendDom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6D71C19744400D59588 /* FrontendDom.m */; };
+		2F27A6E21C19744400D59588 /* FrontendJs.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6D91C19744400D59588 /* FrontendJs.m */; };
+		2F27A6E31C19744400D59588 /* UIColor+Frontend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6DB1C19744400D59588 /* UIColor+Frontend.m */; };
+		2F27A6E41C19744400D59588 /* UIView+Frontend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6DD1C19744400D59588 /* UIView+Frontend.m */; };
+		2F27A6E51C19744400D59588 /* UIViewController+Frontend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6DF1C19744400D59588 /* UIViewController+Frontend.m */; };
 		2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F281B4E064800575271 /* ResultEntity.m */; };
 		2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */; };
 		2F2F223C1B3A4D0300428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22221B3A4D0300428742 /* NotificationBackgroundError@2x.png */; };
@@ -448,6 +454,18 @@
 		2F27A6991C19573700D59588 /* ThirdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginViewController.m; sourceTree = "<group>"; };
 		2F27A69B1C19574300D59588 /* ThirdLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginView.h; sourceTree = "<group>"; };
 		2F27A69C1C19574300D59588 /* ThirdLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginView.m; sourceTree = "<group>"; };
+		2F27A6D41C19744400D59588 /* FrontendCss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontendCss.h; sourceTree = "<group>"; };
+		2F27A6D51C19744400D59588 /* FrontendCss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontendCss.m; sourceTree = "<group>"; };
+		2F27A6D61C19744400D59588 /* FrontendDom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontendDom.h; sourceTree = "<group>"; };
+		2F27A6D71C19744400D59588 /* FrontendDom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontendDom.m; sourceTree = "<group>"; };
+		2F27A6D81C19744400D59588 /* FrontendJs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontendJs.h; sourceTree = "<group>"; };
+		2F27A6D91C19744400D59588 /* FrontendJs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontendJs.m; sourceTree = "<group>"; };
+		2F27A6DA1C19744400D59588 /* UIColor+Frontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Frontend.h"; sourceTree = "<group>"; };
+		2F27A6DB1C19744400D59588 /* UIColor+Frontend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Frontend.m"; sourceTree = "<group>"; };
+		2F27A6DC1C19744400D59588 /* UIView+Frontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frontend.h"; sourceTree = "<group>"; };
+		2F27A6DD1C19744400D59588 /* UIView+Frontend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frontend.m"; sourceTree = "<group>"; };
+		2F27A6DE1C19744400D59588 /* UIViewController+Frontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Frontend.h"; sourceTree = "<group>"; };
+		2F27A6DF1C19744400D59588 /* UIViewController+Frontend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Frontend.m"; sourceTree = "<group>"; };
 		2F2E8F271B4E064800575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F2E8F281B4E064800575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
@@ -1261,6 +1279,25 @@
 			name = App;
 			sourceTree = "<group>";
 		};
+		2F27A6D31C19744400D59588 /* frontend */ = {
+			isa = PBXGroup;
+			children = (
+				2F27A6D41C19744400D59588 /* FrontendCss.h */,
+				2F27A6D51C19744400D59588 /* FrontendCss.m */,
+				2F27A6D61C19744400D59588 /* FrontendDom.h */,
+				2F27A6D71C19744400D59588 /* FrontendDom.m */,
+				2F27A6D81C19744400D59588 /* FrontendJs.h */,
+				2F27A6D91C19744400D59588 /* FrontendJs.m */,
+				2F27A6DA1C19744400D59588 /* UIColor+Frontend.h */,
+				2F27A6DB1C19744400D59588 /* UIColor+Frontend.m */,
+				2F27A6DC1C19744400D59588 /* UIView+Frontend.h */,
+				2F27A6DD1C19744400D59588 /* UIView+Frontend.m */,
+				2F27A6DE1C19744400D59588 /* UIViewController+Frontend.h */,
+				2F27A6DF1C19744400D59588 /* UIViewController+Frontend.m */,
+			);
+			path = frontend;
+			sourceTree = "<group>";
+		};
 		2F2F221E1B3A4D0300428742 /* TSMessages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1906,6 +1943,7 @@
 			isa = PBXGroup;
 			children = (
 				2FCAF8A61B20456C00F3B084 /* entity */,
+				2F27A6D31C19744400D59588 /* frontend */,
 			);
 			path = library;
 			sourceTree = "<group>";
@@ -2219,6 +2257,8 @@
 				2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */,
 				2F16E5E61B5DF08F007947D0 /* AboutViewController.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,
+				2F27A6E01C19744400D59588 /* FrontendCss.m in Sources */,
+				2F27A6E51C19744400D59588 /* UIViewController+Frontend.m in Sources */,
 				2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */,
 				2F16E5E71B5DF08F007947D0 /* AccountViewController.m in Sources */,
 				2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */,
@@ -2248,6 +2288,7 @@
 				2FB72F691BB928BA00CB8E62 /* BaseCollectionView.m in Sources */,
 				2F74CD761B1D5E9500797799 /* BaseEntity.m in Sources */,
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
+				2F27A6E11C19744400D59588 /* FrontendDom.m in Sources */,
 				2F74E2A01BF591D800C7A7EB /* BaseScrollView.m in Sources */,
 				2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */,
 				2F74CD7F1B1D5F6D00797799 /* BaseView.m in Sources */,
@@ -2288,9 +2329,11 @@
 				2FED7E101B1EA79300306A11 /* DDTTYLogger.m in Sources */,
 				2F16E63A1B5DF162007947D0 /* DeviceEntity.m in Sources */,
 				2F6D3E171B312164007A4159 /* DistancePickerView.m in Sources */,
+				2F27A6E41C19744400D59588 /* UIView+Frontend.m in Sources */,
 				2F0095D41B79A5FC003C27B9 /* DLRadioButton.m in Sources */,
 				2FCAF8AB1B20456C00F3B084 /* ErrorEntity.m in Sources */,
 				2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */,
+				2F27A6E31C19744400D59588 /* UIColor+Frontend.m in Sources */,
 				2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */,
 				2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */,
 				2BB0C0A01BDF55F900293737 /* ForgetPasswordViewController.m in Sources */,
@@ -2306,6 +2349,7 @@
 				2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,
 				2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */,
+				2F27A6E21C19744400D59588 /* FrontendJs.m in Sources */,
 				2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
