@@ -17,6 +17,9 @@
 #import "UIViewController+BackButtonHandler.h"
 #import "PickerUtil.h"
 #import "ForgetPasswordViewController.h"
+#import "UMSocialSnsPlatformManager.h"
+#import "UMSocialAccountManager.h"
+#import "ThirdLoginViewController.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -116,6 +119,12 @@
     [self pushViewController:viewController animated:YES];
 }
 
+- (void)actionFindPwd
+{
+    ForgetPasswordViewController *findPwdController = [[ForgetPasswordViewController alloc] init];
+    [self pushViewController:findPwdController animated:YES];
+}
+
 - (void)actionLogin:(UserEntity *)user
 {
     user.type = USER_TYPE_MEMBER;
@@ -170,10 +179,53 @@
     }];
 }
 
-- (void)actionFindPwd
+- (void)actionLoginWechat
 {
-    ForgetPasswordViewController *findPwdController = [[ForgetPasswordViewController alloc] init];
-    [self pushViewController:findPwdController animated:YES];
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            [self thirdLogin:snsAccount];
+        }
+    });
+}
+
+- (void)actionLoginQQ
+{
+    [self thirdLogin:nil];
+    return;
+    
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            [self thirdLogin:snsAccount];
+        }
+    });
+}
+
+- (void)actionLoginSina
+{
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            [self thirdLogin:snsAccount];
+        }
+    });
+}
+
+//@todo: 查询是否绑定，绑定则登陆成功，未绑定则填写手机号
+- (void)thirdLogin:(UMSocialAccountEntity *)snsAccount
+{
+    ThirdLoginViewController *viewController = [[ThirdLoginViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 @end

@@ -87,6 +87,8 @@
 		2F16E6421B5DF162007947D0 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6291B5DF162007947D0 /* HelperHandler.m */; };
 		2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E62D1B5DF162007947D0 /* UserHandler.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
+		2F27A69A1C19573700D59588 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6991C19573700D59588 /* ThirdLoginViewController.m */; };
+		2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A69C1C19574300D59588 /* ThirdLoginView.m */; };
 		2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F281B4E064800575271 /* ResultEntity.m */; };
 		2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */; };
 		2F2F223C1B3A4D0300428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22221B3A4D0300428742 /* NotificationBackgroundError@2x.png */; };
@@ -442,6 +444,10 @@
 		2F16E62D1B5DF162007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
+		2F27A6981C19573700D59588 /* ThirdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginViewController.h; sourceTree = "<group>"; };
+		2F27A6991C19573700D59588 /* ThirdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginViewController.m; sourceTree = "<group>"; };
+		2F27A69B1C19574300D59588 /* ThirdLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginView.h; sourceTree = "<group>"; };
+		2F27A69C1C19574300D59588 /* ThirdLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginView.m; sourceTree = "<group>"; };
 		2F2E8F271B4E064800575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F2E8F281B4E064800575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F2F22211B3A4D0300428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
@@ -1059,6 +1065,8 @@
 				2F16E5901B5DEFEE007947D0 /* HomeView.m */,
 				2F16E5911B5DEFEE007947D0 /* LoginView.h */,
 				2F16E5921B5DEFEE007947D0 /* LoginView.m */,
+				2F27A69B1C19574300D59588 /* ThirdLoginView.h */,
+				2F27A69C1C19574300D59588 /* ThirdLoginView.m */,
 				2F16E5931B5DEFEE007947D0 /* RegisterCodeView.h */,
 				2F16E5941B5DEFEE007947D0 /* RegisterCodeView.m */,
 				2F16E5951B5DEFEE007947D0 /* RegisterExistView.h */,
@@ -1150,6 +1158,8 @@
 				2F16E5DD1B5DF08F007947D0 /* HomeViewController.m */,
 				2F16E5DE1B5DF08F007947D0 /* LoginViewController.h */,
 				2F16E5DF1B5DF08F007947D0 /* LoginViewController.m */,
+				2F27A6981C19573700D59588 /* ThirdLoginViewController.h */,
+				2F27A6991C19573700D59588 /* ThirdLoginViewController.m */,
 				2F16E5E01B5DF08F007947D0 /* LttNavigationController.h */,
 				2F16E5E11B5DF08F007947D0 /* LttNavigationController.m */,
 				2F16E5E21B5DF08F007947D0 /* MenuViewController.h */,
@@ -2255,6 +2265,7 @@
 				2F16E5B01B5DEFEE007947D0 /* CaseGoodsView.m in Sources */,
 				2F16E6401B5DF162007947D0 /* CaseHandler.m in Sources */,
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
+				2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */,
 				2F16E5F31B5DF08F007947D0 /* CaseListViewController.m in Sources */,
 				2F16E5AC1B5DEFEE007947D0 /* CaseLockedView.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
@@ -2334,6 +2345,7 @@
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F68EEAE1C0D49E500FDC346 /* RecommendShareView.m in Sources */,
 				2F68EEAB1C0D490700FDC346 /* RecommendShareViewController.m in Sources */,
+				2F27A69A1C19573700D59588 /* ThirdLoginViewController.m in Sources */,
 				2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */,
 				2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,

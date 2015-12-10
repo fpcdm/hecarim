@@ -13,41 +13,6 @@
 
 @property (retain, nonatomic, readonly) UIView *view;
 
-//支持的属性列表
-@property (retain, nonatomic) NSString *background;
-@property (retain, nonatomic) NSString *backgroundColor;
-@property (retain, nonatomic) NSString *backgroundImage;
-@property (retain, nonatomic) NSString *width;
-@property (retain, nonatomic) NSString *height;
-@property (retain, nonatomic) NSString *zIndex;
-@property (retain, nonatomic) NSString *display;
-@property (retain, nonatomic) NSString *color;
-@property (retain, nonatomic) NSString *opacity;
-@property (retain, nonatomic) NSString *font;
-@property (retain, nonatomic) NSString *fontSize;
-@property (retain, nonatomic) NSString *fontWeight;
-@property (retain, nonatomic) NSString *border;
-@property (retain, nonatomic) NSString *borderWidth;
-@property (retain, nonatomic) NSString *borderColor;
-@property (retain, nonatomic) NSString *borderRadius;
-@property (retain, nonatomic) NSString *textAlign;
-@property (retain, nonatomic) NSString *textDecoration;
-@property (retain, nonatomic) NSString *position;
-@property (retain, nonatomic) NSString *top;
-@property (retain, nonatomic) NSString *left;
-@property (retain, nonatomic) NSString *bottom;
-@property (retain, nonatomic) NSString *right;
-@property (retain, nonatomic) NSString *margin;
-@property (retain, nonatomic) NSString *marginTop;
-@property (retain, nonatomic) NSString *marginLeft;
-@property (retain, nonatomic) NSString *marginBottom;
-@property (retain, nonatomic) NSString *marginRight;
-@property (retain, nonatomic) NSString *padding;
-@property (retain, nonatomic) NSString *paddingTop;
-@property (retain, nonatomic) NSString *paddingLeft;
-@property (retain, nonatomic) NSString *paddingBottom;
-@property (retain, nonatomic) NSString *paddingRight;
-
 - (id)initWithView:(UIView *)view;
 
 //定义全局样式

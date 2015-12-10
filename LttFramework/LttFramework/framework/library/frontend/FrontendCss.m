@@ -15,6 +15,8 @@ static NSMutableDictionary *globalDefines = nil;
 {
     NSMutableDictionary *defines;
     NSMutableArray *classes;
+    
+    NSMutableDictionary *csses;
 }
 
 @synthesize view;
@@ -163,7 +165,11 @@ static NSMutableDictionary *globalDefines = nil;
                        };
     });
     
-    return [styleNames objectForKey:name];
+    //属性不存在
+    NSString *property = [styleNames objectForKey:name];
+    if (!property) return nil;
+    
+    return property.length < 1 ? name : property;
 }
 
 - (NSString *)css:(NSString *)name
@@ -176,9 +182,16 @@ static NSMutableDictionary *globalDefines = nil;
     
     //获取属性
     NSString *value = nil;
-    SEL selector = NSSelectorFromString(property);
-    if ([self respondsToSelector:selector]) {
-        value = [self performSelector:selector];
+    if (csses) {
+        value = [csses objectForKey:property];
+    }
+    
+    //获取默认值
+    if (!value) {
+        SEL selector = NSSelectorFromString(property);
+        if ([self respondsToSelector:selector]) {
+            value = [self performSelector:selector];
+        }
     }
     return value;
 }
@@ -192,6 +205,10 @@ static NSMutableDictionary *globalDefines = nil;
     if (!property) return;
     
     //设置属性
+    if (!csses) csses = [[NSMutableDictionary alloc] init];
+    [csses setObject:value forKey:property];
+    
+    //调用方法
     NSString *selectorString = [NSString stringWithFormat:@"set%@%@:",
                                 [[property substringToIndex:1] uppercaseString],
                                 [property substringFromIndex:1]];
@@ -212,6 +229,16 @@ static NSMutableDictionary *globalDefines = nil;
 }
 
 #pragma mark - style
+- (NSString *)background
+{
+    return [self backgroundColor];
+}
+
+- (void)setBackground:(NSString *)background
+{
+    [self setBackgroundColor:background];
+}
+
 - (NSString *)backgroundColor
 {
     UIColor *backgroundColor = view.backgroundColor;
@@ -221,6 +248,99 @@ static NSMutableDictionary *globalDefines = nil;
 - (void)setBackgroundColor:(NSString *)backgroundColor
 {
     view.backgroundColor = [UIColor colorWithValue:backgroundColor];
+}
+
+- (NSString *)color
+{
+    NSString *color = nil;
+    
+    SEL selector = @selector(textColor);
+    if ([view respondsToSelector:selector]) {
+        UIColor *textColor = [view performSelector:selector];
+        if (textColor) {
+            color = [UIColor stringFromColor:textColor];
+        }
+    }
+    
+    return color;
+}
+
+- (void)setColor:(NSString *)color
+{
+    SEL selector = @selector(setTextColor:);
+    if ([view respondsToSelector:selector]) {
+        [view performSelector:selector withObject:[UIColor colorWithValue:color]];
+    }
+}
+
+- (NSString *)opacity
+{
+    return nil;
+}
+
+- (void)setOpacity:(NSString *)opacity
+{
+    
+}
+
+- (NSString *)fontSize
+{
+    return nil;
+}
+
+- (void)setFontSize:(NSString *)fontSize
+{
+    
+}
+
+- (NSString *)fontWeight
+{
+    return nil;
+}
+
+- (void)setFontWeight:(NSString *)fontWeight
+{
+    
+}
+
+- (NSString *)borderWidth
+{
+    return nil;
+}
+
+- (void)setBorderWidth:(NSString *)borderWidth
+{
+    
+}
+
+- (NSString *)borderColor
+{
+    return nil;
+}
+
+- (void)setBorderColor:(NSString *)borderColor
+{
+    
+}
+
+- (NSString *)borderRadius
+{
+    return nil;
+}
+
+- (void)setBorderRadius:(NSString *)borderRadius
+{
+    
+}
+
+- (NSString *)textAlign
+{
+    return nil;
+}
+
+- (void)setTextAlign:(NSString *)textAlign
+{
+    
 }
 
 @end

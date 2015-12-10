@@ -1,5 +1,5 @@
 //
-//  UIView+Frontend.h
+//  UIViewController+Frontend.h
 //  LttMember
 //
 //  Created by wuyong on 15/12/8.
@@ -7,13 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FrontendDom.h"
-#import "FrontendCss.h"
 
-@interface UIView (Frontend)
-
-@property (retain, nonatomic, readonly) FrontendDom *dom;
-
-@property (retain, nonatomic, readonly) FrontendCss *css;
+@interface UIViewController (Frontend)
 
 @end

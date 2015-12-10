@@ -139,19 +139,113 @@
         make.right.equalTo(superview.mas_right).offset(-padding);
         
     }];
-
+    
+    //第三方登陆
+    UIButton *wechatButton = [self makeButton:[UIImage imageNamed:@"loginWechat"] title:@"微信登陆"];
+    [wechatButton addTarget:self action:@selector(actionLoginWechat) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:wechatButton];
+    
+    superview = self;
+    [wechatButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(superview.mas_left);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
+        make.height.equalTo(@45);
+    }];
+    
+    UIButton *qqButton = [self makeButton:[UIImage imageNamed:@"loginQQ"] title:@"QQ登陆"];
+    [qqButton addTarget:self action:@selector(actionLoginQQ) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:qqButton];
+    
+    [qqButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(wechatButton.mas_right);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
+        make.height.equalTo(@45);
+    }];
+    
+    UIButton *sinaButton = [self makeButton:[UIImage imageNamed:@"loginSina"] title:@"微博登陆"];
+    [sinaButton addTarget:self action:@selector(actionLoginSina) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:sinaButton];
+    
+    [sinaButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(qqButton.mas_right);
+        make.right.equalTo(superview.mas_right).offset(1);
+        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@45);
+    }];
     
     return self;
 }
 
+- (UIButton *)makeButton:(UIImage *)icon title: (NSString *)title
+{
+    UIButton *loginButton = [[UIButton alloc] init];
+    loginButton.backgroundColor = COLOR_MAIN_WHITE;
+    
+    UIImageView *iconView = [[UIImageView alloc] init];
+    iconView.image = icon;
+    [loginButton addSubview:iconView];
+    
+    [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(loginButton.mas_centerY);
+        make.right.equalTo(loginButton.mas_centerX).offset(-20);
+        make.width.equalTo(@20);
+        make.height.equalTo(@20);
+    }];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = title;
+    titleLabel.textColor = COLOR_MAIN_DARK;
+    titleLabel.font = FONT_MIDDLE;
+    [loginButton addSubview:titleLabel];
+    
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(loginButton.mas_centerX).offset(-16);
+        make.centerY.equalTo(loginButton.mas_centerY);
+        make.height.equalTo(@20);
+    }];
+    
+    UIView *sepView = [[UIView alloc] init];
+    sepView.backgroundColor = COLOR_MAIN_BG;
+    [loginButton addSubview:sepView];
+    
+    [sepView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(loginButton.mas_right);
+        make.centerY.equalTo(loginButton.mas_centerY);
+        make.width.equalTo(@1);
+        make.height.equalTo(@20);
+    }];
+    
+    return loginButton;
+}
+
 - (void)actionLogin
 {
+    [mobileField resignFirstResponder];
+    [passwordField resignFirstResponder];
+    
     //记录用户信息
     UserEntity *user = [[UserEntity alloc] init];
     user.mobile = mobileField.text;
     user.password = passwordField.text;
     
     [self.delegate actionLogin:user];
+}
+
+- (void)actionLoginWechat
+{
+    [self.delegate actionLoginWechat];
+}
+
+- (void)actionLoginQQ
+{
+    [self.delegate actionLoginQQ];
+}
+
+- (void)actionLoginSina
+{
+    [self.delegate actionLoginSina];
 }
 
 - (void)actionFindPwd

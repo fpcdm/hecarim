@@ -14,6 +14,12 @@
 @required
 - (void)actionLogin:(UserEntity *)user;
 
+- (void)actionLoginWechat;
+
+- (void)actionLoginQQ;
+
+- (void)actionLoginSina;
+
 - (void)actionFindPwd;
 
 @end
