@@ -18,6 +18,7 @@
 #import "HomeViewController.h"
 #import "UserHandler.h"
 #import "UIViewController+BackButtonHandler.h"
+#import "MyWalletViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
 
@@ -141,6 +142,12 @@
 - (void)actionRecommendShare
 {
     RecommendShareViewController *viewController = [[RecommendShareViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionMyWallet
+{
+    MyWalletViewController *viewController = [[MyWalletViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 

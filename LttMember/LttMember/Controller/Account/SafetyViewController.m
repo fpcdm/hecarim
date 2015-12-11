@@ -9,6 +9,7 @@
 #import "SafetyViewController.h"
 #import "SafetyView.h"
 #import "SafetyPasswordViewController.h"
+#import "PayPasswordViewController.h"
 
 @interface SafetyViewController () <SafetyViewDelegate>
 
@@ -41,6 +42,12 @@
 - (void)actionPassword
 {
     SafetyPasswordViewController *viewController = [[SafetyPasswordViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionPayPassword
+{
+    PayPasswordViewController *viewController = [[PayPasswordViewController alloc] init];
     [self pushViewController:viewController animated:YES];
 }
 
