@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2B001AF61C0D6C6E0026F948 /* RegisterRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B001AF51C0D6C6E0026F948 /* RegisterRecommendView.m */; };
+		2B59B9121C1AC4FA00918756 /* BalanceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B9071C1AC4FA00918756 /* BalanceListView.m */; };
+		2B59B9131C1AC4FA00918756 /* MyWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B9091C1AC4FA00918756 /* MyWalletView.m */; };
+		2B59B9141C1AC4FA00918756 /* SetPayPasswordCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B90B1C1AC4FA00918756 /* SetPayPasswordCodeView.m */; };
+		2B59B9151C1AC4FA00918756 /* SetPayPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B90D1C1AC4FA00918756 /* SetPayPasswordView.m */; };
+		2B59B9161C1AC4FA00918756 /* UpdatePayPasswordSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B90F1C1AC4FA00918756 /* UpdatePayPasswordSuccessView.m */; };
+		2B59B9171C1AC4FA00918756 /* UpdatePayPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B9111C1AC4FA00918756 /* UpdatePayPasswordView.m */; };
+		2B59B91E1C1AC50F00918756 /* BalanceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B9191C1AC50F00918756 /* BalanceListViewController.m */; };
+		2B59B91F1C1AC50F00918756 /* MyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B91B1C1AC50F00918756 /* MyWalletViewController.m */; };
+		2B59B9201C1AC50F00918756 /* PayPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B59B91D1C1AC50F00918756 /* PayPasswordViewController.m */; };
 		2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */; };
 		2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0951BDF55E600293737 /* ForgetPasswordView.m */; };
 		2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0C0971BDF55E600293737 /* ResetPasswordSuccess.m */; };
@@ -297,6 +306,24 @@
 /* Begin PBXFileReference section */
 		2B001AF41C0D6C6E0026F948 /* RegisterRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRecommendView.h; sourceTree = "<group>"; };
 		2B001AF51C0D6C6E0026F948 /* RegisterRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRecommendView.m; sourceTree = "<group>"; };
+		2B59B9061C1AC4FA00918756 /* BalanceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceListView.h; sourceTree = "<group>"; };
+		2B59B9071C1AC4FA00918756 /* BalanceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceListView.m; sourceTree = "<group>"; };
+		2B59B9081C1AC4FA00918756 /* MyWalletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWalletView.h; sourceTree = "<group>"; };
+		2B59B9091C1AC4FA00918756 /* MyWalletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWalletView.m; sourceTree = "<group>"; };
+		2B59B90A1C1AC4FA00918756 /* SetPayPasswordCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPayPasswordCodeView.h; sourceTree = "<group>"; };
+		2B59B90B1C1AC4FA00918756 /* SetPayPasswordCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPayPasswordCodeView.m; sourceTree = "<group>"; };
+		2B59B90C1C1AC4FA00918756 /* SetPayPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPayPasswordView.h; sourceTree = "<group>"; };
+		2B59B90D1C1AC4FA00918756 /* SetPayPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPayPasswordView.m; sourceTree = "<group>"; };
+		2B59B90E1C1AC4FA00918756 /* UpdatePayPasswordSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePayPasswordSuccessView.h; sourceTree = "<group>"; };
+		2B59B90F1C1AC4FA00918756 /* UpdatePayPasswordSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePayPasswordSuccessView.m; sourceTree = "<group>"; };
+		2B59B9101C1AC4FA00918756 /* UpdatePayPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePayPasswordView.h; sourceTree = "<group>"; };
+		2B59B9111C1AC4FA00918756 /* UpdatePayPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePayPasswordView.m; sourceTree = "<group>"; };
+		2B59B9181C1AC50F00918756 /* BalanceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceListViewController.h; sourceTree = "<group>"; };
+		2B59B9191C1AC50F00918756 /* BalanceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceListViewController.m; sourceTree = "<group>"; };
+		2B59B91A1C1AC50F00918756 /* MyWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWalletViewController.h; sourceTree = "<group>"; };
+		2B59B91B1C1AC50F00918756 /* MyWalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWalletViewController.m; sourceTree = "<group>"; };
+		2B59B91C1C1AC50F00918756 /* PayPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPasswordViewController.h; sourceTree = "<group>"; };
+		2B59B91D1C1AC50F00918756 /* PayPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPasswordViewController.m; sourceTree = "<group>"; };
 		2BB0C0921BDF55E600293737 /* ForgetPasswordCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCodeView.h; sourceTree = "<group>"; };
 		2BB0C0931BDF55E600293737 /* ForgetPasswordCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCodeView.m; sourceTree = "<group>"; };
 		2BB0C0941BDF55E600293737 /* ForgetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordView.h; sourceTree = "<group>"; };
@@ -1013,6 +1040,18 @@
 			children = (
 				2F16E5651B5DEFEE007947D0 /* AboutView.h */,
 				2F16E5661B5DEFEE007947D0 /* AboutView.m */,
+				2B59B9061C1AC4FA00918756 /* BalanceListView.h */,
+				2B59B9071C1AC4FA00918756 /* BalanceListView.m */,
+				2B59B9081C1AC4FA00918756 /* MyWalletView.h */,
+				2B59B9091C1AC4FA00918756 /* MyWalletView.m */,
+				2B59B90A1C1AC4FA00918756 /* SetPayPasswordCodeView.h */,
+				2B59B90B1C1AC4FA00918756 /* SetPayPasswordCodeView.m */,
+				2B59B90C1C1AC4FA00918756 /* SetPayPasswordView.h */,
+				2B59B90D1C1AC4FA00918756 /* SetPayPasswordView.m */,
+				2B59B90E1C1AC4FA00918756 /* UpdatePayPasswordSuccessView.h */,
+				2B59B90F1C1AC4FA00918756 /* UpdatePayPasswordSuccessView.m */,
+				2B59B9101C1AC4FA00918756 /* UpdatePayPasswordView.h */,
+				2B59B9111C1AC4FA00918756 /* UpdatePayPasswordView.m */,
 				2F16E5671B5DEFEE007947D0 /* AccountView.h */,
 				2F16E5681B5DEFEE007947D0 /* AccountView.m */,
 				2F16E5691B5DEFEE007947D0 /* AddressDetailView.h */,
@@ -1127,6 +1166,12 @@
 			isa = PBXGroup;
 			children = (
 				2F16E5BC1B5DF08F007947D0 /* AboutViewController.h */,
+				2B59B9181C1AC50F00918756 /* BalanceListViewController.h */,
+				2B59B9191C1AC50F00918756 /* BalanceListViewController.m */,
+				2B59B91A1C1AC50F00918756 /* MyWalletViewController.h */,
+				2B59B91B1C1AC50F00918756 /* MyWalletViewController.m */,
+				2B59B91C1C1AC50F00918756 /* PayPasswordViewController.h */,
+				2B59B91D1C1AC50F00918756 /* PayPasswordViewController.m */,
 				2F16E5BD1B5DF08F007947D0 /* AboutViewController.m */,
 				2F16E5BE1B5DF08F007947D0 /* AccountViewController.h */,
 				2F16E5BF1B5DF08F007947D0 /* AccountViewController.m */,
@@ -2270,6 +2315,7 @@
 				2F27A6E01C19744400D59588 /* FrontendCss.m in Sources */,
 				2F27A6E51C19744400D59588 /* UIViewController+Frontend.m in Sources */,
 				2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */,
+				2B59B9141C1AC4FA00918756 /* SetPayPasswordCodeView.m in Sources */,
 				2F16E5E71B5DF08F007947D0 /* AccountViewController.m in Sources */,
 				2F6D3E121B312164007A4159 /* ActionSheetCustomPicker.m in Sources */,
 				2F6D3E131B312164007A4159 /* ActionSheetDatePicker.m in Sources */,
@@ -2327,8 +2373,11 @@
 				2F16E6391B5DF162007947D0 /* CategoryEntity.m in Sources */,
 				2F39B38A1BF43D9D00234ACF /* CityView.m in Sources */,
 				2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */,
+				2B59B9201C1AC50F00918756 /* PayPasswordViewController.m in Sources */,
 				2F79938B1BE0BD2000399632 /* CNPPopupController.m in Sources */,
 				2FED7E0B1B1EA79300306A11 /* DDAbstractDatabaseLogger.m in Sources */,
+				2B59B9131C1AC4FA00918756 /* MyWalletView.m in Sources */,
+				2B59B9161C1AC4FA00918756 /* UpdatePayPasswordSuccessView.m in Sources */,
 				2FED7E0C1B1EA79300306A11 /* DDASLLogCapture.m in Sources */,
 				2FED7E0D1B1EA79300306A11 /* DDASLLogger.m in Sources */,
 				2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */,
@@ -2379,6 +2428,7 @@
 				2F6D3E4F1B312765007A4159 /* MJRefreshComponent.m in Sources */,
 				2F6D3E5C1B312765007A4159 /* MJRefreshConst.m in Sources */,
 				2F6D3E501B312765007A4159 /* MJRefreshFooter.m in Sources */,
+				2B59B9121C1AC4FA00918756 /* BalanceListView.m in Sources */,
 				2F6D3E581B312765007A4159 /* MJRefreshGifHeader.m in Sources */,
 				2F6D3E511B312765007A4159 /* MJRefreshHeader.m in Sources */,
 				2F6D3E591B312765007A4159 /* MJRefreshNormalHeader.m in Sources */,
@@ -2388,6 +2438,7 @@
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
 				2FED7D921B1EA2D300306A11 /* NSData+ImageContentType.m in Sources */,
 				2F9000411B1D8B930040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2B59B9151C1AC4FA00918756 /* SetPayPasswordView.m in Sources */,
 				2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */,
 				2F6D16F51B70938000C4A667 /* PickerUtil.m in Sources */,
 				2F16E5A21B5DEFEE007947D0 /* ProfileNicknameView.m in Sources */,
@@ -2409,6 +2460,7 @@
 				2F16E5B41B5DEFEE007947D0 /* RegisterExistView.m in Sources */,
 				2F16E5B51B5DEFEE007947D0 /* RegisterMobileView.m in Sources */,
 				2F16E5B61B5DEFEE007947D0 /* RegisterPasswordView.m in Sources */,
+				2B59B9171C1AC4FA00918756 /* UpdatePayPasswordView.m in Sources */,
 				2F16E5B71B5DEFEE007947D0 /* RegisterSuccessView.m in Sources */,
 				2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */,
 				2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */,
@@ -2459,12 +2511,14 @@
 				2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */,
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
+				2B59B91F1C1AC50F00918756 /* MyWalletViewController.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
 				2F20ECC81C1AB8E3009B9ED6 /* ProtocolViewController.m in Sources */,
 				2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */,
 				2F6D3E5F1B312765007A4159 /* UIView+MJExtension.m in Sources */,
 				2F9001131B1D9D550040D97B /* UIView+REFrostedViewController.m in Sources */,
 				2FED7D9F1B1EA2D300306A11 /* UIView+WebCacheOperation.m in Sources */,
+				2B59B91E1C1AC50F00918756 /* BalanceListViewController.m in Sources */,
 				2F6796AC1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,
 				2F9001141B1D9D550040D97B /* UIViewController+REFrostedViewController.m in Sources */,
