@@ -13,6 +13,8 @@
 @required
 - (void)actionPassword;
 
+- (void)actionPayPassword;
+
 @end
 
 @interface SafetyView : AppTableView

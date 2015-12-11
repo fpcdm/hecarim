@@ -24,6 +24,7 @@
                         @{@"id" : @"mobile", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"手机号码", @"style" : @"value1", @"detail" : mobile},
                         ],
                       @[
+                        @{@"id" : @"payPassword", @"type" : @"action", @"action": @"actionPayPassword", @"image": @"", @"text" : @"设置支付密码"},
                         @{@"id" : @"password", @"type" : @"action", @"action": @"actionPassword", @"image": @"", @"text" : @"修改登陆密码"},
                         ],
                       nil];
@@ -41,4 +42,8 @@
     [self.delegate actionPassword];
 }
 
+- (void)actionPayPassword
+{
+    [self.delegate actionPayPassword];
+}
 @end

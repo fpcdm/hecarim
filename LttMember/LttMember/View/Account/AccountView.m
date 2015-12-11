@@ -28,6 +28,9 @@
                         @{@"id" : @"info", @"type" : @"custom", @"action": @"actionProfile", @"image": @"", @"text" : @"", @"height": @60},
                         ],
                       @[
+                        @{@"id" : @"wallet", @"type" : @"action", @"action": @"actionMyWallet", @"image": @"", @"text" : @"我的钱包"},
+                        ],
+                      @[
                         @{@"id" : @"address", @"type" : @"action", @"action": @"actionAddress", @"image": @"", @"text" : @"我的地址"},
                         @{@"id" : @"safety", @"type" : @"action", @"action": @"actionSafety", @"image": @"", @"text" : @"账户与安全"},
                         ],
@@ -147,6 +150,11 @@
 - (void)actionRecommendShare
 {
     [self.delegate actionRecommendShare];
+}
+
+- (void)actionMyWallet
+{
+    [self.delegate actionMyWallet];
 }
 
 @end

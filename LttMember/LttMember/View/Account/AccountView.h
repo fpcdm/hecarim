@@ -26,6 +26,8 @@
 
 - (void)actionRecommendShare;
 
+- (void)actionMyWallet;
+
 @end
 
 @interface AccountView : AppTableView
