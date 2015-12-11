@@ -468,7 +468,6 @@
     [goodsAmountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(goodsFooterView.mas_centerY);
         make.right.equalTo(goodsFooterView.mas_right).offset(-padding);
-//        make.bottom.equalTo(goodsFooterView.mas_bottom);
         make.height.equalTo(@35);
     }];
     
@@ -482,7 +481,6 @@
     [goodsTotalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(goodsAmountLabel.mas_left).offset(-padding);
         make.centerY.equalTo(goodsFooterView.mas_centerY);
-//        make.bottom.equalTo(goodsFooterView.mas_bottom);
         make.height.equalTo(@35);
     }];
     
