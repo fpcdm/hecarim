@@ -72,6 +72,60 @@
     }];
 }
 
+- (void) thirdLoginWithUser:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id", @"user_truename":@"name", @"user_token":@"token", @"user_nickname":@"nickname",@"user_sex": @"sexAlias", @"user_avatar":@"avatar", @"mobile": @"mobile"}];
+    
+    //整理参数
+    NSString *appType = param ? [param objectForKey:@"app_type"] : nil;
+    NSString *token = param ? [param objectForKey:@"token"] : nil;
+    NSDictionary *formatParam = @{
+                                  @"device_id":user.deviceId ? user.deviceId : @"",
+                                  @"device_type":user.deviceType ? user.deviceType : @"",
+                                  @"app_type": appType ? appType : @"",
+                                  @"token": token ? token : @""
+                                  };
+    
+    [sharedClient getObject:user path:@"user/passport" param:formatParam success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+- (void) thirdRegisterWithUser:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"user_id": @"id"}];
+    
+    //整理参数
+    NSString *appType = param ? [param objectForKey:@"app_type"] : nil;
+    NSString *token = param ? [param objectForKey:@"token"] : nil;
+    NSDictionary *formatParam = @{
+                                  @"device_id":user.deviceId ? user.deviceId : @"",
+                                  @"device_type":user.deviceType ? user.deviceType : @"",
+                                  @"app_type": appType ? appType : @"",
+                                  @"token": token ? token : @"",
+                                  @"mobile": user.mobile ? user.mobile : @""
+                                  };
+    
+    [sharedClient putObject:user path:@"user/member" param:formatParam success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void)addAddress:(AddressEntity *)address success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];

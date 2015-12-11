@@ -51,6 +51,26 @@
 - (void) updateHeartbeat: (UserEntity *) user param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
+ *  第三方登陆
+ *
+ *  @param user    用户
+ *  @param param   附加参数
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) thirdLoginWithUser: (UserEntity *) user param:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  第三方平台注册
+ *
+ *  @param user    用户
+ *  @param param   附加参数
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) thirdRegisterWithUser: (UserEntity *) user param:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
  *  新增收货地址
  *
  *  @param success 成功回调
