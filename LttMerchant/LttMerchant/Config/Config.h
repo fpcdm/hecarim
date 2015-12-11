@@ -59,6 +59,9 @@
 //服务
 #define LTT_TRADE_SERVICE 2
 
+//协议URL
+#define URL_REGISTER_PROTOCOL @"http://www.lttok.com/protocol/merchant"
+
 //支付方式列表
 #define PAY_WAY_WEIXIN @"weixin"
 #define PAY_WAY_ALIPAY @"alipay"

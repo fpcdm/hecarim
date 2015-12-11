@@ -14,6 +14,8 @@
 
 - (void) actionSend:(NSString *)mobile;
 
+- (void) actionProtocol;
+
 @end
 
 @interface RegisterMobileView : AppView

@@ -86,6 +86,8 @@
 		2F16E6401B5DF162007947D0 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6251B5DF162007947D0 /* CaseHandler.m */; };
 		2F16E6421B5DF162007947D0 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6291B5DF162007947D0 /* HelperHandler.m */; };
 		2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E62D1B5DF162007947D0 /* UserHandler.m */; };
+		2F20ECC81C1AB8E3009B9ED6 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F20ECC71C1AB8E3009B9ED6 /* ProtocolViewController.m */; };
+		2F20ECCB1C1AB9BD009B9ED6 /* ProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F20ECCA1C1AB9BD009B9ED6 /* ProtocolView.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F27A69A1C19573700D59588 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6991C19573700D59588 /* ThirdLoginViewController.m */; };
 		2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A69C1C19574300D59588 /* ThirdLoginView.m */; };
@@ -448,6 +450,10 @@
 		2F16E6291B5DF162007947D0 /* HelperHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperHandler.m; sourceTree = "<group>"; };
 		2F16E62C1B5DF162007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F16E62D1B5DF162007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
+		2F20ECC61C1AB8E3009B9ED6 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
+		2F20ECC71C1AB8E3009B9ED6 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
+		2F20ECC91C1AB9BD009B9ED6 /* ProtocolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolView.h; sourceTree = "<group>"; };
+		2F20ECCA1C1AB9BD009B9ED6 /* ProtocolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolView.m; sourceTree = "<group>"; };
 		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		2F27A6981C19573700D59588 /* ThirdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginViewController.h; sourceTree = "<group>"; };
@@ -1085,6 +1091,8 @@
 				2F16E5921B5DEFEE007947D0 /* LoginView.m */,
 				2F27A69B1C19574300D59588 /* ThirdLoginView.h */,
 				2F27A69C1C19574300D59588 /* ThirdLoginView.m */,
+				2F20ECC91C1AB9BD009B9ED6 /* ProtocolView.h */,
+				2F20ECCA1C1AB9BD009B9ED6 /* ProtocolView.m */,
 				2F16E5931B5DEFEE007947D0 /* RegisterCodeView.h */,
 				2F16E5941B5DEFEE007947D0 /* RegisterCodeView.m */,
 				2F16E5951B5DEFEE007947D0 /* RegisterExistView.h */,
@@ -1184,6 +1192,8 @@
 				2F16E5E31B5DF08F007947D0 /* MenuViewController.m */,
 				2F16E5E41B5DF08F007947D0 /* RegisterViewController.h */,
 				2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */,
+				2F20ECC61C1AB8E3009B9ED6 /* ProtocolViewController.h */,
+				2F20ECC71C1AB8E3009B9ED6 /* ProtocolViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2450,6 +2460,7 @@
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
+				2F20ECC81C1AB8E3009B9ED6 /* ProtocolViewController.m in Sources */,
 				2F5FDDDC1B5F3E2A00CBF2A7 /* UIView+Loading.m in Sources */,
 				2F6D3E5F1B312765007A4159 /* UIView+MJExtension.m in Sources */,
 				2F9001131B1D9D550040D97B /* UIView+REFrostedViewController.m in Sources */,
@@ -2460,6 +2471,7 @@
 				2FCAF8AC1B20456C00F3B084 /* UserEntity.m in Sources */,
 				2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */,
 				2FCAF8381B20115700F3B084 /* ValidateUtil.m in Sources */,
+				2F20ECCB1C1AB9BD009B9ED6 /* ProtocolView.m in Sources */,
 				2F9000421B1D8B930040D97B /* View+MASAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

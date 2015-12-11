@@ -19,6 +19,7 @@
 #import "TimerUtil.h"
 #import "LoginViewController.h"
 #import "MerchantHandler.h"
+#import "ProtocolViewController.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -222,34 +223,34 @@
     //检查手机号是否已经注册
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler checkMobile:inputMobile success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            ResultEntity *checkResult = [result firstObject];
-            
-            mobile = inputMobile;
-            mobileStatus = checkResult.data;
-            NSLog(@"check mobile result: %@", checkResult.data);
-            if ([@"registered" isEqualToString:mobileStatus]) {
+        ResultEntity *checkResult = [result firstObject];
+        
+        mobile = inputMobile;
+        mobileStatus = checkResult.data;
+        NSLog(@"check mobile result: %@", checkResult.data);
+        if ([@"registered" isEqualToString:mobileStatus]) {
+            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
                 RegisterExistView *existView = [self mobileExistView];
                 [self pushView:existView animated:YES completion:^{
                     [existView setData:@"mobile" value:mobile];
                     [existView renderData];
                 }];
-            } else {
-                //检查校验码是否正确
-                HelperHandler *helperHandler = [[HelperHandler alloc] init];
-                [helperHandler verifyMobileCode:inputMobile code:code success:^(NSArray *result){
-                    [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-                        ResultEntity *verifyResult = [result firstObject];
-                        vCode = verifyResult.data;
-                        NSLog(@"安全码是：%@",vCode);
-                        
-                        [self userType];
-                    }];
-                } failure:^(ErrorEntity *error){
-                    [self showError:error.message];
+            }];
+        } else {
+            //检查校验码是否正确
+            HelperHandler *helperHandler = [[HelperHandler alloc] init];
+            [helperHandler verifyMobileCode:inputMobile code:code success:^(NSArray *result){
+                [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                    ResultEntity *verifyResult = [result firstObject];
+                    vCode = verifyResult.data;
+                    NSLog(@"安全码是：%@",vCode);
+                    
+                    [self userType];
                 }];
-            }
-        }];
+            } failure:^(ErrorEntity *error){
+                [self showError:error.message];
+            }];
+        }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -270,6 +271,12 @@
 - (void) actionLogin
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)actionProtocol
+{
+    ProtocolViewController *viewController = [[ProtocolViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void) actionSend: (NSString *)inputMobile
@@ -476,65 +483,5 @@
     [sheet showInView:self.view];
 
 }
-
-
-//切换视图,类似push效果
-- (void) pushView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion
-{
-    if (animated) {
-        [UIView animateWithDuration:0.1f
-                         animations:^{
-                             self.view.frame = CGRectMake(-self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                         }
-                         completion:^(BOOL finished){
-                             self.view = view;
-                             self.view.backgroundColor = COLOR_MAIN_BG;
-                             self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                             [UIView animateWithDuration:0.2f
-                                              animations:^{
-                                                  self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                                              }
-                                              completion:^(BOOL finished){
-                                                  if (completion) completion();
-                                              }
-                              ];
-                         }
-         ];
-    } else {
-        self.view = view;
-        self.view.backgroundColor = COLOR_MAIN_BG;
-        if (completion) completion();
-    }
-}
-
-//切换视图,类似pop效果
-- (void) popView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion
-{
-    if (animated) {
-        [UIView animateWithDuration:0.1f
-                         animations:^{
-                             self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                         }
-                         completion:^(BOOL finished){
-                             self.view = view;
-                             self.view.backgroundColor = COLOR_MAIN_BG;
-                             self.view.frame = CGRectMake(-self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                             [UIView animateWithDuration:0.2f
-                                              animations:^{
-                                                  self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                                              }
-                                              completion:^(BOOL finished){
-                                                  if (completion) completion();
-                                              }
-                              ];
-                         }
-         ];
-    } else {
-        self.view = view;
-        self.view.backgroundColor = COLOR_MAIN_BG;
-        if (completion) completion();
-    }
-}
-
 
 @end

@@ -12,6 +12,8 @@
 
 - (void) actionCheckMobile:(NSString *)mobile;
 
+- (void) actionProtocol;
+
 @end
 
 @interface RegisterMobileView : AppView

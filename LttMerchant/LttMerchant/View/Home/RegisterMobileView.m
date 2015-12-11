@@ -169,11 +169,12 @@
         
     }];
     
-    UILabel *protocolTitle = [[UILabel alloc] init];
-    protocolTitle.text = @"两条腿商户服务协议。";
+    UIButton *protocolTitle = [[UIButton alloc] init];
+    [protocolTitle setTitle:@"两条腿商户服务协议。" forState:UIControlStateNormal];
     protocolTitle.backgroundColor = [UIColor clearColor];
-    protocolTitle.textColor = COLOR_MAIN_DARK;
-    protocolTitle.font = FONT_MAIN_BOLD;
+    [protocolTitle setTitleColor:COLOR_MAIN_DARK forState:UIControlStateNormal];
+    protocolTitle.titleLabel.font = FONT_MAIN_BOLD;
+    [protocolTitle addTarget:self action:@selector(actionProtocol) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:protocolTitle];
     
     [protocolTitle mas_makeConstraints:^(MASConstraintMaker *make){
@@ -189,6 +190,11 @@
 - (void)actionNext
 {
     [self.delegate actionCheckMobile:mobileField.text code:codeField.text];
+}
+
+- (void)actionProtocol
+{
+    [self.delegate actionProtocol];
 }
 
 //发送校验码

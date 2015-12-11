@@ -19,6 +19,7 @@
 #import "HelperHandler.h"
 #import "HomeViewController.h"
 #import "TimerUtil.h"
+#import "ProtocolViewController.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate,RegisterRecommendViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate>
 
@@ -320,6 +321,12 @@
 {
     HomeViewController *viewController = [[HomeViewController alloc] init];
     [self toggleViewController:viewController animated:YES];
+}
+
+- (void)actionProtocol
+{
+    ProtocolViewController *viewController = [[ProtocolViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
 
 - (void) actionSend
