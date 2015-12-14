@@ -9,6 +9,7 @@
 #import "MyWalletViewController.h"
 #import "MyWalletView.h"
 #import "BalanceListViewController.h"
+#import "RechargeViewController.h"
 
 @interface MyWalletViewController ()<MyWalletViewDelegate>
 
@@ -34,14 +35,8 @@
 
 - (void)actionRecharge
 {
-    
+    RechargeViewController *viewController = [[RechargeViewController alloc] init];
+    [self pushViewController:viewController animated:YES];
 }
-
-- (void)actionMyBankCard
-{
-
-}
-
-
 
 @end

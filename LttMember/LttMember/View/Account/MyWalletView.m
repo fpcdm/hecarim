@@ -23,9 +23,6 @@
                         @{@"id" : @"balance", @"type" : @"custom", @"action": @"actionBalance", @"image": @"", @"text" : @"账户余额", @"height": @60},
                         @{@"id" : @"recharge", @"type" : @"action", @"action": @"actionRecharge", @"image": @"", @"text" : @"充值", @"height": @""},
                         ],
-                      @[
-                        @{@"id" : @"bankCard", @"type" : @"action", @"action": @"actionMyBankCard", @"image": @"", @"text" : @"我的银行卡"},
-                        ],
                       nil];
     
     //解决iOS7按钮移动
@@ -87,11 +84,6 @@
 - (void)actionRecharge
 {
     [self.delegate actionRecharge];
-}
-
-- (void)actionMyBankCard
-{
-    [self.delegate actionMyBankCard];
 }
 
 @end

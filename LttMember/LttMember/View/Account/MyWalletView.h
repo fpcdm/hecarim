@@ -14,8 +14,6 @@
 
 - (void)actionRecharge;
 
-- (void)actionMyBankCard;
-
 @end
 
 @interface MyWalletView : AppTableView

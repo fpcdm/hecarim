@@ -43,15 +43,20 @@
                         ],
                       nil];
     
+    //退出区域
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 55)];
+    footerView.backgroundColor = COLOR_MAIN_BG;
+    self.tableView.tableFooterView = footerView;
+    
     //退出按钮
     UIButton *button = [AppUIUtil makeButton:@"退出当前账号"];
     [button addTarget:self action:@selector(actionLogout) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
+    [footerView addSubview:button];
     
-    UIView *superview = self;
+    UIView *superview = footerView;
     int padding = 10;
     [button mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.tableView.tableFooterView.mas_bottom);
+        make.top.equalTo(superview.mas_top);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
@@ -63,6 +68,7 @@
     nameLabel = [[UILabel alloc] init];
     
     //解决iOS7按钮移动
+    self.tableView.scrollEnabled = YES;
     [self.tableView reloadData];
     
     return self;
@@ -105,6 +111,20 @@
     }
     
     return cell;
+}
+
+//让分割线左侧不留空白
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 #pragma mark - RenderData

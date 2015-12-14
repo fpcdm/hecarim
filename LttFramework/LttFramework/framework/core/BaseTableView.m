@@ -56,6 +56,8 @@
     if (self.tableView == nil) {
         UITableViewStyle tableStyle = IS_IOS7_PLUS ? UITableViewStyleGrouped : UITableViewStylePlain;
         self.tableView = [[UITableView alloc] initWithFrame:[self bounds] style:tableStyle];
+        self.tableView.showsHorizontalScrollIndicator = NO;
+        self.tableView.showsVerticalScrollIndicator = NO;
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_REUSE_IDENTIFIER_DEFAULT];
         self.tableView.backgroundView = nil;
     }
