@@ -108,6 +108,14 @@
 		2F253A081C1EB44E009FC19B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F2539FF1C1EB44E009FC19B /* AlipaySDK.framework */; };
 		2F253A091C1EB44E009FC19B /* AlipayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A011C1EB44E009FC19B /* AlipayOrder.m */; };
 		2F253A0A1C1EB44E009FC19B /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F253A031C1EB44E009FC19B /* libWeChatSDK.a */; };
+		2F253A1C1C1EBF8A009FC19B /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A0D1C1EBF8A009FC19B /* NSString+Extension.m */; };
+		2F253A1D1C1EBF8A009FC19B /* trade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F253A0F1C1EBF8A009FC19B /* trade.bundle */; };
+		2F253A1E1C1EBF8A009FC19B /* UIAlertView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A111C1EBF8A009FC19B /* UIAlertView+Quick.m */; };
+		2F253A1F1C1EBF8A009FC19B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A131C1EBF8A009FC19B /* UIView+Extension.m */; };
+		2F253A201C1EBF8A009FC19B /* ZCAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A151C1EBF8A009FC19B /* ZCAudioTool.m */; };
+		2F253A211C1EBF8A009FC19B /* ZCTradeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A171C1EBF8A009FC19B /* ZCTradeInputView.m */; };
+		2F253A221C1EBF8A009FC19B /* ZCTradeKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A191C1EBF8A009FC19B /* ZCTradeKeyboard.m */; };
+		2F253A231C1EBF8A009FC19B /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A1B1C1EBF8A009FC19B /* ZCTradeView.m */; };
 		2F266CA01B4A2DA700FD31F6 /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */; };
 		2F27A69A1C19573700D59588 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A6991C19573700D59588 /* ThirdLoginViewController.m */; };
 		2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A69C1C19574300D59588 /* ThirdLoginView.m */; };
@@ -508,6 +516,22 @@
 		2F253A041C1EB44E009FC19B /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		2F253A051C1EB44E009FC19B /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		2F253A061C1EB44E009FC19B /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		2F253A0C1C1EBF8A009FC19B /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		2F253A0D1C1EBF8A009FC19B /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		2F253A0E1C1EBF8A009FC19B /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		2F253A0F1C1EBF8A009FC19B /* trade.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = trade.bundle; sourceTree = "<group>"; };
+		2F253A101C1EBF8A009FC19B /* UIAlertView+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Quick.h"; sourceTree = "<group>"; };
+		2F253A111C1EBF8A009FC19B /* UIAlertView+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Quick.m"; sourceTree = "<group>"; };
+		2F253A121C1EBF8A009FC19B /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		2F253A131C1EBF8A009FC19B /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		2F253A141C1EBF8A009FC19B /* ZCAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAudioTool.h; sourceTree = "<group>"; };
+		2F253A151C1EBF8A009FC19B /* ZCAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAudioTool.m; sourceTree = "<group>"; };
+		2F253A161C1EBF8A009FC19B /* ZCTradeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeInputView.h; sourceTree = "<group>"; };
+		2F253A171C1EBF8A009FC19B /* ZCTradeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeInputView.m; sourceTree = "<group>"; };
+		2F253A181C1EBF8A009FC19B /* ZCTradeKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeKeyboard.h; sourceTree = "<group>"; };
+		2F253A191C1EBF8A009FC19B /* ZCTradeKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeKeyboard.m; sourceTree = "<group>"; };
+		2F253A1A1C1EBF8A009FC19B /* ZCTradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeView.h; sourceTree = "<group>"; };
+		2F253A1B1C1EBF8A009FC19B /* ZCTradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeView.m; sourceTree = "<group>"; };
 		2F266C9E1B4A2DA700FD31F6 /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2F266C9F1B4A2DA700FD31F6 /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		2F27A6981C19573700D59588 /* ThirdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginViewController.h; sourceTree = "<group>"; };
@@ -1396,6 +1420,29 @@
 			path = WechatSDK;
 			sourceTree = "<group>";
 		};
+		2F253A0B1C1EBF8A009FC19B /* ZCTradeView */ = {
+			isa = PBXGroup;
+			children = (
+				2F253A0C1C1EBF8A009FC19B /* NSString+Extension.h */,
+				2F253A0D1C1EBF8A009FC19B /* NSString+Extension.m */,
+				2F253A0E1C1EBF8A009FC19B /* Singleton.h */,
+				2F253A0F1C1EBF8A009FC19B /* trade.bundle */,
+				2F253A101C1EBF8A009FC19B /* UIAlertView+Quick.h */,
+				2F253A111C1EBF8A009FC19B /* UIAlertView+Quick.m */,
+				2F253A121C1EBF8A009FC19B /* UIView+Extension.h */,
+				2F253A131C1EBF8A009FC19B /* UIView+Extension.m */,
+				2F253A141C1EBF8A009FC19B /* ZCAudioTool.h */,
+				2F253A151C1EBF8A009FC19B /* ZCAudioTool.m */,
+				2F253A161C1EBF8A009FC19B /* ZCTradeInputView.h */,
+				2F253A171C1EBF8A009FC19B /* ZCTradeInputView.m */,
+				2F253A181C1EBF8A009FC19B /* ZCTradeKeyboard.h */,
+				2F253A191C1EBF8A009FC19B /* ZCTradeKeyboard.m */,
+				2F253A1A1C1EBF8A009FC19B /* ZCTradeView.h */,
+				2F253A1B1C1EBF8A009FC19B /* ZCTradeView.m */,
+			);
+			path = ZCTradeView;
+			sourceTree = "<group>";
+		};
 		2F27A6D31C19744400D59588 /* frontend */ = {
 			isa = PBXGroup;
 			children = (
@@ -1694,6 +1741,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2F253A0B1C1EBF8A009FC19B /* ZCTradeView */,
 				2F2539FD1C1EB44E009FC19B /* AlipaySDK */,
 				2F253A021C1EB44E009FC19B /* WechatSDK */,
 				2FB479421C0EEB7700080EB7 /* UMSocialSdk */,
@@ -2344,6 +2392,7 @@
 				2F7993741BE0763900399632 /* NotificationButtonBackground2.png in Resources */,
 				2F7993751BE0763900399632 /* NotificationButtonBackground2@2x.png in Resources */,
 				2FB4798A1C0EEB7700080EB7 /* UMSocialSDKResourcesNew.bundle in Resources */,
+				2F253A1D1C1EBF8A009FC19B /* trade.bundle in Resources */,
 				2FB4797E1C0EEB7700080EB7 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				2F2F224A1B3A4D0300428742 /* NotificationButtonBackground@2x.png in Resources */,
 				2FB479861C0EEB7700080EB7 /* UMShareEditViewControlleriPad.xib in Resources */,
@@ -2439,6 +2488,7 @@
 				2FED7E0C1B1EA79300306A11 /* DDASLLogCapture.m in Sources */,
 				2FED7E0D1B1EA79300306A11 /* DDASLLogger.m in Sources */,
 				2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */,
+				2F253A211C1EBF8A009FC19B /* ZCTradeInputView.m in Sources */,
 				2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FED7E0E1B1EA79300306A11 /* DDFileLogger.m in Sources */,
 				2FED7E0F1B1EA79300306A11 /* DDLog.m in Sources */,
@@ -2476,6 +2526,7 @@
 				2F90003F1B1D8B930040D97B /* MASViewConstraint.m in Sources */,
 				2F9000431B1D8B930040D97B /* MBProgressHUD.m in Sources */,
 				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
+				2F253A201C1EBF8A009FC19B /* ZCAudioTool.m in Sources */,
 				2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */,
 				2F6D3E521B312765007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2F6D3E531B312765007A4159 /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -2505,6 +2556,7 @@
 				2F16E5EB1B5DF08F007947D0 /* ProfileNicknameViewController.m in Sources */,
 				2F16E5A31B5DEFEE007947D0 /* ProfileView.m in Sources */,
 				2F16E5EC1B5DF08F007947D0 /* ProfileViewController.m in Sources */,
+				2F253A1C1C1EBF8A009FC19B /* NSString+Extension.m in Sources */,
 				2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */,
 				2F90010E1B1D9D550040D97B /* Reachability.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
@@ -2515,6 +2567,7 @@
 				2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F9001101B1D9D550040D97B /* REFrostedContainerViewController.m in Sources */,
+				2F253A221C1EBF8A009FC19B /* ZCTradeKeyboard.m in Sources */,
 				2F9001111B1D9D550040D97B /* REFrostedViewController.m in Sources */,
 				2F16E5B31B5DEFEE007947D0 /* RegisterCodeView.m in Sources */,
 				2F16E5B41B5DEFEE007947D0 /* RegisterExistView.m in Sources */,
@@ -2530,6 +2583,7 @@
 				2F16E5A41B5DEFEE007947D0 /* SafetyPasswordView.m in Sources */,
 				2F16E5ED1B5DF08F007947D0 /* SafetyPasswordViewController.m in Sources */,
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
+				2F253A231C1EBF8A009FC19B /* ZCTradeView.m in Sources */,
 				2F16E5EE1B5DF08F007947D0 /* SafetyViewController.m in Sources */,
 				2FED7D931B1EA2D300306A11 /* SDImageCache.m in Sources */,
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
@@ -2549,6 +2603,7 @@
 				2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */,
 				2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */,
 				2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */,
+				2F253A1E1C1EBF8A009FC19B /* UIAlertView+Quick.m in Sources */,
 				2F8BFF211B8DB4B90087EDA0 /* TAPageControl.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
 				2F9001151B1D9D550040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,
@@ -2570,6 +2625,7 @@
 				2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */,
 				2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */,
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2F253A1F1C1EBF8A009FC19B /* UIView+Extension.m in Sources */,
 				2F6910A41B58AC400080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2B59B91F1C1AC50F00918756 /* MyWalletViewController.m in Sources */,
 				2F6D3DFD1B310F2A007A4159 /* UITextView+Placeholder.m in Sources */,
