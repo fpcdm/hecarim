@@ -2722,7 +2722,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../LttFramework/Products",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/AlipaySDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMember/LttMember.pch;
@@ -2742,7 +2742,7 @@
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/WechatSDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/WechatSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttMember;
@@ -2762,7 +2762,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../LttFramework/Products",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/AlipaySDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMember/LttMember.pch;
@@ -2782,7 +2782,7 @@
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
-					"$(LOCAL_LIBRARY_DIR)/WebServer/Documents/fpcdm/hecarim/LttFramework/LttFramework/framework/vender/WechatSDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/WechatSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttMember;
