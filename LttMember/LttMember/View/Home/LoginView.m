@@ -41,7 +41,6 @@
     UILabel *accountLabel = [UILabel new];
     accountLabel.text = @"账户";
     accountLabel.font = FONT_MAIN;
-    accountLabel.shadowColor = [UIColor lightGrayColor];
     [inputView addSubview:accountLabel];
     
     superview = inputView;
