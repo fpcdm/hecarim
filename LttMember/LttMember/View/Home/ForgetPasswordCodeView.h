@@ -17,7 +17,6 @@
 //验证验证码
 - (void)actionVerifyCode:(NSString *)code;
 
-
 @end
 
 @interface ForgetPasswordCodeView : AppView

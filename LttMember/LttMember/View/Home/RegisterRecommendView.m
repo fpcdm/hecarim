@@ -79,7 +79,6 @@
     
     //提示
     UILabel *tipLabel = [[UILabel alloc] init];
-    tipLabel.text = @"提示:";
     NSString *labelString = @"提示:\n1.一个用户只能填写一次推荐人。\n2.可跳过此步骤，以后你可以在【账户】\n-【推荐与分享】中补充填写推荐人。";
     tipLabel.textColor = COLOR_MAIN_BLACK;
     tipLabel.font = FONT_MAIN;
