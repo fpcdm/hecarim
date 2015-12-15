@@ -97,6 +97,11 @@
 //协议URL
 #define URL_REGISTER_PROTOCOL @"http://www.lttok.com/protocol"
 
+//第三方登陆列表
+#define THIRD_LOGIN_TYPE_WECHAT 1
+#define THIRD_LOGIN_TYPE_QQ 2
+#define THIRD_LOGIN_TYPE_SINA 3
+
 //支付方式列表
 #define PAY_WAY_WEIXIN @"weixin"
 #define PAY_WAY_ALIPAY @"alipay"

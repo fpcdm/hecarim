@@ -153,22 +153,7 @@
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             //赋值并释放资源
             UserEntity *apiUser = [result firstObject];
-            user.id = apiUser.id;
-            user.name = apiUser.name;
-            user.token = apiUser.token;
-            user.nickname = apiUser.nickname;
-            user.sexAlias = apiUser.sexAlias;
-            user.avatar = apiUser.avatar;
-            apiUser = nil;
-            
-            //清空密码
-            user.password = nil;
-            
-            //保存数据
-            [[StorageUtil sharedStorage] setUser:user];
-            
-            //刷新菜单
-            [self refreshMenu];
+            [self syncUser:user apiUser:apiUser];
             
             HomeViewController *viewController = [[HomeViewController alloc] init];
             [self toggleViewController:viewController animated:YES];
@@ -177,6 +162,30 @@
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+- (void)syncUser:(UserEntity *)user apiUser:(UserEntity *)apiUser
+{
+    //赋值并释放资源
+    user.id = apiUser.id;
+    user.name = apiUser.name;
+    user.token = apiUser.token;
+    user.nickname = apiUser.nickname;
+    user.sexAlias = apiUser.sexAlias;
+    user.avatar = apiUser.avatar;
+    if (apiUser.mobile && [apiUser.mobile length] > 0) {
+        user.mobile = apiUser.mobile;
+    }
+    apiUser = nil;
+    
+    //清空密码
+    user.password = nil;
+    
+    //保存数据
+    [[StorageUtil sharedStorage] setUser:user];
+    
+    //刷新菜单
+    [self refreshMenu];
 }
 
 - (void)actionLoginWechat
@@ -194,9 +203,6 @@
 
 - (void)actionLoginQQ
 {
-    [self thirdLogin:nil];
-    return;
-    
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
@@ -221,11 +227,52 @@
     });
 }
 
-//@todo: 查询是否绑定，绑定则登陆成功，未绑定则填写手机号
 - (void)thirdLogin:(UMSocialAccountEntity *)snsAccount
 {
-    ThirdLoginViewController *viewController = [[ThirdLoginViewController alloc] init];
-    [self pushViewController:viewController animated:YES];
+    //记录用户信息
+    UserEntity *user = [[UserEntity alloc] init];
+    user.type = USER_TYPE_MEMBER;
+    user.deviceType = @"ios";
+    user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
+    
+    //获取平台
+    NSNumber *appType = @0;
+    if (snsAccount.platformName) {
+        if ([snsAccount.platformName isEqualToString:UMShareToWechatSession]) {
+            appType = @(THIRD_LOGIN_TYPE_WECHAT);
+        } else if ([snsAccount.platformName isEqualToString:UMShareToQQ]) {
+            appType = @(THIRD_LOGIN_TYPE_QQ);
+        } else if ([snsAccount.platformName isEqualToString:UMShareToSina]) {
+            appType = @(THIRD_LOGIN_TYPE_SINA);
+        }
+    }
+    
+    //附加参数
+    NSDictionary *param = @{
+                            @"app_type": appType,
+                            @"token":snsAccount.accessToken ? snsAccount.accessToken : @""
+                            };
+    
+    //查询是否已绑定，绑定则登陆成功，未绑定则填写手机号
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler thirdLoginWithUser:user param:param success:^(NSArray *result) {
+        //是否绑定成功
+        UserEntity *apiUser = result && [result count] > 0 ? [result firstObject] : nil;
+        if (apiUser && apiUser.id) {
+            //赋值并释放资源
+            [self syncUser:user apiUser:apiUser];
+                
+            HomeViewController *viewController = [[HomeViewController alloc] init];
+            [self toggleViewController:viewController animated:YES];
+        } else {
+            ThirdLoginViewController *viewController = [[ThirdLoginViewController alloc] init];
+            viewController.thirdUser = user;
+            viewController.thirdParam = param;
+            [self pushViewController:viewController animated:YES];
+        }
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 @end

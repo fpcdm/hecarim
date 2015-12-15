@@ -7,7 +7,11 @@
 //
 
 #import "AppViewController.h"
+#import "UserEntity.h"
 
 @interface ThirdLoginViewController : AppViewController
+
+@property (retain, nonatomic) UserEntity *thirdUser;
+@property (retain, nonatomic) NSDictionary *thirdParam;
 
 @end

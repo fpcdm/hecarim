@@ -29,6 +29,9 @@
     TimerUtil *timerUtil;
 }
 
+@synthesize thirdUser;
+@synthesize thirdParam;
+
 - (void)loadView {
     thirdView = [[ThirdLoginView alloc] init];
     thirdView.delegate = self;
@@ -185,12 +188,50 @@
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            //@todo 自动注册并登陆
+        //整理数据
+        thirdUser.mobile = mobile;
+        
+        //自动注册第三方用户
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler thirdRegisterWithUser:thirdUser param:thirdParam success:^(NSArray *result) {
+            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                //赋值并释放资源
+                UserEntity *apiUser = [result firstObject];
+                [self syncUser:thirdUser apiUser:apiUser];
+                
+                HomeViewController *viewController = [[HomeViewController alloc] init];
+                [self toggleViewController:viewController animated:YES];
+            }];
+        } failure:^(ErrorEntity *error) {
+            [self showError:error.message];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
+}
+
+- (void)syncUser:(UserEntity *)user apiUser:(UserEntity *)apiUser
+{
+    //赋值并释放资源
+    user.id = apiUser.id;
+    user.name = apiUser.name;
+    user.token = apiUser.token;
+    user.nickname = apiUser.nickname;
+    user.sexAlias = apiUser.sexAlias;
+    user.avatar = apiUser.avatar;
+    if (apiUser.mobile && [apiUser.mobile length] > 0) {
+        user.mobile = apiUser.mobile;
+    }
+    apiUser = nil;
+    
+    //清空密码
+    user.password = nil;
+    
+    //保存数据
+    [[StorageUtil sharedStorage] setUser:user];
+    
+    //刷新菜单
+    [self refreshMenu];
 }
 
 @end
