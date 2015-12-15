@@ -9,14 +9,25 @@
 #import "CaseCashierView.h"
 #import "CaseEntity.h"
 #import "ResultEntity.h"
+#import "DLRadioButton.h"
 
 @implementation CaseCashierView
 {
+    DLRadioButton *balanceButton;
+    
+    DLRadioButton *weixinQrcodeButton;
+    DLRadioButton *alipayQrcodeButton;
+    DLRadioButton *moneyButton;
+    
+    UILabel *totalLabel;
+    UILabel *balanceLabel;
     UILabel *amountLabel;
     
-    UIButton *weixinQrcodeButton;
-    UIButton *alipayQrcodeButton;
-    UIButton *moneyButton;
+    float totalAmount;
+    float balanceAmount;
+    
+    //是否使用余额
+    BOOL useBalance;
 }
 
 - (id)init
@@ -24,17 +35,26 @@
     self = [super init];
     if (!self) return nil;
     
-    //支付金额
-    amountLabel = [[UILabel alloc] init];
-    amountLabel.textColor = COLOR_MAIN_HIGHLIGHT;
-    amountLabel.font = [UIFont boldSystemFontOfSize:20];
-    [self addSubview:amountLabel];
+    self.tableView.scrollEnabled = YES;
     
-    UIView *superview = self;
-    [amountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(20);
-        make.centerX.equalTo(superview.mas_centerX);
-        make.height.equalTo(@20);
+    //尾部区域
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 55)];
+    footerView.backgroundColor = COLOR_MAIN_BG;
+    self.tableView.tableFooterView = footerView;
+    
+    //支付按钮
+    UIButton *button = [AppUIUtil makeButton:@"确认支付"];
+    [button addTarget:self action:@selector(actionPayUseWay) forControlEvents:UIControlEventTouchUpInside];
+    [footerView addSubview:button];
+    
+    UIView *superview = footerView;
+    int padding = 10;
+    [button mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(superview.mas_top);
+        make.left.equalTo(superview.mas_left).offset(padding);
+        make.right.equalTo(superview.mas_right).offset(-padding);
+        
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
     return self;
@@ -42,91 +62,229 @@
 
 - (void)renderData
 {
-    //支付金额
+    //获取数据
     CaseEntity *intention = [self getData:@"intention"];
-    amountLabel.text = [NSString stringWithFormat:@"您需要支付%.2f元", [intention.totalAmount floatValue]];
+    totalAmount = [intention.totalAmount floatValue];
+    balanceAmount = 100;
     
-    //请选择支付方式
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.font = FONT_MAIN;
-    titleLabel.textColor = COLOR_MAIN_BLACK;
-    titleLabel.text = @"请选择支付方式";
-    [self addSubview:titleLabel];
+    //支付数据
+    NSMutableArray *paymentsData = [[NSMutableArray alloc] init];
+    [paymentsData addObject:@{@"id" : @"amount", @"type" : @"custom", @"view": @"cellAmount:"}];
     
-    UIView *superview = self;
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(amountLabel.mas_bottom).offset(20);
-        make.left.equalTo(superview.mas_left).offset(10);
+    //判断支付方式
+    NSArray *payments = [self getData:@"payments"];
+    for (ResultEntity* payment in payments) {
+        //判断支付方式
+        if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {
+            weixinQrcodeButton = [[DLRadioButton alloc] init];
+            [weixinQrcodeButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
+            weixinQrcodeButton.tag = 1;
+            [paymentsData addObject:@{@"id" : @"alipay", @"type" : @"custom", @"view": @"cellWeixinQrcode:", @"height": @60}];
+        } else if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {
+            alipayQrcodeButton = [[DLRadioButton alloc] init];
+            [alipayQrcodeButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
+            alipayQrcodeButton.tag = 2;
+            [paymentsData addObject:@{@"id" : @"weixin", @"type" : @"custom", @"view": @"cellAlipayQrcode:", @"height": @60}];
+        } else if ([PAY_WAY_CASH isEqualToString:payment.data]) {
+            moneyButton = [[DLRadioButton alloc] init];
+            [moneyButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
+            moneyButton.tag = 3;
+            [paymentsData addObject:@{@"id" : @"money", @"type" : @"custom", @"view": @"cellMoney:", @"height": @60}];
+        }
+    }
+    
+    //表格数据
+    self.tableData = [[NSMutableArray alloc] initWithObjects:
+                      @[
+                        @{@"id" : @"total", @"type" : @"custom", @"view": @"cellTotal:"},
+                        ],
+                      @[
+                        @{@"id" : @"balance", @"type" : @"custom", @"view": @"cellBalance:"},
+                        ],
+                      paymentsData,
+                      nil];
+    [self.tableView reloadData];
+}
+
+- (UITableViewCell *)cellTotal:(UITableViewCell *)cell
+{
+    //支付金额
+    totalLabel = [[UILabel alloc] init];
+    totalLabel.textColor = COLOR_MAIN_HIGHLIGHT;
+    totalLabel.font = [UIFont boldSystemFontOfSize:20];
+    totalLabel.text = [NSString stringWithFormat:@"您需要支付%.2f元", totalAmount];
+    [cell addSubview:totalLabel];
+    
+    UIView *superview = cell;
+    [totalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superview.mas_centerY);
+        make.centerX.equalTo(superview.mas_centerX);
         make.height.equalTo(@20);
     }];
     
-    UIView *titleSeperator = [[UIView alloc] init];
-    titleSeperator.backgroundColor = COLOR_MAIN_BLACK;
-    [self addSubview:titleSeperator];
+    return cell;
+}
+
+- (UITableViewCell *)cellBalance:(UITableViewCell *)cell
+{
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"美团余额：";
+    titleLabel.font = FONT_MAIN;
+    [cell addSubview:titleLabel];
     
-    [titleSeperator mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(titleLabel.mas_bottom).offset(9.5);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@0.5);
+    UIView *superview = cell;
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.width.equalTo(@80);
     }];
     
-    UIView *separatorView = nil;
+    balanceLabel = [[UILabel alloc] init];
+    balanceLabel.text = [NSString stringWithFormat:@"￥%.2f", balanceAmount];
+    balanceLabel.font = FONT_MAIN;
+    [cell addSubview:balanceLabel];
     
-    //循环输出支付方式
-    NSArray *payments = [self getData:@"payments"];
-    for (ResultEntity* payment in payments) {
-        //当前支付按钮
-        UIView *paymentButton = nil;
+    [balanceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(titleLabel.mas_right);
+    }];
+    
+    //单选框
+    balanceButton = [[DLRadioButton alloc] init];
+    [balanceButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
+    balanceButton.tag = -1;
+    balanceButton.iconColor = [UIColor grayColor];
+    balanceButton.iconStrokeWidth = 1;
+    balanceButton.indicatorColor = [UIColor blackColor];
+    balanceButton.indicatorSize = 5;
+    balanceButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    balanceButton.isIconSquare = YES;
+    [cell addSubview:balanceButton];
+    
+    [balanceButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.centerY.equalTo(superview.mas_centerY);
+        make.right.equalTo(superview.mas_right).offset(-10);
         
-        //判断支付方式
-        if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {
-            //微信扫码支付
-            weixinQrcodeButton = [self makeButton:@{
-                                                    @"icon": @"methodWeixinQrcode",
-                                                    @"text": @"微信扫码支付",
-                                                    @"detail": @"扫描微信二维码进行安全支付"
-                                                    }];
-            [weixinQrcodeButton addTarget:self action:@selector(actionWeixinQrcode) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:weixinQrcodeButton];
-            
-            paymentButton = weixinQrcodeButton;
-        } else if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {
-            //支付宝扫码支付
-            alipayQrcodeButton = [self makeButton:@{
-                                                    @"icon": @"methodAlipayQrcode",
-                                                    @"text": @"支付宝扫码支付",
-                                                    @"detail": @"扫描支付宝二维码进行安全支付"
-                                                    }];
-            [alipayQrcodeButton addTarget:self action:@selector(actionAlipayQrcode) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:alipayQrcodeButton];
-            
-            paymentButton = alipayQrcodeButton;
-        } else if ([PAY_WAY_CASH isEqualToString:payment.data]) {
-            //现金支付
-            moneyButton = [self makeButton:@{
-                                             @"icon": @"methodMoney",
-                                             @"text": @"现金支付",
-                                             @"detail": @"支付现金给工作人员"
-                                             }];
-            [moneyButton addTarget:self action:@selector(actionUseMoney) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:moneyButton];
-            
-            paymentButton = moneyButton;
-        }
-        
-        //按钮输出
-        if (paymentButton) {
-            [paymentButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(separatorView ? separatorView.mas_bottom : titleSeperator.mas_bottom);
-                make.left.equalTo(superview.mas_left);
-                make.right.equalTo(superview.mas_right);
-                make.height.equalTo(@60);
-            }];
-            
-            separatorView = paymentButton;
-        }
+        make.height.equalTo(@30);
+        make.width.equalTo(@30);
+    }];
+    
+    return cell;
+}
+
+- (UITableViewCell *)cellAmount:(UITableViewCell *)cell
+{
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"还需支付：";
+    titleLabel.font = FONT_MAIN;
+    [cell addSubview:titleLabel];
+    
+    UIView *superview = cell;
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.width.equalTo(@80);
+    }];
+    
+    amountLabel = [[UILabel alloc] init];
+    amountLabel.text = [NSString stringWithFormat:@"￥%.2f", totalAmount];
+    amountLabel.textColor = [UIColor redColor];
+    amountLabel.font = FONT_MAIN;
+    [cell addSubview:amountLabel];
+    
+    [amountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superview.mas_centerY);
+        make.left.equalTo(titleLabel.mas_right);
+    }];
+    
+    //默认选中账户余额
+    [self actionRadioClicked:balanceButton];
+    
+    return cell;
+}
+
+- (UITableViewCell *)cellWeixinQrcode:(UITableViewCell *)cell
+{
+    UIButton *button = [self makeButton:@{
+                                            @"icon": @"methodWeixinQrcode",
+                                            @"text": @"微信扫码支付",
+                                            @"detail": @"扫描微信二维码进行安全支付",
+                                            @"radio": weixinQrcodeButton
+                                            }];
+    [cell addSubview:button];
+    
+    UIView *superview = cell;
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superview).with.insets(UIEdgeInsetsZero);
+    }];
+    
+    //关联单选框
+    NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    if (alipayQrcodeButton) {
+        [otherButtons addObject:alipayQrcodeButton];
     }
+    if (moneyButton) {
+        [otherButtons addObject:moneyButton];
+    }
+    weixinQrcodeButton.otherButtons = otherButtons;
+    
+    return cell;
+}
+
+- (UITableViewCell *)cellAlipayQrcode:(UITableViewCell *)cell
+{
+    UIButton *button = [self makeButton:@{
+                                          @"icon": @"methodAlipayQrcode",
+                                          @"text": @"支付宝扫码支付",
+                                          @"detail": @"扫描支付宝二维码进行安全支付",
+                                          @"radio": alipayQrcodeButton
+                                          }];
+    [cell addSubview:button];
+    
+    UIView *superview = cell;
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superview).with.insets(UIEdgeInsetsZero);
+    }];
+    
+    //关联单选框
+    NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    if (weixinQrcodeButton) {
+        [otherButtons addObject:weixinQrcodeButton];
+    }
+    if (moneyButton) {
+        [otherButtons addObject:moneyButton];
+    }
+    alipayQrcodeButton.otherButtons = otherButtons;
+    
+    return cell;
+}
+
+- (UITableViewCell *)cellMoney:(UITableViewCell *)cell
+{
+    UIButton *button = [self makeButton:@{
+                                          @"icon": @"methodMoney",
+                                          @"text": @"现金支付",
+                                          @"detail": @"支付现金给工作人员",
+                                          @"radio": moneyButton
+                                          }];
+    [cell addSubview:button];
+    
+    UIView *superview = cell;
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superview).with.insets(UIEdgeInsetsZero);
+    }];
+    
+    //关联单选框
+    NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    if (weixinQrcodeButton) {
+        [otherButtons addObject:weixinQrcodeButton];
+    }
+    if (alipayQrcodeButton) {
+        [otherButtons addObject:alipayQrcodeButton];
+    }
+    moneyButton.otherButtons = otherButtons;
+    
+    return cell;
 }
 
 - (UIButton *)makeButton:(NSDictionary *)param
@@ -172,47 +330,82 @@
         make.height.equalTo(@20);
     }];
     
-    //箭头
-    UIImageView *chooseView = [[UIImageView alloc] init];
-    chooseView.image = [UIImage imageNamed:@"chooseMethod"];
-    [button addSubview:chooseView];
+    //单选框
+    DLRadioButton *radioButton = [param objectForKey:@"radio"];
+    radioButton.iconColor = [UIColor grayColor];
+    radioButton.iconStrokeWidth = 1;
+    radioButton.indicatorColor = [UIColor blackColor];
+    radioButton.indicatorSize = 5;
+    radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    radioButton.isIconSquare = NO;
+    [button addSubview:radioButton];
     
-    [chooseView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [radioButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.centerY.equalTo(button.mas_centerY);
         make.right.equalTo(button.mas_right).offset(-10);
-        make.width.equalTo(@10);
-        make.height.equalTo(@20);
-    }];
-    
-    //边框
-    UIView *borderView = [[UIView alloc] init];
-    borderView.backgroundColor = COLOR_MAIN_BLACK;
-    [button addSubview:borderView];
-    
-    [borderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(button.mas_bottom);
-        make.left.equalTo(button.mas_left);
-        make.right.equalTo(button.mas_right);
-        make.height.equalTo(@0.5);
+        
+        make.height.equalTo(@30);
+        make.width.equalTo(@30);
     }];
     
     return button;
 }
 
+#pragma mark - TableView
+//让分割线左侧不留空白
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 #pragma mark - Action
-- (void)actionWeixinQrcode
+- (void)actionRadioClicked:(DLRadioButton *)button
 {
-    [self.delegate actionWeixinQrcode];
+    //切换账户余额
+    if (button.tag == -1) {
+        if (useBalance) {
+            useBalance = NO;
+            button.selected = NO;
+            
+            amountLabel.text = [NSString stringWithFormat:@"￥%.2f", totalAmount];
+        } else {
+            useBalance = YES;
+            button.selected = YES;
+            
+            //余额是否足够
+            float payAmount = balanceAmount >= totalAmount ? 0 : totalAmount - balanceAmount;
+            amountLabel.text = [NSString stringWithFormat:@"￥%.2f", payAmount];
+        }
+    }
+    
+    //如果余额足够且使用余额，则不能勾选其它方式
+    if (useBalance && balanceAmount >= totalAmount) {
+        if (weixinQrcodeButton) weixinQrcodeButton.selected = NO;
+        if (alipayQrcodeButton) alipayQrcodeButton.selected = NO;
+        if (moneyButton) moneyButton.selected = NO;
+    }
 }
 
-- (void)actionAlipayQrcode
+- (void)actionPayUseWay
 {
-    [self.delegate actionAlipayQrcode];
-}
-
-- (void)actionUseMoney
-{
-    [self.delegate actionUseMoney];
+    NSString *payWay = nil;
+    if (weixinQrcodeButton && weixinQrcodeButton.selected) {
+        payWay = PAY_WAY_WEIXIN;
+    } else if (alipayQrcodeButton && alipayQrcodeButton.selected) {
+        payWay = PAY_WAY_ALIPAY;
+    } else if (moneyButton && moneyButton.selected) {
+        payWay = PAY_WAY_CASH;
+    }
+    
+    [self.delegate actionPayUseWay:useBalance payWay:payWay];
 }
 
 @end

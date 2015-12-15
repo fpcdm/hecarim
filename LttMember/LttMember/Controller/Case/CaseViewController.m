@@ -381,8 +381,38 @@
     }];
 }
 
+//确认支付
+- (void)actionPayUseWay:(BOOL)useBalance payWay:(NSString *)payWay
+{
+    //未选择支付方式
+    if (!useBalance && !payWay) {
+        [self showError:@"请选择支付方式哦~亲！"];
+        return;
+    }
+    
+    //仅使用余额
+    if (!payWay) {
+        [self actionUseBalance];
+    //使用其它方式，分用余额和不用余额两种情况
+    } else {
+        if ([PAY_WAY_WEIXIN isEqualToString:payWay]) {
+            [self actionWeixinQrcode:useBalance];
+        } else if ([PAY_WAY_ALIPAY isEqualToString:payWay]) {
+            [self actionAlipayQrcode:useBalance];
+        } else if ([PAY_WAY_CASH isEqualToString:payWay]) {
+            [self actionUseMoney:useBalance];
+        }
+    }
+}
+
+//仅余额支付
+- (void)actionUseBalance
+{
+    [self showError:@"开发中"];
+}
+
 //微信扫码
-- (void)actionWeixinQrcode
+- (void)actionWeixinQrcode:(BOOL)useBalance
 {
     //检查微信扫码
     NSURL *url = [NSURL URLWithString:URL_SCHEME_WEIXIN_QRCODE];
@@ -397,7 +427,7 @@
 }
 
 //支付宝扫码
-- (void)actionAlipayQrcode
+- (void)actionAlipayQrcode:(BOOL)useBalance
 {
     //检查微信扫码
     NSURL *url = [NSURL URLWithString:URL_SCHEME_ALIPAY_QRCODE];
@@ -412,7 +442,7 @@
 }
 
 //现金支付
-- (void)actionUseMoney
+- (void)actionUseMoney:(BOOL)useBalance
 {
     [self actionUpdatePayment:PAY_WAY_CASH success:^(id object) {
         [self payedView];

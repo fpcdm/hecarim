@@ -6,17 +6,15 @@
 //  Copyright © 2015年 Gilbert. All rights reserved.
 //
 
-#import "AppView.h"
+#import "AppTableView.h"
 
 @protocol CaseCashierViewDelegate <NSObject>
 
-- (void)actionWeixinQrcode;
-- (void)actionAlipayQrcode;
-- (void)actionUseMoney;
+- (void)actionPayUseWay:(BOOL)useBalance payWay:(NSString *)payWay;
 
 @end
 
-@interface CaseCashierView : AppView
+@interface CaseCashierView : AppTableView
 
 @property (retain, nonatomic) id<CaseCashierViewDelegate> delegate;
 
