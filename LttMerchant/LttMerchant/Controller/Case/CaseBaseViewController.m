@@ -14,25 +14,6 @@
 
 @implementation CaseBaseViewController
 
-#pragma mark - View
-- (void)onTemplateLoading
-{
-}
-
-- (void)onTemplateLoaded
-{
-}
-
-- (void)onTemplateFailed
-{
-    
-}
-
-- (void)onTemplateCancelled
-{
-    
-}
-
 #pragma mark - Data
 //加载需求数据并重新渲染
 - (void) loadCase

@@ -980,6 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				2FAA3B841BFC1AAA006B92E1 /* CasePopupView.h */,
+				2FAA3B851BFC1AAA006B92E1 /* CasePopupView.m */,
 				2BBBBF481C153731001DFAB8 /* CaseDetailView.h */,
 				2BBBBF491C153731001DFAB8 /* CaseDetailView.m */,
 				2BBBBF4C1C153731001DFAB8 /* GoodsContainerView.h */,
@@ -994,7 +995,6 @@
 				2BBBBF571C153731001DFAB8 /* ServicesContainerView.m */,
 				2BBBBF581C153731001DFAB8 /* ServiceView.h */,
 				2BBBBF591C153731001DFAB8 /* ServiceView.m */,
-				2FAA3B851BFC1AAA006B92E1 /* CasePopupView.m */,
 				2F66973F1B8185C6004BF473 /* CaseListView.h */,
 				2F6697401B8185C6004BF473 /* CaseListView.m */,
 				2BCED6781BE8A8090011F1FF /* CaseEditView.h */,

@@ -376,11 +376,12 @@
         tipSpecLabel.hidden = NO;
         [specView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@60);
-        }];        self.contentSize = CGSizeMake(SCREEN_WIDTH, height);
+        }];
+        self.contentSize = CGSizeMake(SCREEN_WIDTH, height);
     } else {
         tipSpecLabel.hidden = YES;
-        height = height + (specCount - 1) * 60;
-        self.contentSize = CGSizeMake(SCREEN_WIDTH, height);
+        CGFloat heightNew = height + (specCount - 1) * 60;
+        self.contentSize = CGSizeMake(SCREEN_WIDTH, heightNew);
         
         //更新规格视图高度
         CGFloat specHeight = specList.count * 60;
@@ -513,9 +514,6 @@
             relateView = specBoxView;
         }
     }
-    
-    
-    
 }
 
 //设置头部需求信息
