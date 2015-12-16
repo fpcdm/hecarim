@@ -229,6 +229,8 @@
 
 - (void)thirdLogin:(UMSocialAccountEntity *)snsAccount
 {
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
     //记录用户信息
     UserEntity *user = [[UserEntity alloc] init];
     user.type = USER_TYPE_MEMBER;
@@ -259,12 +261,16 @@
         //是否绑定成功
         UserEntity *apiUser = result && [result count] > 0 ? [result firstObject] : nil;
         if (apiUser && apiUser.id) {
-            //赋值并释放资源
-            [self syncUser:user apiUser:apiUser];
+            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                //赋值并释放资源
+                [self syncUser:user apiUser:apiUser];
                 
-            HomeViewController *viewController = [[HomeViewController alloc] init];
-            [self toggleViewController:viewController animated:YES];
+                HomeViewController *viewController = [[HomeViewController alloc] init];
+                [self toggleViewController:viewController animated:YES];
+            }];
         } else {
+            [self hideLoading];
+            
             ThirdLoginViewController *viewController = [[ThirdLoginViewController alloc] init];
             viewController.thirdUser = user;
             viewController.thirdParam = param;
