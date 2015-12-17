@@ -15,7 +15,7 @@
 #import "MyWalletViewController.h"
 #import "UpdatePayPasswordView.h"
 #import "UpdatePayPasswordSuccessView.h"
-#import "SafetyViewController.h"
+#import "UserHandler.h"
 
 @interface PayPasswordViewController ()<SetPayPasswordCodeViewDelegate,SetPayPasswordViewDelegate,UpdatePayPasswordViewDelegate,UpdatePayPasswordSuccessViewDelegate>
 
@@ -32,21 +32,25 @@
 
 - (void)loadView
 {
-    self.view = [self codeView];
+    if ([[StorageUtil sharedStorage] getPayRes]) {
+        self.view = [self updatePasswordView];
+    } else {
+        self.view = [self codeView];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"设置支付密码";
-    
     //检查是否可以发送校验码
     [self checkButton];
+
 }
 
 //校验码视图
 - (SetPayPasswordCodeView *) codeView
 {
+    self.navigationItem.title = @"设置支付密码";
     codeView = [[SetPayPasswordCodeView alloc] init];
     codeView.delegate = self;
     
@@ -218,8 +222,12 @@
         [self showError:@"支付密码不能为空"];
         return;
     }
-    if (![ValidateUtil isLengthBetween:password from:6 to:20]) {
-        [self showError:@"支付密码为6-20位字符或数字"];
+    if (![ValidateUtil isPositiveNumber:password]) {
+        [self showError:@"支付密码只能是数字"];
+        return;
+    }
+    if (![ValidateUtil isLength:password length:6]) {
+        [self showError:@"支付密码为6位数字"];
         return;
     }
     if (![ValidateUtil isRequired:rePassword]) {
@@ -231,9 +239,23 @@
         return;
     }
     
-    //[self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
+    UserHandler *userhandler = [[UserHandler alloc] init];
+    [userhandler setPayPassword:password success:^(NSArray *result) {
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [[StorageUtil sharedStorage] setPayRes:@"1"];
+            //通知刷新
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+    
 }
 
 - (void)actionNext:(NSString *)oldPassword newPassword:(NSString *)newPassword
@@ -246,19 +268,34 @@
         [self showError:@"请输入新支付密码"];
         return;
     }
-    if (![ValidateUtil isLengthBetween:newPassword from:6 to:20]) {
-        [self showError:@"密码长度为6-20位字符或数字"];
+    if (![ValidateUtil isLength:newPassword length:6]) {
+        [self showError:@"密码长度为6位数字"];
+        return;
+    }
+    if (![ValidateUtil isPositiveNumber:newPassword]) {
+        [self showError:@"支付密码只能数字"];
+        return;
+    }
+    if ([oldPassword isEqualToString:newPassword]) {
+        [self showError:@"新密码不能和原始密码相同"];
         return;
     }
     
-    [self showLoading:TIP_LOADING_MESSAGE];
-    [self pushView:[self successView] animated:YES completion:nil];
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler updatePayPassword:oldPassword newPassword:newPassword success:^(NSArray *result) {
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self pushView:[self successView] animated:YES completion:nil];
+        }];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 - (void)actionGoSafe
 {
-    SafetyViewController *safetyController = [[SafetyViewController alloc] init];
-    [self pushViewController:safetyController animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

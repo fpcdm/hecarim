@@ -64,6 +64,21 @@
     return cityCode;
 }
 
+- (void)setPayRes:(NSString *)payRes
+{
+    [[self storage] setObject:payRes forKey:@"payRes"];
+    NSLog(@"查询支付密码：%@",([@"1" isEqualToString:payRes] ? @"已设置" : @"未设置"));
+    [[self storage] synchronize];
+}
+
+- (BOOL)getPayRes
+{
+    NSString *payRes = (NSString *) [[self storage] objectForKey:@"payRes"];
+    NSLog(@"支付密码：%@",([@"1" isEqualToString:payRes] ? @"已设置" : @"未设置"));
+    if ([@"1" isEqualToString:payRes]) return YES;
+    return NO;
+}
+
 @end
 
 //UserEntity分类

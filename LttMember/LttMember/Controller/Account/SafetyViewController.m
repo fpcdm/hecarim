@@ -10,6 +10,7 @@
 #import "SafetyView.h"
 #import "SafetyPasswordViewController.h"
 #import "PayPasswordViewController.h"
+#import "UserHandler.h"
 
 @interface SafetyViewController () <SafetyViewDelegate>
 
@@ -18,6 +19,8 @@
 @implementation SafetyViewController
 {
     SafetyView *safetyView;
+    
+    BOOL needRefresh;
 }
 
 - (void)loadView
@@ -30,12 +33,25 @@
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
     [safetyView setData:@"user" value:user];
     [safetyView renderData];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.navigationItem.title = @"账户与安全";
+}
+
+//自动刷新
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (needRefresh) {
+        NSLog(@"刷新了");
+        needRefresh = NO;
+        [safetyView renderData];
+    }
+    
+    NSLog(@"刷新了dddd");
 }
 
 #pragma mark - Action
@@ -48,6 +64,13 @@
 - (void)actionPayPassword
 {
     PayPasswordViewController *viewController = [[PayPasswordViewController alloc] init];
+    viewController.callbackBlock = ^(id object){
+        //标记可刷新
+        if (object && [@1 isEqualToNumber:object]) {
+            needRefresh = YES;
+        }
+    };
+
     [self pushViewController:viewController animated:YES];
 }
 

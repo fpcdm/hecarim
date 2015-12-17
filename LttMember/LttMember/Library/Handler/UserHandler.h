@@ -201,4 +201,37 @@
  */
 - (void) setReferee: (NSString *) mobile success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  判断是否设置支付密码
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) issetPayPassword: (NSString *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  设置支付密码
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) setPayPassword: (NSString *) password success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  校验支付密码
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) verifyPayPassword: (NSString *) password success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  修改支付密码
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) updatePayPassword: (NSString *) password newPassword:(NSString *)newPassword success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+
 @end

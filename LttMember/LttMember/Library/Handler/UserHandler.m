@@ -383,4 +383,69 @@
     }];
 }
 
+//判断是否设置支付密码
+- (void)issetPayPassword:(NSString *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"res": @"data"}];
+    
+    [sharedClient getObject:[RestKitUtil new] path:@"user/issetpaypassword" param:nil success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+
+}
+
+//设置支付密码
+- (void)setPayPassword:(NSString *)password success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{@"password":(password ? password : @"")};
+    
+    [sharedClient putObject:[UserEntity new] path:@"user/paypassword" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+
+}
+
+//校验支付密码
+- (void)verifyPayPassword:(NSString *)password success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{@"password":(password ? password : @"")};
+    
+    [sharedClient getObject:[UserEntity new] path:@"user/paypassword" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+
+}
+
+//修改支付密码
+- (void)updatePayPassword:(NSString *)password newPassword:(NSString *)newPassword success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    NSDictionary *param = @{
+                            @"password":password ? password : @"",
+                            @"newpass":newPassword ? newPassword : @""
+                          };
+    
+    [sharedClient postObject:[UserEntity new] path:@"user/paypassword" param:param success:^(NSArray *result){
+        success(result);
+    } failure:^(ErrorEntity *error){
+        failure(error);
+    }];
+}
+
 @end

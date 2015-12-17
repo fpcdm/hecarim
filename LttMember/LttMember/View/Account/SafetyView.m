@@ -7,6 +7,7 @@
 //
 
 #import "SafetyView.h"
+#import "ResultEntity.h"
 
 @implementation SafetyView
 
@@ -14,6 +15,8 @@
 - (void) renderData
 {
     UserEntity *user = [self getData:@"user"];
+    BOOL res = [[StorageUtil sharedStorage] getPayRes];
+    NSString *payString = [NSString stringWithFormat:@"%@支付密码",(res ? @"修改" : @"设置")];
     NSString *mobile = user.mobile ? user.mobile : @"";
     if ([mobile length] > 0) {
         mobile = [NSString stringWithFormat:@"%@****%@", [mobile substringToIndex:3], [mobile substringFromIndex:7]];
@@ -24,10 +27,11 @@
                         @{@"id" : @"mobile", @"type" : @"custom", @"action": @"", @"image": @"", @"text" : @"手机号码", @"style" : @"value1", @"detail" : mobile},
                         ],
                       @[
-                        @{@"id" : @"payPassword", @"type" : @"action", @"action": @"actionPayPassword", @"image": @"", @"text" : @"设置支付密码"},
+                        @{@"id" : @"payPassword", @"type" : @"action", @"action": @"actionPayPassword", @"image": @"", @"text" : payString},
                         @{@"id" : @"password", @"type" : @"action", @"action": @"actionPassword", @"image": @"", @"text" : @"修改登陆密码"},
                         ],
                       nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark - TableView

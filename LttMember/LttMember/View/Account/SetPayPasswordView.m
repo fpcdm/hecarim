@@ -29,6 +29,7 @@
     passwordField.layer.borderColor = CGCOLOR_MAIN_BORDER;
     passwordField.font = FONT_MAIN;
     passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    passwordField.keyboardType = UIKeyboardTypeNumberPad;
     passwordField.secureTextEntry = YES;
     [self addSubview:passwordField];
     
@@ -45,6 +46,7 @@
     rePasswordField.layer.borderColor = CGCOLOR_MAIN_BORDER;
     rePasswordField.font = FONT_MAIN;
     rePasswordField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    rePasswordField.keyboardType = UIKeyboardTypeNumberPad;
     rePasswordField.secureTextEntry = YES;
     [self addSubview:rePasswordField];
     

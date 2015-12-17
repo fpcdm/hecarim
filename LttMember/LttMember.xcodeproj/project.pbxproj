@@ -1219,6 +1219,7 @@
 			isa = PBXGroup;
 			children = (
 				2F16E5BC1B5DF08F007947D0 /* AboutViewController.h */,
+				2F16E5BD1B5DF08F007947D0 /* AboutViewController.m */,
 				2B59B9181C1AC50F00918756 /* BalanceListViewController.h */,
 				2B59B9191C1AC50F00918756 /* BalanceListViewController.m */,
 				2B59B91A1C1AC50F00918756 /* MyWalletViewController.h */,
@@ -1227,7 +1228,6 @@
 				2F2538371C1E6066009FC19B /* RechargeViewController.m */,
 				2B59B91C1C1AC50F00918756 /* PayPasswordViewController.h */,
 				2B59B91D1C1AC50F00918756 /* PayPasswordViewController.m */,
-				2F16E5BD1B5DF08F007947D0 /* AboutViewController.m */,
 				2F16E5BE1B5DF08F007947D0 /* AccountViewController.h */,
 				2F16E5BF1B5DF08F007947D0 /* AccountViewController.m */,
 				2F16E5C01B5DF08F007947D0 /* AddressDetailViewController.h */,

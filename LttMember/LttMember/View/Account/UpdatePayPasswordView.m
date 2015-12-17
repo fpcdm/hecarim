@@ -28,6 +28,7 @@
     oldPassword.font = FONT_MAIN;
     oldPassword.secureTextEntry = YES;
     oldPassword.clearButtonMode = UITextFieldViewModeWhileEditing;
+    oldPassword.keyboardType = UIKeyboardTypeNumberPad;
     oldPassword.textColor = COLOR_MAIN_BLACK;
     [self addSubview:oldPassword];
     
@@ -43,6 +44,7 @@
     newPassword.font = FONT_MAIN;
     newPassword.secureTextEntry = YES;
     newPassword.clearButtonMode = UITextFieldViewModeWhileEditing;
+    newPassword.keyboardType = UIKeyboardTypeNumberPad;
     newPassword.textColor = COLOR_MAIN_BLACK;
     [self addSubview:newPassword];
     

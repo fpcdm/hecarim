@@ -123,8 +123,16 @@
 
 - (void)actionSafety
 {
-    SafetyViewController *viewController = [[SafetyViewController alloc] init];
-    [self pushViewController:viewController animated:YES];
+    UserHandler *userhandler = [[UserHandler alloc] init];
+    [userhandler issetPayPassword:nil success:^(NSArray *result) {
+        ResultEntity *resultEntity = [result firstObject];
+        [[StorageUtil sharedStorage] setPayRes:[NSString stringWithFormat:@"%@",resultEntity.data]];
+        SafetyViewController *viewController = [[SafetyViewController alloc] init];
+        [self pushViewController:viewController animated:YES];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+
 }
 
 - (void)actionAddress

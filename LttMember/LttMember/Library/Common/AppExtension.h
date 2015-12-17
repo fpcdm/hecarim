@@ -20,6 +20,10 @@
 
 - (NSString *) getCityCode;
 
+- (void)setPayRes:(NSString *)payRes;
+
+- (BOOL)getPayRes;
+
 @end
 
 //UserEntity分类
