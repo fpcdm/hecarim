@@ -371,7 +371,7 @@
         [self showError:ERROR_CONTACTID_REQUIRED];
         return;
     }
-    
+    /*
     if (![ValidateUtil isRequired:licenseUrl]) {
         [self showError:@"营业执照不能为空哦~亲！"];
         return;
@@ -380,6 +380,7 @@
         [self showError:@"身份证正面照不能为空哦~亲！"];
         return;
     }
+     */
     
     [self showLoading:TIP_REQUEST_MESSAGE];
     

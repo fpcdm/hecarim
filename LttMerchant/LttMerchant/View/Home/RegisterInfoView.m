@@ -264,7 +264,7 @@
     
     //营业执照图片信息
     UILabel *licenseLabel = [[UILabel alloc] init];
-    licenseLabel.text = @"上传清晰营业执照";
+    licenseLabel.text = @"上传清晰营业执照/其他证件";
     licenseLabel.textColor = COLOR_MAIN_BLACK;
     licenseLabel.font = FONT_MAIN;
     [self.contentView addSubview:licenseLabel];
