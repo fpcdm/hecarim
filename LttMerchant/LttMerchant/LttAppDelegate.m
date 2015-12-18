@@ -124,12 +124,16 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    //还原自动锁屏
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    //禁止自动锁屏
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
