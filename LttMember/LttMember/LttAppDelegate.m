@@ -19,8 +19,9 @@
 #import "UMSocialWechatHandler.h"
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocialQQHandler.h"
+#import "WXApi.h"
 
-@interface LttAppDelegate ()
+@interface LttAppDelegate () <WXApiDelegate>
 
 @end
 
@@ -90,6 +91,9 @@
     
     //初始化友盟分享
     [self initUmeng];
+    
+    //初始化支付
+    [self initPay];
     
     return YES;
 }
@@ -315,14 +319,54 @@
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone,UMShareToSina]];
 }
 
-//友盟回调
+//初始化支付
+- (void)initPay
+{
+    //初始化微信支付
+    [WXApi registerApp:UMENG_WEIXIN_APPID withDescription:@"两条腿"];
+    
+}
+
+//第三方回调，9.0之前
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     BOOL result = [UMSocialSnsService handleOpenURL:url];
     if (result == FALSE) {
         //调用其他SDK
+        
+        //微信支付回调
+        //return [WXApi handleOpenURL:url delegate:self];
+        
+        //跳转支付宝钱包进行支付，处理支付结果
+        //[[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            //NSLog(@"result = %@",resultDic);
+        //}];
     }
     return result;
+}
+
+- (void)onResp:(BaseResp *)resp {
+    if([resp isKindOfClass:[PayResp class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        NSString *strMsg,*strTitle = [NSString stringWithFormat:@"支付结果"];
+        
+        switch (resp.errCode) {
+            case WXSuccess:
+                strMsg = @"支付结果：成功！";
+                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                break;
+                
+            default:
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                break;
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+- (void)onReq:(BaseReq *)req {
 }
 
 @end
