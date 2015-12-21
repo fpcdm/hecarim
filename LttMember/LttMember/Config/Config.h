@@ -108,6 +108,7 @@
 #define PAY_TYPE_MERCHANT 3
 
 //支付方式列表
+#define PAY_WAY_BALANCE @"balance"
 #define PAY_WAY_WEIXIN @"weixin"
 #define PAY_WAY_ALIPAY @"alipay"
 #define PAY_WAY_CASH   @"cash"

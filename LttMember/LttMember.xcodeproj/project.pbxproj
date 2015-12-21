@@ -110,7 +110,6 @@
 		2F253A0A1C1EB44E009FC19B /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F253A031C1EB44E009FC19B /* libWeChatSDK.a */; };
 		2F253A1C1C1EBF8A009FC19B /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A0D1C1EBF8A009FC19B /* NSString+Extension.m */; };
 		2F253A1D1C1EBF8A009FC19B /* trade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F253A0F1C1EBF8A009FC19B /* trade.bundle */; };
-		2F253A1E1C1EBF8A009FC19B /* UIAlertView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A111C1EBF8A009FC19B /* UIAlertView+Quick.m */; };
 		2F253A1F1C1EBF8A009FC19B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A131C1EBF8A009FC19B /* UIView+Extension.m */; };
 		2F253A201C1EBF8A009FC19B /* ZCAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A151C1EBF8A009FC19B /* ZCAudioTool.m */; };
 		2F253A211C1EBF8A009FC19B /* ZCTradeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F253A171C1EBF8A009FC19B /* ZCTradeInputView.m */; };
@@ -521,8 +520,6 @@
 		2F253A0D1C1EBF8A009FC19B /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		2F253A0E1C1EBF8A009FC19B /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		2F253A0F1C1EBF8A009FC19B /* trade.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = trade.bundle; sourceTree = "<group>"; };
-		2F253A101C1EBF8A009FC19B /* UIAlertView+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Quick.h"; sourceTree = "<group>"; };
-		2F253A111C1EBF8A009FC19B /* UIAlertView+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Quick.m"; sourceTree = "<group>"; };
 		2F253A121C1EBF8A009FC19B /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		2F253A131C1EBF8A009FC19B /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		2F253A141C1EBF8A009FC19B /* ZCAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAudioTool.h; sourceTree = "<group>"; };
@@ -1432,8 +1429,6 @@
 				2F253A0D1C1EBF8A009FC19B /* NSString+Extension.m */,
 				2F253A0E1C1EBF8A009FC19B /* Singleton.h */,
 				2F253A0F1C1EBF8A009FC19B /* trade.bundle */,
-				2F253A101C1EBF8A009FC19B /* UIAlertView+Quick.h */,
-				2F253A111C1EBF8A009FC19B /* UIAlertView+Quick.m */,
 				2F253A121C1EBF8A009FC19B /* UIView+Extension.h */,
 				2F253A131C1EBF8A009FC19B /* UIView+Extension.m */,
 				2F253A141C1EBF8A009FC19B /* ZCAudioTool.h */,
@@ -2609,7 +2604,6 @@
 				2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */,
 				2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */,
 				2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */,
-				2F253A1E1C1EBF8A009FC19B /* UIAlertView+Quick.m in Sources */,
 				2F8BFF211B8DB4B90087EDA0 /* TAPageControl.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
 				2F9001151B1D9D550040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,

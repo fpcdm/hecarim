@@ -10,7 +10,7 @@
 
 @protocol CaseCashierViewDelegate <NSObject>
 
-- (void)actionPayUseWay:(BOOL)useBalance payWay:(NSString *)payWay;
+- (void)actionPayUseWay:(NSString *)payWay;
 
 @end
 

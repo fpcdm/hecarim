@@ -21,13 +21,9 @@
     
     UILabel *totalLabel;
     UILabel *balanceLabel;
-    UILabel *amountLabel;
     
     float totalAmount;
     float balanceAmount;
-    
-    //是否使用余额
-    BOOL useBalance;
 }
 
 - (id)init
@@ -69,7 +65,17 @@
     
     //支付数据
     NSMutableArray *paymentsData = [[NSMutableArray alloc] init];
-    [paymentsData addObject:@{@"id" : @"amount", @"type" : @"custom", @"view": @"cellAmount:"}];
+    
+    //余额支付
+    balanceButton = [[DLRadioButton alloc] init];
+    [balanceButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
+    balanceButton.tag = -1;
+    [paymentsData addObject:@{@"id" : @"balance", @"type" : @"custom", @"view": @"cellBalance:", @"height": @60}];
+    
+    //余额不足不能选择
+    if (balanceAmount < totalAmount) {
+        balanceButton.enabled = NO;
+    }
     
     //判断支付方式
     NSArray *payments = [self getData:@"payments"];
@@ -99,7 +105,7 @@
                         @{@"id" : @"total", @"type" : @"custom", @"view": @"cellTotal:"},
                         ],
                       @[
-                        @{@"id" : @"balance", @"type" : @"custom", @"view": @"cellBalance:"},
+                        @{@"id" : @"balance", @"type" : @"custom", @"view": @"cellWallet:"},
                         ],
                       paymentsData,
                       nil];
@@ -125,10 +131,10 @@
     return cell;
 }
 
-- (UITableViewCell *)cellBalance:(UITableViewCell *)cell
+- (UITableViewCell *)cellWallet:(UITableViewCell *)cell
 {
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"美团余额：";
+    titleLabel.text = @"钱包余额：";
     titleLabel.font = FONT_MAIN;
     [cell addSubview:titleLabel];
     
@@ -149,56 +155,36 @@
         make.left.equalTo(titleLabel.mas_right);
     }];
     
-    //单选框
-    balanceButton = [[DLRadioButton alloc] init];
-    [balanceButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
-    balanceButton.tag = -1;
-    balanceButton.iconColor = [UIColor grayColor];
-    balanceButton.iconStrokeWidth = 1;
-    balanceButton.indicatorColor = [UIColor blackColor];
-    balanceButton.indicatorSize = 5;
-    balanceButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    balanceButton.isIconSquare = YES;
-    [cell addSubview:balanceButton];
-    
-    [balanceButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerY.equalTo(superview.mas_centerY);
-        make.right.equalTo(superview.mas_right).offset(-10);
-        
-        make.height.equalTo(@30);
-        make.width.equalTo(@30);
-    }];
-    
     return cell;
 }
 
-- (UITableViewCell *)cellAmount:(UITableViewCell *)cell
+- (UITableViewCell *)cellBalance:(UITableViewCell *)cell
 {
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"还需支付：";
-    titleLabel.font = FONT_MAIN;
-    [cell addSubview:titleLabel];
+    UIButton *button = [self makeButton:@{
+                                          @"icon": @"icon",
+                                          @"text": @"余额支付",
+                                          @"detail": @"使用钱包余额支付",
+                                          @"radio": balanceButton
+                                          }];
+    [cell addSubview:button];
     
     UIView *superview = cell;
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(superview.mas_centerY);
-        make.left.equalTo(superview.mas_left).offset(10);
-        make.width.equalTo(@80);
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superview).with.insets(UIEdgeInsetsZero);
     }];
     
-    amountLabel = [[UILabel alloc] init];
-    amountLabel.text = [NSString stringWithFormat:@"￥%.2f", totalAmount];
-    amountLabel.textColor = [UIColor redColor];
-    amountLabel.font = FONT_MAIN;
-    [cell addSubview:amountLabel];
-    
-    [amountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(superview.mas_centerY);
-        make.left.equalTo(titleLabel.mas_right);
-    }];
-    
-    //默认选中账户余额
-    [self actionRadioClicked:balanceButton];
+    //关联单选框
+    NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    if (weixinQrcodeButton) {
+        [otherButtons addObject:weixinQrcodeButton];
+    }
+    if (alipayQrcodeButton) {
+        [otherButtons addObject:alipayQrcodeButton];
+    }
+    if (moneyButton) {
+        [otherButtons addObject:moneyButton];
+    }
+    weixinQrcodeButton.otherButtons = otherButtons;
     
     return cell;
 }
@@ -220,6 +206,7 @@
     
     //关联单选框
     NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    [otherButtons addObject:balanceButton];
     if (alipayQrcodeButton) {
         [otherButtons addObject:alipayQrcodeButton];
     }
@@ -248,6 +235,7 @@
     
     //关联单选框
     NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    [otherButtons addObject:balanceButton];
     if (weixinQrcodeButton) {
         [otherButtons addObject:weixinQrcodeButton];
     }
@@ -276,6 +264,7 @@
     
     //关联单选框
     NSMutableArray *otherButtons = [[NSMutableArray alloc] init];
+    [otherButtons addObject:balanceButton];
     if (weixinQrcodeButton) {
         [otherButtons addObject:weixinQrcodeButton];
     }
@@ -369,35 +358,15 @@
 #pragma mark - Action
 - (void)actionRadioClicked:(DLRadioButton *)button
 {
-    //切换账户余额
-    if (button.tag == -1) {
-        if (useBalance) {
-            useBalance = NO;
-            button.selected = NO;
-            
-            amountLabel.text = [NSString stringWithFormat:@"￥%.2f", totalAmount];
-        } else {
-            useBalance = YES;
-            button.selected = YES;
-            
-            //余额是否足够
-            float payAmount = balanceAmount >= totalAmount ? 0 : totalAmount - balanceAmount;
-            amountLabel.text = [NSString stringWithFormat:@"￥%.2f", payAmount];
-        }
-    }
     
-    //如果余额足够且使用余额，则不能勾选其它方式
-    if (useBalance && balanceAmount >= totalAmount) {
-        if (weixinQrcodeButton) weixinQrcodeButton.selected = NO;
-        if (alipayQrcodeButton) alipayQrcodeButton.selected = NO;
-        if (moneyButton) moneyButton.selected = NO;
-    }
 }
 
 - (void)actionPayUseWay
 {
     NSString *payWay = nil;
-    if (weixinQrcodeButton && weixinQrcodeButton.selected) {
+    if (balanceButton.selected) {
+        payWay = PAY_WAY_BALANCE;
+    } else if (weixinQrcodeButton && weixinQrcodeButton.selected) {
         payWay = PAY_WAY_WEIXIN;
     } else if (alipayQrcodeButton && alipayQrcodeButton.selected) {
         payWay = PAY_WAY_ALIPAY;
@@ -405,7 +374,7 @@
         payWay = PAY_WAY_CASH;
     }
     
-    [self.delegate actionPayUseWay:useBalance payWay:payWay];
+    [self.delegate actionPayUseWay:payWay];
 }
 
 @end

@@ -22,6 +22,7 @@
 #import "HomeViewController.h"
 #import "UIView+Loading.h"
 #import "LttAppDelegate.h"
+#import "ZCTradeView.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseGoodsViewDelegate, CaseCashierViewDelegate, CasePayedViewDelegate, CaseCommentViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
 
@@ -382,37 +383,39 @@
 }
 
 //确认支付
-- (void)actionPayUseWay:(BOOL)useBalance payWay:(NSString *)payWay
+- (void)actionPayUseWay:(NSString *)payWay
 {
     //未选择支付方式
-    if (!useBalance && !payWay) {
+    if (!payWay) {
         [self showError:@"请选择支付方式哦~亲！"];
         return;
     }
     
-    //仅使用余额
-    if (!payWay) {
+    //根据支付方式处理
+    if ([PAY_WAY_BALANCE isEqualToString:payWay]) {
         [self actionUseBalance];
-    //使用其它方式，分用余额和不用余额两种情况
-    } else {
-        if ([PAY_WAY_WEIXIN isEqualToString:payWay]) {
-            [self actionWeixinQrcode:useBalance];
-        } else if ([PAY_WAY_ALIPAY isEqualToString:payWay]) {
-            [self actionAlipayQrcode:useBalance];
-        } else if ([PAY_WAY_CASH isEqualToString:payWay]) {
-            [self actionUseMoney:useBalance];
-        }
+    } else if ([PAY_WAY_WEIXIN isEqualToString:payWay]) {
+        [self actionWeixinQrcode];
+    } else if ([PAY_WAY_ALIPAY isEqualToString:payWay]) {
+        [self actionAlipayQrcode];
+    } else if ([PAY_WAY_CASH isEqualToString:payWay]) {
+        [self actionUseMoney];
     }
 }
 
-//仅余额支付
+//余额支付
 - (void)actionUseBalance
 {
-    [self showError:@"开发中"];
+    //支付密码
+    ZCTradeView *tradeView = [[ZCTradeView alloc] init];
+    tradeView.finish = ^(NSString *password){
+        NSLog(@"支付密码: %@", password);
+    };
+    [tradeView show];
 }
 
 //微信扫码
-- (void)actionWeixinQrcode:(BOOL)useBalance
+- (void)actionWeixinQrcode
 {
     //检查微信扫码
     NSURL *url = [NSURL URLWithString:URL_SCHEME_WEIXIN_QRCODE];
@@ -427,7 +430,7 @@
 }
 
 //支付宝扫码
-- (void)actionAlipayQrcode:(BOOL)useBalance
+- (void)actionAlipayQrcode
 {
     //检查微信扫码
     NSURL *url = [NSURL URLWithString:URL_SCHEME_ALIPAY_QRCODE];
@@ -442,7 +445,7 @@
 }
 
 //现金支付
-- (void)actionUseMoney:(BOOL)useBalance
+- (void)actionUseMoney
 {
     [self actionUpdatePayment:PAY_WAY_CASH success:^(id object) {
         [self payedView];

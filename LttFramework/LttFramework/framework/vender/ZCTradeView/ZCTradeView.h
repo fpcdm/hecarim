@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class ZCTradeKeyboard;
+@class ZCTradeView;
 
 @protocol ZCTradeViewDelegate <NSObject>
 
 @optional
 /** 输入完成点击确定按钮 */
-- (NSString *)finish:(NSString *)pwd;
+- (void)tradeViewFinish:(NSString *)pwd;
+/** 取消按钮 */
+- (void)tradeViewCancel;
 
 @end
 
@@ -24,6 +27,9 @@
 
 /** 完成的回调block */
 @property (nonatomic, copy) void (^finish) (NSString *passWord);
+
+/** 取消的回调block */
+@property (nonatomic, copy) void (^cancel) ();
 
 /** 快速创建 */
 + (instancetype)tradeView;

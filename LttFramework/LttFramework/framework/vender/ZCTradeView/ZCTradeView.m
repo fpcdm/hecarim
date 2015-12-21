@@ -34,9 +34,8 @@
 #import "ZCTradeView.h"
 #import "ZCTradeKeyboard.h"
 #import "ZCTradeInputView.h"
-#import "UIAlertView+Quick.h"
 
-@interface ZCTradeView () <UIAlertViewDelegate>
+@interface ZCTradeView ()
 /** 键盘 */
 @property (nonatomic, weak) ZCTradeKeyboard *keyboard;
 /** 输入框 */
@@ -185,9 +184,17 @@
 /** 输入框的取消按钮点击 */
 - (void)cancle
 {
+    // 通知代理\传递密码
+    if ([self.delegate respondsToSelector:@selector(tradeViewCancel)]) {
+        [self.delegate tradeViewCancel];
+    }
+    // 回调block\传递密码
+    if (self.cancel) {
+        self.cancel();
+    }
+    // 移除自己
     [self hidenKeyboard:^(BOOL finished) {
-        self.inputView.hidden = YES;
-        [UIAlertView showWithTitle:@"是否退出?" message:nil delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+        [self removeFromSuperview];
     }];
 }
 
@@ -197,8 +204,8 @@
     // 获取密码
     NSString *pwd = note.userInfo[ZCTradeInputViewPwdKey];
     // 通知代理\传递密码
-    if ([self.delegate respondsToSelector:@selector(finish:)]) {
-        [self.delegate finish:pwd];
+    if ([self.delegate respondsToSelector:@selector(tradeViewFinish:)]) {
+        [self.delegate tradeViewFinish:pwd];
     }
     // 回调block\传递密码
     if (self.finish) {
@@ -249,22 +256,6 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     ZCLog(@"dealloc---");
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    self.inputView.hidden = NO;
-    if (buttonIndex == 0) {  // 否按钮点击
-        [self showKeyboard];
-    } else {  // 是按钮点击
-        // 清空num数组
-        NSMutableArray *nums = [self.inputView valueForKeyPath:@"nums"];
-        [nums removeAllObjects];
-        [self removeFromSuperview];
-        [self.inputView setNeedsDisplay];
-    }
 }
 
 @end
