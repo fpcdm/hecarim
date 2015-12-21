@@ -102,6 +102,11 @@
 #define THIRD_LOGIN_TYPE_QQ 2
 #define THIRD_LOGIN_TYPE_SINA 3
 
+//支付类型列表
+#define PAY_TYPE_RECHARGE 1
+#define PAY_TYPE_PLATFORM 2
+#define PAY_TYPE_MERCHANT 3
+
 //支付方式列表
 #define PAY_WAY_WEIXIN @"weixin"
 #define PAY_WAY_ALIPAY @"alipay"

@@ -122,27 +122,21 @@
     order.inputCharset = @"utf-8";
     order.itBPay = @"30m";
     order.showUrl = @"m.alipay.com";
+    order.sign = @"";
+    order.signType = @"RSA";
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
     NSString *appScheme = @"alisdkcomlttoklttmember";
     
     //将商品信息拼接成字符串
-    NSString *orderSpec = [order description];
+    NSString *orderSpec = [order orderSpec];
     NSLog(@"orderSpec = %@",orderSpec);
     
-    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
-    NSString *signedString = nil;
-    
     //将签名成功字符串格式化为订单字符串,请严格按照该格式
-    NSString *orderString = nil;
-    if (signedString != nil) {
-        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                       orderSpec, signedString, @"RSA"];
-        
-        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-            NSLog(@"reslut = %@",resultDic);
-        }];
-    }
+    NSString *orderString = [order orderStr];
+    [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+        NSLog(@"reslut = %@",resultDic);
+    }];
 }
 
 @end

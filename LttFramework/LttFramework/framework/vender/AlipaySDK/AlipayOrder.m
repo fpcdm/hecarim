@@ -2,7 +2,7 @@
 //  Order.m
 //  AlixPayDemo
 //
-//  Created by 方彬 on 11/2/13.
+//  Created by 吴勇 on 11/21/15.
 //
 //
 
@@ -10,7 +10,13 @@
 
 @implementation AlipayOrder
 
-- (NSString *)description {
+- (NSString *)description
+{
+    return [self orderSpec];
+}
+
+- (NSString *)orderSpec
+{
 	NSMutableString * discription = [NSMutableString string];
     if (self.partner) {
         [discription appendFormat:@"partner=\"%@\"", self.partner];
@@ -64,5 +70,11 @@
 	return discription;
 }
 
+- (NSString *)orderStr
+{
+    NSString *orderStr = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                          [self orderSpec], self.sign, self.signType ? self.signType : @"RSA"];
+    return orderStr;
+}
 
 @end
