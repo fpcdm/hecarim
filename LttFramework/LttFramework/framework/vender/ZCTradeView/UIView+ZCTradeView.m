@@ -1,5 +1,5 @@
 //
-//  UIView+Extension.m
+//  UIView+ZCTradeView.m
 //  01-黑酷
 //
 //  Created by apple on 14-6-27.
@@ -12,9 +12,9 @@
 // 快速实例
 #define Object(Class) [[Class alloc] init];
 
-#import "UIView+Extension.h"
+#import "UIView+ZCTradeView.h"
 
-@implementation UIView (Extension)
+@implementation UIView (ZCTradeView)
 
 - (void)setX:(CGFloat)x
 {
@@ -126,6 +126,3 @@
 }
 
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

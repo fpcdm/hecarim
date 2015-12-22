@@ -1,5 +1,5 @@
 //
-//  UIView+Extension.h
+//  UIView+ZCTradeView.h
 //  01-黑酷
 //
 //  Created by apple on 14-6-27.
@@ -60,7 +60,7 @@ SetCenterYForView(view, y);
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Extension)
+@interface UIView (ZCTradeView)
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;
 @property (nonatomic, assign) CGFloat width;
@@ -75,6 +75,3 @@ SetCenterYForView(view, y);
 /** 添加子控件 */
 - (void)addSubview:(Class)class propertyName:(NSString *)propertyName;
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

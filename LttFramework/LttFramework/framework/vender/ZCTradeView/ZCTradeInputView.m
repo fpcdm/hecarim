@@ -18,7 +18,6 @@ typedef enum {
 
 #import "ZCTradeInputView.h"
 #import "ZCTradeKeyboard.h"
-#import "NSString+Extension.h"
 
 @interface ZCTradeInputView ()
 /** 数字数组 */
@@ -177,7 +176,7 @@ typedef enum {
     // 画字
     NSString *title = @"请输入交易密码";
     
-    CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:ZCScreenWidth * 0.053125] andMaxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+    CGSize size = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:ZCScreenWidth * 0.053125]} context:nil].size;
     CGFloat titleW = size.width;
     CGFloat titleH = size.height;
     CGFloat titleX = (self.width - titleW) * 0.5;
@@ -219,6 +218,3 @@ typedef enum {
 }
 
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

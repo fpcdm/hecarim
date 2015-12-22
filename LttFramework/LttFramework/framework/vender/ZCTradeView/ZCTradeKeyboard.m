@@ -9,7 +9,7 @@
 #define ZCKeyboardBtnCount 12
 
 #import "ZCTradeKeyboard.h"
-#import "ZCAudioTool.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ZCTradeKeyboard ()
 // 所有数字按钮的数组
@@ -143,11 +143,7 @@
 /** 播放系统音效 */
 - (void)playTock
 {
-    ZCAudioTool *tool = [[ZCAudioTool alloc] initSystemSoundWithName:@"Tock" SoundType:@"caf"];
-    [tool play];
+    AudioServicesPlaySystemSound(1104);
 }
 
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

@@ -6,25 +6,12 @@
 //  Copyright (c) 2015年 联创智融. All rights reserved.
 //
 
-// 自定义Log
-#ifdef DEBUG // 调试状态, 打开LOG功能
-#define ZCLog(...) NSLog(__VA_ARGS__)
-#define ZCFunc ZCLog(@"%s", __func__);
-#else // 发布状态, 关闭LOG功能
-#define ZCLog(...)
-#define ZCFunc
-#endif
-
 // 设备判断
 /**
  iOS设备宽高比
  4\4s {320, 480}  5s\5c {320, 568}  6 {375, 667}  6+ {414, 736}
  0.66             0.56              0.56          0.56
  */
-#define ios7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
-#define ios8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
-#define ios6 ([[UIDevice currentDevice].systemVersion doubleValue] >= 6.0 && [[UIDevice currentDevice].systemVersion doubleValue] < 7.0)
-#define ios5 ([[UIDevice currentDevice].systemVersion doubleValue] < 6.0)
 #define iphone5  ([UIScreen mainScreen].bounds.size.height == 568)
 #define iphone6  ([UIScreen mainScreen].bounds.size.height == 667)
 #define iphone6Plus  ([UIScreen mainScreen].bounds.size.height == 736)
@@ -163,12 +150,7 @@
 - (void)hidenKeyboard:(void (^)(BOOL finished))completion
 {
     self.keyboardShow = NO;
-//    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//        self.keyboard.transform = CGAffineTransformIdentity;
-//        self.inputView.transform = CGAffineTransformIdentity;
-//    } completion:^(BOOL finished) {
-//        
-//    }];
+
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.keyboard.transform = CGAffineTransformIdentity;
         self.inputView.transform = CGAffineTransformIdentity;
@@ -255,10 +237,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    ZCLog(@"dealloc---");
 }
 
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

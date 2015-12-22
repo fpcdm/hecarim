@@ -68,7 +68,6 @@
     
     //余额支付
     balanceButton = [[DLRadioButton alloc] init];
-    [balanceButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
     balanceButton.tag = -1;
     [paymentsData addObject:@{@"id" : @"balance", @"type" : @"custom", @"view": @"cellBalance:", @"height": @60}];
     
@@ -83,17 +82,14 @@
         //判断支付方式
         if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {
             weixinQrcodeButton = [[DLRadioButton alloc] init];
-            [weixinQrcodeButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
             weixinQrcodeButton.tag = 1;
             [paymentsData addObject:@{@"id" : @"alipay", @"type" : @"custom", @"view": @"cellWeixinQrcode:", @"height": @60}];
         } else if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {
             alipayQrcodeButton = [[DLRadioButton alloc] init];
-            [alipayQrcodeButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
             alipayQrcodeButton.tag = 2;
             [paymentsData addObject:@{@"id" : @"weixin", @"type" : @"custom", @"view": @"cellAlipayQrcode:", @"height": @60}];
         } else if ([PAY_WAY_CASH isEqualToString:payment.data]) {
             moneyButton = [[DLRadioButton alloc] init];
-            [moneyButton addTarget:self action:@selector(actionRadioClicked:) forControlEvents:UIControlEventTouchUpInside];
             moneyButton.tag = 3;
             [paymentsData addObject:@{@"id" : @"money", @"type" : @"custom", @"view": @"cellMoney:", @"height": @60}];
         }
@@ -337,6 +333,8 @@
         make.width.equalTo(@30);
     }];
     
+    button.tag = radioButton.tag;
+    [button addTarget:self action:@selector(actionSelected:) forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
 
@@ -356,9 +354,19 @@
 }
 
 #pragma mark - Action
-- (void)actionRadioClicked:(DLRadioButton *)button
+- (void)actionSelected:(UIButton *)button
 {
-    
+    if (button.tag == -1) {
+        if (balanceAmount >= totalAmount) {
+            balanceButton.selected = YES;
+        }
+    } else if (button.tag == 1) {
+        weixinQrcodeButton.selected = YES;
+    } else if (button.tag == 2) {
+        alipayQrcodeButton.selected = YES;
+    } else if (button.tag == 3) {
+        moneyButton.selected = YES;
+    }
 }
 
 - (void)actionPayUseWay

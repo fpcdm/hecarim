@@ -26,8 +26,8 @@
                         @{@"id" : @"amount", @"type" : @"custom", @"view": @"cellAmount:"},
                         ],
                       @[
-                        @{@"id" : @"alipay", @"type" : @"custom", @"view": @"cellAlipay:", @"height": @54},
-                        @{@"id" : @"weixin", @"type" : @"custom", @"view": @"cellWeixin:", @"height": @54},
+                        @{@"id" : @"alipay", @"type" : @"custom", @"view": @"cellAlipay:", @"action":@"actionSelected:", @"data":@1, @"height": @54},
+                        @{@"id" : @"weixin", @"type" : @"custom", @"view": @"cellWeixin:", @"action":@"actionSelected:", @"data":@2, @"height": @54},
                         ],
                       nil];
     
@@ -226,6 +226,16 @@
 }
 
 #pragma mark - Action
+- (void)actionSelected:(NSDictionary *)cellData
+{
+    NSNumber *type = [cellData objectForKey:@"data"];
+    if ([@1 isEqualToNumber:type]) {
+        alipayButton.selected = YES;
+    } else {
+        weixinButton.selected = YES;
+    }
+}
+
 - (void)actionRecharge
 {
     NSString *payWay = nil;
