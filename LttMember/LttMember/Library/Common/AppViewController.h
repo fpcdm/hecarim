@@ -52,8 +52,11 @@
 //弹出控制器，自动检查登陆
 - (void) pushViewController:(AppViewController *)viewController animated: (BOOL)animated;
 
-//切换控制器，自动检查登陆
+//切换控制器（仅剩一个），自动检查登陆
 - (void) toggleViewController:(AppViewController *)viewController animated: (BOOL)animated;
+
+//替换当前控制器（替换最后一个），自动检查登陆
+- (void) replaceViewController:(AppViewController *)viewController animate: (BOOL)animated;
 
 @end
 

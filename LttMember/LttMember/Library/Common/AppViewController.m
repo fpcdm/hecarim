@@ -167,6 +167,28 @@
     }
 }
 
+- (void)replaceViewController:(AppViewController *)viewController animate:(BOOL)animated
+{
+    NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    
+    //替换最后一个控制器
+    if ([viewControllers count] > 0) {
+        [viewControllers removeLastObject];
+    }
+    
+    //需要登陆
+    if ([viewController isKindOfClass:[AppUserViewController class]] &&
+        ![viewController isMemberOfClass:[LoginViewController class]] &&
+        ![self isLogin]) {
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        [viewControllers addObject:loginViewController];
+    } else {
+        [viewControllers addObject:viewController];
+    }
+    
+    [self.navigationController setViewControllers:viewControllers animated:animated];
+}
+
 - (void) refreshMenu
 {
     LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;

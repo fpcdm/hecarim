@@ -11,6 +11,7 @@
 #import "BalanceListViewController.h"
 #import "RechargeViewController.h"
 #import "UserHandler.h"
+#import "PayPasswordViewController.h"
 
 @interface MyWalletViewController ()<MyWalletViewDelegate>
 
@@ -41,8 +42,31 @@
 
 - (void)actionRecharge
 {
-    RechargeViewController *viewController = [[RechargeViewController alloc] init];
-    [self pushViewController:viewController animated:YES];
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //是否设置支付密码
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler issetPayPassword:nil success:^(NSArray *result) {
+        [self hideLoading];
+        
+        ResultEntity *entity = [result firstObject];
+        //已设置支付密码
+        if (entity.data && [@1 isEqualToNumber:entity.data]) {
+            RechargeViewController *viewController = [[RechargeViewController alloc] init];
+            [self pushViewController:viewController animated:YES];
+        //未设置支付密码
+        } else {
+            PayPasswordViewController *viewController = [[PayPasswordViewController alloc] init];
+            //先设置支付密码，成功后跳转支付
+            viewController.callbackBlock = ^(id object){
+                RechargeViewController *viewController = [[RechargeViewController alloc] init];
+                [self replaceViewController:viewController animate:YES];
+            };
+            [self pushViewController:viewController animated:YES];
+        }
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 - (void)getAccount

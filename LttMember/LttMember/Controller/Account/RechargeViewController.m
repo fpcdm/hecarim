@@ -53,7 +53,7 @@
     
     float rechargeAmount = [amount floatValue];
     //todo
-    
+    [self showError:@"todo"];
 }
 
 - (void)actionWeixinRecharge:(float)amount

@@ -174,7 +174,7 @@ typedef enum {
     [field drawInRect:CGRectMake(x, y, w, h)];
     
     // 画字
-    NSString *title = @"请输入交易密码";
+    NSString *title = @"请输入支付密码";
     
     CGSize size = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:ZCScreenWidth * 0.053125]} context:nil].size;
     CGFloat titleW = size.width;

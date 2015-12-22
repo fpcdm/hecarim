@@ -187,8 +187,6 @@
     }
 }
 
-
-
 - (void)actionSendSms
 {
     //未到发送时间
@@ -259,7 +257,13 @@
     UserHandler *userhandler = [[UserHandler alloc] init];
     [userhandler setPayPassword:password success:^(NSArray *result) {
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            [self.navigationController popViewControllerAnimated:YES];
+            //来自充值页面
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            //来自账户页面
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];

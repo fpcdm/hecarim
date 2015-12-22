@@ -23,6 +23,7 @@
 #import "UIView+Loading.h"
 #import "LttAppDelegate.h"
 #import "ZCTradeView.h"
+#import "UserHandler.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseGoodsViewDelegate, CaseCashierViewDelegate, CasePayedViewDelegate, CaseCommentViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
 
@@ -409,7 +410,16 @@
     //支付密码
     ZCTradeView *tradeView = [[ZCTradeView alloc] init];
     tradeView.finish = ^(NSString *password){
-        NSLog(@"支付密码: %@", password);
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler verifyPayPassword:password success:^(NSArray *result) {
+            //todo 余额支付
+            
+        } failure:^(ErrorEntity *error) {
+            [self showError:@"支付密码不正确"];
+        }];
+    };
+    tradeView.cancel = ^(){
+        [self showError:@"请输入支付密码哦~亲！"];
     };
     [tradeView show];
 }
