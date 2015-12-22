@@ -207,7 +207,7 @@
  *  @param success 成功回调
  *  @param failure 失败回调
  */
-- (void) issetPayPassword: (NSString *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+- (void) issetPayPassword: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 /**
  *  设置支付密码

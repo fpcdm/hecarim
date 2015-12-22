@@ -28,12 +28,6 @@
     safetyView = [[SafetyView alloc] init];
     safetyView.delegate = self;
     self.view = safetyView;
-    
-    //加载数据
-    UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    [safetyView setData:@"user" value:user];
-    [safetyView renderData];
-    
 }
 
 - (void)viewDidLoad {
@@ -45,13 +39,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (needRefresh) {
-        NSLog(@"刷新了");
-        needRefresh = NO;
-        [safetyView renderData];
-    }
     
-    NSLog(@"刷新了dddd");
+    UserHandler *userhandler = [[UserHandler alloc] init];
+    [userhandler issetPayPassword:nil success:^(NSArray *result) {
+        ResultEntity *resultEntity = [result firstObject];
+        //加载数据
+        UserEntity *user = [[StorageUtil sharedStorage] getUser];
+        [safetyView setData:@"user" value:user];
+        [safetyView setData:@"payRes" value:resultEntity.data];
+        [safetyView renderData];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action
@@ -64,13 +63,6 @@
 - (void)actionPayPassword
 {
     PayPasswordViewController *viewController = [[PayPasswordViewController alloc] init];
-    viewController.callbackBlock = ^(id object){
-        //标记可刷新
-        if (object && [@1 isEqualToNumber:object]) {
-            needRefresh = YES;
-        }
-    };
-
     [self pushViewController:viewController animated:YES];
 }
 

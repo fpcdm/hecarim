@@ -16,6 +16,7 @@
 #import "UpdatePayPasswordView.h"
 #import "UpdatePayPasswordSuccessView.h"
 #import "UserHandler.h"
+#import "UIView+Loading.h"
 
 @interface PayPasswordViewController ()<SetPayPasswordCodeViewDelegate,SetPayPasswordViewDelegate,UpdatePayPasswordViewDelegate,UpdatePayPasswordSuccessViewDelegate>
 
@@ -32,19 +33,32 @@
 
 - (void)loadView
 {
-    if ([[StorageUtil sharedStorage] getPayRes]) {
-        self.view = [self updatePasswordView];
-    } else {
-        self.view = [self codeView];
-    }
+    [super loadView];
+    self.view.backgroundColor = COLOR_MAIN_BG;
+    [self.view showLoading];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //检查是否可以发送校验码
-    [self checkButton];
+}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    UserHandler *userhandler = [[UserHandler alloc] init];
+    [userhandler issetPayPassword:nil success:^(NSArray *result) {
+        ResultEntity *resultE = [result firstObject];
+        if ([@1 isEqualToNumber:resultE.data]) {
+            self.view = [self updatePasswordView];
+        } else {
+            self.view = [self codeView];
+            
+            //检查是否可以发送校验码
+            [self checkButton];
+        }
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 //校验码视图
@@ -245,17 +259,11 @@
     UserHandler *userhandler = [[UserHandler alloc] init];
     [userhandler setPayPassword:password success:^(NSArray *result) {
         [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            [[StorageUtil sharedStorage] setPayRes:@"1"];
-            //通知刷新
-            if (self.callbackBlock) {
-                self.callbackBlock(@1);
-            }
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];
-    
 }
 
 - (void)actionNext:(NSString *)oldPassword newPassword:(NSString *)newPassword

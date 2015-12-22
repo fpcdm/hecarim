@@ -384,12 +384,12 @@
 }
 
 //判断是否设置支付密码
-- (void)issetPayPassword:(NSString *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void)issetPayPassword:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"res": @"data"}];
     
-    [sharedClient getObject:[RestKitUtil new] path:@"user/issetpaypassword" param:nil success:^(NSArray *result){
+    [sharedClient getObject:[RestKitUtil new] path:@"user/issetpaypassword" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);
@@ -454,7 +454,7 @@
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"balance": @"data"}];
     
-    [sharedClient getObject:[UserEntity new] path:@"account/balance" param:nil success:^(NSArray *result){
+    [sharedClient getObject:[UserEntity new] path:@"account/balance" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
         success(result);

@@ -15,8 +15,8 @@
 - (void) renderData
 {
     UserEntity *user = [self getData:@"user"];
-    BOOL res = [[StorageUtil sharedStorage] getPayRes];
-    NSString *payString = [NSString stringWithFormat:@"%@支付密码",(res ? @"修改" : @"设置")];
+    NSNumber *res = [self getData:@"payRes"];
+    NSString *payString = [NSString stringWithFormat:@"%@支付密码",(([@1 isEqualToNumber:res]) ? @"修改" : @"设置")];
     NSString *mobile = user.mobile ? user.mobile : @"";
     if ([mobile length] > 0) {
         mobile = [NSString stringWithFormat:@"%@****%@", [mobile substringToIndex:3], [mobile substringFromIndex:7]];
