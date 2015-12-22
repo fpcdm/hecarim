@@ -10,19 +10,25 @@
 #import "MyWalletView.h"
 #import "BalanceListViewController.h"
 #import "RechargeViewController.h"
+#import "UserHandler.h"
 
 @interface MyWalletViewController ()<MyWalletViewDelegate>
 
 @end
 
 @implementation MyWalletViewController
+{
+    MyWalletView *myWalletView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MyWalletView *myWalletView = [[MyWalletView alloc] init];
+    myWalletView = [[MyWalletView alloc] init];
     myWalletView.delegate = self;
     self.view = myWalletView;
+    
+    [self getAccount];
     
     self.navigationItem.title = @"我的钱包";
 }
@@ -37,6 +43,19 @@
 {
     RechargeViewController *viewController = [[RechargeViewController alloc] init];
     [self pushViewController:viewController animated:YES];
+}
+
+- (void)getAccount
+{
+    UserHandler *userHandler = [[UserHandler alloc] init];
+    [userHandler getAccount:nil success:^(NSArray *result) {
+        ResultEntity *resultEntity = [result firstObject];
+        NSString *account = resultEntity.data;
+        [myWalletView setData:@"account" value:account];
+        [myWalletView renderData];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 @end

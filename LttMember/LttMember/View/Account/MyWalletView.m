@@ -40,7 +40,6 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if ([@"balance" isEqualToString:id]) {
         acctionLabel = [[UILabel alloc] init];
-        acctionLabel.text = @"￥520.00";
         acctionLabel.textColor = [UIColor colorWithHexString:@"#F08D00"];
         acctionLabel.font = FONT_MAIN;
         [cell addSubview:acctionLabel];
@@ -73,7 +72,10 @@
 #pragma mark - RenderData
 - (void) renderData
 {
-   
+    NSString *account = [self getData:@"account"];
+    NSLog(@"余额：%@",account);
+    NSString *accountString = [NSString stringWithFormat:@"￥%.2f",(account ? [account floatValue] : 0.00)];
+    acctionLabel.text = accountString;
 }
 
 - (void)actionBalance

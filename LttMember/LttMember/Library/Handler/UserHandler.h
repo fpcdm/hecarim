@@ -233,5 +233,13 @@
  */
 - (void) updatePayPassword: (NSString *) password newPassword:(NSString *)newPassword success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  查询账户余额
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) getAccount:(NSDictionary *)param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 
 @end
