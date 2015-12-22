@@ -40,8 +40,12 @@
 {
     [super viewWillAppear:animated];
     
+    [self showLoading:TIP_LOADING_MESSAGE];
+    
     UserHandler *userhandler = [[UserHandler alloc] init];
     [userhandler issetPayPassword:nil success:^(NSArray *result) {
+        [self hideLoading];
+        
         ResultEntity *resultEntity = [result firstObject];
         //加载数据
         UserEntity *user = [[StorageUtil sharedStorage] getUser];
