@@ -73,9 +73,9 @@
 //友盟分享内容
 #define UMENG_SHARE_TEXT @"中国同城送货上门服务第一品牌。\n中国首家专注提供同城上门服务的服务品牌。\nhttp://www.lttok.com/mobile"
 //友盟微信APPID，还需要替换URL schemes中的APPID
-#define UMENG_WEIXIN_APPID @"wx9cdda0e79275e37f"
+#define UMENG_WEIXIN_APPID @"wx00a2b7c29ef17dbc"
 //友盟微信APPKEY
-#define UMENG_WEIXIN_APPKEY @"cb169e4e616c5947cdf489bb9e2195c0"
+#define UMENG_WEIXIN_APPKEY @"6577e11279f937b04293038f3b5a14ba"
 //友盟新浪微博APPKEY，还需要替换URL schemes中的APPKEY
 #define UMENG_SINA_APPKEY @"3881161679"
 //友盟新浪回调地址
