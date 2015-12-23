@@ -20,6 +20,7 @@
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocialQQHandler.h"
 #import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface LttAppDelegate () <WXApiDelegate>
 
@@ -335,12 +336,15 @@
         //调用其他SDK
         
         //微信支付回调
-        //return [WXApi handleOpenURL:url delegate:self];
+        if ([WXApi handleOpenURL:url delegate:self]) {
+            return YES;
+        }
         
         //跳转支付宝钱包进行支付，处理支付结果
-        //[[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            //NSLog(@"result = %@",resultDic);
-        //}];
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+        return YES;
     }
     return result;
 }

@@ -52,8 +52,11 @@
     }
     
     float rechargeAmount = [amount floatValue];
-    //todo
-    [self showError:@"todo"];
+    if ([PAY_WAY_WEIXIN isEqualToString:payWay]) {
+        [self actionWeixinRecharge:rechargeAmount];
+    } else if ([PAY_WAY_ALIPAY isEqualToString:payWay]) {
+        [self actionAlipayRecharge:rechargeAmount];
+    }
 }
 
 - (void)actionWeixinRecharge:(float)amount
@@ -110,19 +113,19 @@
      */
     //将商品信息赋予AlixPayOrder的成员变量
     AlipayOrder *order = [[AlipayOrder alloc] init];
-    order.partner = nil;
-    order.seller = nil;
-    order.tradeNO = @""; //订单ID（由商家自行制定）
-    order.productName = @""; //商品标题
-    order.productDescription = @""; //商品描述
+    order.partner = @"2088711085581015";
+    order.seller = @"gilbert@gilbertchina.com";
+    order.tradeNO = @"151124999912"; //订单ID（由商家自行制定）
+    order.productName = @"一键送水"; //商品标题
+    order.productDescription = @"一键送水"; //商品描述
     order.amount = [NSString stringWithFormat:@"%.2f",amount]; //商品价格
-    order.notifyURL =  @"http://www.xxx.com"; //回调URL
+    order.notifyURL =  @"http://maokai.dev.dm/index.php/payment/notify/alipay"; //回调URL
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";
     order.inputCharset = @"utf-8";
-    order.itBPay = @"30m";
-    order.showUrl = @"m.alipay.com";
-    order.sign = @"";
+    order.itBPay = nil;
+    order.showUrl = nil;
+    order.sign = @"Hd6Ze1DEomJh/ntPpLdlDgmoKJx0qR9pCYR92FHguEaQncSXEvDyeiaWKggqhgewyhl4tTobXtiKqWfZDqEqHjxsLpoV0ZsdLJ/G9nH8i5NsePV6JdPNyFthvjCI1Q2kfS8x8vV9evbZ1Axggbfp1z3a9JXFLY3EQJQyP3IPiKk=";
     order.signType = @"RSA";
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
@@ -134,6 +137,7 @@
     
     //将签名成功字符串格式化为订单字符串,请严格按照该格式
     NSString *orderString = [order orderStr];
+    NSLog(@"orderStr = %@", orderString);
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         NSLog(@"reslut = %@",resultDic);
     }];
