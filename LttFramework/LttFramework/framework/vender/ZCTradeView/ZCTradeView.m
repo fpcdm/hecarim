@@ -167,17 +167,19 @@
 - (void)cancle
 {
     // 通知代理\传递密码
+    BOOL result = YES;
     if ([self.delegate respondsToSelector:@selector(tradeViewCancel)]) {
-        [self.delegate tradeViewCancel];
+        result = [self.delegate tradeViewCancel];
     }
     // 回调block\传递密码
     if (self.cancel) {
-        self.cancel();
+        result = self.cancel();
     }
+    
     // 移除自己
-    [self hidenKeyboard:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
+    if (result) {
+        [self hide];
+    }
 }
 
 /** 输入框的确定按钮点击 */
@@ -185,18 +187,20 @@
 {
     // 获取密码
     NSString *pwd = note.userInfo[ZCTradeInputViewPwdKey];
+    BOOL result = YES;
     // 通知代理\传递密码
     if ([self.delegate respondsToSelector:@selector(tradeViewFinish:)]) {
-        [self.delegate tradeViewFinish:pwd];
+        result = [self.delegate tradeViewFinish:pwd];
     }
     // 回调block\传递密码
     if (self.finish) {
-        self.finish(pwd);
+        result = self.finish(pwd);
     }
+    
     // 移除自己
-    [self hidenKeyboard:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
+    if (result) {
+        [self hide];
+    }
 }
 
 #pragma mark - Public Interface
@@ -232,6 +236,30 @@
     
     /** 弹出键盘 */
     [self showKeyboard];
+}
+
+- (void)hide
+{
+    [self hide:nil];
+}
+
+- (void)hide:(void (^)())completion
+{
+    // 移除自己
+    [self hidenKeyboard:^(BOOL finished) {
+        [self removeFromSuperview];
+        if (completion) completion();
+    }];
+}
+
+- (void)shake
+{
+    [self.inputView shakeAnimation];
+}
+
+- (void)setTitle:(NSString *)title color:(UIColor *)color
+{
+    [self.inputView setTitle:title color:color];
 }
 
 - (void)dealloc

@@ -74,4 +74,6 @@ SetCenterYForView(view, y);
 - (void)alignVertical;
 /** 添加子控件 */
 - (void)addSubview:(Class)class propertyName:(NSString *)propertyName;
+/** 视图抖动 */
+- (void)shakeAnimation;
 @end

@@ -14,6 +14,7 @@
 typedef enum {
     ZCTradeInputViewButtonTypeWithCancle = 10000,
     ZCTradeInputViewButtonTypeWithOk = 20000,
+    ZCTradeInputViewButtonTypeWithTitle = 30000,
 }ZCTradeInputViewButtonType;
 
 #import "ZCTradeInputView.h"
@@ -22,6 +23,8 @@ typedef enum {
 @interface ZCTradeInputView ()
 /** 数字数组 */
 @property (nonatomic, strong) NSMutableArray *nums;
+/** 标题标签 */
+@property (nonatomic, weak) UILabel *titleLabel;
 /** 确定按钮 */
 @property (nonatomic, weak) UIButton *okBtn;
 /** 取消按钮 */
@@ -57,6 +60,15 @@ typedef enum {
 /** 添加子控件 */
 - (void)setupSubViews
 {
+    /** 标题标签 */
+    UILabel *titleLabel = [[UILabel alloc] init];
+    [self addSubview:titleLabel];
+    self.titleLabel = titleLabel;
+    self.titleLabel.text = @"请输入支付密码";
+    self.titleLabel.font = [UIFont systemFontOfSize:ZCScreenWidth * 0.053125];
+    self.titleLabel.textColor = ZCColor(102, 102, 102);
+    self.titleLabel.tag = ZCTradeInputViewButtonTypeWithTitle;
+    
     /** 确定按钮 */
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:okBtn];
@@ -95,6 +107,9 @@ typedef enum {
 {
     [super layoutSubviews];
     
+    /** 标题标签 */
+    [self layoutTitleLabel];
+    
     /** 取消按钮 */
     self.cancleBtn.width = ZCScreenWidth * 0.409375;
     self.cancleBtn.height = ZCScreenWidth * 0.128125;
@@ -106,6 +121,22 @@ typedef enum {
     self.okBtn.width = self.cancleBtn.width;
     self.okBtn.height = self.cancleBtn.height;
     self.okBtn.x = CGRectGetMaxX(self.cancleBtn.frame) + ZCScreenWidth * 0.025;
+}
+
+- (void)layoutTitleLabel
+{
+    CGSize size = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:ZCScreenWidth * 0.053125]} context:nil].size;
+    self.titleLabel.width = size.width;
+    self.titleLabel.height = size.height;
+    self.titleLabel.x = (self.width - size.width) * 0.5;
+    self.titleLabel.y = ZCScreenWidth * 0.03125;
+}
+
+- (void)setTitle:(NSString *)title color:(UIColor *)color
+{
+    self.titleLabel.text = title;
+    self.titleLabel.textColor = color ? color : ZCColor(102, 102, 102);
+    [self layoutTitleLabel];
 }
 
 #pragma mark - Private
@@ -172,22 +203,6 @@ typedef enum {
     CGFloat w = ZCScreenWidth * 0.846875;
     CGFloat h = ZCScreenWidth * 0.121875;
     [field drawInRect:CGRectMake(x, y, w, h)];
-    
-    // 画字
-    NSString *title = @"请输入支付密码";
-    
-    CGSize size = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:ZCScreenWidth * 0.053125]} context:nil].size;
-    CGFloat titleW = size.width;
-    CGFloat titleH = size.height;
-    CGFloat titleX = (self.width - titleW) * 0.5;
-    CGFloat titleY = ZCScreenWidth * 0.03125;
-    CGRect titleRect = CGRectMake(titleX, titleY, titleW, titleH);
-    
-    NSMutableDictionary *attr = [NSMutableDictionary dictionary];
-    attr[NSFontAttributeName] = [UIFont systemFontOfSize:ZCScreenWidth * 0.053125];
-    attr[NSForegroundColorAttributeName] = ZCColor(102, 102, 102);
-    
-    [title drawInRect:titleRect withAttributes:attr];
     
     // 画点
     UIImage *pointImage = [UIImage imageNamed:@"trade.bundle/yuan"];

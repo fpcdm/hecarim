@@ -29,4 +29,5 @@ static NSString *ZCTradeInputViewPwdKey = @"ZCTradeInputViewPwdKey";
 
 @interface ZCTradeInputView : UIView
 @property (nonatomic, weak) id<ZCTradeInputViewDelegate> delegate;
+- (void)setTitle:(NSString *)title color:(UIColor *)color;
 @end

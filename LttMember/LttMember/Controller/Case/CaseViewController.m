@@ -409,17 +409,19 @@
 {
     //支付密码
     ZCTradeView *tradeView = [[ZCTradeView alloc] init];
+    
+    //解决循环引用
+    __block ZCTradeView *_tradeView = tradeView;
     tradeView.finish = ^(NSString *password){
         UserHandler *userHandler = [[UserHandler alloc] init];
         [userHandler verifyPayPassword:password success:^(NSArray *result) {
             //todo 余额支付
-            
+            [_tradeView setTitle:@"TODO" color:[UIColor greenColor]];
         } failure:^(ErrorEntity *error) {
-            [self showError:@"支付密码不正确"];
+            [_tradeView shake];
+            [_tradeView setTitle:@"支付密码不正确" color:[UIColor redColor]];
         }];
-    };
-    tradeView.cancel = ^(){
-        [self showError:@"请输入支付密码哦~亲！"];
+        return NO;
     };
     [tradeView show];
 }
