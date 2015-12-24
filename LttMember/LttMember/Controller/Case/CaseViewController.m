@@ -24,6 +24,7 @@
 #import "LttAppDelegate.h"
 #import "ZCTradeView.h"
 #import "UserHandler.h"
+#import "PaymentHandler.h"
 
 @interface CaseViewController () <CaseNewViewDelegate, CaseLockedViewDelegate, CaseConfirmedViewDelegate, CaseGoodsViewDelegate, CaseCashierViewDelegate, CasePayedViewDelegate, CaseCommentViewDelegate, CaseSuccessViewDelegate, CaseDetailViewDelegate>
 
@@ -415,8 +416,35 @@
     tradeView.finish = ^(NSString *password){
         UserHandler *userHandler = [[UserHandler alloc] init];
         [userHandler verifyPayPassword:password success:^(NSArray *result) {
-            //todo 余额支付
-            [_tradeView setTitle:@"TODO" color:[UIColor greenColor]];
+            [_tradeView hide:^{
+                [self showLoading:TIP_REQUEST_MESSAGE];
+                
+                CaseEntity *payIntention = [[CaseEntity alloc] init];
+                payIntention.id = self.caseId;
+                
+                //余额支付
+                PaymentHandler *paymentHandler = [[PaymentHandler alloc] init];
+                [paymentHandler payCaseWithBalance:payIntention param:nil success:^(NSArray *result) {
+                    //检测需求状态是否有修改
+                    [self loadData:^(id object){
+                        //已经支付完成
+                        if ([intention.status isEqualToString:CASE_STATUS_PAYED] ||
+                            [intention.status isEqualToString:CASE_STATUS_SUCCESS]) {
+                            //提示支付成功
+                            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                                [self intentionView];
+                            }];
+                        //还未支付完成
+                        } else {
+                            [self showError:@"请等待商户确认收款成功哦~亲！"];
+                        }
+                    } failure:^(ErrorEntity *error){
+                        [self showError:error.message];
+                    }];
+                } failure:^(ErrorEntity *error) {
+                    [self showError:error.message];
+                }];
+            }];
         } failure:^(ErrorEntity *error) {
             [_tradeView shake];
             [_tradeView setTitle:@"支付密码不正确" color:[UIColor redColor]];

@@ -9,9 +9,8 @@
 #import "RechargeViewController.h"
 #import "RechargeView.h"
 #import "ValidateUtil.h"
-#import "WXApi.h"
-#import "AlipayOrder.h"
-#import <AlipaySDK/AlipaySDK.h>
+#import "CaseHandler.h"
+#import "PaymentHandler.h"
 
 @interface RechargeViewController () <RechargeViewDelegate>
 
@@ -20,6 +19,7 @@
 @implementation RechargeViewController
 {
     RechargeView *rechargeView;
+    NSArray *payments;
 }
 
 - (void)loadView
@@ -33,6 +33,21 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"充值";
+    
+    [self showLoading:TIP_LOADING_MESSAGE];
+    
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    NSDictionary *param = @{@"is_online": @"yes"};
+    [caseHandler queryPayments:param success:^(NSArray *result) {
+        [self hideLoading];
+        
+        payments = result;
+        
+        [rechargeView setData:@"payments" value:payments];
+        [rechargeView renderData];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action
@@ -51,7 +66,7 @@
         return;
     }
     
-    float rechargeAmount = [amount floatValue];
+    NSNumber *rechargeAmount = [NSNumber numberWithFloat:[amount floatValue]];
     if ([PAY_WAY_WEIXIN isEqualToString:payWay]) {
         [self actionWeixinRecharge:rechargeAmount];
     } else if ([PAY_WAY_ALIPAY isEqualToString:payWay]) {
@@ -59,87 +74,70 @@
     }
 }
 
-- (void)actionWeixinRecharge:(float)amount
+//只支持App版本
+- (void)actionWeixinRecharge:(NSNumber *)amount
 {
-    //============================================================
-    // V3&V4支付流程实现
-    // 注意:参数配置请查看服务器端Demo
-    // 更新时间：2015年11月20日
-    //============================================================
-    NSString *urlString   = @"http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php?plat=ios";
-    //解析服务端返回json数据
-    NSError *error;
-    //加载一个NSURL对象
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    //将请求的url数据放到NSData对象中
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    if ( response != nil) {
-        NSMutableDictionary *dict = NULL;
-        //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-        dict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-        
-        NSLog(@"url:%@",urlString);
-        if(dict != nil){
-            NSMutableString *retcode = [dict objectForKey:@"retcode"];
-            if (retcode.intValue == 0){
-                NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
-                
-                //调起微信支付
-                PayReq* req             = [[PayReq alloc] init];
-                req.partnerId           = [dict objectForKey:@"partnerid"];
-                req.prepayId            = [dict objectForKey:@"prepayid"];
-                req.nonceStr            = [dict objectForKey:@"noncestr"];
-                req.timeStamp           = stamp.intValue;
-                req.package             = [dict objectForKey:@"package"];
-                req.sign                = [dict objectForKey:@"sign"];
-                [WXApi sendReq:req];
-                //日志输出
-                NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
-            }else{
-                NSString *msg = [dict objectForKey:@"retmsg"];
-            }
-        }else{
-            NSString *msg = @"服务器返回错误，未获取到json对象";
-        }
-    }else{
-        NSString *msg = @"服务器返回错误";
+    //是否安装微信
+    if (![WXApi isWXAppInstalled]) {
+        [self showError:@"请先安装微信再充值哦~亲！"];
+        return;
     }
+    
+    [self showLoading:TIP_REQUEST_MESSAGE];
+    
+    //生成微信订单
+    PaymentEntity *payment = [[PaymentEntity alloc] init];
+    payment.amount = amount;
+    payment.type = @1;
+    
+    PaymentHandler *paymentHandler = [[PaymentHandler alloc] init];
+    [paymentHandler makeWeixinOrder:payment param:nil success:^(NSArray *result) {
+        [self hideLoading];
+        
+        //调用微信支付
+        PayReq *req = [result firstObject];
+        [WXApi sendReq:req];
+        
+        //日志输出
+        NSLog(@"partid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
-- (void)actionAlipayRecharge:(float)amount
+//支持App和网页版
+- (void)actionAlipayRecharge:(NSNumber *)amount
 {
-    /*
-     *生成订单信息及签名
-     */
-    //将商品信息赋予AlixPayOrder的成员变量
-    AlipayOrder *order = [[AlipayOrder alloc] init];
-    order.partner = @"2088711085581015";
-    order.seller = @"gilbert@gilbertchina.com";
-    order.tradeNO = @"151124999912"; //订单ID（由商家自行制定）
-    order.productName = @"一键送水"; //商品标题
-    order.productDescription = @"一键送水"; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",amount]; //商品价格
-    order.notifyURL =  @"http://maokai.dev.dm/index.php/payment/notify/alipay"; //回调URL
-    order.service = @"mobile.securitypay.pay";
-    order.paymentType = @"1";
-    order.inputCharset = @"utf-8";
-    order.itBPay = nil;
-    order.showUrl = nil;
-    order.sign = @"Hd6Ze1DEomJh/ntPpLdlDgmoKJx0qR9pCYR92FHguEaQncSXEvDyeiaWKggqhgewyhl4tTobXtiKqWfZDqEqHjxsLpoV0ZsdLJ/G9nH8i5NsePV6JdPNyFthvjCI1Q2kfS8x8vV9evbZ1Axggbfp1z3a9JXFLY3EQJQyP3IPiKk=";
-    order.signType = @"RSA";
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
-    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-    NSString *appScheme = @"alisdkcomlttoklttmember";
+    //生成支付宝订单
+    PaymentEntity *payment = [[PaymentEntity alloc] init];
+    payment.amount = amount;
+    payment.type = @1;
     
-    //将商品信息拼接成字符串
-    NSString *orderSpec = [order orderSpec];
-    NSLog(@"orderSpec = %@",orderSpec);
-    
-    //将签名成功字符串格式化为订单字符串,请严格按照该格式
-    NSString *orderString = [order orderStr];
-    NSLog(@"orderStr = %@", orderString);
-    [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-        NSLog(@"reslut = %@",resultDic);
+    PaymentHandler *paymentHandler = [[PaymentHandler alloc] init];
+    [paymentHandler makeAlipayOrder:payment param:nil success:^(NSArray *result) {
+        [self hideLoading];
+        
+        AlipayOrder *order = [result firstObject];
+        
+        //应用注册scheme,在Info.plist定义URL types
+        NSString *appScheme = URL_SCHEME_APIPAY_CALLBACK;
+        
+        //将商品信息拼接成字符串
+        NSString *orderSpec = [order orderSpec];
+        NSLog(@"orderSpec = %@",orderSpec);
+        
+        //将签名成功字符串格式化为订单字符串,请严格按照该格式
+        NSString *orderString = [order orderStr];
+        NSLog(@"orderStr = %@", orderString);
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+            
+            //todo
+        }];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
     }];
 }
 

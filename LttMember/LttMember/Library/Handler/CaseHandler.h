@@ -46,10 +46,4 @@
 //提交评价
 - (void) addIntentionEvaluation: (CaseEntity *) intention success: (SuccessBlock) success failure: (FailedBlock) failure;
 
-//生成微信支付订单
-- (void) makeWeixinOrder:(PaymentEntity *)payment param:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
-
-//生成支付宝支付订单
-- (void) makeAlipayOrder:(PaymentEntity *)payment param:(NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
-
 @end

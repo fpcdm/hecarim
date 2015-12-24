@@ -64,9 +64,13 @@
     if (self.appID) {
         [discription appendFormat:@"&app_id=\"%@\"",self.appID];
     }
-	for (NSString * key in [self.extraParams allKeys]) {
-		[discription appendFormat:@"&%@=\"%@\"", key, [self.extraParams objectForKey:key]];
-	}
+    
+    if (self.extraParams) {
+        for (NSString * key in [self.extraParams allKeys]) {
+            [discription appendFormat:@"&%@=\"%@\"", key, [self.extraParams objectForKey:key]];
+        }
+    }
+	
 	return discription;
 }
 

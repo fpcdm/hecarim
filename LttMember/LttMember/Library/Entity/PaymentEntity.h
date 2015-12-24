@@ -12,15 +12,7 @@
 
 @property (nonatomic, retain) NSNumber *amount;
 
-@property (nonatomic, retain) NSString *body;
-
-@property (nonatomic, retain) NSString *ip;
-
-@property (nonatomic, retain) NSNumber *merchantId;
-
-@property (nonatomic, retain) NSString *orderNo;
-
-@property (nonatomic, retain) NSString *subject;
+@property (nonatomic, retain) NSNumber *caseId;
 
 @property (nonatomic, retain) NSNumber *type;
 

@@ -10,6 +10,6 @@
 
 @implementation PaymentEntity
 
-@synthesize amount, body, ip, merchantId, orderNo, subject, type;
+@synthesize amount, caseId, type;
 
 @end

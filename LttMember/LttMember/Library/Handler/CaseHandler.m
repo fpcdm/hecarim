@@ -7,6 +7,7 @@
 //
 
 #import "CaseHandler.h"
+#import "WXApi.h"
 
 @implementation CaseHandler
 
@@ -362,16 +363,6 @@
         
         failure(error);
     }];
-}
-
-- (void) makeWeixinOrder:(PaymentEntity *)payment param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    
-}
-
-- (void) makeAlipayOrder:(PaymentEntity *)payment param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    
 }
 
 @end

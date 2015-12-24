@@ -29,6 +29,7 @@
 		2F02FB7E1BABE68900D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB7D1BABE68900D7D68F /* libiconv.tbd */; };
 		2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */; };
 		2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */; };
+		2F16D4251C2B8DE50076EDEC /* PaymentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16D4241C2B8DE50076EDEC /* PaymentHandler.m */; };
 		2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5661B5DEFEE007947D0 /* AboutView.m */; };
 		2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5681B5DEFEE007947D0 /* AccountView.m */; };
 		2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E56A1B5DEFEE007947D0 /* AddressDetailView.m */; };
@@ -357,6 +358,8 @@
 		2F02FB7D1BABE68900D7D68F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2F16D4231C2B8DE50076EDEC /* PaymentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHandler.h; sourceTree = "<group>"; };
+		2F16D4241C2B8DE50076EDEC /* PaymentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentHandler.m; sourceTree = "<group>"; };
 		2F16E55E1B5DEF3C007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E55F1B5DEF3C007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E5601B5DEF3C007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -1364,6 +1367,8 @@
 				2F16E6291B5DF162007947D0 /* HelperHandler.m */,
 				2F16E62C1B5DF162007947D0 /* UserHandler.h */,
 				2F16E62D1B5DF162007947D0 /* UserHandler.m */,
+				2F16D4231C2B8DE50076EDEC /* PaymentHandler.h */,
+				2F16D4241C2B8DE50076EDEC /* PaymentHandler.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -2513,6 +2518,7 @@
 				2F90003D1B1D8B930040D97B /* MASLayoutConstraint.m in Sources */,
 				2F90003E1B1D8B930040D97B /* MASViewAttribute.m in Sources */,
 				2F90003F1B1D8B930040D97B /* MASViewConstraint.m in Sources */,
+				2F16D4251C2B8DE50076EDEC /* PaymentHandler.m in Sources */,
 				2F9000431B1D8B930040D97B /* MBProgressHUD.m in Sources */,
 				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
 				2F6D3E4D1B312765007A4159 /* MJRefreshAutoFooter.m in Sources */,

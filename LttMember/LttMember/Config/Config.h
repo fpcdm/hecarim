@@ -94,6 +94,9 @@
 #define URL_SCHEME_WEIXIN_QRCODE @"weixin://dl/scan"
 #define URL_SCHEME_ALIPAY_QRCODE @"alipayqr://platformapi/startapp?saId=10000007"
 
+//支付宝回调URL Scheme
+#define URL_SCHEME_APIPAY_CALLBACK @"alisdkcomlttoklttmember"
+
 //协议URL
 #define URL_REGISTER_PROTOCOL @"http://www.lttok.com/protocol"
 

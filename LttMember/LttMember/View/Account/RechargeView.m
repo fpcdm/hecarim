@@ -8,6 +8,7 @@
 
 #import "RechargeView.h"
 #import "DLRadioButton.h"
+#import "ResultEntity.h"
 
 @implementation RechargeView
 {
@@ -21,19 +22,10 @@
     self = [super init];
     if (!self) return nil;
     
-    self.tableData = [[NSMutableArray alloc] initWithObjects:
-                      @[
-                        @{@"id" : @"amount", @"type" : @"custom", @"view": @"cellAmount:"},
-                        ],
-                      @[
-                        @{@"id" : @"alipay", @"type" : @"custom", @"view": @"cellAlipay:", @"action":@"actionSelected:", @"data":@1, @"height": @54},
-                        @{@"id" : @"weixin", @"type" : @"custom", @"view": @"cellWeixin:", @"action":@"actionSelected:", @"data":@2, @"height": @54},
-                        ],
-                      nil];
-    
     //尾部区域
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 55)];
     footerView.backgroundColor = COLOR_MAIN_BG;
+    footerView.hidden = YES;
     self.tableView.tableFooterView = footerView;
     
     //支付按钮
@@ -56,8 +48,34 @@
     alipayButton = [[DLRadioButton alloc] init];
     weixinButton = [[DLRadioButton alloc] init];
     
-    [self.tableView reloadData];
     return self;
+}
+
+- (void)renderData
+{
+    //支付数据
+    NSMutableArray *paymentsData = [[NSMutableArray alloc] init];
+    
+    //判断支付方式
+    NSArray *payments = [self getData:@"payments"];
+    for (ResultEntity* payment in payments) {
+        //判断支付方式
+        if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {
+            [paymentsData addObject:@{@"id" : @"alipay", @"type" : @"custom", @"view": @"cellAlipay:", @"action":@"actionSelected:", @"data":@1, @"height": @54}];
+        } else if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {
+            [paymentsData addObject:@{@"id" : @"weixin", @"type" : @"custom", @"view": @"cellWeixin:", @"action":@"actionSelected:", @"data":@2, @"height": @54}];
+        }
+    }
+    
+    self.tableData = [[NSMutableArray alloc] initWithObjects:
+                      @[
+                        @{@"id" : @"amount", @"type" : @"custom", @"view": @"cellAmount:"},
+                        ],
+                      paymentsData,
+                      nil];
+    
+    [self.tableView reloadData];
+    self.tableView.tableFooterView.hidden = NO;
 }
 
 - (UITableViewCell *)cellAmount:(UITableViewCell *)cell
@@ -133,7 +151,6 @@
     alipayButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     alipayButton.isIconSquare = NO;
     alipayButton.otherButtons = @[weixinButton];
-    alipayButton.selected = YES;
     [cell addSubview:alipayButton];
     
     [alipayButton mas_makeConstraints:^(MASConstraintMaker *make){
