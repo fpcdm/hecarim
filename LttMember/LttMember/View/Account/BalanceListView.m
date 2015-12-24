@@ -26,11 +26,11 @@
 - (void)renderData
 {
     //显示数据
-    NSMutableArray *intentionList = [self getData:@"intentionList"];
+    NSMutableArray *accountList = [self getData:@"accountList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
-    if (intentionList != nil) {
-        for (CaseEntity *intention in intentionList) {
-            [tableData addObject:@{@"id" : @"intention", @"type" : @"custom", @"action": @"", @"height": @65, @"data": intention}];
+    if (accountList != nil) {
+        for (NSDictionary *param in accountList) {
+            [tableData addObject:@{@"id" : @"account", @"type" : @"custom", @"action": @"", @"height": @65, @"data": param}];
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
@@ -40,14 +40,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath withCell:(UITableViewCell *)cell
 {
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
-    CaseEntity *intention = [cellData objectForKey:@"data"];
+    NSDictionary *param = [cellData objectForKey:@"data"];
     
     //间距配置
     int padding = 10;
     UIView *superview = cell;
     
+    NSString *type = [param objectForKey:@"type"];
+    NSString *typeStr;
+    if ([@"0" isEqualToString:type]){
+        typeStr = @"消费";
+    } else if ([@"1" isEqualToString:type]) {
+        typeStr = @"充值";
+    }
+    
     //消费类型
-    UILabel *typeLabel = [self makeCellLabel:@"消费"];
+    UILabel *typeLabel = [self makeCellLabel:typeStr];
     typeLabel.textColor = COLOR_MAIN_BLACK;
     [cell addSubview:typeLabel];
     
@@ -58,7 +66,10 @@
     }];
     
     //时间
-    UILabel *timeLabel = [self makeCellLabel:@"2015-12-08"];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyy-MM-dd"];
+    NSString *dateStr = [dateFormat stringFromDate:[param objectForKey:@"create_time"]];
+    UILabel *timeLabel = [self makeCellLabel:dateStr];
     timeLabel.textColor = COLOR_MAIN_GRAY;
     [cell addSubview:timeLabel];
     
@@ -68,8 +79,8 @@
         make.height.equalTo(@20);
     }];
     
-    //状态
-    UILabel *balanceLabel = [self makeCellLabel:[NSString stringWithFormat:@"余额：%f",52.00]];
+    //余额
+    UILabel *balanceLabel = [self makeCellLabel:[NSString stringWithFormat:@"余额：%.2f",[[param objectForKey:@"balance"] floatValue]]];
     balanceLabel.textColor = COLOR_MAIN_GRAY;
     [cell addSubview:balanceLabel];
     
@@ -79,7 +90,7 @@
     }];
     
     //充值或消费金额
-    UILabel *moneyLabel = [self makeCellLabel:@"52.00"];
+    UILabel *moneyLabel = [self makeCellLabel:[param objectForKey:@"money"]];
     moneyLabel.textColor = COLOR_MAIN_BLACK;
     [cell addSubview:moneyLabel];
     

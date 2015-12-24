@@ -465,4 +465,22 @@
     }];
 }
 
+//账户收支明细
+- (void)getAccountList:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[ResultEntity class] mappingParam:@{@"list": @"data"}];
+    
+    [sharedClient getObject:[UserEntity new] path:@"account/detail" param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+
+}
+
 @end

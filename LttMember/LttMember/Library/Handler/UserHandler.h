@@ -241,5 +241,12 @@
  */
 - (void) getAccount:(NSDictionary *)param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+/**
+ *  账户收支明细
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) getAccountList:(NSDictionary *)param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 @end
