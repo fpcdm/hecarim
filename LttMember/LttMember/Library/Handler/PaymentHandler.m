@@ -73,7 +73,7 @@
                                       };
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AlipayOrder class] mappingParam:responseMapping];
     
-    [sharedClient getObject:payment path:@"pay/app_wxpay_signature" param:param success:^(NSArray *result){
+    [sharedClient getObject:payment path:@"pay/app_alipay_signature" param:param success:^(NSArray *result){
         [sharedClient removeRequestDescriptor:requestDescriptor];
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
