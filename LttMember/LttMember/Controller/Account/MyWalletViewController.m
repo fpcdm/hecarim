@@ -22,16 +22,24 @@
     MyWalletView *myWalletView;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+- (void)loadView
+{
     myWalletView = [[MyWalletView alloc] init];
     myWalletView.delegate = self;
     self.view = myWalletView;
-    
-    [self getAccount];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     self.navigationItem.title = @"我的钱包";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self getAccount];
 }
 
 - (void)actionBalance

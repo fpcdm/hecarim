@@ -40,6 +40,9 @@
     
     //支付方式列表
     NSArray *payments;
+    
+    //账户余额
+    NSNumber *accountBalance;
 }
 
 - (void)loadView
@@ -249,6 +252,7 @@
     //显示数据
     [cashierView setData:@"payments" value:payments];
     [cashierView setData:@"intention" value:intention];
+    [cashierView setData:@"balance" value:accountBalance];
     [cashierView renderData];
 }
 
@@ -343,13 +347,24 @@
 {
     [self showLoading:TIP_REQUEST_MESSAGE];
     
+    //查询支付方式
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"is_online": @"no"};
     [caseHandler queryPayments:param success:^(NSArray *result) {
-        [self hideLoading];
-        
         payments = result;
-        [self cashierView];
+        
+        //查询账户余额
+        UserHandler *userHandler = [[UserHandler alloc] init];
+        [userHandler getAccount:nil success:^(NSArray *result) {
+            [self hideLoading];
+            
+            ResultEntity *accountEntity = [result firstObject];
+            accountBalance = accountEntity.data;
+            
+            [self cashierView];
+        } failure:^(ErrorEntity *error) {
+            [self showError:error.message];
+        }];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];
@@ -436,7 +451,9 @@
                             }];
                         //还未支付完成
                         } else {
-                            [self showError:@"请等待商户确认收款成功哦~亲！"];
+                            //隐藏加载条
+                            [self hideLoading];
+                            [self payedView];
                         }
                     } failure:^(ErrorEntity *error){
                         [self showError:error.message];

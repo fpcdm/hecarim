@@ -11,6 +11,7 @@
 #import "ValidateUtil.h"
 #import "CaseHandler.h"
 #import "PaymentHandler.h"
+#import "LttAppDelegate.h"
 
 @interface RechargeViewController () <RechargeViewDelegate>
 
@@ -134,7 +135,21 @@
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
             
-            //todo
+            //支付宝返回结果（实际结果看账户余额或订单状态）
+            BOOL status = NO;
+            NSString *message = nil;
+            if ([resultDic[@"resultStatus"] intValue]==9000) {
+                status = YES;
+                NSLog(@"充值成功");
+            } else {
+                status = NO;
+                message = [NSString stringWithFormat:@"(%@-%@)", resultDic[@"resultStatus"], resultDic[@"memo"]];
+                NSLog(@"充值失败:%@", message);
+            }
+            
+            //统一处理回调
+            LttAppDelegate *appDelegate = (LttAppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate rechargeCallback:status message:message];
         }];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];

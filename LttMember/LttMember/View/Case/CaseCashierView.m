@@ -61,7 +61,8 @@
     //获取数据
     CaseEntity *intention = [self getData:@"intention"];
     totalAmount = [intention.totalAmount floatValue];
-    balanceAmount = 100;
+    NSNumber *accountBalance = [self getData:@"balance"];
+    balanceAmount = [accountBalance floatValue];
     
     //支付数据
     NSMutableArray *paymentsData = [[NSMutableArray alloc] init];

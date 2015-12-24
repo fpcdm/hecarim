@@ -16,5 +16,8 @@
 //清空服务端消息数量
 - (void) clearNotifications;
 
+//处理充值结果回调
+- (void) rechargeCallback:(BOOL)status message:(NSString *)message;
+
 @end
 
