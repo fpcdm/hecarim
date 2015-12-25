@@ -19,6 +19,7 @@
 #import "UMSocialWechatHandler.h"
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocialQQHandler.h"
+#import "RechargeViewController.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 
@@ -396,11 +397,26 @@
     if (status) {
         message = @"充值成功！";
     } else {
-        message = [NSString stringWithFormat:@"充值失败！\n%@", message];
+        //正式环境不提示错误原因
+        if (IS_DEBUG) {
+            message = [NSString stringWithFormat:@"充值失败！%@", message];
+        } else {
+            message = @"充值失败！";
+        }
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
-    [alert show];
+    //判断是否在充值页面
+    UIViewController *viewController = [navigationController.viewControllers count] > 0 ? navigationController.viewControllers.lastObject : nil;
+    if (viewController && [viewController isKindOfClass:[RechargeViewController class]]) {
+        if (status) {
+            [viewController showSuccess:message];
+        } else {
+            [viewController showError:message];
+        }
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 @end
