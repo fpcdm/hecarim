@@ -345,13 +345,16 @@
             NSLog(@"reslut = %@",resultDic);
             
             //支付宝返回结果（实际结果看账户余额或订单状态）
-            BOOL status = NO;
+            LttPayStatus status = LttPayStatusFailed;
             NSString *message = nil;
-            if ([resultDic[@"resultStatus"] intValue]==9000) {
-                status = YES;
+            if ([resultDic[@"resultStatus"] intValue] == 9000) {
+                status = LttPayStatusSuccess;
                 NSLog(@"充值成功");
+            } else if ([resultDic[@"resultStatus"] intValue] == 6001) {
+                status = LttPayStatusCanceled;
+                NSLog(@"充值取消");
             } else {
-                status = NO;
+                status = LttPayStatusFailed;
                 message = [NSString stringWithFormat:@"(%@-%@)", resultDic[@"resultStatus"], resultDic[@"memo"]];
                 NSLog(@"充值失败:%@", message);
             }
@@ -367,16 +370,20 @@
 - (void)onResp:(BaseResp *)resp {
     if([resp isKindOfClass:[PayResp class]]){
         //微信返回结果（实际结果看账户余额或订单状态）
-        BOOL status = NO;
+        LttPayStatus status = LttPayStatusFailed;
         NSString *message = nil;
         
         switch (resp.errCode) {
             case WXSuccess:
-                status = YES;
+                status = LttPayStatusSuccess;
                 NSLog(@"充值成功:%d", resp.errCode);
                 break;
+            case WXErrCodeUserCancel:
+                status = LttPayStatusCanceled;
+                NSLog(@"充值取消:%d", resp.errCode);
+                break;
             default:
-                status = NO;
+                status = LttPayStatusFailed;
                 message = [NSString stringWithFormat:@"(%d-%@)", resp.errCode, resp.errStr];
                 NSLog(@"充值失败:%@", message);
                 break;
@@ -391,24 +398,30 @@
 }
 
 //充值统一回调
-- (void)rechargeCallback:(BOOL)status message:(NSString *)message
+- (void)rechargeCallback:(LttPayStatus)status message:(NSString *)message
 {
     NSString *title = @"充值结果";
-    if (status) {
-        message = @"充值成功！";
-    } else {
-        //正式环境不提示错误原因
-        if (IS_DEBUG) {
-            message = [NSString stringWithFormat:@"充值失败！%@", message];
-        } else {
-            message = @"充值失败！";
-        }
+    switch (status) {
+        case LttPayStatusSuccess:
+            message = @"充值成功！";
+            break;
+        case LttPayStatusCanceled:
+            message = @"充值取消！";
+            break;
+        default:
+            //正式环境不提示错误原因
+            if (IS_DEBUG) {
+                message = [NSString stringWithFormat:@"充值失败！%@", message];
+            } else {
+                message = @"充值失败！";
+            }
+            break;
     }
     
     //判断是否在充值页面
     UIViewController *viewController = [navigationController.viewControllers count] > 0 ? navigationController.viewControllers.lastObject : nil;
     if (viewController && [viewController isKindOfClass:[RechargeViewController class]]) {
-        if (status) {
+        if (status == LttPayStatusSuccess) {
             [viewController showSuccess:message];
         } else {
             [viewController showError:message];

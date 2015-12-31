@@ -116,6 +116,16 @@
 #define PAY_WAY_ALIPAY @"alipay"
 #define PAY_WAY_CASH   @"cash"
 
+//支付结果枚举
+typedef enum {
+    //支付成功
+    LttPayStatusSuccess = 1,
+    //支付取消
+    LttPayStatusCanceled,
+    //支付失败
+    LttPayStatusFailed
+} LttPayStatus;
+
 //需求状态
 #define CASE_STATUS_NEW @"new"
 #define CASE_STATUS_LOCKED @"locked"

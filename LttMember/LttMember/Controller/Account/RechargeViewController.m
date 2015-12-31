@@ -136,13 +136,16 @@
             NSLog(@"reslut = %@",resultDic);
             
             //支付宝返回结果（实际结果看账户余额或订单状态）
-            BOOL status = NO;
+            LttPayStatus status = LttPayStatusFailed;
             NSString *message = nil;
-            if ([resultDic[@"resultStatus"] intValue]==9000) {
-                status = YES;
+            if ([resultDic[@"resultStatus"] intValue] == 9000) {
+                status = LttPayStatusSuccess;
                 NSLog(@"充值成功");
+            } else if ([resultDic[@"resultStatus"] intValue] == 6001) {
+                status = LttPayStatusCanceled;
+                NSLog(@"充值取消");
             } else {
-                status = NO;
+                status = LttPayStatusFailed;
                 message = [NSString stringWithFormat:@"(%@-%@)", resultDic[@"resultStatus"], resultDic[@"memo"]];
                 NSLog(@"充值失败:%@", message);
             }

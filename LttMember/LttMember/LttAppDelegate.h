@@ -17,7 +17,7 @@
 - (void) clearNotifications;
 
 //处理充值结果回调
-- (void) rechargeCallback:(BOOL)status message:(NSString *)message;
+- (void) rechargeCallback:(LttPayStatus)status message:(NSString *)message;
 
 @end
 
