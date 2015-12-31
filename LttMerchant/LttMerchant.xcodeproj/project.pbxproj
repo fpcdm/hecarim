@@ -26,6 +26,14 @@
 		2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */; };
 		2BD4FAD91BF47977003B727B /* MerchantEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD81BF47977003B727B /* MerchantEntity.m */; };
 		2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FADB1BF47D94003B727B /* MerchantHandler.m */; };
+		2BF3EDD51C325A6B002BCB72 /* StaffListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDD41C325A6B002BCB72 /* StaffListView.m */; };
+		2BF3EDD81C325DC8002BCB72 /* StaffListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDD71C325DC8002BCB72 /* StaffListViewController.m */; };
+		2BF3EDDB1C326D94002BCB72 /* StaffFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDDA1C326D94002BCB72 /* StaffFormView.m */; };
+		2BF3EDDE1C32742F002BCB72 /* StaffFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDDD1C32742F002BCB72 /* StaffFormViewController.m */; };
+		2BF3EDE11C327DA2002BCB72 /* StaffEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDE01C327DA2002BCB72 /* StaffEntity.m */; };
+		2BF3EDE41C32833F002BCB72 /* StaffDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDE31C32833F002BCB72 /* StaffDetailView.m */; };
+		2BF3EDE71C32888A002BCB72 /* StaffDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDE61C32888A002BCB72 /* StaffDetailViewController.m */; };
+		2BF6CC591C3382A800B59CCB /* StaffHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6CC581C3382A800B59CCB /* StaffHandler.m */; };
 		2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */; };
 		2F02FB6E1BABE1B100D7D68F /* CaseErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F02FB6D1BABE1B100D7D68F /* CaseErrorView.m */; };
 		2F02FB701BABE5DE00D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB6F1BABE5DE00D7D68F /* libxml2.tbd */; };
@@ -280,6 +288,22 @@
 		2BD4FAD81BF47977003B727B /* MerchantEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantEntity.m; sourceTree = "<group>"; };
 		2BD4FADA1BF47D94003B727B /* MerchantHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantHandler.h; sourceTree = "<group>"; };
 		2BD4FADB1BF47D94003B727B /* MerchantHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantHandler.m; sourceTree = "<group>"; };
+		2BF3EDD31C325A6B002BCB72 /* StaffListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffListView.h; sourceTree = "<group>"; };
+		2BF3EDD41C325A6B002BCB72 /* StaffListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffListView.m; sourceTree = "<group>"; };
+		2BF3EDD61C325DC8002BCB72 /* StaffListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffListViewController.h; sourceTree = "<group>"; };
+		2BF3EDD71C325DC8002BCB72 /* StaffListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffListViewController.m; sourceTree = "<group>"; };
+		2BF3EDD91C326D94002BCB72 /* StaffFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffFormView.h; sourceTree = "<group>"; };
+		2BF3EDDA1C326D94002BCB72 /* StaffFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffFormView.m; sourceTree = "<group>"; };
+		2BF3EDDC1C32742F002BCB72 /* StaffFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffFormViewController.h; sourceTree = "<group>"; };
+		2BF3EDDD1C32742F002BCB72 /* StaffFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffFormViewController.m; sourceTree = "<group>"; };
+		2BF3EDDF1C327DA2002BCB72 /* StaffEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffEntity.h; sourceTree = "<group>"; };
+		2BF3EDE01C327DA2002BCB72 /* StaffEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffEntity.m; sourceTree = "<group>"; };
+		2BF3EDE21C32833F002BCB72 /* StaffDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffDetailView.h; sourceTree = "<group>"; };
+		2BF3EDE31C32833F002BCB72 /* StaffDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffDetailView.m; sourceTree = "<group>"; };
+		2BF3EDE51C32888A002BCB72 /* StaffDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffDetailViewController.h; sourceTree = "<group>"; };
+		2BF3EDE61C32888A002BCB72 /* StaffDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffDetailViewController.m; sourceTree = "<group>"; };
+		2BF6CC571C3382A700B59CCB /* StaffHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffHandler.h; sourceTree = "<group>"; };
+		2BF6CC581C3382A800B59CCB /* StaffHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffHandler.m; sourceTree = "<group>"; };
 		2F0095CE1B79A5DE003C27B9 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		2F0095CF1B79A5DE003C27B9 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		2F02FB6C1BABE1B100D7D68F /* CaseErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseErrorView.h; sourceTree = "<group>"; };
@@ -820,6 +844,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BF3EDD11C3259C0002BCB72 /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				2BF3EDD61C325DC8002BCB72 /* StaffListViewController.h */,
+				2BF3EDD71C325DC8002BCB72 /* StaffListViewController.m */,
+				2BF3EDDC1C32742F002BCB72 /* StaffFormViewController.h */,
+				2BF3EDDD1C32742F002BCB72 /* StaffFormViewController.m */,
+				2BF3EDE51C32888A002BCB72 /* StaffDetailViewController.h */,
+				2BF3EDE61C32888A002BCB72 /* StaffDetailViewController.m */,
+			);
+			path = Staff;
+			sourceTree = "<group>";
+		};
+		2BF3EDD21C3259D7002BCB72 /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				2BF3EDD31C325A6B002BCB72 /* StaffListView.h */,
+				2BF3EDD41C325A6B002BCB72 /* StaffListView.m */,
+				2BF3EDD91C326D94002BCB72 /* StaffFormView.h */,
+				2BF3EDDA1C326D94002BCB72 /* StaffFormView.m */,
+				2BF3EDE21C32833F002BCB72 /* StaffDetailView.h */,
+				2BF3EDE31C32833F002BCB72 /* StaffDetailView.m */,
+			);
+			path = Staff;
+			sourceTree = "<group>";
+		};
 		2F0095CD1B79A5DE003C27B9 /* DLRadioButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +892,7 @@
 		2F16E6521B5DF84B007947D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2BF3EDD11C3259C0002BCB72 /* Staff */,
 				2F16E6531B5DF84B007947D0 /* Case */,
 				2F16E65E1B5DF84B007947D0 /* Home */,
 			);
@@ -946,6 +997,8 @@
 				2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */,
 				2BD4FAD71BF47977003B727B /* MerchantEntity.h */,
 				2BD4FAD81BF47977003B727B /* MerchantEntity.m */,
+				2BF3EDDF1C327DA2002BCB72 /* StaffEntity.h */,
+				2BF3EDE01C327DA2002BCB72 /* StaffEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -963,6 +1016,8 @@
 				2F55F6AA1BDF130700A89174 /* HelperHandler.m */,
 				2BD4FADA1BF47D94003B727B /* MerchantHandler.h */,
 				2BD4FADB1BF47D94003B727B /* MerchantHandler.m */,
+				2BF6CC571C3382A700B59CCB /* StaffHandler.h */,
+				2BF6CC581C3382A800B59CCB /* StaffHandler.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -970,6 +1025,7 @@
 		2F16E6911B5DF84B007947D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2BF3EDD21C3259D7002BCB72 /* Staff */,
 				2F16E6921B5DF84B007947D0 /* Case */,
 				2F55F69C1BDF12F400A89174 /* Home */,
 			);
@@ -1945,6 +2001,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F0095D01B79A5DE003C27B9 /* DLRadioButton.m in Sources */,
+				2BF6CC591C3382A800B59CCB /* StaffHandler.m in Sources */,
 				2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */,
 				2BBBBF5D1C153731001DFAB8 /* GoodsFormView.m in Sources */,
 				2F6796B31B4B84BD00E0F774 /* UIImageView+PlayGIF.m in Sources */,
@@ -1955,6 +2012,7 @@
 				2F6D3F101B3128CC007A4159 /* MJRefreshStateHeader.m in Sources */,
 				2FCAF8641B201FF000F3B084 /* ValidateUtil.m in Sources */,
 				2F6D3F0A1B3128CC007A4159 /* MJRefreshAutoStateFooter.m in Sources */,
+				2BF3EDD81C325DC8002BCB72 /* StaffListViewController.m in Sources */,
 				2F6D16EF1B70664800C4A667 /* PickerUtil.m in Sources */,
 				2F90015A1B1D9D680040D97B /* REFrostedViewController.m in Sources */,
 				2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */,
@@ -1967,6 +2025,7 @@
 				2FED7DCA1B1EA2E100306A11 /* UIImageView+WebCache.m in Sources */,
 				2F90007B1B1D91470040D97B /* MASLayoutConstraint.m in Sources */,
 				2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */,
+				2BF3EDD51C325A6B002BCB72 /* StaffListView.m in Sources */,
 				2F9000791B1D91470040D97B /* MASConstraint.m in Sources */,
 				2F6D3F051B3128CC007A4159 /* MJRefreshComponent.m in Sources */,
 				2F16E6B01B5DF84B007947D0 /* GoodsEntity.m in Sources */,
@@ -2004,6 +2063,7 @@
 				2B8347061BE0B4CE001530F0 /* RegisterSuccessView.m in Sources */,
 				2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */,
 				2F90015D1B1D9D680040D97B /* UIViewController+REFrostedViewController.m in Sources */,
+				2BF3EDE41C32833F002BCB72 /* StaffDetailView.m in Sources */,
 				2F9001591B1D9D680040D97B /* REFrostedContainerViewController.m in Sources */,
 				2F90007D1B1D91470040D97B /* MASViewConstraint.m in Sources */,
 				2F55F6A81BDF12F400A89174 /* ResetPasswordView.m in Sources */,
@@ -2026,6 +2086,7 @@
 				2F02FB6E1BABE1B100D7D68F /* CaseErrorView.m in Sources */,
 				2F90007E1B1D91470040D97B /* NSArray+MASAdditions.m in Sources */,
 				2F52D11F1AEF8AFC0003D7C2 /* LttAppDelegate.m in Sources */,
+				2BF3EDE71C32888A002BCB72 /* StaffDetailViewController.m in Sources */,
 				2FCAF8631B201FF000F3B084 /* TimerUtil.m in Sources */,
 				2FCAF8A41B20453E00F3B084 /* UserEntity.m in Sources */,
 				2FD795C01AE7ADD300D51FB0 /* main.m in Sources */,
@@ -2066,6 +2127,7 @@
 				2FED7DC01B1EA2E100306A11 /* SDWebImageCompat.m in Sources */,
 				2BBBBF5C1C153731001DFAB8 /* GoodsContainerView.m in Sources */,
 				2F90007F1B1D91470040D97B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2BF3EDE11C327DA2002BCB72 /* StaffEntity.m in Sources */,
 				2B942BA31BE74257009CA6A0 /* LoginView.m in Sources */,
 				2B8347031BE0B4CE001530F0 /* RegisterExistView.m in Sources */,
 				2F16E6AE1B5DF84B007947D0 /* CategoryEntity.m in Sources */,
@@ -2087,6 +2149,7 @@
 				2FED7DC21B1EA2E100306A11 /* SDWebImageDownloader.m in Sources */,
 				2FED7E311B1EA87800306A11 /* DDLog.m in Sources */,
 				2F5FDDE71B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */,
+				2BF3EDDB1C326D94002BCB72 /* StaffFormView.m in Sources */,
 				2F800B101B1D529F006189EF /* README.md in Sources */,
 				2FED7E2D1B1EA87800306A11 /* DDAbstractDatabaseLogger.m in Sources */,
 				2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */,
@@ -2098,6 +2161,7 @@
 				2F16E6AA1B5DF84B007947D0 /* AppUIUtil.m in Sources */,
 				2F90015E1B1D9D680040D97B /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2F9001611B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2BF3EDDE1C32742F002BCB72 /* StaffFormViewController.m in Sources */,
 				2F6D3F021B3128CC007A4159 /* SWActionSheet.m in Sources */,
 				2F6D3EFB1B3128CC007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F5533FD1B4F656200B98CA4 /* ResultEntity.m in Sources */,

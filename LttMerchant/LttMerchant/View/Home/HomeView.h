@@ -12,6 +12,8 @@
 
 - (void)actionCaseList;
 
+- (void)actionStaff;
+
 @end
 
 @interface HomeView : AppView
