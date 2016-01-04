@@ -48,10 +48,13 @@
     
     NSString *type = [param objectForKey:@"type"];
     NSString *typeStr;
+    NSString *outOrIn = @"";
     if ([@"0" isEqualToString:type]){
         typeStr = @"消费";
+        outOrIn = @"-";
     } else if ([@"1" isEqualToString:type]) {
         typeStr = @"充值";
+        outOrIn = @"+";
     }
     
     //消费类型
@@ -66,9 +69,10 @@
     }];
     
     //时间
+    NSDate *now = [NSDate dateWithTimeIntervalSince1970:[[param objectForKey:@"create_time"] intValue]];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyy-MM-dd"];
-    NSString *dateStr = [dateFormat stringFromDate:[param objectForKey:@"create_time"]];
+    NSString *dateStr = [dateFormat stringFromDate:now];
     UILabel *timeLabel = [self makeCellLabel:dateStr];
     timeLabel.textColor = COLOR_MAIN_GRAY;
     [cell addSubview:timeLabel];
@@ -90,7 +94,8 @@
     }];
     
     //充值或消费金额
-    UILabel *moneyLabel = [self makeCellLabel:[param objectForKey:@"money"]];
+    NSLog(@"消费类型%@",outOrIn);
+    UILabel *moneyLabel = [self makeCellLabel:[NSString stringWithFormat:@"%@%@",outOrIn,[param objectForKey:@"amount"]]];
     moneyLabel.textColor = COLOR_MAIN_BLACK;
     [cell addSubview:moneyLabel];
     
