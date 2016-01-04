@@ -33,6 +33,19 @@
         self.extendedLayoutIncludesOpaqueBars = NO;
         self.modalPresentationCapturesStatusBarAppearance = NO;
     }
+    
+    //第一次标记自动刷新
+    self.shouldRefresh = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.shouldRefresh) {
+        self.shouldRefresh = NO;
+        [self refreshHandler];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +53,11 @@
 }
 
 #pragma mark - Public Methods
+- (void) refreshHandler
+{
+    //子类重写
+}
+
 - (void) loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     success(nil);
