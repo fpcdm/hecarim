@@ -54,12 +54,12 @@
         
         StaffHandler *staffHandler = [[StaffHandler alloc] init];
         [staffHandler staffDetail:staffEntity param:nil success:^(NSArray *result) {
-            [self loadingSuccess:TIP_LOADING_SUCCESS callback:^{
-                staffEntity = [result firstObject];
+            [self hideLoading];
+            
+            staffEntity = [result firstObject];
                 
-                [formView setData:@"staff" value:staffEntity];
-                [formView renderData];
-            }];
+            [formView setData:@"staff" value:staffEntity];
+            [formView renderData];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];
