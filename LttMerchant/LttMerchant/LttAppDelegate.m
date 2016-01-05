@@ -18,6 +18,10 @@
 #import "TimerUtil.h"
 #import "Harpy.h"
 
+#ifdef LTT_DEBUG
+#import "FLEX.h"
+#endif
+
 @interface LttAppDelegate () <LocationUtilDelegate>
 
 @end
@@ -46,6 +50,11 @@
         [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor blueColor] backgroundColor:nil forFlag:DDLogFlagInfo];
         [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor grayColor] backgroundColor:nil forFlag:DDLogFlagDebug];
     }
+#endif
+    
+#ifdef LTT_DEBUG
+    //开启网络调试
+    [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
 #endif
     
     //全局导航栏颜色

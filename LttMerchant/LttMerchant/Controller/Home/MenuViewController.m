@@ -12,6 +12,10 @@
 #import "CaseListViewController.h"
 #import "UserHandler.h"
 
+#ifdef LTT_DEBUG
+#import "FLEX.h"
+#endif
+
 @interface MenuViewController ()
 
 @end
@@ -80,6 +84,9 @@
                     @[@"首页", @"HomeViewController"],
                     @[@"服务单", @"CaseListViewController"],
                     @[@"退出", @"LoginViewController", @"logout"],
+#ifdef LTT_DEBUG
+                    @[@"调试", @"", @"debug"],
+#endif
                     nil];
         
         userNameLabel.text = user.name ? user.name : user.mobile;
@@ -154,6 +161,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
+    
+#ifdef LTT_DEBUG
+    //调试菜单
+    if ([@"debug" isEqualToString:[menu objectAtIndex:2]]) {
+        [[FLEXManager sharedManager] toggleExplorer];
+        [self.frostedViewController hideMenuViewController];
+        return;
+    }
+#endif
     
     UIViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
     

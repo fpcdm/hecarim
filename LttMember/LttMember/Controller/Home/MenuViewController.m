@@ -10,6 +10,10 @@
 #import "AppExtension.h"
 #import "CaseListViewController.h"
 
+#ifdef LTT_DEBUG
+#import "FLEX.h"
+#endif
+
 @interface MenuViewController ()
 
 @end
@@ -80,6 +84,9 @@
                     @[@"服务单", @"CaseListViewController", @"show"],
                     @[@"账户", @"AccountViewController", @"push"],
                     @[@"分享", @"RecommendShareViewController", @"push"],
+#ifdef LTT_DEBUG
+                    @[@"调试", @"", @"debug"],
+#endif
                     nil];
         
         userNameLabel.text = [user displayName];
@@ -128,6 +135,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
+    
+#ifdef LTT_DEBUG
+    //调试菜单
+    if ([@"debug" isEqualToString:[menu objectAtIndex:2]]) {
+        [[FLEXManager sharedManager] toggleExplorer];
+        [self.frostedViewController hideMenuViewController];
+        return;
+    }
+#endif
     
     AppViewController *viewController = [[NSClassFromString([menu objectAtIndex:1]) alloc] init];
     UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;

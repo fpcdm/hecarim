@@ -141,7 +141,6 @@
     }];
     
     //第三方登陆
-    /*
     UIButton *wechatButton = [self makeButton:[UIImage imageNamed:@"loginWechat"] title:@"微信登陆"];
     [wechatButton addTarget:self action:@selector(actionLoginWechat) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:wechatButton];
@@ -153,18 +152,15 @@
         make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
         make.height.equalTo(@45);
     }];
-    */
     
     UIButton *qqButton = [self makeButton:[UIImage imageNamed:@"loginQQ"] title:@"QQ登陆"];
     [qqButton addTarget:self action:@selector(actionLoginQQ) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:qqButton];
     
     [qqButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.left.equalTo(wechatButton.mas_right);
-        make.left.equalTo(superview.mas_left);
+        make.left.equalTo(wechatButton.mas_right);
         make.bottom.equalTo(superview.mas_bottom);
-        //make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
-        make.width.equalTo(superview.mas_width).multipliedBy(1.0/2);
+        make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
         make.height.equalTo(@45);
     }];
     
