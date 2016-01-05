@@ -35,7 +35,7 @@
     
     self.navigationItem.title = @"充值";
     
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"is_online": @"yes"};
@@ -55,15 +55,15 @@
 - (void)actionRecharge:(NSString *)amount payWay:(NSString *)payWay
 {
     if (![ValidateUtil isRequired:amount]) {
-        [self showError:@"请填写充值金额哦~亲！"];
+        [self showError:[LocaleUtil error:@"Recharge.Required"]];
         return;
     }
     if (![ValidateUtil isPositiveNumber:amount]) {
-        [self showError:@"充值金额填写不正确"];
+        [self showError:[LocaleUtil error:@"Recharge.Format"]];
         return;
     }
     if (![ValidateUtil isRequired:payWay]) {
-        [self showError:@"请选择支付方式哦~亲！"];
+        [self showError:[LocaleUtil error:@"Payment.Required"]];
         return;
     }
     
@@ -80,11 +80,11 @@
 {
     //是否安装微信
     if (![WXApi isWXAppInstalled]) {
-        [self showError:@"请先安装微信再充值哦~亲！"];
+        [self showError:[LocaleUtil error:@"WeiXin.NotFound"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //生成微信订单
     PaymentEntity *payment = [[PaymentEntity alloc] init];
@@ -109,7 +109,7 @@
 //支持App和网页版
 - (void)actionAlipayRecharge:(NSNumber *)amount
 {
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //生成支付宝订单
     PaymentEntity *payment = [[PaymentEntity alloc] init];

@@ -39,7 +39,7 @@
     [super viewWillAppear:animated];
     
     //查询推荐人
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler getReferee:nil success:^(NSArray *result) {
         [self hideLoading];
@@ -61,11 +61,11 @@
 - (void)actionRecommend:(NSString *)mobile
 {
     if (![ValidateUtil isRequired:mobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:mobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     
@@ -90,7 +90,7 @@
         //确定
         case 0:
         {
-            [self showLoading:TIP_REQUEST_MESSAGE];
+            [self showLoading:[LocaleUtil system:@"Request.Start"]];
             //调用添加推荐人手机号接口
             UserHandler *userHandler = [[UserHandler alloc] init];
             [userHandler setReferee:recommendMobile success:^(NSArray *result) {

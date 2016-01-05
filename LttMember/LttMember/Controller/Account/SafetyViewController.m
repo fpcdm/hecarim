@@ -40,7 +40,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     UserHandler *userhandler = [[UserHandler alloc] init];
     [userhandler issetPayPassword:nil success:^(NSArray *result) {

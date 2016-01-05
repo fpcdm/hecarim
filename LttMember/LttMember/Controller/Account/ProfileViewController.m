@@ -112,7 +112,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //上传头像
     FileEntity *avatarEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
@@ -121,7 +121,7 @@
     
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler uploadAvatar:avatarEntity success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             FileEntity *imageEntity = [result firstObject];
             NSLog(@"头像上传成功：%@", imageEntity.url);
             

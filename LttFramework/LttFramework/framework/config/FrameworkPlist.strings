@@ -20,3 +20,6 @@
 "SYSTEM.Request.Start"   = "请求中";
 "SYSTEM.Request.Success" = "请求成功";
 "SYSTEM.Request.Failed"  = "请求失败";
+
+"SYSTEM.Refresh.Start"   = "正在刷新";
+"SYSTEM.Refresh.Suceess" = "刷新完成";

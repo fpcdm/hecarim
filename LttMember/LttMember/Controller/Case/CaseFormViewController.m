@@ -40,7 +40,7 @@
     self.navigationItem.title = @"呼叫工作人员";
     
     //查询默认收货地址
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler queryUserDefaultAddress:nil success:^(NSArray *result){
         [self hideLoading];
@@ -104,7 +104,7 @@
     if ((!caseEntity.addressId || [caseEntity.addressId isEqualToNumber:@0]) &&
         ![ValidateUtil isRequired:caseEntity.buyerAddress]
         ) {
-        [self showError:@"请先选择服务地址哦~亲！"];
+        [self showError:[LocaleUtil error:@"ServiceAddr.Required"]];
         return;
     }
     
@@ -113,7 +113,7 @@
     
     NSLog(@"intention: %@", [caseEntity toDictionary]);
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler addIntention:caseEntity success:^(NSArray *result){
@@ -124,7 +124,7 @@
         //跳转需求详情
         CaseViewController *viewController = [[CaseViewController alloc] init];
         viewController.caseId = intention.id;
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             [self pushViewController:viewController animated:YES];
         }];
     } failure:^(ErrorEntity *error){

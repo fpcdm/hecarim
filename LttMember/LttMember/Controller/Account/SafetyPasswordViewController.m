@@ -37,11 +37,11 @@
 - (void)actionChange:(NSString *)oldPassword newPassword:(NSString *)newPassword
 {
     if (![ValidateUtil isRequired:oldPassword]) {
-        [self showError:@"请输入原密码"];
+        [self showError:[LocaleUtil error:@"OldPassword.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:newPassword]) {
-        [self showError:@"请输入新密码"];
+        [self showError:[LocaleUtil error:@"NewPassword.Required"]];
         return;
     }
     

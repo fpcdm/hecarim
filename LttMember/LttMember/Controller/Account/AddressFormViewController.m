@@ -79,23 +79,23 @@
     
     //参数检查
     if (![ValidateUtil isRequired:self.address.name]) {
-        [self showError:@"请填写联系人姓名"];
+        [self showError:[LocaleUtil error:@"Contact.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:self.address.mobile]) {
-        [self showError:@"请填写手机号码"];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:self.address.mobile]) {
-        [self showError:@"手机号码格式不正确"];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     if (!self.address.streetId || [self.address.streetId floatValue] < 1) {
-        [self showError:@"请选择区域"];
+        [self showError:[LocaleUtil error:@"Area.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:self.address.address]) {
-        [self showError:@"请填写详细地址"];
+        [self showError:[LocaleUtil error:@"DetailAddress.Required"]];
         return;
     }
     
@@ -140,7 +140,7 @@
 - (void)actionArea
 {
     //加载效果
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     //变量缓存
     AreaEntity *requestArea = [[AreaEntity alloc] init];
@@ -229,12 +229,12 @@
 {
     //是否选择区县
     if (!self.address.countyId || [self.address.countyId floatValue] < 1) {
-        [self showError:@"请先选择地区"];
+        [self showError:[LocaleUtil error:@"Area.Required"]];
         return;
     }
     
     //加载效果
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     //街道选择器
     PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:addressFormView];

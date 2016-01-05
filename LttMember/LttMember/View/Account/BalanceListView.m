@@ -46,19 +46,16 @@
     int padding = 10;
     UIView *superview = cell;
     
-    NSString *type = [param objectForKey:@"type"];
-    NSString *typeStr;
+    NSNumber *type = [param objectForKey:@"type"];
     NSString *outOrIn = @"";
-    if ([@"0" isEqualToString:type]){
-        typeStr = @"消费";
+    if ([@0 isEqualToNumber:type]){
         outOrIn = @"-";
-    } else if ([@"1" isEqualToString:type]) {
-        typeStr = @"充值";
+    } else if ([@1 isEqualToNumber:type]) {
         outOrIn = @"+";
     }
     
     //消费类型
-    UILabel *typeLabel = [self makeCellLabel:typeStr];
+    UILabel *typeLabel = [self makeCellLabel:[param objectForKey:@"description"]];
     typeLabel.textColor = COLOR_MAIN_BLACK;
     [cell addSubview:typeLabel];
     

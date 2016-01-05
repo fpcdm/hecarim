@@ -141,11 +141,11 @@
 {
     //参数检查
     if (![ValidateUtil isRequired:inputMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:inputMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     
@@ -170,21 +170,21 @@
 {
     //参数检查
     if (![ValidateUtil isRequired:inputMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:inputMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     if (![ValidateUtil isRequired:code]) {
-        [self showError:ERROR_MOBILECODE_REQUIRED];
+        [self showError:[LocaleUtil error:@"MobileCode.Required"]];
         return;
     }
     
     mobile = inputMobile;
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
@@ -194,7 +194,7 @@
         //自动注册第三方用户
         UserHandler *userHandler = [[UserHandler alloc] init];
         [userHandler thirdRegisterWithUser:thirdUser param:thirdParam success:^(NSArray *result) {
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 //赋值并释放资源
                 UserEntity *apiUser = [result firstObject];
                 [self syncUser:thirdUser apiUser:apiUser];

@@ -207,16 +207,16 @@
 - (void)actionVerifyCode:(NSString *)verifyCode
 {
     if (![ValidateUtil isRequired:verifyCode]) {
-        [self showError:@"校验码不能为空"];
+        [self showError:[LocaleUtil error:@"MobileCode.Required"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用验证接口
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler verifyMobileCode:mobile code:verifyCode success:^(NSArray *result) {
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             ResultEntity *resultEntity = [result firstObject];
             vCode = resultEntity.data;
             NSLog(@"安全码是：%@",vCode);
@@ -231,32 +231,32 @@
 - (void)actionSetPayPassword:(NSString *)password rePassword:(NSString *)rePassword
 {
     if (![ValidateUtil isRequired:password]) {
-        [self showError:@"支付密码不能为空"];
+        [self showError:[LocaleUtil error:@"PayPassword.Required"]];
         return;
     }
     if (![ValidateUtil isPositiveNumber:password]) {
-        [self showError:@"支付密码只能是数字"];
+        [self showError:[LocaleUtil error:@"PayPassword.Format"]];
         return;
     }
     if (![ValidateUtil isLength:password length:6]) {
-        [self showError:@"支付密码为6位数字"];
+        [self showError:[LocaleUtil error:@"PayPassword.Length"]];
         return;
     }
     if (![ValidateUtil isRequired:rePassword]) {
-        [self showError:@"确认支付密码不能为空"];
+        [self showError:[LocaleUtil error:@"RePayPassword.Required"]];
         return;
     }
     if (![password isEqualToString:rePassword]) {
-        [self showError:@"两次密码不相等"];
+        [self showError:[LocaleUtil error:@"Password.Equal"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     UserHandler *userhandler = [[UserHandler alloc] init];
     [userhandler setPayPassword:password success:^(NSArray *result) {
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //来自充值页面
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -273,31 +273,31 @@
 - (void)actionNext:(NSString *)oldPassword newPassword:(NSString *)newPassword
 {
     if (![ValidateUtil isRequired:oldPassword]) {
-        [self showError:@"请输入原支付密码"];
+        [self showError:[LocaleUtil error:@"OldPayPassword.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:newPassword]) {
-        [self showError:@"请输入新支付密码"];
+        [self showError:[LocaleUtil error:@"PayPassword.Required"]];
         return;
     }
     if (![ValidateUtil isLength:newPassword length:6]) {
-        [self showError:@"密码长度为6位数字"];
+        [self showError:[LocaleUtil error:@"PayPassword.Length"]];
         return;
     }
     if (![ValidateUtil isPositiveNumber:newPassword]) {
-        [self showError:@"支付密码只能数字"];
+        [self showError:[LocaleUtil error:@"PayPassword.Format"]];
         return;
     }
     if ([oldPassword isEqualToString:newPassword]) {
-        [self showError:@"新密码不能和原始密码相同"];
+        [self showError:[LocaleUtil error:@"OldAndNewPassword.Equal"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler updatePayPassword:oldPassword newPassword:newPassword success:^(NSArray *result) {
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             [self pushView:[self successView] animated:YES completion:nil];
         }];
     } failure:^(ErrorEntity *error) {

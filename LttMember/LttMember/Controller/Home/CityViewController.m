@@ -47,7 +47,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler queryOpenCities:nil success:^(NSArray *result) {

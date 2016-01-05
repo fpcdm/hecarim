@@ -133,24 +133,24 @@
     
     //参数检查
     if (![ValidateUtil isRequired:user.mobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:user.mobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     if (![ValidateUtil isRequired:user.password]) {
-        [self showError:ERROR_PASSWORD_REQUIRED];
+        [self showError:[LocaleUtil error:@"Password.Required"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler loginWithUser:user success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //赋值并释放资源
             UserEntity *apiUser = [result firstObject];
             [self syncUser:user apiUser:apiUser];
@@ -229,7 +229,7 @@
 
 - (void)thirdLogin:(UMSocialAccountEntity *)snsAccount
 {
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //记录用户信息
     UserEntity *user = [[UserEntity alloc] init];
@@ -261,7 +261,7 @@
         //是否绑定成功
         UserEntity *apiUser = result && [result count] > 0 ? [result firstObject] : nil;
         if (apiUser && apiUser.id) {
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 //赋值并释放资源
                 [self syncUser:user apiUser:apiUser];
                 

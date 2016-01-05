@@ -164,22 +164,6 @@ typedef enum {
 //大按钮高度
 #define HEIGHT_MAIN_BUTTON 45
 
-//消息配置
-#define ERROR_MOBILE_REQUIRED [LocaleUtil error:@"Mobile.Required"]
-#define ERROR_MOBILE_FORMAT [LocaleUtil error:@"Mobile.Format"]
-#define ERROR_PASSWORD_REQUIRED [LocaleUtil error:@"Password.Required"]
-#define ERROR_PASSWORD_LENGTH [LocaleUtil error:@"Password.Length"]
-#define ERROR_COMMENT_REQUIRED [LocaleUtil error:@"Comment.Required"]
-#define ERROR_MOBILECODE_REQUIRED [LocaleUtil error:@"MobileCode.Required"]
-#define ERROR_MOBILE_NOTFOUND [LocaleUtil error:@"Mobile.NotFound"]
-
-#define TIP_LOADING_MESSAGE [LocaleUtil system:@"Loading.Start"]
-#define TIP_LOADING_SUCCESS [LocaleUtil system:@"Loading.Success"]
-#define TIP_LOADING_FAILURE [LocaleUtil system:@"Loading.Failed"]
-
-#define TIP_REQUEST_MESSAGE [LocaleUtil system:@"Request.Start"]
-#define TIP_REQUEST_SUCCESS [LocaleUtil system:@"Request.Success"]
-#define TIP_REQUEST_FAILURE [LocaleUtil system:@"Request.Failed"]
 /********<<<公用配置********/
 
 

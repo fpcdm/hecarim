@@ -318,7 +318,7 @@ static NSArray *slideAdverts = nil;
                 [cityViewController reloadView];
             }
         } else {
-            gpsStatus = @"获取位置失败";
+            gpsStatus = [LocaleUtil info:@"Location.Fail"];
         }
         
         //查询信使数量
@@ -337,7 +337,7 @@ static NSArray *slideAdverts = nil;
             [self renderView];
         }];
     } failure:^(ErrorEntity *error){
-        gpsStatus = @"查询位置失败";
+        gpsStatus = [LocaleUtil info:@"FoundLocation.Fail"];
         
         //刷新视图
         [self renderView];
@@ -364,11 +364,11 @@ static NSArray *slideAdverts = nil;
     
     //失败原因
     if ([error code] == kCLErrorDenied) {
-        gpsStatus = @"请打开手机定位";
+        gpsStatus = [LocaleUtil info:@"Open.GPS"];
     } else if ([error code] == kCLErrorLocationUnknown) {
-        gpsStatus = @"无法获取位置";
+        gpsStatus = [LocaleUtil info:@"Location.Fail"];
     } else {
-        gpsStatus = @"定位失败";
+        gpsStatus = [LocaleUtil info:@"GPS.Fail"];
     }
     
     //刷新视图

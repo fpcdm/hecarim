@@ -37,15 +37,15 @@
 - (void)actionSave:(NSString *)content
 {
     if (![ValidateUtil isRequired:content]) {
-        [self showError:@"请输入意见反馈"];
+        [self showError:[LocaleUtil error:@"Suggestion.Required"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler addSuggestion:content success:^(NSArray *result){
-        [self showSuccess:@"提交成功，感谢您的意见反馈" callback:^{
+        [self showSuccess:[LocaleUtil info:@"Suggestion.Success"] callback:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(ErrorEntity *error){

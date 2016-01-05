@@ -58,7 +58,7 @@
     isMenuEnabled = YES;
     [super viewDidLoad];
     
-    self.navigationItem.title = TIP_LOADING_MESSAGE;
+    self.navigationItem.title = [LocaleUtil system:@"Loading.Start"];
     
     //刷新按钮
     refreshButton = [AppUIUtil makeBarButtonItem:@"刷新" highlighted:isIndexNavBar];
@@ -91,12 +91,12 @@
 //刷新需求，有加载效果
 - (void) refreshCase
 {
-    [self showLoading:@"正在刷新"];
+    [self showLoading:[LocaleUtil system:@"Refresh.Start"]];
     
     //需求当前状态
     NSString *oldStatus = intention ? intention.status : nil;
     [self loadData:^(id object){
-        [self loadingSuccess:@"刷新完成" callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Refresh.Suceess"] callback:^{
             //检测需求状态是否变化
             if (![intention.status isEqualToString:oldStatus]) {
                 [self intentionView];
@@ -312,11 +312,11 @@
     
     NSLog(@"取消需求: %@", intentionEntity.id);
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler cancelIntention:intentionEntity success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //取消成功
             [self.navigationController popViewControllerAnimated:YES];
         }];
@@ -345,7 +345,7 @@
 
 - (void)actionPay
 {
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //查询支付方式
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
@@ -378,7 +378,7 @@
     
     NSDictionary *param = @{@"pay_way": payment};
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
@@ -389,7 +389,7 @@
     } failure:^(ErrorEntity *error){
         //是否已经支付
         if (error.code == 1100) {
-            [self showSuccess:@"您已经支付完成了哦~亲！" callback:^{
+            [self showSuccess:[LocaleUtil info:@"Payment.Success"] callback:^{
                 //检测需求状态是否有修改
                 [self reloadCase];
             }];
@@ -404,7 +404,7 @@
 {
     //未选择支付方式
     if (!payWay) {
-        [self showError:@"请选择支付方式哦~亲！"];
+        [self showError:[LocaleUtil error:@"Payment.Required"]];
         return;
     }
     
@@ -432,7 +432,7 @@
         UserHandler *userHandler = [[UserHandler alloc] init];
         [userHandler verifyPayPassword:password success:^(NSArray *result) {
             [_tradeView hide:^{
-                [self showLoading:TIP_REQUEST_MESSAGE];
+                [self showLoading:[LocaleUtil system:@"Request.Start"]];
                 
                 CaseEntity *payIntention = [[CaseEntity alloc] init];
                 payIntention.id = self.caseId;
@@ -446,7 +446,7 @@
                         if ([intention.status isEqualToString:CASE_STATUS_PAYED] ||
                             [intention.status isEqualToString:CASE_STATUS_SUCCESS]) {
                             //提示支付成功
-                            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                                 [self intentionView];
                             }];
                         //还未支付完成
@@ -482,7 +482,7 @@
             [self payedView];
         }];
     } else {
-        [self showError:@"请先安装微信再扫码支付哦~亲！"];
+        [self showError:[LocaleUtil error:@"WeiXin.Qrcode"]];
     }
 }
 
@@ -497,7 +497,7 @@
             [self payedView];
         }];
     } else {
-        [self showError:@"请先安装支付宝再扫码支付哦~亲！"];
+        [self showError:[LocaleUtil error:@"Alipay.Qrcode"]];
     }
 }
 
@@ -520,7 +520,7 @@
             [self intentionView];
         //还未支付完成
         } else {
-            [self showError:@"请等待商户确认收款成功哦~亲！"];
+            [self showError:[LocaleUtil error:@"Receivables.Success"]];
         }
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -537,7 +537,7 @@
 - (void)actionComment:(int)value
 {
     if (value < 1) {
-        [self showError:ERROR_COMMENT_REQUIRED];
+        [self showError:[LocaleUtil error:@"Comment.Required"]];
         return;
     }
     
@@ -546,12 +546,12 @@
     intentionEntity.no = intention.no;
     intentionEntity.rateStar = [NSNumber numberWithInt:value];
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler addIntentionEvaluation:intentionEntity success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             intention.rateStar = [NSNumber numberWithInt:value];
             intention.status = CASE_STATUS_SUCCESS;
             

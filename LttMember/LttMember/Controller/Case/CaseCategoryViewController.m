@@ -44,7 +44,7 @@
     
     //获取分类列表
     if (!self.categoryId) {
-        [self showLoading:TIP_LOADING_MESSAGE];
+        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
         
         CaseHandler *caseHandler = [[CaseHandler alloc] init];
         NSDictionary *param = @{@"target": @"other"};
@@ -61,7 +61,7 @@
         }];
     //获取服务列表
     } else {
-        [self showLoading:TIP_LOADING_MESSAGE];
+        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
         
         CaseHandler *caseHandler = [[CaseHandler alloc] init];
         NSDictionary *param = @{@"category_id": self.categoryId, @"target": @"other"};
@@ -85,7 +85,7 @@
     //获取选中的列表
     NSArray *categories = [categoryView selectedCategories];
     if (!categories || [categories count] < 1) {
-        [self showError:self.categoryId ? @"请先选择服务哦~亲！" : @"请先选择场景哦~亲！"];
+        [self showError:self.categoryId ? [LocaleUtil error:@"Services.Required"] : [LocaleUtil error:@"Scenes.Required"]];
         return;
     }
     

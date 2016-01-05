@@ -222,20 +222,20 @@
 {
     //参数检查
     if (![ValidateUtil isRequired:inputMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:inputMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler checkMobile:inputMobile success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             ResultEntity *checkResult = [result firstObject];
             
             mobile = inputMobile;
@@ -283,12 +283,12 @@
     user.deviceType = @"ios";
     user.deviceId = [[StorageUtil sharedStorage] getDeviceId];
     
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler loginWithUser:user success:^(NSArray *result){
-        [self loadingSuccess:TIP_LOADING_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Loading.Success"] callback:^{
             //赋值并释放资源
             UserEntity *apiUser = [result firstObject];
             user.id = apiUser.id;
@@ -349,15 +349,15 @@
 - (void) actionVerifyCode:(NSString *)code
 {
     if (![ValidateUtil isRequired:code]) {
-        [self showError:ERROR_MOBILECODE_REQUIRED];
+        [self showError:[LocaleUtil error:@"MobileCode.Required"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler verifyMobileCode:mobile code:code success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             [self pushView:[self mobilePasswordView] animated:YES completion:nil];
         }];
     } failure:^(ErrorEntity *error){
@@ -369,16 +369,16 @@
 {
     inputPassword = [inputPassword trim];
     if (![ValidateUtil isRequired:inputPassword]) {
-        [self showError:ERROR_PASSWORD_REQUIRED];
+        [self showError:[LocaleUtil error:@"Password.Required"]];
         return;
     }
     
     if (![ValidateUtil isLengthBetween:inputPassword from:6 to:20]) {
-        [self showError:ERROR_PASSWORD_LENGTH];
+        [self showError:[LocaleUtil error:@"Password.Length"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //保存密码供自动登录使用
     password = inputPassword;
@@ -407,11 +407,11 @@
 - (void)actionRecommend:(NSString *)recommendMobile
 {
     if (![ValidateUtil isRequired:recommendMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:recommendMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     referenceMobile = recommendMobile;

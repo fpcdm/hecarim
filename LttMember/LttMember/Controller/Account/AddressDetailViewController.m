@@ -43,7 +43,7 @@
     AddressEntity *requestAddress = [[AddressEntity alloc] init];
     requestAddress.id = self.address.id;
     
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler queryAddress:requestAddress success:^(NSArray *result){
         [self hideLoading];

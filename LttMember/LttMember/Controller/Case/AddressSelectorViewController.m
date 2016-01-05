@@ -48,7 +48,7 @@
     [super viewWillAppear:animated];
     
     //加载数据
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     [self loadData:^(id object){
         [self hideLoading];
         

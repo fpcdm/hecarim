@@ -50,7 +50,7 @@
 
 - (void)actionRecharge
 {
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //是否设置支付密码
     UserHandler *userHandler = [[UserHandler alloc] init];
