@@ -311,6 +311,8 @@
 		2FFA37551C3B6B22008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37541C3B6B22008E6389 /* ThemeUtil.m */; };
 		2FFA375B1C3B877D008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */; };
 		2FFA37891C3B8F22008E6389 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37881C3B8F22008E6389 /* InfoPlist.strings */; };
+		2FFA37901C3BA643008E6389 /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA378D1C3BA643008E6389 /* Harpy.bundle */; };
+		2FFA37911C3BA643008E6389 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA378F1C3BA643008E6389 /* Harpy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1010,6 +1012,9 @@
 		2FFA37541C3B6B22008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 		2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
 		2FFA37881C3B8F22008E6389 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		2FFA378D1C3BA643008E6389 /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
+		2FFA378E1C3BA643008E6389 /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
+		2FFA378F1C3BA643008E6389 /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1752,6 +1757,7 @@
 		2F800AFE1B1D50EE006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2FFA378C1C3BA643008E6389 /* Harpy */,
 				2F253A0B1C1EBF8A009FC19B /* ZCTradeView */,
 				2F2539FD1C1EB44E009FC19B /* AlipaySDK */,
 				2F253A021C1EB44E009FC19B /* WechatSDK */,
@@ -2252,6 +2258,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2FFA378C1C3BA643008E6389 /* Harpy */ = {
+			isa = PBXGroup;
+			children = (
+				2FFA378D1C3BA643008E6389 /* Harpy.bundle */,
+				2FFA378E1C3BA643008E6389 /* Harpy.h */,
+				2FFA378F1C3BA643008E6389 /* Harpy.m */,
+			);
+			path = Harpy;
+			sourceTree = "<group>";
+		};
 		9CB345F8FF6391BAA4D3F5E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2387,6 +2403,7 @@
 				2F2F223D1B3A4D0300428742 /* NotificationBackgroundErrorIcon.png in Resources */,
 				2FB4797B1C0EEB7700080EB7 /* WeiboSDK.bundle in Resources */,
 				2F2F223E1B3A4D0300428742 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
+				2FFA37901C3BA643008E6389 /* Harpy.bundle in Resources */,
 				2F2F223F1B3A4D0300428742 /* NotificationBackgroundMessage.png in Resources */,
 				2F2F22401B3A4D0300428742 /* NotificationBackgroundMessage@2x.png in Resources */,
 				2F2F22411B3A4D0300428742 /* NotificationBackgroundSuccess.png in Resources */,
@@ -2637,6 +2654,7 @@
 				2F66301A1BF1BF950025112C /* UINavigationController+Vertical.m in Sources */,
 				2F6D3E5D1B312765007A4159 /* UIScrollView+MJExtension.m in Sources */,
 				2F6D3E5E1B312765007A4159 /* UIScrollView+MJRefresh.m in Sources */,
+				2FFA37911C3BA643008E6389 /* Harpy.m in Sources */,
 				2F5FDDD91B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m in Sources */,
 				2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2F253A1F1C1EBF8A009FC19B /* UIView+ZCTradeView.m in Sources */,

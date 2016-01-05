@@ -241,6 +241,8 @@
 		2FFA37641C3B8C08008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37611C3B8C08008E6389 /* ThemeUtil.m */; };
 		2FFA37661C3B8C28008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */; };
 		2FFA378B1C3B93CA008E6389 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA378A1C3B93CA008E6389 /* InfoPlist.strings */; };
+		2FFA37961C3BA90F008E6389 /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37931C3BA90F008E6389 /* Harpy.bundle */; };
+		2FFA37971C3BA90F008E6389 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37951C3BA90F008E6389 /* Harpy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -813,6 +815,9 @@
 		2FFA37611C3B8C08008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 		2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
 		2FFA378A1C3B93CA008E6389 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		2FFA37931C3BA90F008E6389 /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
+		2FFA37941C3BA90F008E6389 /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
+		2FFA37951C3BA90F008E6389 /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1403,6 +1408,7 @@
 		2F800B0D1B1D529F006189EF /* vender */ = {
 			isa = PBXGroup;
 			children = (
+				2FFA37921C3BA90F008E6389 /* Harpy */,
 				2FAA3B801BFC10E0006B92E1 /* CNPPopupController */,
 				2F7E2C571BA6BB4500F7E6BD /* SKDropDown */,
 				2F0095CD1B79A5DE003C27B9 /* DLRadioButton */,
@@ -1858,6 +1864,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2FFA37921C3BA90F008E6389 /* Harpy */ = {
+			isa = PBXGroup;
+			children = (
+				2FFA37931C3BA90F008E6389 /* Harpy.bundle */,
+				2FFA37941C3BA90F008E6389 /* Harpy.h */,
+				2FFA37951C3BA90F008E6389 /* Harpy.m */,
+			);
+			path = Harpy;
+			sourceTree = "<group>";
+		};
 		FCBA9D374EBF06A96A88C00D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1974,6 +1990,7 @@
 			files = (
 				2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */,
 				2FFA378B1C3B93CA008E6389 /* InfoPlist.strings in Resources */,
+				2FFA37961C3BA90F008E6389 /* Harpy.bundle in Resources */,
 				2F6D3F111B3128CC007A4159 /* MJRefresh.bundle in Resources */,
 				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
 				2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */,
@@ -2047,6 +2064,7 @@
 				2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */,
 				2BF3EDD51C325A6B002BCB72 /* StaffListView.m in Sources */,
 				2F9000791B1D91470040D97B /* MASConstraint.m in Sources */,
+				2FFA37971C3BA90F008E6389 /* Harpy.m in Sources */,
 				2F6D3F051B3128CC007A4159 /* MJRefreshComponent.m in Sources */,
 				2F16E6B01B5DF84B007947D0 /* GoodsEntity.m in Sources */,
 				2F16E6C21B5E1B03007947D0 /* CaseListViewController.m in Sources */,

@@ -22,6 +22,7 @@
 #import "RechargeViewController.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "Harpy.h"
 
 @interface LttAppDelegate () <WXApiDelegate>
 
@@ -97,6 +98,9 @@
     //初始化支付
     [self initPay];
     
+    //检查版本更新
+    [self checkUpdate];
+    
     return YES;
 }
 
@@ -135,6 +139,14 @@
         }
         return YES;
     };
+}
+
+- (void)checkUpdate
+{
+    [[Harpy sharedInstance] setAppID:LTT_APPSTORE_ID];
+    [[Harpy sharedInstance] setPresentingViewController:self.window.rootViewController];
+    
+    [[Harpy sharedInstance] checkVersionWeekly];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

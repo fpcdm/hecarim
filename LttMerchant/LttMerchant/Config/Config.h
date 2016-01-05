@@ -34,6 +34,9 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
+//AppStoreId配置
+#define LTT_APPSTORE_ID @"1018116988"
+
 //用户心跳间隔
 #define USER_HEARTBEAT_INTERVAL 10.0
 

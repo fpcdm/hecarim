@@ -16,6 +16,7 @@
 #import "UserHandler.h"
 #import "LocationUtil.h"
 #import "TimerUtil.h"
+#import "Harpy.h"
 
 @interface LttAppDelegate () <LocationUtilDelegate>
 
@@ -117,7 +118,18 @@
     //初始化用户心跳
     [self initHeartbeat];
     
+    //检查版本更新
+    [self checkUpdate];
+    
     return YES;
+}
+
+- (void)checkUpdate
+{
+    [[Harpy sharedInstance] setAppID:LTT_APPSTORE_ID];
+    [[Harpy sharedInstance] setPresentingViewController:self.window.rootViewController];
+    
+    [[Harpy sharedInstance] checkVersionWeekly];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
