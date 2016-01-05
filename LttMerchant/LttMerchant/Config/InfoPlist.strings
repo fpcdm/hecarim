@@ -7,10 +7,49 @@
 */
 
 //系统错误
-"ERROR_PARAM_REQUIRED" = "页面出错了哦~亲！";
+"ERROR.Param.Required" = "页面出错了哦~亲！";
+"ERROR.Mobile.Required" = "请填写手机号哦~亲！";
+"ERROR.Mobile.Format" = "手机号不正确哦~亲！";
+"ERROR.Password.Required" = "请填写密码哦~亲！";
+"ERROR.Password.Length" = "密码长度不正确哦~亲！";
+"ERROR.Password.Equal" = "两次密码不相等哦~亲！";
+"ERROR.NewPassword.Required" = "请输入新密码哦~亲！";
+"ERROR.ReNewPassword.Required" = "请输入确认新密码";
+"ERROR.Password.Format" = "密码长度为6-15位英文字母，数字组成";
+"ERROR.Comment.Required" = "请选择评价星级哦~亲！";
+"ERROR.MobileCode.Required" = "请填写验证码哦~亲！";
+"ERROR.Mobile.NotFound" = "该手机号不存在哦~亲！";
+"ERROR.Merchant.Required" = "请填写单位名称哦~亲！";
+"ERROR.MerchantAddress.Required" = "请填写单位地址哦~亲！";
+"ERROR.Contact.Required" = "请填写负责人哦~亲";
+"ERROR.ContactId.Required" = "请填写负责人身份证哦~亲";
+"ERROR.StaffNo.Required" = "编号不能为空哦~亲！";
+"ERROR.StaffName.Required" = "姓名不能为空哦~亲！";
+"ERROR.StaffNickname.Required" = "昵称不能为空哦~亲！";
+"ERROR.Qrcode.Failed" = "二维码生成失败，请重试！";
+"ERROR.GoodsOrServices.Required" = "请至少添加一个商品或服务";
+"ERROR.ServicesRemark.Required" = "请填写服务单备注哦~亲！";
+"ERROR.DeletedGoods.Required" = "请选择要删除的商品哦~亲！";
+"ERROR.DeletedServices.Required" = "请选择要删除的服务哦~亲！";
+"ERROR.ServiceName.Required" = "请先填写内容哦~亲！";
+"ERROR.ServicePrice.Required" = "请先填写价格哦~亲！";
+"ERROR.ServicePrice.Format" = "价格填写不正确哦~亲！";
+"ERROR.Category.Required" = "请先选择商品类别哦~亲！";
+"ERROR.Model.Required" = "请先选择品牌型号哦~亲！";
+"ERROR.Spec.Required" = "请先选择商品规格哦~亲！";
+"ERROR.Brand.NotModel" = "该品牌暂无型号";
+"ERROR.Category.NotBrand" = "该分类暂无品牌";
+"ERROR.Category.NotFound" = "暂无商品类别";
+"ERROR.Model.NotGoods" = "该型号暂无商品";
+
+
+"INFO.ResetPassword.Success" = "重置密码成功";
+"INFO.UploadAvatar.Success" = "上传头像成功";
+"INFO.Case.Finished" = "该服务单已经支付完成了哦~亲！";
+
 
 //提示消息
-"TIP_CHALLENGE_START" = "开始抢单";
-"TIP_CHALLENGE_SUCCESS" = "抢单成功";
-"TIP_CHALLENGE_FAIL" = "抢单失败，下次手快点哦~亲！";
-"TIP_CHALLENGE_LOSE" = "该需求已被处理，你来晚了哦~亲！";
+"INFO.Challenge.Start" = "开始抢单";
+"INFO.Challenge.Suceess" = "抢单成功";
+"INFO.Challenge.Fail" = "抢单失败，下次手快点哦~亲！";
+"INFO.Challenge.Lose" = "该需求已被处理，你来晚了哦~亲！";

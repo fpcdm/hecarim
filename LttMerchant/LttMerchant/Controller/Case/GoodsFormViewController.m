@@ -205,7 +205,7 @@
             model = [modelList objectAtIndex:indexPath.row];
             modelDropDown = nil;
             
-            [self showLoading:TIP_LOADING_MESSAGE];
+            [self showLoading:[LocaleUtil system:@"Loading.Start"]];
             
             //加载规格列表
             ModelEntity *modelEntity = [[ModelEntity alloc] init];
@@ -226,7 +226,7 @@
                 if ([result count] < 1) {
                     [self reloadSpec];
                     
-                    [self showError:@"该型号暂无商品"];
+                    [self showError:[LocaleUtil error:@"Model.NotGoods"]];
                     return;
                 }
                 
@@ -248,7 +248,7 @@
     if (categoryDropDown == nil) {
         //加载分类列表
         if (!categoryList) {
-            [self showLoading:TIP_LOADING_MESSAGE];
+            [self showLoading:[LocaleUtil system:@"Loading.Start"]];
             
             CategoryEntity *categoryEntity = [[CategoryEntity alloc] init];
             categoryEntity.id = @0;
@@ -259,7 +259,7 @@
                 [self hideLoading];
                 
                 if ([result count] < 1) {
-                    [self showError:@"暂无商品类别"];
+                    [self showError:[LocaleUtil error:@"Category.NotFound"]];
                     return;
                 }
                 
@@ -283,13 +283,13 @@
 {
     //参数检查
     if (!category) {
-        [self showError:@"请先选择商品类别哦~亲！"];
+        [self showError:[LocaleUtil error:@"Category.Required"]];
         return;
     }
     
     //显示dropDown
     if (brandDropDown == nil) {
-        [self showLoading:TIP_LOADING_MESSAGE];
+        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
         
         //获取品牌列表
         CategoryEntity *categoryModel = [[CategoryEntity alloc] init];
@@ -300,7 +300,7 @@
             [self hideLoading];
             
             if ([result count] < 1) {
-                [self showError:@"该分类暂无品牌"];
+                [self showError:[LocaleUtil error:@"Category.NotBrand"]];
                 return;
             }
             
@@ -321,14 +321,14 @@
 {
     //参数检查
     if (!brand) {
-        [self showError:@"请先选择品牌哦~亲！"];
+        [self showError:[LocaleUtil error:@"Model.Required"]];
         return;
     }
     
     
     //显示dropDown
     if (modelDropDown == nil) {
-        [self showLoading:TIP_LOADING_MESSAGE];
+        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
         
         //获取型号列表
         BrandEntity *brandEntity = brand;
@@ -339,7 +339,7 @@
             [self hideLoading];
             
             if ([result count] < 1) {
-                [self showError:@"该品牌暂无型号"];
+                [self showError:[LocaleUtil error:@"Brand.NotModel"]];
                 return;
             }
             
@@ -389,15 +389,15 @@
 {
     //参数检查
     if (!category) {
-        [self showError:@"请先选择商品类别哦~亲！"];
+        [self showError:[LocaleUtil error:@"Category.Required"]];
         return;
     }
     if (!model) {
-        [self showError:@"请先选择品牌型号哦~亲！"];
+        [self showError:[LocaleUtil error:@"Model.Required"]];
         return;
     }
     if (!goods || !priceId) {
-        [self showError:@"请先选择商品规格哦~亲！"];
+        [self showError:[LocaleUtil error:@"Spec.Required"]];
         return;
     }
     
@@ -427,12 +427,12 @@
     postCase.goods = nil;
     
     //提交数据
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     //新增
     if (!isEdit) {
         [caseHandler addCaseGoods:postCase success:^(NSArray *result){
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 //通知刷新
                 if (self.callbackBlock) {
                     self.callbackBlock(@1);
@@ -446,7 +446,7 @@
         //编辑
     } else {
         [caseHandler editCaseGoods:postCase success:^(NSArray *result){
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 //通知刷新
                 if (self.callbackBlock) {
                     self.callbackBlock(@1);

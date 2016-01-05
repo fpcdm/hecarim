@@ -27,7 +27,7 @@
 - (void) loadCase:(CallbackBlock)callback
 {
     //加载数据
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     //查询需求
     NSLog(@"caseId: %@", self.caseId);

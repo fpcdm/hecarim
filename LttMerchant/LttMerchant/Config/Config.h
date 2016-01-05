@@ -108,26 +108,6 @@
 //大按钮高度
 #define HEIGHT_MAIN_BUTTON 45
 
-//消息配置
-#define ERROR_MOBILE_REQUIRED @"请填写手机号哦~亲！"
-#define ERROR_MOBILE_FORMAT @"手机号不正确哦~亲！"
-#define ERROR_PASSWORD_REQUIRED @"请填写密码哦~亲！"
-#define ERROR_PASSWORD_LENGTH @"密码长度不正确哦~亲！"
-#define ERROR_COMMENT_REQUIRED @"请选择评价星级哦~亲！"
-#define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
-#define ERROR_MOBILE_NOTFOUND @"该手机号不存在哦~亲！"
-#define ERROR_MERCHANT_REQUIRED @"请填写单位名称哦~亲！"
-#define ERROR_MERCHANTADDRESS_REQUIRED @"请填写单位地址哦~亲！"
-#define ERROR_CONTACT_REQUIRED @"请填写负责人哦~亲"
-#define ERROR_CONTACTID_REQUIRED @"请填写负责人身份证哦~亲"
-
-#define TIP_LOADING_MESSAGE [LocaleUtil system:@"Loading.Start"]
-#define TIP_LOADING_SUCCESS [LocaleUtil system:@"Loading.Success"]
-#define TIP_LOADING_FAILURE [LocaleUtil system:@"Loading.Failed"]
-
-#define TIP_REQUEST_MESSAGE [LocaleUtil system:@"Request.Start"]
-#define TIP_REQUEST_SUCCESS [LocaleUtil system:@"Request.Success"]
-#define TIP_REQUEST_FAILURE [LocaleUtil system:@"Request.Failed"]
 /********<<<公用配置********/
 
 

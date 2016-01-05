@@ -76,23 +76,23 @@
 {
     //参数检查
     if (![ValidateUtil isRequired:inputMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     //判断是否是手机号
     if (![ValidateUtil isMobile:inputMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     
     //请求中
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //手机号检查接口调用
     HelperHandler * helpHandler = [[HelperHandler alloc] init];
     [helpHandler checkMobile:inputMobile success:^(NSArray *result) {
         //请求成功
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             ResultEntity *checkResult = [result firstObject];
             
             //赋值给mobile
@@ -109,7 +109,7 @@
                     [self actionSend];
                 }];
             } else {
-                [self showError:ERROR_MOBILE_NOTFOUND];
+                [self showError:[LocaleUtil error:@"Mobile.NotFound"]];
                 return;
             }
         }];
@@ -298,12 +298,12 @@
 {
     //判断是否填写校验码
     if (![ValidateUtil isRequired:code]) {
-        [self showError:ERROR_MOBILECODE_REQUIRED];
+        [self showError:[LocaleUtil error:@"MobileCode.Required"]];
         return;
     }
     
     //请求中
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用忘记密码短信验证接口
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
@@ -311,7 +311,7 @@
         ResultEntity *verifyResult = [result firstObject];
         vCode = verifyResult.data;
         NSLog(@"安全码是：%@",vCode);
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //加载到重置密码的视图
             [self pushView:[self resetPwdView] animated:YES completion:nil];
             
@@ -325,19 +325,19 @@
 - (void)actionResetPassword:(NSString *)newPassword reNewPassword:(NSString *)reNewPassword
 {
     if (![ValidateUtil isRequired:newPassword]) {
-        [self showError:@"请输入新密码"];
+        [self showError:[LocaleUtil error:@"NewPassword.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:reNewPassword]) {
-        [self showError:@"请输入确认新密码"];
+        [self showError:[LocaleUtil error:@"ReNewPassword.Required"]];
         return;
     }
     if (![ValidateUtil isLengthBetween:newPassword from:6 to:15]) {
-        [self showError:@"密码长度为6-15位英文字母，数字组成"];
+        [self showError:[LocaleUtil error:@"Password.Format"]];
         return;
     }
     if (![newPassword isEqualToString:reNewPassword]) {
-        [self showError:@"两次密码不相等"];
+        [self showError:[LocaleUtil error:@"Password.Equal"]];
         return;
     }
     
@@ -346,12 +346,12 @@
     user.mobile = mobile;
     
     //请求中
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler resetPassword:user vCode:vCode success:^(NSArray *result) {
         NSLog(@"重置密码成功");
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             [self pushView:[self resetPwdSuccessView] animated:YES completion:nil];
         }];
 

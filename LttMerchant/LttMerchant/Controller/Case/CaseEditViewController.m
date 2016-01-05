@@ -61,7 +61,7 @@
 - (void) actionSave: (NSString *)remark
 {
     if (!remark || [remark length] < 1) {
-        [self showError:@"请填写服务单备注哦~亲！"];
+        [self showError:[LocaleUtil error:@"ServicesRemark.Required"]];
         return;
     }
     

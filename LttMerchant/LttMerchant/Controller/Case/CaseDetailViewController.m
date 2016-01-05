@@ -207,7 +207,7 @@
 //加载支付列表，显示视图
 - (void)loadPaymentView
 {
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"is_online": @"no"};
@@ -235,7 +235,7 @@
 //刷新需求，有加载效果
 - (void) refreshCaseStatus
 {
-    [self showLoading:@"正在刷新"];
+    [self showLoading:[LocaleUtil system:@"Refresh.Start"]];
     
     //需求当前状态
     NSString *oldStatus = intention ? intention.status : nil;
@@ -247,7 +247,7 @@
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler queryCase:intentionEntity success:^(NSArray *result){
         CaseEntity *resultIntention = [result firstObject];
-        [self loadingSuccess:@"刷新完成" callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Refresh.Suceess"] callback:^{
             //检测需求状态是否变化
             if (![resultIntention.status isEqualToString:oldStatus]) {
                 //标记列表刷新
@@ -294,12 +294,12 @@
     intentionEntity.id = self.caseId;
     
     //开始抢单
-    [self showLoading:LocalString(@"TIP_CHALLENGE_START")];
+    [self showLoading:[LocaleUtil info:@"Challenge.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler competeCase:intentionEntity success:^(NSArray *result){
-        [self loadingSuccess:LocalString(@"TIP_CHALLENGE_SUCCESS") callback:^{
+        [self loadingSuccess:[LocaleUtil info:@"Challenge.Suceess"] callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -308,7 +308,7 @@
             [self reloadCase];
         }];
     } failure:^(ErrorEntity *error){
-        [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
+        [self showError:[LocaleUtil info:@"Challenge.Fail"]];
     }];
 }
 
@@ -318,12 +318,12 @@
     //获取数据
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler giveupCase:intentionEntity success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -345,12 +345,12 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -370,7 +370,7 @@
     NSInteger goodsCount = intention.goods ? [intention.goods count] : 0;
     NSInteger servicesCount = intention.services ? [intention.services count] : 0;
     if (goodsCount < 1 && servicesCount < 1) {
-        [self showError:@"请至少添加一个商品或服务"];
+        [self showError:[LocaleUtil error:@"GoodsOrServices.Required"]];
         return;
     }
     
@@ -379,12 +379,12 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_TOPAY};
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -447,7 +447,7 @@
     
     NSDictionary *param = @{@"pay_way": payment};
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
@@ -458,7 +458,7 @@
     } failure:^(ErrorEntity *error){
         //是否已经支付
         if (error.code == 1100) {
-            [self showSuccess:@"该服务单已经支付完成了哦~亲！" callback:^{
+            [self showSuccess:[LocaleUtil info:@"Case.Finished"] callback:^{
                 //标记列表刷新
                 if (self.callbackBlock) {
                     self.callbackBlock(@1);
@@ -481,7 +481,7 @@
         caseDetailView.img.image = nil;
         //微信二维码
         [intention qrcodeImageView:caseDetailView.img way:PAY_WAY_WEIXIN failure:^{
-            [self showError:@"二维码生成失败，请重试！"];
+            [self showError:[LocaleUtil error:@"Qrcode.Failed"]];
         }];
     }];
 }
@@ -495,7 +495,7 @@
         caseDetailView.img.image = nil;
         //支付宝二维码
         [intention qrcodeImageView:caseDetailView.img way:PAY_WAY_ALIPAY failure:^{
-            [self showError:@"二维码生成失败，请重试！"];
+            [self showError:[LocaleUtil error:@"Qrcode.Failed"]];
         }];
     }];
 }
@@ -541,12 +541,12 @@
             
             NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
             
-            [self showLoading:TIP_REQUEST_MESSAGE];
+            [self showLoading:[LocaleUtil system:@"Request.Start"]];
             
             //调用接口
             CaseHandler *caseHandler = [[CaseHandler alloc] init];
             [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
-                [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                     //标记列表刷新
                     if (self.callbackBlock) {
                         self.callbackBlock(@1);

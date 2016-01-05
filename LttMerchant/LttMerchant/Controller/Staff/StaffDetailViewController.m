@@ -46,7 +46,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self showLoading:TIP_LOADING_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     staffEntity = [[StaffEntity alloc] init];
     staffEntity.id = staffId;
@@ -116,7 +116,7 @@
         case 2:
         {
             if (buttonIndex == 1) return;
-            [self showLoading:TIP_REQUEST_MESSAGE];
+            [self showLoading:[LocaleUtil system:@"Request.Start"]];
             
             StaffHandler *staffHandler = [[StaffHandler alloc] init];
             
@@ -127,7 +127,7 @@
             
             [staffHandler resetStaffPassword:staffEntity param:param success:^(NSArray *result) {
                 [self hideLoading];
-                [self showSuccess:@"重置密码成功"];
+                [self showSuccess:[LocaleUtil info:@"ResetPassword.Success"]];
             } failure:^(ErrorEntity *error) {
                 [self showError:error.message];
             }];
@@ -145,7 +145,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
    
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //上传头像
     FileEntity *avatarEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
@@ -155,8 +155,8 @@
     
     StaffHandler *staffHandler = [[StaffHandler alloc] init];
     [staffHandler uploadAvatar:avatarEntity success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
-            [self showSuccess:@"上传头像成功"];
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
+            [self showSuccess:[LocaleUtil info:@"UploadAvatar.Success"]];
             FileEntity *imageEntity = [result firstObject];
             NSLog(@"头像上传成功：%@", imageEntity.url);
             staffEntity = [[StaffEntity alloc] init];

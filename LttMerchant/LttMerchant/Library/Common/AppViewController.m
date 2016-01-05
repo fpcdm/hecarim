@@ -244,7 +244,7 @@
     [caseHandler queryCase:intentionEntity success:^(NSArray *result){
         [self showPopupController:message intention:[result firstObject]];
     } failure:^(ErrorEntity *error){
-        [self showError:LocalString(@"TIP_CHALLENGE_LOSE")];
+        [self showError:[LocaleUtil info:@"Challenge.Lose"]];
     }];
 }
 
@@ -324,7 +324,7 @@
         [self toggleViewController:viewController animated:YES];
     } failure:^(ErrorEntity *error){
         [popupController dismissPopupControllerAnimated:YES];
-        [self showError:LocalString(@"TIP_CHALLENGE_FAIL")];
+        [self showError:[LocaleUtil info:@"Challenge.Fail"]];
     }];
 }
 

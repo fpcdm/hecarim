@@ -153,10 +153,10 @@
     postCase.goods = nil;
     
     //提交数据
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler editCaseGoods:postCase success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //通知重新加载，解决单元格减少问题
             if (self.callbackBlock) {
                 self.callbackBlock(@2);
@@ -219,7 +219,7 @@
     NSInteger selectedCount = selectedRows ? [selectedRows count] : 0;
     
     if (selectedCount < 1) {
-        [self showError:@"请选择要删除的商品哦~亲！"];
+        [self showError:[LocaleUtil error:@"DeletedGoods.Required"]];
         return;
     }
     

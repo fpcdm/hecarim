@@ -206,19 +206,19 @@
 {
     //参数检查
     if (![ValidateUtil isRequired:inputMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:inputMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     if (![ValidateUtil isRequired:code]) {
-        [self showError:ERROR_MOBILECODE_REQUIRED];
+        [self showError:[LocaleUtil error:@"MobileCode.Required"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //检查手机号是否已经注册
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
@@ -229,7 +229,7 @@
         mobileStatus = checkResult.data;
         NSLog(@"check mobile result: %@", checkResult.data);
         if ([@"registered" isEqualToString:mobileStatus]) {
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 RegisterExistView *existView = [self mobileExistView];
                 [self pushView:existView animated:YES completion:^{
                     [existView setData:@"mobile" value:mobile];
@@ -240,7 +240,7 @@
             //检查校验码是否正确
             HelperHandler *helperHandler = [[HelperHandler alloc] init];
             [helperHandler verifyMobileCode:inputMobile code:code success:^(NSArray *result){
-                [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+                [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                     ResultEntity *verifyResult = [result firstObject];
                     vCode = verifyResult.data;
                     NSLog(@"安全码是：%@",vCode);
@@ -288,20 +288,20 @@
     }
     
     if (![ValidateUtil isRequired:inputMobile]) {
-        [self showError:ERROR_MOBILE_REQUIRED];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:inputMobile]) {
-        [self showError:ERROR_MOBILE_FORMAT];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //检查手机号是否已经注册
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler checkMobile:inputMobile success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             ResultEntity *checkResult = [result firstObject];
             
             mobile = inputMobile;
@@ -331,15 +331,15 @@
 - (void)actionSendPassword:(NSString *)pwd confirmPwd:(NSString *)confirmPwd
 {
     if (![ValidateUtil isRequired:pwd]) {
-        [self showError:ERROR_PASSWORD_REQUIRED];
+        [self showError:[LocaleUtil error:@"Password.Required"]];
         return;
     }
     if (![ValidateUtil isLengthBetween:pwd from:6 to:20]) {
-        [self showError:ERROR_PASSWORD_LENGTH];
+        [self showError:[LocaleUtil error:@"Password.Length"]];
         return;
     }
     if (![confirmPwd isEqualToString:pwd]) {
-        [self showError:@"两次密码不相等哦~亲！"];
+        [self showError:[LocaleUtil error:@"Password.Equal"]];
         return;
     }
     password = pwd;
@@ -353,22 +353,22 @@
 {
     NSString *merchantName = [merchant.merchant_name trim];
     if (![ValidateUtil isRequired:merchantName]) {
-        [self showError:ERROR_MERCHANT_REQUIRED];
+        [self showError:[LocaleUtil error:@"Merchant.Required"]];
         return;
     }
     NSString *merchantAddress = [merchant.merchant_address trim];
     if (![ValidateUtil isRequired:merchantAddress]) {
-        [self showError:ERROR_MERCHANTADDRESS_REQUIRED];
+        [self showError:[LocaleUtil error:@"MerchantAddress.Required"]];
         return;
     }
     NSString *contactName = [merchant.contacter trim];
     if (![ValidateUtil isRequired:contactName]) {
-        [self showError:ERROR_CONTACT_REQUIRED];
+        [self showError:[LocaleUtil error:@"Contact.Required"]];
         return;
     }
     NSString *contacterId = [merchant.contacter_id trim];
     if (![ValidateUtil isRequired:contacterId]) {
-        [self showError:ERROR_CONTACTID_REQUIRED];
+        [self showError:[LocaleUtil error:@"ContactId.Required"]];
         return;
     }
     /*
@@ -382,7 +382,7 @@
     }
      */
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     merchant.mobile = mobile;
     merchant.password = password;
@@ -392,7 +392,7 @@
     //注册用户
     MerchantHandler *merchantHandler = [[MerchantHandler alloc] init];
     [merchantHandler registerWithUser:merchant vCode:vCode success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             [self pushView:[self mobileSuccessView] animated:YES completion:nil];
         }];
     } failure:^(ErrorEntity *error){
@@ -431,7 +431,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     //上传图片
     FileEntity *imageEntity = [[FileEntity alloc] initWithImage:image compression:0.3];
@@ -441,7 +441,7 @@
     
     HelperHandler *helperHandler = [[HelperHandler alloc] init];
     [helperHandler uploadImage:imageEntity success:^(NSArray *result){
-        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             FileEntity *imageEntity = [result firstObject];
             NSLog(@"图片上传成功：%@", imageEntity.url);
             

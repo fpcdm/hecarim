@@ -65,17 +65,17 @@
 {
     //内容
     if (![ValidateUtil isRequired:remark]) {
-        [self showError:@"请先填写内容哦~亲！"];
+        [self showError:[LocaleUtil error:@"ServiceName.Required"]];
         return;
     }
     
     //价格
     if (![ValidateUtil isRequired:price]) {
-        [self showError:@"请先填写价格哦~亲！"];
+        [self showError:[LocaleUtil error:@"ServicePrice.Required"]];
         return;
     }
     if (![ValidateUtil isPositiveNumber:price]) {
-        [self showError:@"价格填写不正确哦~亲！"];
+        [self showError:[LocaleUtil error:@"ServicePrice.Format"]];
         return;
     }
     
@@ -106,12 +106,12 @@
     postCase.services = nil;
     
     //提交数据
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     //新增
     if (!isEdit) {
         [caseHandler addCaseServices:postCase success:^(NSArray *result){
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 //通知刷新
                 if (self.callbackBlock) {
                     self.callbackBlock(@1);
@@ -125,7 +125,7 @@
         //编辑
     } else {
         [caseHandler editCaseServices:postCase success:^(NSArray *result){
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 //通知刷新
                 if (self.callbackBlock) {
                     self.callbackBlock(@1);

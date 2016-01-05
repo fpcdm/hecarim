@@ -47,7 +47,7 @@
     [super viewWillAppear:animated];
     
     if (staffId) {
-        [self showLoading:TIP_LOADING_MESSAGE];
+        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
         
         staffEntity = [[StaffEntity alloc] init];
         staffEntity.id = staffId;
@@ -69,27 +69,27 @@
 - (void)actionSave:(StaffEntity *)staff
 {
     if (![ValidateUtil isRequired:staff.no]) {
-        [self showError:@"编号不能为空！"];
+        [self showError:[LocaleUtil error:@"StaffNo.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:staff.name]) {
-        [self showError:@"姓名不能为空！"];
+        [self showError:[LocaleUtil error:@"StaffName.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:staff.nickname]) {
-        [self showError:@"昵称不能为空！"];
+        [self showError:[LocaleUtil error:@"StaffNickname.Required"]];
         return;
     }
     if (![ValidateUtil isRequired:staff.mobile]) {
-        [self showError:@"电话号码不能为空！"];
+        [self showError:[LocaleUtil error:@"Mobile.Required"]];
         return;
     }
     if (![ValidateUtil isMobile:staff.mobile]) {
-        [self showError:@"电话号码格式不正确！"];
+        [self showError:[LocaleUtil error:@"Mobile.Format"]];
         return;
     }
 
-    [self showLoading:TIP_REQUEST_MESSAGE];
+    [self showLoading:[LocaleUtil system:@"Request.Start"]];
     
     StaffHandler *staffHandler = [[StaffHandler alloc] init];
     
@@ -103,7 +103,7 @@
     //新增
     if (!staffId || [staffId intValue] < 1) {
         [staffHandler addStaff:param success:^(NSArray *result) {
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         } failure:^(ErrorEntity *error) {
@@ -112,7 +112,7 @@
     //编辑
     } else {
         [staffHandler editStaff:staffEntity param:param success:^(NSArray *result) {
-            [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
+            [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         } failure:^(ErrorEntity *error) {
