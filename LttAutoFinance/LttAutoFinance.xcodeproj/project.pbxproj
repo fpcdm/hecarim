@@ -247,6 +247,10 @@
 		2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B41B1EDBFB00306A11 /* qrspec.c */; };
 		2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B61B1EDBFB00306A11 /* rscode.c */; };
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
+		2FFA37731C3B8D26008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37721C3B8D26008E6389 /* FrameworkPlist.strings */; };
+		2FFA377A1C3B8D47008E6389 /* BenchmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37751C3B8D47008E6389 /* BenchmarkUtil.m */; };
+		2FFA377B1C3B8D47008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37771C3B8D47008E6389 /* LocaleUtil.m */; };
+		2FFA377C1C3B8D47008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37791C3B8D47008E6389 /* ThemeUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -818,6 +822,13 @@
 		2FED82B71B1EDBFB00306A11 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		2FED82B81B1EDBFB00306A11 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		2FED82B91B1EDBFB00306A11 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		2FFA37721C3B8D26008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
+		2FFA37741C3B8D47008E6389 /* BenchmarkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BenchmarkUtil.h; sourceTree = "<group>"; };
+		2FFA37751C3B8D47008E6389 /* BenchmarkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenchmarkUtil.m; sourceTree = "<group>"; };
+		2FFA37761C3B8D47008E6389 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
+		2FFA37771C3B8D47008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
+		2FFA37781C3B8D47008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
+		2FFA37791C3B8D47008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1342,6 +1353,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000071B1D8B640040D97B /* FrameworkConfig.h */,
+				2FFA37721C3B8D26008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -1407,6 +1419,12 @@
 				2FCAF86F1B2025A000F3B084 /* NotificationUtil.m */,
 				2F6796A11B4B70B900E0F774 /* LocationUtil.h */,
 				2F6796A21B4B70B900E0F774 /* LocationUtil.m */,
+				2FFA37741C3B8D47008E6389 /* BenchmarkUtil.h */,
+				2FFA37751C3B8D47008E6389 /* BenchmarkUtil.m */,
+				2FFA37761C3B8D47008E6389 /* LocaleUtil.h */,
+				2FFA37771C3B8D47008E6389 /* LocaleUtil.m */,
+				2FFA37781C3B8D47008E6389 /* ThemeUtil.h */,
+				2FFA37791C3B8D47008E6389 /* ThemeUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1972,6 +1990,7 @@
 				2F2F22431B3A4D0300428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
 				2F6D3E5B1B312765007A4159 /* MJRefresh.bundle in Resources */,
 				2F2F22481B3A4D0300428742 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
+				2FFA37731C3B8D26008E6389 /* FrameworkPlist.strings in Resources */,
 				2F2F22451B3A4D0300428742 /* NotificationBackgroundWarning.png in Resources */,
 				2F2F223F1B3A4D0300428742 /* NotificationBackgroundMessage.png in Resources */,
 				2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */,
@@ -2097,6 +2116,7 @@
 				2F6D3E571B312765007A4159 /* MJRefreshBackStateFooter.m in Sources */,
 				2FBF3F6E1B281CA400C0DC54 /* BaseTableView.m in Sources */,
 				2F9001101B1D9D550040D97B /* REFrostedContainerViewController.m in Sources */,
+				2FFA377C1C3B8D47008E6389 /* ThemeUtil.m in Sources */,
 				2F6D3E151B312164007A4159 /* ActionSheetLocalePicker.m in Sources */,
 				2F6D3E561B312765007A4159 /* MJRefreshBackNormalFooter.m in Sources */,
 				2FCAF8AC1B20456C00F3B084 /* UserEntity.m in Sources */,
@@ -2136,6 +2156,7 @@
 				2F6D3E181B312164007A4159 /* SWActionSheet.m in Sources */,
 				2F16E5F41B5DF08F007947D0 /* CaseViewController.m in Sources */,
 				2F16E6301B5DF162007947D0 /* AppTableView.m in Sources */,
+				2FFA377A1C3B8D47008E6389 /* BenchmarkUtil.m in Sources */,
 				2F16E6321B5DF162007947D0 /* AppUserViewController.m in Sources */,
 				2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */,
 				2F6D3E5D1B312765007A4159 /* UIScrollView+MJExtension.m in Sources */,
@@ -2164,6 +2185,7 @@
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
+				2FFA377B1C3B8D47008E6389 /* LocaleUtil.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */,
 				2F16E5B61B5DEFEE007947D0 /* RegisterPasswordView.m in Sources */,

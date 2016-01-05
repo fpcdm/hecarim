@@ -310,6 +310,7 @@
 		2FFA374F1C3B5C4E008E6389 /* BenchmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */; };
 		2FFA37521C3B6B08008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37511C3B6B08008E6389 /* LocaleUtil.m */; };
 		2FFA37551C3B6B22008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37541C3B6B22008E6389 /* ThemeUtil.m */; };
+		2FFA375B1C3B877D008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1008,6 +1009,7 @@
 		2FFA37511C3B6B08008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
 		2FFA37531C3B6B22008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
 		2FFA37541C3B6B22008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
+		2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1667,6 +1669,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000071B1D8B640040D97B /* FrameworkConfig.h */,
+				2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -2371,6 +2374,7 @@
 				2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */,
 				2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */,
 				2FB479821C0EEB7700080EB7 /* UMSCommentDetailController.xib in Resources */,
+				2FFA375B1C3B877D008E6389 /* FrameworkPlist.strings in Resources */,
 				2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */,
 				2FB479851C0EEB7700080EB7 /* UMShareEditViewController.xib in Resources */,
 				2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */,

@@ -237,6 +237,10 @@
 		2FED82891B1ED6D900306A11 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED82881B1ED6D900306A11 /* AVFoundation.framework */; };
 		2FED828B1B1ED6ED00306A11 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED828A1B1ED6ED00306A11 /* CoreMedia.framework */; };
 		2FED828D1B1ED6F400306A11 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FED828C1B1ED6F400306A11 /* CoreVideo.framework */; };
+		2FFA37621C3B8C08008E6389 /* BenchmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA375D1C3B8C08008E6389 /* BenchmarkUtil.m */; };
+		2FFA37631C3B8C08008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA375F1C3B8C08008E6389 /* LocaleUtil.m */; };
+		2FFA37641C3B8C08008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37611C3B8C08008E6389 /* ThemeUtil.m */; };
+		2FFA37661C3B8C28008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -802,6 +806,13 @@
 		2FED82881B1ED6D900306A11 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2FED828A1B1ED6ED00306A11 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2FED828C1B1ED6F400306A11 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2FFA375C1C3B8C08008E6389 /* BenchmarkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BenchmarkUtil.h; sourceTree = "<group>"; };
+		2FFA375D1C3B8C08008E6389 /* BenchmarkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenchmarkUtil.m; sourceTree = "<group>"; };
+		2FFA375E1C3B8C08008E6389 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
+		2FFA375F1C3B8C08008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
+		2FFA37601C3B8C08008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
+		2FFA37611C3B8C08008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
+		2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1311,6 +1322,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000451B1D91260040D97B /* FrameworkConfig.h */,
+				2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -1378,6 +1390,12 @@
 				2FCAF86C1B20251800F3B084 /* NotificationUtil.m */,
 				2F6796B61B4B84CF00E0F774 /* LocationUtil.h */,
 				2F6796B71B4B84CF00E0F774 /* LocationUtil.m */,
+				2FFA375C1C3B8C08008E6389 /* BenchmarkUtil.h */,
+				2FFA375D1C3B8C08008E6389 /* BenchmarkUtil.m */,
+				2FFA375E1C3B8C08008E6389 /* LocaleUtil.h */,
+				2FFA375F1C3B8C08008E6389 /* LocaleUtil.m */,
+				2FFA37601C3B8C08008E6389 /* ThemeUtil.h */,
+				2FFA37611C3B8C08008E6389 /* ThemeUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1972,6 +1990,7 @@
 				2F2F22791B3A52FE00428742 /* NotificationButtonBackground@2x.png in Resources */,
 				2FED82841B1ED69000306A11 /* zbar-back.png in Resources */,
 				2F2F22741B3A52FE00428742 /* NotificationBackgroundWarning.png in Resources */,
+				2FFA37661C3B8C28008E6389 /* FrameworkPlist.strings in Resources */,
 				2FD795CB1AE7ADD300D51FB0 /* Images.xcassets in Resources */,
 				2F2F226B1B3A52FE00428742 /* NotificationBackgroundError@2x.png in Resources */,
 				2F52D1101AEF8ABD0003D7C2 /* LaunchScreen.xib in Resources */,
@@ -2021,6 +2040,7 @@
 				2F16E6AF1B5DF84B007947D0 /* DeviceEntity.m in Sources */,
 				2F6910A71B58B20D0080B9A7 /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2F90015C1B1D9D680040D97B /* UIView+REFrostedViewController.m in Sources */,
+				2FFA37641C3B8C08008E6389 /* ThemeUtil.m in Sources */,
 				2F6796B51B4B84BD00E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2FED7DCA1B1EA2E100306A11 /* UIImageView+WebCache.m in Sources */,
 				2F90007B1B1D91470040D97B /* MASLayoutConstraint.m in Sources */,
@@ -2117,6 +2137,7 @@
 				2FCAF8911B20407C00F3B084 /* BaseViewController.m in Sources */,
 				2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 				2F74CD791B1D5EB500797799 /* BaseEntity.m in Sources */,
+				2FFA37621C3B8C08008E6389 /* BenchmarkUtil.m in Sources */,
 				2BBBBF621C153731001DFAB8 /* ServiceView.m in Sources */,
 				2FED7DC51B1EA2E100306A11 /* SDWebImagePrefetcher.m in Sources */,
 				2F20ECD11C1AC115009B9ED6 /* ProtocolView.m in Sources */,
@@ -2136,6 +2157,7 @@
 				2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */,
 				2FED7DC81B1EA2E100306A11 /* UIImage+MultiFormat.m in Sources */,
 				2F6D3F141B3128CC007A4159 /* UIScrollView+MJRefresh.m in Sources */,
+				2FFA37631C3B8C08008E6389 /* LocaleUtil.m in Sources */,
 				2F0E37E01B6B66B100CFE2E6 /* CaseHandler.m in Sources */,
 				2BCED67A1BE8A8090011F1FF /* CaseEditView.m in Sources */,
 				2FED7DC31B1EA2E100306A11 /* SDWebImageDownloaderOperation.m in Sources */,

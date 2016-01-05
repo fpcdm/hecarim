@@ -62,6 +62,12 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
+//加载本地化文件
+#import "LocaleUtil.h"
+
+//加载日志插件
+#import "CocoaLumberjack.h"
+
 //定义弹出框停留时间
 #define DIALOG_SHOW_TIME 2.0
 //定义成功框显示时间
@@ -94,12 +100,6 @@
 #define SIZE_COLLECTION_CELL_DEFAULT CGSizeMake(50, 50)
 #define INSET_COLLECTION_SECTION_DEFAULT UIEdgeInsetsMake(10, 10, 10, 10)
 #define FONT_COLLECTION_CELL_DEFAULT 16
-
-//系统错误消息
-#define ERROR_MESSAGE_NETWORK @"网络连接失败"
-#define ERROR_MESSAGE_API @"接口调用失败"
-#define ERROR_MESSAGE_JSON @"接口数据错误"
-#define MESSAGE_VIEW_LOADING @"加载中"
 /********<<<公用配置********/
 
 
@@ -149,10 +149,6 @@
 #ifndef __IPHONE_7_0
 #import "UITableViewCell+AutoLayoutFix.h"
 #endif
-
-#pragma mark - 加载公用文件
-//加载日志插件
-#import "CocoaLumberjack.h"
 
 #pragma mark - 方法定义
 //本地化字符串方法

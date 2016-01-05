@@ -17,7 +17,7 @@
 
 + (NSString *)system:(NSString *)key
 {
-    return [self localize:[NSString stringWithFormat:@"SYSTEM.%@", key] file:@"frameworkPlist"];
+    return [self localize:[NSString stringWithFormat:@"SYSTEM.%@", key] file:@"FrameworkPlist"];
 }
 
 + (NSString *)error:(NSString *)key

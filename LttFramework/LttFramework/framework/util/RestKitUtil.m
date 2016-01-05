@@ -254,18 +254,18 @@ static RestKitUtil *sharedClient = nil;
     NSData *data = operation.HTTPRequestOperation.responseData;
     if (data == nil) {
         errorModel.code = ERROR_CODE_NETWORK;
-        errorModel.message = ERROR_MESSAGE_NETWORK;
+        errorModel.message = [LocaleUtil system:@"ApiError.Network"];
     } else {
         NSError *jsonError = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&jsonError];
         if (json == nil) {
             errorModel.code = ERROR_CODE_JSON;
-            errorModel.message = ERROR_MESSAGE_JSON;
+            errorModel.message = [LocaleUtil system:@"ApiError.Json"];
         } else {
             id error_code = [json valueForKey:@"error_code"];
             id error_msg = [json objectForKey:@"error"];
             errorModel.code = error_code ? [error_code integerValue] : ERROR_CODE_API;
-            errorModel.message = error_msg ? (NSString *) error_msg : ERROR_MESSAGE_API;
+            errorModel.message = error_msg ? (NSString *) error_msg : [LocaleUtil system:@"ApiError.Api"];
         }
     }
     

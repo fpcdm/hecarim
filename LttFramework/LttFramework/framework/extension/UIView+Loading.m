@@ -15,7 +15,7 @@
 
 - (void) showLoading
 {
-    [self showLoading: MESSAGE_VIEW_LOADING];
+    [self showLoading: [LocaleUtil system:@"Loading.Start"]];
 }
 
 - (void) showLoading: (NSString *) message

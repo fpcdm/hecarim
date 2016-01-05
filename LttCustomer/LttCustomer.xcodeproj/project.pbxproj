@@ -227,6 +227,10 @@
 		2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B41B1EDBFB00306A11 /* qrspec.c */; };
 		2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B61B1EDBFB00306A11 /* rscode.c */; };
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
+		2FFA377E1C3B8DCF008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA377D1C3B8DCF008E6389 /* FrameworkPlist.strings */; };
+		2FFA37851C3B8DE6008E6389 /* BenchmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37801C3B8DE6008E6389 /* BenchmarkUtil.m */; };
+		2FFA37861C3B8DE6008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37821C3B8DE6008E6389 /* LocaleUtil.m */; };
+		2FFA37871C3B8DE6008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37841C3B8DE6008E6389 /* ThemeUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -762,6 +766,13 @@
 		2FED82B71B1EDBFB00306A11 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		2FED82B81B1EDBFB00306A11 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		2FED82B91B1EDBFB00306A11 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		2FFA377D1C3B8DCF008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
+		2FFA377F1C3B8DE6008E6389 /* BenchmarkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BenchmarkUtil.h; sourceTree = "<group>"; };
+		2FFA37801C3B8DE6008E6389 /* BenchmarkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenchmarkUtil.m; sourceTree = "<group>"; };
+		2FFA37811C3B8DE6008E6389 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
+		2FFA37821C3B8DE6008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
+		2FFA37831C3B8DE6008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
+		2FFA37841C3B8DE6008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1255,6 +1266,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000071B1D8B640040D97B /* FrameworkConfig.h */,
+				2FFA377D1C3B8DCF008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -1318,6 +1330,12 @@
 				2FCAF86F1B2025A000F3B084 /* NotificationUtil.m */,
 				2F6796A11B4B70B900E0F774 /* LocationUtil.h */,
 				2F6796A21B4B70B900E0F774 /* LocationUtil.m */,
+				2FFA377F1C3B8DE6008E6389 /* BenchmarkUtil.h */,
+				2FFA37801C3B8DE6008E6389 /* BenchmarkUtil.m */,
+				2FFA37811C3B8DE6008E6389 /* LocaleUtil.h */,
+				2FFA37821C3B8DE6008E6389 /* LocaleUtil.m */,
+				2FFA37831C3B8DE6008E6389 /* ThemeUtil.h */,
+				2FFA37841C3B8DE6008E6389 /* ThemeUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1855,6 +1873,7 @@
 				2F2F22481B3A4D0300428742 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				2F2F22451B3A4D0300428742 /* NotificationBackgroundWarning.png in Resources */,
 				2F2F223F1B3A4D0300428742 /* NotificationBackgroundMessage.png in Resources */,
+				2FFA377E1C3B8DCF008E6389 /* FrameworkPlist.strings in Resources */,
 				2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */,
 				2F2F22471B3A4D0300428742 /* NotificationBackgroundWarningIcon.png in Resources */,
 				2F2F22401B3A4D0300428742 /* NotificationBackgroundMessage@2x.png in Resources */,
@@ -1901,6 +1920,7 @@
 				2F16E5F61B5DF08F007947D0 /* LoginViewController.m in Sources */,
 				2F6D3E521B312765007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2FCAF8421B20117D00F3B084 /* BaseHandler.m in Sources */,
+				2FFA37871C3B8DE6008E6389 /* ThemeUtil.m in Sources */,
 				2F16E5EF1B5DF08F007947D0 /* SettingViewController.m in Sources */,
 				2FED82C11B1EDBFB00306A11 /* split.c in Sources */,
 				2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */,
@@ -1997,6 +2017,7 @@
 				2F16E5B31B5DEFEE007947D0 /* RegisterCodeView.m in Sources */,
 				2F16E5EA1B5DF08F007947D0 /* AddressViewController.m in Sources */,
 				2FED7E131B1EA79300306A11 /* DDMultiFormatter.m in Sources */,
+				2FFA37851C3B8DE6008E6389 /* BenchmarkUtil.m in Sources */,
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
 				2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */,
 				2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */,
@@ -2016,6 +2037,7 @@
 				2F16E63F1B5DF162007947D0 /* ServiceEntity.m in Sources */,
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,
 				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,
+				2FFA37861C3B8DE6008E6389 /* LocaleUtil.m in Sources */,
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
 				2F16E5AA1B5DEFEE007947D0 /* CaseFormView.m in Sources */,
 				2FED7D9F1B1EA2D300306A11 /* UIView+WebCacheOperation.m in Sources */,

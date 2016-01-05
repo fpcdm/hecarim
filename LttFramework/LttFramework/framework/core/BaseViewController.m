@@ -87,7 +87,7 @@
     
     //错误提示
     if (!result) {
-        [self showError:ERROR_MESSAGE_NETWORK];
+        [self showError:[LocaleUtil system:@"ApiError.Network"]];
     }
     
     return result;
