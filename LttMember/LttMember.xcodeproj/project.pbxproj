@@ -307,6 +307,9 @@
 		2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7E061B1EA79300306A11 /* DDContextFilterLogFormatter.m */; };
 		2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7E081B1EA79300306A11 /* DDDispatchQueueLogFormatter.m */; };
 		2FED7E131B1EA79300306A11 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7E0A1B1EA79300306A11 /* DDMultiFormatter.m */; };
+		2FFA374F1C3B5C4E008E6389 /* BenchmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */; };
+		2FFA37521C3B6B08008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37511C3B6B08008E6389 /* LocaleUtil.m */; };
+		2FFA37551C3B6B22008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37541C3B6B22008E6389 /* ThemeUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -999,6 +1002,12 @@
 		2FED7E081B1EA79300306A11 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		2FED7E091B1EA79300306A11 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		2FED7E0A1B1EA79300306A11 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		2FFA374D1C3B5C4E008E6389 /* BenchmarkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BenchmarkUtil.h; sourceTree = "<group>"; };
+		2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenchmarkUtil.m; sourceTree = "<group>"; };
+		2FFA37501C3B6B08008E6389 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
+		2FFA37511C3B6B08008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
+		2FFA37531C3B6B22008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
+		2FFA37541C3B6B22008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1727,6 +1736,12 @@
 				2FCAF8321B20115700F3B084 /* TimerUtil.m */,
 				2FCAF8331B20115700F3B084 /* ValidateUtil.h */,
 				2FCAF8341B20115700F3B084 /* ValidateUtil.m */,
+				2FFA374D1C3B5C4E008E6389 /* BenchmarkUtil.h */,
+				2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */,
+				2FFA37501C3B6B08008E6389 /* LocaleUtil.h */,
+				2FFA37511C3B6B08008E6389 /* LocaleUtil.m */,
+				2FFA37531C3B6B22008E6389 /* ThemeUtil.h */,
+				2FFA37541C3B6B22008E6389 /* ThemeUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2420,6 +2435,7 @@
 				2F6D3E131B312164007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2F6D3E141B312164007A4159 /* ActionSheetDistancePicker.m in Sources */,
 				2F6D3E151B312164007A4159 /* ActionSheetLocalePicker.m in Sources */,
+				2FFA37521C3B6B08008E6389 /* LocaleUtil.m in Sources */,
 				2F6D3E161B312164007A4159 /* ActionSheetStringPicker.m in Sources */,
 				2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */,
 				2F16E5E81B5DF08F007947D0 /* AddressDetailViewController.m in Sources */,
@@ -2463,6 +2479,7 @@
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
 				2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */,
 				2F16E5F31B5DF08F007947D0 /* CaseListViewController.m in Sources */,
+				2FFA374F1C3B5C4E008E6389 /* BenchmarkUtil.m in Sources */,
 				2F16E5AC1B5DEFEE007947D0 /* CaseLockedView.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
 				2F593C671BE85BEE00698AFA /* CasePayedView.m in Sources */,
@@ -2573,6 +2590,7 @@
 				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
 				2FCAF8351B20115700F3B084 /* RestKitUtil.m in Sources */,
 				2F2E8F291B4E064800575271 /* ResultEntity.m in Sources */,
+				2FFA37551C3B6B22008E6389 /* ThemeUtil.m in Sources */,
 				2F16E5A41B5DEFEE007947D0 /* SafetyPasswordView.m in Sources */,
 				2F16E5ED1B5DF08F007947D0 /* SafetyPasswordViewController.m in Sources */,
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
