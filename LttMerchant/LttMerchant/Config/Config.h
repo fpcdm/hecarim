@@ -67,9 +67,6 @@
 #define PAY_WAY_ALIPAY @"alipay"
 #define PAY_WAY_CASH   @"cash"
 
-//用户TOKEN过期
-#define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
-
 //需求状态
 #define CASE_STATUS_NEW @"new"
 #define CASE_STATUS_LOCKED @"locked"
@@ -115,20 +112,19 @@
 #define ERROR_PASSWORD_LENGTH @"密码长度不正确哦~亲！"
 #define ERROR_COMMENT_REQUIRED @"请选择评价星级哦~亲！"
 #define ERROR_MOBILECODE_REQUIRED @"请填写验证码哦~亲！"
-#define ERROR_TOKEN_EXPIRED @"用户授权已过期，请重新登陆！"
 #define ERROR_MOBILE_NOTFOUND @"该手机号不存在哦~亲！"
 #define ERROR_MERCHANT_REQUIRED @"请填写单位名称哦~亲！"
 #define ERROR_MERCHANTADDRESS_REQUIRED @"请填写单位地址哦~亲！"
 #define ERROR_CONTACT_REQUIRED @"请填写负责人哦~亲"
 #define ERROR_CONTACTID_REQUIRED @"请填写负责人身份证哦~亲"
 
-#define TIP_LOADING_MESSAGE @"加载中"
-#define TIP_LOADING_SUCCESS @"加载完成"
-#define TIP_LOADING_FAILURE @"加载失败"
+#define TIP_LOADING_MESSAGE [LocaleUtil system:@"Loading.Start"]
+#define TIP_LOADING_SUCCESS [LocaleUtil system:@"Loading.Success"]
+#define TIP_LOADING_FAILURE [LocaleUtil system:@"Loading.Failed"]
 
-#define TIP_REQUEST_MESSAGE @"请求中"
-#define TIP_REQUEST_SUCCESS @"请求成功"
-#define TIP_REQUEST_FAILURE @"请求失败"
+#define TIP_REQUEST_MESSAGE [LocaleUtil system:@"Request.Start"]
+#define TIP_REQUEST_SUCCESS [LocaleUtil system:@"Request.Success"]
+#define TIP_REQUEST_FAILURE [LocaleUtil system:@"Request.Failed"]
 /********<<<公用配置********/
 
 

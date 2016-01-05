@@ -180,7 +180,6 @@
 		2F90015F1B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001461B1D9D680040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001601B1D9D680040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001611B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
-		2FA0A3991B69C05B0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A39B1B69C05B0083365B /* InfoPlist.strings */; };
 		2FA0A39F1B69E62B0083365B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0A39E1B69E62B0083365B /* LoginViewController.m */; };
 		2FA467661B43EC2700B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467651B43EC2700B2186F /* AudioToolbox.framework */; };
 		2FAA3B831BFC10E0006B92E1 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA3B821BFC10E0006B92E1 /* CNPPopupController.m */; };
@@ -241,6 +240,7 @@
 		2FFA37631C3B8C08008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA375F1C3B8C08008E6389 /* LocaleUtil.m */; };
 		2FFA37641C3B8C08008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37611C3B8C08008E6389 /* ThemeUtil.m */; };
 		2FFA37661C3B8C28008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */; };
+		2FFA378B1C3B93CA008E6389 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA378A1C3B93CA008E6389 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -580,7 +580,6 @@
 		2F9001481B1D9D680040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001491B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F90014A1B1D9D680040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		2FA0A39A1B69C05B0083365B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FA0A39D1B69E62B0083365B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2FA0A39E1B69E62B0083365B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2FA467651B43EC2700B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -813,6 +812,7 @@
 		2FFA37601C3B8C08008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
 		2FFA37611C3B8C08008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 		2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
+		2FFA378A1C3B93CA008E6389 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -896,6 +896,7 @@
 				2F16E64F1B5DF84B007947D0 /* Config.h */,
 				2F16E6501B5DF84B007947D0 /* Config_debug.h */,
 				2F16E6511B5DF84B007947D0 /* Config_product.h */,
+				2FFA378A1C3B93CA008E6389 /* InfoPlist.strings */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1168,7 +1169,6 @@
 				2F1410171BD4F3C000B88F23 /* notification.m4a */,
 				2F52D10C1AEF8ABD0003D7C2 /* LaunchScreen.xib */,
 				2F5534021B4F8F4400B98CA4 /* Default-568h@2x.png */,
-				2FA0A39B1B69C05B0083365B /* InfoPlist.strings */,
 				2F6611471B0C6B890008D500 /* LttMerchant.pch */,
 				2FD795BE1AE7ADD300D51FB0 /* Info.plist */,
 				2FD795BF1AE7ADD300D51FB0 /* main.m */,
@@ -1973,8 +1973,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F5534031B4F8F4400B98CA4 /* Default-568h@2x.png in Resources */,
+				2FFA378B1C3B93CA008E6389 /* InfoPlist.strings in Resources */,
 				2F6D3F111B3128CC007A4159 /* MJRefresh.bundle in Resources */,
-				2FA0A3991B69C05B0083365B /* InfoPlist.strings in Resources */,
 				2F2F22781B3A52FE00428742 /* NotificationButtonBackground.png in Resources */,
 				2F2F227A1B3A52FE00428742 /* TSMessagesDefaultDesign.json in Resources */,
 				2F2F22721B3A52FE00428742 /* NotificationBackgroundSuccessIcon.png in Resources */,
@@ -2220,17 +2220,6 @@
 			targetProxy = 2FD795D41AE7ADD300D51FB0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2FA0A39B1B69C05B0083365B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2FA0A39A1B69C05B0083365B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2FD795DB1AE7ADD300D51FB0 /* Debug */ = {

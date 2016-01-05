@@ -234,7 +234,6 @@
 		2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FD1B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m */; };
 		2F9001171B1D9D550040D97B /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */; };
 		2F9001181B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
-		2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0A3961B69BFDC0083365B /* InfoPlist.strings */; };
 		2FA29B1B1BCF95DD00FB056B /* SpringBoardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA29B1A1BCF95DD00FB056B /* SpringBoardButton.m */; };
 		2FA467641B43DA6500B2186F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA467631B43DA6500B2186F /* AudioToolbox.framework */; };
 		2FB478AB1C0E8E9C00080EB7 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB478AA1C0E8E9C00080EB7 /* libstdc++.tbd */; };
@@ -311,6 +310,7 @@
 		2FFA37521C3B6B08008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37511C3B6B08008E6389 /* LocaleUtil.m */; };
 		2FFA37551C3B6B22008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37541C3B6B22008E6389 /* ThemeUtil.m */; };
 		2FFA375B1C3B877D008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */; };
+		2FFA37891C3B8F22008E6389 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37881C3B8F22008E6389 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -753,7 +753,6 @@
 		2F9000FF1B1D9D550040D97B /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2F9001001B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2F9001011B1D9D550040D97B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		2FA0A3981B69C0000083365B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FA29B191BCF95DD00FB056B /* SpringBoardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardButton.h; sourceTree = "<group>"; };
 		2FA29B1A1BCF95DD00FB056B /* SpringBoardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBoardButton.m; sourceTree = "<group>"; };
 		2FA467631B43DA6500B2186F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1010,6 +1009,7 @@
 		2FFA37531C3B6B22008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
 		2FFA37541C3B6B22008E6389 /* ThemeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeUtil.m; sourceTree = "<group>"; };
 		2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
+		2FFA37881C3B8F22008E6389 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1079,6 +1079,7 @@
 				2F16E55E1B5DEF3C007947D0 /* Config.h */,
 				2F16E55F1B5DEF3C007947D0 /* Config_debug.h */,
 				2F16E5601B5DEF3C007947D0 /* Config_product.h */,
+				2FFA37881C3B8F22008E6389 /* InfoPlist.strings */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1390,7 +1391,6 @@
 				2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */,
 				2F7057FC1B4665F3000DBEB8 /* Images.xcassets */,
 				2FD7958C1AE7ACC900D51FB0 /* Info.plist */,
-				2FA0A3961B69BFDC0083365B /* InfoPlist.strings */,
 				2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */,
 				2FD7958F1AE7ACC900D51FB0 /* LttAppDelegate.h */,
 				2FD795901AE7ACC900D51FB0 /* LttAppDelegate.m */,
@@ -2375,11 +2375,11 @@
 				2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */,
 				2FB479821C0EEB7700080EB7 /* UMSCommentDetailController.xib in Resources */,
 				2FFA375B1C3B877D008E6389 /* FrameworkPlist.strings in Resources */,
-				2FA0A3941B69BFDC0083365B /* InfoPlist.strings in Resources */,
 				2FB479851C0EEB7700080EB7 /* UMShareEditViewController.xib in Resources */,
 				2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */,
 				2F6D3E5B1B312765007A4159 /* MJRefresh.bundle in Resources */,
 				2F2F223B1B3A4D0300428742 /* NotificationBackgroundError.png in Resources */,
+				2FFA37891C3B8F22008E6389 /* InfoPlist.strings in Resources */,
 				2F2F223C1B3A4D0300428742 /* NotificationBackgroundError@2x.png in Resources */,
 				2FB479781C0EEB7700080EB7 /* UMSocialLocalizable.strings in Resources */,
 				2FB479891C0EEB7700080EB7 /* UMSShareListController.xib in Resources */,
@@ -2679,14 +2679,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2FA0A3961B69BFDC0083365B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2FA0A3981B69C0000083365B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		2FB479431C0EEB7700080EB7 /* UMSocialLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -52,7 +52,7 @@
     
     //显示消息
     if (self.tokenExpired) {
-        [self showError:ERROR_TOKEN_EXPIRED];
+        [self showError:[LocaleUtil system:@"ApiError.Nologin"]];
     }
 }
 

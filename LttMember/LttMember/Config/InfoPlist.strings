@@ -1,0 +1,15 @@
+/* 
+  InfoPlist.strings
+  LttMember
+
+  Created by wuyong on 16/1/5.
+  Copyright © 2016年 Gilbert. All rights reserved.
+*/
+
+"ERROR.Mobile.Required" = "请填写手机号哦~亲！";
+"ERROR.Mobile.Format" = "手机号不正确哦~亲！";
+"ERROR.Password.Required" = "请填写密码哦~亲！";
+"ERROR.Password.Length" = "密码长度不正确哦~亲！";
+"ERROR.Comment.Required" = "请选择评价星级哦~亲！";
+"ERROR.MobileCode.Required" = "请填写验证码哦~亲！";
+"ERROR.Mobile.NotFound" = "该手机号不存在哦~亲！";

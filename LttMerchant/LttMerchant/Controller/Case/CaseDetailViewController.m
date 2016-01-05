@@ -207,7 +207,7 @@
 //加载支付列表，显示视图
 - (void)loadPaymentView
 {
-    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     NSDictionary *param = @{@"is_online": @"no"};
@@ -318,12 +318,12 @@
     //获取数据
     CaseEntity *intentionEntity = [[CaseEntity alloc] init];
     intentionEntity.id = self.caseId;
-    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler giveupCase:intentionEntity success:^(NSArray *result){
-        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -345,12 +345,12 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_CONFIRMED};
     
-    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
-        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -379,12 +379,12 @@
     
     NSDictionary *param = @{@"action": CASE_STATUS_TOPAY};
     
-    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
-        [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+        [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
             //标记列表刷新
             if (self.callbackBlock) {
                 self.callbackBlock(@1);
@@ -447,7 +447,7 @@
     
     NSDictionary *param = @{@"pay_way": payment};
     
-    [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+    [self showLoading:TIP_REQUEST_MESSAGE];
     
     //调用接口
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
@@ -541,12 +541,12 @@
             
             NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
             
-            [self showLoading:LocalString(@"TIP_REQUEST_MESSAGE")];
+            [self showLoading:TIP_REQUEST_MESSAGE];
             
             //调用接口
             CaseHandler *caseHandler = [[CaseHandler alloc] init];
             [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
-                [self loadingSuccess:LocalString(@"TIP_REQUEST_SUCCESS") callback:^{
+                [self loadingSuccess:TIP_REQUEST_SUCCESS callback:^{
                     //标记列表刷新
                     if (self.callbackBlock) {
                         self.callbackBlock(@1);

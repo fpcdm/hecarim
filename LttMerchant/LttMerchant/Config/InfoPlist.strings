@@ -1,23 +1,15 @@
 /* 
   InfoPlist.strings
-  LttCustomer
+  LttMerchant
 
-  Created by wuyong on 15/5/6.
-  Copyright (c) 2015年 Gilbert. All rights reserved.
+  Created by wuyong on 16/1/5.
+  Copyright © 2016年 Gilbert. All rights reserved.
 */
 
 //系统错误
 "ERROR_PARAM_REQUIRED" = "页面出错了哦~亲！";
 
 //提示消息
-"TIP_LOADING_MESSAGE" = "加载中";
-"TIP_LOADING_SUCCESS" = "加载完成";
-"TIP_LOADING_FAILURE" = "加载失败";
-
-"TIP_REQUEST_MESSAGE" = "请求中";
-"TIP_REQUEST_SUCCESS" = "请求成功";
-"TIP_REQUEST_FAILURE" = "请求失败";
-
 "TIP_CHALLENGE_START" = "开始抢单";
 "TIP_CHALLENGE_SUCCESS" = "抢单成功";
 "TIP_CHALLENGE_FAIL" = "抢单失败，下次手快点哦~亲！";
