@@ -72,8 +72,8 @@
     //未登录
     if (!user) {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeViewController"],
-                    @[@"登陆", @"LoginViewController"],
+                    @[@"首页", @"HomeViewController", @"show"],
+                    @[@"登陆", @"LoginViewController", @"show"],
                     nil];
         
         userNameLabel.text = @"未登录";
@@ -81,8 +81,8 @@
         //已登录
     } else {
         menuList = [[NSArray alloc] initWithObjects:
-                    @[@"首页", @"HomeViewController"],
-                    @[@"服务单", @"CaseListViewController"],
+                    @[@"首页", @"HomeViewController", @"show"],
+                    @[@"服务单", @"CaseListViewController", @"show"],
                     @[@"退出", @"LoginViewController", @"logout"],
 #ifdef LTT_DEBUG
                     @[@"调试", @"", @"debug"],
@@ -180,11 +180,9 @@
     [self.frostedViewController hideMenuViewController];
     
     //退出事件
-    if ([menu count] > 2) {
-        NSString *operate = [menu objectAtIndex:2];
-        if ([@"logout" isEqualToString:operate]) {
-            [self logout];
-        }
+    NSString *operate = [menu objectAtIndex:2];
+    if ([@"logout" isEqualToString:operate]) {
+        [self logout];
     }
 }
 
