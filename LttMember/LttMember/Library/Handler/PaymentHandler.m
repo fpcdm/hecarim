@@ -68,24 +68,12 @@
                                       @"sign_type": @"signType",
                                       @"subject": @"productName",
                                       @"total_fee": @"amount",
-                                      //先映射showUrl，后续再替换
-                                      @"trade_type": @"showUrl",
                                       };
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AlipayOrder class] mappingParam:responseMapping];
     
     [sharedClient getObject:payment path:@"pay/app_alipay_signature" param:param success:^(NSArray *result){
         [sharedClient removeRequestDescriptor:requestDescriptor];
         [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        //还原showUrl为trade_type
-        if ([result count] > 0) {
-            AlipayOrder *order = [result firstObject];
-            if (order.showUrl) {
-                order.extraParams = @{@"trade_type": order.showUrl};
-                order.showUrl = nil;
-            }
-            result = @[order];
-        }
         
         success(result);
     } failure:^(ErrorEntity *error){

@@ -19,10 +19,7 @@
 #import "UMSocialSnsPlatformManager.h"
 #import "UMSocialAccountManager.h"
 #import "ThirdLoginViewController.h"
-
-#ifdef LTT_DEBUG
-#import "FLEX.h"
-#endif
+#import "DebugUtil.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -54,9 +51,7 @@
     
     //调试功能
 #ifdef LTT_DEBUG
-    if (IS_DEBUG) {
-        [self debug];
-    }
+    [self debug];
 #endif
 }
 
@@ -90,7 +85,7 @@
 
 - (void) actionDebug:(UIBarButtonItem *) debugButton
 {
-    [[FLEXManager sharedManager] toggleExplorer];
+    [[DebugUtil sharedInstance] toggleFlex];
 }
 #endif
 

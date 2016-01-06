@@ -9,10 +9,7 @@
 #import "MenuViewController.h"
 #import "AppExtension.h"
 #import "CaseListViewController.h"
-
-#ifdef LTT_DEBUG
-#import "FLEX.h"
-#endif
+#import "DebugUtil.h"
 
 @interface MenuViewController ()
 
@@ -139,7 +136,7 @@
 #ifdef LTT_DEBUG
     //调试菜单
     if ([@"debug" isEqualToString:[menu objectAtIndex:2]]) {
-        [[FLEXManager sharedManager] toggleExplorer];
+        [[DebugUtil sharedInstance] toggleFlex];
         [self.frostedViewController hideMenuViewController];
         return;
     }

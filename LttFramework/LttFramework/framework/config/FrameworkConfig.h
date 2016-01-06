@@ -26,14 +26,6 @@
 //调试判断变量
 #define IS_DEBUG YES
 
-//DDLog调试级别，需要安装XcodeColors
-#define LOG_LEVEL_DEF DDLogLevelAll
-
-//开发调试函数
-#if TARGET_IPHONE_SIMULATOR
-#define NSLog(...) DDLogVerbose(__VA_ARGS__);
-#endif
-
 //接口服务器根地址
 #define LTT_REST_SERVER @"http://maokai.web.dm/"
 //#define LTT_REST_SERVER @"http://mfz0hbeutmqhsxr.lttok.com/"
@@ -45,12 +37,6 @@
 /********正式环境>>>********/
 //调试判断变量
 #define IS_DEBUG NO
-
-//关闭调试，需要安装XcodeColors
-#define LOG_LEVEL_DEF DDLogLevelOff
-
-//关闭NSLog
-#define NSLog(...)
 
 //接口服务器根地址
 #define LTT_REST_SERVER @"http://maokai.lttok.com/"
@@ -66,8 +52,8 @@
 //加载本地化文件
 #import "LocaleUtil.h"
 
-//加载日志插件
-#import "CocoaLumberjack.h"
+//加载日志文件
+#import "LogUtil.h"
 
 //定义弹出框停留时间
 #define DIALOG_SHOW_TIME 2.0

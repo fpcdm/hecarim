@@ -23,10 +23,7 @@
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "Harpy.h"
-
-#ifdef LTT_DEBUG
-#import "FLEX.h"
-#endif
+#import "DebugUtil.h"
 
 @interface LttAppDelegate () <WXApiDelegate>
 
@@ -43,23 +40,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-#if TARGET_IPHONE_SIMULATOR
-    if (IS_DEBUG) {
-        //模拟器开启颜色
-        setenv("XcodeColors", "YES", 1);
-        [DDLog addLogger:[DDTTYLogger sharedInstance]];
-        [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    
-        //自定义颜色
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor blueColor] backgroundColor:nil forFlag:DDLogFlagInfo];
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor grayColor] backgroundColor:nil forFlag:DDLogFlagDebug];
-    }
-#endif
-    
-#ifdef LTT_DEBUG
-    //开启网络调试
-    [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
-#endif
+    //初始化调试工具
+    [[DebugUtil sharedInstance] benchmarkStart:@"START"];
     
     //全局导航栏颜色
     UINavigationBar *navigationBar = [UINavigationBar appearance];
@@ -99,6 +81,9 @@
     
     //检查版本更新
     [self checkUpdate];
+    
+    //标记启动结束
+    [[DebugUtil sharedInstance] benchmarkEnd:@"START"];
     
     return YES;
 }

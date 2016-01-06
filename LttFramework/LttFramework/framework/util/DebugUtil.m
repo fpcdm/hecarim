@@ -1,28 +1,30 @@
 //
-//  BenchmarkUtil.m
+//  DebugUtil.m
 //  LttMember
 //
 //  Created by wuyong on 16/1/5.
 //  Copyright © 2016年 Gilbert. All rights reserved.
 //
 
-#import "BenchmarkUtil.h"
+#import "DebugUtil.h"
 #import "FrameworkConfig.h"
 
 #ifdef LTT_DEBUG
+#import "FLEX.h"
+
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #endif
 
-static BenchmarkUtil *sharedInstance = nil;
+static DebugUtil *sharedInstance = nil;
 
-@implementation BenchmarkUtil
+@implementation DebugUtil
 {
     NSMutableDictionary *benchmarks;
     NSMutableDictionary *memorys;
 }
 
-+ (BenchmarkUtil *) sharedInstance
++ (DebugUtil *) sharedInstance
 {
     //多线程唯一
     @synchronized(self){
@@ -39,6 +41,9 @@ static BenchmarkUtil *sharedInstance = nil;
     if (self) {
         benchmarks = [[NSMutableDictionary alloc] init];
         memorys = [[NSMutableDictionary alloc] init];
+#ifdef LTT_DEBUG
+        [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
+#endif
     }
     return self;
 }
@@ -77,7 +82,7 @@ static BenchmarkUtil *sharedInstance = nil;
 }
 #endif
 
-- (void)start:(NSString *)name
+- (void)benchmarkStart:(NSString *)name
 {
 #ifdef LTT_DEBUG
     NSDate *now = [NSDate date];
@@ -91,7 +96,7 @@ static BenchmarkUtil *sharedInstance = nil;
 #endif
 }
 
-- (void)end:(NSString *)name
+- (void)benchmarkEnd:(NSString *)name
 {
 #ifdef LTT_DEBUG
     NSDate *now = [NSDate date];
@@ -109,6 +114,27 @@ static BenchmarkUtil *sharedInstance = nil;
     float timeInterval = [now timeIntervalSince1970] - [timeStart timeIntervalSince1970];
     double memoryInterval = memory - [memoryStart doubleValue];
     NSLog(@"BENCHMARK-INFO-%@: %.3fs %.3fMB", name, timeInterval, memoryInterval);
+#endif
+}
+
+- (void)showFlex
+{
+#ifdef LTT_DEBUG
+    [[FLEXManager sharedManager] showExplorer];
+#endif
+}
+
+- (void)hideFlex
+{
+#ifdef LTT_DEBUG
+    [[FLEXManager sharedManager] hideExplorer];
+#endif
+}
+
+- (void)toggleFlex
+{
+#ifdef LTT_DEBUG
+    [[FLEXManager sharedManager] toggleExplorer];
 #endif
 }
 

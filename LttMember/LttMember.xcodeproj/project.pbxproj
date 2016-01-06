@@ -146,6 +146,7 @@
 		2F2F224F1B3A4D0300428742 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F22391B3A4D0300428742 /* TSMessageView.m */; };
 		2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39B3861BF43C9000234ACF /* CityViewController.m */; };
 		2F39B38A1BF43D9D00234ACF /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39B3891BF43D9D00234ACF /* CityView.m */; };
+		2F4149061C3CF47D00D1B5CC /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4149051C3CF47D00D1B5CC /* LogUtil.m */; };
 		2F52D0BC1AEF728F0003D7C2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */; };
 		2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5534101B4FC6CD00B98CA4 /* FileEntity.m */; };
 		2F593C641BE85AE400698AFA /* CaseCashierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F593C631BE85AE400698AFA /* CaseCashierView.m */; };
@@ -306,7 +307,7 @@
 		2FED7E111B1EA79300306A11 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7E061B1EA79300306A11 /* DDContextFilterLogFormatter.m */; };
 		2FED7E121B1EA79300306A11 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7E081B1EA79300306A11 /* DDDispatchQueueLogFormatter.m */; };
 		2FED7E131B1EA79300306A11 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED7E0A1B1EA79300306A11 /* DDMultiFormatter.m */; };
-		2FFA374F1C3B5C4E008E6389 /* BenchmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */; };
+		2FFA374F1C3B5C4E008E6389 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA374E1C3B5C4E008E6389 /* DebugUtil.m */; };
 		2FFA37521C3B6B08008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37511C3B6B08008E6389 /* LocaleUtil.m */; };
 		2FFA37551C3B6B22008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37541C3B6B22008E6389 /* ThemeUtil.m */; };
 		2FFA375B1C3B877D008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */; };
@@ -654,6 +655,8 @@
 		2F39B3861BF43C9000234ACF /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
 		2F39B3881BF43D9D00234ACF /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
 		2F39B3891BF43D9D00234ACF /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
+		2F4149041C3CF47D00D1B5CC /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUtil.h; sourceTree = "<group>"; };
+		2F4149051C3CF47D00D1B5CC /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogUtil.m; sourceTree = "<group>"; };
 		2F52D0BA1AEF6F240003D7C2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F55340F1B4FC6CD00B98CA4 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F5534101B4FC6CD00B98CA4 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
@@ -1079,8 +1082,8 @@
 		2FED7E081B1EA79300306A11 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		2FED7E091B1EA79300306A11 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		2FED7E0A1B1EA79300306A11 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
-		2FFA374D1C3B5C4E008E6389 /* BenchmarkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BenchmarkUtil.h; sourceTree = "<group>"; };
-		2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenchmarkUtil.m; sourceTree = "<group>"; };
+		2FFA374D1C3B5C4E008E6389 /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
+		2FFA374E1C3B5C4E008E6389 /* DebugUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugUtil.m; sourceTree = "<group>"; };
 		2FFA37501C3B6B08008E6389 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
 		2FFA37511C3B6B08008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
 		2FFA37531C3B6B22008E6389 /* ThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeUtil.h; sourceTree = "<group>"; };
@@ -1969,8 +1972,10 @@
 				2FCAF8321B20115700F3B084 /* TimerUtil.m */,
 				2FCAF8331B20115700F3B084 /* ValidateUtil.h */,
 				2FCAF8341B20115700F3B084 /* ValidateUtil.m */,
-				2FFA374D1C3B5C4E008E6389 /* BenchmarkUtil.h */,
-				2FFA374E1C3B5C4E008E6389 /* BenchmarkUtil.m */,
+				2FFA374D1C3B5C4E008E6389 /* DebugUtil.h */,
+				2FFA374E1C3B5C4E008E6389 /* DebugUtil.m */,
+				2F4149041C3CF47D00D1B5CC /* LogUtil.h */,
+				2F4149051C3CF47D00D1B5CC /* LogUtil.m */,
 				2FFA37501C3B6B08008E6389 /* LocaleUtil.h */,
 				2FFA37511C3B6B08008E6389 /* LocaleUtil.m */,
 				2FFA37531C3B6B22008E6389 /* ThemeUtil.h */,
@@ -2996,7 +3001,7 @@
 				2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */,
 				2F16E5F31B5DF08F007947D0 /* CaseListViewController.m in Sources */,
 				2FFA38681C3BBA40008E6389 /* FLEXNetworkRecorder.m in Sources */,
-				2FFA374F1C3B5C4E008E6389 /* BenchmarkUtil.m in Sources */,
+				2FFA374F1C3B5C4E008E6389 /* DebugUtil.m in Sources */,
 				2F16E5AC1B5DEFEE007947D0 /* CaseLockedView.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
 				2F593C671BE85BEE00698AFA /* CasePayedView.m in Sources */,
@@ -3155,6 +3160,7 @@
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
 				2FFA384F1C3BBA40008E6389 /* FLEXManager.m in Sources */,
 				2FED7D951B1EA2D300306A11 /* SDWebImageDecoder.m in Sources */,
+				2F4149061C3CF47D00D1B5CC /* LogUtil.m in Sources */,
 				2FED7D961B1EA2D300306A11 /* SDWebImageDownloader.m in Sources */,
 				2FED7D971B1EA2D300306A11 /* SDWebImageDownloaderOperation.m in Sources */,
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,
