@@ -160,7 +160,7 @@
         //定时器，主线程才能更新UI
         timer = 0;
         timerUtil = [TimerUtil repeatTimer:1 block:^{
-            DDLogDebug(@"定时器：%ld", timer);
+            NSLog(@"定时器：%ld", timer);
             long minutes = 0;
             long seconds = 0;
             if (timer >= 60) {
