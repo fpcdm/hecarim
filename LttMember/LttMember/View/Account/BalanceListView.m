@@ -68,7 +68,7 @@
     //时间
     NSDate *now = [NSDate dateWithTimeIntervalSince1970:[[param objectForKey:@"create_time"] intValue]];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyy-MM-dd"];
+    [dateFormat setDateFormat:@"yyy-MM-dd HH:mm:ss"];
     NSString *dateStr = [dateFormat stringFromDate:now];
     UILabel *timeLabel = [self makeCellLabel:dateStr];
     timeLabel.textColor = COLOR_MAIN_GRAY;
