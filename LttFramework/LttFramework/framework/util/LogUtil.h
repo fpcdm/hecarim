@@ -7,37 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FrameworkConfig.h"
-
-//开发环境
-#ifdef LTT_DEBUG
-
-//模拟器
-#if TARGET_IPHONE_SIMULATOR
-
-//DDLog调试级别，需要安装XcodeColors
-#define LOG_LEVEL_DEF DDLogLevelAll
-
-//修改NSLog为DDLog
-#define NSLog(...) DDLogVerbose(__VA_ARGS__);
-
-//导入DDLog
-#import "CocoaLumberjack.h"
-
-//真机
-#else
-
-//使用原生NSLog
-
-#endif
-
-//正式环境
-#else
-
-//关闭NSLog
-#define NSLog(...)
-
-#endif
 
 typedef enum {
     LogTypeLog = 0,

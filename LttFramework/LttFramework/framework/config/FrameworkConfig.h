@@ -38,6 +38,9 @@
 //调试判断变量
 #define IS_DEBUG NO
 
+//关闭NSLog
+#define NSLog(...)
+
 //接口服务器根地址
 #define LTT_REST_SERVER @"http://maokai.lttok.com/"
 

@@ -7,11 +7,20 @@
 //
 
 #import "LogUtil.h"
+#import "FrameworkConfig.h"
 
 #ifdef LTT_DEBUG
 #if TARGET_IPHONE_SIMULATOR
+
+//DDLog调试级别，需要安装XcodeColors，需在导入DDLog前设置
+#define LOG_LEVEL_DEF DDLogLevelAll
+
+//导入DDLog
+#import "CocoaLumberjack.h"
+
 //模拟器DDLog配置
 static BOOL isDDLogInited = false;
+
 #endif
 #endif
 

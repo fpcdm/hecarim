@@ -23,7 +23,11 @@
 //弃单
 - (void) giveupCase: (CaseEntity *) caseEntity success: (SuccessBlock) success failure: (FailedBlock) failure;
 
+//修改需求状态
 - (void) updateCaseStatus: (CaseEntity *) caseEntity param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+//现金支付需求
+- (void) payWithCash:(CaseEntity *)caseEntity param: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 //支付方式列表
 - (void) queryPayments: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;

@@ -129,7 +129,7 @@
             //现金支付
             moneyButton = [self makeButton:@{
                                              @"icon": @"methodMoney",
-                                             @"text": @"现金扫码"
+                                             @"text": @"现金支付"
                                              }];
             [moneyButton addTarget:self action:@selector(actionUseMoney) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:moneyButton];

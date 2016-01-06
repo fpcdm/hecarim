@@ -539,13 +539,11 @@
             CaseEntity *caseEntity = [[CaseEntity alloc] init];
             caseEntity.id = self.caseId;
             
-            NSDictionary *param = @{@"action": CASE_STATUS_PAYED};
-            
             [self showLoading:[LocaleUtil system:@"Request.Start"]];
             
             //调用接口
             CaseHandler *caseHandler = [[CaseHandler alloc] init];
-            [caseHandler updateCaseStatus:caseEntity param:param success:^(NSArray *result){
+            [caseHandler payWithCash:caseEntity param:nil success:^(NSArray *result) {
                 [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                     //标记列表刷新
                     if (self.callbackBlock) {

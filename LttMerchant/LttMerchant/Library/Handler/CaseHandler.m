@@ -185,6 +185,23 @@
     }];
 }
 
+- (void) payWithCash:(CaseEntity *)caseEntity param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKRequestDescriptor *requestDescriptor = [sharedClient addRequestDescriptor:[CaseEntity class] mappingParam:@{@"id": @"case_id"}];
+    
+    [sharedClient postObject:caseEntity path:@"pay/cash" param:param success:^(NSArray *result){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeRequestDescriptor:requestDescriptor];
+        
+        failure(error);
+    }];
+}
+
 - (void) queryPayments:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
