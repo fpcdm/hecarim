@@ -36,6 +36,7 @@
 
 //接口服务器根地址
 #define LTT_REST_SERVER @"http://maokai.web.dm/"
+//#define LTT_REST_SERVER @"http://mfz0hbeutmqhsxr.lttok.com/"
 
 //接口服务器是否为RAP
 #define LTT_REST_RAP NO

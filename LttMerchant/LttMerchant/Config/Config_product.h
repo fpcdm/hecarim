@@ -11,7 +11,5 @@
 #define LttMerchant_Config_product_h
 
 #pragma mark - 正式环境
-//百度推送KEY
-#define BAIDU_PUSH_APIKEY @"fNWSyqeQlYw5c0W1SmwVSEEZ"
 
 #endif

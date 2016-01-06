@@ -13,10 +13,13 @@
 #import "HomeViewController.h"
 #import "UserHandler.h"
 #import "AppUIUtil.h"
-#import "PickerUtil.h"
 #import "ForgetPasswordViewController.h"
 #import "RegisterViewController.h"
 #import "LoginView.h"
+
+#ifdef LTT_DEBUG
+#import "FLEX.h"
+#endif
 
 @interface LoginViewController ()<LoginViewDelegate>
 
@@ -68,28 +71,7 @@
 
 - (void) actionDebug:(UIBarButtonItem *) debugButton
 {
-    //选择调试服务器
-    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:@"请选择调试服务器" grade:1 origin:debugButton];
-    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
-        NSMutableArray *rows = [[NSMutableArray alloc] init];
-        
-        //开发
-        [rows addObject:[PickerUtilRow rowWithName:@"开发" value:DEBUG_LTT_REST_SERVER_DEV]];
-        //测试
-        [rows addObject:[PickerUtilRow rowWithName:@"测试" value:DEBUG_LTT_REST_SERVER_TEST]];
-        //正式
-        [rows addObject:[PickerUtilRow rowWithName:@"正式" value:DEBUG_LTT_REST_SERVER_PROD]];
-        
-        completionHandler(rows);
-    };
-    pickerUtil.resultBlock = ^(NSArray *selectedRows){
-        PickerUtilRow *row = [selectedRows objectAtIndex:0];
-        NSString *server = row.value;
-        
-        [[RestKitUtil sharedClient] setBaseUrl:[NSURL URLWithString:server]];
-        [[StorageUtil sharedStorage] setData:DEBUG_LTT_REST_SERVER_KEY object:server];
-    };
-    [pickerUtil show];
+    [[FLEXManager sharedManager] toggleExplorer];
 }
 #endif
 

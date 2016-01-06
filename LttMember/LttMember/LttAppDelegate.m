@@ -82,16 +82,6 @@
         [[RestKitUtil sharedClient] setCityCode:cityCode];
     }
     
-    //调试功能
-#ifdef LTT_DEBUG
-    if (IS_DEBUG) {
-        NSString *server = [[StorageUtil sharedStorage] getData:DEBUG_LTT_REST_SERVER_KEY];
-        if (server) {
-            [[RestKitUtil sharedClient] setBaseUrl:[NSURL URLWithString:server]];
-        }
-    }
-#endif
-    
     //初始化控制器
     [self initViewController];
     
