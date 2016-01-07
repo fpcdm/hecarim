@@ -48,16 +48,16 @@ static BOOL isDDLogInited = false;
     
     switch (type) {
         case LogTypeDebug:
-            DDLogDebug(@"%@", message);
+            DDLogDebug(@"DEBUG: %@", message);
             break;
         case LogTypeInfo:
-            DDLogInfo(@"%@", message);
+            DDLogInfo(@"INFO: %@", message);
             break;
         case LogTypeWarn:
-            DDLogWarn(@"%@", message);
+            DDLogWarn(@"WARN: %@", message);
             break;
         case LogTypeError:
-            DDLogError(@"%@", message);
+            DDLogError(@"ERROR: %@", message);
             break;
         default:
             DDLogVerbose(@"%@", message);
@@ -67,7 +67,23 @@ static BOOL isDDLogInited = false;
 //真机
 #else
     
-    NSLog(message);
+    switch (type) {
+        case LogTypeDebug:
+            NSLog(@"DEBUG: %@", message);
+            break;
+        case LogTypeInfo:
+            NSLog(@"INFO: %@", message);
+            break;
+        case LogTypeWarn:
+            NSLog(@"WARN: %@", message);
+            break;
+        case LogTypeError:
+            NSLog(@"ERROR: %@", message);
+            break;
+        default:
+            NSLog(@"%@", message);
+            break;
+    }
     
 #endif
 //正式环境

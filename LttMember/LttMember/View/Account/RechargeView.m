@@ -10,6 +10,10 @@
 #import "DLRadioButton.h"
 #import "ResultEntity.h"
 
+@interface RechargeView () <UITextFieldDelegate>
+
+@end
+
 @implementation RechargeView
 {
     UITextField *amountField;
@@ -45,6 +49,8 @@
     
     //金额输入框
     amountField = [[UITextField alloc] init];
+    amountField.tag = 1;
+    amountField.delegate = self;
     alipayButton = [[DLRadioButton alloc] init];
     weixinButton = [[DLRadioButton alloc] init];
     
@@ -240,6 +246,26 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+}
+
+#pragma mark - TextField
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSMutableString *futureString = [NSMutableString stringWithString:textField.text];
+    [futureString insertString:string atIndex:range.location];
+    
+    NSInteger flag = 0;
+    const NSInteger limited = 2;
+    for (long i = futureString.length - 1; i >= 0; i--) {
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    return YES;
 }
 
 #pragma mark - Action

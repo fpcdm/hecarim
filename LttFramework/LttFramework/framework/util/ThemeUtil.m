@@ -9,14 +9,22 @@
 #import "ThemeUtil.h"
 #import "UIColor+Hex.h"
 
-static NSDictionary *themes = nil;
+static NSMutableDictionary *themes = nil;
 static NSString *theme = nil;
 
 @implementation ThemeUtil
 
 + (void)setThemeFile:(NSString *)file
 {
-    themes = [[NSDictionary alloc] initWithContentsOfFile:file];
+    themes = [[NSMutableDictionary alloc] initWithContentsOfFile:file];
+}
+
++ (void)defineTheme:(NSString *)name definition:(NSDictionary *)definition
+{
+    if (!themes) {
+        themes = [[NSMutableDictionary alloc] init];
+    }
+    themes[name] = definition;
 }
 
 + (void)setTheme:(NSString *)name
@@ -24,7 +32,7 @@ static NSString *theme = nil;
     theme = name;
 }
 
-+ (NSDictionary *)definitions
++ (NSDictionary *)definition
 {
     if (!themes) {
         [self setThemeFile:[[NSBundle mainBundle] pathForResource:@"ThemePlist" ofType:@"plist"]];
@@ -37,8 +45,8 @@ static NSString *theme = nil;
 
 + (UIColor *)color:(NSString *)key
 {
-    NSDictionary *definitions = [self definitions];
-    NSString *color = definitions ? [definitions objectForKey:key] : nil;
+    NSDictionary *definition = [self definition];
+    NSString *color = definition ? [definition objectForKey:key] : nil;
     return color ? [UIColor colorWithHexString:color] : nil;
 }
 

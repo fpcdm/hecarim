@@ -14,6 +14,9 @@
 @end
 
 @implementation BaseViewController
+{
+    FailedBlock _errorHandler;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +53,24 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - ErrorHandler
+- (void)setErrorHandler:(FailedBlock)errorHandler
+{
+    _errorHandler = errorHandler;
+}
+
+- (FailedBlock)errorHandler
+{
+    if (!_errorHandler) {
+        //默认错误处理代码块
+        __block BaseViewController *_self = self;
+        _errorHandler = ^(ErrorEntity *error){
+            [_self showError:error.message];
+        };
+    }
+    return _errorHandler;
 }
 
 #pragma mark - Public Methods
