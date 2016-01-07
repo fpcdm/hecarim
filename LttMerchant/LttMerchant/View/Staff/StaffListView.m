@@ -21,7 +21,7 @@
     //初始化header
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = COLOR_MAIN_BG;
-    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 10);
+    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, HEIGHT_TABLE_MARGIN_ZERO);
     self.tableView.tableHeaderView = headerView;
     
     //初始化空视图
@@ -47,7 +47,7 @@
                               @"action" : @"staffDetail:",
                               @"text" : staff.name,
                               @"type" : @"action",
-                              @"height" : @30,
+                              @"height" : @45,
                               @"data" : staff.id,
                               }];
     }

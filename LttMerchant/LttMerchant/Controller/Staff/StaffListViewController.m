@@ -107,8 +107,6 @@
 //加载更多
 - (void)actionLoadMore
 {
-    [self reloadData];
-    
     [self loadData:^(id object){
         [listView.tableView stopRefreshLoading];
         
