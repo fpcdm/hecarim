@@ -1891,7 +1891,7 @@
 				2F800AF61B1D50EE006189EF /* extension */,
 				2FCAF8A51B20456C00F3B084 /* library */,
 				2F800AFD1B1D50EE006189EF /* util */,
-				2F800AFE1B1D50EE006189EF /* vender */,
+				2F800AFE1B1D50EE006189EF /* vendor */,
 				2F800AFB1B1D50EE006189EF /* README.md */,
 			);
 			name = LttFramework;
@@ -1984,7 +1984,7 @@
 			path = util;
 			sourceTree = "<group>";
 		};
-		2F800AFE1B1D50EE006189EF /* vender */ = {
+		2F800AFE1B1D50EE006189EF /* vendor */ = {
 			isa = PBXGroup;
 			children = (
 				2FFA37981C3BBA40008E6389 /* FLEX */,
@@ -2010,7 +2010,7 @@
 				2F9000F91B1D9D550040D97B /* TPKeyboardAvoiding */,
 				2F2F221E1B3A4D0300428742 /* TSMessages */,
 			);
-			path = vender;
+			path = vendor;
 			sourceTree = "<group>";
 		};
 		2F8BFF151B8DB4B90087EDA0 /* TAPageControl */ = {
@@ -3354,8 +3354,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../LttFramework/Products",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/AlipaySDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMember/LttMember.pch;
@@ -3369,13 +3369,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LttMember",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/WechatSDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/RestKit",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/SinaSSO",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/Wechat",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/WechatSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttMember;
@@ -3395,8 +3395,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../LttFramework/Products",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/AlipaySDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LttMember/LttMember.pch;
@@ -3410,13 +3410,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LttMember",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/SinaSSO",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/UMSocialSdk/ExtraFrameworks/Wechat",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/WechatSDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/RestKit",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/SinaSSO",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/UMSocialSdk/ExtraFrameworks/Wechat",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/WechatSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttMember;

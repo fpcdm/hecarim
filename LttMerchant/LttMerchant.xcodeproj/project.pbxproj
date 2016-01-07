@@ -1545,7 +1545,7 @@
 				2FCAF89D1B20453E00F3B084 /* library */,
 				2F800B0A1B1D529F006189EF /* README.md */,
 				2F800B0C1B1D529F006189EF /* util */,
-				2F800B0D1B1D529F006189EF /* vender */,
+				2F800B0D1B1D529F006189EF /* vendor */,
 			);
 			name = LttFramework;
 			path = ../LttFramework/LttFramework/framework;
@@ -1635,7 +1635,7 @@
 			path = util;
 			sourceTree = "<group>";
 		};
-		2F800B0D1B1D529F006189EF /* vender */ = {
+		2F800B0D1B1D529F006189EF /* vendor */ = {
 			isa = PBXGroup;
 			children = (
 				2FFA38851C3BC1DF008E6389 /* FLEX */,
@@ -1656,7 +1656,7 @@
 				2F9000551B1D91470040D97B /* Masonry */,
 				2F90006D1B1D91470040D97B /* MBProgressHUD */,
 			);
-			path = vender;
+			path = vendor;
 			sourceTree = "<group>";
 		};
 		2F9000551B1D91470040D97B /* Masonry */ = {
@@ -2894,9 +2894,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LttMerchant",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/ZBarSDK",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/ZBarSDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/RestKit",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2926,9 +2926,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LttMerchant",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/ZBarSDK",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/ZBarSDK",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/RestKit",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

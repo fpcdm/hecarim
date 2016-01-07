@@ -1604,7 +1604,7 @@
 				2FCAF8951B2044F700F3B084 /* library */,
 				2F800AE81B1D500B006189EF /* README.md */,
 				2F800AEA1B1D500B006189EF /* util */,
-				2F800AEB1B1D500B006189EF /* vender */,
+				2F800AEB1B1D500B006189EF /* vendor */,
 			);
 			path = framework;
 			sourceTree = "<group>";
@@ -1689,7 +1689,7 @@
 			path = util;
 			sourceTree = "<group>";
 		};
-		2F800AEB1B1D500B006189EF /* vender */ = {
+		2F800AEB1B1D500B006189EF /* vendor */ = {
 			isa = PBXGroup;
 			children = (
 				2F4149131C3D0E4900D1B5CC /* FLEX */,
@@ -1713,7 +1713,7 @@
 				2F74CDE41B1D833200797799 /* MBProgressHUD */,
 				2FCAF8AD1B20490300F3B084 /* BPush */,
 			);
-			path = vender;
+			path = vendor;
 			sourceTree = "<group>";
 		};
 		2F8BFF111B8D579C0087EDA0 /* iCarousel */ = {
@@ -2397,9 +2397,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/LttFramework/framework/vender/ZBarSDK",
-					"$(PROJECT_DIR)/LttFramework/framework/vender/RestKit",
+					"$(PROJECT_DIR)/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/LttFramework/framework/vendor/ZBarSDK",
+					"$(PROJECT_DIR)/LttFramework/framework/vendor/RestKit",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2416,9 +2416,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/LttFramework/framework/vender/ZBarSDK",
-					"$(PROJECT_DIR)/LttFramework/framework/vender/RestKit",
+					"$(PROJECT_DIR)/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/LttFramework/framework/vendor/ZBarSDK",
+					"$(PROJECT_DIR)/LttFramework/framework/vendor/RestKit",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -31,19 +31,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-#if TARGET_IPHONE_SIMULATOR
-    if (IS_DEBUG) {
-        //模拟器开启颜色
-        setenv("XcodeColors", "YES", 1);
-        [DDLog addLogger:[DDTTYLogger sharedInstance]];
-        [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    
-        //自定义颜色
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor blueColor] backgroundColor:nil forFlag:DDLogFlagInfo];
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor grayColor] backgroundColor:nil forFlag:DDLogFlagDebug];
-    }
-#endif
-    
     //全局导航栏颜色
     UINavigationBar *navigationBar = [UINavigationBar appearance];
     //iOS6兼容

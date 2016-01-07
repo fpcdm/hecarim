@@ -1816,7 +1816,7 @@
 				2FCAF8A51B20456C00F3B084 /* library */,
 				2F800AFB1B1D50EE006189EF /* README.md */,
 				2F800AFD1B1D50EE006189EF /* util */,
-				2F800AFE1B1D50EE006189EF /* vender */,
+				2F800AFE1B1D50EE006189EF /* vendor */,
 			);
 			name = LttFramework;
 			path = ../LttFramework/LttFramework/framework;
@@ -1904,7 +1904,7 @@
 			path = util;
 			sourceTree = "<group>";
 		};
-		2F800AFE1B1D50EE006189EF /* vender */ = {
+		2F800AFE1B1D50EE006189EF /* vendor */ = {
 			isa = PBXGroup;
 			children = (
 				2F414A081C3D0F4500D1B5CC /* FLEX */,
@@ -1926,7 +1926,7 @@
 				2F9000171B1D8B930040D97B /* Masonry */,
 				2F90002F1B1D8B930040D97B /* MBProgressHUD */,
 			);
-			path = vender;
+			path = vendor;
 			sourceTree = "<group>";
 		};
 		2F8BFF0D1B8D53E00087EDA0 /* iCarousel */ = {
@@ -2907,8 +2907,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LttAutoFinance",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/RestKit",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttAutoFinance;
@@ -2941,8 +2941,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LttAutoFinance",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/BPush",
-					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vender/RestKit",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/BPush",
+					"$(PROJECT_DIR)/../LttFramework/LttFramework/framework/vendor/RestKit",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LttAutoFinance;
