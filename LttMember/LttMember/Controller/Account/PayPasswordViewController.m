@@ -162,7 +162,7 @@
         return NO;
     }
     //发送短信
-    [button setTitle:@"重新获取" forState:UIControlStateNormal];
+    [button setTitle:@"发送短信" forState:UIControlStateNormal];
     button.backgroundColor = COLOR_MAIN_WHITE;
     return YES;
 }
