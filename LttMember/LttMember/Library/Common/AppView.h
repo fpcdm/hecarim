@@ -10,7 +10,6 @@
 #import "Config.h"
 #import "AppUIUtil.h"
 #import "AppExtension.h"
-#import "UIView+Frontend.h"
 
 @interface BaseView (App)
 
