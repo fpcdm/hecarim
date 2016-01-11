@@ -47,7 +47,7 @@
                                                                             action:@selector(actionRegister)];
     
     //调试功能
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     if (IS_DEBUG) {
         [self debug];
     }
@@ -73,7 +73,7 @@
 }
 
 #pragma mark - Debug
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 - (void) debug
 {
     UIBarButtonItem *debugButton = [AppUIUtil makeBarButtonItem:@"调试"];

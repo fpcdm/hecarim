@@ -36,7 +36,7 @@ static RestKitUtil *sharedClient = nil;
 {
     self = [super init];
     if (self) {
-        manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:LTT_REST_SERVER]];
+        manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:APP_REST_SERVER]];
     }
     return self;
 }
@@ -214,7 +214,7 @@ static RestKitUtil *sharedClient = nil;
 
 - (NSString *) fixPath: (NSString *) path with: (NSString *) fix
 {
-    if (LTT_REST_RAP) {
+    if (APP_REST_RAP) {
         path = [path stringByAppendingString:fix];
     }
     return path;

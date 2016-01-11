@@ -81,7 +81,7 @@
                     @[@"服务单", @"CaseListViewController", @"show"],
                     @[@"账户", @"AccountViewController", @"push"],
                     @[@"分享", @"RecommendShareViewController", @"push"],
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
                     @[@"调试", @"", @"debug"],
 #endif
                     nil];
@@ -133,7 +133,7 @@
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
     
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     //调试菜单
     if ([@"debug" isEqualToString:[menu objectAtIndex:2]]) {
         [[DebugUtil sharedInstance] toggleFlex];

@@ -12,40 +12,48 @@
 
 #pragma mark - 环境切换
 /********环境切换>>>********/
-//开发模式
-#define LTT_DEBUG
+//调试Xcode变量，Xcode自动根据Debug和Release环境生成
+#ifdef DEBUG
 
-//切换到正式环境
-//#undef LTT_DEBUG
+//调试自定义变量，项目建议使用此变量区分环境
+#define APP_DEBUG
+
+#endif
 /********<<<环境切换********/
 
 
 #pragma mark - 环境配置
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 /********开发环境>>>********/
-//调试判断变量
+//是否是开发环境，项目建议使用此变量判断环境
 #define IS_DEBUG YES
 
+//是否是正式环境，项目建议使用此变量判断环境
+#define IS_RELEASE NO
+
 //接口服务器根地址
-#define LTT_REST_SERVER @"http://maokai.web.dm/"
-//#define LTT_REST_SERVER @"http://mfz0hbeutmqhsxr.lttok.com/"
+#define APP_REST_SERVER @"http://maokai.web.dm/"
+//#define APP_REST_SERVER @"http://mfz0hbeutmqhsxr.lttok.com/"
 
 //接口服务器是否为RAP
-#define LTT_REST_RAP NO
+#define APP_REST_RAP NO
 /********>>>开发环境********/
 #else
 /********正式环境>>>********/
-//调试判断变量
+//是否是开发环境，项目建议使用此变量判断环境
 #define IS_DEBUG NO
+
+//是否是正式环境，项目建议使用此变量判断环境
+#define IS_RELEASE YES
 
 //关闭NSLog
 #define NSLog(...)
 
 //接口服务器根地址
-#define LTT_REST_SERVER @"http://maokai.lttok.com/"
+#define APP_REST_SERVER @"http://maokai.lttok.com/"
 
 //接口服务器是否为RAP
-#define LTT_REST_RAP NO
+#define APP_REST_RAP NO
 /********>>>正式环境********/
 #endif
 
@@ -105,6 +113,8 @@
 
 // 判断ios系统版本，不能用于宏判断
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+// 判断是否大于等于ios9
+#define IS_IOS9_PLUS (IOS_VERSION >= 9.0 ? YES : NO)
 // 判断是否大于等于ios8
 #define IS_IOS8_PLUS (IOS_VERSION >= 8.0 ? YES : NO)
 // 判断是否大于等于ios7

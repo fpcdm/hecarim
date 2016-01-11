@@ -9,7 +9,7 @@
 #import "DebugUtil.h"
 #import "FrameworkConfig.h"
 
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 #import "FLEX.h"
 
 #import <sys/sysctl.h>
@@ -41,14 +41,14 @@ static DebugUtil *sharedInstance = nil;
     if (self) {
         benchmarks = [[NSMutableDictionary alloc] init];
         memorys = [[NSMutableDictionary alloc] init];
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
         [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
 #endif
     }
     return self;
 }
 
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 - (double)availableMemory
 {
     vm_statistics_data_t vmStats;
@@ -84,7 +84,7 @@ static DebugUtil *sharedInstance = nil;
 
 - (void)benchmarkStart:(NSString *)name
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     NSDate *now = [NSDate date];
     benchmarks[name] = now;
     
@@ -98,7 +98,7 @@ static DebugUtil *sharedInstance = nil;
 
 - (void)benchmarkEnd:(NSString *)name
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     NSDate *now = [NSDate date];
     
     double memory = [self usedMemory];
@@ -119,21 +119,21 @@ static DebugUtil *sharedInstance = nil;
 
 - (void)showFlex
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     [[FLEXManager sharedManager] showExplorer];
 #endif
 }
 
 - (void)hideFlex
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     [[FLEXManager sharedManager] hideExplorer];
 #endif
 }
 
 - (void)toggleFlex
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     [[FLEXManager sharedManager] toggleExplorer];
 #endif
 }

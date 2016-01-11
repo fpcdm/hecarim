@@ -9,7 +9,7 @@
 #import "LogUtil.h"
 #import "FrameworkConfig.h"
 
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 
 //DDLog调试级别，需要安装XcodeColors，需在导入DDLog前设置
@@ -29,7 +29,7 @@ static BOOL isDDLogInited = false;
 + (void)_log:(LogType)type message:(NSString *)message
 {
 //开发环境
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 //模拟器
 #if TARGET_IPHONE_SIMULATOR
     
@@ -96,7 +96,7 @@ static BOOL isDDLogInited = false;
 
 + (void)log:(LogType)type format:(NSString *)format, ...
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     va_list args;
     if (format) {
         va_start(args, format);
@@ -109,7 +109,7 @@ static BOOL isDDLogInited = false;
 
 + (void)log:(NSString *)format, ...
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     va_list args;
     if (format) {
         va_start(args, format);
@@ -122,7 +122,7 @@ static BOOL isDDLogInited = false;
 
 + (void)debug:(NSString *)format, ...
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     va_list args;
     if (format) {
         va_start(args, format);
@@ -135,7 +135,7 @@ static BOOL isDDLogInited = false;
 
 + (void)info:(NSString *)format, ...
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     va_list args;
     if (format) {
         va_start(args, format);
@@ -148,7 +148,7 @@ static BOOL isDDLogInited = false;
 
 + (void)warn:(NSString *)format, ...
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     va_list args;
     if (format) {
         va_start(args, format);
@@ -161,7 +161,7 @@ static BOOL isDDLogInited = false;
 
 + (void)error:(NSString *)format, ...
 {
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     va_list args;
     if (format) {
         va_start(args, format);

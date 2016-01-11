@@ -81,7 +81,7 @@
                     @[@"首页", @"HomeViewController", @"show"],
                     @[@"服务单", @"CaseListViewController", @"show"],
                     @[@"退出", @"LoginViewController", @"logout"],
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
                     @[@"调试", @"", @"debug"],
 #endif
                     nil];
@@ -159,7 +159,7 @@
     
     NSArray *menu = [menuList objectAtIndex:[indexPath row]];
     
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     //调试菜单
     if ([@"debug" isEqualToString:[menu objectAtIndex:2]]) {
         [[DebugUtil sharedInstance] toggleFlex];

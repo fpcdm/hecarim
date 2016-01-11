@@ -38,7 +38,7 @@
     self.view.backgroundColor = COLOR_MAIN_BG;
     
     //调试功能
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
     [self debug];
 #endif
 }
@@ -54,7 +54,7 @@
 }
 
 #pragma mark - Debug
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 - (void) debug
 {
     UIBarButtonItem *debugButton = [AppUIUtil makeBarButtonItem:@"调试"];

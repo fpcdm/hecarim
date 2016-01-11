@@ -20,7 +20,7 @@
 #pragma mark - 环境配置
 /********加载环境配置>>>********/
 //环境配置
-#ifdef LTT_DEBUG
+#ifdef APP_DEBUG
 #import "Config_debug.h"
 #else
 #import "Config_product.h"
