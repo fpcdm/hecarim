@@ -27,6 +27,7 @@
 		2F02FB7A1BABE66900D7D68F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB791BABE66900D7D68F /* libsqlite3.tbd */; };
 		2F02FB7C1BABE66F00D7D68F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB7B1BABE66F00D7D68F /* libz.tbd */; };
 		2F02FB7E1BABE68900D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB7D1BABE68900D7D68F /* libiconv.tbd */; };
+		2F0C40971C439E6C00049C88 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C40961C439E6C00049C88 /* BaseModel.m */; };
 		2F15218D1BB3E33A001475D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */; };
 		2F15218F1BB3F2DD001475D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */; };
 		2F16D4251C2B8DE50076EDEC /* PaymentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16D4241C2B8DE50076EDEC /* PaymentHandler.m */; };
@@ -432,6 +433,8 @@
 		2F02FB791BABE66900D7D68F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2F02FB7B1BABE66F00D7D68F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2F02FB7D1BABE68900D7D68F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		2F0C40951C439E6C00049C88 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		2F0C40961C439E6C00049C88 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		2F15218C1BB3E33A001475D9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F15218E1BB3F2DD001475D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2F16D4231C2B8DE50076EDEC /* PaymentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHandler.h; sourceTree = "<group>"; };
@@ -1879,6 +1882,8 @@
 				2F74CD751B1D5E9500797799 /* BaseEntity.m */,
 				2FCAF8401B20117D00F3B084 /* BaseHandler.h */,
 				2FCAF8411B20117D00F3B084 /* BaseHandler.m */,
+				2F0C40951C439E6C00049C88 /* BaseModel.h */,
+				2F0C40961C439E6C00049C88 /* BaseModel.m */,
 				2F74E29E1BF591D800C7A7EB /* BaseScrollView.h */,
 				2F74E29F1BF591D800C7A7EB /* BaseScrollView.m */,
 				2FBF3F6C1B281CA400C0DC54 /* BaseTableView.h */,
@@ -3082,6 +3087,7 @@
 				2FFA38771C3BBA40008E6389 /* FLEXObjectExplorerViewController.m in Sources */,
 				2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */,
 				2FFA38781C3BBA40008E6389 /* FLEXSetExplorerViewController.m in Sources */,
+				2F0C40971C439E6C00049C88 /* BaseModel.m in Sources */,
 				2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */,
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F9001101B1D9D550040D97B /* REFrostedContainerViewController.m in Sources */,
