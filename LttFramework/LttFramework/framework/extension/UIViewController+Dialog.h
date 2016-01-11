@@ -1,5 +1,5 @@
 //
-//  UIViewController+Ltt.h
+//  UIViewController+Dialog.h
 //  LttFramework
 //
 //  Created by wuyong on 15/6/2.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (Ltt)
+@interface UIViewController (Dialog)
 
 - (void) showError: (NSString *) message;
 - (void) showMessage: (NSString *) message;

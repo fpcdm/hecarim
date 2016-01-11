@@ -40,6 +40,8 @@
 		2F02FB721BABE5E800D7D68F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB711BABE5E800D7D68F /* libsqlite3.tbd */; };
 		2F02FB741BABE5EE00D7D68F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB731BABE5EE00D7D68F /* libz.tbd */; };
 		2F02FB761BABE60600D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB751BABE60600D7D68F /* libiconv.tbd */; };
+		2F0C40811C439C0E00049C88 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C407E1C439C0E00049C88 /* UIViewController+Dialog.m */; };
+		2F0C40821C439C0E00049C88 /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C40801C439C0E00049C88 /* UINavigationController+Vertical.m */; };
 		2F0E37D11B6B214900CFE2E6 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D01B6B214900CFE2E6 /* GoodsListViewController.m */; };
 		2F0E37D41B6B215C00CFE2E6 /* ServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D31B6B215C00CFE2E6 /* ServiceListViewController.m */; };
 		2F0E37D71B6B216E00CFE2E6 /* GoodsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0E37D61B6B216E00CFE2E6 /* GoodsFormViewController.m */; };
@@ -160,7 +162,6 @@
 		2F81ADEA1B9D6C2500E381B0 /* ConsumeHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADE91B9D6C2500E381B0 /* ConsumeHistoryViewController.m */; };
 		2F81ADED1B9D6D1600E381B0 /* ConsumeHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADEC1B9D6D1600E381B0 /* ConsumeHistoryView.m */; };
 		2F81ADF01B9D900C00E381B0 /* ConsumeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */; };
-		2F9000481B1D91380040D97B /* UIViewController+Ltt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000471B1D91380040D97B /* UIViewController+Ltt.m */; };
 		2F9000781B1D91470040D97B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000571B1D91470040D97B /* MASCompositeConstraint.m */; };
 		2F9000791B1D91470040D97B /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90005A1B1D91470040D97B /* MASConstraint.m */; };
 		2F90007A1B1D91470040D97B /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90005C1B1D91470040D97B /* MASConstraintMaker.m */; };
@@ -394,6 +395,10 @@
 		2F02FB711BABE5E800D7D68F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2F02FB731BABE5EE00D7D68F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2F02FB751BABE60600D7D68F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		2F0C407D1C439C0E00049C88 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
+		2F0C407E1C439C0E00049C88 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
+		2F0C407F1C439C0E00049C88 /* UINavigationController+Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Vertical.h"; sourceTree = "<group>"; };
+		2F0C40801C439C0E00049C88 /* UINavigationController+Vertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Vertical.m"; sourceTree = "<group>"; };
 		2F0E37CF1B6B214900CFE2E6 /* GoodsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListViewController.h; sourceTree = "<group>"; };
 		2F0E37D01B6B214900CFE2E6 /* GoodsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodsListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2F0E37D21B6B215C00CFE2E6 /* ServiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListViewController.h; sourceTree = "<group>"; };
@@ -613,8 +618,6 @@
 		2F81ADEE1B9D900C00E381B0 /* ConsumeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeEntity.h; sourceTree = "<group>"; };
 		2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumeEntity.m; sourceTree = "<group>"; };
 		2F9000451B1D91260040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
-		2F9000461B1D91380040D97B /* UIViewController+Ltt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ltt.h"; sourceTree = "<group>"; };
-		2F9000471B1D91380040D97B /* UIViewController+Ltt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Ltt.m"; sourceTree = "<group>"; };
 		2F9000561B1D91470040D97B /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		2F9000571B1D91470040D97B /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		2F9000581B1D91470040D97B /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -1592,8 +1595,10 @@
 				2F5FDDE41B5F60D900CBF2A7 /* UIScrollView+RefreshLoading.m */,
 				2F5FDDE51B5F60D900CBF2A7 /* UIView+Loading.h */,
 				2F5FDDE61B5F60D900CBF2A7 /* UIView+Loading.m */,
-				2F9000461B1D91380040D97B /* UIViewController+Ltt.h */,
-				2F9000471B1D91380040D97B /* UIViewController+Ltt.m */,
+				2F0C407D1C439C0E00049C88 /* UIViewController+Dialog.h */,
+				2F0C407E1C439C0E00049C88 /* UIViewController+Dialog.m */,
+				2F0C407F1C439C0E00049C88 /* UINavigationController+Vertical.h */,
+				2F0C40801C439C0E00049C88 /* UINavigationController+Vertical.m */,
 				2F6796AD1B4B84BD00E0F774 /* UIImageView+PlayGIF.h */,
 				2F6796AE1B4B84BD00E0F774 /* UIImageView+PlayGIF.m */,
 				2F6796AF1B4B84BD00E0F774 /* UITextView+Placeholder.h */,
@@ -2654,6 +2659,7 @@
 				2F0E37D11B6B214900CFE2E6 /* GoodsListViewController.m in Sources */,
 				2FFA394C1C3BC1E0008E6389 /* FLEXGlobalsTableViewController.m in Sources */,
 				2FCAF8611B201FF000F3B084 /* RestKitUtil.m in Sources */,
+				2F0C40811C439C0E00049C88 /* UIViewController+Dialog.m in Sources */,
 				2FFA392B1C3BC1DF008E6389 /* FLEXArgumentInputJSONObjectView.m in Sources */,
 				2F5FDDE81B5F60D900CBF2A7 /* UIView+Loading.m in Sources */,
 				2FED7DC91B1EA2E100306A11 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -2707,6 +2713,7 @@
 				2FFA396B1C3BC1E0008E6389 /* FLEXMultilineTableViewCell.m in Sources */,
 				2F6D3F0D1B3128CC007A4159 /* MJRefreshBackStateFooter.m in Sources */,
 				2FFA395A1C3BC1E0008E6389 /* FLEXNetworkObserver.m in Sources */,
+				2F0C40821C439C0E00049C88 /* UINavigationController+Vertical.m in Sources */,
 				2F16E6A21B5DF84B007947D0 /* HomeViewController.m in Sources */,
 				2FFA392A1C3BC1DF008E6389 /* FLEXArgumentInputFontView.m in Sources */,
 				2F4E694A1B3AB95F00F4E425 /* BaseTableView.m in Sources */,
@@ -2760,7 +2767,6 @@
 				2FCAF8511B201FD100F3B084 /* BaseHandler.m in Sources */,
 				2F74CD821B1D5F8100797799 /* BaseView.m in Sources */,
 				2F6796B81B4B84CF00E0F774 /* LocationUtil.m in Sources */,
-				2F9000481B1D91380040D97B /* UIViewController+Ltt.m in Sources */,
 				2FFA393E1C3BC1E0008E6389 /* FLEXWindow.m in Sources */,
 				2F16E6A51B5DF84B007947D0 /* MenuViewController.m in Sources */,
 				2BBBBF5F1C153731001DFAB8 /* GoodsView.m in Sources */,

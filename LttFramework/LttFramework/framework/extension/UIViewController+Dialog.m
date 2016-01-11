@@ -1,12 +1,12 @@
 //
-//  UIViewController+Ltt.m
+//  UIViewController+Dialog.m
 //  LttFramework
 //
 //  Created by wuyong on 15/6/2.
 //  Copyright (c) 2015年 Gilbert Intelligence Technology Co., Ltd. All rights reserved.
 //
 
-#import "UIViewController+Ltt.h"
+#import "UIViewController+Dialog.h"
 #import "UIColor+Hex.h"
 #import "MBProgressHUD.h"
 #import "FrameworkConfig.h"
@@ -15,7 +15,7 @@
 //实现扩展UIViewController分类方法
 static MBProgressHUD *loading = nil;
 
-@implementation UIViewController (Ltt)
+@implementation UIViewController (Dialog)
 
 //dialog
 - (void) showError: (NSString *) message

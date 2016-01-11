@@ -16,6 +16,8 @@
 		2F064BBE1B8EE3FF003550B0 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB71B8EE3FF003550B0 /* TAAnimatedDotView.m */; };
 		2F064BBF1B8EE3FF003550B0 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BB91B8EE3FF003550B0 /* TADotView.m */; };
 		2F064BC01B8EE3FF003550B0 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F064BBB1B8EE3FF003550B0 /* TAPageControl.m */; };
+		2F0C40871C439C4500049C88 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C40841C439C4500049C88 /* UIViewController+Dialog.m */; };
+		2F0C40881C439C4500049C88 /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C40861C439C4500049C88 /* UINavigationController+Vertical.m */; };
 		2F2E8F261B4E052900575271 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8F251B4E052900575271 /* ResultEntity.m */; };
 		2F2F229A1B3A577900428742 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22821B3A577900428742 /* NotificationBackgroundError.png */; };
 		2F2F229B1B3A577900428742 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F22831B3A577900428742 /* NotificationBackgroundError@2x.png */; };
@@ -181,7 +183,6 @@
 		2F800AF11B1D5059006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AEE1B1D5059006189EF /* NSString+trim.m */; };
 		2F800AF21B1D5059006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF01B1D5059006189EF /* UIColor+Hex.m */; };
 		2F8BFF141B8D579C0087EDA0 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF131B8D579C0087EDA0 /* iCarousel.m */; };
-		2F9000051B1D84F00040D97B /* UIViewController+Ltt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000041B1D84F00040D97B /* UIViewController+Ltt.m */; };
 		2F9000A91B1D941F0040D97B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9000A81B1D941F0040D97B /* SystemConfiguration.framework */; };
 		2F9000AB1B1D96D40040D97B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9000AA1B1D96D40040D97B /* Accelerate.framework */; };
 		2F9000C51B1D98790040D97B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000AE1B1D98790040D97B /* Reachability.m */; };
@@ -276,6 +277,10 @@
 		2F064BB91B8EE3FF003550B0 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
 		2F064BBA1B8EE3FF003550B0 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
 		2F064BBB1B8EE3FF003550B0 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		2F0C40831C439C4500049C88 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
+		2F0C40841C439C4500049C88 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
+		2F0C40851C439C4500049C88 /* UINavigationController+Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Vertical.h"; sourceTree = "<group>"; };
+		2F0C40861C439C4500049C88 /* UINavigationController+Vertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Vertical.m"; sourceTree = "<group>"; };
 		2F2E8F241B4E052900575271 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
 		2F2E8F251B4E052900575271 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2F2F22821B3A577900428742 /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
@@ -692,8 +697,6 @@
 		2F800AF01B1D5059006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F8BFF121B8D579C0087EDA0 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		2F8BFF131B8D579C0087EDA0 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		2F9000031B1D84D80040D97B /* UIViewController+Ltt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ltt.h"; sourceTree = "<group>"; };
-		2F9000041B1D84F00040D97B /* UIViewController+Ltt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Ltt.m"; sourceTree = "<group>"; };
 		2F9000061B1D87F30040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
 		2F9000A81B1D941F0040D97B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2F9000AA1B1D96D40040D97B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -1648,8 +1651,10 @@
 				2F5FDDE01B5F5F6B00CBF2A7 /* UIView+Loading.m */,
 				2F6D3DF81B310EE4007A4159 /* UITextView+Placeholder.h */,
 				2F6D3DF91B310EE4007A4159 /* UITextView+Placeholder.m */,
-				2F9000031B1D84D80040D97B /* UIViewController+Ltt.h */,
-				2F9000041B1D84F00040D97B /* UIViewController+Ltt.m */,
+				2F0C40831C439C4500049C88 /* UIViewController+Dialog.h */,
+				2F0C40841C439C4500049C88 /* UIViewController+Dialog.m */,
+				2F0C40851C439C4500049C88 /* UINavigationController+Vertical.h */,
+				2F0C40861C439C4500049C88 /* UINavigationController+Vertical.m */,
 				2F69109F1B58AB270080B9A7 /* UITableViewCell+AutoLayoutFix.h */,
 				2F6910A01B58AB3B0080B9A7 /* UITableViewCell+AutoLayoutFix.m */,
 				2F6796A71B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.h */,
@@ -2161,6 +2166,7 @@
 				2F4149BB1C3D0E4A00D1B5CC /* FLEXArgumentInputNumberView.m in Sources */,
 				2F6796A91B4B7D5C00E0F774 /* UIViewController+BackButtonHandler.m in Sources */,
 				2F064BBC1B8EE3FF003550B0 /* ReflectionView.m in Sources */,
+				2F0C40881C439C4500049C88 /* UINavigationController+Vertical.m in Sources */,
 				2F6D3EAD1B312884007A4159 /* MJRefreshAutoGifFooter.m in Sources */,
 				2F4149E71C3D0E4A00D1B5CC /* FLEXNetworkTransactionTableViewCell.m in Sources */,
 				2FCAF7C91B1FF40D00F3B084 /* qrencode.c in Sources */,
@@ -2180,11 +2186,11 @@
 				2F4149E21C3D0E4A00D1B5CC /* FLEXNetworkHistoryTableViewController.m in Sources */,
 				2F4149CB1C3D0E4A00D1B5CC /* FLEXToolbarItem.m in Sources */,
 				2F6D3EA11B312884007A4159 /* ActionSheetCustomPicker.m in Sources */,
-				2F9000051B1D84F00040D97B /* UIViewController+Ltt.m in Sources */,
 				2F74CDEF1B1D833200797799 /* View+MASAdditions.m in Sources */,
 				2F4149CA1C3D0E4A00D1B5CC /* FLEXManager.m in Sources */,
 				2F4149E51C3D0E4A00D1B5CC /* FLEXNetworkTransaction.m in Sources */,
 				2F9000C71B1D98790040D97B /* REFrostedContainerViewController.m in Sources */,
+				2F0C40871C439C4500049C88 /* UIViewController+Dialog.m in Sources */,
 				2F4149F71C3D0E4A00D1B5CC /* FLEXKeyboardHelpViewController.m in Sources */,
 				2F4149D31C3D0E4A00D1B5CC /* FLEXTableListViewController.m in Sources */,
 				2F4149E61C3D0E4A00D1B5CC /* FLEXNetworkTransactionDetailTableViewController.m in Sources */,

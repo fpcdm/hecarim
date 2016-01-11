@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FrameworkConfig.h"
-#import "UIViewController+Ltt.h"
+#import "UIViewController+Dialog.h"
 #import "BaseHandler.h"
 
 //控制器回调函数

@@ -12,6 +12,8 @@
 		2F02FB821BABE6B700D7D68F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB811BABE6B700D7D68F /* libxml2.tbd */; };
 		2F02FB841BABE6BE00D7D68F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB831BABE6BE00D7D68F /* libsqlite3.tbd */; };
 		2F02FB861BABE6CF00D7D68F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02FB851BABE6CF00D7D68F /* libiconv.tbd */; };
+		2F0C40931C439CE300049C88 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C40901C439CE300049C88 /* UIViewController+Dialog.m */; };
+		2F0C40941C439CE300049C88 /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0C40921C439CE300049C88 /* UINavigationController+Vertical.m */; };
 		2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5661B5DEFEE007947D0 /* AboutView.m */; };
 		2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5681B5DEFEE007947D0 /* AccountView.m */; };
 		2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E56A1B5DEFEE007947D0 /* AddressDetailView.m */; };
@@ -224,7 +226,6 @@
 		2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF81B1D50EE006189EF /* NSString+trim.m */; };
 		2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */; };
 		2F800B011B1D50EE006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFB1B1D50EE006189EF /* README.md */; };
-		2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */; };
 		2F90003A1B1D8B930040D97B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9000191B1D8B930040D97B /* MASCompositeConstraint.m */; };
 		2F90003B1B1D8B930040D97B /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90001C1B1D8B930040D97B /* MASConstraint.m */; };
 		2F90003C1B1D8B930040D97B /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F90001E1B1D8B930040D97B /* MASConstraintMaker.m */; };
@@ -326,6 +327,10 @@
 		2F02FB811BABE6B700D7D68F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		2F02FB831BABE6BE00D7D68F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2F02FB851BABE6CF00D7D68F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		2F0C408F1C439CE300049C88 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
+		2F0C40901C439CE300049C88 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
+		2F0C40911C439CE300049C88 /* UINavigationController+Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Vertical.h"; sourceTree = "<group>"; };
+		2F0C40921C439CE300049C88 /* UINavigationController+Vertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Vertical.m"; sourceTree = "<group>"; };
 		2F16E55E1B5DEF3C007947D0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		2F16E55F1B5DEF3C007947D0 /* Config_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_debug.h; sourceTree = "<group>"; };
 		2F16E5601B5DEF3C007947D0 /* Config_product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config_product.h; sourceTree = "<group>"; };
@@ -733,8 +738,6 @@
 		2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800AFB1B1D50EE006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2F9000071B1D8B640040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
-		2F9000081B1D8B7A0040D97B /* UIViewController+Ltt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ltt.h"; sourceTree = "<group>"; };
-		2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Ltt.m"; sourceTree = "<group>"; };
 		2F9000181B1D8B930040D97B /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		2F9000191B1D8B930040D97B /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		2F90001A1B1D8B930040D97B /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -1772,8 +1775,10 @@
 				2F5FDDDB1B5F3E2A00CBF2A7 /* UIView+Loading.m */,
 				2F5FDDD71B5F391800CBF2A7 /* UIScrollView+RefreshLoading.h */,
 				2F5FDDD81B5F393500CBF2A7 /* UIScrollView+RefreshLoading.m */,
-				2F9000081B1D8B7A0040D97B /* UIViewController+Ltt.h */,
-				2F9000091B1D8B7A0040D97B /* UIViewController+Ltt.m */,
+				2F0C408F1C439CE300049C88 /* UIViewController+Dialog.h */,
+				2F0C40901C439CE300049C88 /* UIViewController+Dialog.m */,
+				2F0C40911C439CE300049C88 /* UINavigationController+Vertical.h */,
+				2F0C40921C439CE300049C88 /* UINavigationController+Vertical.m */,
 				2F6796AA1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.h */,
 				2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */,
 				2F6D3DFB1B310F2A007A4159 /* UITextView+Placeholder.h */,
@@ -2518,6 +2523,7 @@
 				2F9000401B1D8B930040D97B /* NSArray+MASAdditions.m in Sources */,
 				2F414BA11C3D0FEF00D1B5CC /* FLEXArgumentInputJSONObjectView.m in Sources */,
 				2F2F224E1B3A4D0300428742 /* TSMessage.m in Sources */,
+				2F0C40931C439CE300049C88 /* UIViewController+Dialog.m in Sources */,
 				2F16E5EB1B5DF08F007947D0 /* ProfileNicknameViewController.m in Sources */,
 				2F414BCE1C3D0FEF00D1B5CC /* FLEXNetworkTransactionDetailTableViewController.m in Sources */,
 				2F414BD61C3D0FEF00D1B5CC /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
@@ -2573,7 +2579,6 @@
 				2F16E63F1B5DF162007947D0 /* ServiceEntity.m in Sources */,
 				2F414BA01C3D0FEF00D1B5CC /* FLEXArgumentInputFontView.m in Sources */,
 				2FED7D981B1EA2D300306A11 /* SDWebImageManager.m in Sources */,
-				2F90000A1B1D8B7A0040D97B /* UIViewController+Ltt.m in Sources */,
 				2FFA37861C3B8DE6008E6389 /* LocaleUtil.m in Sources */,
 				2FED7D941B1EA2D300306A11 /* SDWebImageCompat.m in Sources */,
 				2F16E5AA1B5DEFEE007947D0 /* CaseFormView.m in Sources */,
@@ -2594,6 +2599,7 @@
 				2F90010F1B1D9D550040D97B /* RECommonFunctions.m in Sources */,
 				2F800B011B1D50EE006189EF /* README.md in Sources */,
 				2F9001161B1D9D550040D97B /* TPKeyboardAvoidingScrollView.m in Sources */,
+				2F0C40941C439CE300049C88 /* UINavigationController+Vertical.m in Sources */,
 				2F414BCB1C3D0FEF00D1B5CC /* FLEXNetworkRecorder.m in Sources */,
 				2F6D3E111B312164007A4159 /* AbstractActionSheetPicker.m in Sources */,
 				2F5534111B4FC6CD00B98CA4 /* FileEntity.m in Sources */,
