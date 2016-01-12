@@ -21,6 +21,20 @@ static LocationUtil *sharedInstance = nil;
     CLLocationCoordinate2D position;
 }
 
++ (double)getDistance:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to
+{
+    //比[clLocation1 distanceFromLocation:clLocation2]精确
+    double radLat1 = from.latitude * M_PI / 180.0;
+    double radLat2 = to.latitude * M_PI / 180.0;
+    double a = radLat1 - radLat2;
+    double b = from.longitude * M_PI / 180.0 - to.longitude * M_PI / 180.0;
+    
+    double s = 2 * sin(sqrt(pow(sin(a / 2), 2) + cos(radLat1) * cos(radLat2) * pow(sin(b / 2), 2)));
+    s = s * 6378137;
+    s = round(s * 100) / 100;
+    return s;
+}
+
 + (LocationUtil *) sharedInstance
 {
     //多线程唯一

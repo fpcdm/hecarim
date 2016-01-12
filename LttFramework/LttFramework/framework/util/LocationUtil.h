@@ -20,6 +20,9 @@
 
 @interface LocationUtil : NSObject
 
+//计算两点距离，单位:米
++ (double) getDistance:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to;
+
 + (LocationUtil *) sharedInstance;
 
 - (CLLocationManager *) locationManager;
