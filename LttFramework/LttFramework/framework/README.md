@@ -87,6 +87,10 @@ iOS9
 
 [Github](https://github.com/Flipboard/FLEX)
 
+* libz.tbd
+* libsqlite3.tdb
+* ImageIO.framework
+
 编译
 > Release环境添加User-Defined Setting如下：
 
