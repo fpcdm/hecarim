@@ -159,6 +159,7 @@
 		2F800B0E1B1D529F006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B071B1D529F006189EF /* NSString+trim.m */; };
 		2F800B0F1B1D529F006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B091B1D529F006189EF /* UIColor+Hex.m */; };
 		2F800B101B1D529F006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800B0A1B1D529F006189EF /* README.md */; };
+		2F80DA171C4750DC00B4C620 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F80DA161C4750DC00B4C620 /* NSObject+Property.m */; };
 		2F81ADEA1B9D6C2500E381B0 /* ConsumeHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADE91B9D6C2500E381B0 /* ConsumeHistoryViewController.m */; };
 		2F81ADED1B9D6D1600E381B0 /* ConsumeHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADEC1B9D6D1600E381B0 /* ConsumeHistoryView.m */; };
 		2F81ADF01B9D900C00E381B0 /* ConsumeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F81ADEF1B9D900C00E381B0 /* ConsumeEntity.m */; };
@@ -611,6 +612,9 @@
 		2F800B081B1D529F006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800B091B1D529F006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800B0A1B1D529F006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2F80DA141C4750AA00B4C620 /* FrameworkPredefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkPredefine.h; sourceTree = "<group>"; };
+		2F80DA151C4750DC00B4C620 /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
+		2F80DA161C4750DC00B4C620 /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		2F81ADE81B9D6C2500E381B0 /* ConsumeHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeHistoryViewController.h; sourceTree = "<group>"; };
 		2F81ADE91B9D6C2500E381B0 /* ConsumeHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumeHistoryViewController.m; sourceTree = "<group>"; };
 		2F81ADEB1B9D6D1600E381B0 /* ConsumeHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeHistoryView.h; sourceTree = "<group>"; };
@@ -1558,6 +1562,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000451B1D91260040D97B /* FrameworkConfig.h */,
+				2F80DA141C4750AA00B4C620 /* FrameworkPredefine.h */,
 				2FFA37651C3B8C28008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
@@ -1587,6 +1592,8 @@
 		2F800B051B1D529F006189EF /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				2F80DA151C4750DC00B4C620 /* NSObject+Property.h */,
+				2F80DA161C4750DC00B4C620 /* NSObject+Property.m */,
 				2F800B061B1D529F006189EF /* NSString+trim.h */,
 				2F800B071B1D529F006189EF /* NSString+trim.m */,
 				2F800B081B1D529F006189EF /* UIColor+Hex.h */,
@@ -2577,6 +2584,7 @@
 				2F6796B41B4B84BD00E0F774 /* UITextView+Placeholder.m in Sources */,
 				2F16E6AD1B5DF84B007947D0 /* BrandEntity.m in Sources */,
 				2FFA39281C3BC1DF008E6389 /* FLEXArgumentInputDateView.m in Sources */,
+				2F80DA171C4750DC00B4C620 /* NSObject+Property.m in Sources */,
 				2F16E6B41B5DF84B007947D0 /* SpecEntity.m in Sources */,
 				2F6D3EFF1B3128CC007A4159 /* ActionSheetLocalePicker.m in Sources */,
 				2BD4FAD91BF47977003B727B /* MerchantEntity.m in Sources */,

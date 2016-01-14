@@ -204,6 +204,7 @@
 		2F800AFF1B1D50EE006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF81B1D50EE006189EF /* NSString+trim.m */; };
 		2F800B001B1D50EE006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */; };
 		2F800B011B1D50EE006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AFB1B1D50EE006189EF /* README.md */; };
+		2F80DA121C473A7600B4C620 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F80DA111C473A7600B4C620 /* NSObject+Property.m */; };
 		2F8BFF1E1B8DB4B90087EDA0 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */; };
 		2F8BFF1F1B8DB4B90087EDA0 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF191B8DB4B90087EDA0 /* TAAnimatedDotView.m */; };
 		2F8BFF201B8DB4B90087EDA0 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF1B1B8DB4B90087EDA0 /* TADotView.m */; };
@@ -760,6 +761,9 @@
 		2F800AF91B1D50EE006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800AFA1B1D50EE006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F800AFB1B1D50EE006189EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2F80DA101C473A7600B4C620 /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
+		2F80DA111C473A7600B4C620 /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
+		2F80DA131C47415100B4C620 /* FrameworkPredefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrameworkPredefine.h; sourceTree = "<group>"; };
 		2F8BFF161B8DB4B90087EDA0 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		2F8BFF171B8DB4B90087EDA0 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		2F8BFF181B8DB4B90087EDA0 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -1868,6 +1872,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000071B1D8B640040D97B /* FrameworkConfig.h */,
+				2F80DA131C47415100B4C620 /* FrameworkPredefine.h */,
 				2FFA375A1C3B877D008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
@@ -1919,6 +1924,8 @@
 				2F6796AB1B4B7DA500E0F774 /* UIViewController+BackButtonHandler.m */,
 				2F9000081B1D8B7A0040D97B /* UIViewController+Dialog.h */,
 				2F9000091B1D8B7A0040D97B /* UIViewController+Dialog.m */,
+				2F80DA101C473A7600B4C620 /* NSObject+Property.h */,
+				2F80DA111C473A7600B4C620 /* NSObject+Property.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -2947,6 +2954,7 @@
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F593C641BE85AE400698AFA /* CaseCashierView.m in Sources */,
 				2FFA38571C3BBA40008E6389 /* FLEXTableLeftCell.m in Sources */,
+				2F80DA121C473A7600B4C620 /* NSObject+Property.m in Sources */,
 				2FFA383A1C3BBA40008E6389 /* FLEXArgumentInputColorView.m in Sources */,
 				2FFA385A1C3BBA40008E6389 /* FLEXClassesTableViewController.m in Sources */,
 				2FFA38711C3BBA40008E6389 /* FLEXDefaultsExplorerViewController.m in Sources */,

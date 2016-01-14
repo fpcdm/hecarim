@@ -60,6 +60,9 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
+//加载预编译指令
+#import "FrameworkPredefine.h"
+
 //加载本地化文件
 #import "LocaleUtil.h"
 

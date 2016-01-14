@@ -182,6 +182,7 @@
 		2F800AEC1B1D500B006189EF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AE81B1D500B006189EF /* README.md */; };
 		2F800AF11B1D5059006189EF /* NSString+trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AEE1B1D5059006189EF /* NSString+trim.m */; };
 		2F800AF21B1D5059006189EF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F800AF01B1D5059006189EF /* UIColor+Hex.m */; };
+		2F80DA1B1C47513E00B4C620 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F80DA1A1C47513E00B4C620 /* NSObject+Property.m */; };
 		2F8BFF141B8D579C0087EDA0 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BFF131B8D579C0087EDA0 /* iCarousel.m */; };
 		2F9000A91B1D941F0040D97B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9000A81B1D941F0040D97B /* SystemConfiguration.framework */; };
 		2F9000AB1B1D96D40040D97B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9000AA1B1D96D40040D97B /* Accelerate.framework */; };
@@ -695,6 +696,9 @@
 		2F800AEE1B1D5059006189EF /* NSString+trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+trim.m"; sourceTree = "<group>"; };
 		2F800AEF1B1D5059006189EF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F800AF01B1D5059006189EF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		2F80DA181C47512900B4C620 /* FrameworkPredefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkPredefine.h; sourceTree = "<group>"; };
+		2F80DA191C47513E00B4C620 /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
+		2F80DA1A1C47513E00B4C620 /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		2F8BFF121B8D579C0087EDA0 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		2F8BFF131B8D579C0087EDA0 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		2F9000061B1D87F30040D97B /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
@@ -1616,6 +1620,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000061B1D87F30040D97B /* FrameworkConfig.h */,
+				2F80DA181C47512900B4C620 /* FrameworkPredefine.h */,
 				2FFA37701C3B8CB6008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
@@ -1641,6 +1646,8 @@
 		2F800AE71B1D500B006189EF /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				2F80DA191C47513E00B4C620 /* NSObject+Property.h */,
+				2F80DA1A1C47513E00B4C620 /* NSObject+Property.m */,
 				2F800AED1B1D5059006189EF /* NSString+trim.h */,
 				2F800AEE1B1D5059006189EF /* NSString+trim.m */,
 				2F800AEF1B1D5059006189EF /* UIColor+Hex.h */,
@@ -2288,6 +2295,7 @@
 				2F4149DF1C3D0E4A00D1B5CC /* FLEXSystemLogMessage.m in Sources */,
 				2F6D3EA21B312884007A4159 /* ActionSheetDatePicker.m in Sources */,
 				2F8009FB1B1D46DD006189EF /* main.m in Sources */,
+				2F80DA1B1C47513E00B4C620 /* NSObject+Property.m in Sources */,
 				2F9000CE1B1D98790040D97B /* TPKeyboardAvoidingTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

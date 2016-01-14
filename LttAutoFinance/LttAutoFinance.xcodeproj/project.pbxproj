@@ -325,6 +325,7 @@
 		2FED82BF1B1EDBFB00306A11 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B41B1EDBFB00306A11 /* qrspec.c */; };
 		2FED82C01B1EDBFB00306A11 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B61B1EDBFB00306A11 /* rscode.c */; };
 		2FED82C11B1EDBFB00306A11 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FED82B81B1EDBFB00306A11 /* split.c */; };
+		2FEDF3801C47522A00A2A326 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDF37F1C47522A00A2A326 /* NSObject+Property.m */; };
 		2FFA37731C3B8D26008E6389 /* FrameworkPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37721C3B8D26008E6389 /* FrameworkPlist.strings */; };
 		2FFA377B1C3B8D47008E6389 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37771C3B8D47008E6389 /* LocaleUtil.m */; };
 		2FFA377C1C3B8D47008E6389 /* ThemeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA37791C3B8D47008E6389 /* ThemeUtil.m */; };
@@ -1055,6 +1056,9 @@
 		2FED82B71B1EDBFB00306A11 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		2FED82B81B1EDBFB00306A11 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		2FED82B91B1EDBFB00306A11 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		2FEDF37D1C47521900A2A326 /* FrameworkPredefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkPredefine.h; sourceTree = "<group>"; };
+		2FEDF37E1C47522A00A2A326 /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
+		2FEDF37F1C47522A00A2A326 /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		2FFA37721C3B8D26008E6389 /* FrameworkPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrameworkPlist.strings; sourceTree = "<group>"; };
 		2FFA37761C3B8D47008E6389 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
 		2FFA37771C3B8D47008E6389 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
@@ -1829,6 +1833,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9000071B1D8B640040D97B /* FrameworkConfig.h */,
+				2FEDF37D1C47521900A2A326 /* FrameworkPredefine.h */,
 				2FFA37721C3B8D26008E6389 /* FrameworkPlist.strings */,
 			);
 			path = config;
@@ -1856,6 +1861,8 @@
 		2F800AF61B1D50EE006189EF /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				2FEDF37E1C47522A00A2A326 /* NSObject+Property.h */,
+				2FEDF37F1C47522A00A2A326 /* NSObject+Property.m */,
 				2F800AF71B1D50EE006189EF /* NSString+trim.h */,
 				2F800AF81B1D50EE006189EF /* NSString+trim.m */,
 				2F800AF91B1D50EE006189EF /* UIColor+Hex.h */,
@@ -2518,6 +2525,7 @@
 				2F16E6391B5DF162007947D0 /* CategoryEntity.m in Sources */,
 				2F414AE41C3D0F4500D1B5CC /* FLEXImageExplorerViewController.m in Sources */,
 				2FCAF8371B20115700F3B084 /* TimerUtil.m in Sources */,
+				2FEDF3801C47522A00A2A326 /* NSObject+Property.m in Sources */,
 				2F064BAF1B8EE39B003550B0 /* ReflectionView.m in Sources */,
 				2FED82BD1B1EDBFB00306A11 /* qrencode.c in Sources */,
 				2F414AE61C3D0F4500D1B5CC /* FLEXObjectExplorerFactory.m in Sources */,
