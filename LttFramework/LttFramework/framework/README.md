@@ -20,6 +20,10 @@
 
 [Github](https://github.com/skywinder/ActionSheetPicker-3.0)
 
+### AFNetworking
+
+[Github](https://github.com/AFNetworking/AFNetworking)
+
 ### AlipaySDK
 
 [URL](https://doc.open.alipay.com/doc2/detail?treeId=59&articleId=103563&docType=1)
@@ -60,6 +64,13 @@ iOS9
 * CoreTelephony.framework
 * SystemConfiguration.framework
 
+### CacheKit
+
+[Github](https://github.com/davbeck/CacheKit)
+
+配置
+> CKSQLiteCache依赖于FMDB
+
 ### CNPPopupController
 
 [Github](https://github.com/carsonperrotti/CNPPopupController)
@@ -83,6 +94,10 @@ iOS9
 
 [Github](https://github.com/DavydLiu/DLRadioButton)
 
+### EGOCache
+
+[Github](https://github.com/enormego/EGOCache)
+
 ### FLEX
 
 [Github](https://github.com/Flipboard/FLEX)
@@ -96,6 +111,22 @@ iOS9
 
     EXCLUDED_SOURCE_FILE_NAMES => FLEX*
 
+### FMDB
+
+[Github](https://github.com/ccgus/fmdb)
+
+* libsqlite3.tbd
+
+### GPUImage
+
+[Github](https://github.com/BradLarson/GPUImage)
+
+* CoreMedia.framework
+* CoreVideo.framework
+* OpenGLES.framework
+* AVFoundation.framework
+* QuartzCore.framework
+
 ### Harpy
 
 [Github](https://github.com/ArtSabintsev/Harpy)
@@ -105,6 +136,12 @@ iOS9
 [Github](https://github.com/nicklockwood/iCarousel)
 
 * QuartzCore.framework
+
+### JSONModel
+
+[Github](https://github.com/icanzilb/JSONModel)
+
+* SystemConfiguration.framework
 
 ### JSPatch
 
@@ -116,6 +153,10 @@ iOS9
 
 [Github](https://github.com/fukuchi/libqrencode)
 
+### Mantle
+
+[Github](https://github.com/Mantle/Mantle)
+
 ### Masonry
 
 [Github](https://github.com/SnapKit/Masonry)
@@ -126,9 +167,24 @@ iOS9
 
 * CoreGraphics.framework
 
+### MGBoxKit
+
+[Github](https://github.com/sobri909/MGBoxKit)
+
+* QuartzCore.framework
+* CoreText.framework
+
+### MJExtension
+
+[Github](https://github.com/CoderMJLee/MJExtension)
+
 ### MJRefresh
 
 [Github](https://github.com/CoderMJLee/MJRefresh)
+
+### NSObject+ObjectMap
+
+[Github](https://github.com/uacaps/NSObject-ObjectMap)
 
 ### NUI 
 
@@ -139,6 +195,16 @@ iOS9
 
 依赖
 > NUIParse(已包含)：[Github](https://github.com/tombenner/NUIParse)
+
+### Ono
+
+[Github](https://github.com/mattt/Ono)
+
+* libxml2.tbd
+
+### PINCache
+
+[Github](https://github.com/pinterest/PINCache)
 
 ### Reachability
 
@@ -192,6 +258,10 @@ iOS9
 ### TAPageControl
 
 [Github](https://github.com/TanguyAladenise/TAPageControl)
+
+### TCBlobDownload
+
+[Github](https://github.com/thibaultCha/TCBlobDownload)
 
 ### TPKeyboardAvoiding
 
@@ -328,6 +398,10 @@ iOS9
 	    <string>wechat</string>
 	    <string>weixin</string>
 	</array>
+
+### XMLDictionary
+
+[Github](https://github.com/nicklockwood/XMLDictionary)
 
 ### ZBarSDK
 
