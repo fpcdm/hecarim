@@ -1,0 +1,25 @@
+/* 
+  FrameworkPlist.strings
+  LttMember
+
+  Created by wuyong on 16/1/5.
+  Copyright © 2016年 Gilbert. All rights reserved.
+*/
+
+//接口错误
+"SYSTEM.ApiError.Network" = "网络连接失败";
+"SYSTEM.ApiError.Api"     = "接口调用失败";
+"SYSTEM.ApiError.Json"    = "接口数据错误";
+"SYSTEM.ApiError.Nologin" = "用户授权已过期，请重新登陆！";
+
+//提示消息
+"SYSTEM.Loading.Start"   = "加载中";
+"SYSTEM.Loading.Success" = "加载完成";
+"SYSTEM.Loading.Failed"  = "加载失败";
+
+"SYSTEM.Request.Start"   = "请求中";
+"SYSTEM.Request.Success" = "请求成功";
+"SYSTEM.Request.Failed"  = "请求失败";
+
+"SYSTEM.Refresh.Start"   = "正在刷新";
+"SYSTEM.Refresh.Suceess" = "刷新完成";

@@ -1,0 +1,48 @@
+/* 
+  InfoPlist.strings
+  LttMember
+
+  Created by wuyong on 16/1/5.
+  Copyright © 2016年 Gilbert. All rights reserved.
+*/
+
+"ERROR.Mobile.Required" = "请填写手机号哦~亲！";
+"ERROR.Mobile.Format" = "手机号不正确哦~亲！";
+"ERROR.Password.Required" = "请填写密码哦~亲！";
+"ERROR.Password.Length" = "密码长度不正确哦~亲！";
+"ERROR.Comment.Required" = "请选择评价星级哦~亲！";
+"ERROR.MobileCode.Required" = "请填写验证码哦~亲！";
+"ERROR.Mobile.NotFound" = "该手机号不存在哦~亲！";
+"ERROR.Recharge.Required" = "请填写充值金额哦~亲！";
+"ERROR.Recharge.Format" = "充值金额填写不正确哦~亲！";
+"ERROR.Payment.Required" = "请选择支付方式哦~亲！";
+"ERROR.WeiXin.NotFound" = "请先安装微信再充值哦~亲！";
+"ERROR.PayPassword.Required" = "支付密码不能为空哦~亲！";
+"ERROR.PayPassword.Format" = "支付密码只能是数字哦~亲！";
+"ERROR.PayPassword.Length" = "支付密码为6位数字哦~亲！";
+"ERROR.RePayPassword.Required" = "确认支付密码不能为空哦~亲！";
+"ERROR.Password.Equal" = "两次密码不相等哦~亲！";
+"ERROR.OldPayPassword.Required" = "请输入原支付密码哦~亲！";
+"ERROR.OldAndNewPassword.Equal" = "新密码不能和原始密码相同哦~亲！";
+"ERROR.Contact.Required" = "请填写联系人姓名哦~亲！";
+"ERROR.Area.Required" = "请选择区域哦~亲！";
+"ERROR.DetailAddress.Required" = "请填写详细地址哦~亲！";
+"ERROR.OldPassword.Required" = "请输入原密码哦~亲！";
+"ERROR.NewPassword.Required" = "请输入新密码哦~亲！";
+"ERROR.ReNewPassword.Required" = "请输入确认新密码哦~亲！";
+"ERROR.Passwrod.Length" = "密码长度为6-15位英文字母，数字组成";
+"ERROR.Suggestion.Required" = "请输入意见反馈";
+"ERROR.Services.Required" = "请先选择服务哦~亲！";
+"ERROR.Scenes.Required" = "请先选择场景哦~亲！";
+"ERROR.ServiceAddr.Required" = "请先选择服务地址哦~亲";
+"ERROR.WeiXin.Qrcode" = "请先安装微信再扫码支付哦~亲！";
+"ERROR.Alipay.Qrcode" = "请先安装支付宝再扫码支付哦~亲！";
+"ERROR.Receivables.Success" = "请等待商户确认收款成功哦~亲！";
+
+
+"INFO.Suggestion.Success" = "提交成功，感谢您的意见反馈";
+"INFO.Payment.Success" = "您已经支付完成了哦~亲！";
+"INFO.Location.Fail" = "获取位置失败";
+"INFO.FoundLocation.Fail" = "查询位置失败";
+"INFO.Open.GPS" = "请打开手机定位";
+"INFO.GPS.Fail" = "定位失败";
