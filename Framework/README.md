@@ -8,7 +8,7 @@ Framework
 	2. 目标项目Build Phases配置Link Binary With Libraries中添加libFramework.a
 	3. 目标项目Build Settings配置Header Search Paths为Framework目录，并且设置为recursive
 	   如：$(PROJECT_DIR)/../../Framework/Framework
-	4. 按所使用的模块添加对应依赖并修正Framework Search Paths相对路径，详见依赖部分
+	4. 按所使用的模块添加对应依赖并修正Search Paths相对路径，详见依赖部分
 	5. Library目录为可选类库，请按需使用，将需要的模块引入项目后添加对应依赖即可，同4
 
 结构
