@@ -140,27 +140,44 @@
         
     }];
     
-    //第三方登陆
-    UIButton *wechatButton = [self makeButton:[UIImage imageNamed:@"loginWechat"] title:@"微信登陆"];
-    [wechatButton addTarget:self action:@selector(actionLoginWechat) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:wechatButton];
+    return self;
+}
+
+- (void)renderData
+{
+    //是否显示微信
+    NSNumber *weixinInstalled = [self getData:@"weixin"];
+    BOOL showWeixin = [@1 isEqualToNumber:weixinInstalled] ? YES : NO;
+    CGFloat buttonWidth = showWeixin ? 1.0/3 : 1.0/2;
     
-    superview = self;
-    [wechatButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superview.mas_left);
-        make.bottom.equalTo(superview.mas_bottom);
-        make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
-        make.height.equalTo(@45);
-    }];
+    //第三方登陆
+    UIButton *wechatButton = nil;
+    UIView *superview = self;
+    if (showWeixin) {
+        wechatButton = [self makeButton:[UIImage imageNamed:@"loginWechat"] title:@"微信登陆"];
+        [wechatButton addTarget:self action:@selector(actionLoginWechat) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:wechatButton];
+        
+        [wechatButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(superview.mas_left);
+            make.bottom.equalTo(superview.mas_bottom);
+            make.width.equalTo(superview.mas_width).multipliedBy(buttonWidth);
+            make.height.equalTo(@45);
+        }];
+    }
     
     UIButton *qqButton = [self makeButton:[UIImage imageNamed:@"loginQQ"] title:@"QQ登陆"];
     [qqButton addTarget:self action:@selector(actionLoginQQ) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:qqButton];
     
     [qqButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(wechatButton.mas_right);
+        if (showWeixin) {
+            make.left.equalTo(wechatButton.mas_right);
+        } else {
+            make.left.equalTo(superview.mas_left);
+        }
         make.bottom.equalTo(superview.mas_bottom);
-        make.width.equalTo(superview.mas_width).multipliedBy(1.0/3);
+        make.width.equalTo(superview.mas_width).multipliedBy(buttonWidth);
         make.height.equalTo(@45);
     }];
     
@@ -174,8 +191,6 @@
         make.bottom.equalTo(superview.mas_bottom);
         make.height.equalTo(@45);
     }];
-    
-    return self;
 }
 
 - (UIButton *)makeButton:(UIImage *)icon title: (NSString *)title

@@ -20,6 +20,7 @@
 #import "UMSocialAccountManager.h"
 #import "ThirdLoginViewController.h"
 #import "DebugUtil.h"
+#import "WXApi.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -42,6 +43,11 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"登陆";
+    
+    //自动隐藏微信
+    BOOL weixinInstalled = [WXApi isWXAppInstalled];
+    [loginView setData:@"weixin" value:weixinInstalled ? @1 : @0];
+    [loginView renderData];
     
     //跳转注册
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注册"
