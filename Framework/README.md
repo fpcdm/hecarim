@@ -15,14 +15,17 @@ Framework
 ----------
 框架源代码目录结构：  
 
-    Framework.h: 框架入口头文件
-    
-    config: 框架配置
-    core: 框架核心，MVC基类
-    extension: OC分类扩展
-    library: 框架常用类库
-    util: OC组件工具包
-    vender: 第三方OC组件
+	Framework.bundle: 框架资源文件
+	Library: 框架类库，可选使用
+	Framework.xcodeproj: 框架静态库Xcode项目文件
+	Framework: 框架源代码
+		Framework.h: 框架入口头文件
+    	config: 框架配置
+    	core: 框架核心，MVC基类
+    	extension: OC分类扩展
+    	library: 框架常用类库
+    	util: OC组件工具包
+    	vender: 第三方OC组件
 
 依赖
 ----------
