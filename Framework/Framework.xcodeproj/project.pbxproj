@@ -559,6 +559,9 @@
 		2FD99EE81C48CE700065293E /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99D461C48CE6F0065293E /* TSMessage.m */; };
 		2FD99EE91C48CE700065293E /* TSMessageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD99D471C48CE6F0065293E /* TSMessageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD99EEA1C48CE700065293E /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99D481C48CE6F0065293E /* TSMessageView.m */; };
+		2FF10B651C4C97FA00365024 /* EncodeUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF10B631C4C97F900365024 /* EncodeUtil.h */; };
+		2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF10B641C4C97FA00365024 /* EncodeUtil.m */; };
+		2FF10B691C4CBF1100365024 /* Framework.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2FF10B681C4CBF1100365024 /* Framework.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1128,6 +1131,9 @@
 		2FD99D461C48CE6F0065293E /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2FD99D471C48CE6F0065293E /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2FD99D481C48CE6F0065293E /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2FF10B631C4C97F900365024 /* EncodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeUtil.h; sourceTree = "<group>"; };
+		2FF10B641C4C97FA00365024 /* EncodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeUtil.m; sourceTree = "<group>"; };
+		2FF10B681C4CBF1100365024 /* Framework.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framework.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1256,6 +1262,7 @@
 				2FD9914D1C48BC9C0065293E /* util */,
 				2FD991641C48BC9C0065293E /* vendor */,
 				2FD9910F1C48BB4E0065293E /* Framework.h */,
+				2FF10B681C4CBF1100365024 /* Framework.pch */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -1375,6 +1382,8 @@
 				2FD991631C48BC9C0065293E /* ValidateUtil.m */,
 				2F47501C1C48F423001CA674 /* CacheUtil.h */,
 				2F47501D1C48F423001CA674 /* CacheUtil.m */,
+				2FF10B631C4C97F900365024 /* EncodeUtil.h */,
+				2FF10B641C4C97FA00365024 /* EncodeUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2183,6 +2192,7 @@
 				2FD99DAA1C48CE6F0065293E /* FLEXTableContentCell.h in Headers */,
 				2FD99DAE1C48CE6F0065293E /* FLEXTableLeftCell.h in Headers */,
 				2FD99E701C48CE6F0065293E /* RKConnectionTestExpectation.h in Headers */,
+				2FF10B651C4C97FA00365024 /* EncodeUtil.h in Headers */,
 				2FD99D501C48CE6F0065293E /* ActionSheetDistancePicker.h in Headers */,
 				2FD99E271C48CE6F0065293E /* View+MASShorthandAdditions.h in Headers */,
 				2FD99EA61C48CE6F0065293E /* RKResponseMapperOperation.h in Headers */,
@@ -2248,6 +2258,7 @@
 				2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */,
 				2F1C35E61C4C89310060E793 /* IMaskUIView.h in Headers */,
 				2FD99EBA1C48CE700065293E /* TKEvent.h in Headers */,
+				2FF10B691C4CBF1100365024 /* Framework.pch in Headers */,
 				2FD99ECC1C48CE700065293E /* SDWebImageManager.h in Headers */,
 				2FD99E7B1C48CE6F0065293E /* RKHTTPRequestOperation.h in Headers */,
 				2F1C35F91C4C89310060E793 /* ILabel.h in Headers */,
@@ -2488,6 +2499,7 @@
 				2FD99D751C48CE6F0065293E /* FLEXArgumentInputDateView.m in Sources */,
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
+				2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */,
 				2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */,
 				2FD99ECB1C48CE700065293E /* SDWebImageDownloaderOperation.m in Sources */,
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
@@ -2790,6 +2802,7 @@
 					"$(PROJECT_DIR)/Framework/vendor/library/AlipaySDK",
 					"$(PROJECT_DIR)/Framework/vendor/library/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
 				);
+				GCC_PREFIX_HEADER = Framework/Framework.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
@@ -2820,6 +2833,7 @@
 					"$(PROJECT_DIR)/Framework/vendor/library/AlipaySDK",
 					"$(PROJECT_DIR)/Framework/vendor/library/UMSocialSdk/ExtraFrameworks/TencentOpenAPI",
 				);
+				GCC_PREFIX_HEADER = Framework/Framework.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,

@@ -15,12 +15,15 @@
 
 - (id)init
 {
+    return [self initWithData:nil];
+}
+
+- (id)initWithData:(NSDictionary *)data
+{
     self = [super init];
     if (!self) return nil;
     
-    if (viewData == nil) {
-        viewData = [[NSMutableDictionary alloc] init];
-    }
+    viewData = [NSMutableDictionary dictionaryWithDictionary:data];
     
     //自定义视图钩子，子类可以实现(不会影响别的子类)，也可以利用类分类实现(会影响别的子类)
     if ([self respondsToSelector:@selector(customView)]) {
@@ -28,13 +31,6 @@
     }
     
     return self;
-}
-
-- (id)initWithData:(NSDictionary *)data
-{
-    viewData = [[NSMutableDictionary alloc] initWithDictionary:data];
-    
-    return [self init];
 }
 
 - (id)initWithData:(NSDictionary *)data frame:(CGRect)frame
@@ -48,6 +44,26 @@
 
 - (void)setData: (NSString *)key value:(id)value
 {
+    [self assign:key value:value];
+}
+
+- (id)getData:(NSString *)key
+{
+    return [self fetch:key];
+}
+
+- (void)renderData
+{
+    [self display];
+}
+
+- (void)assign:(NSDictionary *)data
+{
+    [viewData addEntriesFromDictionary:data];
+}
+
+- (void)assign:(NSString *)key value:(id)value
+{
     //自动替换nil为NSNull
     if (value == nil) {
         value = [NSNull null];
@@ -55,7 +71,7 @@
     [viewData setObject:value forKey:key];
 }
 
-- (id)getData:(NSString *)key
+- (id)fetch:(NSString *)key
 {
     //自动还原NSNull为nil
     id value = [viewData objectForKey:key];
@@ -65,10 +81,20 @@
     return value;
 }
 
-//子类重写
-- (void)renderData
+- (void)display:(NSDictionary *)data
 {
-    
+    [self assign:data];
+    [self display];
+}
+
+- (void)display
+{
+    //子类重写
+}
+
+- (void)render:(NSString *)key
+{
+    //子类重写
 }
 
 @end

@@ -10,4 +10,11 @@
 
 @interface PaginationEntity : BaseEntity
 
+@prop_strong(NSNumber *, page)
+@prop_strong(NSNumber *, pageSize)
+@prop_strong(NSNumber *, total)
+
+- (NSUInteger)offset;
+- (BOOL)hasMore;
+
 @end

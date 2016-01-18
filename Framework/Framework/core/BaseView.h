@@ -16,13 +16,31 @@
 
 - (id)initWithData:(NSDictionary *)data frame:(CGRect)frame;
 
-//设置数据，init之后调用
-- (void)setData:(NSString *)key value:(id)value;
+//设置数据，已废弃，请使用assign
+- (void)setData:(NSString *)key value:(id)value __attribute__((deprecated("Please use assign:value:")));
 
-//获取数据，init之后调用
-- (id)getData:(NSString *)key;
+//获取数据，已废弃，请使用fetch
+- (id)getData:(NSString *)key __attribute__((deprecated("Please use fetch:")));
 
-//渲染数据，init之后调用
-- (void)renderData;
+//渲染所有数据，子类重写，需手工调用，已废弃，请使用display
+- (void)renderData __attribute__((deprecated("Please use display")));
+
+//批量赋值
+- (void)assign:(NSDictionary *)data;
+
+//单个赋值
+- (void)assign:(NSString *)key value:(id)value;
+
+//获取数据
+- (id)fetch:(NSString *)key;
+
+//赋值并展示数据
+- (void)display:(NSDictionary *)data;
+
+//展示数据，子类重写
+- (void)display;
+
+//展示单个数据，子类重写
+- (void)render:(NSString *)key;
 
 @end

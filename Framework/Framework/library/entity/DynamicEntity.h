@@ -10,4 +10,14 @@
 
 @interface DynamicEntity : BaseEntity
 
+@prop_strong(NSDictionary *, data)
+
+- (id)get:(NSString *)key;
+
+- (void)set:(NSString *)key object:(id)object;
+
+- (void)remove:(NSString *)key;
+
+- (void)clear;
+
 @end

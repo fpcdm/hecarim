@@ -1,0 +1,18 @@
+//
+//  Framework.pch
+//  Framework
+//
+//  Created by wuyong on 16/1/18.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
+//
+
+#ifndef Framework_pch
+#define Framework_pch
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import "FrameworkConfig.h"
+#endif
+
+#endif

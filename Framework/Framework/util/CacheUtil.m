@@ -7,7 +7,30 @@
 //
 
 #import "CacheUtil.h"
+#import "PINCache.h"
 
 @implementation CacheUtil
+
+@def_singleton(CacheUtil)
+
+- (id)get:(NSString *)key
+{
+    return [[PINCache sharedCache] objectForKey:key];
+}
+
+- (void)set:(NSString *)key object:(id<NSCoding>)object
+{
+    [[PINCache sharedCache] setObject:object forKey:key];
+}
+
+- (void)remove:(NSString *)key
+{
+    [[PINCache sharedCache] removeObjectForKey:key];
+}
+
+- (void)clear
+{
+    [[PINCache sharedCache] removeAllObjects];
+}
 
 @end

@@ -10,4 +10,14 @@
 
 @interface CacheUtil : NSObject
 
+@singleton(CacheUtil)
+
+- (id) get:(NSString *)key;
+
+- (void) set:(NSString *)key object:(id<NSCoding>)object;
+
+- (void) remove:(NSString *)key;
+
+- (void) clear;
+
 @end
