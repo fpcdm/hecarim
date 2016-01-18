@@ -112,6 +112,15 @@ iOS9
   		static const DDLogLevel ddLogLevel = DDLogLevelWarn;
 	#endif
 
+### CocoaUI
+
+[Github](https://github.com/ideawu/cocoaui)
+
+* libxml2.tbd
+
+配置
+> 项目Header Search Paths添加：/usr/include/libxml2
+
 ### DLRadioButton
 
 [Github](https://github.com/DavydLiu/DLRadioButton)
