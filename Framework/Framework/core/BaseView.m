@@ -42,21 +42,6 @@
     return self;
 }
 
-- (void)setData: (NSString *)key value:(id)value
-{
-    [self assign:key value:value];
-}
-
-- (id)getData:(NSString *)key
-{
-    return [self fetch:key];
-}
-
-- (void)renderData
-{
-    [self display];
-}
-
 - (void)assign:(NSDictionary *)data
 {
     [viewData addEntriesFromDictionary:data];
@@ -95,6 +80,26 @@
 - (void)render:(NSString *)key
 {
     //子类重写
+}
+
+@end
+
+//已废弃
+@implementation BaseView (Deprecated)
+
+- (void)setData: (NSString *)key value:(id)value
+{
+    [self assign:key value:value];
+}
+
+- (id)getData:(NSString *)key
+{
+    return [self fetch:key];
+}
+
+- (void)renderData
+{
+    [self display];
 }
 
 @end

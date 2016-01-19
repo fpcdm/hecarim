@@ -63,6 +63,50 @@
 		2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35CF1C4C89310060E793 /* INSXmlViewLoader.m */; };
 		2F1C36091C4C89310060E793 /* IViewLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35D01C4C89310060E793 /* IViewLoader.h */; };
 		2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35D11C4C89310060E793 /* IViewLoader.m */; };
+		2F222AB51C4DCAF100162E23 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A721C4DCAF100162E23 /* DDData.h */; };
+		2F222AB61C4DCAF100162E23 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A731C4DCAF100162E23 /* DDData.m */; };
+		2F222AB71C4DCAF100162E23 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A741C4DCAF100162E23 /* DDNumber.h */; };
+		2F222AB81C4DCAF100162E23 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A751C4DCAF100162E23 /* DDNumber.m */; };
+		2F222AB91C4DCAF100162E23 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A761C4DCAF100162E23 /* DDRange.h */; };
+		2F222ABA1C4DCAF100162E23 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A771C4DCAF100162E23 /* DDRange.m */; };
+		2F222ABB1C4DCAF100162E23 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A781C4DCAF100162E23 /* HTTPAuthenticationRequest.h */; };
+		2F222ABC1C4DCAF100162E23 /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A791C4DCAF100162E23 /* HTTPAuthenticationRequest.m */; };
+		2F222ABD1C4DCAF100162E23 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A7A1C4DCAF100162E23 /* HTTPConnection.h */; };
+		2F222ABE1C4DCAF100162E23 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A7B1C4DCAF100162E23 /* HTTPConnection.m */; };
+		2F222ABF1C4DCAF100162E23 /* HTTPLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A7C1C4DCAF100162E23 /* HTTPLogging.h */; };
+		2F222AC01C4DCAF100162E23 /* HTTPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A7D1C4DCAF100162E23 /* HTTPMessage.h */; };
+		2F222AC11C4DCAF100162E23 /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A7E1C4DCAF100162E23 /* HTTPMessage.m */; };
+		2F222AC21C4DCAF100162E23 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A7F1C4DCAF100162E23 /* HTTPResponse.h */; };
+		2F222AC31C4DCAF100162E23 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A801C4DCAF100162E23 /* HTTPServer.h */; };
+		2F222AC41C4DCAF100162E23 /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A811C4DCAF100162E23 /* HTTPServer.m */; };
+		2F222AC51C4DCAF100162E23 /* MultipartFormDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A831C4DCAF100162E23 /* MultipartFormDataParser.h */; };
+		2F222AC61C4DCAF100162E23 /* MultipartFormDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A841C4DCAF100162E23 /* MultipartFormDataParser.m */; };
+		2F222AC71C4DCAF100162E23 /* MultipartMessageHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A851C4DCAF100162E23 /* MultipartMessageHeader.h */; };
+		2F222AC81C4DCAF100162E23 /* MultipartMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A861C4DCAF100162E23 /* MultipartMessageHeader.m */; };
+		2F222AC91C4DCAF100162E23 /* MultipartMessageHeaderField.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A871C4DCAF100162E23 /* MultipartMessageHeaderField.h */; };
+		2F222ACA1C4DCAF100162E23 /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A881C4DCAF100162E23 /* MultipartMessageHeaderField.m */; };
+		2F222ACB1C4DCAF100162E23 /* HTTPAsyncFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A8A1C4DCAF100162E23 /* HTTPAsyncFileResponse.h */; };
+		2F222ACC1C4DCAF100162E23 /* HTTPAsyncFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A8B1C4DCAF100162E23 /* HTTPAsyncFileResponse.m */; };
+		2F222ACD1C4DCAF100162E23 /* HTTPDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A8C1C4DCAF100162E23 /* HTTPDataResponse.h */; };
+		2F222ACE1C4DCAF100162E23 /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A8D1C4DCAF100162E23 /* HTTPDataResponse.m */; };
+		2F222ACF1C4DCAF100162E23 /* HTTPDynamicFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A8E1C4DCAF100162E23 /* HTTPDynamicFileResponse.h */; };
+		2F222AD01C4DCAF100162E23 /* HTTPDynamicFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A8F1C4DCAF100162E23 /* HTTPDynamicFileResponse.m */; };
+		2F222AD11C4DCAF100162E23 /* HTTPFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A901C4DCAF100162E23 /* HTTPFileResponse.h */; };
+		2F222AD21C4DCAF100162E23 /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A911C4DCAF100162E23 /* HTTPFileResponse.m */; };
+		2F222AD31C4DCAF100162E23 /* HTTPRedirectResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A921C4DCAF100162E23 /* HTTPRedirectResponse.h */; };
+		2F222AD41C4DCAF100162E23 /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A931C4DCAF100162E23 /* HTTPRedirectResponse.m */; };
+		2F222AD51C4DCAF100162E23 /* WebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A941C4DCAF100162E23 /* WebSocket.h */; };
+		2F222AD61C4DCAF100162E23 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A951C4DCAF100162E23 /* WebSocket.m */; };
+		2F222AD71C4DCAF100162E23 /* DAVConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A981C4DCAF100162E23 /* DAVConnection.h */; };
+		2F222AD81C4DCAF100162E23 /* DAVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A991C4DCAF100162E23 /* DAVConnection.m */; };
+		2F222AD91C4DCAF100162E23 /* DAVResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A9A1C4DCAF100162E23 /* DAVResponse.h */; };
+		2F222ADA1C4DCAF100162E23 /* DAVResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A9B1C4DCAF100162E23 /* DAVResponse.m */; };
+		2F222ADB1C4DCAF100162E23 /* DELETEResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A9C1C4DCAF100162E23 /* DELETEResponse.h */; };
+		2F222ADC1C4DCAF100162E23 /* DELETEResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A9D1C4DCAF100162E23 /* DELETEResponse.m */; };
+		2F222ADD1C4DCAF100162E23 /* PUTResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222A9E1C4DCAF100162E23 /* PUTResponse.h */; };
+		2F222ADE1C4DCAF100162E23 /* PUTResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222A9F1C4DCAF100162E23 /* PUTResponse.m */; };
+		2F222ADF1C4DCAF100162E23 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F222AA21C4DCAF100162E23 /* GCDAsyncSocket.h */; };
+		2F222AE01C4DCAF100162E23 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F222AA31C4DCAF100162E23 /* GCDAsyncSocket.m */; };
 		2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750111C48F11A001CA674 /* DynamicEntity.h */; };
 		2F4750141C48F11A001CA674 /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750121C48F11A001CA674 /* DynamicEntity.m */; };
 		2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750181C48F3F1001CA674 /* PaginationEntity.h */; };
@@ -634,6 +678,50 @@
 		2F1C35CF1C4C89310060E793 /* INSXmlViewLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INSXmlViewLoader.m; sourceTree = "<group>"; };
 		2F1C35D01C4C89310060E793 /* IViewLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IViewLoader.h; sourceTree = "<group>"; };
 		2F1C35D11C4C89310060E793 /* IViewLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IViewLoader.m; sourceTree = "<group>"; };
+		2F222A721C4DCAF100162E23 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
+		2F222A731C4DCAF100162E23 /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
+		2F222A741C4DCAF100162E23 /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNumber.h; sourceTree = "<group>"; };
+		2F222A751C4DCAF100162E23 /* DDNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNumber.m; sourceTree = "<group>"; };
+		2F222A761C4DCAF100162E23 /* DDRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRange.h; sourceTree = "<group>"; };
+		2F222A771C4DCAF100162E23 /* DDRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRange.m; sourceTree = "<group>"; };
+		2F222A781C4DCAF100162E23 /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
+		2F222A791C4DCAF100162E23 /* HTTPAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAuthenticationRequest.m; sourceTree = "<group>"; };
+		2F222A7A1C4DCAF100162E23 /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnection.h; sourceTree = "<group>"; };
+		2F222A7B1C4DCAF100162E23 /* HTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPConnection.m; sourceTree = "<group>"; };
+		2F222A7C1C4DCAF100162E23 /* HTTPLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPLogging.h; sourceTree = "<group>"; };
+		2F222A7D1C4DCAF100162E23 /* HTTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPMessage.h; sourceTree = "<group>"; };
+		2F222A7E1C4DCAF100162E23 /* HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPMessage.m; sourceTree = "<group>"; };
+		2F222A7F1C4DCAF100162E23 /* HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponse.h; sourceTree = "<group>"; };
+		2F222A801C4DCAF100162E23 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPServer.h; sourceTree = "<group>"; };
+		2F222A811C4DCAF100162E23 /* HTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPServer.m; sourceTree = "<group>"; };
+		2F222A831C4DCAF100162E23 /* MultipartFormDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartFormDataParser.h; sourceTree = "<group>"; };
+		2F222A841C4DCAF100162E23 /* MultipartFormDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartFormDataParser.m; sourceTree = "<group>"; };
+		2F222A851C4DCAF100162E23 /* MultipartMessageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartMessageHeader.h; sourceTree = "<group>"; };
+		2F222A861C4DCAF100162E23 /* MultipartMessageHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartMessageHeader.m; sourceTree = "<group>"; };
+		2F222A871C4DCAF100162E23 /* MultipartMessageHeaderField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartMessageHeaderField.h; sourceTree = "<group>"; };
+		2F222A881C4DCAF100162E23 /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartMessageHeaderField.m; sourceTree = "<group>"; };
+		2F222A8A1C4DCAF100162E23 /* HTTPAsyncFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAsyncFileResponse.h; sourceTree = "<group>"; };
+		2F222A8B1C4DCAF100162E23 /* HTTPAsyncFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAsyncFileResponse.m; sourceTree = "<group>"; };
+		2F222A8C1C4DCAF100162E23 /* HTTPDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDataResponse.h; sourceTree = "<group>"; };
+		2F222A8D1C4DCAF100162E23 /* HTTPDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDataResponse.m; sourceTree = "<group>"; };
+		2F222A8E1C4DCAF100162E23 /* HTTPDynamicFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDynamicFileResponse.h; sourceTree = "<group>"; };
+		2F222A8F1C4DCAF100162E23 /* HTTPDynamicFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDynamicFileResponse.m; sourceTree = "<group>"; };
+		2F222A901C4DCAF100162E23 /* HTTPFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPFileResponse.h; sourceTree = "<group>"; };
+		2F222A911C4DCAF100162E23 /* HTTPFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPFileResponse.m; sourceTree = "<group>"; };
+		2F222A921C4DCAF100162E23 /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRedirectResponse.h; sourceTree = "<group>"; };
+		2F222A931C4DCAF100162E23 /* HTTPRedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRedirectResponse.m; sourceTree = "<group>"; };
+		2F222A941C4DCAF100162E23 /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocket.h; sourceTree = "<group>"; };
+		2F222A951C4DCAF100162E23 /* WebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocket.m; sourceTree = "<group>"; };
+		2F222A981C4DCAF100162E23 /* DAVConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAVConnection.h; sourceTree = "<group>"; };
+		2F222A991C4DCAF100162E23 /* DAVConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAVConnection.m; sourceTree = "<group>"; };
+		2F222A9A1C4DCAF100162E23 /* DAVResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAVResponse.h; sourceTree = "<group>"; };
+		2F222A9B1C4DCAF100162E23 /* DAVResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAVResponse.m; sourceTree = "<group>"; };
+		2F222A9C1C4DCAF100162E23 /* DELETEResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DELETEResponse.h; sourceTree = "<group>"; };
+		2F222A9D1C4DCAF100162E23 /* DELETEResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DELETEResponse.m; sourceTree = "<group>"; };
+		2F222A9E1C4DCAF100162E23 /* PUTResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUTResponse.h; sourceTree = "<group>"; };
+		2F222A9F1C4DCAF100162E23 /* PUTResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUTResponse.m; sourceTree = "<group>"; };
+		2F222AA21C4DCAF100162E23 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		2F222AA31C4DCAF100162E23 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		2F4750111C48F11A001CA674 /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
 		2F4750121C48F11A001CA674 /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
 		2F4750181C48F3F1001CA674 /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
@@ -1235,6 +1323,121 @@
 			path = xml;
 			sourceTree = "<group>";
 		};
+		2F222A6D1C4DCAF100162E23 /* CocoaHTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A701C4DCAF100162E23 /* Core */,
+				2F222A961C4DCAF100162E23 /* Extensions */,
+				2F222AA01C4DCAF100162E23 /* Vendor */,
+			);
+			path = CocoaHTTPServer;
+			sourceTree = "<group>";
+		};
+		2F222A701C4DCAF100162E23 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A711C4DCAF100162E23 /* Categories */,
+				2F222A781C4DCAF100162E23 /* HTTPAuthenticationRequest.h */,
+				2F222A791C4DCAF100162E23 /* HTTPAuthenticationRequest.m */,
+				2F222A7A1C4DCAF100162E23 /* HTTPConnection.h */,
+				2F222A7B1C4DCAF100162E23 /* HTTPConnection.m */,
+				2F222A7C1C4DCAF100162E23 /* HTTPLogging.h */,
+				2F222A7D1C4DCAF100162E23 /* HTTPMessage.h */,
+				2F222A7E1C4DCAF100162E23 /* HTTPMessage.m */,
+				2F222A7F1C4DCAF100162E23 /* HTTPResponse.h */,
+				2F222A801C4DCAF100162E23 /* HTTPServer.h */,
+				2F222A811C4DCAF100162E23 /* HTTPServer.m */,
+				2F222A821C4DCAF100162E23 /* Mime */,
+				2F222A891C4DCAF100162E23 /* Responses */,
+				2F222A941C4DCAF100162E23 /* WebSocket.h */,
+				2F222A951C4DCAF100162E23 /* WebSocket.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2F222A711C4DCAF100162E23 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A721C4DCAF100162E23 /* DDData.h */,
+				2F222A731C4DCAF100162E23 /* DDData.m */,
+				2F222A741C4DCAF100162E23 /* DDNumber.h */,
+				2F222A751C4DCAF100162E23 /* DDNumber.m */,
+				2F222A761C4DCAF100162E23 /* DDRange.h */,
+				2F222A771C4DCAF100162E23 /* DDRange.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		2F222A821C4DCAF100162E23 /* Mime */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A831C4DCAF100162E23 /* MultipartFormDataParser.h */,
+				2F222A841C4DCAF100162E23 /* MultipartFormDataParser.m */,
+				2F222A851C4DCAF100162E23 /* MultipartMessageHeader.h */,
+				2F222A861C4DCAF100162E23 /* MultipartMessageHeader.m */,
+				2F222A871C4DCAF100162E23 /* MultipartMessageHeaderField.h */,
+				2F222A881C4DCAF100162E23 /* MultipartMessageHeaderField.m */,
+			);
+			path = Mime;
+			sourceTree = "<group>";
+		};
+		2F222A891C4DCAF100162E23 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A8A1C4DCAF100162E23 /* HTTPAsyncFileResponse.h */,
+				2F222A8B1C4DCAF100162E23 /* HTTPAsyncFileResponse.m */,
+				2F222A8C1C4DCAF100162E23 /* HTTPDataResponse.h */,
+				2F222A8D1C4DCAF100162E23 /* HTTPDataResponse.m */,
+				2F222A8E1C4DCAF100162E23 /* HTTPDynamicFileResponse.h */,
+				2F222A8F1C4DCAF100162E23 /* HTTPDynamicFileResponse.m */,
+				2F222A901C4DCAF100162E23 /* HTTPFileResponse.h */,
+				2F222A911C4DCAF100162E23 /* HTTPFileResponse.m */,
+				2F222A921C4DCAF100162E23 /* HTTPRedirectResponse.h */,
+				2F222A931C4DCAF100162E23 /* HTTPRedirectResponse.m */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		2F222A961C4DCAF100162E23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A971C4DCAF100162E23 /* WebDAV */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2F222A971C4DCAF100162E23 /* WebDAV */ = {
+			isa = PBXGroup;
+			children = (
+				2F222A981C4DCAF100162E23 /* DAVConnection.h */,
+				2F222A991C4DCAF100162E23 /* DAVConnection.m */,
+				2F222A9A1C4DCAF100162E23 /* DAVResponse.h */,
+				2F222A9B1C4DCAF100162E23 /* DAVResponse.m */,
+				2F222A9C1C4DCAF100162E23 /* DELETEResponse.h */,
+				2F222A9D1C4DCAF100162E23 /* DELETEResponse.m */,
+				2F222A9E1C4DCAF100162E23 /* PUTResponse.h */,
+				2F222A9F1C4DCAF100162E23 /* PUTResponse.m */,
+			);
+			path = WebDAV;
+			sourceTree = "<group>";
+		};
+		2F222AA01C4DCAF100162E23 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				2F222AA11C4DCAF100162E23 /* CocoaAsyncSocket */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		2F222AA11C4DCAF100162E23 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				2F222AA21C4DCAF100162E23 /* GCDAsyncSocket.h */,
+				2F222AA31C4DCAF100162E23 /* GCDAsyncSocket.m */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
 		2FD991031C48BB4E0065293E = {
 			isa = PBXGroup;
 			children = (
@@ -1391,8 +1594,9 @@
 		2FD991641C48BC9C0065293E /* vendor */ = {
 			isa = PBXGroup;
 			children = (
-				2F1C35951C4C89310060E793 /* CocoaUI */,
 				2FD99B851C48CE6E0065293E /* ActionSheetPicker */,
+				2F222A6D1C4DCAF100162E23 /* CocoaHTTPServer */,
+				2F1C35951C4C89310060E793 /* CocoaUI */,
 				2FD99B981C48CE6E0065293E /* CocoaLumberjack */,
 				2FD99BB11C48CE6E0065293E /* FLEX */,
 				2FD99C511C48CE6E0065293E /* FMDB */,
@@ -2102,12 +2306,14 @@
 				2FD99E7E1C48CE6F0065293E /* RKISO8601DateFormatter.h in Headers */,
 				2F1C35FD1C4C89310060E793 /* IRefreshControl.h in Headers */,
 				2FD99ED91C48CE700065293E /* UIImageView+WebCache.h in Headers */,
+				2F222AD31C4DCAF100162E23 /* HTTPRedirectResponse.h in Headers */,
 				2FD99E9D1C48CE6F0065293E /* RKPathUtilities.h in Headers */,
 				2FD99DEC1C48CE6F0065293E /* FLEXSetExplorerViewController.h in Headers */,
 				2FD99E861C48CE6F0065293E /* RKManagedObjectStore+RKSearchAdditions.h in Headers */,
 				2FD99E631C48CE6F0065293E /* lcl_config_components_RK.h in Headers */,
 				2FD99D901C48CE6F0065293E /* FLEXFieldEditorViewController.h in Headers */,
 				2FD99D6E1C48CE6F0065293E /* DDDispatchQueueLogFormatter.h in Headers */,
+				2F222ADB1C4DCAF100162E23 /* DELETEResponse.h in Headers */,
 				2FD99DAC1C48CE6F0065293E /* FLEXTableContentViewController.h in Headers */,
 				2FD99E281C48CE6F0065293E /* MBProgressHUD.h in Headers */,
 				2FD99D981C48CE6F0065293E /* FLEXExplorerToolbar.h in Headers */,
@@ -2124,11 +2330,13 @@
 				2F1C35FB1C4C89310060E793 /* IPopover.h in Headers */,
 				2FD99E7A1C48CE6F0065293E /* RKFetchRequestManagedObjectCache.h in Headers */,
 				2FD99DC81C48CE6F0065293E /* FLEXSystemLogTableViewCell.h in Headers */,
+				2F222AD71C4DCAF100162E23 /* DAVConnection.h in Headers */,
 				2FD99EA31C48CE6F0065293E /* RKRelationshipMapping.h in Headers */,
 				2FD99DF81C48CE6F0065293E /* FLEXMultilineTableViewCell.h in Headers */,
 				2FD99E651C48CE6F0065293E /* lcl_config_logger_RK.h in Headers */,
 				2FD99E761C48CE6F0065293E /* RKEntityCache.h in Headers */,
 				2FD99E081C48CE6F0065293E /* FMDatabaseAdditions.h in Headers */,
+				2F222AC51C4DCAF100162E23 /* MultipartFormDataParser.h in Headers */,
 				2FD99E3C1C48CE6F0065293E /* MJRefreshBackNormalFooter.h in Headers */,
 				2FD99E2A1C48CE6F0065293E /* MJRefreshAutoFooter.h in Headers */,
 				2FD99EE51C48CE700065293E /* TSBlurView.h in Headers */,
@@ -2177,6 +2385,7 @@
 				2FD99EA71C48CE6F0065293E /* RKRoute.h in Headers */,
 				2FD99D7C1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.h in Headers */,
 				2FD99EA81C48CE6F0065293E /* RKRouter.h in Headers */,
+				2F222ABD1C4DCAF100162E23 /* HTTPConnection.h in Headers */,
 				2FD99E981C48CE6F0065293E /* RKObjectRequestOperationSubclass.h in Headers */,
 				2FD99EA21C48CE6F0065293E /* RKRelationshipConnectionOperation.h in Headers */,
 				2FD99EAC1C48CE6F0065293E /* RKSearchWord.h in Headers */,
@@ -2219,6 +2428,7 @@
 				2FD99D661C48CE6F0065293E /* DDLog+LOGV.h in Headers */,
 				2FD99E901C48CE6F0065293E /* RKMIMETypeSerialization.h in Headers */,
 				2FD99E2E1C48CE6F0065293E /* MJRefreshComponent.h in Headers */,
+				2F222AD91C4DCAF100162E23 /* DAVResponse.h in Headers */,
 				2FD99DEE1C48CE6F0065293E /* FLEXViewControllerExplorerViewController.h in Headers */,
 				2FD99EB31C48CE700065293E /* RKTestNotificationObserver.h in Headers */,
 				2FD99E9F1C48CE6F0065293E /* RKPropertyInspector.h in Headers */,
@@ -2230,6 +2440,7 @@
 				2FD99EB11C48CE6F0065293E /* RKTestFixture.h in Headers */,
 				2FD99E501C48CE6F0065293E /* PINCache.h in Headers */,
 				2FD99E061C48CE6F0065293E /* FMDatabase.h in Headers */,
+				2F222ADD1C4DCAF100162E23 /* PUTResponse.h in Headers */,
 				2FD99EB51C48CE700065293E /* RKValueTransformers.h in Headers */,
 				2FD99EB01C48CE6F0065293E /* RKTestFactory.h in Headers */,
 				2FD99E5B1C48CE6F0065293E /* AFJSONRequestOperation.h in Headers */,
@@ -2241,15 +2452,21 @@
 				2FD99DF41C48CE6F0065293E /* FLEXKeyboardHelpViewController.h in Headers */,
 				2FD99DFA1C48CE6F0065293E /* FLEXResources.h in Headers */,
 				2FD99E931C48CE6F0065293E /* RKObjectMapping.h in Headers */,
+				2F222AC31C4DCAF100162E23 /* HTTPServer.h in Headers */,
 				2FD99E3A1C48CE6F0065293E /* MJRefreshBackGifFooter.h in Headers */,
 				2F1C35EF1C4C89310060E793 /* IView.h in Headers */,
+				2F222ABB1C4DCAF100162E23 /* HTTPAuthenticationRequest.h in Headers */,
 				2FD99E991C48CE6F0065293E /* RKObjectUtilities.h in Headers */,
+				2F222ACF1C4DCAF100162E23 /* HTTPDynamicFileResponse.h in Headers */,
 				2FD99EE31C48CE700065293E /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */,
 				2FD99E641C48CE6F0065293E /* lcl_config_extensions_RK.h in Headers */,
+				2F222AD51C4DCAF100162E23 /* WebSocket.h in Headers */,
 				2FD99E661C48CE6F0065293E /* lcl_RK.h in Headers */,
 				2FD99E961C48CE6F0065293E /* RKObjectParameterization.h in Headers */,
 				2FD99E681C48CE6F0065293E /* NSManagedObject+RKAdditions.h in Headers */,
+				2F222AB91C4DCAF100162E23 /* DDRange.h in Headers */,
 				2FD99E711C48CE6F0065293E /* RKCoreData.h in Headers */,
+				2F222AC21C4DCAF100162E23 /* HTTPResponse.h in Headers */,
 				2FD99DBC1C48CE6F0065293E /* FLEXGlobalsTableViewController.h in Headers */,
 				2FD99DE41C48CE6F0065293E /* FLEXImageExplorerViewController.h in Headers */,
 				2FD99D521C48CE6F0065293E /* ActionSheetLocalePicker.h in Headers */,
@@ -2281,6 +2498,7 @@
 				2FD99E8E1C48CE6F0065293E /* RKMappingTest.h in Headers */,
 				2FD99D941C48CE6F0065293E /* FLEXMethodCallingViewController.h in Headers */,
 				2FD99E521C48CE6F0065293E /* PINDiskCache.h in Headers */,
+				2F222ACB1C4DCAF100162E23 /* HTTPAsyncFileResponse.h in Headers */,
 				2FD99EA91C48CE6F0065293E /* RKRouteSet.h in Headers */,
 				2FD99DD61C48CE6F0065293E /* FLEXNetworkTransactionTableViewCell.h in Headers */,
 				2FD99DDE1C48CE6F0065293E /* FLEXDefaultsExplorerViewController.h in Headers */,
@@ -2292,12 +2510,14 @@
 				2FD99E251C48CE6F0065293E /* View+MASAdditions.h in Headers */,
 				2FD99D551C48CE6F0065293E /* ActionSheetStringPicker.h in Headers */,
 				2F1C35F71C4C89310060E793 /* IInput.h in Headers */,
+				2F222AC91C4DCAF100162E23 /* MultipartMessageHeaderField.h in Headers */,
 				2FD99E231C48CE6F0065293E /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				2F1C35F51C4C89310060E793 /* IImage.h in Headers */,
 				2F1C35FF1C4C89310060E793 /* ISwitch.h in Headers */,
 				2FD99E801C48CE6F0065293E /* RKLumberjackLogger.h in Headers */,
 				2FD99ECF1C48CE700065293E /* SDWebImagePrefetcher.h in Headers */,
 				2FD99ED11C48CE700065293E /* UIButton+WebCache.h in Headers */,
+				2F222AC01C4DCAF100162E23 /* HTTPMessage.h in Headers */,
 				2FD99D9D1C48CE6F0065293E /* FLEXManager.h in Headers */,
 				2FD99DB61C48CE6F0065293E /* FLEXFileBrowserFileOperationController.h in Headers */,
 				2FD99EBE1C48CE700065293E /* UIImageView+AFNetworking.h in Headers */,
@@ -2340,9 +2560,11 @@
 				2FD99E821C48CE6F0065293E /* RKManagedObjectCaching.h in Headers */,
 				2F1C36051C4C89310060E793 /* IDTHTMLViewLoader.h in Headers */,
 				2FD99EDF1C48CE700065293E /* TPKeyboardAvoidingScrollView.h in Headers */,
+				2F222AC71C4DCAF100162E23 /* MultipartMessageHeader.h in Headers */,
 				2F1C35E31C4C89310060E793 /* IKit.h in Headers */,
 				2F1C35DC1C4C89310060E793 /* IStyleInternal.h in Headers */,
 				2FD99D5C1C48CE6F0065293E /* DDAbstractDatabaseLogger.h in Headers */,
+				2F222ABF1C4DCAF100162E23 /* HTTPLogging.h in Headers */,
 				2FD99E6B1C48CE6F0065293E /* RKMapperOperation_Private.h in Headers */,
 				2FD99ECA1C48CE700065293E /* SDWebImageDownloaderOperation.h in Headers */,
 				2FD99D9F1C48CE6F0065293E /* FLEXToolbarItem.h in Headers */,
@@ -2360,6 +2582,7 @@
 				2FD99E021C48CE6F0065293E /* FLEXHierarchyTableViewController.h in Headers */,
 				2FD99E8B1C48CE6F0065293E /* RKMappingOperation.h in Headers */,
 				2F1C35EA1C4C89310060E793 /* IResourceMananger.h in Headers */,
+				2F222ACD1C4DCAF100162E23 /* HTTPDataResponse.h in Headers */,
 				2FD99E871C48CE6F0065293E /* RKManagedObjectStore.h in Headers */,
 				2FD99EA51C48CE6F0065293E /* RKResponseDescriptor.h in Headers */,
 				2FD99D881C48CE6F0065293E /* FLEXArgumentInputView.h in Headers */,
@@ -2374,6 +2597,7 @@
 				2F1C35E11C4C89310060E793 /* ICellView.h in Headers */,
 				2FD99DA81C48CE6F0065293E /* FLEXTableColumnHeader.h in Headers */,
 				2FD99D7E1C48CE6F0065293E /* FLEXArgumentInputNumberView.h in Headers */,
+				2F222AD11C4DCAF100162E23 /* HTTPFileResponse.h in Headers */,
 				2FD99E0E1C48CE6F0065293E /* FMDB.h in Headers */,
 				2FD99E5D1C48CE6F0065293E /* AFNetworking.h in Headers */,
 				2FD99EAA1C48CE6F0065293E /* RKSearchIndexer.h in Headers */,
@@ -2382,6 +2606,7 @@
 				2FD99E9B1C48CE6F0065293E /* RKPaginator.h in Headers */,
 				2FD99EAE1C48CE6F0065293E /* RKSerialization.h in Headers */,
 				2F1C35F11C4C89310060E793 /* IViewInternal.h in Headers */,
+				2F222AB71C4DCAF100162E23 /* DDNumber.h in Headers */,
 				2FD99E731C48CE6F0065293E /* RKDotNetDateFormatter.h in Headers */,
 				2FD99E911C48CE6F0065293E /* RKNSJSONSerialization.h in Headers */,
 				2F1C35DF1C4C89310060E793 /* ICell.h in Headers */,
@@ -2391,6 +2616,7 @@
 				2FD99EC01C48CE700065293E /* NSData+ImageContentType.h in Headers */,
 				2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */,
 				2FD99EA11C48CE6F0065293E /* RKPropertyMappingTestExpectation.h in Headers */,
+				2F222ADF1C4DCAF100162E23 /* GCDAsyncSocket.h in Headers */,
 				2FD99DD21C48CE6F0065293E /* FLEXNetworkTransaction.h in Headers */,
 				2FD99D671C48CE6F0065293E /* DDLog.h in Headers */,
 				2FD99E671C48CE6F0065293E /* Network.h in Headers */,
@@ -2413,6 +2639,7 @@
 				2FD993F31C48BE710065293E /* UITextView+Placeholder.h in Headers */,
 				2FD993F41C48BE710065293E /* UIView+Loading.h in Headers */,
 				2FD993F51C48BE710065293E /* UIViewController+BackButtonHandler.h in Headers */,
+				2F222AB51C4DCAF100162E23 /* DDData.h in Headers */,
 				2FD993F61C48BE720065293E /* UIViewController+Dialog.h in Headers */,
 				2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */,
 				2FD993F81C48BE720065293E /* FileEntity.h in Headers */,
@@ -2501,6 +2728,7 @@
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */,
 				2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */,
+				2F222AB61C4DCAF100162E23 /* DDData.m in Sources */,
 				2FD99ECB1C48CE700065293E /* SDWebImageDownloaderOperation.m in Sources */,
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
 				2F1C35F01C4C89310060E793 /* IView.m in Sources */,
@@ -2516,6 +2744,7 @@
 				2FD99E0B1C48CE6F0065293E /* FMDatabasePool.m in Sources */,
 				2FD9932E1C48BC9D0065293E /* BaseTableView.m in Sources */,
 				2FD99DC11C48CE6F0065293E /* FLEXLibrariesTableViewController.m in Sources */,
+				2F222AE01C4DCAF100162E23 /* GCDAsyncSocket.m in Sources */,
 				2FD99E211C48CE6F0065293E /* NSArray+MASAdditions.m in Sources */,
 				2FD99EE01C48CE700065293E /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2FD993431C48BC9D0065293E /* LogUtil.m in Sources */,
@@ -2537,6 +2766,7 @@
 				2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */,
 				2F1C35EB1C4C89310060E793 /* IResourceMananger.m in Sources */,
 				2FD99DB71C48CE6F0065293E /* FLEXFileBrowserFileOperationController.m in Sources */,
+				2F222ADC1C4DCAF100162E23 /* DELETEResponse.m in Sources */,
 				2FD99DD91C48CE6F0065293E /* FLEXNetworkObserver.m in Sources */,
 				2FD99EE21C48CE700065293E /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FD99E4A1C48CE6F0065293E /* UIScrollView+MJExtension.m in Sources */,
@@ -2548,7 +2778,9 @@
 				2FD99D6D1C48CE6F0065293E /* DDContextFilterLogFormatter.m in Sources */,
 				2FD99DBD1C48CE6F0065293E /* FLEXGlobalsTableViewController.m in Sources */,
 				2FD99DCD1C48CE6F0065293E /* FLEXNetworkHistoryTableViewController.m in Sources */,
+				2F222ACE1C4DCAF100162E23 /* HTTPDataResponse.m in Sources */,
 				2F1C35DB1C4C89310060E793 /* IStyle.m in Sources */,
+				2F222ABA1C4DCAF100162E23 /* DDRange.m in Sources */,
 				2F1C35F61C4C89310060E793 /* IImage.m in Sources */,
 				2FD99E311C48CE6F0065293E /* MJRefreshFooter.m in Sources */,
 				2FD99EE61C48CE700065293E /* TSBlurView.m in Sources */,
@@ -2557,6 +2789,7 @@
 				2FD99E151C48CE6F0065293E /* MASConstraint.m in Sources */,
 				2F1C35F41C4C89310060E793 /* IButton.m in Sources */,
 				2FD99D8D1C48CE6F0065293E /* FLEXDefaultEditorViewController.m in Sources */,
+				2F222AD41C4DCAF100162E23 /* HTTPRedirectResponse.m in Sources */,
 				2FD99D7B1C48CE6F0065293E /* FLEXArgumentInputJSONObjectView.m in Sources */,
 				2FD99DDD1C48CE6F0065293E /* FLEXClassExplorerViewController.m in Sources */,
 				2FD993391C48BC9D0065293E /* UIView+Loading.m in Sources */,
@@ -2569,7 +2802,10 @@
 				2FD99DD11C48CE6F0065293E /* FLEXNetworkSettingsTableViewController.m in Sources */,
 				2FD99ED41C48CE700065293E /* UIImage+GIF.m in Sources */,
 				2F1C36021C4C89310060E793 /* ITableRow.m in Sources */,
+				2F222ACA1C4DCAF100162E23 /* MultipartMessageHeaderField.m in Sources */,
 				2FD99E451C48CE6F0065293E /* MJRefreshStateHeader.m in Sources */,
+				2F222AC11C4DCAF100162E23 /* HTTPMessage.m in Sources */,
+				2F222ABE1C4DCAF100162E23 /* HTTPConnection.m in Sources */,
 				2FD99D681C48CE6F0065293E /* DDLog.m in Sources */,
 				2FD99DF31C48CE6F0065293E /* FLEXHeapEnumerator.m in Sources */,
 				2FD99ECD1C48CE700065293E /* SDWebImageManager.m in Sources */,
@@ -2603,6 +2839,7 @@
 				2FD9932F1C48BC9D0065293E /* BaseView.m in Sources */,
 				2FD99EC71C48CE700065293E /* SDWebImageDecoder.m in Sources */,
 				2FD99EDC1C48CE700065293E /* UIView+WebCacheOperation.m in Sources */,
+				2F222ACC1C4DCAF100162E23 /* HTTPAsyncFileResponse.m in Sources */,
 				2FD99D951C48CE6F0065293E /* FLEXMethodCallingViewController.m in Sources */,
 				2FD993311C48BC9D0065293E /* NSObject+Property.m in Sources */,
 				2FD99DAF1C48CE6F0065293E /* FLEXTableLeftCell.m in Sources */,
@@ -2612,6 +2849,9 @@
 				2FD99D5F1C48CE6F0065293E /* DDASLLogCapture.m in Sources */,
 				2FD993291C48BC9D0065293E /* BaseCollectionView.m in Sources */,
 				2FD99E351C48CE6F0065293E /* MJRefreshAutoGifFooter.m in Sources */,
+				2F222AD61C4DCAF100162E23 /* WebSocket.m in Sources */,
+				2F222AC81C4DCAF100162E23 /* MultipartMessageHeader.m in Sources */,
+				2F222ADE1C4DCAF100162E23 /* PUTResponse.m in Sources */,
 				2F47501B1C48F3F1001CA674 /* PaginationEntity.m in Sources */,
 				2FD99D771C48CE6F0065293E /* FLEXArgumentInputFontsPickerView.m in Sources */,
 				2F1C36001C4C89310060E793 /* ISwitch.m in Sources */,
@@ -2637,8 +2877,10 @@
 				2FD99DF11C48CE6F0065293E /* FLEXViewExplorerViewController.m in Sources */,
 				2F1C35E21C4C89310060E793 /* ICellView.m in Sources */,
 				2FD99E241C48CE6F0065293E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2F222AD81C4DCAF100162E23 /* DAVConnection.m in Sources */,
 				2FD99D731C48CE6F0065293E /* FLEXArgumentInputColorView.m in Sources */,
 				2F1C35FA1C4C89310060E793 /* ILabel.m in Sources */,
+				2F222AD01C4DCAF100162E23 /* HTTPDynamicFileResponse.m in Sources */,
 				2FD993371C48BC9D0065293E /* UITableViewCell+AutoLayoutFix.m in Sources */,
 				2FD993451C48BC9D0065293E /* PickerUtil.m in Sources */,
 				2F1C36061C4C89310060E793 /* IDTHTMLViewLoader.m in Sources */,
@@ -2676,8 +2918,13 @@
 				2FD9932C1C48BC9D0065293E /* BaseModel.m in Sources */,
 				2FD99E3D1C48CE6F0065293E /* MJRefreshBackNormalFooter.m in Sources */,
 				2FD99EE41C48CE700065293E /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2F222ABC1C4DCAF100162E23 /* HTTPAuthenticationRequest.m in Sources */,
 				2FD99E031C48CE6F0065293E /* FLEXHierarchyTableViewController.m in Sources */,
+				2F222AD21C4DCAF100162E23 /* HTTPFileResponse.m in Sources */,
 				2FD99DB91C48CE6F0065293E /* FLEXFileBrowserSearchOperation.m in Sources */,
+				2F222AB81C4DCAF100162E23 /* DDNumber.m in Sources */,
+				2F222AC61C4DCAF100162E23 /* MultipartFormDataParser.m in Sources */,
+				2F222AC41C4DCAF100162E23 /* HTTPServer.m in Sources */,
 				2FD99D931C48CE6F0065293E /* FLEXIvarEditorViewController.m in Sources */,
 				2FD9934A1C48BC9D0065293E /* ValidateUtil.m in Sources */,
 				2FD9933D1C48BC9D0065293E /* FileEntity.m in Sources */,
@@ -2698,6 +2945,7 @@
 				2FD99E3B1C48CE6F0065293E /* MJRefreshBackGifFooter.m in Sources */,
 				2FD9933F1C48BC9D0065293E /* UserEntity.m in Sources */,
 				2FD99DC51C48CE6F0065293E /* FLEXWebViewController.m in Sources */,
+				2F222ADA1C4DCAF100162E23 /* DAVResponse.m in Sources */,
 				2FD99ED81C48CE700065293E /* UIImageView+HighlightedWebCache.m in Sources */,
 				2FD99DA71C48CE6F0065293E /* FLEXMultiColumnTableView.m in Sources */,
 				2FD99E331C48CE6F0065293E /* MJRefreshHeader.m in Sources */,

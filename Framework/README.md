@@ -97,6 +97,10 @@ iOS9
 
 [Github](https://github.com/carsonperrotti/CNPPopupController)
 
+### CocoaHTTPServer
+
+[Github](https://github.com/robbiehanson/CocoaHTTPServer)
+
 ### CocoaLumberjack
 
 [Github](https://github.com/CocoaLumberjack/CocoaLumberjack)
