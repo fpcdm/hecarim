@@ -559,6 +559,8 @@
 		2FD99EE81C48CE700065293E /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99D461C48CE6F0065293E /* TSMessage.m */; };
 		2FD99EE91C48CE700065293E /* TSMessageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD99D471C48CE6F0065293E /* TSMessageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD99EEA1C48CE700065293E /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99D481C48CE6F0065293E /* TSMessageView.m */; };
+		2FE620321C4E2CAD002F4AD2 /* BaseXmlView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE620301C4E2CAD002F4AD2 /* BaseXmlView.h */; };
+		2FE620331C4E2CAD002F4AD2 /* BaseXmlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE620311C4E2CAD002F4AD2 /* BaseXmlView.m */; };
 		2FF10B651C4C97FA00365024 /* EncodeUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF10B631C4C97F900365024 /* EncodeUtil.h */; };
 		2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF10B641C4C97FA00365024 /* EncodeUtil.m */; };
 		2FF10B691C4CBF1100365024 /* Framework.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2FF10B681C4CBF1100365024 /* Framework.pch */; };
@@ -1131,6 +1133,8 @@
 		2FD99D461C48CE6F0065293E /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2FD99D471C48CE6F0065293E /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2FD99D481C48CE6F0065293E /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2FE620301C4E2CAD002F4AD2 /* BaseXmlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseXmlView.h; sourceTree = "<group>"; };
+		2FE620311C4E2CAD002F4AD2 /* BaseXmlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseXmlView.m; sourceTree = "<group>"; };
 		2FF10B631C4C97F900365024 /* EncodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeUtil.h; sourceTree = "<group>"; };
 		2FF10B641C4C97FA00365024 /* EncodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeUtil.m; sourceTree = "<group>"; };
 		2FF10B681C4CBF1100365024 /* Framework.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framework.pch; sourceTree = "<group>"; };
@@ -1293,6 +1297,8 @@
 				2FD991271C48BC9C0065293E /* BaseTableView.m */,
 				2FD991281C48BC9C0065293E /* BaseView.h */,
 				2FD991291C48BC9C0065293E /* BaseView.m */,
+				2FE620301C4E2CAD002F4AD2 /* BaseXmlView.h */,
+				2FE620311C4E2CAD002F4AD2 /* BaseXmlView.m */,
 				2FD9912A1C48BC9C0065293E /* BaseViewController.h */,
 				2FD9912B1C48BC9C0065293E /* BaseViewController.m */,
 			);
@@ -2103,6 +2109,7 @@
 				2F1C35FD1C4C89310060E793 /* IRefreshControl.h in Headers */,
 				2FD99ED91C48CE700065293E /* UIImageView+WebCache.h in Headers */,
 				2FD99E9D1C48CE6F0065293E /* RKPathUtilities.h in Headers */,
+				2FE620321C4E2CAD002F4AD2 /* BaseXmlView.h in Headers */,
 				2FD99DEC1C48CE6F0065293E /* FLEXSetExplorerViewController.h in Headers */,
 				2FD99E861C48CE6F0065293E /* RKManagedObjectStore+RKSearchAdditions.h in Headers */,
 				2FD99E631C48CE6F0065293E /* lcl_config_components_RK.h in Headers */,
@@ -2568,6 +2575,7 @@
 				2F1C35FE1C4C89310060E793 /* IRefreshControl.m in Sources */,
 				2FD99DD11C48CE6F0065293E /* FLEXNetworkSettingsTableViewController.m in Sources */,
 				2FD99ED41C48CE700065293E /* UIImage+GIF.m in Sources */,
+				2FE620331C4E2CAD002F4AD2 /* BaseXmlView.m in Sources */,
 				2F1C36021C4C89310060E793 /* ITableRow.m in Sources */,
 				2FD99E451C48CE6F0065293E /* MJRefreshStateHeader.m in Sources */,
 				2FD99D681C48CE6F0065293E /* DDLog.m in Sources */,
