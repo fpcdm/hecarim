@@ -73,6 +73,8 @@
 #define DIALOG_SHOW_TIME 2.0
 //定义成功框显示时间
 #define LOADING_SUCCESS_TIME 0.5
+//定义WatchUrl默认刷新间隔
+#define DEBUG_WATCHURL_INTERVAL 5.0
 
 //系统错误配置
 #define ERROR_CODE_NETWORK 101

@@ -13,6 +13,8 @@
 @optional
 - (void)sourceFileChanged:(NSString *)filePath;
 - (void)sourceFileDeleted:(NSString *)filePath;
+- (void)urlResponseChanged:(NSString *)url;
+- (void)urlResponseError:(NSString *)url;
 
 @end
 
@@ -24,6 +26,12 @@
 
 //监听代码文件改变，仅模拟器有效
 - (void) watchPath:(NSString *)path exts:(NSArray *)exts;
+
+//监听某个URL响应改变，仅调试模式有效
+- (void) watchUrl:(NSString *)url interval:(NSTimeInterval)interval;
+
+//停止监听某个URL响应改变
+- (void) unwatchUrl;
 
 //标记开始
 - (void) benchmarkStart:(NSString *)name;

@@ -14,6 +14,9 @@
 
 #import <sys/sysctl.h>
 #import <mach/mach.h>
+
+#import "EncodeUtil.h"
+#define DEBUGUTIL
 #endif
 
 static DebugUtil *sharedInstance = nil;
@@ -29,6 +32,13 @@ static DebugUtil *sharedInstance = nil;
     NSArray *sourceExts;
     NSMutableArray *sourceFiles;
 #endif
+#endif
+    
+#ifdef APP_DEBUG
+    NSString *urlPath;
+    NSString *urlHash;
+    NSTimeInterval urlInterval;
+    BOOL urlUnwatch;
 #endif
 }
 
@@ -158,6 +168,71 @@ static DebugUtil *sharedInstance = nil;
     }
 }
 #endif
+#endif
+
+- (void)watchUrl:(NSString *)url interval:(NSTimeInterval)interval
+{
+#ifdef APP_DEBUG
+    urlUnwatch = NO;
+    
+    //判断Url是否改变
+    if (interval > 0) {
+        urlInterval = interval;
+    } else if (urlInterval <= 0) {
+        urlInterval = DEBUG_WATCHURL_INTERVAL;
+    }
+    
+    [self watchUrlResponse:url];
+#endif
+}
+
+- (void)unwatchUrl
+{
+#ifdef APP_DEBUG
+    urlUnwatch = YES;
+#endif
+}
+
+#ifdef APP_DEBUG
+- (void)watchUrlResponse:(NSString *)url
+{
+    //是否停止监听
+    if (urlUnwatch) return;
+    
+    //开始解析
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *urlresp, NSData *data, NSError *error){
+        //响应错误
+        if (error) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseError:)]) {
+                [self.delegate urlResponseError:url];
+            }
+        } else {
+            NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSString *newHash = [EncodeUtil md5:response];
+            //响应改变
+            BOOL hashChanged = NO;
+            if (urlPath && [urlPath isEqualToString:url] &&
+                urlHash && ![urlHash isEqualToString:newHash]) {
+                hashChanged = YES;
+            }
+            
+            urlHash = newHash;
+            urlPath = url;
+            if (hashChanged) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseChanged:)]) {
+                    [self.delegate urlResponseChanged:url];
+                }
+            }
+        }
+        
+        //执行轮询
+        [self performSelector:@selector(watchUrlResponse:) withObject:url afterDelay:urlInterval];
+    }];
+}
 #endif
 
 #ifdef APP_DEBUG
