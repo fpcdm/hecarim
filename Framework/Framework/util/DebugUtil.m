@@ -16,7 +16,6 @@
 #import <mach/mach.h>
 
 #import "EncodeUtil.h"
-#define DEBUGUTIL
 #endif
 
 static DebugUtil *sharedInstance = nil;
@@ -35,10 +34,8 @@ static DebugUtil *sharedInstance = nil;
 #endif
     
 #ifdef APP_DEBUG
-    NSString *urlPath;
-    NSString *urlHash;
+    NSMutableDictionary *watchUrls;
     NSTimeInterval urlInterval;
-    BOOL urlUnwatch;
 #endif
 }
 
@@ -146,10 +143,12 @@ static DebugUtil *sharedInstance = nil;
                                    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:NULL];
                                    if (exists) {
                                        if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileChanged:)]) {
+                                           NSLog(@"sourceFileChanged:%@", filePath);
                                            [self.delegate sourceFileChanged:filePath];
                                        }
                                    } else {
                                        if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileDeleted:)]) {
+                                           NSLog(@"sourceFileDeleted:%@", filePath);
                                            [self.delegate sourceFileDeleted:filePath];
                                        }
                                    }
@@ -170,62 +169,79 @@ static DebugUtil *sharedInstance = nil;
 #endif
 #endif
 
-- (void)watchUrl:(NSString *)url interval:(NSTimeInterval)interval
+- (void)watchUrlInterval:(NSTimeInterval)interval
 {
 #ifdef APP_DEBUG
-    urlUnwatch = NO;
+    urlInterval = interval;
+#endif
+}
+
+- (void)watchUrlStart:(NSString *)url
+{
+#ifdef APP_DEBUG
+    if (!watchUrls) watchUrls = [[NSMutableDictionary alloc] init];
     
-    //判断Url是否改变
-    if (interval > 0) {
-        urlInterval = interval;
-    } else if (urlInterval <= 0) {
-        urlInterval = DEBUG_WATCHURL_INTERVAL;
+    //标记监听
+    if (![watchUrls objectForKey:url]) {
+        [watchUrls setObject:@"" forKey:url];
     }
     
+    NSLog(@"watchUrlStart:%@", url);
     [self watchUrlResponse:url];
 #endif
 }
 
-- (void)unwatchUrl
+- (void)watchUrlEnd:(NSString *)url
 {
 #ifdef APP_DEBUG
-    urlUnwatch = YES;
+    //移除监听
+    if (watchUrls && [watchUrls objectForKey:url]) {
+        [watchUrls removeObjectForKey:url];
+    }
+    
+    NSLog(@"watchUrlEnd:%@", url);
 #endif
 }
 
 #ifdef APP_DEBUG
 - (void)watchUrlResponse:(NSString *)url
 {
-    //是否停止监听
-    if (urlUnwatch) return;
+    //检查刷新间隔
+    if (urlInterval == 0) urlInterval = DEBUG_WATCHURL_INTERVAL;
+    if (urlInterval <= 0) return;
+    
+    //是否开启URL监听
+    NSString *oldHash = watchUrls ? [watchUrls objectForKey:url] : nil;
+    if (!oldHash) return;
     
     //开始解析
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:[NSURL URLWithString:url]];
     [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *urlresp, NSData *data, NSError *error){
-        //响应错误
-        if (error) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseError:)]) {
-                [self.delegate urlResponseError:url];
-            }
-        } else {
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *urlResp, NSData *data, NSError *error){
+        //获取状态码
+        NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)urlResp;
+        NSInteger statusCode = httpResp.statusCode;
+        
+        //响应正常
+        if (statusCode == 200 && !error) {
             NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSString *newHash = [EncodeUtil md5:response];
-            //响应改变
-            BOOL hashChanged = NO;
-            if (urlPath && [urlPath isEqualToString:url] &&
-                urlHash && ![urlHash isEqualToString:newHash]) {
-                hashChanged = YES;
-            }
             
-            urlHash = newHash;
-            urlPath = url;
+            //判断是否响应改变
+            BOOL hashChanged = oldHash.length > 0 && ![oldHash isEqualToString:newHash];
+            [watchUrls setObject:newHash forKey:url];
             if (hashChanged) {
                 if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseChanged:)]) {
+                    NSLog(@"urlResponseChanged:%@", url);
                     [self.delegate urlResponseChanged:url];
                 }
+            }
+        } else {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseError:)]) {
+                NSLog(@"urlResponseError:%@", url);
+                [self.delegate urlResponseError:url];
             }
         }
         

@@ -72,8 +72,16 @@ typedef enum{
 	[request setHTTPMethod:@"GET"];
 	[request setURL:[NSURL URLWithString:url]];
 	[request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *urlresp, NSData *data, NSError *error){
-		NSString *xml = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *urlResp, NSData *data, NSError *error){
+        //获取状态码
+        NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)urlResp;
+        NSInteger statusCode = httpResp.statusCode;
+        
+        //响应正常
+        NSString *xml = nil;
+        if (statusCode == 200 && !error) {
+            xml = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
 		IView *view = [IViewLoader viewFromXml:xml basePath:basePath];
 		callback(view);
 	}];

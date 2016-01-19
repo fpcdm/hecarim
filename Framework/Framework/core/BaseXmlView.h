@@ -28,18 +28,15 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 + (void)setPatchPath:(NSString *)patchPath;
 
 //加载某视图不执行回调
-+ (BaseXmlView *)loadXmlView:(NSString *)xmlName;
++ (BaseXmlView *)viewWithName:(NSString *)xmlName;
 
 //加载某视图并执行回调
-+ (BaseXmlView *)loadXmlView:(NSString *)xmlName callback:(XmlViewCallback)callback;
++ (BaseXmlView *)viewWithName:(NSString *)xmlName callback:(XmlViewCallback)callback;
 
 //视图名称，默认为视图名称去掉XmlView和View后的字符串，子类可重写
 - (NSString *)xmlName;
 
-//视图加载完成钩子，子类重写
+//视图加载完成钩子，子类重写，文件不存在时也会调用
 - (void)xmlViewLoaded;
-
-//视图加载失败钩子，子类重写
-- (void)xmlViewFailed;
 
 @end

@@ -84,12 +84,12 @@ static CGFloat colorVal(NSString *hex){
 
 + (NSString *)getBasePath:(NSString *)url{
 	NSArray *arr = [IKitUtil parsePath:url];
-	return arr[1];
+    return arr.count > 1 ? arr[1] : nil;
 }
 
 + (NSString *)getRootPath:(NSString *)url{
 	NSArray *arr = [IKitUtil parsePath:url];
-	return arr[0];
+    return arr.count > 0 ? arr[0] : nil;
 }
 
 + (NSArray *)parsePath:(NSString *)url{

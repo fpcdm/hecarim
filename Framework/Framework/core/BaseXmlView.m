@@ -17,19 +17,18 @@ static NSString *xmlExt = @"html";
 static NSString *patchPath = nil;
 
 #ifdef APP_DEBUG
-#if TARGET_IPHONE_SIMULATOR
 #import "DebugUtil.h"
 
 @interface BaseXmlView () <DebugUtilDelegate>
 
 @end
 #endif
-#endif
 
 @implementation BaseXmlView
 {
     NSString *_xmlName;
     NSString *_xmlFile;
+    BOOL _xmlIsUrl;
     XmlViewCallback _xmlCallback;
 }
 
@@ -50,12 +49,12 @@ static NSString *patchPath = nil;
     patchPath = _patchPath;
 }
 
-+ (BaseXmlView *)loadXmlView:(NSString *)xmlName
++ (BaseXmlView *)viewWithName:(NSString *)xmlName
 {
-    return [self loadXmlView:xmlName callback:nil];
+    return [self viewWithName:xmlName callback:nil];
 }
 
-+ (BaseXmlView *)loadXmlView:(NSString *)xmlName callback:(XmlViewCallback)callback
++ (BaseXmlView *)viewWithName:(NSString *)xmlName callback:(XmlViewCallback)callback
 {
     BaseXmlView *xmlView = [[BaseXmlView alloc] initWithXmlName:xmlName callback:callback];
     return xmlView;
@@ -100,22 +99,38 @@ static NSString *patchPath = nil;
     }
 }
 
+- (NSString *)xmlFileName
+{
+    NSString *fileName = _xmlName;
+    if (xmlExt && [[fileName lastPathComponent] rangeOfString:@"."].length < 1) {
+        fileName = [NSString stringWithFormat:@"%@.%@", fileName, xmlExt];
+    }
+    return fileName;
+}
+
 - (void)loadXmlView
 {
-    _xmlFile = xmlExt ? [NSString stringWithFormat:@"%@.%@", _xmlName, xmlExt] : _xmlName;
+    _xmlFile = [self xmlFileName];
     if (xmlPath) {
         _xmlFile = [IKitUtil buildPath:xmlPath src:_xmlFile];
     }
+    _xmlIsUrl = [IKitUtil isHttpUrl:_xmlFile];
     
 #ifdef APP_DEBUG
-#if TARGET_IPHONE_SIMULATOR
     //注册调试代理
     [DebugUtil sharedInstance].delegate = self;
-#endif
+    
+    //监听URL改变
+    if (_xmlIsUrl) {
+        [[DebugUtil sharedInstance] watchUrlStart:_xmlFile];
+    }
 #endif
     
+    //todo
+    //检查补丁url，设置缓存
+    
     //本地文件
-    if (![IKitUtil isHttpUrl:_xmlFile]) {
+    if (!_xmlIsUrl) {
         IView *view = [IView namedView:_xmlFile];
         [self loadCallback:view];
     //远程文件
@@ -138,7 +153,7 @@ static NSString *patchPath = nil;
     _xmlView = view;
     [self addSubview:_xmlView];
     
-    //加载成功
+    //加载完成
     [self xmlViewLoaded];
     
     //回调函数
@@ -149,27 +164,45 @@ static NSString *patchPath = nil;
 
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
-//文件改变自动重写渲染
+//文件改变自动重新渲染
 - (void)sourceFileChanged:(NSString *)filePath
 {
-    //本地文件
-    if (![IKitUtil isHttpUrl:_xmlFile]) {
-        //todo: 检查两个文件名称匹配
+    //本地文件名匹配
+    if (!_xmlIsUrl && [[self xmlFileName] isEqualToString:[filePath lastPathComponent]]) {
         IView *view = [IView viewWithContentsOfFile:filePath];
         [self loadCallback:view];
     }
-    
-    //todo：远程文件及时刷新
 }
 #endif
+#endif
+
+#ifdef APP_DEBUG
+//Url内容改变自动重新渲染
+- (void)urlResponseChanged:(NSString *)url
+{
+    //远程URL和文件名匹配
+    if (_xmlIsUrl && [_xmlFile isEqualToString:url]) {
+        [IViewLoader loadUrl:_xmlFile callback:^(IView *view) {
+            [self loadCallback:view];
+        }];
+    }
+}
+#endif
+
+#ifdef APP_DEBUG
+- (void)dealloc
+{
+    //解除调试代理
+    [DebugUtil sharedInstance].delegate = nil;
+    
+    //移除URL监听
+    if (_xmlIsUrl) {
+        [[DebugUtil sharedInstance] watchUrlEnd:_xmlFile];
+    }
+}
 #endif
 
 - (void)xmlViewLoaded
-{
-    
-}
-
-- (void)xmlViewFailed
 {
     
 }

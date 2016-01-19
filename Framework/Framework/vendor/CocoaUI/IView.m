@@ -95,11 +95,6 @@
 	static BOOL inited = NO;
 	if(!inited){
 		inited = YES;
-		NSString *copyright = @"Copyright(c)2015 CocoaUI. All rights reserved.";
-		// TODO: if(md5(copyright) != ""){exit();}
-		NSLog(@"%@ version: 1.2.5", copyright);
-		//NSString* appid = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-		//NSLog(@"%@", appid);
 	}
 	self.backgroundColor = [UIColor clearColor];
 	//self.userInteractionEnabled = NO;
