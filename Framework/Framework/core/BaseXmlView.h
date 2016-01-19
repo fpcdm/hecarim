@@ -27,6 +27,9 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 //设置补丁URL路径模板
 + (void)setPatchPath:(NSString *)patchPath;
 
+//加载某视图不执行回调
++ (BaseXmlView *)loadXmlView:(NSString *)xmlName;
+
 //加载某视图并执行回调
 + (BaseXmlView *)loadXmlView:(NSString *)xmlName callback:(XmlViewCallback)callback;
 

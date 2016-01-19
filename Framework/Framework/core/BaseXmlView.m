@@ -50,6 +50,11 @@ static NSString *patchPath = nil;
     patchPath = _patchPath;
 }
 
++ (BaseXmlView *)loadXmlView:(NSString *)xmlName
+{
+    return [self loadXmlView:xmlName callback:nil];
+}
+
 + (BaseXmlView *)loadXmlView:(NSString *)xmlName callback:(XmlViewCallback)callback
 {
     BaseXmlView *xmlView = [[BaseXmlView alloc] initWithXmlName:xmlName callback:callback];
@@ -149,9 +154,12 @@ static NSString *patchPath = nil;
 {
     //本地文件
     if (![IKitUtil isHttpUrl:_xmlFile]) {
-        IView *view = [IView namedView:_xmlFile];
+        //todo: 检查两个文件名称匹配
+        IView *view = [IView viewWithContentsOfFile:filePath];
         [self loadCallback:view];
     }
+    
+    //todo：远程文件及时刷新
 }
 #endif
 #endif
