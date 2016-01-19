@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol DebugUtilDelegate <NSObject>
+
+@optional
+- (void)sourceFileChanged:(NSString *)filePath;
+- (void)sourceFileDeleted:(NSString *)filePath;
+
+@end
+
 @interface DebugUtil : NSObject
 
+@prop_weak(id<DebugUtilDelegate>, delegate)
+
 + (DebugUtil *) sharedInstance;
+
+//监听代码文件改变，仅模拟器有效
+- (void) watchPath:(NSString *)path exts:(NSArray *)exts;
 
 //标记开始
 - (void) benchmarkStart:(NSString *)name;

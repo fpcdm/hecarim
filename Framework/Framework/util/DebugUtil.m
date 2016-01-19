@@ -22,6 +22,14 @@ static DebugUtil *sharedInstance = nil;
 {
     NSMutableDictionary *benchmarks;
     NSMutableDictionary *memorys;
+
+#ifdef APP_DEBUG
+#if TARGET_IPHONE_SIMULATOR
+    NSString *sourcePath;
+    NSArray *sourceExts;
+    NSMutableArray *sourceFiles;
+#endif
+#endif
 }
 
 + (DebugUtil *) sharedInstance
@@ -47,6 +55,110 @@ static DebugUtil *sharedInstance = nil;
     }
     return self;
 }
+
+- (void)watchPath:(NSString *)path exts:(NSArray *)exts
+{
+#ifdef APP_DEBUG
+#if TARGET_IPHONE_SIMULATOR
+    sourcePath = [[NSString stringWithFormat:@"%@/../", path] stringByStandardizingPath];
+    if (exts) {
+        sourceExts = exts;
+    } else {
+        //默认监听模板文件
+        sourceExts = @[@"xml", @"html", @"htm", @"css", @"tpl"];
+    }
+    [self scanSourceFiles];
+#endif
+#endif
+}
+
+#ifdef APP_DEBUG
+#if TARGET_IPHONE_SIMULATOR
+- (void)scanSourceFiles
+{
+    if (sourceFiles == nil) sourceFiles = [[NSMutableArray alloc] init];
+    
+    [sourceFiles removeAllObjects];
+    
+    NSString * basePath = [[sourcePath stringByStandardizingPath] copy];
+    if (nil == basePath) return;
+    
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:basePath];
+    if (enumerator) {
+        for (;;) {
+            NSString *filePath = [enumerator nextObject];
+            if (nil == filePath) break;
+            
+            NSString *fileName = [filePath lastPathComponent];
+            NSString *fileExt = [fileName pathExtension];
+            NSString *fullPath = [basePath stringByAppendingPathComponent:filePath];
+            
+            BOOL isDirectory = NO;
+            BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDirectory];
+            if (exists && NO == isDirectory) {
+                BOOL isValid = NO;
+                
+                for (NSString *extension in sourceExts) {
+                    if (NSOrderedSame == [fileExt compare:extension]) {
+                        isValid = YES;
+                        break;
+                    }
+                }
+                
+                if (isValid) {
+                    [sourceFiles addObject:fullPath];
+                }
+            }
+        }
+    }
+    
+    for (NSString *filePath in sourceFiles) {
+        [self watchSourceFile:filePath];
+    }
+}
+
+- (void)watchSourceFile:(NSString *)filePath
+{
+    int fileHandle = open([filePath UTF8String], O_EVTONLY);
+    if (fileHandle) {
+        unsigned long mask = DISPATCH_VNODE_DELETE | DISPATCH_VNODE_WRITE | DISPATCH_VNODE_EXTEND;
+        __block dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        __block dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_VNODE, fileHandle, mask, queue);
+        
+        @weakify(self)
+        __block id eventHandler = ^{
+            @strongify(self)
+            
+            unsigned long flags = dispatch_source_get_data(source);
+            if (flags) {
+                dispatch_source_cancel(source);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                                   BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:NULL];
+                                   if (exists) {
+                                       if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileChanged:)]) {
+                                           [self.delegate sourceFileChanged:filePath];
+                                       }
+                                   } else {
+                                       if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileDeleted:)]) {
+                                           [self.delegate sourceFileDeleted:filePath];
+                                       }
+                                   }
+                               });
+                [self watchSourceFile:filePath];
+            }
+        };
+        
+        __block id cancelHandler = ^{
+            close(fileHandle);
+        };
+        
+        dispatch_source_set_event_handler(source, eventHandler);
+        dispatch_source_set_cancel_handler(source, cancelHandler);
+        dispatch_resume(source);
+    }
+}
+#endif
+#endif
 
 #ifdef APP_DEBUG
 - (double)availableMemory
