@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FrameworkConfig.h"
 #import "Masonry.h"
-#import "UIView+Xml.h"
 
 @interface BaseView : UIView
 

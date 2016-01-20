@@ -32,7 +32,7 @@ static NSString *patchPath = nil;
     BOOL _xmlIsUrl;
     XmlViewCallback _xmlCallback;
     
-    UIView *_xmlView;
+    IView *_xmlView;
 }
 
 + (void)setXmlPath:(NSString *)_xmlPath
@@ -109,7 +109,7 @@ static NSString *patchPath = nil;
     
     _xmlPath = _xmlFileName;
     if (xmlPath) {
-        _xmlPath = [UIView joinPath:xmlPath path:_xmlPath];
+        _xmlPath = [IView joinPath:xmlPath path:_xmlPath];
     }
     _xmlIsUrl = [HttpUtil isUrl:_xmlPath];
     
@@ -123,7 +123,7 @@ static NSString *patchPath = nil;
     }
     
     //关闭XML缓存
-    [UIView xmlCacheEnabled:NO];
+    [IView xmlCacheEnabled:NO];
 #endif
     
     //检查补丁缓存是否存在
@@ -152,11 +152,11 @@ static NSString *patchPath = nil;
     if (patchXml) {
         //补丁文件
         if (isFile) {
-            UIView *view = [UIView viewWithFile:patchXml];
+            IView *view = [IView viewWithFile:patchXml];
             [self loadCallback:view];
         //补丁字符串
         } else {
-            UIView *view = [UIView viewWithString:patchXml basePath:patchPath];
+            IView *view = [IView viewWithString:patchXml basePath:patchPath];
             [self loadCallback:view];
         }
         
@@ -165,14 +165,21 @@ static NSString *patchPath = nil;
     //原始Xml
     } else {
         if (!_xmlIsUrl) {
-            UIView *view = [UIView viewWithName:_xmlPath];
-            [self loadCallback:view];
+            //自定义路径
+            if (xmlPath) {
+                IView *view = [IView viewWithFile:_xmlPath];
+                [self loadCallback:view];
+            //默认路径
+            } else {
+                IView *view = [IView viewWithName:_xmlPath];
+                [self loadCallback:view];
+            }
             
             //执行回调
             if (callback) callback();
             //远程文件
         } else {
-            [UIView viewWithUrl:_xmlPath callback:^(UIView *view) {
+            [IView viewWithUrl:_xmlPath callback:^(IView *view) {
                 [self loadCallback:view];
                 
                 //执行回调
@@ -194,7 +201,7 @@ static NSString *patchPath = nil;
 
 - (void)refreshCache:(NSString *)oldXml
 {
-    NSString *patchUrl = [UIView joinPath:patchPath path:_xmlFileName];
+    NSString *patchUrl = [IView joinPath:patchPath path:_xmlFileName];
     
     if ([HttpUtil isUrl:patchUrl]) {
         [HttpUtil get:patchUrl params:nil callback:^(NSData *data) {
@@ -227,7 +234,7 @@ static NSString *patchPath = nil;
     }
 }
 
-- (void)loadCallback:(UIView *)view
+- (void)loadCallback:(IView *)view
 {
     //移除之前的视图
     if (_xmlView) {
@@ -301,6 +308,16 @@ static NSString *patchPath = nil;
 - (void)xmlViewFailed
 {
     
+}
+
+- (IView *)body
+{
+    return _xmlView;
+}
+
+- (IView *)getElementById:(NSString *)id
+{
+    return [_xmlView getElementById:id];
 }
 
 @end

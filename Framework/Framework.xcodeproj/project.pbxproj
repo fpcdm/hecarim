@@ -69,8 +69,8 @@
 		2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5171C4F1CC200B0DC4B /* JPInclude.m */; };
 		2F1CD51F1C4F2C6E00B0DC4B /* HttpUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD51D1C4F2C6E00B0DC4B /* HttpUtil.h */; };
 		2F1CD5201C4F2C6E00B0DC4B /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */; };
-		2F1CD5271C4F4EC800B0DC4B /* UIView+Xml.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5251C4F4EC800B0DC4B /* UIView+Xml.h */; };
-		2F1CD5281C4F4EC800B0DC4B /* UIView+Xml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5261C4F4EC800B0DC4B /* UIView+Xml.m */; };
+		2F1CD52E1C4F800C00B0DC4B /* IView+Xml.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD52C1C4F800B00B0DC4B /* IView+Xml.h */; };
+		2F1CD52F1C4F800C00B0DC4B /* IView+Xml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD52D1C4F800C00B0DC4B /* IView+Xml.m */; };
 		2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750111C48F11A001CA674 /* DynamicEntity.h */; };
 		2F4750141C48F11A001CA674 /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750121C48F11A001CA674 /* DynamicEntity.m */; };
 		2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750181C48F3F1001CA674 /* PaginationEntity.h */; };
@@ -651,8 +651,8 @@
 		2F1CD5181C4F1CC200B0DC4B /* JSPatch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSPatch.js; sourceTree = "<group>"; };
 		2F1CD51D1C4F2C6E00B0DC4B /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
-		2F1CD5251C4F4EC800B0DC4B /* UIView+Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Xml.h"; sourceTree = "<group>"; };
-		2F1CD5261C4F4EC800B0DC4B /* UIView+Xml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Xml.m"; sourceTree = "<group>"; };
+		2F1CD52C1C4F800B00B0DC4B /* IView+Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IView+Xml.h"; sourceTree = "<group>"; };
+		2F1CD52D1C4F800C00B0DC4B /* IView+Xml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IView+Xml.m"; sourceTree = "<group>"; };
 		2F4750111C48F11A001CA674 /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
 		2F4750121C48F11A001CA674 /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
 		2F4750181C48F3F1001CA674 /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
@@ -1355,8 +1355,8 @@
 				2FD9913C1C48BC9C0065293E /* UITextView+Placeholder.m */,
 				2FD9913D1C48BC9C0065293E /* UIView+Loading.h */,
 				2FD9913E1C48BC9C0065293E /* UIView+Loading.m */,
-				2F1CD5251C4F4EC800B0DC4B /* UIView+Xml.h */,
-				2F1CD5261C4F4EC800B0DC4B /* UIView+Xml.m */,
+				2F1CD52C1C4F800B00B0DC4B /* IView+Xml.h */,
+				2F1CD52D1C4F800C00B0DC4B /* IView+Xml.m */,
 				2FD9913F1C48BC9C0065293E /* UIViewController+BackButtonHandler.h */,
 				2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */,
 				2FD991411C48BC9C0065293E /* UIViewController+Dialog.h */,
@@ -2168,7 +2168,6 @@
 				2FD99EA31C48CE6F0065293E /* RKRelationshipMapping.h in Headers */,
 				2FD99DF81C48CE6F0065293E /* FLEXMultilineTableViewCell.h in Headers */,
 				2FD99E651C48CE6F0065293E /* lcl_config_logger_RK.h in Headers */,
-				2F1CD5271C4F4EC800B0DC4B /* UIView+Xml.h in Headers */,
 				2FD99E761C48CE6F0065293E /* RKEntityCache.h in Headers */,
 				2FD99E081C48CE6F0065293E /* FMDatabaseAdditions.h in Headers */,
 				2FD99E3C1C48CE6F0065293E /* MJRefreshBackNormalFooter.h in Headers */,
@@ -2449,6 +2448,7 @@
 				2FD993EA1C48BE710065293E /* BaseView.h in Headers */,
 				2FD993EB1C48BE710065293E /* BaseViewController.h in Headers */,
 				2FD993EC1C48BE710065293E /* NSObject+Property.h in Headers */,
+				2F1CD52E1C4F800C00B0DC4B /* IView+Xml.h in Headers */,
 				2FD993ED1C48BE710065293E /* NSString+Trim.h in Headers */,
 				2FD993EE1C48BE710065293E /* UIColor+Hex.h in Headers */,
 				2FD993EF1C48BE710065293E /* UIImageView+PlayGIF.h in Headers */,
@@ -2545,7 +2545,6 @@
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */,
-				2F1CD5281C4F4EC800B0DC4B /* UIView+Xml.m in Sources */,
 				2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */,
 				2FD99ECB1C48CE700065293E /* SDWebImageDownloaderOperation.m in Sources */,
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
@@ -2740,6 +2739,7 @@
 				2FD9932A1C48BC9D0065293E /* BaseEntity.m in Sources */,
 				2FD99EEA1C48CE700065293E /* TSMessageView.m in Sources */,
 				2FD99DE51C48CE6F0065293E /* FLEXImageExplorerViewController.m in Sources */,
+				2F1CD52F1C4F800C00B0DC4B /* IView+Xml.m in Sources */,
 				2F47501F1C48F423001CA674 /* CacheUtil.m in Sources */,
 				2FD99DB51C48CE6F0065293E /* FLEXCookiesTableViewController.m in Sources */,
 				2F1C35D91C4C89310060E793 /* IFlowLayout.m in Sources */,

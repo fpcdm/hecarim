@@ -7,6 +7,7 @@
 //
 
 #import "BaseView.h"
+#import "IView+Xml.h"
 
 @class BaseXmlView;
 
@@ -38,5 +39,11 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 
 //视图加载失败钩子，子类重写
 - (void)xmlViewFailed;
+
+//获取主元素
+- (IView *)body;
+
+//获取子元素
+- (IView *)getElementById:(NSString *)id;
 
 @end

@@ -1,45 +1,45 @@
 //
-//  UIView+Xml.m
+//  IView+Xml.m
 //  Framework
 //
 //  Created by wuyong on 16/1/20.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "UIView+Xml.h"
+#import "IView+Xml.h"
 #import "IKitUtil.h"
 #import "IView.h"
 #import "IResourceMananger.h"
 #import "IViewLoader.h"
 
-@implementation UIView (Xml)
+@implementation IView (Xml)
 
 + (void)xmlCacheEnabled:(BOOL)enabled
 {
     [IResourceMananger sharedMananger].enableCssCache = enabled;
 }
 
-+ (UIView *)viewWithString:(NSString *)string
++ (IView *)viewWithString:(NSString *)string
 {
     return [IView viewFromXml:string];
 }
 
-+ (UIView *)viewWithString:(NSString *)string basePath:(NSString *)basePath
++ (IView *)viewWithString:(NSString *)string basePath:(NSString *)basePath
 {
     return [IViewLoader viewFromXml:string basePath:basePath];
 }
 
-+ (UIView *)viewWithFile:(NSString *)file
++ (IView *)viewWithFile:(NSString *)file
 {
     return [IView viewWithContentsOfFile:file];
 }
 
-+ (UIView *)viewWithName:(NSString *)name
++ (IView *)viewWithName:(NSString *)name
 {
     return [IView namedView:name];
 }
 
-+ (void)viewWithUrl:(NSString *)url callback:(ViewXmlCallback)callback
++ (void)viewWithUrl:(NSString *)url callback:(IViewCallback)callback
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [IViewLoader loadUrl:url callback:^(IView *view) {
@@ -64,6 +64,45 @@
 + (NSString *)joinPath:(NSString *)basePath path:(NSString *)path
 {
     return [IKitUtil buildPath:basePath src:path];
+}
+
+- (void)css:(NSString *)css
+{
+    [self.style set:css];
+}
+
+- (void)setClass:(NSString *)clz
+{
+    [self.style setClass:clz];
+}
+
+- (void)addClass:(NSString *)clz
+{
+    [self.style addClass:clz];
+}
+
+- (void)removeClass:(NSString *)clz
+{
+    [self.style removeClass:clz];
+}
+
+- (void)toggleClass:(NSString *)clz
+{
+    if ([self.style hasClass:clz]) {
+        [self.style removeClass:clz];
+    } else {
+        [self.style addClass:clz];
+    }
+}
+
+- (BOOL)hasClass:(NSString *)clz
+{
+    return [self.style hasClass:clz];
+}
+
+- (IView *)getElementById:(NSString *)id
+{
+    return [self getViewById:id];
 }
 
 @end
