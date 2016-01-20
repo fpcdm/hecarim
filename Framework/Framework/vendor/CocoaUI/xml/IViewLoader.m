@@ -98,6 +98,9 @@ typedef enum{
 }
 
 - (IView *)loadXml:(NSString *)str{
+    //空字符串处理
+    if (!str) return nil;
+    
 	//NSLog(@"%@", str);
 	state = ParseInit;
 	parentView = nil;

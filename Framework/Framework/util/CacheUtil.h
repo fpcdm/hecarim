@@ -14,6 +14,8 @@
 
 - (id) get:(NSString *)key;
 
+- (BOOL) has:(NSString *)key;
+
 - (void) set:(NSString *)key object:(id<NSCoding>)object;
 
 - (void) remove:(NSString *)key;

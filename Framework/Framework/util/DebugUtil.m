@@ -15,6 +15,7 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 
+#import "HttpUtil.h"
 #import "EncodeUtil.h"
 #endif
 
@@ -215,17 +216,9 @@ static DebugUtil *sharedInstance = nil;
     if (!oldHash) return;
     
     //开始解析
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
-    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *urlResp, NSData *data, NSError *error){
-        //获取状态码
-        NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)urlResp;
-        NSInteger statusCode = httpResp.statusCode;
-        
+    [HttpUtil get:url params:nil callback:^(NSData *data) {
         //响应正常
-        if (statusCode == 200 && !error) {
+        if (data != nil) {
             NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSString *newHash = [EncodeUtil md5:response];
             

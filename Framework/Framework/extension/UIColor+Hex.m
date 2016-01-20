@@ -35,21 +35,73 @@
     if ([hex hasPrefix:@"#"]) {
         hex = [hex substringFromIndex:1];
     }
-    if (hex.length == 3) {
-        NSString *strR = [hex substringWithRange:NSMakeRange(0, 1)];
-        NSString *strG = [hex substringWithRange:NSMakeRange(1, 1)];
-        NSString *strB = [hex substringWithRange:NSMakeRange(2, 1)];
-        hex = [NSString stringWithFormat:@"%@%@%@%@%@%@", strR, strR, strG, strG, strB, strB];
+    
+    //解析颜色
+    NSString *strA = nil;
+    NSString *strR = nil;
+    NSString *strG = nil;
+    NSString *strB = nil;
+    
+    //长度解析
+    switch (hex.length) {
+        //RGB
+        case 3:
+        {
+            NSString *tmpR = [hex substringWithRange:NSMakeRange(0, 1)];
+            NSString *tmpG = [hex substringWithRange:NSMakeRange(1, 1)];
+            NSString *tmpB = [hex substringWithRange:NSMakeRange(2, 1)];
+            
+            strR = [NSString stringWithFormat:@"%@%@", tmpR, tmpR];
+            strG = [NSString stringWithFormat:@"%@%@", tmpG, tmpG];
+            strB = [NSString stringWithFormat:@"%@%@", tmpB, tmpB];
+        }
+            break;
+        //ARGB
+        case 4:
+        {
+            NSString *tmpA = [hex substringWithRange:NSMakeRange(0, 1)];
+            NSString *tmpR = [hex substringWithRange:NSMakeRange(1, 1)];
+            NSString *tmpG = [hex substringWithRange:NSMakeRange(2, 1)];
+            NSString *tmpB = [hex substringWithRange:NSMakeRange(3, 1)];
+            
+            strA = [NSString stringWithFormat:@"%@%@", tmpA, tmpA];
+            strR = [NSString stringWithFormat:@"%@%@", tmpR, tmpR];
+            strG = [NSString stringWithFormat:@"%@%@", tmpG, tmpG];
+            strB = [NSString stringWithFormat:@"%@%@", tmpB, tmpB];
+        }
+            break;
+        //RRGGBB
+        case 6:
+        {
+            strR = [hex substringWithRange:NSMakeRange(0, 2)];
+            strG = [hex substringWithRange:NSMakeRange(2, 2)];
+            strB = [hex substringWithRange:NSMakeRange(4, 2)];
+        }
+            break;
+        //AARRGGBB
+        case 8:
+        {
+            strA = [hex substringWithRange:NSMakeRange(0, 2)];
+            strR = [hex substringWithRange:NSMakeRange(2, 2)];
+            strG = [hex substringWithRange:NSMakeRange(4, 2)];
+            strB = [hex substringWithRange:NSMakeRange(6, 2)];
+        }
+            break;
+        //ERROR
+        default:
+            return [UIColor clearColor];
+            break;
     }
-    if (hex.length != 6) {
-        return [UIColor clearColor];
+    
+    //解析透明度
+    if (strA) {
+        unsigned int a;
+        [[NSScanner scannerWithString:strA] scanHexInt:&a];
+        //字符串的透明度优先级高于alpha参数
+        alpha = a;
     }
     
     //解析颜色
-    NSString *strR = [hex substringWithRange:NSMakeRange(0, 2)];
-    NSString *strG = [hex substringWithRange:NSMakeRange(2, 2)];
-    NSString *strB = [hex substringWithRange:NSMakeRange(4, 2)];
-    
     unsigned int r, g, b;
     [[NSScanner scannerWithString:strR] scanHexInt:&r];
     [[NSScanner scannerWithString:strG] scanHexInt:&g];
@@ -218,6 +270,7 @@
                       namedColors[@"yellow"]				 = @"FFFF00";
                       namedColors[@"yellowgreen"]			 = @"9ACD32";
                       namedColors[@"transparent"]			 = @"";
+                      namedColors[@"clear"]			         = @"";
                   });
     
     NSString *lowerValue = [value lowercaseString];

@@ -8,6 +8,7 @@
  */
 
 #import "IKitUtil.h"
+#import "UIColor+Hex.h"
 
 @implementation IKitUtil
 
@@ -26,41 +27,9 @@ static CGFloat colorVal(NSString *hex){
 	if([hex isEqualToString:@"none"]){
 		return [UIColor clearColor];
 	}
-	if([hex characterAtIndex:0] == '#'){
-		hex = [hex substringFromIndex:1];
-	}
-	
-	CGFloat alpha, red, blue, green;
-	switch ([hex length]) {
-		case 3: // #RGB
-			alpha = 1.0f;
-			red   = colorVal(substr(hex, 0, 1));
-			green = colorVal(substr(hex, 1, 1));
-			blue  = colorVal(substr(hex, 2, 1));
-			break;
-		case 4: // #ARGB
-			alpha = colorVal(substr(hex, 0, 1));
-			red   = colorVal(substr(hex, 1, 1));
-			green = colorVal(substr(hex, 2, 1));
-			blue  = colorVal(substr(hex, 3, 1));
-			break;
-		case 6: // #RRGGBB
-			alpha = 1.0f;
-			red   = colorVal(substr(hex, 0, 2));
-			green = colorVal(substr(hex, 2, 2));
-			blue  = colorVal(substr(hex, 4, 2));
-			break;
-		case 8: // #AARRGGBB
-			alpha = colorVal(substr(hex, 0, 2));
-			red   = colorVal(substr(hex, 2, 2));
-			green = colorVal(substr(hex, 4, 2));
-			blue  = colorVal(substr(hex, 6, 2));
-			break;
-		default:
-			return [UIColor clearColor];
-			break;
-	}
-	return [UIColor colorWithRed: red green: green blue: blue alpha: alpha];
+    
+    //替换为框架方法，支持颜色名称
+    return [UIColor colorWithValue:hex];
 }
 
 + (BOOL)isHTML:(NSString *)str{

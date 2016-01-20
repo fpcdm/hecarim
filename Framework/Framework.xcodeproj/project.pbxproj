@@ -63,6 +63,14 @@
 		2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35CF1C4C89310060E793 /* INSXmlViewLoader.m */; };
 		2F1C36091C4C89310060E793 /* IViewLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35D01C4C89310060E793 /* IViewLoader.h */; };
 		2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35D11C4C89310060E793 /* IViewLoader.m */; };
+		2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */; };
+		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
+		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; };
+		2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5171C4F1CC200B0DC4B /* JPInclude.m */; };
+		2F1CD51F1C4F2C6E00B0DC4B /* HttpUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD51D1C4F2C6E00B0DC4B /* HttpUtil.h */; };
+		2F1CD5201C4F2C6E00B0DC4B /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */; };
+		2F1CD5271C4F4EC800B0DC4B /* UIView+Xml.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5251C4F4EC800B0DC4B /* UIView+Xml.h */; };
+		2F1CD5281C4F4EC800B0DC4B /* UIView+Xml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5261C4F4EC800B0DC4B /* UIView+Xml.m */; };
 		2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750111C48F11A001CA674 /* DynamicEntity.h */; };
 		2F4750141C48F11A001CA674 /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750121C48F11A001CA674 /* DynamicEntity.m */; };
 		2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750181C48F3F1001CA674 /* PaginationEntity.h */; };
@@ -636,6 +644,15 @@
 		2F1C35CF1C4C89310060E793 /* INSXmlViewLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INSXmlViewLoader.m; sourceTree = "<group>"; };
 		2F1C35D01C4C89310060E793 /* IViewLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IViewLoader.h; sourceTree = "<group>"; };
 		2F1C35D11C4C89310060E793 /* IViewLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IViewLoader.m; sourceTree = "<group>"; };
+		2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
+		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
+		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
+		2F1CD5171C4F1CC200B0DC4B /* JPInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPInclude.m; sourceTree = "<group>"; };
+		2F1CD5181C4F1CC200B0DC4B /* JSPatch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSPatch.js; sourceTree = "<group>"; };
+		2F1CD51D1C4F2C6E00B0DC4B /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
+		2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
+		2F1CD5251C4F4EC800B0DC4B /* UIView+Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Xml.h"; sourceTree = "<group>"; };
+		2F1CD5261C4F4EC800B0DC4B /* UIView+Xml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Xml.m"; sourceTree = "<group>"; };
 		2F4750111C48F11A001CA674 /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
 		2F4750121C48F11A001CA674 /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
 		2F4750181C48F3F1001CA674 /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
@@ -1239,6 +1256,18 @@
 			path = xml;
 			sourceTree = "<group>";
 		};
+		2F1CD5131C4F1CC200B0DC4B /* JSPatch */ = {
+			isa = PBXGroup;
+			children = (
+				2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */,
+				2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */,
+				2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */,
+				2F1CD5171C4F1CC200B0DC4B /* JPInclude.m */,
+				2F1CD5181C4F1CC200B0DC4B /* JSPatch.js */,
+			);
+			path = JSPatch;
+			sourceTree = "<group>";
+		};
 		2FD991031C48BB4E0065293E = {
 			isa = PBXGroup;
 			children = (
@@ -1326,6 +1355,8 @@
 				2FD9913C1C48BC9C0065293E /* UITextView+Placeholder.m */,
 				2FD9913D1C48BC9C0065293E /* UIView+Loading.h */,
 				2FD9913E1C48BC9C0065293E /* UIView+Loading.m */,
+				2F1CD5251C4F4EC800B0DC4B /* UIView+Xml.h */,
+				2F1CD5261C4F4EC800B0DC4B /* UIView+Xml.m */,
 				2FD9913F1C48BC9C0065293E /* UIViewController+BackButtonHandler.h */,
 				2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */,
 				2FD991411C48BC9C0065293E /* UIViewController+Dialog.h */,
@@ -1388,6 +1419,8 @@
 				2FD991631C48BC9C0065293E /* ValidateUtil.m */,
 				2F47501C1C48F423001CA674 /* CacheUtil.h */,
 				2F47501D1C48F423001CA674 /* CacheUtil.m */,
+				2F1CD51D1C4F2C6E00B0DC4B /* HttpUtil.h */,
+				2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */,
 				2FF10B631C4C97F900365024 /* EncodeUtil.h */,
 				2FF10B641C4C97FA00365024 /* EncodeUtil.m */,
 			);
@@ -1402,6 +1435,7 @@
 				2FD99B981C48CE6E0065293E /* CocoaLumberjack */,
 				2FD99BB11C48CE6E0065293E /* FLEX */,
 				2FD99C511C48CE6E0065293E /* FMDB */,
+				2F1CD5131C4F1CC200B0DC4B /* JSPatch */,
 				2FD99C5D1C48CE6E0065293E /* Masonry */,
 				2FD99C751C48CE6E0065293E /* MBProgressHUD */,
 				2FD99C781C48CE6E0065293E /* MJRefresh */,
@@ -2134,6 +2168,7 @@
 				2FD99EA31C48CE6F0065293E /* RKRelationshipMapping.h in Headers */,
 				2FD99DF81C48CE6F0065293E /* FLEXMultilineTableViewCell.h in Headers */,
 				2FD99E651C48CE6F0065293E /* lcl_config_logger_RK.h in Headers */,
+				2F1CD5271C4F4EC800B0DC4B /* UIView+Xml.h in Headers */,
 				2FD99E761C48CE6F0065293E /* RKEntityCache.h in Headers */,
 				2FD99E081C48CE6F0065293E /* FMDatabaseAdditions.h in Headers */,
 				2FD99E3C1C48CE6F0065293E /* MJRefreshBackNormalFooter.h in Headers */,
@@ -2168,6 +2203,7 @@
 				2FD99E7C1C48CE6F0065293E /* RKHTTPUtilities.h in Headers */,
 				2FD99E301C48CE6F0065293E /* MJRefreshFooter.h in Headers */,
 				2FD99E6F1C48CE6F0065293E /* RKConnectionDescription.h in Headers */,
+				2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */,
 				2FD99D721C48CE6F0065293E /* FLEXArgumentInputColorView.h in Headers */,
 				2FD99E321C48CE6F0065293E /* MJRefreshHeader.h in Headers */,
 				2FD99E8A1C48CE6F0065293E /* RKMappingErrors.h in Headers */,
@@ -2273,6 +2309,7 @@
 				2FD99E201C48CE6F0065293E /* NSArray+MASAdditions.h in Headers */,
 				2FD99E601C48CE6F0065293E /* AFXMLRequestOperation.h in Headers */,
 				2FD99E471C48CE6F0065293E /* MJRefreshConst.h in Headers */,
+				2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */,
 				2FD99EB21C48CE700065293E /* RKTestHelpers.h in Headers */,
 				2FD99DD41C48CE6F0065293E /* FLEXNetworkTransactionDetailTableViewController.h in Headers */,
 				2FD99E941C48CE6F0065293E /* RKObjectMappingMatcher.h in Headers */,
@@ -2301,6 +2338,7 @@
 				2F1C35F71C4C89310060E793 /* IInput.h in Headers */,
 				2FD99E231C48CE6F0065293E /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				2F1C35F51C4C89310060E793 /* IImage.h in Headers */,
+				2F1CD51F1C4F2C6E00B0DC4B /* HttpUtil.h in Headers */,
 				2F1C35FF1C4C89310060E793 /* ISwitch.h in Headers */,
 				2FD99E801C48CE6F0065293E /* RKLumberjackLogger.h in Headers */,
 				2FD99ECF1C48CE700065293E /* SDWebImagePrefetcher.h in Headers */,
@@ -2507,6 +2545,7 @@
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */,
+				2F1CD5281C4F4EC800B0DC4B /* UIView+Xml.m in Sources */,
 				2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */,
 				2FD99ECB1C48CE700065293E /* SDWebImageDownloaderOperation.m in Sources */,
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
@@ -2545,6 +2584,7 @@
 				2F1C35EB1C4C89310060E793 /* IResourceMananger.m in Sources */,
 				2FD99DB71C48CE6F0065293E /* FLEXFileBrowserFileOperationController.m in Sources */,
 				2FD99DD91C48CE6F0065293E /* FLEXNetworkObserver.m in Sources */,
+				2F1CD5201C4F2C6E00B0DC4B /* HttpUtil.m in Sources */,
 				2FD99EE21C48CE700065293E /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FD99E4A1C48CE6F0065293E /* UIScrollView+MJExtension.m in Sources */,
 				2FD99E191C48CE6F0065293E /* MASLayoutConstraint.m in Sources */,
@@ -2559,6 +2599,7 @@
 				2F1C35F61C4C89310060E793 /* IImage.m in Sources */,
 				2FD99E311C48CE6F0065293E /* MJRefreshFooter.m in Sources */,
 				2FD99EE61C48CE700065293E /* TSBlurView.m in Sources */,
+				2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */,
 				2FD993421C48BC9D0065293E /* LocationUtil.m in Sources */,
 				2FD993441C48BC9D0065293E /* NotificationUtil.m in Sources */,
 				2FD99E151C48CE6F0065293E /* MASConstraint.m in Sources */,
@@ -2687,6 +2728,7 @@
 				2FD99E031C48CE6F0065293E /* FLEXHierarchyTableViewController.m in Sources */,
 				2FD99DB91C48CE6F0065293E /* FLEXFileBrowserSearchOperation.m in Sources */,
 				2FD99D931C48CE6F0065293E /* FLEXIvarEditorViewController.m in Sources */,
+				2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */,
 				2FD9934A1C48BC9D0065293E /* ValidateUtil.m in Sources */,
 				2FD9933D1C48BC9D0065293E /* FileEntity.m in Sources */,
 				2FD99DCF1C48CE6F0065293E /* FLEXNetworkRecorder.m in Sources */,

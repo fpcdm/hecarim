@@ -18,6 +18,11 @@
     return [[PINCache sharedCache] objectForKey:key];
 }
 
+- (BOOL)has:(NSString *)key
+{
+    return [self get:key] != nil;
+}
+
 - (void)set:(NSString *)key object:(id<NSCoding>)object
 {
     [[PINCache sharedCache] setObject:object forKey:key];

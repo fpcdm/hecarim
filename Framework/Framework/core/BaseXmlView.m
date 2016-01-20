@@ -7,14 +7,14 @@
 //
 
 #import "BaseXmlView.h"
-#import "IKitUtil.h"
-#import "IView.h"
-#import "IResourceMananger.h"
-#import "IViewLoader.h"
+#import "CacheUtil.h"
+#import "HttpUtil.h"
 
 static NSString *xmlPath = nil;
 static NSString *xmlExt = @"html";
 static NSString *patchPath = nil;
+
+#define XMLVIEW_CACHE_PREFIX @"XmlView."
 
 #ifdef APP_DEBUG
 #import "DebugUtil.h"
@@ -27,12 +27,13 @@ static NSString *patchPath = nil;
 @implementation BaseXmlView
 {
     NSString *_xmlName;
-    NSString *_xmlFile;
+    NSString *_xmlFileName;
+    NSString *_xmlPath;
     BOOL _xmlIsUrl;
     XmlViewCallback _xmlCallback;
+    
+    UIView *_xmlView;
 }
-
-@def_prop_readonly(IView *, xmlView)
 
 + (void)setXmlPath:(NSString *)_xmlPath
 {
@@ -99,22 +100,18 @@ static NSString *patchPath = nil;
     }
 }
 
-- (NSString *)xmlFileName
-{
-    NSString *fileName = _xmlName;
-    if (xmlExt && [[fileName lastPathComponent] rangeOfString:@"."].length < 1) {
-        fileName = [NSString stringWithFormat:@"%@.%@", fileName, xmlExt];
-    }
-    return fileName;
-}
-
 - (void)loadXmlView
 {
-    _xmlFile = [self xmlFileName];
-    if (xmlPath) {
-        _xmlFile = [IKitUtil buildPath:xmlPath src:_xmlFile];
+    _xmlFileName = _xmlName;
+    if (xmlExt && [[_xmlFileName lastPathComponent] rangeOfString:@"."].length < 1) {
+        _xmlFileName = [NSString stringWithFormat:@"%@.%@", _xmlFileName, xmlExt];
     }
-    _xmlIsUrl = [IKitUtil isHttpUrl:_xmlFile];
+    
+    _xmlPath = _xmlFileName;
+    if (xmlPath) {
+        _xmlPath = [UIView joinPath:xmlPath path:_xmlPath];
+    }
+    _xmlIsUrl = [HttpUtil isUrl:_xmlPath];
     
 #ifdef APP_DEBUG
     //注册调试代理
@@ -122,26 +119,112 @@ static NSString *patchPath = nil;
     
     //监听URL改变
     if (_xmlIsUrl) {
-        [[DebugUtil sharedInstance] watchUrlStart:_xmlFile];
+        [[DebugUtil sharedInstance] watchUrlStart:_xmlPath];
     }
 #endif
     
-    //todo
-    //检查补丁url，设置缓存
-    
-    //本地文件
-    if (!_xmlIsUrl) {
-        IView *view = [IView namedView:_xmlFile];
-        [self loadCallback:view];
-    //远程文件
+    //检查补丁缓存是否存在
+    NSString *patchXml = [self loadCache];
+    //缓存存在
+    if (patchXml != nil) {
+        [self reloadXmlView:patchXml isFile:NO callback:^{
+            //刷新缓存
+            [self refreshCache:patchXml];
+        }];
+    //缓存不存在
     } else {
-        [IViewLoader loadUrl:_xmlFile callback:^(IView *view) {
-            [self loadCallback:view];
+        [self reloadXmlView:nil isFile:NO callback:^{
+            //监听补丁
+            if (patchPath) {
+                [self refreshCache:nil];
+            }
         }];
     }
 }
 
-- (void)loadCallback:(IView *)view
+//重载视图，是否加载补丁
+- (void)reloadXmlView:(NSString *)patchXml isFile:(BOOL)isFile callback:(void (^)())callback
+{
+    //补丁Xml
+    if (patchXml) {
+        //补丁文件
+        if (isFile) {
+            UIView *view = [UIView viewWithFile:patchXml];
+            [self loadCallback:view];
+        //补丁字符串
+        } else {
+            UIView *view = [UIView viewWithString:patchXml];
+            [self loadCallback:view];
+        }
+        
+        //执行回调
+        if (callback) callback();
+    //原始Xml
+    } else {
+        if (!_xmlIsUrl) {
+            UIView *view = [UIView viewWithName:_xmlPath];
+            [self loadCallback:view];
+            
+            //执行回调
+            if (callback) callback();
+            //远程文件
+        } else {
+            [UIView viewWithUrl:_xmlPath callback:^(UIView *view) {
+                [self loadCallback:view];
+                
+                //执行回调
+                if (callback) callback();
+            }];
+        }
+    }
+}
+
+- (NSString *)loadCache
+{
+    NSString *xmlStr = nil;
+    if (patchPath) {
+        NSString *cacheKey = [NSString stringWithFormat:@"%@%@", XMLVIEW_CACHE_PREFIX, _xmlFileName];
+        xmlStr = [[CacheUtil sharedInstance] get:cacheKey];
+    }
+    return xmlStr;
+}
+
+- (void)refreshCache:(NSString *)oldXml
+{
+    NSString *patchUrl = [UIView joinPath:patchPath path:_xmlFileName];
+    
+    if ([HttpUtil isUrl:patchUrl]) {
+        [HttpUtil get:patchUrl params:nil callback:^(NSData *data) {
+            [self refreshCallback:data xml:oldXml];
+        }];
+    } else {
+        NSData *data = [NSData dataWithContentsOfFile:patchUrl];
+        [self refreshCallback:data xml:oldXml];
+    }
+}
+
+- (void)refreshCallback:(NSData *)data xml:(NSString *)oldXml
+{
+    NSString *cacheKey = [NSString stringWithFormat:@"%@%@", XMLVIEW_CACHE_PREFIX, _xmlFileName];
+    if (data != nil) {
+        NSString *newXml = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if (!oldXml || ![oldXml isEqualToString:newXml]) {
+            [[CacheUtil sharedInstance] set:cacheKey object:newXml];
+            
+            //动态刷新视图，注意事件绑定需在视图加载完成
+            [self reloadXmlView:newXml isFile:NO callback:nil];
+        }
+    } else {
+        [[CacheUtil sharedInstance] remove:cacheKey];
+        
+        //补丁移除时动态刷新视图，加载原视图
+        if (oldXml) {
+            [self reloadXmlView:nil isFile:NO callback:nil];
+        }
+    }
+}
+
+- (void)loadCallback:(UIView *)view
 {
     //移除之前的视图
     if (_xmlView) {
@@ -149,16 +232,24 @@ static NSString *patchPath = nil;
         _xmlView = nil;
     }
     
-    //添加视图
-    _xmlView = view;
-    [self addSubview:_xmlView];
-    
-    //加载完成
-    [self xmlViewLoaded];
-    
-    //回调函数
-    if (_xmlCallback) {
-        _xmlCallback(self);
+    //加载成功
+    if (view) {
+        //添加视图
+        _xmlView = view;
+        [self addSubview:_xmlView];
+        
+        //回调函数
+        [self xmlViewLoaded];
+        if (_xmlCallback) {
+            _xmlCallback(self);
+        }
+    //加载失败
+    } else {
+        //回调函数
+        [self xmlViewFailed];
+        if (_xmlCallback) {
+            _xmlCallback(nil);
+        }
     }
 }
 
@@ -168,9 +259,8 @@ static NSString *patchPath = nil;
 - (void)sourceFileChanged:(NSString *)filePath
 {
     //本地文件名匹配
-    if (!_xmlIsUrl && [[self xmlFileName] isEqualToString:[filePath lastPathComponent]]) {
-        IView *view = [IView viewWithContentsOfFile:filePath];
-        [self loadCallback:view];
+    if (!_xmlIsUrl && [_xmlFileName isEqualToString:[filePath lastPathComponent]]) {
+        [self reloadXmlView:filePath isFile:YES callback:nil];
     }
 }
 #endif
@@ -181,10 +271,8 @@ static NSString *patchPath = nil;
 - (void)urlResponseChanged:(NSString *)url
 {
     //远程URL和文件名匹配
-    if (_xmlIsUrl && [_xmlFile isEqualToString:url]) {
-        [IViewLoader loadUrl:_xmlFile callback:^(IView *view) {
-            [self loadCallback:view];
-        }];
+    if (_xmlIsUrl && [_xmlPath isEqualToString:url]) {
+        [self reloadXmlView:nil isFile:NO callback:nil];
     }
 }
 #endif
@@ -197,12 +285,17 @@ static NSString *patchPath = nil;
     
     //移除URL监听
     if (_xmlIsUrl) {
-        [[DebugUtil sharedInstance] watchUrlEnd:_xmlFile];
+        [[DebugUtil sharedInstance] watchUrlEnd:_xmlPath];
     }
 }
 #endif
 
 - (void)xmlViewLoaded
+{
+    
+}
+
+- (void)xmlViewFailed
 {
     
 }

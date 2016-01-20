@@ -10,6 +10,7 @@
 #import "FrameworkConfig.h"
 #import "UIViewController+Dialog.h"
 #import "BaseHandler.h"
+#import "BaseXmlView.h"
 
 //控制器回调函数
 typedef void (^CallbackBlock)(id object);

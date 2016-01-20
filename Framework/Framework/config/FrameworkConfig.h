@@ -75,6 +75,8 @@
 #define LOADING_SUCCESS_TIME 0.5
 //定义WatchUrl默认刷新间隔
 #define DEBUG_WATCHURL_INTERVAL 5.0
+//定义HTTP请求超时时间
+#define INTERVAL_HTTP_TIMEOUT 10
 
 //系统错误配置
 #define ERROR_CODE_NETWORK 101

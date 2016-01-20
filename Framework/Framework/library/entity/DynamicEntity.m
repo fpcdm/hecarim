@@ -35,18 +35,22 @@
 - (id)get:(NSString *)key
 {
     id object = [_data objectForKey:key];
-    if (object == [NSNull null]) {
-        object = nil;
-    }
     return object;
+}
+
+- (BOOL)has:(NSString *)key
+{
+    id object = [_data objectForKey:key];
+    return object != nil ? YES : NO;
 }
 
 - (void)set:(NSString *)key object:(id)object
 {
     if (object == nil) {
-        object = [NSNull null];
+        [self remove:key];
+    } else {
+        [_data setObject:object forKey:key];
     }
-    [_data setObject:object forKey:key];
 }
 
 - (void)remove:(NSString *)key
