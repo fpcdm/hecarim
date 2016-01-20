@@ -14,9 +14,19 @@
 
 @implementation UIView (Xml)
 
++ (void)xmlCacheEnabled:(BOOL)enabled
+{
+    [IResourceMananger sharedMananger].enableCssCache = enabled;
+}
+
 + (UIView *)viewWithString:(NSString *)string
 {
     return [IView viewFromXml:string];
+}
+
++ (UIView *)viewWithString:(NSString *)string basePath:(NSString *)basePath
+{
+    return [IViewLoader viewFromXml:string basePath:basePath];
 }
 
 + (UIView *)viewWithFile:(NSString *)file
@@ -31,11 +41,6 @@
 
 + (void)viewWithUrl:(NSString *)url callback:(ViewXmlCallback)callback
 {
-#ifdef APP_DEBUG
-    //关闭css缓存
-    [IResourceMananger sharedMananger].enableCssCache = NO;
-#endif
-    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [IViewLoader loadUrl:url callback:^(IView *view) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -44,6 +49,16 @@
             callback(view);
         }
     }];
+}
+
++ (NSString *)getRootPath:(NSString *)path
+{
+    return [IKitUtil getRootPath:path];
+}
+
++ (NSString *)getBasePath:(NSString *)path
+{
+    return [IKitUtil getBasePath:path];
 }
 
 + (NSString *)joinPath:(NSString *)basePath path:(NSString *)path

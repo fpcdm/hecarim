@@ -13,13 +13,24 @@ typedef void (^ViewXmlCallback)(UIView *view);
 
 @interface UIView (Xml)
 
+//开关缓存(Css缓存，页面缓存)
++ (void)xmlCacheEnabled:(BOOL)enabled;
+
+//创建相关
 + (UIView *)viewWithString:(NSString *)string;
+
++ (UIView *)viewWithString:(NSString *)string basePath:(NSString *)basePath;
 
 + (UIView *)viewWithFile:(NSString *)file;
 
 + (UIView *)viewWithName:(NSString *)name;
 
 + (void)viewWithUrl:(NSString *)url callback:(ViewXmlCallback)callback;
+
+//路径相关
++ (NSString *)getRootPath:(NSString *)path;
+
++ (NSString *)getBasePath:(NSString *)path;
 
 + (NSString *)joinPath:(NSString *)basePath path:(NSString *)path;
 

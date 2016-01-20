@@ -121,6 +121,9 @@ static NSString *patchPath = nil;
     if (_xmlIsUrl) {
         [[DebugUtil sharedInstance] watchUrlStart:_xmlPath];
     }
+    
+    //关闭XML缓存
+    [UIView xmlCacheEnabled:NO];
 #endif
     
     //检查补丁缓存是否存在
@@ -153,7 +156,7 @@ static NSString *patchPath = nil;
             [self loadCallback:view];
         //补丁字符串
         } else {
-            UIView *view = [UIView viewWithString:patchXml];
+            UIView *view = [UIView viewWithString:patchXml basePath:patchPath];
             [self loadCallback:view];
         }
         
