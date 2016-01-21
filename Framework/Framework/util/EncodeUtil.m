@@ -56,31 +56,6 @@
     return obj;
 }
 
-+ (NSString *)urlEncode:(NSString *)str
-{
-    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
-    str = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(
-                                                                       NULL,
-                                                                       (CFStringRef)str,
-                                                                       NULL,
-                                                                       CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                       cfEncoding
-                                                                       );
-    return str;
-}
-
-+ (NSString *)urlDecode:(NSString *)str
-{
-    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
-    str = (__bridge NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding (
-                                                                                        NULL,
-                                                                                        (CFStringRef)str,
-                                                                                        CFSTR(""),
-                                                                                        cfEncoding
-                                                                                        );
-    return str;
-}
-
 + (NSString *)base64Encode:(NSString *)str
 {
     NSData* data = [str dataUsingEncoding:NSUTF8StringEncoding];

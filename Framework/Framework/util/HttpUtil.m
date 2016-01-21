@@ -7,7 +7,6 @@
 //
 
 #import "HttpUtil.h"
-#import "EncodeUtil.h"
 #import "IKitUtil.h"
 
 @implementation HttpUtil
@@ -25,6 +24,51 @@
 + (NSString *)joinPath:(NSString *)basePath path:(NSString *)path
 {
     return [IKitUtil buildPath:basePath src:path];
+}
+
++ (NSString *)urlEncode:(NSString *)str
+{
+    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
+    str = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                       NULL,
+                                                                       (CFStringRef)str,
+                                                                       NULL,
+                                                                       CFSTR("!*'();:@&=+$,/?%#[]"),
+                                                                       cfEncoding
+                                                                       );
+    return str;
+}
+
++ (NSString *)urlDecode:(NSString *)str
+{
+    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
+    str = (__bridge NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding (
+                                                                                        NULL,
+                                                                                        (CFStringRef)str,
+                                                                                        CFSTR(""),
+                                                                                        cfEncoding
+                                                                                        );
+    return str;
+}
+
++ (NSString *)queryString:(NSDictionary *)dict encoding:(BOOL)encoding
+{
+    NSMutableArray * pairs = [NSMutableArray array];
+    for ( NSString * key in dict.allKeys )
+    {
+        NSString * value = [dict objectForKey:key];
+        NSString * urlEncoding = encoding ? [self urlEncode:value] : value;
+        [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, urlEncoding]];
+    }
+    return [pairs componentsJoinedByString:@"&"];
+}
+
++ (NSString *)appendParam:(NSString *)url param:(NSDictionary *)param encoding:(BOOL)encoding
+{
+    NSURL * parsedURL = [NSURL URLWithString:url];
+    NSString * queryPrefix = parsedURL.query ? @"&" : @"?";
+    NSString * query = [self queryString:param encoding:encoding];
+    return [NSString stringWithFormat:@"%@%@%@", url, queryPrefix, query];
 }
 
 + (BOOL)isUrl:(NSString *)url
@@ -66,9 +110,9 @@
         NSUInteger n = [(NSDictionary *)params count];
         for (NSString *key in params) {
             NSString *val = [NSString stringWithFormat:@"%@", [params objectForKey:key]];
-            [query appendString:[EncodeUtil urlEncode:key]];
+            [query appendString:[self urlEncode:key]];
             [query appendString:@"="];
-            [query appendString:[EncodeUtil urlEncode:val]];
+            [query appendString:[self urlEncode:val]];
             if (--n > 0) {
                 [query appendString:@"&"];
             }

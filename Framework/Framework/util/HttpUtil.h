@@ -24,6 +24,14 @@ typedef enum {
 
 + (NSString *)joinPath:(NSString *)basePath path:(NSString *)path;
 
++ (NSString *)urlEncode:(NSString *)str;
+
++ (NSString *)urlDecode:(NSString *)str;
+
++ (NSString *)queryString:(NSDictionary *)dict encoding:(BOOL)encoding;
+
++ (NSString *)appendParam:(NSString *)url param:(NSDictionary *)param encoding:(BOOL)encoding;
+
 + (BOOL)isUrl:(NSString *)url;
 
 + (BOOL)isHtml:(NSString *)str;

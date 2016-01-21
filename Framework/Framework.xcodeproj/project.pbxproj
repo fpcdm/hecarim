@@ -580,33 +580,16 @@
 		2FF340D01C509F4B0066CC1F /* BaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340CE1C509F4B0066CC1F /* BaseAction.m */; };
 		2FF340D31C509FFD0066CC1F /* BaseViewAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340D11C509FFD0066CC1F /* BaseViewAction.h */; };
 		2FF340D41C509FFD0066CC1F /* BaseViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340D21C509FFD0066CC1F /* BaseViewAction.m */; };
-		2FF340FC1C50A4340066CC1F /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340D71C50A4340066CC1F /* MRBlurView.h */; };
-		2FF340FD1C50A4340066CC1F /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340D81C50A4340066CC1F /* MRBlurView.m */; };
-		2FF340FE1C50A4340066CC1F /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340D91C50A4340066CC1F /* UIImage+MRImageEffects.h */; };
-		2FF340FF1C50A4340066CC1F /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340DA1C50A4340066CC1F /* UIImage+MRImageEffects.m */; };
-		2FF341001C50A4340066CC1F /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340DC1C50A4340066CC1F /* MRActivityIndicatorView.h */; };
-		2FF341011C50A4340066CC1F /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340DD1C50A4340066CC1F /* MRActivityIndicatorView.m */; };
-		2FF341021C50A4340066CC1F /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340DE1C50A4340066CC1F /* MRCircularProgressView.h */; };
-		2FF341031C50A4340066CC1F /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340DF1C50A4340066CC1F /* MRCircularProgressView.m */; };
-		2FF341041C50A4340066CC1F /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340E01C50A4340066CC1F /* MRIconView.h */; };
-		2FF341051C50A4340066CC1F /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340E11C50A4340066CC1F /* MRIconView.m */; };
-		2FF341061C50A4340066CC1F /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340E21C50A4340066CC1F /* MRNavigationBarProgressView.h */; };
-		2FF341071C50A4340066CC1F /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340E31C50A4340066CC1F /* MRNavigationBarProgressView.m */; };
-		2FF341081C50A4340066CC1F /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340E41C50A4340066CC1F /* MRProgressOverlayView.h */; };
-		2FF341091C50A4340066CC1F /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340E51C50A4340066CC1F /* MRProgressOverlayView.m */; };
-		2FF3410A1C50A4340066CC1F /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340E61C50A4340066CC1F /* MRProgressView.h */; };
-		2FF3410B1C50A4340066CC1F /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340E71C50A4340066CC1F /* MRProgressView.m */; };
-		2FF3410C1C50A4340066CC1F /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340E81C50A4340066CC1F /* MRStopableView.h */; };
-		2FF3410D1C50A4340066CC1F /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340E91C50A4340066CC1F /* MRStopButton.h */; };
-		2FF3410E1C50A4340066CC1F /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340EA1C50A4340066CC1F /* MRStopButton.m */; };
-		2FF3410F1C50A4340066CC1F /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340EB1C50A4340066CC1F /* MRProgress.h */; };
-		2FF341161C50A4340066CC1F /* MRMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340F51C50A4340066CC1F /* MRMessageInterceptor.h */; };
-		2FF341171C50A4340066CC1F /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340F61C50A4340066CC1F /* MRMessageInterceptor.m */; };
-		2FF341181C50A4340066CC1F /* MRMethodCopier.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340F71C50A4340066CC1F /* MRMethodCopier.h */; };
-		2FF341191C50A4340066CC1F /* MRMethodCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340F81C50A4340066CC1F /* MRMethodCopier.m */; };
-		2FF3411A1C50A4340066CC1F /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340F91C50A4340066CC1F /* MRProgressHelper.h */; };
-		2FF3411B1C50A4340066CC1F /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF340FA1C50A4340066CC1F /* MRWeakProxy.h */; };
-		2FF3411C1C50A4340066CC1F /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340FB1C50A4340066CC1F /* MRWeakProxy.m */; };
+		2FF343141C50C4240066CC1F /* SystemUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF343121C50C4240066CC1F /* SystemUtil.h */; };
+		2FF343151C50C4240066CC1F /* SystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF343131C50C4240066CC1F /* SystemUtil.m */; };
+		2FF343181C50CCC90066CC1F /* MapUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF343161C50CCC90066CC1F /* MapUtil.h */; };
+		2FF343191C50CCC90066CC1F /* MapUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF343171C50CCC90066CC1F /* MapUtil.m */; };
+		2FF3431C1C50CD280066CC1F /* DeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF3431A1C50CD280066CC1F /* DeviceUtil.h */; };
+		2FF3431D1C50CD280066CC1F /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3431B1C50CD280066CC1F /* DeviceUtil.m */; };
+		2FF343201C50CF490066CC1F /* DateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF3431E1C50CF490066CC1F /* DateUtil.h */; };
+		2FF343211C50CF490066CC1F /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3431F1C50CF490066CC1F /* DateUtil.m */; };
+		2FF343241C50D0720066CC1F /* ObjectUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF343221C50D0720066CC1F /* ObjectUtil.h */; };
+		2FF343251C50D0720066CC1F /* ObjectUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF343231C50D0720066CC1F /* ObjectUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1198,33 +1181,16 @@
 		2FF340CE1C509F4B0066CC1F /* BaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAction.m; sourceTree = "<group>"; };
 		2FF340D11C509FFD0066CC1F /* BaseViewAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewAction.h; sourceTree = "<group>"; };
 		2FF340D21C509FFD0066CC1F /* BaseViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewAction.m; sourceTree = "<group>"; };
-		2FF340D71C50A4340066CC1F /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
-		2FF340D81C50A4340066CC1F /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
-		2FF340D91C50A4340066CC1F /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
-		2FF340DA1C50A4340066CC1F /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
-		2FF340DC1C50A4340066CC1F /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
-		2FF340DD1C50A4340066CC1F /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
-		2FF340DE1C50A4340066CC1F /* MRCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressView.h; sourceTree = "<group>"; };
-		2FF340DF1C50A4340066CC1F /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
-		2FF340E01C50A4340066CC1F /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
-		2FF340E11C50A4340066CC1F /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
-		2FF340E21C50A4340066CC1F /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
-		2FF340E31C50A4340066CC1F /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
-		2FF340E41C50A4340066CC1F /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
-		2FF340E51C50A4340066CC1F /* MRProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayView.m; sourceTree = "<group>"; };
-		2FF340E61C50A4340066CC1F /* MRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressView.h; sourceTree = "<group>"; };
-		2FF340E71C50A4340066CC1F /* MRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressView.m; sourceTree = "<group>"; };
-		2FF340E81C50A4340066CC1F /* MRStopableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
-		2FF340E91C50A4340066CC1F /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
-		2FF340EA1C50A4340066CC1F /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
-		2FF340EB1C50A4340066CC1F /* MRProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress.h; sourceTree = "<group>"; };
-		2FF340F51C50A4340066CC1F /* MRMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMessageInterceptor.h; sourceTree = "<group>"; };
-		2FF340F61C50A4340066CC1F /* MRMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMessageInterceptor.m; sourceTree = "<group>"; };
-		2FF340F71C50A4340066CC1F /* MRMethodCopier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMethodCopier.h; sourceTree = "<group>"; };
-		2FF340F81C50A4340066CC1F /* MRMethodCopier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMethodCopier.m; sourceTree = "<group>"; };
-		2FF340F91C50A4340066CC1F /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
-		2FF340FA1C50A4340066CC1F /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
-		2FF340FB1C50A4340066CC1F /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
+		2FF343121C50C4240066CC1F /* SystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemUtil.h; sourceTree = "<group>"; };
+		2FF343131C50C4240066CC1F /* SystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemUtil.m; sourceTree = "<group>"; };
+		2FF343161C50CCC90066CC1F /* MapUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtil.h; sourceTree = "<group>"; };
+		2FF343171C50CCC90066CC1F /* MapUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtil.m; sourceTree = "<group>"; };
+		2FF3431A1C50CD280066CC1F /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
+		2FF3431B1C50CD280066CC1F /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
+		2FF3431E1C50CF490066CC1F /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		2FF3431F1C50CF490066CC1F /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
+		2FF343221C50D0720066CC1F /* ObjectUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectUtil.h; sourceTree = "<group>"; };
+		2FF343231C50D0720066CC1F /* ObjectUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1486,6 +1452,10 @@
 				2FD991531C48BC9C0065293E /* LocationUtil.m */,
 				2FD991541C48BC9C0065293E /* LogUtil.h */,
 				2FD991551C48BC9C0065293E /* LogUtil.m */,
+				2FF343161C50CCC90066CC1F /* MapUtil.h */,
+				2FF343171C50CCC90066CC1F /* MapUtil.m */,
+				2FF3431A1C50CD280066CC1F /* DeviceUtil.h */,
+				2FF3431B1C50CD280066CC1F /* DeviceUtil.m */,
 				2FD991561C48BC9C0065293E /* NotificationUtil.h */,
 				2FD991571C48BC9C0065293E /* NotificationUtil.m */,
 				2FD991581C48BC9C0065293E /* PickerUtil.h */,
@@ -1494,8 +1464,14 @@
 				2FD9915B1C48BC9C0065293E /* RestKitUtil.m */,
 				2FD9915C1C48BC9C0065293E /* StorageUtil.h */,
 				2FD9915D1C48BC9C0065293E /* StorageUtil.m */,
+				2FF343121C50C4240066CC1F /* SystemUtil.h */,
+				2FF343131C50C4240066CC1F /* SystemUtil.m */,
 				2FD9915E1C48BC9C0065293E /* ThemeUtil.h */,
 				2FD9915F1C48BC9C0065293E /* ThemeUtil.m */,
+				2FF3431E1C50CF490066CC1F /* DateUtil.h */,
+				2FF3431F1C50CF490066CC1F /* DateUtil.m */,
+				2FF343221C50D0720066CC1F /* ObjectUtil.h */,
+				2FF343231C50D0720066CC1F /* ObjectUtil.m */,
 				2FD991601C48BC9C0065293E /* TimerUtil.h */,
 				2FD991611C48BC9C0065293E /* TimerUtil.m */,
 				2FD991621C48BC9C0065293E /* ValidateUtil.h */,
@@ -1525,7 +1501,6 @@
 				2FD99C5D1C48CE6E0065293E /* Masonry */,
 				2FD99C751C48CE6E0065293E /* MBProgressHUD */,
 				2FD99C781C48CE6E0065293E /* MJRefresh */,
-				2FF340D51C50A4340066CC1F /* MRProgress */,
 				2FD99CA41C48CE6F0065293E /* PINCache */,
 				2FD99CAC1C48CE6F0065293E /* Reachability */,
 				2FD99CAF1C48CE6F0065293E /* RestKit */,
@@ -2213,64 +2188,6 @@
 			path = TSMessages;
 			sourceTree = "<group>";
 		};
-		2FF340D51C50A4340066CC1F /* MRProgress */ = {
-			isa = PBXGroup;
-			children = (
-				2FF340D61C50A4340066CC1F /* Blur */,
-				2FF340DB1C50A4340066CC1F /* Components */,
-				2FF340EB1C50A4340066CC1F /* MRProgress.h */,
-				2FF340F41C50A4340066CC1F /* Utils */,
-			);
-			path = MRProgress;
-			sourceTree = "<group>";
-		};
-		2FF340D61C50A4340066CC1F /* Blur */ = {
-			isa = PBXGroup;
-			children = (
-				2FF340D71C50A4340066CC1F /* MRBlurView.h */,
-				2FF340D81C50A4340066CC1F /* MRBlurView.m */,
-				2FF340D91C50A4340066CC1F /* UIImage+MRImageEffects.h */,
-				2FF340DA1C50A4340066CC1F /* UIImage+MRImageEffects.m */,
-			);
-			path = Blur;
-			sourceTree = "<group>";
-		};
-		2FF340DB1C50A4340066CC1F /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				2FF340DC1C50A4340066CC1F /* MRActivityIndicatorView.h */,
-				2FF340DD1C50A4340066CC1F /* MRActivityIndicatorView.m */,
-				2FF340DE1C50A4340066CC1F /* MRCircularProgressView.h */,
-				2FF340DF1C50A4340066CC1F /* MRCircularProgressView.m */,
-				2FF340E01C50A4340066CC1F /* MRIconView.h */,
-				2FF340E11C50A4340066CC1F /* MRIconView.m */,
-				2FF340E21C50A4340066CC1F /* MRNavigationBarProgressView.h */,
-				2FF340E31C50A4340066CC1F /* MRNavigationBarProgressView.m */,
-				2FF340E41C50A4340066CC1F /* MRProgressOverlayView.h */,
-				2FF340E51C50A4340066CC1F /* MRProgressOverlayView.m */,
-				2FF340E61C50A4340066CC1F /* MRProgressView.h */,
-				2FF340E71C50A4340066CC1F /* MRProgressView.m */,
-				2FF340E81C50A4340066CC1F /* MRStopableView.h */,
-				2FF340E91C50A4340066CC1F /* MRStopButton.h */,
-				2FF340EA1C50A4340066CC1F /* MRStopButton.m */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		2FF340F41C50A4340066CC1F /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				2FF340F51C50A4340066CC1F /* MRMessageInterceptor.h */,
-				2FF340F61C50A4340066CC1F /* MRMessageInterceptor.m */,
-				2FF340F71C50A4340066CC1F /* MRMethodCopier.h */,
-				2FF340F81C50A4340066CC1F /* MRMethodCopier.m */,
-				2FF340F91C50A4340066CC1F /* MRProgressHelper.h */,
-				2FF340FA1C50A4340066CC1F /* MRWeakProxy.h */,
-				2FF340FB1C50A4340066CC1F /* MRWeakProxy.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2283,16 +2200,13 @@
 				2FD99EC41C48CE700065293E /* SDWebImageCompat.h in Headers */,
 				2FD99E741C48CE6F0065293E /* RKDynamicMapping.h in Headers */,
 				2FD99D7A1C48CE6F0065293E /* FLEXArgumentInputJSONObjectView.h in Headers */,
-				2FF3410D1C50A4340066CC1F /* MRStopButton.h in Headers */,
 				2FD99D821C48CE6F0065293E /* FLEXArgumentInputStructView.h in Headers */,
 				2FD99E7E1C48CE6F0065293E /* RKISO8601DateFormatter.h in Headers */,
 				2F1C35FD1C4C89310060E793 /* IRefreshControl.h in Headers */,
 				2FD99ED91C48CE700065293E /* UIImageView+WebCache.h in Headers */,
 				2FD99E9D1C48CE6F0065293E /* RKPathUtilities.h in Headers */,
-				2FF341181C50A4340066CC1F /* MRMethodCopier.h in Headers */,
 				2FE620321C4E2CAD002F4AD2 /* BaseXmlView.h in Headers */,
 				2FD99DEC1C48CE6F0065293E /* FLEXSetExplorerViewController.h in Headers */,
-				2FF341021C50A4340066CC1F /* MRCircularProgressView.h in Headers */,
 				2FD99E861C48CE6F0065293E /* RKManagedObjectStore+RKSearchAdditions.h in Headers */,
 				2FD99E631C48CE6F0065293E /* lcl_config_components_RK.h in Headers */,
 				2FD99D901C48CE6F0065293E /* FLEXFieldEditorViewController.h in Headers */,
@@ -2303,12 +2217,12 @@
 				2FD99E131C48CE6F0065293E /* MASConstraint+Private.h in Headers */,
 				2FD99E1C1C48CE6F0065293E /* MASViewAttribute.h in Headers */,
 				2FD99D4B1C48CE6F0065293E /* ActionSheetCustomPicker.h in Headers */,
-				2FF340FC1C50A4340066CC1F /* MRBlurView.h in Headers */,
 				2FD99E1E1C48CE6F0065293E /* MASViewConstraint.h in Headers */,
 				2FD99E401C48CE6F0065293E /* MJRefreshGifHeader.h in Headers */,
 				2FD99E461C48CE6F0065293E /* MJRefresh.h in Headers */,
 				2FD99E841C48CE6F0065293E /* RKManagedObjectMappingOperationDataSource.h in Headers */,
 				2FD99E541C48CE6F0065293E /* PINMemoryCache.h in Headers */,
+				2FF343181C50CCC90066CC1F /* MapUtil.h in Headers */,
 				2FD99E161C48CE6F0065293E /* MASConstraintMaker.h in Headers */,
 				2FD99E891C48CE6F0065293E /* RKMapping.h in Headers */,
 				2F1C35FB1C4C89310060E793 /* IPopover.h in Headers */,
@@ -2341,7 +2255,6 @@
 				2FD99ED71C48CE700065293E /* UIImageView+HighlightedWebCache.h in Headers */,
 				2FD99E771C48CE6F0065293E /* RKEntityMapping.h in Headers */,
 				2FD99E811C48CE6F0065293E /* RKMacros.h in Headers */,
-				2FF340FE1C50A4340066CC1F /* UIImage+MRImageEffects.h in Headers */,
 				2FD99DDC1C48CE6F0065293E /* FLEXClassExplorerViewController.h in Headers */,
 				2FD99DFC1C48CE6F0065293E /* FLEXRuntimeUtility.h in Headers */,
 				2FD99EE71C48CE700065293E /* TSMessage.h in Headers */,
@@ -2411,7 +2324,6 @@
 				2FD99D661C48CE6F0065293E /* DDLog+LOGV.h in Headers */,
 				2FD99E901C48CE6F0065293E /* RKMIMETypeSerialization.h in Headers */,
 				2FD99E2E1C48CE6F0065293E /* MJRefreshComponent.h in Headers */,
-				2FF3411A1C50A4340066CC1F /* MRProgressHelper.h in Headers */,
 				2FD99DEE1C48CE6F0065293E /* FLEXViewControllerExplorerViewController.h in Headers */,
 				2FD99EB31C48CE700065293E /* RKTestNotificationObserver.h in Headers */,
 				2FD99E9F1C48CE6F0065293E /* RKPropertyInspector.h in Headers */,
@@ -2444,7 +2356,6 @@
 				2FD99E681C48CE6F0065293E /* NSManagedObject+RKAdditions.h in Headers */,
 				2FD99E711C48CE6F0065293E /* RKCoreData.h in Headers */,
 				2FD99DBC1C48CE6F0065293E /* FLEXGlobalsTableViewController.h in Headers */,
-				2FF341061C50A4340066CC1F /* MRNavigationBarProgressView.h in Headers */,
 				2FD99DE41C48CE6F0065293E /* FLEXImageExplorerViewController.h in Headers */,
 				2FD99D521C48CE6F0065293E /* ActionSheetLocalePicker.h in Headers */,
 				2FD99E4D1C48CE6F0065293E /* UIView+MJExtension.h in Headers */,
@@ -2464,19 +2375,16 @@
 				2FD99EB21C48CE700065293E /* RKTestHelpers.h in Headers */,
 				2FD99DD41C48CE6F0065293E /* FLEXNetworkTransactionDetailTableViewController.h in Headers */,
 				2FD99E941C48CE6F0065293E /* RKObjectMappingMatcher.h in Headers */,
-				2FF3411B1C50A4340066CC1F /* MRWeakProxy.h in Headers */,
 				2FD99EB41C48CE700065293E /* RKURLEncodedSerialization.h in Headers */,
-				2FF3410F1C50A4340066CC1F /* MRProgress.h in Headers */,
 				2FD99E111C48CE6F0065293E /* MASCompositeConstraint.h in Headers */,
 				2F1C35DD1C4C89310060E793 /* IStyleSheet.h in Headers */,
 				2FD99E341C48CE6F0065293E /* MJRefreshAutoGifFooter.h in Headers */,
 				2F1C35D81C4C89310060E793 /* IFlowLayout.h in Headers */,
 				2F1C36071C4C89310060E793 /* INSXmlViewLoader.h in Headers */,
 				2FD99D4D1C48CE6F0065293E /* ActionSheetCustomPickerDelegate.h in Headers */,
+				2FF343241C50D0720066CC1F /* ObjectUtil.h in Headers */,
 				2FD99E621C48CE6F0065293E /* ISO8601DateFormatterValueTransformer.h in Headers */,
-				2FF3410A1C50A4340066CC1F /* MRProgressView.h in Headers */,
 				2FD99D691C48CE6F0065293E /* DDLogMacros.h in Headers */,
-				2FF341081C50A4340066CC1F /* MRProgressOverlayView.h in Headers */,
 				2FD99E8E1C48CE6F0065293E /* RKMappingTest.h in Headers */,
 				2FD99D941C48CE6F0065293E /* FLEXMethodCallingViewController.h in Headers */,
 				2FD99E521C48CE6F0065293E /* PINDiskCache.h in Headers */,
@@ -2494,7 +2402,6 @@
 				2FD99E231C48CE6F0065293E /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				2F1C35F51C4C89310060E793 /* IImage.h in Headers */,
 				2F1CD51F1C4F2C6E00B0DC4B /* HttpUtil.h in Headers */,
-				2FF341001C50A4340066CC1F /* MRActivityIndicatorView.h in Headers */,
 				2F1C35FF1C4C89310060E793 /* ISwitch.h in Headers */,
 				2FD99E801C48CE6F0065293E /* RKLumberjackLogger.h in Headers */,
 				2FD99ECF1C48CE700065293E /* SDWebImagePrefetcher.h in Headers */,
@@ -2518,9 +2425,9 @@
 				2FD99D8C1C48CE6F0065293E /* FLEXDefaultEditorViewController.h in Headers */,
 				2FD99DB81C48CE6F0065293E /* FLEXFileBrowserSearchOperation.h in Headers */,
 				2FD99E6C1C48CE6F0065293E /* RestKit.h in Headers */,
+				2FF343141C50C4240066CC1F /* SystemUtil.h in Headers */,
 				2FD99DE21C48CE6F0065293E /* FLEXGlobalsTableViewControllerEntry.h in Headers */,
 				2FD99EDD1C48CE700065293E /* TPKeyboardAvoidingCollectionView.h in Headers */,
-				2FF341041C50A4340066CC1F /* MRIconView.h in Headers */,
 				2FD99E2C1C48CE6F0065293E /* MJRefreshBackFooter.h in Headers */,
 				2F1C35DA1C4C89310060E793 /* IStyle.h in Headers */,
 				2FD99E221C48CE6F0065293E /* NSArray+MASShorthandAdditions.h in Headers */,
@@ -2549,12 +2456,12 @@
 				2F1C35DC1C4C89310060E793 /* IStyleInternal.h in Headers */,
 				2FD99D5C1C48CE6F0065293E /* DDAbstractDatabaseLogger.h in Headers */,
 				2FD99E6B1C48CE6F0065293E /* RKMapperOperation_Private.h in Headers */,
+				2FF3431C1C50CD280066CC1F /* DeviceUtil.h in Headers */,
 				2FD99ECA1C48CE700065293E /* SDWebImageDownloaderOperation.h in Headers */,
 				2FD99D9F1C48CE6F0065293E /* FLEXToolbarItem.h in Headers */,
 				2FD99E441C48CE6F0065293E /* MJRefreshStateHeader.h in Headers */,
 				2FD99E0A1C48CE6F0065293E /* FMDatabasePool.h in Headers */,
 				2F1C36091C4C89310060E793 /* IViewLoader.h in Headers */,
-				2FF3410C1C50A4340066CC1F /* MRStopableView.h in Headers */,
 				2FD99E851C48CE6F0065293E /* RKManagedObjectRequestOperation.h in Headers */,
 				2FD99E7F1C48CE6F0065293E /* RKLog.h in Headers */,
 				2FD99EB81C48CE700065293E /* Support.h in Headers */,
@@ -2590,7 +2497,6 @@
 				2F1C35F11C4C89310060E793 /* IViewInternal.h in Headers */,
 				2FD99E731C48CE6F0065293E /* RKDotNetDateFormatter.h in Headers */,
 				2FD99E911C48CE6F0065293E /* RKNSJSONSerialization.h in Headers */,
-				2FF341161C50A4340066CC1F /* MRMessageInterceptor.h in Headers */,
 				2F1C35DF1C4C89310060E793 /* ICell.h in Headers */,
 				2FD99D601C48CE6F0065293E /* DDASLLogger.h in Headers */,
 				2FD99D631C48CE6F0065293E /* DDFileLogger.h in Headers */,
@@ -2622,6 +2528,7 @@
 				2FD993F41C48BE710065293E /* UIView+Loading.h in Headers */,
 				2FD993F51C48BE710065293E /* UIViewController+BackButtonHandler.h in Headers */,
 				2FD993F61C48BE720065293E /* UIViewController+Dialog.h in Headers */,
+				2FF343201C50CF490066CC1F /* DateUtil.h in Headers */,
 				2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */,
 				2FF340D31C509FFD0066CC1F /* BaseViewAction.h in Headers */,
 				2FD993F81C48BE720065293E /* FileEntity.h in Headers */,
@@ -2705,11 +2612,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD993491C48BC9D0065293E /* TimerUtil.m in Sources */,
+				2FF343191C50CCC90066CC1F /* MapUtil.m in Sources */,
 				2FD99D751C48CE6F0065293E /* FLEXArgumentInputDateView.m in Sources */,
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */,
-				2FF3410B1C50A4340066CC1F /* MRProgressView.m in Sources */,
+				2FF343211C50CF490066CC1F /* DateUtil.m in Sources */,
 				2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */,
 				2FD99ECB1C48CE700065293E /* SDWebImageDownloaderOperation.m in Sources */,
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
@@ -2749,13 +2657,11 @@
 				2FD99DB71C48CE6F0065293E /* FLEXFileBrowserFileOperationController.m in Sources */,
 				2FD99DD91C48CE6F0065293E /* FLEXNetworkObserver.m in Sources */,
 				2F1CD5201C4F2C6E00B0DC4B /* HttpUtil.m in Sources */,
-				2FF3411C1C50A4340066CC1F /* MRWeakProxy.m in Sources */,
 				2FD99EE21C48CE700065293E /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FD99E4A1C48CE6F0065293E /* UIScrollView+MJExtension.m in Sources */,
 				2FD99E191C48CE6F0065293E /* MASLayoutConstraint.m in Sources */,
 				2FD99DEF1C48CE6F0065293E /* FLEXViewControllerExplorerViewController.m in Sources */,
 				2FD99DB31C48CE6F0065293E /* FLEXClassesTableViewController.m in Sources */,
-				2FF3410E1C50A4340066CC1F /* MRStopButton.m in Sources */,
 				2FD99D4C1C48CE6F0065293E /* ActionSheetCustomPicker.m in Sources */,
 				2FD99E371C48CE6F0065293E /* MJRefreshAutoNormalFooter.m in Sources */,
 				2FD99D6D1C48CE6F0065293E /* DDContextFilterLogFormatter.m in Sources */,
@@ -2772,6 +2678,7 @@
 				2F1C35F41C4C89310060E793 /* IButton.m in Sources */,
 				2FD99D8D1C48CE6F0065293E /* FLEXDefaultEditorViewController.m in Sources */,
 				2FD99D7B1C48CE6F0065293E /* FLEXArgumentInputJSONObjectView.m in Sources */,
+				2FF343151C50C4240066CC1F /* SystemUtil.m in Sources */,
 				2FD99DDD1C48CE6F0065293E /* FLEXClassExplorerViewController.m in Sources */,
 				2FD993391C48BC9D0065293E /* UIView+Loading.m in Sources */,
 				2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */,
@@ -2790,11 +2697,11 @@
 				2FD99ECD1C48CE700065293E /* SDWebImageManager.m in Sources */,
 				2FD99E481C48CE6F0065293E /* MJRefreshConst.m in Sources */,
 				2FD99DC91C48CE6F0065293E /* FLEXSystemLogTableViewCell.m in Sources */,
+				2FF3431D1C50CD280066CC1F /* DeviceUtil.m in Sources */,
 				2FD99D8F1C48CE6F0065293E /* FLEXFieldEditorView.m in Sources */,
 				2FD99DA01C48CE6F0065293E /* FLEXToolbarItem.m in Sources */,
 				2F1C35FC1C4C89310060E793 /* IPopover.m in Sources */,
 				2FD99DC31C48CE6F0065293E /* FLEXLiveObjectsTableViewController.m in Sources */,
-				2FF341091C50A4340066CC1F /* MRProgressOverlayView.m in Sources */,
 				2FD993351C48BC9D0065293E /* UINavigationController+Vertical.m in Sources */,
 				2FD99E2B1C48CE6F0065293E /* MJRefreshAutoFooter.m in Sources */,
 				2FD99DE71C48CE6F0065293E /* FLEXLayerExplorerViewController.m in Sources */,
@@ -2812,7 +2719,6 @@
 				2FD99E1D1C48CE6F0065293E /* MASViewAttribute.m in Sources */,
 				2FD99E531C48CE6F0065293E /* PINDiskCache.m in Sources */,
 				2FD99D561C48CE6F0065293E /* ActionSheetStringPicker.m in Sources */,
-				2FF340FD1C50A4340066CC1F /* MRBlurView.m in Sources */,
 				2FD9933C1C48BC9D0065293E /* ErrorEntity.m in Sources */,
 				2FD99DBF1C48CE6F0065293E /* FLEXInstancesTableViewController.m in Sources */,
 				2FD993461C48BC9D0065293E /* RestKitUtil.m in Sources */,
@@ -2823,15 +2729,13 @@
 				2FD99EDC1C48CE700065293E /* UIView+WebCacheOperation.m in Sources */,
 				2FD99D951C48CE6F0065293E /* FLEXMethodCallingViewController.m in Sources */,
 				2FD993311C48BC9D0065293E /* NSObject+Property.m in Sources */,
-				2FF341171C50A4340066CC1F /* MRMessageInterceptor.m in Sources */,
 				2FD99DAF1C48CE6F0065293E /* FLEXTableLeftCell.m in Sources */,
 				2FD9932B1C48BC9D0065293E /* BaseHandler.m in Sources */,
 				2FD99E4E1C48CE6F0065293E /* UIView+MJExtension.m in Sources */,
 				2FD99D891C48CE6F0065293E /* FLEXArgumentInputView.m in Sources */,
 				2FD99D5F1C48CE6F0065293E /* DDASLLogCapture.m in Sources */,
-				2FF341011C50A4340066CC1F /* MRActivityIndicatorView.m in Sources */,
-				2FF341031C50A4340066CC1F /* MRCircularProgressView.m in Sources */,
 				2FD993291C48BC9D0065293E /* BaseCollectionView.m in Sources */,
+				2FF343251C50D0720066CC1F /* ObjectUtil.m in Sources */,
 				2FD99E351C48CE6F0065293E /* MJRefreshAutoGifFooter.m in Sources */,
 				2FF340CC1C509E390066CC1F /* AspectUtil.m in Sources */,
 				2F47501B1C48F3F1001CA674 /* PaginationEntity.m in Sources */,
@@ -2847,7 +2751,6 @@
 				2FD9933A1C48BC9D0065293E /* UIViewController+BackButtonHandler.m in Sources */,
 				2FD993321C48BC9D0065293E /* NSString+Trim.m in Sources */,
 				2FD99E051C48CE6F0065293E /* FLEXImagePreviewViewController.m in Sources */,
-				2FF341071C50A4340066CC1F /* MRNavigationBarProgressView.m in Sources */,
 				2FD99E291C48CE6F0065293E /* MBProgressHUD.m in Sources */,
 				2FD99D711C48CE6F0065293E /* DDMultiFormatter.m in Sources */,
 				2FD99DD31C48CE6F0065293E /* FLEXNetworkTransaction.m in Sources */,
@@ -2858,7 +2761,6 @@
 				2FD99EC91C48CE700065293E /* SDWebImageDownloader.m in Sources */,
 				2FD99EDE1C48CE700065293E /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2FD99DF11C48CE6F0065293E /* FLEXViewExplorerViewController.m in Sources */,
-				2FF340FF1C50A4340066CC1F /* UIImage+MRImageEffects.m in Sources */,
 				2F1C35E21C4C89310060E793 /* ICellView.m in Sources */,
 				2FD99E241C48CE6F0065293E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2FD99D731C48CE6F0065293E /* FLEXArgumentInputColorView.m in Sources */,
@@ -2896,7 +2798,6 @@
 				2FD99DFB1C48CE6F0065293E /* FLEXResources.m in Sources */,
 				2FD99DC71C48CE6F0065293E /* FLEXSystemLogMessage.m in Sources */,
 				2FD993331C48BC9D0065293E /* UIColor+Hex.m in Sources */,
-				2FF341051C50A4340066CC1F /* MRIconView.m in Sources */,
 				2FD99D991C48CE6F0065293E /* FLEXExplorerToolbar.m in Sources */,
 				2FD99EC31C48CE700065293E /* SDImageCache.m in Sources */,
 				2FD99DDF1C48CE6F0065293E /* FLEXDefaultsExplorerViewController.m in Sources */,
@@ -2931,7 +2832,6 @@
 				2FD99DA71C48CE6F0065293E /* FLEXMultiColumnTableView.m in Sources */,
 				2FD99E331C48CE6F0065293E /* MJRefreshHeader.m in Sources */,
 				2F1C35E51C4C89310060E793 /* IKitUtil.m in Sources */,
-				2FF341191C50A4340066CC1F /* MRMethodCopier.m in Sources */,
 				2FD99D5D1C48CE6F0065293E /* DDAbstractDatabaseLogger.m in Sources */,
 				2FD993341C48BC9D0065293E /* UIImageView+PlayGIF.m in Sources */,
 				2FD99EE81C48CE700065293E /* TSMessage.m in Sources */,

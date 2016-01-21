@@ -13,9 +13,6 @@
 + (NSString *)jsonEncode:(id)obj;
 + (id) jsonDecode:(NSString *)str;
 
-+ (NSString *)urlEncode:(NSString *)str;
-+ (NSString *)urlDecode:(NSString *)str;
-
 + (NSString *)base64Encode:(NSString *)str;
 + (NSString *)base64Decode:(NSString *)str;
 

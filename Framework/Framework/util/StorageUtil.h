@@ -34,4 +34,14 @@
 
 - (id) getData:(NSString *)key;
 
+- (id) get:(NSString *)key;
+
+- (BOOL) has:(NSString *)key;
+
+- (void) set:(NSString *)key object:(id)object;
+
+- (void) remove:(NSString *)key;
+
+- (void) clear;
+
 @end

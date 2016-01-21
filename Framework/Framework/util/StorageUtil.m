@@ -168,4 +168,30 @@ static StorageUtil *sharedStorage = nil;
     return object;
 }
 
+- (id) get:(NSString *)key
+{
+    return [self getData:key];
+}
+
+- (BOOL) has:(NSString *)key
+{
+    id object = [self.storage objectForKey:key];
+    return object ? YES : NO;
+}
+
+- (void) set:(NSString *)key object:(id)object
+{
+    [self setData:key object:object];
+}
+
+- (void) remove:(NSString *)key
+{
+    [self setData:key object:nil];
+}
+
+- (void) clear
+{
+    [NSUserDefaults resetStandardUserDefaults];
+}
+
 @end
