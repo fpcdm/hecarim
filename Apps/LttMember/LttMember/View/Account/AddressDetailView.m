@@ -57,9 +57,9 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
-    address = [self getData:@"address"];
+    address = [self fetch:@"address"];
     NSString *name = address.name ? address.name : @"";
     NSString *mobile = address.mobile ? address.mobile : @"";
     NSString *area = [address areaName];

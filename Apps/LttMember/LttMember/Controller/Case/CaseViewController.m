@@ -185,8 +185,8 @@
         self.navigationItem.title = @"客服已收到";
         
         //显示数据
-        [lockedView setData:@"intention" value:intention];
-        [lockedView renderData];
+        [lockedView assign:@"intention" value:intention];
+        [lockedView display];
     } else if ([intention.status isEqualToString:CASE_STATUS_CONFIRMED]) {
         CaseConfirmedView *confirmedView = [[CaseConfirmedView alloc] init];
         confirmedView.delegate = self;
@@ -195,8 +195,8 @@
         self.navigationItem.title = @"服务开始了";
         
         //显示数据
-        [confirmedView setData:@"intention" value:intention];
-        [confirmedView renderData];
+        [confirmedView assign:@"intention" value:intention];
+        [confirmedView display];
     } else if ([intention.status isEqualToString:CASE_STATUS_TOPAY]) {
         //停止地图
         [self stopMap];
@@ -208,8 +208,8 @@
         self.navigationItem.title = @"订单确认";
         
         //显示数据
-        [topayView setData:@"intention" value:intention];
-        [topayView renderData];
+        [topayView assign:@"intention" value:intention];
+        [topayView display];
     } else if ([intention.status isEqualToString:CASE_STATUS_PAYED]) {
         CaseCommentView *receivedView = [[CaseCommentView alloc] init];
         receivedView.delegate = self;
@@ -219,8 +219,8 @@
         self.navigationItem.rightBarButtonItem = nil;
         
         //显示数据
-        [receivedView setData:@"intention" value:intention];
-        [receivedView renderData];
+        [receivedView assign:@"intention" value:intention];
+        [receivedView display];
         
     } else if ([intention.status isEqualToString:CASE_STATUS_SUCCESS]) {
         CaseDetailView *detailView = [[CaseDetailView alloc] init];
@@ -231,8 +231,8 @@
         self.navigationItem.rightBarButtonItem = nil;
         
         //显示数据
-        [detailView setData:@"intention" value:intention];
-        [detailView renderData];
+        [detailView assign:@"intention" value:intention];
+        [detailView display];
     } else {
         NSString *statusName = [intention statusName];
         self.navigationItem.title = statusName;
@@ -250,10 +250,13 @@
     self.navigationItem.title = @"两条腿收银台";
     
     //显示数据
-    [cashierView setData:@"payments" value:payments];
-    [cashierView setData:@"intention" value:intention];
-    [cashierView setData:@"balance" value:accountBalance];
-    [cashierView renderData];
+    NSDictionary *assignDic = @{
+                                @"payments" : payments,
+                                @"intention" : intention,
+                                @"balance" : accountBalance
+                                };
+    [cashierView assign:assignDic];
+    [cashierView display];
 }
 
 - (void)payedView
@@ -265,8 +268,8 @@
     self.navigationItem.title = @"支付确认";
     
     //显示数据
-    [payedView setData:@"intention" value:intention];
-    [payedView renderData];
+    [payedView assign:@"intention" value:intention];
+    [payedView display];
 }
 
 #pragma mark - RemoteNotification
@@ -563,8 +566,8 @@
             self.navigationItem.title = @"感谢评价";
             
             //显示数据
-            [successView setData:@"intention" value:intention];
-            [successView renderData];
+            [successView assign:@"intention" value:intention];
+            [successView display];
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];

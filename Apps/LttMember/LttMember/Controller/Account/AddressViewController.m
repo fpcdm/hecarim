@@ -45,8 +45,8 @@
     [self loadData:^(id object){
         [self hideLoading];
         
-        [addressView setData:@"addressList" value:addressList];
-        [addressView renderData];
+        [addressView assign:@"addressList" value:addressList];
+        [addressView display];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -82,8 +82,8 @@
     viewController.callbackBlock = ^(id object){
         [addressList addObject:(AddressEntity *) object];
         
-        [addressView setData:@"addressList" value:addressList];
-        [addressView renderData];
+        [addressView assign:@"addressList" value:addressList];
+        [addressView display];
     };
     
     [self pushViewController:viewController animated:YES];
@@ -108,8 +108,8 @@
             index++;
         }
         
-        [addressView setData:@"addressList" value:addressList];
-        [addressView renderData];
+        [addressView assign:@"addressList" value:addressList];
+        [addressView display];
     };
     //删除回调
     viewController.deleteBlock = ^(id object){
@@ -122,8 +122,8 @@
             }
         }
         
-        [addressView setData:@"addressList" value:addressList];
-        [addressView renderData];
+        [addressView assign:@"addressList" value:addressList];
+        [addressView display];
     };
     //设置默认回调
     viewController.defaultBlock = ^(id object){
@@ -138,8 +138,8 @@
             }
         }
         
-        [addressView setData:@"addressList" value:addressList];
-        [addressView renderData];
+        [addressView assign:@"addressList" value:addressList];
+        [addressView display];
     };
     
     [self pushViewController:viewController animated:YES];

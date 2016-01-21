@@ -152,9 +152,9 @@
     [self.delegate actionVerifyCode:codeField.text];
 }
 
-- (void)renderData
+- (void)display
 {
-    NSString *mobile = [self getData:@"mobile"];
+    NSString *mobile = [self fetch:@"mobile"];
     NSMutableString *strMobile = [[NSMutableString alloc] initWithString:mobile];
     [strMobile replaceCharactersInRange:NSMakeRange(3,5) withString:@"*****"];
     tipMobile.text = strMobile;

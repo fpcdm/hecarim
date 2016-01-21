@@ -203,8 +203,8 @@
     } else if ([self.view isMemberOfClass:[RegisterPasswordView class]]) {
         RegisterCodeView *codeView = [self mobileCodeView];
         [self popView:codeView animated:YES completion:^{
-            [codeView setData:@"mobile" value:mobile];
-            [codeView renderData];
+            [codeView assign:@"mobile" value:mobile];
+            [codeView display];
             
             sendButton = codeView.sendButton;
             [self checkButton];
@@ -244,14 +244,14 @@
             if ([@"registered" isEqualToString:mobileStatus]) {
                 RegisterExistView *existView = [self mobileExistView];
                 [self pushView:existView animated:YES completion:^{
-                    [existView setData:@"mobile" value:mobile];
-                    [existView renderData];
+                    [existView assign:@"mobile" value:mobile];
+                    [existView display];
                 }];
             } else {
                 RegisterCodeView *codeView = [self mobileCodeView];
                 [self pushView:codeView animated:YES completion:^{
-                    [codeView setData:@"mobile" value:mobile];
-                    [codeView renderData];
+                    [codeView assign:@"mobile" value:mobile];
+                    [codeView display];
                     
                     //发送短信验证码
                     sendButton = codeView.sendButton;

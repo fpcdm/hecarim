@@ -122,9 +122,9 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
-    CaseEntity *intention = [self getData:@"intention"];
+    CaseEntity *intention = [self fetch:@"intention"];
     
     [intention avatarView:imageView];
 }

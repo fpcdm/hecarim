@@ -12,10 +12,10 @@
 @implementation SafetyView
 
 #pragma mark - RenderData
-- (void) renderData
+- (void)display
 {
-    UserEntity *user = [self getData:@"user"];
-    NSNumber *res = [self getData:@"payRes"];
+    UserEntity *user = [self fetch:@"user"];
+    NSNumber *res = [self fetch:@"payRes"];
     NSString *payString = [NSString stringWithFormat:@"%@支付密码",(([@1 isEqualToNumber:res]) ? @"修改" : @"设置")];
     NSString *mobile = user.mobile ? user.mobile : @"";
     if ([mobile length] > 0) {

@@ -142,9 +142,9 @@
     return self;
 }
 
-- (void) renderData
+- (void)display
 {
-    NSString *mobile = [self getData:@"mobile"];
+    NSString *mobile = [self fetch:@"mobile"];
     if (mobile && [mobile length] > 0) {
         formView.hidden = YES;
         detailView.hidden = NO;

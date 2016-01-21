@@ -56,12 +56,12 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     //获取数据
-    CaseEntity *intention = [self getData:@"intention"];
+    CaseEntity *intention = [self fetch:@"intention"];
     totalAmount = [intention.totalAmount floatValue];
-    NSNumber *accountBalance = [self getData:@"balance"];
+    NSNumber *accountBalance = [self fetch:@"balance"];
     balanceAmount = [accountBalance floatValue];
     
     //支付数据
@@ -78,7 +78,7 @@
     }
     
     //判断支付方式
-    NSArray *payments = [self getData:@"payments"];
+    NSArray *payments = [self fetch:@"payments"];
     for (ResultEntity* payment in payments) {
         //判断支付方式
         if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {

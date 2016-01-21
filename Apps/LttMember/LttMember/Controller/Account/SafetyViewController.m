@@ -49,9 +49,14 @@
         ResultEntity *resultEntity = [result firstObject];
         //加载数据
         UserEntity *user = [[StorageUtil sharedStorage] getUser];
-        [safetyView setData:@"user" value:user];
-        [safetyView setData:@"payRes" value:resultEntity.data];
-        [safetyView renderData];
+        
+        NSDictionary *assignDic = @{
+                                    @"user" : user,
+                                    @"payRes" : resultEntity.data
+                                    };
+        [safetyView assign:assignDic];
+        
+        [safetyView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];

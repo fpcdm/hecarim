@@ -70,9 +70,9 @@
 
 
 #pragma mark - RenderData
-- (void) renderData
+- (void)display
 {
-    NSString *account = [self getData:@"account"];
+    NSString *account = [self fetch:@"account"];
     NSLog(@"余额：%@",account);
     NSString *accountString = [NSString stringWithFormat:@"￥%.2f",(account ? [account floatValue] : 0.00)];
     acctionLabel.text = accountString;

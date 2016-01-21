@@ -14,9 +14,9 @@
 
 @implementation SettingView
 
-- (void)renderData
+- (void)display
 {
-    NSNumber *cacheSize = [self getData:@"cacheSize"];
+    NSNumber *cacheSize = [self fetch:@"cacheSize"];
     float tmpSize = cacheSize ? [cacheSize floatValue] : 0;
     
     NSString *sizeText = nil;

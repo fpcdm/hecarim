@@ -50,8 +50,8 @@
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
     //视图赋值
-    [addressFormView setData:@"address" value:self.address];
-    [addressFormView renderData];
+    [addressFormView assign:@"address" value:self.address];
+    [addressFormView display];
 }
 
 #pragma mark - Delegate
@@ -66,7 +66,7 @@
     
     NSLog(@"选择的地址：%@", [self.address toDictionary]);
     
-    [addressFormView renderData];
+    [addressFormView display];
 }
 
 #pragma mark - Action
@@ -219,7 +219,7 @@
         
         NSLog(@"选择的地址：%@", [self.address toDictionary]);
         
-        [addressFormView renderData];
+        [addressFormView display];
     };
     
     [pickerUtil show];
@@ -266,7 +266,7 @@
         self.address.streetId = selectedStreet.code;
         self.address.streetName = selectedStreet.name;
             
-        [addressFormView renderData];
+        [addressFormView display];
     };
     [pickerUtil show];
 }

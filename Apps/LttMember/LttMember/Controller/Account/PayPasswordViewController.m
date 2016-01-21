@@ -71,8 +71,8 @@
     //加载数据
     user = [[StorageUtil sharedStorage] getUser];
     mobile = user.mobile;
-    [codeView setData:@"user" value:user];
-    [codeView renderData];
+    [codeView assign:@"user" value:user];
+    [codeView display];
     return codeView;
 }
 

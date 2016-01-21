@@ -23,10 +23,10 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     //显示数据
-    NSMutableArray *accountList = [self getData:@"accountList"];
+    NSMutableArray *accountList = [self fetch:@"accountList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     if (accountList != nil) {
         for (NSDictionary *param in accountList) {

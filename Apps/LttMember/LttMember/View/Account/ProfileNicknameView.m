@@ -50,9 +50,9 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
-    NSString *nickname = [self getData:@"nickname"];
+    NSString *nickname = [self fetch:@"nickname"];
     if (nickname) {
         textField.text = nickname;
     }

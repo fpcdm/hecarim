@@ -50,8 +50,8 @@
             referee = refereeEntity.mobile;
         }
         
-        [recommendView setData:@"mobile" value:referee];
-        [recommendView renderData];
+        [recommendView assign:@"mobile" value:referee];
+        [recommendView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];
@@ -97,8 +97,8 @@
                 [self hideLoading];
                 
                 //刷新视图
-                [recommendView setData:@"mobile" value:recommendMobile];
-                [recommendView renderData];
+                [recommendView assign:@"mobile" value:recommendMobile];
+                [recommendView display];
             } failure:^(ErrorEntity *error) {
                 [self showError:error.message];
             }];

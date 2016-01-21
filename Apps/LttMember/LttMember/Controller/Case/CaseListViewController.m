@@ -77,8 +77,8 @@
             [tableView setRefreshLoadingState:RefreshLoadingStateNoMoreData];
         }
         
-        [listView setData:@"intentionList" value:intentionList];
-        [listView renderData];
+        [listView assign:@"intentionList" value:intentionList];
+        [listView display];
     } failure:^(ErrorEntity *error){
         [tableView stopRefreshLoading];
         

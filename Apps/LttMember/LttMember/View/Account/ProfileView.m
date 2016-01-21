@@ -18,9 +18,9 @@
 }
 
 #pragma mark - RenderData
-- (void) renderData
+- (void)display
 {
-    user = [self getData:@"user"];
+    user = [self fetch:@"user"];
     NSString *userNickname = user.nickname ? user.nickname : @"";
     NSString *userSexName = [user sexName];
     userSexName = userSexName ? userSexName : @"";

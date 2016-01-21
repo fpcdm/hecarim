@@ -52,9 +52,10 @@
     [self loadData:^(id object){
         [self hideLoading];
         
-        [addressView setData:@"addressList" value:addressList];
-        [addressView setData:@"currentAddress" value:currentAddress];
-        [addressView renderData];
+        [addressView assign:@"addressList" value:addressList];
+        [addressView assign:@"currentAddress" value:currentAddress];
+        
+        [addressView display];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];

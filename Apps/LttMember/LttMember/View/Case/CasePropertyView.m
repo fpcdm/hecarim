@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     NSMutableArray *section = [NSMutableArray array];
     
@@ -34,7 +34,7 @@
     CGFloat cellWidth = (SCREEN_WIDTH - 50) / 4;
     
     //循环属性
-    NSArray *properties = [self getData:@"properties"];
+    NSArray *properties = [self fetch:@"properties"];
     if (properties) {
         for (PropertyEntity *property in properties) {
             [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @(cellWidth), @"data": property}];

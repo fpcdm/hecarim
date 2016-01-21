@@ -83,8 +83,8 @@
     [userHandler getAccount:nil success:^(NSArray *result) {
         ResultEntity *resultEntity = [result firstObject];
         NSString *account = resultEntity.data;
-        [myWalletView setData:@"account" value:account];
-        [myWalletView renderData];
+        [myWalletView assign:@"account" value:account];
+        [myWalletView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];

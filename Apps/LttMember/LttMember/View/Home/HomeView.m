@@ -364,7 +364,7 @@
 - (void) reloadAds
 {
     //重新设置数据
-    imagesData = [NSMutableArray arrayWithArray:[self getData:@"adverts"]];
+    imagesData = [NSMutableArray arrayWithArray:[self fetch:@"adverts"]];
     if (!imagesData || [imagesData count] < 1) return;
     
     //删除原图片
@@ -403,13 +403,13 @@
 }
 
 #pragma mark - RenderData
-- (void) renderData
+- (void) display
 {
     //显示位置
-    NSString *address = [self getData:@"address"];
-    NSString *gps = [self getData:@"gps"];
+    NSString *address = [self fetch:@"address"];
+    NSString *gps = [self fetch:@"gps"];
     if (address) {
-        NSNumber *count = [self getData:@"count"];
+        NSNumber *count = [self fetch:@"count"];
         if (count && ![@-1 isEqualToNumber:count]) {
             address = [NSString stringWithFormat:@"%@(有%@位信使为您服务)", address, count];
         }
@@ -419,7 +419,7 @@
     }
     
     //显示城市
-    NSString *city = [self getData:@"city"];
+    NSString *city = [self fetch:@"city"];
     if (city && [city length] > 0) {
         [cityButton setTitle:city forState:UIControlStateNormal];
         [self adjustCityButton];
@@ -444,7 +444,7 @@
     CGFloat spaceWidth = (SCREEN_WIDTH - buttonSize * buttonWidth) / 4;
     
     //加载新的分类列表
-    NSMutableArray *recommends = [self getData:@"recommends"];
+    NSMutableArray *recommends = [self fetch:@"recommends"];
     NSInteger recommendsCount = recommends ? [recommends count] : 0;
     
     recommendBtns = [NSMutableArray array];
@@ -513,7 +513,7 @@
     }
     
     //获取分类列表
-    categories = [NSMutableArray arrayWithArray:[self getData:@"categories"]];
+    categories = [NSMutableArray arrayWithArray:[self fetch:@"categories"]];
     //添加
     CategoryEntity *addCategory = [[CategoryEntity alloc] init];
     addCategory.icon = @"homeGroupAdd";
@@ -672,7 +672,7 @@
     }
     
     //加载服务列表
-    types = [NSMutableArray arrayWithArray:[self getData:@"types"]];
+    types = [NSMutableArray arrayWithArray:[self fetch:@"types"]];
     //添加
     CategoryEntity *addType = [[CategoryEntity alloc] init];
     addType.icon = @"homeItemAdd";
@@ -1028,7 +1028,7 @@
     }
     
     //获取参数
-    NSArray *properties = [self getData:@"properties"];
+    NSArray *properties = [self fetch:@"properties"];
     
     //属性容器
     propertyView = [[CasePropertyView alloc] init];
@@ -1044,8 +1044,8 @@
         make.bottom.equalTo(superview.mas_bottom).offset(-80);
     }];
     
-    [propertyView setData:@"properties" value:properties];
-    [propertyView renderData];
+    [propertyView assign:@"properties" value:properties];
+    [propertyView display];
 }
 
 - (void) clearProperties

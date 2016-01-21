@@ -25,10 +25,10 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     //显示数据
-    NSMutableArray *intentionList = [self getData:@"intentionList"];
+    NSMutableArray *intentionList = [self fetch:@"intentionList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     if (intentionList != nil) {
         for (CaseEntity *intention in intentionList) {

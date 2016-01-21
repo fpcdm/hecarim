@@ -89,13 +89,13 @@
     }];
 }
 
-- (void)renderData
+- (void)display
 {
     //所有城市列表
-    NSArray *cities = [self getData:@"cities"];
+    NSArray *cities = [self fetch:@"cities"];
     
     //定位城市
-    LocationEntity *gps = [self getData:@"gps"];
+    LocationEntity *gps = [self fetch:@"gps"];
     if (gps && gps.cityCode) {
         //是否在开通城市列表中
         BOOL isOpenCity = NO;
@@ -178,7 +178,7 @@
         [self.delegate actionGps];
     //设置
     } else {
-        LocationEntity *gps = [self getData:@"gps"];
+        LocationEntity *gps = [self fetch:@"gps"];
         [self.delegate actionCitySelected:gps];
     }
 }

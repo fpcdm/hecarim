@@ -44,8 +44,8 @@
         
         payments = result;
         
-        [rechargeView setData:@"payments" value:payments];
-        [rechargeView renderData];
+        [rechargeView assign:@"payments" value:payments];
+        [rechargeView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];

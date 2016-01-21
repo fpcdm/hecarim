@@ -51,8 +51,8 @@
         AddressEntity *resultAddress = [result firstObject];
         self.address = resultAddress;
         
-        [addressDetailView setData:@"address" value:self.address];
-        [addressDetailView renderData];
+        [addressDetailView assign:@"address" value:self.address];
+        [addressDetailView display];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
     }];
@@ -129,8 +129,8 @@
     viewController.callbackBlock = ^(id object){
         self.address = (AddressEntity *) object;
         
-        [addressDetailView setData:@"address" value:self.address];
-        [addressDetailView renderData];
+        [addressDetailView assign:@"address" value:self.address];
+        [addressDetailView display];
         
         //更新父级视图
         if (self.callbackBlock) {

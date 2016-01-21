@@ -152,13 +152,13 @@ static NSArray *slideAdverts = nil;
         [helperHandler queryAdverts:param success:^(NSArray *result) {
             slideAdverts = result;
             
-            [homeView setData:@"adverts" value:slideAdverts];
+            [homeView assign:@"adverts" value:slideAdverts];
             [homeView reloadAds];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];
     } else {
-        [homeView setData:@"adverts" value:slideAdverts];
+        [homeView assign:@"adverts" value:slideAdverts];
         [homeView reloadAds];
     }
     
@@ -170,14 +170,14 @@ static NSArray *slideAdverts = nil;
             caseRecommends = [NSMutableArray arrayWithArray:result];
             
             //重载推荐
-            [homeView setData:@"recommends" value:caseRecommends];
+            [homeView assign:@"recommends" value:caseRecommends];
             [homeView reloadRecommends];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];
     } else {
         //重载推荐
-        [homeView setData:@"recommends" value:caseRecommends];
+        [homeView assign:@"recommends" value:caseRecommends];
         [homeView reloadRecommends];
     }
     
@@ -192,7 +192,7 @@ static NSArray *slideAdverts = nil;
             caseCategories = [NSMutableArray arrayWithArray:result];
             
             //重新加载菜单
-            [homeView setData:@"categories" value:caseCategories];
+            [homeView assign:@"categories" value:caseCategories];
             [homeView reloadCategories];
             viewRendered = YES;
             
@@ -206,7 +206,7 @@ static NSArray *slideAdverts = nil;
     } else {
         //重新加载菜单
         if (!viewRendered) {
-            [homeView setData:@"categories" value:caseCategories];
+            [homeView assign:@"categories" value:caseCategories];
             [homeView reloadCategories];
         }
         
@@ -220,13 +220,13 @@ static NSArray *slideAdverts = nil;
 {
     //城市名称
     NSString *cityName = [[StorageUtil sharedStorage] getData:LTT_STORAGE_KEY_CITY_NAME];
-    [homeView setData:@"city" value:cityName];
+    NSNumber *count = lastLocation.serviceNumber ? lastLocation.serviceNumber : @-1;
     
-    //地址信息
-    [homeView setData:@"address" value:lastLocation.detailAddress];
-    [homeView setData:@"gps" value:gpsStatus];
-    [homeView setData:@"count" value:lastLocation.serviceNumber ? lastLocation.serviceNumber : @-1];
-    [homeView renderData];
+    [homeView assign:@"city" value:cityName];
+    [homeView assign:@"address" value:lastLocation.detailAddress];
+    [homeView assign:@"gps" value:gpsStatus];
+    [homeView assign:@"count" value:count];
+    [homeView display];
 }
 
 - (void) setTimer
@@ -495,7 +495,7 @@ static NSArray *slideAdverts = nil;
 
 - (void)showProperties:(NSArray *)properties
 {
-    [homeView setData:@"properties" value:properties];
+    [homeView assign:@"properties" value:properties];
     [homeView showProperties];
 }
 
@@ -602,7 +602,7 @@ static NSArray *slideAdverts = nil;
 {
     [homeView.typeView hideIndicator];
     
-    [homeView setData:@"types" value:types];
+    [homeView assign:@"types" value:types];
     [homeView reloadTypes];
 }
 
@@ -634,7 +634,7 @@ static NSArray *slideAdverts = nil;
         if (!hasNew) return;
         
         //有新数据重新渲染视图并保存
-        [homeView setData:@"categories" value:caseCategories];
+        [homeView assign:@"categories" value:caseCategories];
         [homeView reloadCategories];
         
         //重新保存场景
@@ -680,7 +680,7 @@ static NSArray *slideAdverts = nil;
         [caseTypes setObject:result forKey:idStr];
         
         NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
-        [homeView setData:@"types" value:categoryTypes];
+        [homeView assign:@"types" value:categoryTypes];
         [homeView reloadTypes];
         
         //重新保存服务列表

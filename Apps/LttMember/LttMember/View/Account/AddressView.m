@@ -33,9 +33,9 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
-    NSMutableArray *addressList = [self getData:@"addressList"];
+    NSMutableArray *addressList = [self fetch:@"addressList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     
     //有数据

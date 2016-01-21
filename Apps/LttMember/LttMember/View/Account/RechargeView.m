@@ -57,13 +57,13 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     //支付数据
     NSMutableArray *paymentsData = [[NSMutableArray alloc] init];
     
     //判断支付方式
-    NSArray *payments = [self getData:@"payments"];
+    NSArray *payments = [self fetch:@"payments"];
     for (ResultEntity* payment in payments) {
         //判断支付方式
         if ([PAY_WAY_ALIPAY isEqualToString:payment.data]) {

@@ -55,9 +55,9 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
-    intention = [self getData:@"intention"];
+    intention = [self fetch:@"intention"];
     
     //总高度计算
     long goodsCount = intention.goods ? [intention.goods count] : 0;

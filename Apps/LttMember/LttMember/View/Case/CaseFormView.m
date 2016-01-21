@@ -205,12 +205,12 @@
 }
 
 #pragma mark - RenderData
-- (void) renderData
+- (void) display
 {
-    NSString *name = [self getData:@"name"];
+    NSString *name = [self fetch:@"name"];
     if (!name) name = @"";
-    NSString *mobile = [self getData:@"mobile"];
-    NSString *address = [self getData:@"address"];
+    NSString *mobile = [self fetch:@"mobile"];
+    NSString *address = [self fetch:@"address"];
     
     //显示联系人
     contactLabel.text = [NSString stringWithFormat:@"%@  %@", name, mobile];

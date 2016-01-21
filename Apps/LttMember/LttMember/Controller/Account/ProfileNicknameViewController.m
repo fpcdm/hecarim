@@ -25,8 +25,8 @@
     nicknameView.delegate = self;
     self.view = nicknameView;
     
-    [nicknameView setData:@"nickname" value:self.nickname];
-    [nicknameView renderData];
+    [nicknameView assign:@"nickname" value:self.nickname];
+    [nicknameView display];
 }
 
 - (void)viewDidLoad {

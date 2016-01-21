@@ -80,9 +80,9 @@
     return self;
 }
 
-- (void) renderData
+- (void) display
 {
-    NSString *mobile = [self getData:@"mobile"];
+    NSString *mobile = [self fetch:@"mobile"];
     mobileField.text = mobile;
 }
 

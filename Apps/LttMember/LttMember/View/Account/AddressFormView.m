@@ -40,9 +40,9 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
-    AddressEntity *address = [self getData:@"address"];
+    AddressEntity *address = [self fetch:@"address"];
     NSString *area = address.provinceName ? [address areaName] : @"省，市，区";
     NSString *street = address.streetName ? address.streetName : @"街道";
     

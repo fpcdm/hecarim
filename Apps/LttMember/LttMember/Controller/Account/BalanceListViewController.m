@@ -76,8 +76,8 @@
             [tableView setRefreshLoadingState:RefreshLoadingStateNoMoreData];
         }
         
-        [listView setData:@"accountList" value:accountList];
-        [listView renderData];
+        [listView assign:@"accountList" value:accountList];
+        [listView display];
     } failure:^(ErrorEntity *error){
         [tableView stopRefreshLoading];
         

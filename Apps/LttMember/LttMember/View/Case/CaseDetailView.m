@@ -25,10 +25,10 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     //获取数据
-    intention = [self getData:@"intention"];
+    intention = [self fetch:@"intention"];
     
     //计算高度
     CGFloat goodsHeight = 70;

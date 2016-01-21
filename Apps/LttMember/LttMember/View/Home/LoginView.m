@@ -143,10 +143,10 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     //是否显示微信
-    NSNumber *weixinInstalled = [self getData:@"weixin"];
+    NSNumber *weixinInstalled = [self fetch:@"weixin"];
     BOOL showWeixin = [@1 isEqualToNumber:weixinInstalled] ? YES : NO;
     CGFloat buttonWidth = showWeixin ? 1.0/3 : 1.0/2;
     

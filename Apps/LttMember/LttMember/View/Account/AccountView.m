@@ -128,9 +128,9 @@
 }
 
 #pragma mark - RenderData
-- (void) renderData
+- (void)display
 {
-    UserEntity *user = [self getData:@"user"];
+    UserEntity *user = [self fetch:@"user"];
     
     [user avatarView:imageView];
     nameLabel.text = [user displayName];

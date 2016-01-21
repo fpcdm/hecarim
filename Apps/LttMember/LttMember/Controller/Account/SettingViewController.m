@@ -35,8 +35,8 @@
     
     NSUInteger cacheSize = [[SDImageCache sharedImageCache] getSize];
     NSLog(@"缓存大小: %ld", cacheSize);
-    [settingView setData:@"cacheSize" value:[NSNumber numberWithInteger:cacheSize]];
-    [settingView renderData];
+    [settingView assign:@"cacheSize" value:[NSNumber numberWithInteger:cacheSize]];
+    [settingView display];
 }
 
 #pragma mark - Sheet
@@ -52,8 +52,8 @@
             [[SDImageCache sharedImageCache] clearDisk];
             
             //刷新视图
-            [settingView setData:@"cacheSize" value:@0];
-            [settingView renderData];
+            [settingView assign:@"cacheSize" value:@0];
+            [settingView display];
             break;
             //取消
         default:

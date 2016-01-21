@@ -144,9 +144,9 @@
     return self;
 }
 
-- (void) renderData
+- (void)display
 {
-    NSString *mobile = [self getData:@"mobile"];
+    NSString *mobile = [self fetch:@"mobile"];
     tipLabel.text = [NSString stringWithFormat:@"请输入手机号%@收到的短信效验码", mobile];
 }
 

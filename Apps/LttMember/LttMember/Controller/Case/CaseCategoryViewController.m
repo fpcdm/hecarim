@@ -54,8 +54,8 @@
             categoryList = result;
             
             //刷新页面
-            [categoryView setData:@"categories" value:categoryList];
-            [categoryView renderData];
+            [categoryView assign:@"categories" value:categoryList];
+            [categoryView display];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];
@@ -71,8 +71,8 @@
             categoryList = result;
             
             //刷新页面
-            [categoryView setData:@"categories" value:categoryList];
-            [categoryView renderData];
+            [categoryView assign:@"categories" value:categoryList];
+            [categoryView display];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];

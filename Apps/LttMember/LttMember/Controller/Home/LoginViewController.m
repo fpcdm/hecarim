@@ -46,8 +46,8 @@
     
     //自动隐藏微信
     BOOL weixinInstalled = [WXApi isWXAppInstalled];
-    [loginView setData:@"weixin" value:weixinInstalled ? @1 : @0];
-    [loginView renderData];
+    [loginView assign:@"weixin" value:weixinInstalled ? @1 : @0];
+    [loginView display];
     
     //跳转注册
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注册"

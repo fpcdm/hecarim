@@ -46,7 +46,7 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     NSMutableArray *section = [NSMutableArray array];
     
@@ -54,7 +54,7 @@
     CGFloat cellWidth = (SCREEN_WIDTH - 50) / 4;
     
     //循环分类
-    NSArray *categories = [self getData:@"categories"];
+    NSArray *categories = [self fetch:@"categories"];
     if (categories) {
         for (CategoryEntity *category in categories) {
             [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellCategory:cellData:", @"action": @"actionChoose:indexPath:", @"height":@85, @"width": @(cellWidth), @"data": category}];

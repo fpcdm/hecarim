@@ -47,7 +47,7 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     //无需任何操作
 }

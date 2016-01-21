@@ -37,8 +37,8 @@
     
     //加载数据
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    [accountView setData:@"user" value:user];
-    [accountView renderData];
+    [accountView assign:@"user" value:user];
+    [accountView display];
 }
 
 - (void)viewDidLoad
@@ -86,8 +86,8 @@
     viewController.callbackBlock = ^(id object){
         //加载数据
         UserEntity *user = [[StorageUtil sharedStorage] getUser];
-        [accountView setData:@"user" value:user];
-        [accountView renderData];
+        [accountView assign:@"user" value:user];
+        [accountView display];
     };
     
     [self pushViewController:viewController animated:YES];

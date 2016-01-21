@@ -28,8 +28,8 @@
     
     //加载数据
     UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    [profileView setData:@"user" value:user];
-    [profileView renderData];
+    [profileView assign:@"user" value:user];
+    [profileView display];
 }
 
 - (void)viewDidLoad
@@ -68,8 +68,8 @@
                 user.sex = [NSNumber numberWithInt:(buttonIndex == 0 ? 1 : 2)];
                 [[StorageUtil sharedStorage] setUser:user];
                 
-                [profileView setData:@"user" value:user];
-                [profileView renderData];
+                [profileView assign:@"user" value:user];
+                [profileView display];
             } failure:^(ErrorEntity *error){
                 [self showError:error.message];
             }];
@@ -130,8 +130,8 @@
             user.avatar = imageEntity.url;
             [[StorageUtil sharedStorage] setUser:user];
             
-            [profileView setData:@"user" value:user];
-            [profileView renderData];
+            [profileView assign:@"user" value:user];
+            [profileView display];
             
             //刷新菜单
             [self refreshMenu];
@@ -171,8 +171,8 @@
         user.nickname = (NSString *) object;
         [[StorageUtil sharedStorage] setUser:user];
         
-        [profileView setData:@"user" value:user];
-        [profileView renderData];
+        [profileView assign:@"user" value:user];
+        [profileView display];
         
         //刷新菜单
         [self refreshMenu];

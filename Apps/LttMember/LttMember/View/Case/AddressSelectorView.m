@@ -27,11 +27,11 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
-    NSMutableArray *addressList = [self getData:@"addressList"];
-    AddressEntity *currentAddress = [self getData:@"currentAddress"];
+    NSMutableArray *addressList = [self fetch:@"addressList"];
+    AddressEntity *currentAddress = [self fetch:@"currentAddress"];
     
     //当前地址存在
     if (currentAddress && currentAddress.address) {

@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     UIView *superView = self;
     int padding = 10;
@@ -39,7 +39,7 @@
         make.height.equalTo(@20);
     }];
     
-    UserEntity *userEntity = [self getData:@"user"];
+    UserEntity *userEntity = [self fetch:@"user"];
     NSString *mobile = userEntity.mobile;
     NSMutableString *mobileStr = [[NSMutableString alloc] initWithString:mobile];
     [mobileStr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
