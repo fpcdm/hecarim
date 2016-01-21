@@ -220,6 +220,14 @@ iOS9
 
 [Github](https://github.com/CoderMJLee/MJRefresh)
 
+### MRProgress
+
+[Github](https://github.com/mrackwitz/MRProgress)
+
+* QuartzCore.framework
+* CoreGraphics.framework
+* Accelerate.framework
+
 ### NSObject+ObjectMap
 
 [Github](https://github.com/uacaps/NSObject-ObjectMap)

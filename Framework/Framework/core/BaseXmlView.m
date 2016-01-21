@@ -109,7 +109,7 @@ static NSString *patchPath = nil;
     
     _xmlPath = _xmlFileName;
     if (xmlPath) {
-        _xmlPath = [IView joinPath:xmlPath path:_xmlPath];
+        _xmlPath = [HttpUtil joinPath:xmlPath path:_xmlPath];
     }
     _xmlIsUrl = [HttpUtil isUrl:_xmlPath];
     
@@ -201,7 +201,7 @@ static NSString *patchPath = nil;
 
 - (void)refreshCache:(NSString *)oldXml
 {
-    NSString *patchUrl = [IView joinPath:patchPath path:_xmlFileName];
+    NSString *patchUrl = [HttpUtil joinPath:patchPath path:_xmlFileName];
     
     if ([HttpUtil isUrl:patchUrl]) {
         [HttpUtil get:patchUrl params:nil callback:^(NSData *data) {

@@ -51,21 +51,6 @@
     }];
 }
 
-+ (NSString *)getRootPath:(NSString *)path
-{
-    return [IKitUtil getRootPath:path];
-}
-
-+ (NSString *)getBasePath:(NSString *)path
-{
-    return [IKitUtil getBasePath:path];
-}
-
-+ (NSString *)joinPath:(NSString *)basePath path:(NSString *)path
-{
-    return [IKitUtil buildPath:basePath src:path];
-}
-
 - (void)css:(NSString *)css
 {
     [self.style set:css];

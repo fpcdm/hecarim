@@ -28,13 +28,6 @@ typedef void (^IViewCallback)(IView *view);
 
 + (void)viewWithUrl:(NSString *)url callback:(IViewCallback)callback;
 
-//路径相关
-+ (NSString *)getRootPath:(NSString *)path;
-
-+ (NSString *)getBasePath:(NSString *)path;
-
-+ (NSString *)joinPath:(NSString *)basePath path:(NSString *)path;
-
 //样式相关
 - (void)css:(NSString *)css;
 

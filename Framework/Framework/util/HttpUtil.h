@@ -18,6 +18,12 @@ typedef enum {
 
 @interface HttpUtil : NSObject
 
++ (NSString *)getRootPath:(NSString *)path;
+
++ (NSString *)getBasePath:(NSString *)path;
+
++ (NSString *)joinPath:(NSString *)basePath path:(NSString *)path;
+
 + (BOOL)isUrl:(NSString *)url;
 
 + (BOOL)isHtml:(NSString *)str;

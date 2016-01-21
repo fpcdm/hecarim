@@ -8,8 +8,24 @@
 
 #import "HttpUtil.h"
 #import "EncodeUtil.h"
+#import "IKitUtil.h"
 
 @implementation HttpUtil
+
++ (NSString *)getRootPath:(NSString *)path
+{
+    return [IKitUtil getRootPath:path];
+}
+
++ (NSString *)getBasePath:(NSString *)path
+{
+    return [IKitUtil getBasePath:path];
+}
+
++ (NSString *)joinPath:(NSString *)basePath path:(NSString *)path
+{
+    return [IKitUtil buildPath:basePath src:path];
+}
 
 + (BOOL)isUrl:(NSString *)url
 {
