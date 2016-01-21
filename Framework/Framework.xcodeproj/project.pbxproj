@@ -79,6 +79,10 @@
 		2F47501B1C48F3F1001CA674 /* PaginationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750191C48F3F1001CA674 /* PaginationEntity.m */; };
 		2F47501E1C48F423001CA674 /* CacheUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F47501C1C48F423001CA674 /* CacheUtil.h */; };
 		2F47501F1C48F423001CA674 /* CacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F47501D1C48F423001CA674 /* CacheUtil.m */; };
+		2F70CBE41C51040E0010A698 /* FWPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F70CBE21C51040E0010A698 /* FWPluginManager.h */; };
+		2F70CBE51C51040E0010A698 /* FWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70CBE31C51040E0010A698 /* FWPluginManager.m */; };
+		2F70CBE81C510A960010A698 /* FWXmlViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F70CBE61C510A960010A698 /* FWXmlViewManager.h */; };
+		2F70CBE91C510A960010A698 /* FWXmlViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70CBE71C510A960010A698 /* FWXmlViewManager.m */; };
 		2FD991101C48BB4E0065293E /* Framework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FD9910F1C48BB4E0065293E /* Framework.h */; };
 		2FD993291C48BC9D0065293E /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9911D1C48BC9C0065293E /* BaseCollectionView.m */; };
 		2FD9932A1C48BC9D0065293E /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9911F1C48BC9C0065293E /* BaseEntity.m */; };
@@ -679,6 +683,10 @@
 		2F4750191C48F3F1001CA674 /* PaginationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaginationEntity.m; sourceTree = "<group>"; };
 		2F47501C1C48F423001CA674 /* CacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheUtil.h; sourceTree = "<group>"; };
 		2F47501D1C48F423001CA674 /* CacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheUtil.m; sourceTree = "<group>"; };
+		2F70CBE21C51040E0010A698 /* FWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginManager.h; sourceTree = "<group>"; };
+		2F70CBE31C51040E0010A698 /* FWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginManager.m; sourceTree = "<group>"; };
+		2F70CBE61C510A960010A698 /* FWXmlViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWXmlViewManager.h; sourceTree = "<group>"; };
+		2F70CBE71C510A960010A698 /* FWXmlViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWXmlViewManager.m; sourceTree = "<group>"; };
 		2FD9910C1C48BB4E0065293E /* libFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD9910F1C48BB4E0065293E /* Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Framework.h; sourceTree = "<group>"; };
 		2FD991191C48BC9C0065293E /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
@@ -1379,6 +1387,10 @@
 				2FF340CE1C509F4B0066CC1F /* BaseAction.m */,
 				2FF340D11C509FFD0066CC1F /* BaseViewAction.h */,
 				2FF340D21C509FFD0066CC1F /* BaseViewAction.m */,
+				2F70CBE61C510A960010A698 /* FWXmlViewManager.h */,
+				2F70CBE71C510A960010A698 /* FWXmlViewManager.m */,
+				2F70CBE21C51040E0010A698 /* FWPluginManager.h */,
+				2F70CBE31C51040E0010A698 /* FWPluginManager.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -2357,6 +2369,7 @@
 				2FD99E711C48CE6F0065293E /* RKCoreData.h in Headers */,
 				2FD99DBC1C48CE6F0065293E /* FLEXGlobalsTableViewController.h in Headers */,
 				2FD99DE41C48CE6F0065293E /* FLEXImageExplorerViewController.h in Headers */,
+				2F70CBE81C510A960010A698 /* FWXmlViewManager.h in Headers */,
 				2FD99D521C48CE6F0065293E /* ActionSheetLocalePicker.h in Headers */,
 				2FD99E4D1C48CE6F0065293E /* UIView+MJExtension.h in Headers */,
 				2FD99EB91C48CE700065293E /* Testing.h in Headers */,
@@ -2497,6 +2510,7 @@
 				2F1C35F11C4C89310060E793 /* IViewInternal.h in Headers */,
 				2FD99E731C48CE6F0065293E /* RKDotNetDateFormatter.h in Headers */,
 				2FD99E911C48CE6F0065293E /* RKNSJSONSerialization.h in Headers */,
+				2F70CBE41C51040E0010A698 /* FWPluginManager.h in Headers */,
 				2F1C35DF1C4C89310060E793 /* ICell.h in Headers */,
 				2FD99D601C48CE6F0065293E /* DDASLLogger.h in Headers */,
 				2FD99D631C48CE6F0065293E /* DDFileLogger.h in Headers */,
@@ -2718,7 +2732,9 @@
 				2FD99D871C48CE6F0065293E /* FLEXArgumentInputTextView.m in Sources */,
 				2FD99E1D1C48CE6F0065293E /* MASViewAttribute.m in Sources */,
 				2FD99E531C48CE6F0065293E /* PINDiskCache.m in Sources */,
+				2F70CBE51C51040E0010A698 /* FWPluginManager.m in Sources */,
 				2FD99D561C48CE6F0065293E /* ActionSheetStringPicker.m in Sources */,
+				2F70CBE91C510A960010A698 /* FWXmlViewManager.m in Sources */,
 				2FD9933C1C48BC9D0065293E /* ErrorEntity.m in Sources */,
 				2FD99DBF1C48CE6F0065293E /* FLEXInstancesTableViewController.m in Sources */,
 				2FD993461C48BC9D0065293E /* RestKitUtil.m in Sources */,
