@@ -25,7 +25,7 @@ Framework
     	extension: OC分类扩展
     	library: 框架常用类库
     	util: OC组件工具包
-    	vender: 第三方OC组件
+    	vendor: 第三方OC组件
 
 依赖
 ----------
@@ -72,10 +72,13 @@ iOS9
         <key>NSAllowsArbitraryLoads</key><true/>
     </dict>
 
+### Aspects
+
+[Github](https://github.com/steipete/Aspects)
+
 ### AXRatingView
 
 [Github](https://github.com/akiroom/AXRatingView)
-
 
 ### BPush
 
@@ -433,6 +436,10 @@ iOS9
 	    <string>wechat</string>
 	    <string>weixin</string>
 	</array>
+
+### XAspect
+
+[Github](https://github.com/xareelee/XAspect)
 
 ### XMLDictionary
 

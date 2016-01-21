@@ -63,6 +63,8 @@
 		2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35CF1C4C89310060E793 /* INSXmlViewLoader.m */; };
 		2F1C36091C4C89310060E793 /* IViewLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35D01C4C89310060E793 /* IViewLoader.h */; };
 		2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35D11C4C89310060E793 /* IViewLoader.m */; };
+		2F1C39791C507AC8000B131E /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C39771C507AC8000B131E /* Aspects.h */; };
+		2F1C397A1C507AC8000B131E /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C39781C507AC8000B131E /* Aspects.m */; };
 		2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */; };
 		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
 		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; };
@@ -644,6 +646,8 @@
 		2F1C35CF1C4C89310060E793 /* INSXmlViewLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INSXmlViewLoader.m; sourceTree = "<group>"; };
 		2F1C35D01C4C89310060E793 /* IViewLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IViewLoader.h; sourceTree = "<group>"; };
 		2F1C35D11C4C89310060E793 /* IViewLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IViewLoader.m; sourceTree = "<group>"; };
+		2F1C39771C507AC8000B131E /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		2F1C39781C507AC8000B131E /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
 		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
 		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
@@ -1256,6 +1260,15 @@
 			path = xml;
 			sourceTree = "<group>";
 		};
+		2F1C39761C507AC8000B131E /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				2F1C39771C507AC8000B131E /* Aspects.h */,
+				2F1C39781C507AC8000B131E /* Aspects.m */,
+			);
+			path = Aspects;
+			sourceTree = "<group>";
+		};
 		2F1CD5131C4F1CC200B0DC4B /* JSPatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1430,6 +1443,7 @@
 		2FD991641C48BC9C0065293E /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2F1C39761C507AC8000B131E /* Aspects */,
 				2FD99B851C48CE6E0065293E /* ActionSheetPicker */,
 				2F1C35951C4C89310060E793 /* CocoaUI */,
 				2FD99B981C48CE6E0065293E /* CocoaLumberjack */,
@@ -2343,6 +2357,7 @@
 				2FD99ECF1C48CE700065293E /* SDWebImagePrefetcher.h in Headers */,
 				2FD99ED11C48CE700065293E /* UIButton+WebCache.h in Headers */,
 				2FD99D9D1C48CE6F0065293E /* FLEXManager.h in Headers */,
+				2F1C39791C507AC8000B131E /* Aspects.h in Headers */,
 				2FD99DB61C48CE6F0065293E /* FLEXFileBrowserFileOperationController.h in Headers */,
 				2FD99EBE1C48CE700065293E /* UIImageView+AFNetworking.h in Headers */,
 				2FD99D591C48CE6F0065293E /* SWActionSheet.h in Headers */,
@@ -2705,6 +2720,7 @@
 				2FD99DAB1C48CE6F0065293E /* FLEXTableContentCell.m in Sources */,
 				2FD99DFD1C48CE6F0065293E /* FLEXRuntimeUtility.m in Sources */,
 				2FD99D8B1C48CE6F0065293E /* FLEXArgumentInputViewFactory.m in Sources */,
+				2F1C397A1C507AC8000B131E /* Aspects.m in Sources */,
 				2FD99DF71C48CE6F0065293E /* FLEXKeyboardShortcutManager.m in Sources */,
 				2FD99DB11C48CE6F0065293E /* FLEXTableListViewController.m in Sources */,
 				2FD99D6B1C48CE6F0065293E /* DDTTYLogger.m in Sources */,
