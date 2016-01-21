@@ -25,6 +25,9 @@
 //获取数据
 - (id)fetch:(NSString *)key;
 
+//获取所有数据
+- (NSDictionary *)fetch;
+
 //赋值并展示数据
 - (void)display:(NSDictionary *)data;
 

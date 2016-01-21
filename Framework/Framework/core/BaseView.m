@@ -72,6 +72,11 @@
     return value;
 }
 
+- (NSDictionary *)fetch
+{
+    return [NSDictionary dictionaryWithDictionary:viewData];
+}
+
 - (void)display:(NSDictionary *)data
 {
     [self assign:data];
