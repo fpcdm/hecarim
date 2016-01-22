@@ -11,18 +11,18 @@
 //插件通用协议
 @protocol FWPlugin <NSObject>
 
-+ (id<FWPlugin>)sharedInstance;
-
 @end
 
-//插件分组
-@interface FWPluginGroup : NSObject
+//插件模块协议
+@protocol FWPluginModule <NSObject>
 
-+ (FWPluginGroup *)groupWithName:(NSString *)name defaultClass:(Class)defaultClass;
+@required
+//模块默认对象
++ (id<FWPlugin>)defaultPlugin;
 
-@prop_readonly(NSString *, name)
-
-@prop_readonly(Class, defaultClass)
+@optional
+//模块名称，默认协议实现类名
++ (NSString *)moduleName;
 
 @end
 
@@ -31,13 +31,10 @@
 
 @singleton(FWPluginManager)
 
-//设置插件分组的实现类
-- (void)setPluginClass:(FWPluginGroup *)group pluginClass:(Class)pluginClass;
+//设置插件模块的对象，设置为空则释放对象
+- (void)setPlugin:(Class<FWPluginModule>)module plugin:(id<FWPlugin>)plugin;
 
-//获取插件分组的实现类
-- (Class)getPluginClass:(FWPluginGroup *)group;
-
-//获取插件分组的对象
-- (id<FWPlugin>)getPlugin:(FWPluginGroup *)group;
+//获取插件模块的对象，未设置返回defaultPlugin
+- (id<FWPlugin>)getPlugin:(Class<FWPluginModule>)module;
 
 @end
