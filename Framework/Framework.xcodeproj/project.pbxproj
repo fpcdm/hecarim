@@ -73,14 +73,16 @@
 		2F1CD5201C4F2C6E00B0DC4B /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */; };
 		2F1CD52E1C4F800C00B0DC4B /* IView+Xml.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD52C1C4F800B00B0DC4B /* IView+Xml.h */; };
 		2F1CD52F1C4F800C00B0DC4B /* IView+Xml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD52D1C4F800C00B0DC4B /* IView+Xml.m */; };
-		2F4394681C53B2C800CCA5F5 /* FWPluginDialogProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4394661C53B2C800CCA5F5 /* FWPluginDialogProvider.h */; };
-		2F4394691C53B2C800CCA5F5 /* FWPluginDialogProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4394671C53B2C800CCA5F5 /* FWPluginDialogProvider.m */; };
 		2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750111C48F11A001CA674 /* DynamicEntity.h */; };
 		2F4750141C48F11A001CA674 /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750121C48F11A001CA674 /* DynamicEntity.m */; };
 		2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750181C48F3F1001CA674 /* PaginationEntity.h */; };
 		2F47501B1C48F3F1001CA674 /* PaginationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750191C48F3F1001CA674 /* PaginationEntity.m */; };
 		2F47501E1C48F423001CA674 /* CacheUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F47501C1C48F423001CA674 /* CacheUtil.h */; };
 		2F47501F1C48F423001CA674 /* CacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F47501D1C48F423001CA674 /* CacheUtil.m */; };
+		2F5F2F131C53E10900571E49 /* FWPluginNetworkProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F111C53E10900571E49 /* FWPluginNetworkProvider.h */; };
+		2F5F2F141C53E10900571E49 /* FWPluginNetworkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */; };
+		2F5F2F171C53E1FE00571E49 /* FWPluginNetworkRestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */; };
+		2F5F2F181C53E1FE00571E49 /* FWPluginNetworkRestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F161C53E1FE00571E49 /* FWPluginNetworkRestKit.m */; };
 		2F70CBE41C51040E0010A698 /* FWPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F70CBE21C51040E0010A698 /* FWPluginManager.h */; };
 		2F70CBE51C51040E0010A698 /* FWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70CBE31C51040E0010A698 /* FWPluginManager.m */; };
 		2FAA250E1C53A56C00933669 /* BaseWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FAA250C1C53A56C00933669 /* BaseWidget.h */; };
@@ -679,14 +681,16 @@
 		2F1CD51E1C4F2C6E00B0DC4B /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
 		2F1CD52C1C4F800B00B0DC4B /* IView+Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IView+Xml.h"; sourceTree = "<group>"; };
 		2F1CD52D1C4F800C00B0DC4B /* IView+Xml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IView+Xml.m"; sourceTree = "<group>"; };
-		2F4394661C53B2C800CCA5F5 /* FWPluginDialogProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogProvider.h; sourceTree = "<group>"; };
-		2F4394671C53B2C800CCA5F5 /* FWPluginDialogProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogProvider.m; sourceTree = "<group>"; };
 		2F4750111C48F11A001CA674 /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
 		2F4750121C48F11A001CA674 /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
 		2F4750181C48F3F1001CA674 /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
 		2F4750191C48F3F1001CA674 /* PaginationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaginationEntity.m; sourceTree = "<group>"; };
 		2F47501C1C48F423001CA674 /* CacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheUtil.h; sourceTree = "<group>"; };
 		2F47501D1C48F423001CA674 /* CacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheUtil.m; sourceTree = "<group>"; };
+		2F5F2F111C53E10900571E49 /* FWPluginNetworkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginNetworkProvider.h; sourceTree = "<group>"; };
+		2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginNetworkProvider.m; sourceTree = "<group>"; };
+		2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginNetworkRestKit.h; sourceTree = "<group>"; };
+		2F5F2F161C53E1FE00571E49 /* FWPluginNetworkRestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginNetworkRestKit.m; sourceTree = "<group>"; };
 		2F70CBE21C51040E0010A698 /* FWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginManager.h; sourceTree = "<group>"; };
 		2F70CBE31C51040E0010A698 /* FWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginManager.m; sourceTree = "<group>"; };
 		2FAA250C1C53A56C00933669 /* BaseWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWidget.h; sourceTree = "<group>"; };
@@ -1328,8 +1332,10 @@
 		2FAA25101C53AB4800933669 /* plugin */ = {
 			isa = PBXGroup;
 			children = (
-				2F4394661C53B2C800CCA5F5 /* FWPluginDialogProvider.h */,
-				2F4394671C53B2C800CCA5F5 /* FWPluginDialogProvider.m */,
+				2F5F2F111C53E10900571E49 /* FWPluginNetworkProvider.h */,
+				2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */,
+				2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */,
+				2F5F2F161C53E1FE00571E49 /* FWPluginNetworkRestKit.m */,
 			);
 			path = plugin;
 			sourceTree = "<group>";
@@ -2349,6 +2355,7 @@
 				2FD99D921C48CE6F0065293E /* FLEXIvarEditorViewController.h in Headers */,
 				2FD99D661C48CE6F0065293E /* DDLog+LOGV.h in Headers */,
 				2FD99E901C48CE6F0065293E /* RKMIMETypeSerialization.h in Headers */,
+				2F5F2F131C53E10900571E49 /* FWPluginNetworkProvider.h in Headers */,
 				2FD99E2E1C48CE6F0065293E /* MJRefreshComponent.h in Headers */,
 				2FD99DEE1C48CE6F0065293E /* FLEXViewControllerExplorerViewController.h in Headers */,
 				2FD99EB31C48CE700065293E /* RKTestNotificationObserver.h in Headers */,
@@ -2366,7 +2373,6 @@
 				2FD99E5B1C48CE6F0065293E /* AFJSONRequestOperation.h in Headers */,
 				2FD99E3E1C48CE6F0065293E /* MJRefreshBackStateFooter.h in Headers */,
 				2FD99E421C48CE6F0065293E /* MJRefreshNormalHeader.h in Headers */,
-				2F4394681C53B2C800CCA5F5 /* FWPluginDialogProvider.h in Headers */,
 				2FD99D541C48CE6F0065293E /* ActionSheetPicker.h in Headers */,
 				2FD99D861C48CE6F0065293E /* FLEXArgumentInputTextView.h in Headers */,
 				2FD99EA41C48CE6F0065293E /* RKRequestDescriptor.h in Headers */,
@@ -2558,6 +2564,7 @@
 				2FD993F51C48BE710065293E /* UIViewController+BackButtonHandler.h in Headers */,
 				2FD993F61C48BE720065293E /* UIViewController+Dialog.h in Headers */,
 				2FF343201C50CF490066CC1F /* DateUtil.h in Headers */,
+				2F5F2F171C53E1FE00571E49 /* FWPluginNetworkRestKit.h in Headers */,
 				2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */,
 				2FF340D31C509FFD0066CC1F /* BaseViewAction.h in Headers */,
 				2FD993F81C48BE720065293E /* FileEntity.h in Headers */,
@@ -2711,6 +2718,7 @@
 				2FF343151C50C4240066CC1F /* SystemUtil.m in Sources */,
 				2FD99DDD1C48CE6F0065293E /* FLEXClassExplorerViewController.m in Sources */,
 				2FD993391C48BC9D0065293E /* UIView+Loading.m in Sources */,
+				2F5F2F141C53E10900571E49 /* FWPluginNetworkProvider.m in Sources */,
 				2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */,
 				2F1C35E91C4C89310060E793 /* IPullRefresh.m in Sources */,
 				2FD9932D1C48BC9D0065293E /* BaseScrollView.m in Sources */,
@@ -2723,6 +2731,7 @@
 				2F1C36021C4C89310060E793 /* ITableRow.m in Sources */,
 				2FD99E451C48CE6F0065293E /* MJRefreshStateHeader.m in Sources */,
 				2FD99D681C48CE6F0065293E /* DDLog.m in Sources */,
+				2F5F2F181C53E1FE00571E49 /* FWPluginNetworkRestKit.m in Sources */,
 				2FD99DF31C48CE6F0065293E /* FLEXHeapEnumerator.m in Sources */,
 				2FD99ECD1C48CE700065293E /* SDWebImageManager.m in Sources */,
 				2FD99E481C48CE6F0065293E /* MJRefreshConst.m in Sources */,
@@ -2852,7 +2861,6 @@
 				2FD99DE51C48CE6F0065293E /* FLEXImageExplorerViewController.m in Sources */,
 				2F1CD52F1C4F800C00B0DC4B /* IView+Xml.m in Sources */,
 				2F47501F1C48F423001CA674 /* CacheUtil.m in Sources */,
-				2F4394691C53B2C800CCA5F5 /* FWPluginDialogProvider.m in Sources */,
 				2FD99DB51C48CE6F0065293E /* FLEXCookiesTableViewController.m in Sources */,
 				2F1C35D91C4C89310060E793 /* IFlowLayout.m in Sources */,
 				2FD99D511C48CE6F0065293E /* ActionSheetDistancePicker.m in Sources */,
