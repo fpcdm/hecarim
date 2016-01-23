@@ -13,16 +13,11 @@
 
 @end
 
-//插件模块协议
-@protocol FWPluginModule <NSObject>
+//插件提供者协议
+@protocol FWPluginProvider <NSObject>
 
-@required
-//模块默认对象
-+ (id<FWPlugin>)defaultPlugin;
-
-@optional
-//模块名称，默认协议实现类名
-+ (NSString *)moduleName;
+//提供插件对象
+- (id<FWPlugin>)providePlugin:(NSString *)name;
 
 @end
 
@@ -31,10 +26,10 @@
 
 @singleton(FWPluginManager)
 
-//设置插件模块的对象，设置为空则释放对象
-- (void)setPlugin:(Class<FWPluginModule>)module plugin:(id<FWPlugin>)plugin;
+//设置插件提供者，从而实现动态替换插件
+- (void)setPluginProvider:(NSString *)name provider:(id<FWPluginProvider>)provider;
 
-//获取插件模块的对象，未设置返回defaultPlugin
-- (id<FWPlugin>)getPlugin:(Class<FWPluginModule>)module;
+//获取插件对象
+- (id<FWPlugin>)getPlugin:(NSString *)name;
 
 @end

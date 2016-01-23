@@ -10,7 +10,7 @@
 
 @implementation FWPluginManager
 {
-    NSMutableDictionary *pluginPool;
+    NSMutableDictionary *providerPool;
 }
 
 @def_singleton(FWPluginManager)
@@ -19,30 +19,28 @@
 {
     self = [super init];
     if (self) {
-        pluginPool = [[NSMutableDictionary alloc] init];
+        providerPool = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
-- (void)setPlugin:(Class<FWPluginModule>)module plugin:(id<FWPlugin>)plugin
+- (void)setPluginProvider:(NSString *)name provider:(id<FWPluginProvider>)provider
 {
-    NSString *moduleName = [module moduleName];
-    if (plugin) {
-        [pluginPool setObject:plugin forKey:moduleName];
+    if (provider) {
+        [providerPool setObject:provider forKey:name];
     } else {
-        [pluginPool removeObjectForKey:moduleName];
+        [providerPool removeObjectForKey:name];
     }
 }
 
-- (id<FWPlugin>)getPlugin:(Class<FWPluginModule>)module
+- (id<FWPlugin>)getPlugin:(NSString *)name
 {
-    NSString *moduleName = [module moduleName];
-    id<FWPlugin> plugin = [pluginPool objectForKey:moduleName];
-    if (!plugin) {
-        plugin = [module defaultPlugin];
-        [pluginPool setObject:plugin forKey:moduleName];
+    id<FWPluginProvider> provider = [providerPool objectForKey:name];
+    if (!provider) {
+        return nil;
     }
-    return plugin;
+    
+    return [provider providePlugin:name];
 }
 
 @end
