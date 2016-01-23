@@ -11,6 +11,6 @@
 @interface ObjectUtil : NSObject
 
 //从视图读取图片
-+ (UIImage *)saveImageFromView:(UIView *)view;
++ (UIImage *)getImageFromView:(UIView *)view;
 
 @end

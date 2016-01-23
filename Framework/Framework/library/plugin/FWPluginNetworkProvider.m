@@ -11,7 +11,7 @@
 
 @implementation FWPluginNetworkProvider
 
-- (id<FWPlugin>)providePlugin:(NSString *)name
+- (id<FWProtocolPlugin>)providePlugin:(NSString *)name
 {
     FWPluginNetworkRestKit *plugin = [FWPluginNetworkRestKit sharedInstance];
     return plugin;

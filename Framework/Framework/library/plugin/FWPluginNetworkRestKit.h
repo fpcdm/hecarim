@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWPluginNetworkProvider.h"
+#import "FWProtocolPluginNetwork.h"
 
-@interface FWPluginNetworkRestKit : NSObject<FWPluginNetwork>
+@interface FWPluginNetworkRestKit : NSObject<FWProtocolPluginNetwork>
 
 @singleton(FWPluginNetworkRestKit)
 

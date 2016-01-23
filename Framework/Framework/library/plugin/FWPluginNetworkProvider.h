@@ -7,13 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWPluginManager.h"
-
-@protocol FWPluginNetwork <FWPlugin>
-
-@end
+#import "FWProtocolPluginNetwork.h"
 
 //默认网络插件：RestKit
-@interface FWPluginNetworkProvider : NSObject<FWPluginProvider>
+@interface FWPluginNetworkProvider : NSObject<FWProtocolPluginNetwork>
 
 @end

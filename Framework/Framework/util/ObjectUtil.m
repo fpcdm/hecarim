@@ -10,7 +10,8 @@
 
 @implementation ObjectUtil
 
-+ (UIImage *)saveImageFromView:(UIView *)view {
++ (UIImage *)getImageFromView:(UIView *)view
+{
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, YES, view.layer.contentsScale);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

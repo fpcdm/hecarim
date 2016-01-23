@@ -24,7 +24,7 @@
     return self;
 }
 
-- (void)setPluginProvider:(NSString *)name provider:(id<FWPluginProvider>)provider
+- (void)setPluginProvider:(NSString *)name provider:(id<FWProtocolPluginProvider>)provider
 {
     if (provider) {
         [providerPool setObject:provider forKey:name];
@@ -33,9 +33,9 @@
     }
 }
 
-- (id<FWPlugin>)getPlugin:(NSString *)name
+- (id<FWProtocolPlugin>)getPlugin:(NSString *)name
 {
-    id<FWPluginProvider> provider = [providerPool objectForKey:name];
+    id<FWProtocolPluginProvider> provider = [providerPool objectForKey:name];
     if (!provider) {
         return nil;
     }
