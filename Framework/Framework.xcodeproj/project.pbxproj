@@ -83,8 +83,8 @@
 		2F5F2F141C53E10900571E49 /* FWPluginNetworkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */; };
 		2F5F2F171C53E1FE00571E49 /* FWPluginNetworkRestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */; };
 		2F5F2F181C53E1FE00571E49 /* FWPluginNetworkRestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F161C53E1FE00571E49 /* FWPluginNetworkRestKit.m */; };
-		2F70CBE41C51040E0010A698 /* FWPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F70CBE21C51040E0010A698 /* FWPluginManager.h */; };
-		2F70CBE51C51040E0010A698 /* FWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70CBE31C51040E0010A698 /* FWPluginManager.m */; };
+		2F5F2F1D1C53F27500571E49 /* FWPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */; };
+		2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */; };
 		2FAA250E1C53A56C00933669 /* BaseWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FAA250C1C53A56C00933669 /* BaseWidget.h */; };
 		2FAA250F1C53A56C00933669 /* BaseWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA250D1C53A56C00933669 /* BaseWidget.m */; };
 		2FD991101C48BB4E0065293E /* Framework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FD9910F1C48BB4E0065293E /* Framework.h */; };
@@ -691,8 +691,8 @@
 		2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginNetworkProvider.m; sourceTree = "<group>"; };
 		2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginNetworkRestKit.h; sourceTree = "<group>"; };
 		2F5F2F161C53E1FE00571E49 /* FWPluginNetworkRestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginNetworkRestKit.m; sourceTree = "<group>"; };
-		2F70CBE21C51040E0010A698 /* FWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginManager.h; sourceTree = "<group>"; };
-		2F70CBE31C51040E0010A698 /* FWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginManager.m; sourceTree = "<group>"; };
+		2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginManager.h; sourceTree = "<group>"; };
+		2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginManager.m; sourceTree = "<group>"; };
 		2FAA250C1C53A56C00933669 /* BaseWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWidget.h; sourceTree = "<group>"; };
 		2FAA250D1C53A56C00933669 /* BaseWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWidget.m; sourceTree = "<group>"; };
 		2FD9910C1C48BB4E0065293E /* libFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1332,6 +1332,8 @@
 		2FAA25101C53AB4800933669 /* plugin */ = {
 			isa = PBXGroup;
 			children = (
+				2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */,
+				2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */,
 				2F5F2F111C53E10900571E49 /* FWPluginNetworkProvider.h */,
 				2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */,
 				2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */,
@@ -1406,8 +1408,6 @@
 				2FF340CE1C509F4B0066CC1F /* BaseAction.m */,
 				2FF340D11C509FFD0066CC1F /* BaseViewAction.h */,
 				2FF340D21C509FFD0066CC1F /* BaseViewAction.m */,
-				2F70CBE21C51040E0010A698 /* FWPluginManager.h */,
-				2F70CBE31C51040E0010A698 /* FWPluginManager.m */,
 				2FAA250C1C53A56C00933669 /* BaseWidget.h */,
 				2FAA250D1C53A56C00933669 /* BaseWidget.m */,
 			);
@@ -2230,6 +2230,7 @@
 				2FD99E611C48CE6F0065293E /* CoreData.h in Headers */,
 				2FD99E4F1C48CE6F0065293E /* Nullability.h in Headers */,
 				2FD99EC41C48CE700065293E /* SDWebImageCompat.h in Headers */,
+				2F5F2F1D1C53F27500571E49 /* FWPluginManager.h in Headers */,
 				2FD99E741C48CE6F0065293E /* RKDynamicMapping.h in Headers */,
 				2FD99D7A1C48CE6F0065293E /* FLEXArgumentInputJSONObjectView.h in Headers */,
 				2FD99D821C48CE6F0065293E /* FLEXArgumentInputStructView.h in Headers */,
@@ -2530,7 +2531,6 @@
 				2F1C35F11C4C89310060E793 /* IViewInternal.h in Headers */,
 				2FD99E731C48CE6F0065293E /* RKDotNetDateFormatter.h in Headers */,
 				2FD99E911C48CE6F0065293E /* RKNSJSONSerialization.h in Headers */,
-				2F70CBE41C51040E0010A698 /* FWPluginManager.h in Headers */,
 				2F1C35DF1C4C89310060E793 /* ICell.h in Headers */,
 				2FD99D601C48CE6F0065293E /* DDASLLogger.h in Headers */,
 				2FD99D631C48CE6F0065293E /* DDFileLogger.h in Headers */,
@@ -2710,6 +2710,7 @@
 				2FD99EE61C48CE700065293E /* TSBlurView.m in Sources */,
 				2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */,
 				2FD993421C48BC9D0065293E /* LocationUtil.m in Sources */,
+				2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */,
 				2FD993441C48BC9D0065293E /* NotificationUtil.m in Sources */,
 				2FD99E151C48CE6F0065293E /* MASConstraint.m in Sources */,
 				2F1C35F41C4C89310060E793 /* IButton.m in Sources */,
@@ -2757,7 +2758,6 @@
 				2FD99D871C48CE6F0065293E /* FLEXArgumentInputTextView.m in Sources */,
 				2FD99E1D1C48CE6F0065293E /* MASViewAttribute.m in Sources */,
 				2FD99E531C48CE6F0065293E /* PINDiskCache.m in Sources */,
-				2F70CBE51C51040E0010A698 /* FWPluginManager.m in Sources */,
 				2FD99D561C48CE6F0065293E /* ActionSheetStringPicker.m in Sources */,
 				2FD9933C1C48BC9D0065293E /* ErrorEntity.m in Sources */,
 				2FD99DBF1C48CE6F0065293E /* FLEXInstancesTableViewController.m in Sources */,
