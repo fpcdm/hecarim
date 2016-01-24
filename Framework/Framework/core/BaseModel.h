@@ -9,6 +9,7 @@
 #import "BaseEntity.h"
 #import "BaseHandler.h"
 
+//todo: Model替换Entity，去掉Entity层
 @interface BaseModel : BaseEntity
 
 @end

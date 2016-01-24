@@ -99,6 +99,12 @@
 		2F5F2F401C5411D500571E49 /* FWProtocolPluginCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F3F1C5411D400571E49 /* FWProtocolPluginCache.h */; };
 		2FAA250E1C53A56C00933669 /* BaseWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FAA250C1C53A56C00933669 /* BaseWidget.h */; };
 		2FAA250F1C53A56C00933669 /* BaseWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA250D1C53A56C00933669 /* BaseWidget.m */; };
+		2FCBAC751C54CACE003D9786 /* BasePage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FCBAC731C54CACE003D9786 /* BasePage.h */; };
+		2FCBAC761C54CACE003D9786 /* BasePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCBAC741C54CACE003D9786 /* BasePage.m */; };
+		2FCBAC791C54CAF6003D9786 /* BaseXmlPage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FCBAC771C54CAF6003D9786 /* BaseXmlPage.h */; };
+		2FCBAC7A1C54CAF6003D9786 /* BaseXmlPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCBAC781C54CAF6003D9786 /* BaseXmlPage.m */; };
+		2FCBAC7D1C54CB42003D9786 /* BaseViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FCBAC7B1C54CB42003D9786 /* BaseViewModel.h */; };
+		2FCBAC7E1C54CB42003D9786 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCBAC7C1C54CB42003D9786 /* BaseViewModel.m */; };
 		2FD991101C48BB4E0065293E /* Framework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FD9910F1C48BB4E0065293E /* Framework.h */; };
 		2FD993291C48BC9D0065293E /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9911D1C48BC9C0065293E /* BaseCollectionView.m */; };
 		2FD9932A1C48BC9D0065293E /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9911F1C48BC9C0065293E /* BaseEntity.m */; };
@@ -719,6 +725,12 @@
 		2F5F2F3F1C5411D400571E49 /* FWProtocolPluginCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWProtocolPluginCache.h; sourceTree = "<group>"; };
 		2FAA250C1C53A56C00933669 /* BaseWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWidget.h; sourceTree = "<group>"; };
 		2FAA250D1C53A56C00933669 /* BaseWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWidget.m; sourceTree = "<group>"; };
+		2FCBAC731C54CACE003D9786 /* BasePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePage.h; sourceTree = "<group>"; };
+		2FCBAC741C54CACE003D9786 /* BasePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePage.m; sourceTree = "<group>"; };
+		2FCBAC771C54CAF6003D9786 /* BaseXmlPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseXmlPage.h; sourceTree = "<group>"; };
+		2FCBAC781C54CAF6003D9786 /* BaseXmlPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseXmlPage.m; sourceTree = "<group>"; };
+		2FCBAC7B1C54CB42003D9786 /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
+		2FCBAC7C1C54CB42003D9786 /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		2FD9910C1C48BB4E0065293E /* libFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD9910F1C48BB4E0065293E /* Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Framework.h; sourceTree = "<group>"; };
 		2FD991191C48BC9C0065293E /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
@@ -1468,6 +1480,8 @@
 				2FD991211C48BC9C0065293E /* BaseHandler.m */,
 				2FD991221C48BC9C0065293E /* BaseModel.h */,
 				2FD991231C48BC9C0065293E /* BaseModel.m */,
+				2FCBAC7B1C54CB42003D9786 /* BaseViewModel.h */,
+				2FCBAC7C1C54CB42003D9786 /* BaseViewModel.m */,
 				2FD991241C48BC9C0065293E /* BaseScrollView.h */,
 				2FD991251C48BC9C0065293E /* BaseScrollView.m */,
 				2FD991261C48BC9C0065293E /* BaseTableView.h */,
@@ -1482,6 +1496,10 @@
 				2FF340CE1C509F4B0066CC1F /* BaseAction.m */,
 				2FF340D11C509FFD0066CC1F /* BaseViewAction.h */,
 				2FF340D21C509FFD0066CC1F /* BaseViewAction.m */,
+				2FCBAC731C54CACE003D9786 /* BasePage.h */,
+				2FCBAC741C54CACE003D9786 /* BasePage.m */,
+				2FCBAC771C54CAF6003D9786 /* BaseXmlPage.h */,
+				2FCBAC781C54CAF6003D9786 /* BaseXmlPage.m */,
 				2FAA250C1C53A56C00933669 /* BaseWidget.h */,
 				2FAA250D1C53A56C00933669 /* BaseWidget.m */,
 			);
@@ -2490,6 +2508,7 @@
 				2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */,
 				2FD99EB21C48CE700065293E /* RKTestHelpers.h in Headers */,
 				2FD99DD41C48CE6F0065293E /* FLEXNetworkTransactionDetailTableViewController.h in Headers */,
+				2FCBAC7D1C54CB42003D9786 /* BaseViewModel.h in Headers */,
 				2FD99E941C48CE6F0065293E /* RKObjectMappingMatcher.h in Headers */,
 				2FD99EB41C48CE700065293E /* RKURLEncodedSerialization.h in Headers */,
 				2FD99E111C48CE6F0065293E /* MASCompositeConstraint.h in Headers */,
@@ -2617,6 +2636,7 @@
 				2F1C35DF1C4C89310060E793 /* ICell.h in Headers */,
 				2FD99D601C48CE6F0065293E /* DDASLLogger.h in Headers */,
 				2FD99D631C48CE6F0065293E /* DDFileLogger.h in Headers */,
+				2FCBAC751C54CACE003D9786 /* BasePage.h in Headers */,
 				2FD99E951C48CE6F0065293E /* RKObjectMappingOperationDataSource.h in Headers */,
 				2FD99EC01C48CE700065293E /* NSData+ImageContentType.h in Headers */,
 				2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */,
@@ -2650,6 +2670,7 @@
 				2FF343201C50CF490066CC1F /* DateUtil.h in Headers */,
 				2F5F2F171C53E1FE00571E49 /* FWPluginNetworkRestKit.h in Headers */,
 				2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */,
+				2FCBAC791C54CAF6003D9786 /* BaseXmlPage.h in Headers */,
 				2FF340D31C509FFD0066CC1F /* BaseViewAction.h in Headers */,
 				2FD993F81C48BE720065293E /* FileEntity.h in Headers */,
 				2FD993F91C48BE720065293E /* ResultEntity.h in Headers */,
@@ -2805,6 +2826,7 @@
 				2FD99DDD1C48CE6F0065293E /* FLEXClassExplorerViewController.m in Sources */,
 				2FD993391C48BC9D0065293E /* UIView+Loading.m in Sources */,
 				2F5F2F271C53F85400571E49 /* FWUrl.m in Sources */,
+				2FCBAC7A1C54CAF6003D9786 /* BaseXmlPage.m in Sources */,
 				2F5F2F141C53E10900571E49 /* FWPluginNetworkProvider.m in Sources */,
 				2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */,
 				2F1C35E91C4C89310060E793 /* IPullRefresh.m in Sources */,
@@ -2915,10 +2937,12 @@
 				2FD99DB11C48CE6F0065293E /* FLEXTableListViewController.m in Sources */,
 				2FD99D6B1C48CE6F0065293E /* DDTTYLogger.m in Sources */,
 				2FD99ED01C48CE700065293E /* SDWebImagePrefetcher.m in Sources */,
+				2FCBAC761C54CACE003D9786 /* BasePage.m in Sources */,
 				2F5F2F2B1C5400B500571E49 /* UIViewController+Javascript.m in Sources */,
 				2FD99D4F1C48CE6F0065293E /* ActionSheetDatePicker.m in Sources */,
 				2FD99ED61C48CE700065293E /* UIImage+MultiFormat.m in Sources */,
 				2FD99DED1C48CE6F0065293E /* FLEXSetExplorerViewController.m in Sources */,
+				2FCBAC7E1C54CB42003D9786 /* BaseViewModel.m in Sources */,
 				2FD99D581C48CE6F0065293E /* DistancePickerView.m in Sources */,
 				2FD99ED21C48CE700065293E /* UIButton+WebCache.m in Sources */,
 				2FD99D6F1C48CE6F0065293E /* DDDispatchQueueLogFormatter.m in Sources */,
