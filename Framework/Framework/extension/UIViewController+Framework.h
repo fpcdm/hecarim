@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FWProtocolPluginDialog.h"
+#import "FWPluginDialog.h"
 
 @interface UIViewController (Framework)
 

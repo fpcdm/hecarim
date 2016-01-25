@@ -7,20 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWProtocolPluginProvider.h"
+#import "FWPluginProvider.h"
 
 //插件管理池
 @interface FWPluginManager : NSObject
 
 @singleton(FWPluginManager)
 
-//设置插件提供者，从而实现动态替换插件
-- (void)setPluginProvider:(NSString *)name provider:(id<FWProtocolPluginProvider>)provider;
-
-//是否设置过插件提供者
-- (BOOL)hasPluginProvider:(NSString *)name;
+//设置插件提供者对象
+- (void)setProvider:(NSString *)name provider:(id<FWPluginProvider>)provider;
 
 //获取插件对象
-- (id<FWProtocolPlugin>)getPlugin:(NSString *)name;
+- (id)getPlugin:(NSString *)name;
 
 @end

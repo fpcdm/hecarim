@@ -1,18 +1,16 @@
 //
-//  FWProtocolPluginCache.h
+//  FWRegistry.h
 //  Framework
 //
-//  Created by 吴勇 on 16/1/24.
+//  Created by 吴勇 on 16/1/25.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "FWProtocolPlugin.h"
 
-//定义插件池默认保存名称
-#define FWProtocolPluginCacheName @"FWProtocolPluginCache"
+@interface FWRegistry : NSObject
 
-@protocol FWProtocolPluginCache <FWProtocolPlugin>
+@singleton(FWRegistry)
 
 - (id)get:(NSString *)key;
 

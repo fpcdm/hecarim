@@ -7,10 +7,12 @@
 //
 
 #import "FWPluginManager.h"
+#import "FWPluginProviderDefault.h"
 
 @implementation FWPluginManager
 {
     NSMutableDictionary *providerPool;
+    FWPluginProviderDefault *defaultProvider;
 }
 
 @def_singleton(FWPluginManager)
@@ -24,7 +26,7 @@
     return self;
 }
 
-- (void)setPluginProvider:(NSString *)name provider:(id<FWProtocolPluginProvider>)provider
+- (void)setProvider:(NSString *)name provider:(id<FWPluginProvider>)provider
 {
     if (provider) {
         [providerPool setObject:provider forKey:name];
@@ -33,19 +35,16 @@
     }
 }
 
-- (BOOL)hasPluginProvider:(NSString *)name
+- (id)getPlugin:(NSString *)name
 {
-    id<FWProtocolPluginProvider> provider = [providerPool objectForKey:name];
-    return provider ? YES : NO;
-}
-
-- (id<FWProtocolPlugin>)getPlugin:(NSString *)name
-{
-    id<FWProtocolPluginProvider> provider = [providerPool objectForKey:name];
+    id<FWPluginProvider> provider = [providerPool objectForKey:name];
     if (!provider) {
-        return nil;
+        //默认提供者
+        if (!defaultProvider) {
+            defaultProvider = [[FWPluginProviderDefault alloc] init];
+        }
+        provider = defaultProvider;
     }
-    
     return [provider providePlugin:name];
 }
 

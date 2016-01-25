@@ -1,16 +1,15 @@
 //
-//  FWProtocolPluginDialog.h
+//  FWPluginDialog.h
 //  Framework
 //
-//  Created by wuyong on 16/1/25.
+//  Created by 吴勇 on 16/1/26.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "FWProtocolPlugin.h"
 
 //定义插件池默认保存名称
-#define FWProtocolPluginDialogName @"FWProtocolPluginDialog"
+#define FWPluginDialogName @"FWPluginDialog"
 
 //弹出框类型枚举
 typedef NS_ENUM(NSInteger, FWPluginDialogType) {
@@ -20,7 +19,8 @@ typedef NS_ENUM(NSInteger, FWPluginDialogType) {
     FWPluginDialogTypeSuccess
 };
 
-@protocol FWProtocolPluginDialog <FWProtocolPlugin>
+//弹出框协议
+@protocol FWPluginDialog <NSObject>
 
 //显示加载条
 - (void)showLoadingInViewController:(UIViewController *)viewController message:(NSString *)message;

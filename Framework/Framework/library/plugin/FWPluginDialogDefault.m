@@ -15,8 +15,6 @@
     MBProgressHUD *loading;
 }
 
-@def_singleton(FWPluginDialogDefault)
-
 - (void)showLoadingInViewController:(UIViewController *)viewController message:(NSString *)message
 {
     [self hideLoadingInViewController:viewController];

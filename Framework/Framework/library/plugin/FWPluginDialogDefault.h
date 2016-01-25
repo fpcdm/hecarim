@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWProtocolPluginDialog.h"
+#import "FWPluginDialog.h"
 
-@interface FWPluginDialogDefault : NSObject<FWProtocolPluginDialog>
-
-@singleton(FWPluginDialogDefault)
+//默认弹出框
+@interface FWPluginDialogDefault : NSObject<FWPluginDialog>
 
 @end

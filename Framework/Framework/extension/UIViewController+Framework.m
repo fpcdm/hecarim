@@ -11,10 +11,10 @@
 
 @implementation UIViewController (Framework)
 
-- (id<FWProtocolPluginDialog>)dialogPlugin
+- (id<FWPluginDialog>)dialogPlugin
 {
-    id<FWProtocolPlugin> plugin = [[FWPluginManager sharedInstance] getPlugin:FWProtocolPluginDialogName];
-    return (id<FWProtocolPluginDialog>) plugin;
+    id plugin = [[FWPluginManager sharedInstance] getPlugin:FWPluginDialogName];
+    return (id<FWPluginDialog>) plugin;
 }
 
 - (void)showLoading:(NSString *)message

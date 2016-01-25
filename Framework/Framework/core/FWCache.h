@@ -1,14 +1,14 @@
 //
-//  FWProtocolRegistry.h
+//  FWCache.h
 //  Framework
 //
-//  Created by 吴勇 on 16/1/24.
+//  Created by 吴勇 on 16/1/25.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@protocol FWProtocolRegistry <NSObject>
+@protocol FWCacheProtocol <NSObject>
 
 - (id)get:(NSString *)key;
 
@@ -19,5 +19,11 @@
 - (void)remove:(NSString *)key;
 
 - (void)clear;
+
+@end
+
+@interface FWCache : NSObject<FWCacheProtocol>
+
+@singleton(FWCache)
 
 @end
