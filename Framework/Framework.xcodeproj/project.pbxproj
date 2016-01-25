@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F09D71E1C55C632003BB601 /* FWProtocolPluginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D71D1C55C632003BB601 /* FWProtocolPluginDialog.h */; };
+		2F09D7211C55C6A1003BB601 /* FWPluginDialogProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D71F1C55C6A1003BB601 /* FWPluginDialogProvider.h */; };
+		2F09D7221C55C6A1003BB601 /* FWPluginDialogProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7201C55C6A1003BB601 /* FWPluginDialogProvider.m */; };
+		2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */; };
+		2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */; };
+		2F09D72A1C55F537003BB601 /* UIViewController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7281C55F537003BB601 /* UIViewController+Framework.h */; };
+		2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7291C55F537003BB601 /* UIViewController+Framework.m */; };
+		2F09D7331C560482003BB601 /* UIViewController+Dialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7311C560482003BB601 /* UIViewController+Dialog.h */; };
+		2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7321C560482003BB601 /* UIViewController+Dialog.m */; };
 		2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35971C4C89310060E793 /* ICssBlock.h */; };
 		2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35981C4C89310060E793 /* ICssBlock.m */; };
 		2F1C35D41C4C89310060E793 /* ICssDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35991C4C89310060E793 /* ICssDecl.h */; };
@@ -124,7 +133,6 @@
 		2FD993381C48BC9D0065293E /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9913C1C48BC9C0065293E /* UITextView+Placeholder.m */; };
 		2FD993391C48BC9D0065293E /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9913E1C48BC9C0065293E /* UIView+Loading.m */; };
 		2FD9933A1C48BC9D0065293E /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */; };
-		2FD9933B1C48BC9D0065293E /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991421C48BC9C0065293E /* UIViewController+Dialog.m */; };
 		2FD9933C1C48BC9D0065293E /* ErrorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991461C48BC9C0065293E /* ErrorEntity.m */; };
 		2FD9933D1C48BC9D0065293E /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991481C48BC9C0065293E /* FileEntity.m */; };
 		2FD9933E1C48BC9D0065293E /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9914A1C48BC9C0065293E /* ResultEntity.m */; };
@@ -160,7 +168,6 @@
 		2FD993F31C48BE710065293E /* UITextView+Placeholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9913B1C48BC9C0065293E /* UITextView+Placeholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F41C48BE710065293E /* UIView+Loading.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9913D1C48BC9C0065293E /* UIView+Loading.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F51C48BE710065293E /* UIViewController+BackButtonHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9913F1C48BC9C0065293E /* UIViewController+BackButtonHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FD993F61C48BE720065293E /* UIViewController+Dialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991411C48BC9C0065293E /* UIViewController+Dialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991451C48BC9C0065293E /* ErrorEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F81C48BE720065293E /* FileEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991471C48BC9C0065293E /* FileEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F91C48BE720065293E /* ResultEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991491C48BC9C0065293E /* ResultEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -632,6 +639,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F09D71D1C55C632003BB601 /* FWProtocolPluginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWProtocolPluginDialog.h; sourceTree = "<group>"; };
+		2F09D71F1C55C6A1003BB601 /* FWPluginDialogProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogProvider.h; sourceTree = "<group>"; };
+		2F09D7201C55C6A1003BB601 /* FWPluginDialogProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogProvider.m; sourceTree = "<group>"; };
+		2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogDefault.h; sourceTree = "<group>"; };
+		2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogDefault.m; sourceTree = "<group>"; };
+		2F09D7281C55F537003BB601 /* UIViewController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Framework.h"; sourceTree = "<group>"; };
+		2F09D7291C55F537003BB601 /* UIViewController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Framework.m"; sourceTree = "<group>"; };
+		2F09D7311C560482003BB601 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
+		2F09D7321C560482003BB601 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
 		2F1C35971C4C89310060E793 /* ICssBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssBlock.h; sourceTree = "<group>"; };
 		2F1C35981C4C89310060E793 /* ICssBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICssBlock.m; sourceTree = "<group>"; };
 		2F1C35991C4C89310060E793 /* ICssDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssDecl.h; sourceTree = "<group>"; };
@@ -771,8 +787,6 @@
 		2FD9913E1C48BC9C0065293E /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
 		2FD9913F1C48BC9C0065293E /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
-		2FD991411C48BC9C0065293E /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
-		2FD991421C48BC9C0065293E /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
 		2FD991451C48BC9C0065293E /* ErrorEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorEntity.h; sourceTree = "<group>"; };
 		2FD991461C48BC9C0065293E /* ErrorEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorEntity.m; sourceTree = "<group>"; };
 		2FD991471C48BC9C0065293E /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
@@ -1257,6 +1271,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F09D7301C560482003BB601 /* deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				2F09D7311C560482003BB601 /* UIViewController+Dialog.h */,
+				2F09D7321C560482003BB601 /* UIViewController+Dialog.m */,
+			);
+			path = deprecated;
+			sourceTree = "<group>";
+		};
 		2F1C35951C4C89310060E793 /* CocoaUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1409,6 +1432,7 @@
 				2F5F2F3B1C54106700571E49 /* FWProtocolPluginProvider.h */,
 				2F5F2F3D1C5411B200571E49 /* FWProtocolPluginNetwork.h */,
 				2F5F2F3F1C5411D400571E49 /* FWProtocolPluginCache.h */,
+				2F09D71D1C55C632003BB601 /* FWProtocolPluginDialog.h */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -1424,6 +1448,10 @@
 				2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */,
 				2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */,
 				2F5F2F161C53E1FE00571E49 /* FWPluginNetworkRestKit.m */,
+				2F09D71F1C55C6A1003BB601 /* FWPluginDialogProvider.h */,
+				2F09D7201C55C6A1003BB601 /* FWPluginDialogProvider.m */,
+				2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */,
+				2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */,
 			);
 			path = plugin;
 			sourceTree = "<group>";
@@ -1450,6 +1478,7 @@
 			children = (
 				2FD991181C48BC9C0065293E /* config */,
 				2FD9911B1C48BC9C0065293E /* core */,
+				2F09D7301C560482003BB601 /* deprecated */,
 				2FD9912C1C48BC9C0065293E /* extension */,
 				2FD991431C48BC9C0065293E /* library */,
 				2FD9914D1C48BC9C0065293E /* util */,
@@ -1531,8 +1560,8 @@
 				2F1CD52D1C4F800C00B0DC4B /* IView+Xml.m */,
 				2FD9913F1C48BC9C0065293E /* UIViewController+BackButtonHandler.h */,
 				2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */,
-				2FD991411C48BC9C0065293E /* UIViewController+Dialog.h */,
-				2FD991421C48BC9C0065293E /* UIViewController+Dialog.m */,
+				2F09D7281C55F537003BB601 /* UIViewController+Framework.h */,
+				2F09D7291C55F537003BB601 /* UIViewController+Framework.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -2432,6 +2461,7 @@
 				2FD99D501C48CE6F0065293E /* ActionSheetDistancePicker.h in Headers */,
 				2FD99E271C48CE6F0065293E /* View+MASShorthandAdditions.h in Headers */,
 				2FD99EA61C48CE6F0065293E /* RKResponseMapperOperation.h in Headers */,
+				2F09D7331C560482003BB601 /* UIViewController+Dialog.h in Headers */,
 				2F5F2F3A1C54101E00571E49 /* FWProtocolPlugin.h in Headers */,
 				2FD99EA01C48CE6F0065293E /* RKPropertyMapping.h in Headers */,
 				2FD99EDB1C48CE700065293E /* UIView+WebCacheOperation.h in Headers */,
@@ -2445,6 +2475,7 @@
 				2FD99E8C1C48CE6F0065293E /* RKMappingOperationDataSource.h in Headers */,
 				2FD99EAB1C48CE6F0065293E /* RKSearchPredicate.h in Headers */,
 				2FD99E881C48CE6F0065293E /* RKMapperOperation.h in Headers */,
+				2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */,
 				2FD99ED31C48CE700065293E /* UIImage+GIF.h in Headers */,
 				2FD99EBC1C48CE700065293E /* TKStateMachine.h in Headers */,
 				2FD99D6A1C48CE6F0065293E /* DDTTYLogger.h in Headers */,
@@ -2565,12 +2596,14 @@
 				2FD99EDD1C48CE700065293E /* TPKeyboardAvoidingCollectionView.h in Headers */,
 				2FD99E2C1C48CE6F0065293E /* MJRefreshBackFooter.h in Headers */,
 				2F1C35DA1C4C89310060E793 /* IStyle.h in Headers */,
+				2F09D71E1C55C632003BB601 /* FWProtocolPluginDialog.h in Headers */,
 				2FD99E221C48CE6F0065293E /* NSArray+MASShorthandAdditions.h in Headers */,
 				2FD99EBB1C48CE700065293E /* TKState.h in Headers */,
 				2FD99DA31C48CE6F0065293E /* FLEX.h in Headers */,
 				2FD99EBD1C48CE700065293E /* TransitionKit.h in Headers */,
 				2FD99E1A1C48CE6F0065293E /* Masonry.h in Headers */,
 				2FD99E7D1C48CE6F0065293E /* RKInMemoryManagedObjectCache.h in Headers */,
+				2F09D72A1C55F537003BB601 /* UIViewController+Framework.h in Headers */,
 				2FD99E181C48CE6F0065293E /* MASLayoutConstraint.h in Headers */,
 				2FD99E591C48CE6F0065293E /* AFHTTPRequestOperation.h in Headers */,
 				2FD99E5F1C48CE6F0065293E /* AFURLConnectionOperation.h in Headers */,
@@ -2666,7 +2699,6 @@
 				2FD993F31C48BE710065293E /* UITextView+Placeholder.h in Headers */,
 				2FD993F41C48BE710065293E /* UIView+Loading.h in Headers */,
 				2FD993F51C48BE710065293E /* UIViewController+BackButtonHandler.h in Headers */,
-				2FD993F61C48BE720065293E /* UIViewController+Dialog.h in Headers */,
 				2FF343201C50CF490066CC1F /* DateUtil.h in Headers */,
 				2F5F2F171C53E1FE00571E49 /* FWPluginNetworkRestKit.h in Headers */,
 				2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */,
@@ -2688,6 +2720,7 @@
 				2F5F2F2E1C540BE600571E49 /* FWFrontend.h in Headers */,
 				2FD994041C48BE720065293E /* TimerUtil.h in Headers */,
 				2FD994051C48BE720065293E /* ValidateUtil.h in Headers */,
+				2F09D7211C55C6A1003BB601 /* FWPluginDialogProvider.h in Headers */,
 				2FD995131C48BED80065293E /* Framework.h in Headers */,
 				2FD993E21C48BD5F0065293E /* FrameworkConfig.h in Headers */,
 				2F1C35EE1C4C89310060E793 /* ITableInternal.h in Headers */,
@@ -2765,7 +2798,6 @@
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
 				2F1C35F01C4C89310060E793 /* IView.m in Sources */,
 				2FD99E121C48CE6F0065293E /* MASCompositeConstraint.m in Sources */,
-				2FD9933B1C48BC9D0065293E /* UIViewController+Dialog.m in Sources */,
 				2FD99E091C48CE6F0065293E /* FMDatabaseAdditions.m in Sources */,
 				2FD99D911C48CE6F0065293E /* FLEXFieldEditorViewController.m in Sources */,
 				2FD99E4C1C48CE6F0065293E /* UIScrollView+MJRefresh.m in Sources */,
@@ -2781,6 +2813,7 @@
 				2FD993431C48BC9D0065293E /* LogUtil.m in Sources */,
 				2FD99E571C48CE6F0065293E /* Reachability.m in Sources */,
 				2FD99D791C48CE6F0065293E /* FLEXArgumentInputFontView.m in Sources */,
+				2F09D7221C55C6A1003BB601 /* FWPluginDialogProvider.m in Sources */,
 				2FD993301C48BC9D0065293E /* BaseViewController.m in Sources */,
 				2F1C35D71C4C89310060E793 /* ICssRule.m in Sources */,
 				2FD99E431C48CE6F0065293E /* MJRefreshNormalHeader.m in Sources */,
@@ -2807,6 +2840,7 @@
 				2FD99DB31C48CE6F0065293E /* FLEXClassesTableViewController.m in Sources */,
 				2FD99D4C1C48CE6F0065293E /* ActionSheetCustomPicker.m in Sources */,
 				2FD99E371C48CE6F0065293E /* MJRefreshAutoNormalFooter.m in Sources */,
+				2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */,
 				2FD99D6D1C48CE6F0065293E /* DDContextFilterLogFormatter.m in Sources */,
 				2FD99DBD1C48CE6F0065293E /* FLEXGlobalsTableViewController.m in Sources */,
 				2FD99DCD1C48CE6F0065293E /* FLEXNetworkHistoryTableViewController.m in Sources */,
@@ -2885,6 +2919,7 @@
 				2FD993291C48BC9D0065293E /* BaseCollectionView.m in Sources */,
 				2FF343251C50D0720066CC1F /* ObjectUtil.m in Sources */,
 				2FD99E351C48CE6F0065293E /* MJRefreshAutoGifFooter.m in Sources */,
+				2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */,
 				2FF340CC1C509E390066CC1F /* AspectUtil.m in Sources */,
 				2F47501B1C48F3F1001CA674 /* PaginationEntity.m in Sources */,
 				2FD99D771C48CE6F0065293E /* FLEXArgumentInputFontsPickerView.m in Sources */,
@@ -2939,6 +2974,7 @@
 				2FD99ED01C48CE700065293E /* SDWebImagePrefetcher.m in Sources */,
 				2FCBAC761C54CACE003D9786 /* BasePage.m in Sources */,
 				2F5F2F2B1C5400B500571E49 /* UIViewController+Javascript.m in Sources */,
+				2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */,
 				2FD99D4F1C48CE6F0065293E /* ActionSheetDatePicker.m in Sources */,
 				2FD99ED61C48CE700065293E /* UIImage+MultiFormat.m in Sources */,
 				2FD99DED1C48CE6F0065293E /* FLEXSetExplorerViewController.m in Sources */,

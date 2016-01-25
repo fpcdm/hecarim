@@ -17,6 +17,9 @@
 //设置插件提供者，从而实现动态替换插件
 - (void)setPluginProvider:(NSString *)name provider:(id<FWProtocolPluginProvider>)provider;
 
+//是否设置过插件提供者
+- (BOOL)hasPluginProvider:(NSString *)name;
+
 //获取插件对象
 - (id<FWProtocolPlugin>)getPlugin:(NSString *)name;
 

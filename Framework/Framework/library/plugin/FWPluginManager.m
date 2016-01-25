@@ -33,6 +33,12 @@
     }
 }
 
+- (BOOL)hasPluginProvider:(NSString *)name
+{
+    id<FWProtocolPluginProvider> provider = [providerPool objectForKey:name];
+    return provider ? YES : NO;
+}
+
 - (id<FWProtocolPlugin>)getPlugin:(NSString *)name
 {
     id<FWProtocolPluginProvider> provider = [providerPool objectForKey:name];
