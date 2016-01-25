@@ -7,7 +7,23 @@
 //
 
 #import "FWPluginCacheProvider.h"
+#import "FWPluginCacheDefault.h"
+#import "FWPluginManager.h"
 
 @implementation FWPluginCacheProvider
+
++ (void)load
+{
+    if (![[FWPluginManager sharedInstance] hasPluginProvider:FWProtocolPluginCacheName]) {
+        FWPluginCacheProvider *provider = [[FWPluginCacheProvider alloc] init];
+        [[FWPluginManager sharedInstance] setPluginProvider:FWProtocolPluginCacheName provider:provider];
+    }
+}
+
+- (id<FWProtocolPlugin>)providePlugin:(NSString *)name
+{
+    FWPluginCacheDefault *plugin = [FWPluginCacheDefault sharedInstance];
+    return plugin;
+}
 
 @end

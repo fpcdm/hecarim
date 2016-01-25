@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWProtocolPluginProvider.h"
 
-@interface FWPluginCacheProvider : NSObject
+@interface FWPluginCacheProvider : NSObject<FWProtocolPluginProvider>
 
 @end

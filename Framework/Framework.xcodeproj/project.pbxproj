@@ -16,6 +16,8 @@
 		2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7291C55F537003BB601 /* UIViewController+Framework.m */; };
 		2F09D7331C560482003BB601 /* UIViewController+Dialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7311C560482003BB601 /* UIViewController+Dialog.h */; };
 		2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7321C560482003BB601 /* UIViewController+Dialog.m */; };
+		2F09D7381C5622CC003BB601 /* FWPluginCacheDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7361C5622CC003BB601 /* FWPluginCacheDefault.h */; };
+		2F09D7391C5622CC003BB601 /* FWPluginCacheDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7371C5622CC003BB601 /* FWPluginCacheDefault.m */; };
 		2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35971C4C89310060E793 /* ICssBlock.h */; };
 		2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35981C4C89310060E793 /* ICssBlock.m */; };
 		2F1C35D41C4C89310060E793 /* ICssDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35991C4C89310060E793 /* ICssDecl.h */; };
@@ -648,6 +650,8 @@
 		2F09D7291C55F537003BB601 /* UIViewController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Framework.m"; sourceTree = "<group>"; };
 		2F09D7311C560482003BB601 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
 		2F09D7321C560482003BB601 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
+		2F09D7361C5622CC003BB601 /* FWPluginCacheDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginCacheDefault.h; sourceTree = "<group>"; };
+		2F09D7371C5622CC003BB601 /* FWPluginCacheDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginCacheDefault.m; sourceTree = "<group>"; };
 		2F1C35971C4C89310060E793 /* ICssBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssBlock.h; sourceTree = "<group>"; };
 		2F1C35981C4C89310060E793 /* ICssBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICssBlock.m; sourceTree = "<group>"; };
 		2F1C35991C4C89310060E793 /* ICssDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssDecl.h; sourceTree = "<group>"; };
@@ -1444,6 +1448,8 @@
 				2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */,
 				2F5F2F2F1C540E8F00571E49 /* FWPluginCacheProvider.h */,
 				2F5F2F301C540E8F00571E49 /* FWPluginCacheProvider.m */,
+				2F09D7361C5622CC003BB601 /* FWPluginCacheDefault.h */,
+				2F09D7371C5622CC003BB601 /* FWPluginCacheDefault.m */,
 				2F5F2F111C53E10900571E49 /* FWPluginNetworkProvider.h */,
 				2F5F2F121C53E10900571E49 /* FWPluginNetworkProvider.m */,
 				2F5F2F151C53E1FE00571E49 /* FWPluginNetworkRestKit.h */,
@@ -2487,6 +2493,7 @@
 				2FD99D921C48CE6F0065293E /* FLEXIvarEditorViewController.h in Headers */,
 				2FD99D661C48CE6F0065293E /* DDLog+LOGV.h in Headers */,
 				2FD99E901C48CE6F0065293E /* RKMIMETypeSerialization.h in Headers */,
+				2F09D7381C5622CC003BB601 /* FWPluginCacheDefault.h in Headers */,
 				2F5F2F131C53E10900571E49 /* FWPluginNetworkProvider.h in Headers */,
 				2FD99E2E1C48CE6F0065293E /* MJRefreshComponent.h in Headers */,
 				2FD99DEE1C48CE6F0065293E /* FLEXViewControllerExplorerViewController.h in Headers */,
@@ -2888,6 +2895,7 @@
 				2FD99E2B1C48CE6F0065293E /* MJRefreshAutoFooter.m in Sources */,
 				2FD99DE71C48CE6F0065293E /* FLEXLayerExplorerViewController.m in Sources */,
 				2FD99DE31C48CE6F0065293E /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
+				2F09D7391C5622CC003BB601 /* FWPluginCacheDefault.m in Sources */,
 				2FD99E551C48CE6F0065293E /* PINMemoryCache.m in Sources */,
 				2FD99D611C48CE6F0065293E /* DDASLLogger.m in Sources */,
 				2FD993411C48BC9D0065293E /* LocaleUtil.m in Sources */,
