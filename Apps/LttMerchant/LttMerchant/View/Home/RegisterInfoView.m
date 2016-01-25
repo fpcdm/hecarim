@@ -439,9 +439,9 @@
     [self.delegate actionUploadImage:@"card"];
 }
 
-- (void)renderData
+- (void)display
 {
-    MerchantEntity *merEntity = [self getData:@"merEntity"];
+    MerchantEntity *merEntity = [self fetch:@"merEntity"];
     if ([@"license" isEqualToString:merEntity.type]) {
         licenseImageJ.hidden = YES;
         [merEntity imageView:licenseImage];

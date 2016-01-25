@@ -658,7 +658,7 @@
 
 - (void)setCase
 {
-    intention = [self getData:@"intention"];
+    intention = [self fetch:@"intention"];
     caseNo.text = intention.no;
     statusName.text = [intention statusName];
     caseTime.text = intention.createTime;
@@ -705,7 +705,7 @@
     
     
     //商品
-    NSDictionary *goodsInfo = [self getData:@"goodsInfo"];
+    NSDictionary *goodsInfo = [self fetch:@"goodsInfo"];
     NSString *goodsAmount = [NSString stringWithFormat:@"%@",goodsInfo[@"goodsAmount"]];
     NSString *goodsAmountStr = [NSString stringWithFormat:@"小计金额：%@",goodsAmount];
     NSMutableAttributedString *goodsAmountAttr = [[NSMutableAttributedString alloc] initWithString:goodsAmountStr];
@@ -729,7 +729,7 @@
 
     goodsTotalLabel.attributedText = goodsTotalAttr;
     
-    NSDictionary *servicesInfo = [self getData:@"servicesInfo"];
+    NSDictionary *servicesInfo = [self fetch:@"servicesInfo"];
     NSString *servicesAmount = [NSString stringWithFormat:@"%@",servicesInfo[@"servicesAmount"]];
     NSString *servicesAmountStr = [NSString stringWithFormat:@"小计金额：%@",servicesAmount];
     NSMutableAttributedString *servicesAmountAttr = [[NSMutableAttributedString alloc] initWithString:servicesAmountStr];
@@ -740,11 +740,11 @@
 }
 
 
-- (void)renderData
+- (void)display
 {
     [self setCase];
     //商品列表
-    NSMutableArray *goodsData = [self getData:@"goodsList"];
+    NSMutableArray *goodsData = [self fetch:@"goodsList"];
     NSInteger count = [goodsData count];
     height = 95;
     if ([@"type" isEqualToString:goodsData[0][@"type"]]) {
@@ -755,7 +755,7 @@
     }];
     
     //服务列表
-    NSMutableArray *servicesData = [self getData:@"servicesList"];
+    NSMutableArray *servicesData = [self fetch:@"servicesList"];
     NSInteger servicesCount = [servicesData count];
     servicesHeight = servicesCount * 25 + 70;
     [servicesListView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -768,12 +768,12 @@
     //切换状态
     [self intentionStatusView];
     //获取商品列表
-    [goodsList setData:@"goodsList" value:goodsData];
-    [goodsList renderData];
+    [goodsList assign:@"goodsList" value:goodsData];
+    [goodsList display];
     
     //获取服务列表
-    [servicesList setData:@"servicesList" value:servicesData];
-    [servicesList renderData];
+    [servicesList assign:@"servicesList" value:servicesData];
+    [servicesList display];
 }
 
 //显示二维码
@@ -935,12 +935,12 @@
         CGFloat viewHeight = 80 + 180 - 65 + 10;
         
         [self setServiceViewHeight];
-        NSArray *payment = [self getData:@"payments"];
+        NSArray *payment = [self fetch:@"payments"];
         if (payment.count > 0) {
             paymentView = [[PaymentView alloc] init];
             paymentView.delegate = self.delegate;
-            [paymentView setData:@"payments" value:payment];
-            [paymentView renderData];
+            [paymentView assign:@"payments" value:payment];
+            [paymentView display];
             [payContainer addSubview:paymentView];
             
             [paymentView mas_makeConstraints:^(MASConstraintMaker *make) {

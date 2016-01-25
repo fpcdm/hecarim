@@ -71,9 +71,9 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
-    StaffEntity *staff = [self getData:@"staff"];
+    StaffEntity *staff = [self fetch:@"staff"];
     
     self.tableData = [[NSMutableArray alloc] initWithObjects:
                       @[
@@ -91,7 +91,7 @@
 
 - (void)setUploadAvatar
 {
-    StaffEntity *avatar = [self getData:@"avatar"];
+    StaffEntity *avatar = [self fetch:@"avatar"];
     [avatar staffAvatarView:avatarImage];
 }
 

@@ -56,8 +56,8 @@
     CaseEntity *caseEntity = [[CaseEntity alloc] init];
     caseEntity.no = self.intention.no;
     caseEntity.status = self.intention.status;
-    [serviceFromView setData:@"caseEntity" value:caseEntity];
-    [serviceFromView renderData];
+    [serviceFromView assign:@"caseEntity" value:caseEntity];
+    [serviceFromView display];
 }
 
 #pragma mark - Action

@@ -23,11 +23,11 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     //显示数据
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
-    NSArray *goodsList = [self getData:@"goodsList"];
+    NSArray *goodsList = [self fetch:@"goodsList"];
     for (NSDictionary *goods in goodsList) {
         [tableData addObject:@{
                                    @"id" : @"goods",

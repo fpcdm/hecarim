@@ -186,9 +186,9 @@
     [self.delegate actionSave:contentField.text price:priceField.text];
 }
 
-- (void)renderData
+- (void)display
 {
-    CaseEntity *caseEntity = [self getData:@"caseEntity"];
+    CaseEntity *caseEntity = [self fetch:@"caseEntity"];
     caseNo.text = caseEntity.no;
     statusName.text = [caseEntity statusName];
 }

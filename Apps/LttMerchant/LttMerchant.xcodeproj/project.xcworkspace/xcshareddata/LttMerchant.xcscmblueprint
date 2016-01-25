@@ -11,12 +11,12 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E0640C13-5EA2-4676-B369-BEB66C007966",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "C50FF166AD5A0F6FCC5E5781CC16F539A71955CC" : "hecarim",
+    "C50FF166AD5A0F6FCC5E5781CC16F539A71955CC" : "hecarim\/",
     "64c20430-464e-4f3a-8f02-e02d17a2d8c9++4523" : ".."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "LttMerchant",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LttMerchant\/LttMerchant.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Apps\/LttMerchant\/LttMerchant.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.10\/demacia",

@@ -232,8 +232,8 @@
             [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
                 RegisterExistView *existView = [self mobileExistView];
                 [self pushView:existView animated:YES completion:^{
-                    [existView setData:@"mobile" value:mobile];
-                    [existView renderData];
+                    [existView assign:@"mobile" value:mobile];
+                    [existView display];
                 }];
             }];
         } else {
@@ -310,8 +310,8 @@
             if ([@"registered" isEqualToString:mobileStatus]) {
                 RegisterExistView *existView = [self mobileExistView];
                 [self pushView:existView animated:YES completion:^{
-                    [existView setData:@"mobile" value:mobile];
-                    [existView renderData];
+                    [existView assign:@"mobile" value:mobile];
+                    [existView display];
                 }];
             } else {
                 //发送短信验证码
@@ -456,8 +456,8 @@
             }
 
             RegisterInfoView *infoView = (RegisterInfoView *) self.view;
-            [infoView setData:@"merEntity" value:merEntity];
-            [infoView renderData];
+            [infoView assign:@"merEntity" value:merEntity];
+            [infoView display];
             
             //回调上级
             if (self.callbackBlock) {

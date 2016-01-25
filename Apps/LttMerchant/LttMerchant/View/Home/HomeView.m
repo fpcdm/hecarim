@@ -58,9 +58,9 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
-    NSNumber *is_admin = [self getData:@"is_admin"];
+    NSNumber *is_admin = [self fetch:@"is_admin"];
     if ([@1 isEqualToNumber:is_admin]) {
         staffBtn.hidden = NO;
     }

@@ -127,7 +127,7 @@
     caseEntity.typeName = intention.typeName;
     caseEntity.propertyName = intention.propertyName;
     
-    [caseDetailView setData:@"intention" value:caseEntity];
+    [caseDetailView assign:@"intention" value:caseEntity];
 }
 
 #pragma mark - reloadData
@@ -163,8 +163,8 @@
                               }];
    }
     
-    [caseDetailView setData:@"goodsInfo" value:goodsInfo];
-    [caseDetailView setData:@"goodsList" value:goodsList];
+    [caseDetailView assign:@"goodsInfo" value:goodsInfo];
+    [caseDetailView assign:@"goodsList" value:goodsList];
     
     
     //服务列表
@@ -187,8 +187,8 @@
                                   }];
     }
     
-    [caseDetailView setData:@"servicesInfo" value:servicesInfo];
-    [caseDetailView setData:@"servicesList" value:servicesList];
+    [caseDetailView assign:@"servicesInfo" value:servicesInfo];
+    [caseDetailView assign:@"servicesList" value:servicesList];
     
     
     //获取服务单信息
@@ -199,7 +199,7 @@
         [self loadPaymentView];
         [self showRefresh];
     }else{
-        [caseDetailView renderData];
+        [caseDetailView display];
     }
 }
 
@@ -214,8 +214,8 @@
     [caseHandler queryPayments:param success:^(NSArray *result) {
         [self hideLoading];
         payments = result;
-        [caseDetailView setData:@"payments" value:payments];
-        [caseDetailView renderData];
+        [caseDetailView assign:@"payments" value:payments];
+        [caseDetailView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];

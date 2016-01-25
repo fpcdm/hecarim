@@ -25,10 +25,10 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     //显示数据
-    NSArray *services = [self getData:@"services"];
+    NSArray *services = [self fetch:@"services"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     for (ServiceEntity *service in services) {
         [tableData addObject:@[@{

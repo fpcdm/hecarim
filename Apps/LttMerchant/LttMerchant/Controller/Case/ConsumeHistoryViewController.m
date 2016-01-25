@@ -83,9 +83,9 @@
 
 - (void)reloadData
 {
-    [historyView setData:@"intention" value:intention];
-    [historyView setData:@"historyList" value:historyList];
-    [historyView renderData];
+    [historyView assign:@"intention" value:intention];
+    [historyView assign:@"historyList" value:historyList];
+    [historyView display];
     
     //根据数据切换刷新状态
     if (hasMore) {

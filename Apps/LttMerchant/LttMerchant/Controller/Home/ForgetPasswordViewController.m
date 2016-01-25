@@ -104,8 +104,8 @@
             if ([@"registered" isEqualToString:mobileStatus]) {
                 ForgetPasswordCodeView *codeView = [self codeView];
                 [self popView:codeView animated:YES completion:^{
-                    [codeView setData:@"mobile" value:mobile];
-                    [codeView renderData];
+                    [codeView assign:@"mobile" value:mobile];
+                    [codeView display];
                     [self actionSend];
                 }];
             } else {
@@ -168,8 +168,8 @@
     if ([self.view isMemberOfClass:[ForgetPasswordCodeView class]]) {
         ForgetPasswordView *forgetView = [self passwordView];
         [self popView:forgetView animated:YES completion:^{
-            [forgetView setData:@"mobile" value:mobile];
-            [forgetView renderData];
+            [forgetView assign:@"mobile" value:mobile];
+            [forgetView display];
         }];
     }else{
         [self.navigationController popViewControllerAnimated:YES];

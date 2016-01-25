@@ -71,7 +71,7 @@
     CaseEntity *caseEntity = [[CaseEntity alloc] init];
     caseEntity.no = self.intention.no;
     caseEntity.status = self.intention.status;
-    [goodsFormView setData:@"caseEntity" value:caseEntity];
+    [goodsFormView assign:@"caseEntity" value:caseEntity];
     [goodsFormView setCaseNo];
     
 }
@@ -92,7 +92,7 @@
                                }];
         }
     }
-    [goodsFormView setData:@"spexBox" value:specs];
+    [goodsFormView assign:@"spexBox" value:specs];
     [goodsFormView specBox];
 }
 

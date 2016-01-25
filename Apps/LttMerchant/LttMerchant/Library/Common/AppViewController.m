@@ -264,9 +264,9 @@
     }];
     
     //加载数据
-    [casePopupView setData:@"title" value:message];
-    [casePopupView setData:@"intention" value:newIntention];
-    [casePopupView renderData];
+    [casePopupView assign:@"title" value:message];
+    [casePopupView assign:@"intention" value:newIntention];
+    [casePopupView display];
     
     //显示弹出框
     popupController = [[CNPPopupController alloc] initWithContents:@[popupView]];

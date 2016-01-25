@@ -160,7 +160,7 @@
 
 - (void)setCaseNo
 {
-    CaseEntity *caseEntity = [self getData:@"caseEntity"];
+    CaseEntity *caseEntity = [self fetch:@"caseEntity"];
     caseNO.text = caseEntity.no;
     statusName.text = [caseEntity statusName];
 }
@@ -171,10 +171,10 @@
     [self.delegate actionAddService];
 }
 
-- (void)renderData
+- (void)display
 {
-    [self.listView setData:@"services" value:[self getData:@"services"]];
-    [self.listView renderData];
+    [self.listView assign:@"services" value:[self fetch:@"services"]];
+    [self.listView display];
 }
 
 

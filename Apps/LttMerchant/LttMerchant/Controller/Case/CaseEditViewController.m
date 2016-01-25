@@ -52,9 +52,9 @@
     caseEntity.status = self.intention.status;
     caseEntity.createTime = self.intention.createTime;
     caseEntity.totalAmount = self.intention.totalAmount;
-    [caseEditView setData:@"caseEntity" value:caseEntity];
+    [caseEditView assign:@"caseEntity" value:caseEntity];
     
-    [caseEditView renderData];
+    [caseEditView display];
 }
 
 #pragma mark - Action

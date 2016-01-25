@@ -27,10 +27,10 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     //显示数据
-    NSArray *goodsList = [self getData:@"goodsList"];
+    NSArray *goodsList = [self fetch:@"goodsList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     for (GoodsEntity *goods in goodsList) {
         [tableData addObject:@[@{

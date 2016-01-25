@@ -69,9 +69,9 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
-    StaffEntity *staff = [self getData:@"staff"];
+    StaffEntity *staff = [self fetch:@"staff"];
     noField.text = staff.no;
     nameField.text = staff.name;
     nicknameField.text = staff.nickname;

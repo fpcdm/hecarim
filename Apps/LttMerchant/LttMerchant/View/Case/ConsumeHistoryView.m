@@ -80,9 +80,9 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
-    CaseEntity *intention = [self getData:@"intention"];
+    CaseEntity *intention = [self fetch:@"intention"];
     infoLabel.text = [NSString stringWithFormat:@"%@（%@",
                       intention.userAppellation ? intention.userAppellation : @"-",
                       intention.userName ? intention.userName : @"-"
@@ -97,7 +97,7 @@
     lastLabel.text = @"）的消费记录";
     
     //显示数据
-    NSMutableArray *historyList = [self getData:@"historyList"];
+    NSMutableArray *historyList = [self fetch:@"historyList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
     if (historyList != nil) {
         for (ConsumeEntity *consume in historyList) {

@@ -37,10 +37,10 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
-    NSMutableArray *data = [self getData:@"staffList"];
+    NSMutableArray *data = [self fetch:@"staffList"];
     for (StaffEntity *staff in data) {
         [tableData addObject:@{
                               @"id" : @"staff",

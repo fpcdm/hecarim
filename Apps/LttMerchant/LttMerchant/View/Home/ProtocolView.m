@@ -69,10 +69,10 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     //加载网页
-    NSURL *url =[NSURL URLWithString:[self getData:@"url"]];
+    NSURL *url =[NSURL URLWithString:[self fetch:@"url"]];
     NSURLRequest *request =[NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
 }

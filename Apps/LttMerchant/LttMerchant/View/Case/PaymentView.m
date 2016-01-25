@@ -97,9 +97,9 @@
     return self;
 }
 
-- (void)renderData
+- (void)display
 {
-    NSArray *payments = [self getData:@"payments"];
+    NSArray *payments = [self fetch:@"payments"];
     for (ResultEntity *payment in payments) {
         //判断支付方式
         if ([PAY_WAY_WEIXIN isEqualToString:payment.data]) {

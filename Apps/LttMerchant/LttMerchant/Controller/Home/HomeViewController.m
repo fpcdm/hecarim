@@ -48,8 +48,8 @@
     StaffHandler *staffHandler = [[StaffHandler alloc] init];
     [staffHandler userPermissions:nil success:^(NSArray *result) {
         StaffEntity *staffEntity = [result firstObject];
-        [homeView setData:@"is_admin" value:staffEntity.is_admin];
-        [homeView renderData];
+        [homeView assign:@"is_admin" value:staffEntity.is_admin];
+        [homeView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];

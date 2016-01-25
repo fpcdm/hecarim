@@ -159,15 +159,15 @@
 
 - (void)setCaseNo
 {
-    CaseEntity *caseEntity = [self getData:@"caseEntity"];
+    CaseEntity *caseEntity = [self fetch:@"caseEntity"];
     caseNo.text = caseEntity.no;
     statusName.text = [caseEntity statusName];
 }
 
-- (void)renderData
+- (void)display
 {
-    [self.listView setData:@"goodsList" value:[self getData:@"goodsList"]];
-    [self.listView renderData];
+    [self.listView assign:@"goodsList" value:[self fetch:@"goodsList"]];
+    [self.listView display];
 }
 
 //添加商品

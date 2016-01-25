@@ -82,11 +82,11 @@
 }
 
 #pragma mark - RenderData
-- (void)renderData
+- (void)display
 {
     //获取数据
-    title = [self getData:@"title"];
-    intention = [self getData:@"intention"];
+    title = [self fetch:@"title"];
+    intention = [self fetch:@"intention"];
     
     //添加数据
     NSMutableArray *tableData = [[NSMutableArray alloc] init];

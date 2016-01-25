@@ -365,7 +365,7 @@
 
 - (void)specBox
 {
-    NSMutableArray *specList = [self getData:@"spexBox"];
+    NSMutableArray *specList = [self fetch:@"spexBox"];
     specCount = specList.count;
     selectCount = 0;
     //移除之前的规格
@@ -519,7 +519,7 @@
 //设置头部需求信息
 - (void)setCaseNo
 {
-    CaseEntity *caseEntity = [self getData:@"caseEntity"];
+    CaseEntity *caseEntity = [self fetch:@"caseEntity"];
     caseNo.text = caseEntity.no;
     statusName.text = [caseEntity statusName];
 }

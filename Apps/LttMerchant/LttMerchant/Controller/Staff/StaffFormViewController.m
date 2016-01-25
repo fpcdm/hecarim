@@ -58,8 +58,8 @@
             
             staffEntity = [result firstObject];
                 
-            [formView setData:@"staff" value:staffEntity];
-            [formView renderData];
+            [formView assign:@"staff" value:staffEntity];
+            [formView display];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];

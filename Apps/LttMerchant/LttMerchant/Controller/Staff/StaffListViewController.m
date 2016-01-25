@@ -91,8 +91,8 @@
 
 - (void)reloadData
 {
-    [listView setData:@"staffList" value:staffList];
-    [listView renderData];
+    [listView assign:@"staffList" value:staffList];
+    [listView display];
     
     //根据数据切换刷新状态
     if (hasMore) {

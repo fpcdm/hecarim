@@ -95,8 +95,8 @@
 
 - (void)reloadData
 {
-    [listView setData:@"intentionList" value:caseList];
-    [listView renderData];
+    [listView assign:@"intentionList" value:caseList];
+    [listView display];
     
     //根据数据切换刷新状态
     if (hasMore) {

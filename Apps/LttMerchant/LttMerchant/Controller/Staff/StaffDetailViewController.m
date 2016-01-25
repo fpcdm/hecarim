@@ -57,8 +57,8 @@
         
         staffEntity = [result firstObject];
         
-        [detailView setData:@"staff" value:staffEntity];
-        [detailView renderData];
+        [detailView assign:@"staff" value:staffEntity];
+        [detailView display];
         NSLog(@"员工ID是：%@",self.staffId);
         
     } failure:^(ErrorEntity *error) {
@@ -162,7 +162,7 @@
             staffEntity = [[StaffEntity alloc] init];
             staffEntity.avatar = imageEntity.url;
             
-            [detailView setData:@"avatar" value:staffEntity];
+            [detailView assign:@"avatar" value:staffEntity];
             [detailView setUploadAvatar];
             
         }];

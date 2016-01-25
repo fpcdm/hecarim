@@ -80,7 +80,7 @@
     CaseEntity *caseEntity = [[CaseEntity alloc] init];
     caseEntity.no = self.intention.no;
     caseEntity.status = self.intention.status;
-    [goodsView setData:@"caseEntity" value:caseEntity];
+    [goodsView assign:@"caseEntity" value:caseEntity];
     [goodsView setCaseNo];
     
     //切换按钮
@@ -90,8 +90,8 @@
 //刷新表格
 - (void) refreshTable
 {
-    [goodsView setData:@"goodsList" value:goodsList];
-    [goodsView renderData];
+    [goodsView assign:@"goodsList" value:goodsList];
+    [goodsView display];
 }
 
 //切换按钮

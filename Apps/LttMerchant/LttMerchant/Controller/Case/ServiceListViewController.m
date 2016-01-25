@@ -85,15 +85,15 @@
     CaseEntity *caseEntity = [[CaseEntity alloc] init];
     caseEntity.no = self.intention.no;
     caseEntity.status = self.intention.status;
-    [serviceView setData:@"caseEntity" value:caseEntity];
+    [serviceView assign:@"caseEntity" value:caseEntity];
     [serviceView setCaseNo];
 }
 
 //刷新表格
 - (void) refreshTable
 {
-    [serviceView setData:@"services" value:services];
-    [serviceView renderData];
+    [serviceView assign:@"services" value:services];
+    [serviceView display];
 }
 
 //切换按钮

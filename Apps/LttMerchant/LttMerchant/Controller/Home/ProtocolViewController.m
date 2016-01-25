@@ -32,8 +32,8 @@
     
     self.navigationItem.title = @"服务协议";
     
-    [protocolView setData:@"url" value:URL_REGISTER_PROTOCOL];
-    [protocolView renderData];
+    [protocolView assign:@"url" value:URL_REGISTER_PROTOCOL];
+    [protocolView display];
 }
 
 //关闭计时器
