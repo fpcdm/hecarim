@@ -98,7 +98,7 @@
 #endif
 
 //@def_prop
-#import "NSObject+Property.h"
+#import "NSObject+Framework.h"
 #define def_prop_readonly( type, name ) \
     synthesize name = _##name;
 

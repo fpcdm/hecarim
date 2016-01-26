@@ -78,6 +78,8 @@
 		2F1C77751C574F7E009080A3 /* UIColor+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77731C574F7E009080A3 /* UIColor+Framework.m */; };
 		2F1C77781C575054009080A3 /* UIColor+Hex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77761C575054009080A3 /* UIColor+Hex.h */; };
 		2F1C77791C575054009080A3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77771C575054009080A3 /* UIColor+Hex.m */; };
+		2F1C777E1C575B8F009080A3 /* NSObject+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C777C1C575B8F009080A3 /* NSObject+Framework.h */; };
+		2F1C777F1C575B8F009080A3 /* NSObject+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */; };
 		2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */; };
 		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
 		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; };
@@ -128,7 +130,6 @@
 		2FD9932E1C48BC9D0065293E /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991271C48BC9C0065293E /* BaseTableView.m */; };
 		2FD9932F1C48BC9D0065293E /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991291C48BC9C0065293E /* BaseView.m */; };
 		2FD993301C48BC9D0065293E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9912B1C48BC9C0065293E /* BaseViewController.m */; };
-		2FD993311C48BC9D0065293E /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9912E1C48BC9C0065293E /* NSObject+Property.m */; };
 		2FD993321C48BC9D0065293E /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991301C48BC9C0065293E /* NSString+Trim.m */; };
 		2FD993341C48BC9D0065293E /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991341C48BC9C0065293E /* UIImageView+PlayGIF.m */; };
 		2FD993351C48BC9D0065293E /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991361C48BC9C0065293E /* UINavigationController+Vertical.m */; };
@@ -162,7 +163,6 @@
 		2FD993E91C48BE710065293E /* BaseTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991261C48BC9C0065293E /* BaseTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993EA1C48BE710065293E /* BaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991281C48BC9C0065293E /* BaseView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993EB1C48BE710065293E /* BaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9912A1C48BC9C0065293E /* BaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FD993EC1C48BE710065293E /* NSObject+Property.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9912D1C48BC9C0065293E /* NSObject+Property.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993ED1C48BE710065293E /* NSString+Trim.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9912F1C48BC9C0065293E /* NSString+Trim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993EF1C48BE710065293E /* UIImageView+PlayGIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991331C48BC9C0065293E /* UIImageView+PlayGIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F01C48BE710065293E /* UINavigationController+Vertical.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991351C48BC9C0065293E /* UINavigationController+Vertical.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -713,6 +713,8 @@
 		2F1C77731C574F7E009080A3 /* UIColor+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Framework.m"; sourceTree = "<group>"; };
 		2F1C77761C575054009080A3 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2F1C77771C575054009080A3 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		2F1C777C1C575B8F009080A3 /* NSObject+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Framework.h"; sourceTree = "<group>"; };
+		2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Framework.m"; sourceTree = "<group>"; };
 		2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
 		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
 		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
@@ -775,8 +777,6 @@
 		2FD991291C48BC9C0065293E /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		2FD9912A1C48BC9C0065293E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		2FD9912B1C48BC9C0065293E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		2FD9912D1C48BC9C0065293E /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
-		2FD9912E1C48BC9C0065293E /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		2FD9912F1C48BC9C0065293E /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
 		2FD991301C48BC9C0065293E /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
 		2FD991331C48BC9C0065293E /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
@@ -1542,8 +1542,6 @@
 		2FD9912C1C48BC9C0065293E /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				2FD9912D1C48BC9C0065293E /* NSObject+Property.h */,
-				2FD9912E1C48BC9C0065293E /* NSObject+Property.m */,
 				2FD9912F1C48BC9C0065293E /* NSString+Trim.h */,
 				2FD991301C48BC9C0065293E /* NSString+Trim.m */,
 				2FD991331C48BC9C0065293E /* UIImageView+PlayGIF.h */,
@@ -1564,6 +1562,8 @@
 				2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */,
 				2F09D7281C55F537003BB601 /* UIViewController+Framework.h */,
 				2F09D7291C55F537003BB601 /* UIViewController+Framework.m */,
+				2F1C777C1C575B8F009080A3 /* NSObject+Framework.h */,
+				2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */,
 				2F1C77721C574F7E009080A3 /* UIColor+Framework.h */,
 				2F1C77731C574F7E009080A3 /* UIColor+Framework.m */,
 			);
@@ -2666,6 +2666,7 @@
 				2FD99E5D1C48CE6F0065293E /* AFNetworking.h in Headers */,
 				2FD99EAA1C48CE6F0065293E /* RKSearchIndexer.h in Headers */,
 				2FD99E6E1C48CE6F0065293E /* RKBenchmark.h in Headers */,
+				2F1C777E1C575B8F009080A3 /* NSObject+Framework.h in Headers */,
 				2FD99D961C48CE6F0065293E /* FLEXPropertyEditorViewController.h in Headers */,
 				2FD99E9B1C48CE6F0065293E /* RKPaginator.h in Headers */,
 				2FD99EAE1C48CE6F0065293E /* RKSerialization.h in Headers */,
@@ -2691,7 +2692,6 @@
 				2FD993E91C48BE710065293E /* BaseTableView.h in Headers */,
 				2FD993EA1C48BE710065293E /* BaseView.h in Headers */,
 				2FD993EB1C48BE710065293E /* BaseViewController.h in Headers */,
-				2FD993EC1C48BE710065293E /* NSObject+Property.h in Headers */,
 				2F1CD52E1C4F800C00B0DC4B /* IView+Xml.h in Headers */,
 				2FAA250E1C53A56C00933669 /* BaseWidget.h in Headers */,
 				2FD993ED1C48BE710065293E /* NSString+Trim.h in Headers */,
@@ -2806,6 +2806,7 @@
 				2F1C35DE1C4C89310060E793 /* IStyleSheet.m in Sources */,
 				2FD99E261C48CE6F0065293E /* View+MASAdditions.m in Sources */,
 				2FD99E2D1C48CE6F0065293E /* MJRefreshBackFooter.m in Sources */,
+				2F1C777F1C575B8F009080A3 /* NSObject+Framework.m in Sources */,
 				2FD993471C48BC9D0065293E /* StorageUtil.m in Sources */,
 				2FD99E0B1C48CE6F0065293E /* FMDatabasePool.m in Sources */,
 				2FD9932E1C48BC9D0065293E /* BaseTableView.m in Sources */,
@@ -2914,7 +2915,6 @@
 				2FF340D41C509FFD0066CC1F /* BaseViewAction.m in Sources */,
 				2FD99EDC1C48CE700065293E /* UIView+WebCacheOperation.m in Sources */,
 				2FD99D951C48CE6F0065293E /* FLEXMethodCallingViewController.m in Sources */,
-				2FD993311C48BC9D0065293E /* NSObject+Property.m in Sources */,
 				2FD99DAF1C48CE6F0065293E /* FLEXTableLeftCell.m in Sources */,
 				2FD9932B1C48BC9D0065293E /* BaseHandler.m in Sources */,
 				2FD99E4E1C48CE6F0065293E /* UIView+MJExtension.m in Sources */,

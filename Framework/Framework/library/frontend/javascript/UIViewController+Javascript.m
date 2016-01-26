@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+Javascript.h"
-#import "NSObject+Property.h"
+#import "NSObject+Framework.h"
 
 @implementation UIViewController (Javascript)
 

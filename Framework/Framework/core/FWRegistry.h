@@ -7,19 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWPluginCache.h"
 
-@interface FWRegistry : NSObject
+//注册表缓存：内存
+@interface FWRegistry : NSObject<FWPluginCache>
 
 @singleton(FWRegistry)
-
-- (id)get:(NSString *)key;
-
-- (BOOL)has:(NSString *)key;
-
-- (void)set:(NSString *)key object:(id)object;
-
-- (void)remove:(NSString *)key;
-
-- (void)clear;
 
 @end

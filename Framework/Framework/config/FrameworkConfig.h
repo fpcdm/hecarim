@@ -60,6 +60,9 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
+//框架版本号
+#define FRAMEWORK_VERSION @"1.0-dev"
+
 //加载预编译指令
 #import "FrameworkPredefine.h"
 

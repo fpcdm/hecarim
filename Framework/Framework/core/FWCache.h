@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FWPluginCache.h"
 
-//缓存适配器
+//框架缓存：文件
 @interface FWCache : NSObject<FWPluginCache>
 
 @singleton(FWCache)

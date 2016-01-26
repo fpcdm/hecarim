@@ -6,4 +6,9 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
+#ifndef Framework_Framework_h
+#define Framework_Framework_h
+
 #import "FrameworkConfig.h"
+
+#endif

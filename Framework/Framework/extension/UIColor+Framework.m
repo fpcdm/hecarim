@@ -83,12 +83,12 @@
             break;
     }
     
-    //解析透明度
+    //解析透明度，字符串的透明度优先级高于alpha参数
     if (strA) {
         unsigned int a;
         [[NSScanner scannerWithString:strA] scanHexInt:&a];
-        //字符串的透明度优先级高于alpha参数
-        alpha = a;
+        //计算十六进制对应透明度
+        alpha = (a * 1.0f) / 255.0f;
     }
     
     //解析颜色
@@ -272,13 +272,25 @@
 
 + (NSString *)stringFromColor:(UIColor *)color
 {
+    return [UIColor stringFromColor:color alpha:NO];
+}
+
++ (NSString *)stringFromColor:(UIColor *)color alpha:(BOOL)alpha
+{
     const CGFloat *components = CGColorGetComponents(color.CGColor);
     
     CGFloat r = components[0];
     CGFloat g = components[1];
     CGFloat b = components[2];
     
-    return [NSString stringWithFormat:@"#%02lX%02lX%02lX",
+    NSString *strA = @"";
+    if (alpha) {
+        CGFloat a = CGColorGetAlpha(color.CGColor);
+        strA = [NSString stringWithFormat:@"%02lX", lround(a * 255)];
+    }
+    
+    return [NSString stringWithFormat:@"#%@%02lX%02lX%02lX",
+            strA,
             lroundf(r * 255),
             lroundf(g * 255),
             lroundf(b * 255)];
