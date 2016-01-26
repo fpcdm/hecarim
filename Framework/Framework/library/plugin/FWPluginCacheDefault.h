@@ -1,17 +1,14 @@
 //
-//  FWCache.h
+//  FWPluginCacheDefault.h
 //  Framework
 //
-//  Created by 吴勇 on 16/1/25.
+//  Created by wuyong on 16/1/26.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "FWPluginCache.h"
 
-//缓存适配器
-@interface FWCache : NSObject<FWPluginCache>
-
-@singleton(FWCache)
+@interface FWPluginCacheDefault : NSObject<FWPluginCache>
 
 @end

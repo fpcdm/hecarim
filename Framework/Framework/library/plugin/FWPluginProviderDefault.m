@@ -7,7 +7,8 @@
 //
 
 #import "FWPluginProviderDefault.h"
-#import "FWPluginDialogDefault.h"
+#import "FWPluginManager.h"
+#import <objc/runtime.h>
 
 @implementation FWPluginProviderDefault
 {
@@ -26,12 +27,20 @@
 
 - (id)providePlugin:(NSString *)name
 {
-    id plugin = nil;
-    //默认弹出框
-    if ([FWPluginDialogName isEqualToString:name]) {
-        plugin = [plugins objectForKey:name];
-        if (!plugin) {
-            plugin = [[FWPluginDialogDefault alloc] init];
+    //读取缓存
+    id plugin = [plugins objectForKey:name];
+    if (!plugin) {
+        //默认插件规则：nameDefault，优先调用sharedInstance，没有才调用alloc、init
+        Class pluginClass = NSClassFromString([NSString stringWithFormat:@"%@Default", name]);
+        if (pluginClass) {
+            //检测sharedInstance方法
+            if (class_respondsToSelector(pluginClass, @selector(sharedInstance))) {
+                plugin = [pluginClass sharedInstance];
+            } else {
+                plugin = [[pluginClass alloc] init];
+            }
+            
+            //设置缓存
             [plugins setObject:plugin forKey:name];
         }
     }

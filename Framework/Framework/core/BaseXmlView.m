@@ -7,7 +7,7 @@
 //
 
 #import "BaseXmlView.h"
-#import "CacheUtil.h"
+#import "FWCache.h"
 #import "HttpUtil.h"
 
 static NSString *xmlPath = nil;
@@ -194,7 +194,7 @@ static NSString *patchPath = nil;
     NSString *xmlStr = nil;
     if (patchPath) {
         NSString *cacheKey = [NSString stringWithFormat:@"%@%@", XMLVIEW_CACHE_PREFIX, _xmlFileName];
-        xmlStr = [[CacheUtil sharedInstance] get:cacheKey];
+        xmlStr = [[FWCache sharedInstance] get:cacheKey];
     }
     return xmlStr;
 }
@@ -219,13 +219,13 @@ static NSString *patchPath = nil;
     if (data != nil) {
         NSString *newXml = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         if (!oldXml || ![oldXml isEqualToString:newXml]) {
-            [[CacheUtil sharedInstance] set:cacheKey object:newXml];
+            [[FWCache sharedInstance] set:cacheKey object:newXml];
             
             //动态刷新视图，注意事件绑定需在视图加载完成
             [self reloadXmlView:newXml isFile:NO callback:nil];
         }
     } else {
-        [[CacheUtil sharedInstance] remove:cacheKey];
+        [[FWCache sharedInstance] remove:cacheKey];
         
         //补丁移除时动态刷新视图，加载原视图
         if (oldXml) {
