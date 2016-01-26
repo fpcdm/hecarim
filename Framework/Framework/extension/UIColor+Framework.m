@@ -1,24 +1,14 @@
 //
-//  UIColor+Hex.m
-//  LttCustomer
+//  UIColor+Framework.m
+//  Framework
 //
-//  Created by wuyong on 15/5/5.
-//  Copyright (c) 2015年 Gilbert. All rights reserved.
+//  Created by wuyong on 16/1/26.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "UIColor+Hex.h"
+#import "UIColor+Framework.h"
 
-@implementation UIColor (Hex)
-
-+ (UIColor *)colorWithHexString:(NSString *)color
-{
-    return [self colorWithHex:color];
-}
-
-+ (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha
-{
-    return [self colorWithHex:color alpha:alpha];
-}
+@implementation UIColor (Framework)
 
 + (UIColor *)colorWithHex:(NSString *)hex
 {
@@ -44,7 +34,7 @@
     
     //长度解析
     switch (hex.length) {
-        //RGB
+            //RGB
         case 3:
         {
             NSString *tmpR = [hex substringWithRange:NSMakeRange(0, 1)];
@@ -56,7 +46,7 @@
             strB = [NSString stringWithFormat:@"%@%@", tmpB, tmpB];
         }
             break;
-        //ARGB
+            //ARGB
         case 4:
         {
             NSString *tmpA = [hex substringWithRange:NSMakeRange(0, 1)];
@@ -70,7 +60,7 @@
             strB = [NSString stringWithFormat:@"%@%@", tmpB, tmpB];
         }
             break;
-        //RRGGBB
+            //RRGGBB
         case 6:
         {
             strR = [hex substringWithRange:NSMakeRange(0, 2)];
@@ -78,7 +68,7 @@
             strB = [hex substringWithRange:NSMakeRange(4, 2)];
         }
             break;
-        //AARRGGBB
+            //AARRGGBB
         case 8:
         {
             strA = [hex substringWithRange:NSMakeRange(0, 2)];
@@ -87,7 +77,7 @@
             strB = [hex substringWithRange:NSMakeRange(6, 2)];
         }
             break;
-        //ERROR
+            //ERROR
         default:
             return [UIColor clearColor];
             break;

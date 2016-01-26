@@ -1,18 +1,14 @@
 //
-//  UIColor+Hex.h
-//  LttCustomer
+//  UIColor+Framework.h
+//  Framework
 //
-//  Created by wuyong on 15/5/5.
-//  Copyright (c) 2015年 Gilbert. All rights reserved.
+//  Created by wuyong on 16/1/26.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (Hex)
-
-//兼容方法
-+ (UIColor *)colorWithHexString:(NSString *)color;
-+ (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
+@interface UIColor (Framework)
 
 //十六进制
 + (UIColor *)colorWithHex:(NSString *)hex;

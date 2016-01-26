@@ -74,6 +74,10 @@
 		2F1C77661C570489009080A3 /* FWPluginCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77651C570489009080A3 /* FWPluginCache.h */; };
 		2F1C77691C5704AF009080A3 /* FWPluginCacheDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */; };
 		2F1C776A1C5704AF009080A3 /* FWPluginCacheDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */; };
+		2F1C77741C574F7E009080A3 /* UIColor+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77721C574F7E009080A3 /* UIColor+Framework.h */; };
+		2F1C77751C574F7E009080A3 /* UIColor+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77731C574F7E009080A3 /* UIColor+Framework.m */; };
+		2F1C77781C575054009080A3 /* UIColor+Hex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77761C575054009080A3 /* UIColor+Hex.h */; };
+		2F1C77791C575054009080A3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77771C575054009080A3 /* UIColor+Hex.m */; };
 		2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */; };
 		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
 		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; };
@@ -126,7 +130,6 @@
 		2FD993301C48BC9D0065293E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9912B1C48BC9C0065293E /* BaseViewController.m */; };
 		2FD993311C48BC9D0065293E /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9912E1C48BC9C0065293E /* NSObject+Property.m */; };
 		2FD993321C48BC9D0065293E /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991301C48BC9C0065293E /* NSString+Trim.m */; };
-		2FD993331C48BC9D0065293E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991321C48BC9C0065293E /* UIColor+Hex.m */; };
 		2FD993341C48BC9D0065293E /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991341C48BC9C0065293E /* UIImageView+PlayGIF.m */; };
 		2FD993351C48BC9D0065293E /* UINavigationController+Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991361C48BC9C0065293E /* UINavigationController+Vertical.m */; };
 		2FD993361C48BC9D0065293E /* UIScrollView+RefreshLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991381C48BC9C0065293E /* UIScrollView+RefreshLoading.m */; };
@@ -161,7 +164,6 @@
 		2FD993EB1C48BE710065293E /* BaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9912A1C48BC9C0065293E /* BaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993EC1C48BE710065293E /* NSObject+Property.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9912D1C48BC9C0065293E /* NSObject+Property.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993ED1C48BE710065293E /* NSString+Trim.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9912F1C48BC9C0065293E /* NSString+Trim.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FD993EE1C48BE710065293E /* UIColor+Hex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991311C48BC9C0065293E /* UIColor+Hex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993EF1C48BE710065293E /* UIImageView+PlayGIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991331C48BC9C0065293E /* UIImageView+PlayGIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F01C48BE710065293E /* UINavigationController+Vertical.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991351C48BC9C0065293E /* UINavigationController+Vertical.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F11C48BE710065293E /* UIScrollView+RefreshLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991371C48BC9C0065293E /* UIScrollView+RefreshLoading.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -707,6 +709,10 @@
 		2F1C77651C570489009080A3 /* FWPluginCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginCache.h; sourceTree = "<group>"; };
 		2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginCacheDefault.h; sourceTree = "<group>"; };
 		2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginCacheDefault.m; sourceTree = "<group>"; };
+		2F1C77721C574F7E009080A3 /* UIColor+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Framework.h"; sourceTree = "<group>"; };
+		2F1C77731C574F7E009080A3 /* UIColor+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Framework.m"; sourceTree = "<group>"; };
+		2F1C77761C575054009080A3 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		2F1C77771C575054009080A3 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
 		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
 		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
@@ -773,8 +779,6 @@
 		2FD9912E1C48BC9C0065293E /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		2FD9912F1C48BC9C0065293E /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
 		2FD991301C48BC9C0065293E /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
-		2FD991311C48BC9C0065293E /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		2FD991321C48BC9C0065293E /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2FD991331C48BC9C0065293E /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		2FD991341C48BC9C0065293E /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		2FD991351C48BC9C0065293E /* UINavigationController+Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Vertical.h"; sourceTree = "<group>"; };
@@ -1278,6 +1282,8 @@
 			children = (
 				2F09D7311C560482003BB601 /* UIViewController+Dialog.h */,
 				2F09D7321C560482003BB601 /* UIViewController+Dialog.m */,
+				2F1C77761C575054009080A3 /* UIColor+Hex.h */,
+				2F1C77771C575054009080A3 /* UIColor+Hex.m */,
 			);
 			path = deprecated;
 			sourceTree = "<group>";
@@ -1540,8 +1546,6 @@
 				2FD9912E1C48BC9C0065293E /* NSObject+Property.m */,
 				2FD9912F1C48BC9C0065293E /* NSString+Trim.h */,
 				2FD991301C48BC9C0065293E /* NSString+Trim.m */,
-				2FD991311C48BC9C0065293E /* UIColor+Hex.h */,
-				2FD991321C48BC9C0065293E /* UIColor+Hex.m */,
 				2FD991331C48BC9C0065293E /* UIImageView+PlayGIF.h */,
 				2FD991341C48BC9C0065293E /* UIImageView+PlayGIF.m */,
 				2FD991351C48BC9C0065293E /* UINavigationController+Vertical.h */,
@@ -1560,6 +1564,8 @@
 				2FD991401C48BC9C0065293E /* UIViewController+BackButtonHandler.m */,
 				2F09D7281C55F537003BB601 /* UIViewController+Framework.h */,
 				2F09D7291C55F537003BB601 /* UIViewController+Framework.m */,
+				2F1C77721C574F7E009080A3 /* UIColor+Framework.h */,
+				2F1C77731C574F7E009080A3 /* UIColor+Framework.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -2376,6 +2382,7 @@
 				2FD99E841C48CE6F0065293E /* RKManagedObjectMappingOperationDataSource.h in Headers */,
 				2FD99E541C48CE6F0065293E /* PINMemoryCache.h in Headers */,
 				2FF343181C50CCC90066CC1F /* MapUtil.h in Headers */,
+				2F1C77781C575054009080A3 /* UIColor+Hex.h in Headers */,
 				2FD99E161C48CE6F0065293E /* MASConstraintMaker.h in Headers */,
 				2FD99E891C48CE6F0065293E /* RKMapping.h in Headers */,
 				2F1C35FB1C4C89310060E793 /* IPopover.h in Headers */,
@@ -2543,6 +2550,7 @@
 				2FD99E341C48CE6F0065293E /* MJRefreshAutoGifFooter.h in Headers */,
 				2F1C35D81C4C89310060E793 /* IFlowLayout.h in Headers */,
 				2F1C36071C4C89310060E793 /* INSXmlViewLoader.h in Headers */,
+				2F1C77741C574F7E009080A3 /* UIColor+Framework.h in Headers */,
 				2FD99D4D1C48CE6F0065293E /* ActionSheetCustomPickerDelegate.h in Headers */,
 				2FF343241C50D0720066CC1F /* ObjectUtil.h in Headers */,
 				2FD99E621C48CE6F0065293E /* ISO8601DateFormatterValueTransformer.h in Headers */,
@@ -2687,7 +2695,6 @@
 				2F1CD52E1C4F800C00B0DC4B /* IView+Xml.h in Headers */,
 				2FAA250E1C53A56C00933669 /* BaseWidget.h in Headers */,
 				2FD993ED1C48BE710065293E /* NSString+Trim.h in Headers */,
-				2FD993EE1C48BE710065293E /* UIColor+Hex.h in Headers */,
 				2FD993EF1C48BE710065293E /* UIImageView+PlayGIF.h in Headers */,
 				2FD993F01C48BE710065293E /* UINavigationController+Vertical.h in Headers */,
 				2FD993F11C48BE710065293E /* UIScrollView+RefreshLoading.h in Headers */,
@@ -2887,6 +2894,7 @@
 				2FD99D611C48CE6F0065293E /* DDASLLogger.m in Sources */,
 				2FD993411C48BC9D0065293E /* LocaleUtil.m in Sources */,
 				2FD99E2F1C48CE6F0065293E /* MJRefreshComponent.m in Sources */,
+				2F1C77791C575054009080A3 /* UIColor+Hex.m in Sources */,
 				2F1C35F81C4C89310060E793 /* IInput.m in Sources */,
 				2FD99DF91C48CE6F0065293E /* FLEXMultilineTableViewCell.m in Sources */,
 				2FD99D9E1C48CE6F0065293E /* FLEXManager.m in Sources */,
@@ -2981,7 +2989,6 @@
 				2FD99D6F1C48CE6F0065293E /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FD99DFB1C48CE6F0065293E /* FLEXResources.m in Sources */,
 				2FD99DC71C48CE6F0065293E /* FLEXSystemLogMessage.m in Sources */,
-				2FD993331C48BC9D0065293E /* UIColor+Hex.m in Sources */,
 				2FD99D991C48CE6F0065293E /* FLEXExplorerToolbar.m in Sources */,
 				2FD99EC31C48CE700065293E /* SDImageCache.m in Sources */,
 				2FD99DDF1C48CE6F0065293E /* FLEXDefaultsExplorerViewController.m in Sources */,
@@ -3010,6 +3017,7 @@
 				2FD99D511C48CE6F0065293E /* ActionSheetDistancePicker.m in Sources */,
 				2F1C35E71C4C89310060E793 /* IMaskUIView.m in Sources */,
 				2FD99E3B1C48CE6F0065293E /* MJRefreshBackGifFooter.m in Sources */,
+				2F1C77751C574F7E009080A3 /* UIColor+Framework.m in Sources */,
 				2FD9933F1C48BC9D0065293E /* UserEntity.m in Sources */,
 				2FD99DC51C48CE6F0065293E /* FLEXWebViewController.m in Sources */,
 				2FD99ED81C48CE700065293E /* UIImageView+HighlightedWebCache.m in Sources */,
