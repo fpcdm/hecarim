@@ -102,6 +102,9 @@
 		2F1C77AD1C576DAD009080A3 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C779B1C576DAD009080A3 /* UIViewController+BackButtonHandler.m */; };
 		2F1C77B01C576EE3009080A3 /* NSString+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77AE1C576EE3009080A3 /* NSString+Framework.h */; };
 		2F1C77B11C576EE3009080A3 /* NSString+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */; };
+		2F1C77B81C577663009080A3 /* FWPluginLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B71C577663009080A3 /* FWPluginLoading.h */; };
+		2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */; };
+		2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */; };
 		2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */; };
 		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
 		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; };
@@ -741,6 +744,9 @@
 		2F1C779B1C576DAD009080A3 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		2F1C77AE1C576EE3009080A3 /* NSString+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Framework.h"; sourceTree = "<group>"; };
 		2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Framework.m"; sourceTree = "<group>"; };
+		2F1C77B71C577663009080A3 /* FWPluginLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoading.h; sourceTree = "<group>"; };
+		2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoadingDefault.h; sourceTree = "<group>"; };
+		2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginLoadingDefault.m; sourceTree = "<group>"; };
 		2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
 		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
 		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
@@ -1469,6 +1475,9 @@
 				2F24FB621C568D6800A82ABD /* FWPluginDialog.h */,
 				2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */,
 				2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */,
+				2F1C77B71C577663009080A3 /* FWPluginLoading.h */,
+				2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */,
+				2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */,
 				2F1C77651C570489009080A3 /* FWPluginCache.h */,
 				2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */,
 				2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */,
@@ -2558,6 +2567,7 @@
 				2F8E90321C56937700735A4B /* FWPluginProviderDefault.h in Headers */,
 				2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */,
 				2FD99EB21C48CE700065293E /* RKTestHelpers.h in Headers */,
+				2F1C77B81C577663009080A3 /* FWPluginLoading.h in Headers */,
 				2FD99DD41C48CE6F0065293E /* FLEXNetworkTransactionDetailTableViewController.h in Headers */,
 				2FCBAC7D1C54CB42003D9786 /* BaseViewModel.h in Headers */,
 				2FD99E941C48CE6F0065293E /* RKObjectMappingMatcher.h in Headers */,
@@ -2734,6 +2744,7 @@
 				2FD994021C48BE720065293E /* StorageUtil.h in Headers */,
 				2FD994031C48BE720065293E /* ThemeUtil.h in Headers */,
 				2F5F2F2E1C540BE600571E49 /* FWFrontend.h in Headers */,
+				2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */,
 				2FD994041C48BE720065293E /* TimerUtil.h in Headers */,
 				2FD994051C48BE720065293E /* ValidateUtil.h in Headers */,
 				2FD995131C48BED80065293E /* Framework.h in Headers */,
@@ -2952,6 +2963,7 @@
 				2FD99D641C48CE6F0065293E /* DDFileLogger.m in Sources */,
 				2FD99E011C48CE6F0065293E /* FLEXHierarchyTableViewCell.m in Sources */,
 				2FD99DE11C48CE6F0065293E /* FLEXDictionaryExplorerViewController.m in Sources */,
+				2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */,
 				2FD99E3F1C48CE6F0065293E /* MJRefreshBackStateFooter.m in Sources */,
 				2FD99E051C48CE6F0065293E /* FLEXImagePreviewViewController.m in Sources */,
 				2FD99E291C48CE6F0065293E /* MBProgressHUD.m in Sources */,
