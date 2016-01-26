@@ -26,6 +26,8 @@
 		2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD51BF43F96003B727B /* RegisterInfoView.m */; };
 		2BD4FAD91BF47977003B727B /* MerchantEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FAD81BF47977003B727B /* MerchantEntity.m */; };
 		2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4FADB1BF47D94003B727B /* MerchantHandler.m */; };
+		2BE5F85B1C5758F900AA975A /* AddressEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5F85A1C5758F900AA975A /* AddressEntity.m */; };
+		2BE5F85F1C575A1900AA975A /* AreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5F85E1C575A1900AA975A /* AreaEntity.m */; };
 		2BF3EDD51C325A6B002BCB72 /* StaffListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDD41C325A6B002BCB72 /* StaffListView.m */; };
 		2BF3EDD81C325DC8002BCB72 /* StaffListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDD71C325DC8002BCB72 /* StaffListViewController.m */; };
 		2BF3EDDB1C326D94002BCB72 /* StaffFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3EDDA1C326D94002BCB72 /* StaffFormView.m */; };
@@ -178,6 +180,10 @@
 		2BD4FAD81BF47977003B727B /* MerchantEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantEntity.m; sourceTree = "<group>"; };
 		2BD4FADA1BF47D94003B727B /* MerchantHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantHandler.h; sourceTree = "<group>"; };
 		2BD4FADB1BF47D94003B727B /* MerchantHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantHandler.m; sourceTree = "<group>"; };
+		2BE5F8591C5758F900AA975A /* AddressEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressEntity.h; sourceTree = "<group>"; };
+		2BE5F85A1C5758F900AA975A /* AddressEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressEntity.m; sourceTree = "<group>"; };
+		2BE5F85D1C575A1900AA975A /* AreaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaEntity.h; sourceTree = "<group>"; };
+		2BE5F85E1C575A1900AA975A /* AreaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaEntity.m; sourceTree = "<group>"; };
 		2BF3EDD31C325A6B002BCB72 /* StaffListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffListView.h; sourceTree = "<group>"; };
 		2BF3EDD41C325A6B002BCB72 /* StaffListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffListView.m; sourceTree = "<group>"; };
 		2BF3EDD61C325DC8002BCB72 /* StaffListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffListViewController.h; sourceTree = "<group>"; };
@@ -510,6 +516,10 @@
 		2F16E6771B5DF84B007947D0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2BE5F85D1C575A1900AA975A /* AreaEntity.h */,
+				2BE5F85E1C575A1900AA975A /* AreaEntity.m */,
+				2BE5F8591C5758F900AA975A /* AddressEntity.h */,
+				2BE5F85A1C5758F900AA975A /* AddressEntity.m */,
 				2F16E6781B5DF84B007947D0 /* BrandEntity.h */,
 				2F16E6791B5DF84B007947D0 /* BrandEntity.m */,
 				2F16E67A1B5DF84B007947D0 /* CategoryEntity.h */,
@@ -1014,6 +1024,7 @@
 				2F0E37DA1B6B218400CFE2E6 /* ServiceFormViewController.m in Sources */,
 				2F0E37D41B6B215C00CFE2E6 /* ServiceListViewController.m in Sources */,
 				2BF3EDDB1C326D94002BCB72 /* StaffFormView.m in Sources */,
+				2BE5F85F1C575A1900AA975A /* AreaEntity.m in Sources */,
 				2F55F6AB1BDF130700A89174 /* HelperHandler.m in Sources */,
 				2BBBBF5A1C153731001DFAB8 /* CaseDetailView.m in Sources */,
 				2F16E6AA1B5DF84B007947D0 /* AppUIUtil.m in Sources */,
@@ -1021,6 +1032,7 @@
 				2F3AD9401C48DFA200D37BA1 /* UIView+REFrostedViewController.m in Sources */,
 				2F3AD93D1C48DFA200D37BA1 /* REFrostedContainerViewController.m in Sources */,
 				2F74DF911B6F56F9002FAF4E /* CaseBaseViewController.m in Sources */,
+				2BE5F85B1C5758F900AA975A /* AddressEntity.m in Sources */,
 				2F16E6A51B5DF84B007947D0 /* MenuViewController.m in Sources */,
 				2BBBBF5F1C153731001DFAB8 /* GoodsView.m in Sources */,
 			);

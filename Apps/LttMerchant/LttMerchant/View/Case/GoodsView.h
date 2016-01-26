@@ -21,6 +21,8 @@
 //删除
 - (void) actionDeleteGoods: (DLRadioButton *) radio;
 
+- (void)actionBackList;
+
 @end
 
 @interface GoodsView : AppView

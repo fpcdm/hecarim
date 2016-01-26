@@ -20,6 +20,8 @@
 #import "LoginViewController.h"
 #import "MerchantHandler.h"
 #import "ProtocolViewController.h"
+#import "PickerUtil.h"
+#import "AddressEntity.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -39,6 +41,10 @@
     
     NSString *licenseUrl;
     NSString *cardUrl;
+    
+    RegisterInfoView *infoView;
+    AddressEntity *address;
+    
 }
 
 - (void)loadView
@@ -82,11 +88,14 @@
 
 - (RegisterInfoView *) infoInputView
 {
-    RegisterInfoView *currentView = [[RegisterInfoView alloc] init];
-    currentView.delegate = self;
-    [currentView setTipViewHide:NO];
+    infoView = [[RegisterInfoView alloc] init];
+    infoView.delegate = self;
+    [infoView setTipViewHide:NO];
     self.navigationItem.title = @"设置商户信息";
-    return currentView;
+    
+    address = [[AddressEntity alloc] init];
+    [infoView assign:@"address" value:address];
+    return infoView;
 }
 
 - (RegisterPasswordView *) mobilePasswordView
@@ -262,9 +271,9 @@
     if ([@"unregistered" isEqualToString:mobileStatus]) {
         [self pushView:[self mobilePasswordView] animated:YES completion:nil];
     } else {
-        RegisterInfoView *infoView = [self infoInputView];
-        [self pushView:infoView animated:YES completion:nil];
-        [infoView setTipViewHide:YES];
+        RegisterInfoView *regInfoView = [self infoInputView];
+        [self pushView:regInfoView animated:YES completion:nil];
+        [regInfoView setTipViewHide:YES];
     }
 }
 
@@ -343,9 +352,9 @@
         return;
     }
     password = pwd;
-    RegisterInfoView *infoView = [self infoInputView];
-    [self pushView:infoView animated:YES completion:nil];
-    [infoView setTipViewHide:NO];
+    RegisterInfoView *regInfoView = [self infoInputView];
+    [self pushView:regInfoView animated:YES completion:nil];
+    [regInfoView setTipViewHide:NO];
 }
 
 //商户注册验证
@@ -388,6 +397,10 @@
     merchant.password = password;
     merchant.licenseUrl = licenseUrl;
     merchant.cardUrl = cardUrl;
+    merchant.province = address.provinceId;
+    merchant.city = address.cityId;
+    merchant.area = address.countyId;
+    merchant.street = address.streetId;
     
     //注册用户
     MerchantHandler *merchantHandler = [[MerchantHandler alloc] init];
@@ -455,9 +468,9 @@
                 cardUrl = imageEntity.url;
             }
 
-            RegisterInfoView *infoView = (RegisterInfoView *) self.view;
-            [infoView assign:@"merEntity" value:merEntity];
-            [infoView display];
+            RegisterInfoView *regInfoView = (RegisterInfoView *) self.view;
+            [regInfoView assign:@"merEntity" value:merEntity];
+            [regInfoView display];
             
             //回调上级
             if (self.callbackBlock) {
@@ -482,6 +495,147 @@
     }
     imageTag = imgTag;
     [sheet showInView:self.view];
+
+}
+
+- (void)actionProArea
+{
+    //加载效果
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
+    
+    //变量缓存
+    AreaEntity *requestArea = [[AreaEntity alloc] init];
+    HelperHandler *helperHandler = [[HelperHandler alloc] init];
+    
+    //地址选择器
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:3 origin:infoView];
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询省列表
+        requestArea.code = @0;
+        
+        [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *area in result) {
+                [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self hideLoading];
+        }];
+    };
+    
+    pickerUtil.secondLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询市列表
+        PickerUtilRow *firstRow = [selectedRows objectAtIndex:0];
+        AreaEntity *province = firstRow.value;
+        requestArea.code = province.code;
+        
+        [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *area in result) {
+                [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self hideLoading];
+        }];
+    };
+    
+    pickerUtil.thirdLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询县列表
+        PickerUtilRow *secondRow = [selectedRows objectAtIndex:1];
+        AreaEntity *city = secondRow.value;
+        requestArea.code = city.code;
+        
+        [helperHandler queryAreas:requestArea success:^(NSArray *result){
+            [self hideLoading];
+            
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *area in result) {
+                [rows addObject:[PickerUtilRow rowWithName:area.name ? area.name : @"" value:area]];
+            }
+            
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self hideLoading];
+        }];
+    };
+    
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        PickerUtilRow *firstRow = [selectedRows objectAtIndex:0];
+        AreaEntity *province = firstRow.value;
+        PickerUtilRow *secondRow = [selectedRows objectAtIndex:1];
+        AreaEntity *city = secondRow.value;
+        PickerUtilRow *thirdRow = [selectedRows objectAtIndex:2];
+        AreaEntity *county = thirdRow.value;
+        
+        address.provinceId = province.code;
+        address.provinceName = province.name;
+        address.cityId = city.code;
+        address.cityName = city.name;
+        address.countyId = county.code;
+        address.countyName = county.name;
+        address.streetId = nil;
+        address.streetName = nil;
+        
+        
+        NSLog(@"选择的地址：%@", [address toDictionary]);
+        
+        [infoView addressBox];
+    };
+    
+    [pickerUtil show];
+}
+
+
+- (void)actionStreet
+{
+    //是否选择区县
+    if (!address.countyId || [address.countyId floatValue] < 1) {
+        [self showError:[LocaleUtil error:@"Area.Required"]];
+        return;
+    }
+    
+    //加载效果
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
+    
+    //街道选择器
+    PickerUtil *pickerUtil = [[PickerUtil alloc] initWithTitle:nil grade:1 origin:infoView];
+    pickerUtil.firstLoadBlock = ^(NSArray *selectedRows, PickerUtilCompletionHandler completionHandler){
+        //查询街道
+        AreaEntity *countyEntity = [[AreaEntity alloc] init];
+        countyEntity.code = address.countyId;
+        
+        HelperHandler *helperHandler = [[HelperHandler alloc] init];
+        [helperHandler queryAreas:countyEntity success:^(NSArray *result){
+            [self hideLoading];
+            
+            //初始化行数据
+            NSMutableArray *rows = [[NSMutableArray alloc] init];
+            for (AreaEntity *street in result) {
+                [rows addObject:[PickerUtilRow rowWithName:street.name ? street.name : @"" value:street]];
+            }
+            
+            //回调数据
+            completionHandler(rows);
+        } failure:^(ErrorEntity *error){
+            [self showError:error.message];
+        }];
+    };
+    pickerUtil.resultBlock = ^(NSArray *selectedRows){
+        PickerUtilRow *row = [selectedRows objectAtIndex:0];
+        AreaEntity *selectedStreet = row.value;
+        
+        address.streetId = selectedStreet.code;
+        address.streetName = selectedStreet.name;
+        
+        NSLog(@"选择的街道是：%@",address.streetName);
+        
+        [infoView addressBox];
+    };
+    [pickerUtil show];
 
 }
 

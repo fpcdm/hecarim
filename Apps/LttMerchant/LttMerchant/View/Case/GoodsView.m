@@ -14,6 +14,7 @@
     UILabel *caseNo;
     UILabel *statusName;
     UIButton *button;
+    UIButton *backBtn;
     UIView *buttomView;
     DLRadioButton *radio;
 }
@@ -83,14 +84,27 @@
     button = [AppUIUtil makeButton:@"添加商品"];
     button.titleLabel.font = FONT_MAIN;
     [button addTarget:self action:@selector(actionAddGoods) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"添加商品" forState:UIControlStateNormal];
     [button setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [self addSubview:button];
     
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
-        make.bottom.equalTo(superView.mas_bottom).offset(-40);
+        make.bottom.equalTo(superView.mas_bottom).offset(-95);
+        make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
+    }];
+    
+    //返回按钮
+    backBtn = [AppUIUtil makeButton:@"返回详情"];
+    backBtn.titleLabel.font = FONT_MAIN;
+    [backBtn addTarget:self action:@selector(actionBackList) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
+    [self addSubview:backBtn];
+    
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(button.mas_bottom).offset(10);
+        make.left.equalTo(superView.mas_left).offset(padding);
+        make.right.equalTo(superView.mas_right).offset(-padding);
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
@@ -181,9 +195,11 @@
 {
     if (type) {
         button.hidden = YES;
+        backBtn.hidden = YES;
         buttomView.hidden = NO;
     } else {
         button.hidden = NO;
+        backBtn.hidden = NO;
         buttomView.hidden = YES;
     }
 }
@@ -199,4 +215,10 @@
 {
     [self.delegate actionDeleteGoods:radio];
 }
+
+- (void)actionBackList
+{
+    [self.delegate actionBackList];
+}
+
 @end

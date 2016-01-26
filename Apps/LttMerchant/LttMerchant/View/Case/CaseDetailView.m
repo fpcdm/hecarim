@@ -198,7 +198,7 @@
         make.top.equalTo(caseHeaderView.mas_bottom);
         make.left.equalTo(superView.mas_left).offset(-0.5);
         make.right.equalTo(superView.mas_right).offset(0.5);
-        make.height.equalTo(@180);
+        make.height.equalTo(@222);
     }];
     
     //图片视图
@@ -228,15 +228,15 @@
     [serviceView addSubview:userLabel];
     
     [userLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(serviceView.mas_top).offset(10);
-        make.left.equalTo(caseNameLabel.mas_right);
+        make.top.equalTo(caseNameLabel.mas_bottom).offset(5);
+        make.left.equalTo(caseNameLabel.mas_left);
         make.height.equalTo(@16);
     }];
     
     //下单人信息
     userButton = [[UIButton alloc] init];
     userButton.backgroundColor = [UIColor clearColor];
-    userButton.titleLabel.font = FONT_MIDDLE;
+    userButton.titleLabel.font = FONT_MAIN;
     [userButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [userButton addTarget:self action:@selector(actionContactUser) forControlEvents:UIControlEventTouchUpInside];
     [serviceView addSubview:userButton];
@@ -250,7 +250,7 @@
     [userButton setAttributedTitle:userStr forState:UIControlStateNormal];
     
     [userButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(serviceView.mas_top).offset(padding);
+        make.top.equalTo(userLabel.mas_top);
         make.left.equalTo(userLabel.mas_right).offset(2);
         make.height.equalTo(@16);
     }];
@@ -260,7 +260,7 @@
     [serviceView addSubview:nameTitle];
     
     [nameTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(caseNameLabel.mas_bottom).offset(9);
+        make.top.equalTo(userLabel.mas_bottom).offset(9);
         make.left.equalTo(caseNameLabel.mas_left);
         make.width.equalTo(@96);
         make.height.equalTo(@16);
@@ -273,8 +273,8 @@
     [nameLabel sizeToFit];
     CGFloat nameWidth = nameLabel.frame.size.width;
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(nameTitle.mas_top);
-        make.left.equalTo(nameTitle.mas_right);
+        make.top.equalTo(nameTitle.mas_bottom).offset(5);
+        make.left.equalTo(nameTitle.mas_left);
         make.width.equalTo([NSNumber numberWithFloat:nameWidth]);
         make.height.equalTo(@16);
     }];
@@ -282,13 +282,13 @@
     //电话
     mobileButton = [[UIButton alloc] init];
     mobileButton.backgroundColor = [UIColor clearColor];
-    mobileButton.titleLabel.font = FONT_MIDDLE;
+    mobileButton.titleLabel.font = FONT_MAIN;
     [mobileButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [mobileButton addTarget:self action:@selector(actionContactBuyer) forControlEvents:UIControlEventTouchUpInside];
     [serviceView addSubview:mobileButton];
     
     [mobileButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(caseNameLabel.mas_bottom).offset(9);
+        make.top.equalTo(nameLabel.mas_top);
         make.left.equalTo(nameLabel.mas_right);
         make.height.equalTo(@16);
     }];
@@ -301,7 +301,7 @@
     [serviceView addSubview:addressLabel];
     
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(nameTitle.mas_bottom);
+        make.top.equalTo(nameLabel.mas_bottom);
         make.left.equalTo(caseNameLabel.mas_left);
         make.right.equalTo(serviceView.mas_right).offset(-padding);
         make.height.equalTo(@40);
@@ -435,7 +435,7 @@
     editGoods.backgroundColor = [UIColor colorWithHexString:@"0199FF"];
     editGoods.titleLabel.font = FONT_MIDDLE;
     [editGoods addTarget:self action:@selector(actionEditGoods) forControlEvents:UIControlEventTouchUpInside];
-    [editGoods setTitle:@"编辑商品信息" forState:UIControlStateNormal];
+    [editGoods setTitle:@"选商品" forState:UIControlStateNormal];
     [editGoods setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [goodsHeaderView addSubview:editGoods];
     
@@ -443,8 +443,8 @@
         make.centerY.equalTo(goodsHeaderView.mas_centerY);
         make.left.equalTo(goodsNameLabel.mas_right);
         make.right.equalTo(goodsHeaderView.mas_right).offset(-padding);
-        make.width.equalTo(@106);
-        make.height.equalTo(@22);
+        make.width.equalTo(@80);
+        make.height.equalTo(@30);
     }];
     
     UIView *goodsFooterView = [[UIView alloc] init];
@@ -543,15 +543,15 @@
     editServices.titleLabel.font = FONT_MIDDLE;
     editServices.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 2);
     [editServices addTarget:self action:@selector(actionEditServices) forControlEvents:UIControlEventTouchUpInside];
-    [editServices setTitle:@"编辑服务信息" forState:UIControlStateNormal];
+    [editServices setTitle:@"下订单" forState:UIControlStateNormal];
     [editServices setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
     [servicesHeaderView addSubview:editServices];
     
     [editServices mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(servicesHeaderView.mas_centerY);
         make.right.equalTo(servicesHeaderView.mas_right).offset(-padding);
-        make.width.equalTo(@106);
-        make.height.equalTo(@22);
+        make.width.equalTo(@80);
+        make.height.equalTo(@30);
     }];
     
     //商品金额小计
@@ -674,9 +674,9 @@
     
     //下单人电话数字
     NSString *userName = intention.userName ? intention.userName : @"-";
-    NSString *userMobile = [NSString stringWithFormat:@"(%@%@)", userName, intention.userMobile ? intention.userMobile : @"-"];
+    NSString *userMobile = [NSString stringWithFormat:@"(%@ %@)", userName, intention.userMobile ? intention.userMobile : @"-"];
     NSMutableAttributedString *userStr = [[NSMutableAttributedString alloc]initWithString:userMobile];
-    NSRange userRange = {1 + [userName length],[userStr length] - 2 - [userName length]};
+    NSRange userRange = {2 + [userName length],[userStr length] - 2 - [userName length]};
     [userStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:userRange];
     [userButton setAttributedTitle:userStr forState:UIControlStateNormal];
     
@@ -688,9 +688,9 @@
     }];
     
     //电话号码数字
-    NSString *buyerMobile = [NSString stringWithFormat:@"(%@)", intention.buyerMobile];
+    NSString *buyerMobile = [NSString stringWithFormat:@" (%@)", intention.buyerMobile];
     NSMutableAttributedString *mobileStr = [[NSMutableAttributedString alloc]initWithString:buyerMobile];
-    NSRange contentRange = {1,[mobileStr length] - 2};
+    NSRange contentRange = {2,[mobileStr length] - 2};
     [mobileStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:contentRange];
     [mobileButton setAttributedTitle:mobileStr forState:UIControlStateNormal];
     
@@ -859,7 +859,7 @@
         //隐藏取消按钮
         cancelButton.hidden = NO;
         
-        CGFloat viewHeight = 80 + 180 + 45 * 3 + height + servicesHeight + 10 * 6;
+        CGFloat viewHeight = 80 + 222 + 45 * 3 + height + servicesHeight + 10 * 6;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
         //服务中
@@ -896,7 +896,7 @@
         
         [self setGoodsListViewPosition];
         
-        CGFloat viewHeight = 80 + 180 + height + servicesHeight + 10 * 5 + 45 * 2;
+        CGFloat viewHeight = 80 + 222 + height + servicesHeight + 10 * 5 + 45 * 2;
         NSLog(@"服务中视图高度是：%f",viewHeight);
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
@@ -932,7 +932,7 @@
         //隐藏取消按钮
         cancelButton.hidden = YES;
         
-        CGFloat viewHeight = 80 + 180 - 65 + 10;
+        CGFloat viewHeight = 80 + 222 - 65 + 10;
         
         [self setServiceViewHeight];
         NSArray *payment = [self fetch:@"payments"];
@@ -949,7 +949,7 @@
                 make.bottom.equalTo(payContainer.mas_bottom);
                 make.right.equalTo(payContainer.mas_right);
             }];
-            viewHeight = 80 + 180 - 65 + 225;
+            viewHeight = 80 + 222 - 65 + 225;
             self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         } else {
             self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
@@ -995,7 +995,7 @@
         [self setGoodsListViewPosition];
         [self setServiceViewHeight];
         
-        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10;
+        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 42;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
         NSLog(@"完成视图高度：%f",viewHeight);
@@ -1041,7 +1041,7 @@
         [self setGoodsListViewPosition];
         [self setServiceViewHeight];
         
-        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10;
+        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 42;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
     }
 }
@@ -1058,7 +1058,7 @@
 - (void)setServiceViewHeight
 {
     [serviceView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@100);
+        make.height.equalTo(@142);
     }];
 }
 

@@ -11,7 +11,7 @@
 
 @implementation MerchantEntity
 
-@synthesize contacter,contacter_id,merchant_address,merchant_name,licenseUrl,cardUrl;
+@synthesize contacter,contacter_id,merchant_address,merchant_name,licenseUrl,cardUrl,province,city,area,street;
 
 - (void) imageView:(UIImageView *)view
 {

@@ -28,7 +28,11 @@
                             @"password": merchant.password ? merchant.password : @"",
                             @"vcode" : vCode ? vCode : @"",
                             @"license_img" : merchant.licenseUrl ? merchant.licenseUrl : @"",
-                            @"contacter_id_img" : merchant.cardUrl ? merchant.cardUrl : @""
+                            @"contacter_id_img" : merchant.cardUrl ? merchant.cardUrl : @"",
+                            @"province" : merchant.province ? merchant.province : @"",
+                            @"city" : merchant.city ? merchant.city : @"",
+                            @"area" : merchant.area ? merchant.area : @"",
+                            @"street" : merchant.street ? merchant.street : @""
                             };
     [sharedClient putObject:merchant path:restPath param:param success:^(NSArray *result) {
         [sharedClient removeResponseDescriptor:responseDescriptor];

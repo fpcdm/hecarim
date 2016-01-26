@@ -8,6 +8,7 @@
 
 #import "BaseHandler.h"
 #import "UserEntity.h"
+#import "AreaEntity.h"
 
 @interface HelperHandler : BaseHandler
 
@@ -58,6 +59,15 @@
  *  @param failure 失败回调
  */
 - (void) uploadImage: (FileEntity *) uploadImg success: (SuccessBlock) success failure: (FailedBlock) failure;
+
+/**
+ *  查询地区列表
+ *
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void) queryAreas: (AreaEntity *) area success: (SuccessBlock) success failure: (FailedBlock) failure;
+
 
 
 @end

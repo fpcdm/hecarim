@@ -90,4 +90,24 @@
     }];
     
 }
+
+- (void)queryAreas:(AreaEntity *)area success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //登录接口调用
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[AreaEntity class] mappingParam:@{@"area_code": @"code", @"area_name": @"name"}];
+    
+    NSString *restPath = [sharedClient formatPath:@"area/children/:code" object:area];
+    [sharedClient getObject:[AreaEntity new] path:restPath param:nil success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+}
+
+
 @end

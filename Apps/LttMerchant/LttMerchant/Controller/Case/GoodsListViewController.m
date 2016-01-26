@@ -237,4 +237,9 @@
     radio.selected = NO;
 }
 
+- (void)actionBackList
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

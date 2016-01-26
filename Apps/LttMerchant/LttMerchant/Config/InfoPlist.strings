@@ -41,6 +41,7 @@
 "ERROR.Category.NotBrand" = "该分类暂无品牌";
 "ERROR.Category.NotFound" = "暂无商品类别";
 "ERROR.Model.NotGoods" = "该型号暂无商品";
+"ERROR.Area.Required" = "请选择区域哦~亲！";
 
 
 "INFO.ResetPassword.Success" = "重置密码成功";

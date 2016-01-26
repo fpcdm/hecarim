@@ -21,6 +21,8 @@
 //删除服务
 - (void)actionDeleteServices:(DLRadioButton *)radio;
 
+- (void)actionBackList;
+
 @end
 
 @interface ServiceView : AppView

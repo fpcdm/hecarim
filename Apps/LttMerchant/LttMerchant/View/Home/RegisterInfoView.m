@@ -8,6 +8,7 @@
 
 #import "RegisterInfoView.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "AddressEntity.h"
 
 @interface RegisterInfoView ()<UITextFieldDelegate>
 
@@ -20,6 +21,8 @@
     UITextField *addressField;
     UITextField *picField;
     UITextField *cardField;
+    UIButton *proAreaBtn;
+    UIButton *streetBtn;
     
     UIView *superView;
     int padding;
@@ -137,6 +140,72 @@
         make.height.equalTo(@30);
     }];
     
+    //省市视图
+    proAreaBtn = [[UIButton alloc] init];
+    proAreaBtn.layer.borderWidth = 0.5f;
+    proAreaBtn.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    proAreaBtn.layer.cornerRadius = 3.0f;
+    proAreaBtn.backgroundColor = COLOR_MAIN_WHITE;
+    proAreaBtn.titleLabel.font = FONT_MAIN;
+    proAreaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    proAreaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [proAreaBtn setTitle:@"省，市，区" forState:UIControlStateNormal];
+    [proAreaBtn setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+    [proAreaBtn addTarget:self action:@selector(actoinProArea) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:proAreaBtn];
+    
+    [proAreaBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(companyView.mas_bottom).offset(padding);
+        make.left.equalTo(superView.mas_left).offset(padding);
+        make.right.equalTo(superView.mas_right).offset(-padding);
+        make.height.equalTo(@50);
+    }];
+    
+    UIImageView *proAreaImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chooseMethod"]];
+;
+    [proAreaBtn addSubview:proAreaImg];
+    
+    [proAreaImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(proAreaBtn.mas_centerY);
+        make.right.equalTo(proAreaBtn.mas_right).offset(-padding);
+        
+        make.width.equalTo(@15);
+        make.height.equalTo(@24);
+    }];
+    
+    //街道视图
+    streetBtn = [[UIButton alloc] init];
+    streetBtn.layer.borderWidth = 0.5f;
+    streetBtn.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    streetBtn.layer.cornerRadius = 3.0f;
+    streetBtn.backgroundColor = COLOR_MAIN_WHITE;
+    streetBtn.titleLabel.font = FONT_MAIN;
+    streetBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    streetBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [streetBtn setTitle:@"街道" forState:UIControlStateNormal];
+    [streetBtn setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+    [streetBtn addTarget:self action:@selector(actoinStreet) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:streetBtn];
+    
+    [streetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(proAreaBtn.mas_bottom).offset(padding);
+        make.left.equalTo(superView.mas_left).offset(padding);
+        make.right.equalTo(superView.mas_right).offset(-padding);
+        make.height.equalTo(@50);
+    }];
+    
+    UIImageView *streetImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chooseMethod"]];
+;
+    [streetBtn addSubview:streetImg];
+    
+    [streetImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(streetBtn.mas_centerY);
+        make.right.equalTo(streetBtn.mas_right).offset(-padding);
+        
+        make.width.equalTo(@15);
+        make.height.equalTo(@24);
+    }];
+    
     //单位地址视图
     UIView *addressView = [[UIView alloc] init];
     addressView.layer.borderWidth = 0.5f;
@@ -146,7 +215,7 @@
     [self.contentView addSubview:addressView];
     
     [addressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(companyView.mas_bottom).offset(padding);
+        make.top.equalTo(streetBtn.mas_bottom).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
         make.height.equalTo(@50);
@@ -177,7 +246,6 @@
         make.right.equalTo(addressView.mas_right);
         make.height.equalTo(@30);
     }];
-    
     
     //负责人视图
     UIView *picView = [[UIView alloc] init];
@@ -412,9 +480,19 @@
             make.top.equalTo(superView.mas_top);
         }];
     }
-    CGFloat height = 52 * 4 + 10 * 10 + 102 * 2 + 45 + 20 * 2 + tipHeight;
+    CGFloat height = 52 * 4 + 10 * 10 + 102 * 2 + 45 + 20 * 2 + tipHeight + 120;
     self.contentSize = CGSizeMake(SCREEN_WIDTH, height);
     
+}
+
+- (void)actoinProArea
+{
+    [self.delegate actionProArea];
+}
+
+- (void)actoinStreet
+{
+    [self.delegate actionStreet];
 }
 
 - (void)actoinMercantRegister
@@ -449,6 +527,15 @@
         cardImageJ.hidden = YES;
         [merEntity imageView:cardImage];
     }
+}
+
+- (void)addressBox
+{
+    AddressEntity *address = [self fetch:@"address"];
+    NSString *area = address.provinceName ? [address areaName] : @"省，市，区";
+    NSString *street = address.streetName ? address.streetName : @"街道";
+    [proAreaBtn setTitle:area forState:UIControlStateNormal];
+    [streetBtn setTitle:street forState:UIControlStateNormal];
 }
 
 @end

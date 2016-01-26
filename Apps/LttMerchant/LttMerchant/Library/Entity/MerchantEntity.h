@@ -10,17 +10,25 @@
 
 @interface MerchantEntity : UserEntity
 
-@property (retain , nonatomic) NSString *contacter;
+@property (retain, nonatomic) NSString *contacter;
 
-@property (retain , nonatomic) NSString *contacter_id;
+@property (retain, nonatomic) NSString *contacter_id;
 
-@property (retain , nonatomic) NSString *merchant_address;
+@property (retain, nonatomic) NSString *merchant_address;
 
-@property (retain , nonatomic) NSString *merchant_name;
+@property (retain, nonatomic) NSString *merchant_name;
 
-@property (retain , nonatomic) NSString *licenseUrl;
+@property (retain, nonatomic) NSString *licenseUrl;
 
-@property (retain , nonatomic) NSString *cardUrl;
+@property (retain, nonatomic) NSString *cardUrl;
+
+@property (retain, nonatomic) NSNumber *province;
+
+@property (retain, nonatomic) NSNumber *city;
+
+@property (retain, nonatomic) NSNumber *area;
+
+@property (retain, nonatomic) NSNumber *street;
 
 - (void) imageView:(UIImageView *)view;
 

@@ -15,6 +15,10 @@
 
 - (void)actionUploadImage:(NSString *)imgTag;
 
+- (void)actionProArea;
+
+- (void)actionStreet;
+
 @end
 
 @interface RegisterInfoView : AppScrollView
@@ -22,5 +26,7 @@
 @property (retain , nonatomic) id<RegisterInfoViewDelegate>delegate;
 
 - (void)setTipViewHide:(BOOL)type;
+
+- (void)addressBox;
 
 @end

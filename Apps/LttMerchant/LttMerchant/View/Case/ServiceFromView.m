@@ -166,7 +166,7 @@
     }];
     
     //保存
-    UIButton *button = [AppUIUtil makeButton:@"保存"];
+    UIButton *button = [AppUIUtil makeButton:@"提交订单"];
     [button addTarget:self action:@selector(actionSave) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     
