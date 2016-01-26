@@ -1,14 +1,14 @@
 //
-//  NSString+Trim.m
-//  LttCustomer
+//  NSString+Framework.m
+//  Framework
 //
-//  Created by wuyong on 15/5/6.
-//  Copyright (c) 2015年 Gilbert. All rights reserved.
+//  Created by wuyong on 16/1/26.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "NSString+Trim.h"
+#import "NSString+Framework.h"
 
-@implementation NSString (Trim)
+@implementation NSString (Framework)
 
 + (NSString *)trim:(NSString *)str
 {
