@@ -198,7 +198,7 @@
         make.top.equalTo(caseHeaderView.mas_bottom);
         make.left.equalTo(superView.mas_left).offset(-0.5);
         make.right.equalTo(superView.mas_right).offset(0.5);
-        make.height.equalTo(@222);
+        make.height.equalTo(@232);
     }];
     
     //图片视图
@@ -228,7 +228,7 @@
     [serviceView addSubview:userLabel];
     
     [userLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(caseNameLabel.mas_bottom).offset(5);
+        make.top.equalTo(caseNameLabel.mas_bottom).offset(padding);
         make.left.equalTo(caseNameLabel.mas_left);
         make.height.equalTo(@16);
     }];
@@ -240,14 +240,6 @@
     [userButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [userButton addTarget:self action:@selector(actionContactUser) forControlEvents:UIControlEventTouchUpInside];
     [serviceView addSubview:userButton];
-    
-    //下单人电话数字
-    NSString *userName = @"-";
-    NSString *userMobile = @"(--)";
-    NSMutableAttributedString *userStr = [[NSMutableAttributedString alloc]initWithString:userMobile];
-    NSRange userRange = {1 + [userName length],[userStr length] - 2 - [userName length]};
-    [userStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:userRange];
-    [userButton setAttributedTitle:userStr forState:UIControlStateNormal];
     
     [userButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(userLabel.mas_top);
@@ -273,7 +265,7 @@
     [nameLabel sizeToFit];
     CGFloat nameWidth = nameLabel.frame.size.width;
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(nameTitle.mas_bottom).offset(5);
+        make.top.equalTo(nameTitle.mas_bottom).offset(padding);
         make.left.equalTo(nameTitle.mas_left);
         make.width.equalTo([NSNumber numberWithFloat:nameWidth]);
         make.height.equalTo(@16);
@@ -664,7 +656,7 @@
     caseTime.text = intention.createTime;
     totalAmount.text = [NSString stringWithFormat:@"%@",![@0 isEqualToNumber:intention.totalAmount] ? [NSString stringWithFormat:@"￥%.2f", (intention.totalAmount ? [intention.totalAmount floatValue] : 0.00)] : @"-"];
     
-    //服务联系人
+    //下单人
     userLabel.text = intention.userAppellation;
     [userLabel sizeToFit];
     CGFloat userWidth = userLabel.frame.size.width;
@@ -674,12 +666,24 @@
     
     //下单人电话数字
     NSString *userName = intention.userName ? intention.userName : @"-";
-    NSString *userMobile = [NSString stringWithFormat:@"(%@ %@)", userName, intention.userMobile ? intention.userMobile : @"-"];
-    NSMutableAttributedString *userStr = [[NSMutableAttributedString alloc]initWithString:userMobile];
-    NSRange userRange = {2 + [userName length],[userStr length] - 2 - [userName length]};
-    [userStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:userRange];
-    [userButton setAttributedTitle:userStr forState:UIControlStateNormal];
+    NSString *userMobile;
+    if (intention.userAppellation == nil || intention.userAppellation.length < 1) {
+        userMobile = [NSString stringWithFormat:@"%@ (%@)", userName, intention.userMobile ? intention.userMobile : @"-"];
+        
+        NSMutableAttributedString *userStr = [[NSMutableAttributedString alloc]initWithString:userMobile];
+        NSRange userRange = {2 + [userName length],[userStr length] - 3 - [userName length]};
+        [userStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:userRange];
+        [userButton setAttributedTitle:userStr forState:UIControlStateNormal];
+    } else {
+        userMobile = [NSString stringWithFormat:@"(%@ %@)", userName, intention.userMobile ? intention.userMobile : @"-"];
+        
+        NSMutableAttributedString *userStr = [[NSMutableAttributedString alloc]initWithString:userMobile];
+        NSRange userRange = {2 + [userName length],[userStr length] - 3 - [userName length]};
+        [userStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:userRange];
+        [userButton setAttributedTitle:userStr forState:UIControlStateNormal];
+    }
     
+    //服务联系人
     nameLabel.text = intention.buyerName;
     [nameLabel sizeToFit];
     CGFloat nameWidth = nameLabel.frame.size.width;
@@ -690,7 +694,7 @@
     //电话号码数字
     NSString *buyerMobile = [NSString stringWithFormat:@" (%@)", intention.buyerMobile];
     NSMutableAttributedString *mobileStr = [[NSMutableAttributedString alloc]initWithString:buyerMobile];
-    NSRange contentRange = {2,[mobileStr length] - 2};
+    NSRange contentRange = {2,[mobileStr length] - 3};
     [mobileStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:contentRange];
     [mobileButton setAttributedTitle:mobileStr forState:UIControlStateNormal];
     

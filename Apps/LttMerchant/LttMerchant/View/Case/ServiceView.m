@@ -90,14 +90,17 @@
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
-        make.bottom.equalTo(superView.mas_bottom).offset(-95);
+        make.bottom.equalTo(superView.mas_bottom).offset(-65);
         make.height.equalTo([NSNumber numberWithInt:HEIGHT_MAIN_BUTTON]);
     }];
     
     //返回按钮
     backBtn = [AppUIUtil makeButton:@"返回详情"];
+    backBtn.backgroundColor = COLOR_MAIN_WHITE;
+    backBtn.layer.borderWidth = 0.5;
+    backBtn.layer.borderColor = CGCOLOR_MAIN_BORDER;
     [backBtn addTarget:self action:@selector(actionBackList) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setTitleColor:COLOR_MAIN_WHITE forState:UIControlStateNormal];
+    [backBtn setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
     [self addSubview:backBtn];
     
     [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
