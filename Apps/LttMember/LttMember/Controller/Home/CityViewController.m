@@ -62,11 +62,8 @@
 
 - (void)reloadView
 {
-    NSDictionary *assignDic = @{
-                                @"cities" : openCities,
-                                @"gps" : self.gpsLocation
-                                };
-    [cityView assign:assignDic];
+    [cityView assign:@"cities" value:openCities];
+    [cityView assign:@"gps" value:self.gpsLocation];
     [cityView display];
 }
 

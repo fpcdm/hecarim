@@ -50,11 +50,8 @@
         //加载数据
         UserEntity *user = [[StorageUtil sharedStorage] getUser];
         
-        NSDictionary *assignDic = @{
-                                    @"user" : user,
-                                    @"payRes" : resultEntity.data
-                                    };
-        [safetyView assign:assignDic];
+        [safetyView assign:@"user" value:user];
+        [safetyView assign:@"payRes" value:resultEntity.data];
         
         [safetyView display];
     } failure:^(ErrorEntity *error) {

@@ -250,12 +250,9 @@
     self.navigationItem.title = @"两条腿收银台";
     
     //显示数据
-    NSDictionary *assignDic = @{
-                                @"payments" : payments,
-                                @"intention" : intention,
-                                @"balance" : accountBalance
-                                };
-    [cashierView assign:assignDic];
+    [cashierView assign:@"payments" value:payments];
+    [cashierView assign:@"intention" value:intention];
+    [cashierView assign:@"balance" value:accountBalance];
     [cashierView display];
 }
 

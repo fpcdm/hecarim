@@ -62,26 +62,19 @@
     //地址存在
     if (address && address.id) {
         NSString *detailAddress = [NSString stringWithFormat:@"%@%@%@%@%@", address.provinceName, address.cityName, address.countyName, address.streetName, address.address];
-        NSDictionary *assignDic = @{
-                                    @"name" : address.name,
-                                    @"mobile" : address.mobile,
-                                    @"address" : detailAddress,
-                                    };
-        
-        [formView assign:assignDic];
+        [formView assign:@"name" value:address.name];
+        [formView assign:@"mobile" value:address.mobile];
+        [formView assign:@"address" value:detailAddress];
         [formView display];
         
         caseEntity.addressId = address.id;
     } else {
-        NSDictionary *assignDic = @{
-                                    @"name" : address.name,
-                                    @"mobile" : address.mobile,
-                                    @"address" : @""
-                                    };
+        [formView assign:@"name" value:address.name];
+        [formView assign:@"mobile" value:address.mobile];
+        [formView assign:@"address" value:@""];
         if (address.isEnable && [@1 isEqualToNumber:address.isEnable]) {
-            [assignDic setValue:address.address forKey:@"address"];
+            [formView assign:@"address" value:address.address];
         }
-        [formView assign:assignDic];
         [formView display];
         
         caseEntity.addressId = nil;
