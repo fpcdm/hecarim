@@ -36,6 +36,7 @@
     UIButton *licenseBtn;
     UIButton *cardBtn;
     CGFloat _totalYOffset;
+    UIView *borderView;
 }
 
 - (UIScrollView *)loadScrollView
@@ -97,48 +98,14 @@
         make.right.equalTo(tipView.mas_right);
     }];
     
-    UIView *newView = tipView;
+    borderView = tipView;
     
-    //单位名称视图
-    UIView *companyView = [[UIView alloc] init];
-    companyView.layer.borderWidth = 0.5f;
-    companyView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    companyView.layer.cornerRadius = 3.0f;
-    companyView.backgroundColor = COLOR_MAIN_WHITE;
-    [self.contentView addSubview:companyView];
-    
-    [companyView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(newView.mas_bottom).offset(padding);
-        make.left.equalTo(superView.mas_left).offset(padding);
-        make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@50);
-    }];
-    //单位名称
-    UILabel *companyLabel = [[UILabel alloc] init];
-    companyLabel.text = @"单位名称";
-    companyLabel.textColor = COLOR_MAIN_BLACK;
-    companyLabel.font = FONT_MAIN;
-    [companyView addSubview:companyLabel];
-    
-    [companyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(companyView.mas_centerY);
-        make.left.equalTo(companyView.mas_left).offset(padding);
-        make.width.equalTo(@70);
-    }];
     //单位名称输入框
     companyField = [AppUIUtil makeTextField];
     companyField.placeholder = @"请输入单位名称";
-    companyField.textColor = COLOR_MAIN_BLACK;
-    companyField.font = FONT_MAIN;
     companyField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [companyView addSubview:companyField];
-    
-    [companyField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(companyView.mas_centerY);
-        make.left.equalTo(companyLabel.mas_right);
-        make.right.equalTo(companyView.mas_right);
-        make.height.equalTo(@30);
-    }];
+    //单位名称视图
+    borderView = [self makeView:@"单位名称" field:companyField];
     
     //省市视图
     proAreaBtn = [[UIButton alloc] init];
@@ -155,7 +122,7 @@
     [self.contentView addSubview:proAreaBtn];
     
     [proAreaBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(companyView.mas_bottom).offset(padding);
+        make.top.equalTo(borderView.mas_bottom).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
         make.height.equalTo(@50);
@@ -206,129 +173,27 @@
         make.height.equalTo(@24);
     }];
     
-    //单位地址视图
-    UIView *addressView = [[UIView alloc] init];
-    addressView.layer.borderWidth = 0.5f;
-    addressView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    addressView.layer.cornerRadius = 3.0f;
-    addressView.backgroundColor = COLOR_MAIN_WHITE;
-    [self.contentView addSubview:addressView];
-    
-    [addressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(streetBtn.mas_bottom).offset(padding);
-        make.left.equalTo(superView.mas_left).offset(padding);
-        make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@50);
-    }];
-    //单位地址
-    UILabel *addressLabel = [[UILabel alloc] init];
-    addressLabel.text = @"单位地址";
-    addressLabel.textColor = COLOR_MAIN_BLACK;
-    addressLabel.font = FONT_MAIN;
-    [addressView addSubview:addressLabel];
-    
-    [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(addressView.mas_centerY);
-        make.left.equalTo(addressView.mas_left).offset(padding);
-        make.width.equalTo(@70);
-    }];
+    borderView = streetBtn;
     //单位地址输入框
     addressField = [AppUIUtil makeTextField];
     addressField.placeholder = @"请输入单位地址";
-    addressField.textColor = COLOR_MAIN_BLACK;
-    addressField.font = FONT_MAIN;
     addressField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [addressView addSubview:addressField];
     
-    [addressField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(addressView.mas_centerY);
-        make.left.equalTo(addressLabel.mas_right);
-        make.right.equalTo(addressView.mas_right);
-        make.height.equalTo(@30);
-    }];
+    borderView = [self makeView:@"单位地址" field:addressField];
     
-    //负责人视图
-    UIView *picView = [[UIView alloc] init];
-    picView.layer.borderWidth = 0.5f;
-    picView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    picView.layer.cornerRadius = 3.0f;
-    picView.backgroundColor = COLOR_MAIN_WHITE;
-    [self.contentView addSubview:picView];
-    
-    [picView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(addressView.mas_bottom).offset(padding);
-        make.left.equalTo(superView.mas_left).offset(padding);
-        make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@50);
-    }];
-    //负责人
-    UILabel *picLabel = [[UILabel alloc] init];
-    picLabel.text = @"负责人";
-    picLabel.textColor = COLOR_MAIN_BLACK;
-    picLabel.font = FONT_MAIN;
-    [picView addSubview:picLabel];
-    
-    [picLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(picView.mas_centerY);
-        make.left.equalTo(picView.mas_left).offset(padding);
-        make.width.equalTo(@70);
-    }];
     //负责人输入框
     picField = [AppUIUtil makeTextField];
     picField.placeholder = @"请输入负责人的姓名";
-    picField.textColor = COLOR_MAIN_BLACK;
-    picField.font = FONT_MAIN;
     picField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [picView addSubview:picField];
     
-    [picField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(picView.mas_centerY);
-        make.left.equalTo(picLabel.mas_right);
-        make.right.equalTo(picView.mas_right);
-        make.height.equalTo(@30);
-    }];
+    borderView = [self makeView:@"负责人" field:picField];
     
-    
-    //身份证视图
-    UIView *cardView = [[UIView alloc] init];
-    cardView.layer.borderWidth = 0.5f;
-    cardView.layer.borderColor = CGCOLOR_MAIN_BORDER;
-    cardView.layer.cornerRadius = 3.0f;
-    cardView.backgroundColor = COLOR_MAIN_WHITE;
-    [self.contentView addSubview:cardView];
-    
-    [cardView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(picView.mas_bottom).offset(padding);
-        make.left.equalTo(superView.mas_left).offset(padding);
-        make.right.equalTo(superView.mas_right).offset(-padding);
-        make.height.equalTo(@50);
-    }];
-    //身份证
-    UILabel *cardLabel = [[UILabel alloc] init];
-    cardLabel.text = @"身份证号";
-    cardLabel.textColor = COLOR_MAIN_BLACK;
-    cardLabel.font = FONT_MAIN;
-    [cardView addSubview:cardLabel];
-    
-    [cardLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(cardView.mas_centerY);
-        make.left.equalTo(cardView.mas_left).offset(padding);
-        make.width.equalTo(@70);
-    }];
     //负责人输入框
     cardField = [AppUIUtil makeTextField];
     cardField.placeholder = @"请输入负责人的身份证号码";
-    cardField.textColor = COLOR_MAIN_BLACK;
-    cardField.font = FONT_MAIN;
     cardField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [cardView addSubview:cardField];
     
-    [cardField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(cardView.mas_centerY);
-        make.left.equalTo(cardLabel.mas_right);
-        make.right.equalTo(cardView.mas_right);
-        make.height.equalTo(@30);
-    }];
+    borderView = [self makeView:@"身份证号" field:cardField];
     
     //营业执照图片信息
     UILabel *licenseLabel = [[UILabel alloc] init];
@@ -338,7 +203,7 @@
     [self.contentView addSubview:licenseLabel];
     
     [licenseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(cardView.mas_bottom).offset(padding);
+        make.top.equalTo(borderView.mas_bottom).offset(padding);
         make.left.equalTo(superView.mas_left).offset(padding);
         make.right.equalTo(superView.mas_right).offset(-padding);
         make.height.equalTo(@20);
@@ -463,6 +328,43 @@
     return self;
 }
 
+- (UIView *)makeView:(NSString *)labelName field:(UITextField *)field
+{
+    UIView *uiView = [[UIView alloc] init];
+    uiView.layer.borderWidth = 0.5f;
+    uiView.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    uiView.layer.cornerRadius = 3.0f;
+    uiView.backgroundColor = COLOR_MAIN_WHITE;
+    [self.contentView addSubview:uiView];
+    
+    [uiView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(borderView.mas_bottom).offset(padding);
+        make.left.equalTo(superView.mas_left).offset(padding);
+        make.right.equalTo(superView.mas_right).offset(-padding);
+        make.height.equalTo(@50);
+    }];
+    UILabel *label = [[UILabel alloc] init];
+    label.text = labelName;
+    label.textColor = COLOR_MAIN_BLACK;
+    label.font = FONT_MAIN;
+    [uiView addSubview:label];
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(uiView.mas_centerY);
+        make.left.equalTo(uiView.mas_left).offset(padding);
+        make.width.equalTo(@70);
+    }];
+    [uiView addSubview:field];
+    
+    [field mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(uiView.mas_centerY);
+        make.left.equalTo(label.mas_right);
+        make.right.equalTo(uiView.mas_right);
+        make.height.equalTo(@30);
+    }];
+    return uiView;
+}
+
 - (void)setTipViewHide:(BOOL)type
 {
     CGFloat tipHeight = 0;
@@ -487,11 +389,15 @@
 
 - (void)actoinProArea
 {
+    //隐藏键盘
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     [self.delegate actionProArea];
 }
 
 - (void)actoinStreet
 {
+    //隐藏键盘
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     [self.delegate actionStreet];
 }
 
