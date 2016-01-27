@@ -48,11 +48,6 @@
     return self;
 }
 
-- (void)assign:(NSDictionary *)data
-{
-    [viewData addEntriesFromDictionary:data];
-}
-
 - (void)assign:(NSString *)key value:(id)value
 {
     //自动替换nil为NSNull
@@ -70,17 +65,6 @@
         value = nil;
     }
     return value;
-}
-
-- (NSDictionary *)fetch
-{
-    return [NSDictionary dictionaryWithDictionary:viewData];
-}
-
-- (void)display:(NSDictionary *)data
-{
-    [self assign:data];
-    [self display];
 }
 
 - (void)display

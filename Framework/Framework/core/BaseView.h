@@ -16,20 +16,11 @@
 
 - (id)initWithData:(NSDictionary *)data frame:(CGRect)frame;
 
-//批量赋值
-- (void)assign:(NSDictionary *)data;
-
-//单个赋值
+//单个赋值，暂不提供批量方法，防止参数为nil崩溃
 - (void)assign:(NSString *)key value:(id)value;
 
 //获取数据
 - (id)fetch:(NSString *)key;
-
-//获取所有数据
-- (NSDictionary *)fetch;
-
-//赋值并展示数据
-- (void)display:(NSDictionary *)data;
 
 //展示数据，子类重写
 - (void)display;
