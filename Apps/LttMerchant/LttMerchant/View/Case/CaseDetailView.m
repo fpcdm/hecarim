@@ -60,6 +60,7 @@
     
     CGFloat height;
     CGFloat servicesHeight;
+    CGFloat servicesViewHeight;
 }
 
 - (id)init
@@ -193,12 +194,13 @@
     serviceView.layer.borderColor = CGCOLOR_MAIN_BORDER;
     serviceView.backgroundColor = COLOR_MAIN_WHITE;
     [self.contentView addSubview:serviceView];
+    servicesViewHeight = 262;
     
     [serviceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(caseHeaderView.mas_bottom);
         make.left.equalTo(superView.mas_left).offset(-0.5);
         make.right.equalTo(superView.mas_right).offset(0.5);
-        make.height.equalTo(@232);
+        make.height.equalTo(@(servicesViewHeight));
     }];
     
     //图片视图
@@ -252,7 +254,7 @@
     [serviceView addSubview:nameTitle];
     
     [nameTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(userLabel.mas_bottom).offset(9);
+        make.top.equalTo(userLabel.mas_bottom).offset(20);
         make.left.equalTo(caseNameLabel.mas_left);
         make.width.equalTo(@96);
         make.height.equalTo(@16);
@@ -296,7 +298,7 @@
         make.top.equalTo(nameLabel.mas_bottom);
         make.left.equalTo(caseNameLabel.mas_left);
         make.right.equalTo(serviceView.mas_right).offset(-padding);
-        make.height.equalTo(@40);
+        make.height.equalTo(@50);
     }];
     
     //备注视图
@@ -305,7 +307,7 @@
     [serviceView addSubview:remarkView];
     
     [remarkView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(addressLabel.mas_bottom).offset(5);
+        make.top.equalTo(addressLabel.mas_bottom).offset(10);
         make.left.equalTo(serviceView.mas_left);
         make.right.equalTo(serviceView.mas_right);
         make.height.equalTo(@65);
@@ -863,7 +865,7 @@
         //隐藏取消按钮
         cancelButton.hidden = NO;
         
-        CGFloat viewHeight = 80 + 232 + 45 * 3 + height + servicesHeight + 10 * 6;
+        CGFloat viewHeight = 80 + servicesViewHeight + 45 * 3 + height + servicesHeight + 10 * 6;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
         //服务中
@@ -900,7 +902,7 @@
         
         [self setGoodsListViewPosition];
         
-        CGFloat viewHeight = 80 + 232 + height + servicesHeight + 10 * 5 + 45 * 2;
+        CGFloat viewHeight = 80 + servicesViewHeight + height + servicesHeight + 10 * 5 + 45 * 2;
         NSLog(@"服务中视图高度是：%f",viewHeight);
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
@@ -936,7 +938,7 @@
         //隐藏取消按钮
         cancelButton.hidden = YES;
         
-        CGFloat viewHeight = 80 + 232 - 65 + 10;
+        CGFloat viewHeight = 80 + servicesViewHeight - 65 + 10;
         
         [self setServiceViewHeight];
         NSArray *payment = [self fetch:@"payments"];
@@ -953,7 +955,7 @@
                 make.bottom.equalTo(payContainer.mas_bottom);
                 make.right.equalTo(payContainer.mas_right);
             }];
-            viewHeight = 80 + 222 - 65 + 225;
+            viewHeight = 80 + servicesViewHeight - 65 + 225;
             self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         } else {
             self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
@@ -999,7 +1001,7 @@
         [self setGoodsListViewPosition];
         [self setServiceViewHeight];
         
-        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 52;
+        CGFloat viewHeight = 80 + servicesViewHeight - 100 + height + servicesHeight + 10 + 52;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
         NSLog(@"完成视图高度：%f",viewHeight);
@@ -1045,7 +1047,7 @@
         [self setGoodsListViewPosition];
         [self setServiceViewHeight];
         
-        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 52;
+        CGFloat viewHeight = 80 + servicesViewHeight - 100 + height + servicesHeight + 10 + 52;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
     }
 }
@@ -1062,7 +1064,7 @@
 - (void)setServiceViewHeight
 {
     [serviceView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@152);
+        make.height.equalTo(@165);
     }];
 }
 
