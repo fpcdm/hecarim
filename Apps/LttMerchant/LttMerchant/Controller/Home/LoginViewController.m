@@ -16,7 +16,6 @@
 #import "ForgetPasswordViewController.h"
 #import "RegisterViewController.h"
 #import "LoginView.h"
-#import "DebugUtil.h"
 
 @interface LoginViewController ()<LoginViewDelegate>
 
@@ -36,11 +35,6 @@
     self.navigationItem.title = @"两条腿工作台登陆";
     
     self.view.backgroundColor = COLOR_MAIN_BG;
-    
-    //调试功能
-#ifdef APP_DEBUG
-    [self debug];
-#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,22 +46,6 @@
         [self showError:[LocaleUtil system:@"ApiError.Nologin"]];
     }
 }
-
-#pragma mark - Debug
-#ifdef APP_DEBUG
-- (void) debug
-{
-    UIBarButtonItem *debugButton = [AppUIUtil makeBarButtonItem:@"调试"];
-    debugButton.target = self;
-    debugButton.action = @selector(actionDebug:);
-    self.navigationItem.leftBarButtonItem = debugButton;
-}
-
-- (void) actionDebug:(UIBarButtonItem *) debugButton
-{
-    [[DebugUtil sharedInstance] toggleFlex];
-}
-#endif
 
 #pragma mark - Action
 - (void)actionLogin:(UserEntity *)user

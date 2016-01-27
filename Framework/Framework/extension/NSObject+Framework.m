@@ -11,6 +11,58 @@
 
 @implementation NSObject (Framework)
 
+//Swizzle
++ (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector
+{
+    return [self swizzleMethod:originalSelector with:anotherSelector in:self];
+}
+
++ (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector in:(Class)anotherClass
+{
+    Method originalMethod = class_getInstanceMethod(self, originalSelector);
+    Method anotherMethod  = class_getInstanceMethod(anotherClass, anotherSelector);
+    if(!originalMethod || !anotherMethod) {
+        return NO;
+    }
+    IMP originalMethodImplementation = class_getMethodImplementation(self, originalSelector);
+    IMP anotherMethodImplementation  = class_getMethodImplementation(anotherClass, anotherSelector);
+    if(class_addMethod(self, originalSelector, originalMethodImplementation, method_getTypeEncoding(originalMethod))) {
+        originalMethod = class_getInstanceMethod(self, originalSelector);
+    }
+    if(class_addMethod(anotherClass, anotherSelector,  anotherMethodImplementation,  method_getTypeEncoding(anotherMethod))) {
+        anotherMethod = class_getInstanceMethod(anotherClass, anotherSelector);
+    }
+    method_exchangeImplementations(originalMethod, anotherMethod);
+    return YES;
+}
+
++ (BOOL)swizzleClassMethod:(SEL)originalSelector with:(SEL)anotherSelector
+{
+    return [self swizzleClassMethod:originalSelector with:anotherSelector in:self];
+}
+
++ (BOOL)swizzleClassMethod:(SEL)originalSelector with:(SEL)anotherSelector in:(Class)anotherClass
+{
+    Method originalMethod = class_getClassMethod(self, originalSelector);
+    Method anotherMethod  = class_getClassMethod(anotherClass, anotherSelector);
+    if(!originalMethod || !anotherMethod) {
+        return NO;
+    }
+    Class metaClass = objc_getMetaClass(class_getName(self));
+    Class anotherMetaClass = objc_getMetaClass(class_getName(anotherClass));
+    IMP originalMethodImplementation = class_getMethodImplementation(metaClass, originalSelector);
+    IMP anotherMethodImplementation  = class_getMethodImplementation(anotherMetaClass, anotherSelector);
+    if(class_addMethod(metaClass, originalSelector, originalMethodImplementation, method_getTypeEncoding(originalMethod))) {
+        originalMethod = class_getClassMethod(self, originalSelector);
+    }
+    if(class_addMethod(anotherMetaClass, anotherSelector,  anotherMethodImplementation,  method_getTypeEncoding(anotherMethod))) {
+        anotherMethod = class_getClassMethod(anotherClass, anotherSelector);
+    }
+    method_exchangeImplementations(originalMethod, anotherMethod);
+    return YES;
+}
+
+//Property
 - (id)getAssociatedObjectForKey:(const char *)key
 {
     const char * propName = key;

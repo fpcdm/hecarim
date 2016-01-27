@@ -42,13 +42,4 @@
 //标记结束
 - (void) benchmarkEnd:(NSString *)name;
 
-//显示调试工具
-- (void) showFlex;
-
-//隐藏调试工具
-- (void) hideFlex;
-
-//切换调试工具
-- (void) toggleFlex;
-
 @end

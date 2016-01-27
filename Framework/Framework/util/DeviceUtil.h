@@ -10,6 +10,9 @@
 
 @interface DeviceUtil : NSObject
 
+//播放声音
++ (BOOL)playMusic:(NSString *)file;
+
 //发送邮件
 + (void)sendMail:(NSString *)mail;
 

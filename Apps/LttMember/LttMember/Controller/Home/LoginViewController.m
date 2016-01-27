@@ -19,7 +19,6 @@
 #import "UMSocialSnsPlatformManager.h"
 #import "UMSocialAccountManager.h"
 #import "ThirdLoginViewController.h"
-#import "DebugUtil.h"
 #import "WXApi.h"
 
 @interface LoginViewController () <LoginViewDelegate>
@@ -54,11 +53,6 @@
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:self
                                                                             action:@selector(actionRegister)];
-    
-    //调试功能
-#ifdef APP_DEBUG
-    [self debug];
-#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,22 +72,6 @@
     [self toggleViewController:viewController animated:YES];
     return YES;
 }
-
-#pragma mark - Debug
-#ifdef APP_DEBUG
-- (void) debug
-{
-    UIBarButtonItem *debugButton = [AppUIUtil makeBarButtonItem:@"调试"];
-    debugButton.target = self;
-    debugButton.action = @selector(actionDebug:);
-    self.navigationItem.leftBarButtonItem = debugButton;
-}
-
-- (void) actionDebug:(UIBarButtonItem *) debugButton
-{
-    [[DebugUtil sharedInstance] toggleFlex];
-}
-#endif
 
 #pragma mark - Action
 - (void)actionRegister

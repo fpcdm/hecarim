@@ -10,9 +10,18 @@
 
 @interface NSObject (Framework)
 
+//Swizzle
++ (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector;
+
++ (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector in:(Class)anotherClass;
+
++ (BOOL)swizzleClassMethod:(SEL)originalSelector with:(SEL)anotherSelector;
+
++ (BOOL)swizzleClassMethod:(SEL)originalSelector with:(SEL)anotherSelector in:(Class)anotherClass;
+
+//Property
 - (id)getAssociatedObjectForKey:(const char *)key;
 
-//默认retain
 - (id)setAssociatedObject:(id)obj forKey:(const char *)key;
 
 - (id)copyAssociatedObject:(id)obj forKey:(const char *)key;

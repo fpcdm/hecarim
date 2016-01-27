@@ -11,12 +11,14 @@
 
 #ifdef APP_DEBUG
 #import "FLEX.h"
+#import "Aspects.h"
 
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 
 #import "HttpUtil.h"
 #import "EncodeUtil.h"
+#import "DeviceUtil.h"
 #endif
 
 static DebugUtil *sharedInstance = nil;
@@ -58,7 +60,7 @@ static DebugUtil *sharedInstance = nil;
         benchmarks = [[NSMutableDictionary alloc] init];
         memorys = [[NSMutableDictionary alloc] init];
 #ifdef APP_DEBUG
-        [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
+        [self bindFlex];
 #endif
     }
     return self;
@@ -313,25 +315,41 @@ static DebugUtil *sharedInstance = nil;
 #endif
 }
 
-- (void)showFlex
-{
 #ifdef APP_DEBUG
-    [[FLEXManager sharedManager] showExplorer];
-#endif
+- (void)bindFlex
+{
+    //开启网络监控
+    [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
+    
+    //监听window
+    if ([UIApplication sharedApplication].keyWindow) {
+        [self bindFlex:[UIApplication sharedApplication].keyWindow];
+    } else {
+        //第一次加载视图
+        [UIViewController aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter | AspectOptionAutomaticRemoval usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated){
+            //window已经存在
+            if ([UIApplication sharedApplication].keyWindow) {
+                [self bindFlex:[UIApplication sharedApplication].keyWindow];
+            }
+        } error:nil];
+    }
 }
 
-- (void)hideFlex
+- (void)bindFlex:(UIWindow *)window
 {
-#ifdef APP_DEBUG
-    [[FLEXManager sharedManager] hideExplorer];
-#endif
+    [[window class] swizzleMethod:@selector(motionEnded:withEvent:) with:@selector(swizzle_motionEnded:withEvent:) in:[self class]];
 }
 
-- (void)toggleFlex
+- (void)swizzle_motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-#ifdef APP_DEBUG
-    [[FLEXManager sharedManager] toggleExplorer];
-#endif
+    if (event.subtype == UIEventSubtypeMotionShake) {
+        //显示调试器
+        [[FLEXManager sharedManager] toggleExplorer];
+        
+        //播放声音
+        [DeviceUtil playMusic:@"Framework.bundle/DebugShake.m4r"];
+    }
 }
+#endif
 
 @end
