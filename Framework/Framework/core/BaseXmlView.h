@@ -11,6 +11,9 @@
 
 @class BaseXmlView;
 
+//typedef IView FIView;
+//#define FIView IView
+
 //视图加载成功回调
 typedef void (^XmlViewCallback)(BaseXmlView *view);
 
@@ -23,6 +26,7 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 + (void)setXmlExt:(NSString *)xmlExt;
 
 //设置补丁URL路径模板，优先加载补丁，补丁及时生效
+//@todo：子类实现补丁，支持版本（url定义版本）或者支持单个设置，全局损耗性能
 + (void)setPatchPath:(NSString *)patchPath;
 
 //加载某视图不执行回调

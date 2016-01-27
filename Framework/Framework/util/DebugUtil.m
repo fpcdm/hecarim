@@ -11,7 +11,6 @@
 
 #ifdef APP_DEBUG
 #import "FLEX.h"
-#import "Aspects.h"
 
 #import <sys/sysctl.h>
 #import <mach/mach.h>
@@ -321,33 +320,20 @@ static DebugUtil *sharedInstance = nil;
     //开启网络监控
     [[FLEXManager sharedManager] setNetworkDebuggingEnabled:YES];
     
-    //监听window
-    if ([UIApplication sharedApplication].keyWindow) {
-        [self bindFlex:[UIApplication sharedApplication].keyWindow];
-    } else {
-        //第一次加载视图
-        [UIViewController aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter | AspectOptionAutomaticRemoval usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated){
-            //window已经存在
-            if ([UIApplication sharedApplication].keyWindow) {
-                [self bindFlex:[UIApplication sharedApplication].keyWindow];
-            }
-        } error:nil];
-    }
+    //监听摇一摇事件
+    [UIWindow swizzleMethod:@selector(motionEnded:withEvent:) with:@selector(swizzle_motionEnded:withEvent:) in:[self class]];
 }
 
-- (void)bindFlex:(UIWindow *)window
-{
-    [[window class] swizzleMethod:@selector(motionEnded:withEvent:) with:@selector(swizzle_motionEnded:withEvent:) in:[self class]];
-}
-
+//其他控制器或视图摇一摇事件处调用[super motionEnded:motion withEvent:event];即可触发
 - (void)swizzle_motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
+    //此处不调用[self swizzle_motionEnded:motion withEvent:event]，因子类未实现会导致崩溃
     if (event.subtype == UIEventSubtypeMotionShake) {
-        //显示调试器
-        [[FLEXManager sharedManager] toggleExplorer];
-        
         //播放声音
         [DeviceUtil playMusic:@"Framework.bundle/DebugShake.m4r"];
+        
+        //显示调试器
+        [[FLEXManager sharedManager] toggleExplorer];
     }
 }
 #endif
