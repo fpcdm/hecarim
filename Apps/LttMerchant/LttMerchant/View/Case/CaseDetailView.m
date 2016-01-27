@@ -863,7 +863,7 @@
         //隐藏取消按钮
         cancelButton.hidden = NO;
         
-        CGFloat viewHeight = 80 + 222 + 45 * 3 + height + servicesHeight + 10 * 6;
+        CGFloat viewHeight = 80 + 232 + 45 * 3 + height + servicesHeight + 10 * 6;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
         //服务中
@@ -900,7 +900,7 @@
         
         [self setGoodsListViewPosition];
         
-        CGFloat viewHeight = 80 + 222 + height + servicesHeight + 10 * 5 + 45 * 2;
+        CGFloat viewHeight = 80 + 232 + height + servicesHeight + 10 * 5 + 45 * 2;
         NSLog(@"服务中视图高度是：%f",viewHeight);
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
@@ -936,7 +936,7 @@
         //隐藏取消按钮
         cancelButton.hidden = YES;
         
-        CGFloat viewHeight = 80 + 222 - 65 + 10;
+        CGFloat viewHeight = 80 + 232 - 65 + 10;
         
         [self setServiceViewHeight];
         NSArray *payment = [self fetch:@"payments"];
@@ -999,7 +999,7 @@
         [self setGoodsListViewPosition];
         [self setServiceViewHeight];
         
-        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 42;
+        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 52;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
         
         NSLog(@"完成视图高度：%f",viewHeight);
@@ -1045,7 +1045,7 @@
         [self setGoodsListViewPosition];
         [self setServiceViewHeight];
         
-        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 42;
+        CGFloat viewHeight = 80 + 125 + height + servicesHeight + 10 + 52;
         self.contentSize = CGSizeMake(SCREEN_WIDTH, viewHeight);
     }
 }
@@ -1062,7 +1062,7 @@
 - (void)setServiceViewHeight
 {
     [serviceView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@142);
+        make.height.equalTo(@152);
     }];
 }
 
