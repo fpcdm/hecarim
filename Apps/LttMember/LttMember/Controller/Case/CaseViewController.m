@@ -49,7 +49,6 @@
 {
     [super loadView];
     self.view.backgroundColor = COLOR_MAIN_BG;
-    [self.view showLoading];
 }
 
 - (void)viewDidLoad {
@@ -59,6 +58,8 @@
     [super viewDidLoad];
     
     self.navigationItem.title = [LocaleUtil system:@"Loading.Start"];
+    
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
     
     //刷新按钮
     refreshButton = [AppUIUtil makeBarButtonItem:@"刷新" highlighted:isIndexNavBar];

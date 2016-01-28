@@ -35,11 +35,12 @@
 {
     [super loadView];
     self.view.backgroundColor = COLOR_MAIN_BG;
-    [self.view showLoading];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

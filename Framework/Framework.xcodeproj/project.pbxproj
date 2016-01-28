@@ -122,6 +122,8 @@
 		2F24FB4E1C5672A500A82ABD /* FWResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB4C1C5672A500A82ABD /* FWResponse.h */; };
 		2F24FB4F1C5672A500A82ABD /* FWResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F24FB4D1C5672A500A82ABD /* FWResponse.m */; };
 		2F24FB631C568D6800A82ABD /* FWPluginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB621C568D6800A82ABD /* FWPluginDialog.h */; };
+		2F2B65541C59BEB30024DC09 /* UIView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65521C59BEB30024DC09 /* UIView+Framework.h */; };
+		2F2B65551C59BEB30024DC09 /* UIView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65531C59BEB30024DC09 /* UIView+Framework.m */; };
 		2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750111C48F11A001CA674 /* DynamicEntity.h */; };
 		2F4750141C48F11A001CA674 /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750121C48F11A001CA674 /* DynamicEntity.m */; };
 		2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750181C48F3F1001CA674 /* PaginationEntity.h */; };
@@ -765,6 +767,8 @@
 		2F24FB4C1C5672A500A82ABD /* FWResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWResponse.h; sourceTree = "<group>"; };
 		2F24FB4D1C5672A500A82ABD /* FWResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWResponse.m; sourceTree = "<group>"; };
 		2F24FB621C568D6800A82ABD /* FWPluginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialog.h; sourceTree = "<group>"; };
+		2F2B65521C59BEB30024DC09 /* UIView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Framework.h"; sourceTree = "<group>"; };
+		2F2B65531C59BEB30024DC09 /* UIView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Framework.m"; sourceTree = "<group>"; };
 		2F4750111C48F11A001CA674 /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
 		2F4750121C48F11A001CA674 /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
 		2F4750181C48F3F1001CA674 /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
@@ -1587,6 +1591,8 @@
 				2F1C77871C576C44009080A3 /* UITextView+Framework.m */,
 				2F1C77AE1C576EE3009080A3 /* NSString+Framework.h */,
 				2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */,
+				2F2B65521C59BEB30024DC09 /* UIView+Framework.h */,
+				2F2B65531C59BEB30024DC09 /* UIView+Framework.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -2702,6 +2708,7 @@
 				2FD99D961C48CE6F0065293E /* FLEXPropertyEditorViewController.h in Headers */,
 				2FD99E9B1C48CE6F0065293E /* RKPaginator.h in Headers */,
 				2FD99EAE1C48CE6F0065293E /* RKSerialization.h in Headers */,
+				2F2B65541C59BEB30024DC09 /* UIView+Framework.h in Headers */,
 				2F1C35F11C4C89310060E793 /* IViewInternal.h in Headers */,
 				2FD99E731C48CE6F0065293E /* RKDotNetDateFormatter.h in Headers */,
 				2FD99E911C48CE6F0065293E /* RKNSJSONSerialization.h in Headers */,
@@ -2861,6 +2868,7 @@
 				2FD99DD91C48CE6F0065293E /* FLEXNetworkObserver.m in Sources */,
 				2F1CD5201C4F2C6E00B0DC4B /* HttpUtil.m in Sources */,
 				2FAA250F1C53A56C00933669 /* BaseWidget.m in Sources */,
+				2F2B65551C59BEB30024DC09 /* UIView+Framework.m in Sources */,
 				2FD99EE21C48CE700065293E /* TPKeyboardAvoidingTableView.m in Sources */,
 				2FD99E4A1C48CE6F0065293E /* UIScrollView+MJExtension.m in Sources */,
 				2FD99E191C48CE6F0065293E /* MASLayoutConstraint.m in Sources */,
