@@ -22,15 +22,6 @@ typedef NS_ENUM(NSInteger, FWPluginDialogType) {
 //弹出框协议
 @protocol FWPluginDialog <NSObject>
 
-//显示加载条
-- (void)showLoadingInViewController:(UIViewController *)viewController message:(NSString *)message;
-
-//显示加载完成
-- (void)finishLoadingInViewController:(UIViewController *)viewController message:(NSString *)message callback:(void(^)())callback;
-
-//隐藏加载条
-- (void)hideLoadingInViewController:(UIViewController *)viewController;
-
 //显示弹出框
 - (void)showDialogInViewController:(UIViewController *)viewController message:(NSString *)message type:(FWPluginDialogType)type callback:(void(^)())callback;
 

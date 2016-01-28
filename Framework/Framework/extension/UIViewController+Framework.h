@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FWPluginDialog.h"
+#import "FWPluginLoading.h"
 
 @interface UIViewController (Framework)
 

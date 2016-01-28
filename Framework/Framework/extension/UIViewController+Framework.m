@@ -17,28 +17,36 @@
     return (id<FWPluginDialog>) plugin;
 }
 
+- (id<FWPluginLoading>)loadingPlugin
+{
+    id plugin = [[FWPluginManager sharedInstance] getPlugin:FWPluginLoadingName];
+    return (id<FWPluginLoading>) plugin;
+}
+
 - (void)showLoading:(NSString *)message
 {
-    [[self dialogPlugin] showLoadingInViewController:self message:message];
+    [[self loadingPlugin] showLoadingInViewController:self message:message];
 }
 
 - (void)finishLoading:(NSString *)message callback:(void (^)())callback
 {
-    [[self dialogPlugin] finishLoadingInViewController:self message:message callback:callback];
+    [[self loadingPlugin] finishLoadingInViewController:self message:message callback:callback];
 }
 
 - (void)hideLoading
 {
-    [[self dialogPlugin] hideLoadingInViewController:self];
+    [[self loadingPlugin] hideLoadingInViewController:self];
 }
 
 - (void)showDialog:(NSString *)message type:(FWPluginDialogType)type callback:(void (^)())callback
 {
+    [[self loadingPlugin] hideLoadingInViewController:self];
     [[self dialogPlugin] showDialogInViewController:self message:message type:type callback:callback];
 }
 
 - (void)showButton:(NSString *)message title:(NSString *)title callback:(void (^)())callback
 {
+    [[self loadingPlugin] hideLoadingInViewController:self];
     [[self dialogPlugin] showButtonInViewController:self message:message title:title callback:callback];
 }
 

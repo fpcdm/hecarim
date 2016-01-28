@@ -13,4 +13,13 @@
 
 @protocol FWPluginLoading <NSObject>
 
+//显示加载条
+- (void)showLoadingInViewController:(UIViewController *)viewController message:(NSString *)message;
+
+//显示加载完成
+- (void)finishLoadingInViewController:(UIViewController *)viewController message:(NSString *)message callback:(void(^)())callback;
+
+//隐藏加载条
+- (void)hideLoadingInViewController:(UIViewController *)viewController;
+
 @end
