@@ -124,6 +124,12 @@
 		2F24FB631C568D6800A82ABD /* FWPluginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB621C568D6800A82ABD /* FWPluginDialog.h */; };
 		2F2B65541C59BEB30024DC09 /* UIView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65521C59BEB30024DC09 /* UIView+Framework.h */; };
 		2F2B65551C59BEB30024DC09 /* UIView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65531C59BEB30024DC09 /* UIView+Framework.m */; };
+		2F2B655A1C59C3630024DC09 /* FWPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65581C59C3630024DC09 /* FWPresenter.h */; };
+		2F2B655B1C59C3630024DC09 /* FWPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65591C59C3630024DC09 /* FWPresenter.m */; };
+		2F2B655E1C59C4BE0024DC09 /* FWModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B655C1C59C4BE0024DC09 /* FWModel.h */; };
+		2F2B655F1C59C4BE0024DC09 /* FWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B655D1C59C4BE0024DC09 /* FWModel.m */; };
+		2F2B65621C59C4F00024DC09 /* FWViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65601C59C4F00024DC09 /* FWViewModel.h */; };
+		2F2B65631C59C4F00024DC09 /* FWViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65611C59C4F00024DC09 /* FWViewModel.m */; };
 		2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750111C48F11A001CA674 /* DynamicEntity.h */; };
 		2F4750141C48F11A001CA674 /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4750121C48F11A001CA674 /* DynamicEntity.m */; };
 		2F47501A1C48F3F1001CA674 /* PaginationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4750181C48F3F1001CA674 /* PaginationEntity.h */; };
@@ -769,6 +775,12 @@
 		2F24FB621C568D6800A82ABD /* FWPluginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialog.h; sourceTree = "<group>"; };
 		2F2B65521C59BEB30024DC09 /* UIView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Framework.h"; sourceTree = "<group>"; };
 		2F2B65531C59BEB30024DC09 /* UIView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Framework.m"; sourceTree = "<group>"; };
+		2F2B65581C59C3630024DC09 /* FWPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPresenter.h; sourceTree = "<group>"; };
+		2F2B65591C59C3630024DC09 /* FWPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPresenter.m; sourceTree = "<group>"; };
+		2F2B655C1C59C4BE0024DC09 /* FWModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWModel.h; sourceTree = "<group>"; };
+		2F2B655D1C59C4BE0024DC09 /* FWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWModel.m; sourceTree = "<group>"; };
+		2F2B65601C59C4F00024DC09 /* FWViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWViewModel.h; sourceTree = "<group>"; };
+		2F2B65611C59C4F00024DC09 /* FWViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWViewModel.m; sourceTree = "<group>"; };
 		2F4750111C48F11A001CA674 /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
 		2F4750121C48F11A001CA674 /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
 		2F4750181C48F3F1001CA674 /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
@@ -1574,6 +1586,12 @@
 				2F24FB4D1C5672A500A82ABD /* FWResponse.m */,
 				2F24FB481C566F4E00A82ABD /* FWCacheRequest.h */,
 				2F24FB491C566F4E00A82ABD /* FWCacheRequest.m */,
+				2F2B65581C59C3630024DC09 /* FWPresenter.h */,
+				2F2B65591C59C3630024DC09 /* FWPresenter.m */,
+				2F2B655C1C59C4BE0024DC09 /* FWModel.h */,
+				2F2B655D1C59C4BE0024DC09 /* FWModel.m */,
+				2F2B65601C59C4F00024DC09 /* FWViewModel.h */,
+				2F2B65611C59C4F00024DC09 /* FWViewModel.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -2437,6 +2455,7 @@
 				2FD99EE11C48CE700065293E /* TPKeyboardAvoidingTableView.h in Headers */,
 				2FD99E1B1C48CE6F0065293E /* MASUtilities.h in Headers */,
 				2FD99DCE1C48CE6F0065293E /* FLEXNetworkRecorder.h in Headers */,
+				2F2B655E1C59C4BE0024DC09 /* FWModel.h in Headers */,
 				2F24FB4E1C5672A500A82ABD /* FWResponse.h in Headers */,
 				2FD99D4E1C48CE6F0065293E /* ActionSheetDatePicker.h in Headers */,
 				2FD99E561C48CE6F0065293E /* Reachability.h in Headers */,
@@ -2535,6 +2554,7 @@
 				2FD99EB01C48CE6F0065293E /* RKTestFactory.h in Headers */,
 				2FD99E5B1C48CE6F0065293E /* AFJSONRequestOperation.h in Headers */,
 				2FD99E3E1C48CE6F0065293E /* MJRefreshBackStateFooter.h in Headers */,
+				2F2B655A1C59C3630024DC09 /* FWPresenter.h in Headers */,
 				2F1C77691C5704AF009080A3 /* FWPluginCacheDefault.h in Headers */,
 				2FD99E421C48CE6F0065293E /* MJRefreshNormalHeader.h in Headers */,
 				2FD99D541C48CE6F0065293E /* ActionSheetPicker.h in Headers */,
@@ -2616,6 +2636,7 @@
 				2FF340CB1C509E390066CC1F /* AspectUtil.h in Headers */,
 				2FD99EBE1C48CE700065293E /* UIImageView+AFNetworking.h in Headers */,
 				2FD99D591C48CE6F0065293E /* SWActionSheet.h in Headers */,
+				2F2B65621C59C4F00024DC09 /* FWViewModel.h in Headers */,
 				2FD99DC21C48CE6F0065293E /* FLEXLiveObjectsTableViewController.h in Headers */,
 				2FD99D8A1C48CE6F0065293E /* FLEXArgumentInputViewFactory.h in Headers */,
 				2FD99D5E1C48CE6F0065293E /* DDASLLogCapture.h in Headers */,
@@ -2948,6 +2969,7 @@
 				2FD9932F1C48BC9D0065293E /* BaseView.m in Sources */,
 				2FD99EC71C48CE700065293E /* SDWebImageDecoder.m in Sources */,
 				2FF340D41C509FFD0066CC1F /* BaseViewAction.m in Sources */,
+				2F2B65631C59C4F00024DC09 /* FWViewModel.m in Sources */,
 				2FD99EDC1C48CE700065293E /* UIView+WebCacheOperation.m in Sources */,
 				2FD99D951C48CE6F0065293E /* FLEXMethodCallingViewController.m in Sources */,
 				2FD99DAF1C48CE6F0065293E /* FLEXTableLeftCell.m in Sources */,
@@ -2980,6 +3002,7 @@
 				2FD99DD31C48CE6F0065293E /* FLEXNetworkTransaction.m in Sources */,
 				2FD99DCB1C48CE6F0065293E /* FLEXSystemLogTableViewController.m in Sources */,
 				2F1C36041C4C89310060E793 /* DTHTMLParser.m in Sources */,
+				2F2B655B1C59C3630024DC09 /* FWPresenter.m in Sources */,
 				2FD99DD51C48CE6F0065293E /* FLEXNetworkTransactionDetailTableViewController.m in Sources */,
 				2FD99DE91C48CE6F0065293E /* FLEXObjectExplorerFactory.m in Sources */,
 				2FD99EC91C48CE700065293E /* SDWebImageDownloader.m in Sources */,
@@ -3020,6 +3043,7 @@
 				2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */,
 				2FD99D4F1C48CE6F0065293E /* ActionSheetDatePicker.m in Sources */,
 				2FD99ED61C48CE700065293E /* UIImage+MultiFormat.m in Sources */,
+				2F2B655F1C59C4BE0024DC09 /* FWModel.m in Sources */,
 				2FD99DED1C48CE6F0065293E /* FLEXSetExplorerViewController.m in Sources */,
 				2FCBAC7E1C54CB42003D9786 /* BaseViewModel.m in Sources */,
 				2FD99D581C48CE6F0065293E /* DistancePickerView.m in Sources */,
