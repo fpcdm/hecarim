@@ -10,7 +10,15 @@
 #import "FWPluginDialog.h"
 #import "FWPluginLoading.h"
 
-@interface UIViewController (Framework)
+@protocol UIViewControllerFrameworkDelegate <NSObject>
+
+@optional
+//重写返回事件
+- (BOOL)shouldNavigationBarPopItem;
+
+@end
+
+@interface UIViewController (Framework) <UIViewControllerFrameworkDelegate>
 
 //显示加载条
 - (void)showLoading:(NSString *)message;
