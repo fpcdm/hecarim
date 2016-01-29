@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, FWPluginDialogType) {
 @protocol FWPluginDialog <NSObject>
 
 //显示弹出框
-- (void)showDialogInViewController:(UIViewController *)viewController message:(NSString *)message type:(FWPluginDialogType)type callback:(void(^)())callback;
+- (void)showDialogInViewController:(UIViewController *)viewController type:(FWPluginDialogType)type message:(NSString *)message callback:(void(^)())callback;
 
 //显示按钮弹出框
 - (void)showButtonInViewController:(UIViewController *)viewController message:(NSString *)message title:(NSString *)title callback:(void(^)())callback;

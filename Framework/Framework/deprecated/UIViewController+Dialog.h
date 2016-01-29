@@ -16,7 +16,6 @@
 - (void) showMessage: (NSString *) message;
 - (void) showWarning: (NSString *) message;
 - (void) showSuccess: (NSString *) message;
-- (void) showSuccess: (NSString *) message callback:(void(^)()) callback;
 - (void) showNotification: (NSString *) message callback:(void(^)()) callback;
 
 - (void) loadingSuccess: (NSString *) message;

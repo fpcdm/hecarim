@@ -12,27 +12,22 @@
 
 - (void) showError: (NSString *) message
 {
-    [self showDialog:message type:FWPluginDialogTypeError callback:nil];
+    [self showError:message callback:nil];
 }
 
 - (void) showWarning:(NSString *) message
 {
-    [self showDialog:message type:FWPluginDialogTypeWarning callback:nil];
+    [self showWarning:message callback:nil];
 }
 
 - (void) showMessage:(NSString *) message
 {
-    [self showDialog:message type:FWPluginDialogTypeMessage callback:nil];
+    [self showMessage:message callback:nil];
 }
 
 - (void) showSuccess: (NSString *) message
 {
-    [self showDialog:message type:FWPluginDialogTypeSuccess callback:nil];
-}
-
-- (void) showSuccess:(NSString *)message callback:(void (^)())callback
-{
-    [self showDialog:message type:FWPluginDialogTypeSuccess callback:callback];
+    [self showSuccess:message callback:nil];
 }
 
 - (void) showNotification:(NSString *)message callback:(void (^)())callback

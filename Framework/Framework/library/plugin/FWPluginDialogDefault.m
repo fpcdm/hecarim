@@ -11,7 +11,7 @@
 
 @implementation FWPluginDialogDefault
 
-- (void)showDialogInViewController:(UIViewController *)viewController message:(NSString *)message type:(FWPluginDialogType)type callback:(void (^)())callback
+- (void)showDialogInViewController:(UIViewController *)viewController type:(FWPluginDialogType)type message:(NSString *)message callback:(void (^)())callback
 {
     TSMessageNotificationType tsType;
     switch (type) {
@@ -29,12 +29,12 @@
             break;
     }
     
-    [self showDialogInViewController:viewController message:message type:tsType callback:callback buttonTitle:nil buttonCallback:nil];
+    [self showDialogInViewController:viewController type:tsType message:message callback:callback buttonTitle:nil buttonCallback:nil];
 }
 
 - (void)showButtonInViewController:(UIViewController *)viewController message:(NSString *)message title:(NSString *)title callback:(void (^)())callback
 {
-    [self showDialogInViewController:viewController message:message type:TSMessageNotificationTypeMessage callback:nil buttonTitle:title buttonCallback:callback];
+    [self showDialogInViewController:viewController type:TSMessageNotificationTypeMessage message:message callback:nil buttonTitle:title buttonCallback:callback];
 }
 
 - (void)hideDialogInViewController:(UIViewController *)viewController
@@ -42,7 +42,7 @@
     [self hideDialogCallback:nil];
 }
 
-- (void)showDialogInViewController:(UIViewController *)viewController message: (NSString *)message type: (TSMessageNotificationType) type callback:(void (^)())callback buttonTitle: (NSString *) buttonTitle buttonCallback: (void (^)())buttonCallback
+- (void)showDialogInViewController:(UIViewController *)viewController type: (TSMessageNotificationType) type message: (NSString *)message callback:(void (^)())callback buttonTitle: (NSString *) buttonTitle buttonCallback: (void (^)())buttonCallback
 {
     [self hideDialogInViewController:viewController];
     

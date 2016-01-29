@@ -38,10 +38,30 @@
     [[self loadingPlugin] hideLoadingInViewController:self];
 }
 
-- (void)showDialog:(NSString *)message type:(FWPluginDialogType)type callback:(void (^)())callback
+- (void)showDialog:(FWPluginDialogType)type message:(NSString *)message callback:(void (^)())callback
 {
     [[self loadingPlugin] hideLoadingInViewController:self];
-    [[self dialogPlugin] showDialogInViewController:self message:message type:type callback:callback];
+    [[self dialogPlugin] showDialogInViewController:self type:type message:message callback:callback];
+}
+
+- (void)showMessage:(NSString *)message callback:(void (^)())callback
+{
+    [self showDialog:FWPluginDialogTypeMessage message:message callback:callback];
+}
+
+- (void)showWarning:(NSString *)message callback:(void (^)())callback
+{
+    [self showDialog:FWPluginDialogTypeWarning message:message callback:callback];
+}
+
+- (void)showError:(NSString *)message callback:(void (^)())callback
+{
+    [self showDialog:FWPluginDialogTypeError message:message callback:callback];
+}
+
+- (void)showSuccess:(NSString *)message callback:(void (^)())callback
+{
+    [self showDialog:FWPluginDialogTypeSuccess message:message callback:callback];
 }
 
 - (void)showButton:(NSString *)message title:(NSString *)title callback:(void (^)())callback

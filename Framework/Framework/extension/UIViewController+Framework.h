@@ -22,7 +22,19 @@
 - (void)hideLoading;
 
 //显示弹出框
-- (void)showDialog:(NSString *)message type:(FWPluginDialogType)type callback:(void(^)())callback;
+- (void)showDialog:(FWPluginDialogType)type message:(NSString *)message callback:(void(^)())callback;
+
+//显示消息弹出框
+- (void)showMessage:(NSString *)message callback:(void(^)())callback;
+
+//显示警告弹出框
+- (void)showWarning:(NSString *)message callback:(void(^)())callback;
+
+//显示错误弹出框
+- (void)showError:(NSString *)message callback:(void(^)())callback;
+
+//显示成功弹出框
+- (void)showSuccess:(NSString *)message callback:(void(^)())callback;
 
 //显示按钮弹出框
 - (void)showButton:(NSString *)message title:(NSString *)title callback:(void(^)())callback;
