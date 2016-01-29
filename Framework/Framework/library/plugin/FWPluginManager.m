@@ -12,7 +12,6 @@
 @implementation FWPluginManager
 {
     NSMutableDictionary *providerPool;
-    FWPluginProviderDefault *defaultProvider;
 }
 
 @def_singleton(FWPluginManager)
@@ -40,10 +39,7 @@
     id<FWPluginProvider> provider = [providerPool objectForKey:name];
     if (!provider) {
         //默认提供者
-        if (!defaultProvider) {
-            defaultProvider = [[FWPluginProviderDefault alloc] init];
-        }
-        provider = defaultProvider;
+        provider = [FWPluginProviderDefault sharedInstance];
     }
     return [provider providePlugin:name];
 }

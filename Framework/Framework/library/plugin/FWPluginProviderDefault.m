@@ -7,7 +7,6 @@
 //
 
 #import "FWPluginProviderDefault.h"
-#import "FWPluginManager.h"
 #import <objc/runtime.h>
 
 @implementation FWPluginProviderDefault
@@ -15,6 +14,8 @@
     //对象缓存池
     NSMutableDictionary *plugins;
 }
+
+@def_singleton(FWPluginProviderDefault)
 
 - (instancetype)init
 {
@@ -45,6 +46,15 @@
         }
     }
     return plugin;
+}
+
+- (void)setPlugin:(NSString *)name plugin:(id)plugin
+{
+    if (plugin) {
+        [plugins setObject:plugin forKey:name];
+    } else {
+        [plugins removeObjectForKey:name];
+    }
 }
 
 @end
