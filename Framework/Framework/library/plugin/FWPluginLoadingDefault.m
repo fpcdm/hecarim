@@ -23,15 +23,37 @@
     
     loading.labelText = message;
     
+    //区分模式
+    switch (self.mode) {
+        case FWPluginLoadingModeText:
+        {
+            loading.mode = MBProgressHUDModeText;
+            loading.margin = 5.0f;
+            loading.cornerRadius = 3.0f;
+        }
+            break;
+        default:
+            break;
+    }
+    
     [loading show:YES];
 }
 
 - (void)finishLoadingInViewController:(UIViewController *)viewController message:(NSString *)message callback:(void (^)())callback
 {
-    loading.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Framework.bundle/DialogSuccess"]];
-    loading.mode = MBProgressHUDModeCustomView;
-    
     loading.labelText = message;
+    
+    //区分模式
+    switch (self.mode) {
+        case FWPluginLoadingModeText:
+            break;
+        default:
+        {
+            loading.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Framework.bundle/LoadingSuccess"]];
+            loading.mode = MBProgressHUDModeCustomView;
+        }
+            break;
+    }
     
     [loading show:YES];
     

@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "FWPluginLoading.h"
 
+//加载条模式
+typedef enum {
+    FWPluginLoadingModeIndicator = 0,
+    FWPluginLoadingModeText,
+} FWPluginLoadingMode;
+
 @interface FWPluginLoadingDefault : NSObject<FWPluginLoading>
+
+@prop_assign(FWPluginLoadingMode, mode)
 
 @end

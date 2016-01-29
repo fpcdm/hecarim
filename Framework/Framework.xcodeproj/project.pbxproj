@@ -13,8 +13,6 @@
 		2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7291C55F537003BB601 /* UIViewController+Framework.m */; };
 		2F09D7331C560482003BB601 /* UIViewController+Dialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7311C560482003BB601 /* UIViewController+Dialog.h */; };
 		2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7321C560482003BB601 /* UIViewController+Dialog.m */; };
-		2F118DF11C5B0C3400680951 /* FWPluginLoadingText.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F118DEF1C5B0C3400680951 /* FWPluginLoadingText.h */; };
-		2F118DF21C5B0C3400680951 /* FWPluginLoadingText.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F118DF01C5B0C3400680951 /* FWPluginLoadingText.m */; };
 		2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35971C4C89310060E793 /* ICssBlock.h */; };
 		2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35981C4C89310060E793 /* ICssBlock.m */; };
 		2F1C35D41C4C89310060E793 /* ICssDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35991C4C89310060E793 /* ICssDecl.h */; };
@@ -665,8 +663,6 @@
 		2F09D7291C55F537003BB601 /* UIViewController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Framework.m"; sourceTree = "<group>"; };
 		2F09D7311C560482003BB601 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
 		2F09D7321C560482003BB601 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
-		2F118DEF1C5B0C3400680951 /* FWPluginLoadingText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoadingText.h; sourceTree = "<group>"; };
-		2F118DF01C5B0C3400680951 /* FWPluginLoadingText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginLoadingText.m; sourceTree = "<group>"; };
 		2F1C35971C4C89310060E793 /* ICssBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssBlock.h; sourceTree = "<group>"; };
 		2F1C35981C4C89310060E793 /* ICssBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICssBlock.m; sourceTree = "<group>"; };
 		2F1C35991C4C89310060E793 /* ICssDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssDecl.h; sourceTree = "<group>"; };
@@ -1498,8 +1494,6 @@
 				2F1C77B71C577663009080A3 /* FWPluginLoading.h */,
 				2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */,
 				2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */,
-				2F118DEF1C5B0C3400680951 /* FWPluginLoadingText.h */,
-				2F118DF01C5B0C3400680951 /* FWPluginLoadingText.m */,
 				2F1C77651C570489009080A3 /* FWPluginCache.h */,
 				2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */,
 				2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */,
@@ -2428,7 +2422,6 @@
 				2FD99E131C48CE6F0065293E /* MASConstraint+Private.h in Headers */,
 				2FD99E1C1C48CE6F0065293E /* MASViewAttribute.h in Headers */,
 				2FD99D4B1C48CE6F0065293E /* ActionSheetCustomPicker.h in Headers */,
-				2F118DF11C5B0C3400680951 /* FWPluginLoadingText.h in Headers */,
 				2FD99E1E1C48CE6F0065293E /* MASViewConstraint.h in Headers */,
 				2FD99E401C48CE6F0065293E /* MJRefreshGifHeader.h in Headers */,
 				2FD99E461C48CE6F0065293E /* MJRefresh.h in Headers */,
@@ -2882,7 +2875,6 @@
 				2FD99E431C48CE6F0065293E /* MJRefreshNormalHeader.m in Sources */,
 				2FD99DA51C48CE6F0065293E /* FLEXDatabaseManager.m in Sources */,
 				2FD99DA91C48CE6F0065293E /* FLEXTableColumnHeader.m in Sources */,
-				2F118DF21C5B0C3400680951 /* FWPluginLoadingText.m in Sources */,
 				2FD99E411C48CE6F0065293E /* MJRefreshGifHeader.m in Sources */,
 				2FD99EDA1C48CE700065293E /* UIImageView+WebCache.m in Sources */,
 				2F1C35ED1C4C89310060E793 /* ITable.m in Sources */,
