@@ -7,13 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UINavigationController+Framework.h"
 
 @interface UINavigationController (Vertical)
-
-//支持切换方向
-- (void) pushViewController:(UIViewController *)viewController animated:(BOOL)animated vertical:(BOOL)vertical;
-
-//支持切换方向
-- (UIViewController *) popViewControllerAnimated:(BOOL)animated vertical:(BOOL)vertical;
 
 @end

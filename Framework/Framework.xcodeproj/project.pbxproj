@@ -13,6 +13,8 @@
 		2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7291C55F537003BB601 /* UIViewController+Framework.m */; };
 		2F09D7331C560482003BB601 /* UIViewController+Dialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7311C560482003BB601 /* UIViewController+Dialog.h */; };
 		2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7321C560482003BB601 /* UIViewController+Dialog.m */; };
+		2F118DF91C5B529700680951 /* UINavigationController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F118DF71C5B529700680951 /* UINavigationController+Framework.h */; };
+		2F118DFA1C5B529700680951 /* UINavigationController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F118DF81C5B529700680951 /* UINavigationController+Framework.m */; };
 		2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35971C4C89310060E793 /* ICssBlock.h */; };
 		2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35981C4C89310060E793 /* ICssBlock.m */; };
 		2F1C35D41C4C89310060E793 /* ICssDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35991C4C89310060E793 /* ICssDecl.h */; };
@@ -663,6 +665,8 @@
 		2F09D7291C55F537003BB601 /* UIViewController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Framework.m"; sourceTree = "<group>"; };
 		2F09D7311C560482003BB601 /* UIViewController+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dialog.h"; sourceTree = "<group>"; };
 		2F09D7321C560482003BB601 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
+		2F118DF71C5B529700680951 /* UINavigationController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Framework.h"; sourceTree = "<group>"; };
+		2F118DF81C5B529700680951 /* UINavigationController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Framework.m"; sourceTree = "<group>"; };
 		2F1C35971C4C89310060E793 /* ICssBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssBlock.h; sourceTree = "<group>"; };
 		2F1C35981C4C89310060E793 /* ICssBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICssBlock.m; sourceTree = "<group>"; };
 		2F1C35991C4C89310060E793 /* ICssDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssDecl.h; sourceTree = "<group>"; };
@@ -1601,6 +1605,8 @@
 			children = (
 				2F09D7281C55F537003BB601 /* UIViewController+Framework.h */,
 				2F09D7291C55F537003BB601 /* UIViewController+Framework.m */,
+				2F118DF71C5B529700680951 /* UINavigationController+Framework.h */,
+				2F118DF81C5B529700680951 /* UINavigationController+Framework.m */,
 				2F1C777C1C575B8F009080A3 /* NSObject+Framework.h */,
 				2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */,
 				2F1C77721C574F7E009080A3 /* UIColor+Framework.h */,
@@ -2507,6 +2513,7 @@
 				2FD99ECE1C48CE700065293E /* SDWebImageOperation.h in Headers */,
 				2FD99EE91C48CE700065293E /* TSMessageView.h in Headers */,
 				2FD99DAA1C48CE6F0065293E /* FLEXTableContentCell.h in Headers */,
+				2F118DF91C5B529700680951 /* UINavigationController+Framework.h in Headers */,
 				2FD99DAE1C48CE6F0065293E /* FLEXTableLeftCell.h in Headers */,
 				2FD99E701C48CE6F0065293E /* RKConnectionTestExpectation.h in Headers */,
 				2FF10B651C4C97FA00365024 /* EncodeUtil.h in Headers */,
@@ -3072,6 +3079,7 @@
 				2FD99E071C48CE6F0065293E /* FMDatabase.m in Sources */,
 				2FD9932A1C48BC9D0065293E /* BaseEntity.m in Sources */,
 				2FD99EEA1C48CE700065293E /* TSMessageView.m in Sources */,
+				2F118DFA1C5B529700680951 /* UINavigationController+Framework.m in Sources */,
 				2FD99DE51C48CE6F0065293E /* FLEXImageExplorerViewController.m in Sources */,
 				2FD99DB51C48CE6F0065293E /* FLEXCookiesTableViewController.m in Sources */,
 				2F1C35D91C4C89310060E793 /* IFlowLayout.m in Sources */,
