@@ -67,6 +67,7 @@
 #import "FrameworkPredefine.h"
 
 //加载本地化文件
+#import "FWLocale.h"
 #import "LocaleUtil.h"
 
 //加载日志文件

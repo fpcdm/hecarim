@@ -13,18 +13,22 @@
 //播放声音
 + (BOOL)playMusic:(NSString *)file;
 
-//发送邮件
-+ (void)sendMail:(NSString *)mail;
+//打开功能
++ (BOOL)openUrl:(NSString *)url;
 
-//打电话
-+ (void)makePhoneCall:(NSString *)tel;
+//发送邮件
++ (BOOL)sendEmail:(NSString *)email;
 
 //发短信
-+ (void)sendSMS:(NSString *)tel;
++ (BOOL)sendSms:(NSString *)phone;
 
-//打开URL
-+ (void)openURLWithSafari:(NSString *)url;
+//打开浏览器
++ (BOOL)openSafari:(NSString *)url;
 
-+ (NSString *)getNameFromAddressBookWithPhoneNum:(NSString *)tel;
+//打电话
++ (BOOL)makePhoneCall:(NSString *)phone;
+
+//获取电话姓名
++ (NSString *)getPhoneName:(NSString *)phone;
 
 @end

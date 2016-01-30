@@ -35,49 +35,57 @@
     }
 }
 
-+ (void)sendMail:(NSString *)mail {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mail]];
++ (BOOL)openUrl:(NSString *)url
+{
+    NSURL *nsurl = [NSURL URLWithString:url];
+    if ([[UIApplication sharedApplication] canOpenURL:nsurl]) {
+        [[UIApplication sharedApplication] openURL:nsurl];
+        return YES;
+    }
+    return NO;
 }
 
-+ (void)makePhoneCall:(NSString *)tel {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
++ (BOOL)sendEmail:(NSString *)email
+{
+    return [self openUrl:[NSString stringWithFormat:@"mailto:%@", email]];
 }
 
-+ (void)sendSMS:(NSString *)tel {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
++ (BOOL)sendSms:(NSString *)phone
+{
+    return [self openUrl:[NSString stringWithFormat:@"sms://%@", phone]];
 }
 
-+ (void)openURLWithSafari:(NSString *)url {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
++ (BOOL)makePhoneCall:(NSString *)phone
+{
+    return [self openUrl:[NSString stringWithFormat:@"telprompt://%@", phone]];
 }
 
-+ (NSString *)getNameFromAddressBookWithPhoneNum:(NSString *)tel{
++ (BOOL)openSafari:(NSString *)url
+{
+    return [self openUrl:url];
+}
+
++ (NSString *)getPhoneName:(NSString *)phone
+{
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-    //    if ([[UIDevice currentDevice].systemVersion floatValue] >= 6.0)    {
-    //       addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-    //        //等待同意后向下执行
-    //        dispatch_semaphore_t sema = dispatch_semaphore_create(0);        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error)                                                 {                                                     dispatch_semaphore_signal(sema);                                                 });
-    //        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);         dispatch(sema);
-    //    }else{
-    //        addressBook = ABAddressBookCreate();
-    //    }
     CFArrayRef records;
     if (addressBook) {
-        // 获取通讯录中全部联系人
+        //获取通讯录中全部联系人
         records = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    }else{
+    } else {
         return nil;
     }
+    
     // 遍历全部联系人，检查是否存在指定号码
-    for (int i=0; i<CFArrayGetCount(records); i++) {
+    for (int i = 0; i < CFArrayGetCount(records); i++) {
         ABRecordRef record = CFArrayGetValueAtIndex(records, i);
         CFTypeRef items = ABRecordCopyValue(record, kABPersonPhoneProperty);
         CFArrayRef phoneNums = ABMultiValueCopyArrayOfAllValues(items);
         if (phoneNums) {
-            for (int j=0; j<CFArrayGetCount(phoneNums); j++) {
-                NSString *phone = (NSString*)CFArrayGetValueAtIndex(phoneNums, j);
-                phone = [self getOutOfTheNumber:phone];
-                if ([phone isEqualToString:tel]) {
+            for (int j = 0; j < CFArrayGetCount(phoneNums); j++) {
+                NSString *tel = (NSString*)CFArrayGetValueAtIndex(phoneNums, j);
+                tel = [self filterPhoneNumber:tel];
+                if ([tel isEqualToString:phone]) {
                     return (__bridge NSString*)ABRecordCopyCompositeName(record);
                 }
             }
@@ -86,7 +94,8 @@
     return nil;
 }
 
-+(NSString *)getOutOfTheNumber:(NSString *)str{
++ (NSString *)filterPhoneNumber:(NSString *)str
+{
     NSMutableString *strippedString = [NSMutableString
                                        stringWithCapacity:str.length];
     

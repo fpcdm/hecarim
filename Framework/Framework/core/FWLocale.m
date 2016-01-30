@@ -1,14 +1,14 @@
 //
-//  LocaleUtil.m
-//  LttMember
+//  FWLocale.m
+//  Framework
 //
-//  Created by wuyong on 16/1/5.
-//  Copyright © 2016年 Gilbert. All rights reserved.
+//  Created by 吴勇 on 16/1/30.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "LocaleUtil.h"
+#import "FWLocale.h"
 
-@implementation LocaleUtil
+@implementation FWLocale
 
 + (NSString *)localize:(NSString *)key file:(NSString *)file
 {

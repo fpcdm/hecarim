@@ -151,6 +151,10 @@
 		2F65961F1C5CCDA200CC8C06 /* FWLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F65961D1C5CCDA200CC8C06 /* FWLog.m */; };
 		2F6596221C5CCF1400CC8C06 /* FWDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596201C5CCF1400CC8C06 /* FWDebug.h */; };
 		2F6596231C5CCF1400CC8C06 /* FWDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596211C5CCF1400CC8C06 /* FWDebug.m */; };
+		2F65962D1C5CDC6500CC8C06 /* FWLocale.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F65962B1C5CDC6500CC8C06 /* FWLocale.h */; };
+		2F65962E1C5CDC6500CC8C06 /* FWLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F65962C1C5CDC6500CC8C06 /* FWLocale.m */; };
+		2F6596311C5CDCDC00CC8C06 /* LocaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F65962F1C5CDCDC00CC8C06 /* LocaleUtil.h */; };
+		2F6596321C5CDCDC00CC8C06 /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596301C5CDCDC00CC8C06 /* LocaleUtil.m */; };
 		2F8E90321C56937700735A4B /* FWPluginProviderDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */; };
 		2F8E90331C56937700735A4B /* FWPluginProviderDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */; };
 		2F8E90351C56940D00735A4B /* FWPluginProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90341C56940D00735A4B /* FWPluginProvider.h */; };
@@ -175,7 +179,6 @@
 		2FD9933D1C48BC9D0065293E /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991481C48BC9C0065293E /* FileEntity.m */; };
 		2FD9933E1C48BC9D0065293E /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9914A1C48BC9C0065293E /* ResultEntity.m */; };
 		2FD9933F1C48BC9D0065293E /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9914C1C48BC9C0065293E /* UserEntity.m */; };
-		2FD993411C48BC9D0065293E /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991511C48BC9C0065293E /* LocaleUtil.m */; };
 		2FD993421C48BC9D0065293E /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991531C48BC9C0065293E /* LocationUtil.m */; };
 		2FD993441C48BC9D0065293E /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991571C48BC9C0065293E /* NotificationUtil.m */; };
 		2FD993451C48BC9D0065293E /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991591C48BC9C0065293E /* PickerUtil.m */; };
@@ -198,7 +201,6 @@
 		2FD993F81C48BE720065293E /* FileEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991471C48BC9C0065293E /* FileEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F91C48BE720065293E /* ResultEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991491C48BC9C0065293E /* ResultEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FA1C48BE720065293E /* UserEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9914B1C48BC9C0065293E /* UserEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FD993FC1C48BE720065293E /* LocaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991501C48BC9C0065293E /* LocaleUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FD1C48BE720065293E /* LocationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991521C48BC9C0065293E /* LocationUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FF1C48BE720065293E /* NotificationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991561C48BC9C0065293E /* NotificationUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD994001C48BE720065293E /* PickerUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991581C48BC9C0065293E /* PickerUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -804,6 +806,10 @@
 		2F65961D1C5CCDA200CC8C06 /* FWLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWLog.m; sourceTree = "<group>"; };
 		2F6596201C5CCF1400CC8C06 /* FWDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWDebug.h; sourceTree = "<group>"; };
 		2F6596211C5CCF1400CC8C06 /* FWDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWDebug.m; sourceTree = "<group>"; };
+		2F65962B1C5CDC6500CC8C06 /* FWLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWLocale.h; sourceTree = "<group>"; };
+		2F65962C1C5CDC6500CC8C06 /* FWLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWLocale.m; sourceTree = "<group>"; };
+		2F65962F1C5CDCDC00CC8C06 /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
+		2F6596301C5CDCDC00CC8C06 /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
 		2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProviderDefault.h; sourceTree = "<group>"; };
 		2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginProviderDefault.m; sourceTree = "<group>"; };
 		2F8E90341C56940D00735A4B /* FWPluginProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProvider.h; sourceTree = "<group>"; };
@@ -843,8 +849,6 @@
 		2FD9914A1C48BC9C0065293E /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2FD9914B1C48BC9C0065293E /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
 		2FD9914C1C48BC9C0065293E /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
-		2FD991501C48BC9C0065293E /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
-		2FD991511C48BC9C0065293E /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
 		2FD991521C48BC9C0065293E /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
 		2FD991531C48BC9C0065293E /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
 		2FD991561C48BC9C0065293E /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
@@ -1336,6 +1340,8 @@
 				2F09D7321C560482003BB601 /* UIViewController+Dialog.m */,
 				2F1C77761C575054009080A3 /* UIColor+Hex.h */,
 				2F1C77771C575054009080A3 /* UIColor+Hex.m */,
+				2F65962F1C5CDCDC00CC8C06 /* LocaleUtil.h */,
+				2F6596301C5CDCDC00CC8C06 /* LocaleUtil.m */,
 			);
 			path = deprecated;
 			sourceTree = "<group>";
@@ -1600,6 +1606,8 @@
 				2F65961D1C5CCDA200CC8C06 /* FWLog.m */,
 				2F6596201C5CCF1400CC8C06 /* FWDebug.h */,
 				2F6596211C5CCF1400CC8C06 /* FWDebug.m */,
+				2F65962B1C5CDC6500CC8C06 /* FWLocale.h */,
+				2F65962C1C5CDC6500CC8C06 /* FWLocale.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -1661,8 +1669,6 @@
 		2FD9914D1C48BC9C0065293E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				2FD991501C48BC9C0065293E /* LocaleUtil.h */,
-				2FD991511C48BC9C0065293E /* LocaleUtil.m */,
 				2FD991521C48BC9C0065293E /* LocationUtil.h */,
 				2FD991531C48BC9C0065293E /* LocationUtil.m */,
 				2FF3431A1C50CD280066CC1F /* DeviceUtil.h */,
@@ -2599,6 +2605,7 @@
 				2FD99E601C48CE6F0065293E /* AFXMLRequestOperation.h in Headers */,
 				2FD99E471C48CE6F0065293E /* MJRefreshConst.h in Headers */,
 				2F8E90321C56937700735A4B /* FWPluginProviderDefault.h in Headers */,
+				2F6596311C5CDCDC00CC8C06 /* LocaleUtil.h in Headers */,
 				2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */,
 				2FD99EB21C48CE700065293E /* RKTestHelpers.h in Headers */,
 				2F1C77B81C577663009080A3 /* FWPluginLoading.h in Headers */,
@@ -2624,6 +2631,7 @@
 				2FD99D571C48CE6F0065293E /* DistancePickerView.h in Headers */,
 				2FD99D621C48CE6F0065293E /* DDAssertMacros.h in Headers */,
 				2F1C77A81C576DAD009080A3 /* UITextView+Placeholder.h in Headers */,
+				2F65962D1C5CDC6500CC8C06 /* FWLocale.h in Headers */,
 				2FD99DF21C48CE6F0065293E /* FLEXHeapEnumerator.h in Headers */,
 				2FD99DE01C48CE6F0065293E /* FLEXDictionaryExplorerViewController.h in Headers */,
 				2FD99D9A1C48CE6F0065293E /* FLEXExplorerViewController.h in Headers */,
@@ -2769,7 +2777,6 @@
 				2FD993F81C48BE720065293E /* FileEntity.h in Headers */,
 				2FD993F91C48BE720065293E /* ResultEntity.h in Headers */,
 				2FD993FA1C48BE720065293E /* UserEntity.h in Headers */,
-				2FD993FC1C48BE720065293E /* LocaleUtil.h in Headers */,
 				2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */,
 				2FD993FD1C48BE720065293E /* LocationUtil.h in Headers */,
 				2FD993FF1C48BE720065293E /* NotificationUtil.h in Headers */,
@@ -2851,6 +2858,7 @@
 				2F1C77A51C576DAD009080A3 /* UIScrollView+RefreshLoading.m in Sources */,
 				2FD99D751C48CE6F0065293E /* FLEXArgumentInputDateView.m in Sources */,
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
+				2F6596321C5CDCDC00CC8C06 /* LocaleUtil.m in Sources */,
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				2FF10B661C4C97FA00365024 /* EncodeUtil.m in Sources */,
 				2FF343211C50CF490066CC1F /* DateUtil.m in Sources */,
@@ -2955,11 +2963,11 @@
 				2F1C77A91C576DAD009080A3 /* UITextView+Placeholder.m in Sources */,
 				2FD99E551C48CE6F0065293E /* PINMemoryCache.m in Sources */,
 				2FD99D611C48CE6F0065293E /* DDASLLogger.m in Sources */,
-				2FD993411C48BC9D0065293E /* LocaleUtil.m in Sources */,
 				2FD99E2F1C48CE6F0065293E /* MJRefreshComponent.m in Sources */,
 				2F1C77791C575054009080A3 /* UIColor+Hex.m in Sources */,
 				2F1C35F81C4C89310060E793 /* IInput.m in Sources */,
 				2FD99DF91C48CE6F0065293E /* FLEXMultilineTableViewCell.m in Sources */,
+				2F65962E1C5CDC6500CC8C06 /* FWLocale.m in Sources */,
 				2FD99D9E1C48CE6F0065293E /* FLEXManager.m in Sources */,
 				2FD99E171C48CE6F0065293E /* MASConstraintMaker.m in Sources */,
 				2FD99D531C48CE6F0065293E /* ActionSheetLocalePicker.m in Sources */,
