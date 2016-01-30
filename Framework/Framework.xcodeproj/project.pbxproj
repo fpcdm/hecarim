@@ -145,6 +145,8 @@
 		2F5F2F2E1C540BE600571E49 /* FWFrontend.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F2D1C540BE600571E49 /* FWFrontend.h */; };
 		2F6596151C5CA31100CC8C06 /* UIImage+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */; };
 		2F6596161C5CA31100CC8C06 /* UIImage+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */; };
+		2F6596191C5CB51400CC8C06 /* UIScrollView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596171C5CB51400CC8C06 /* UIScrollView+Framework.h */; };
+		2F65961A1C5CB51400CC8C06 /* UIScrollView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596181C5CB51400CC8C06 /* UIScrollView+Framework.m */; };
 		2F8E90321C56937700735A4B /* FWPluginProviderDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */; };
 		2F8E90331C56937700735A4B /* FWPluginProviderDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */; };
 		2F8E90351C56940D00735A4B /* FWPluginProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90341C56940D00735A4B /* FWPluginProvider.h */; };
@@ -637,8 +639,6 @@
 		2FF340D41C509FFD0066CC1F /* BaseViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF340D21C509FFD0066CC1F /* BaseViewAction.m */; };
 		2FF343141C50C4240066CC1F /* SystemUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF343121C50C4240066CC1F /* SystemUtil.h */; };
 		2FF343151C50C4240066CC1F /* SystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF343131C50C4240066CC1F /* SystemUtil.m */; };
-		2FF343181C50CCC90066CC1F /* MapUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF343161C50CCC90066CC1F /* MapUtil.h */; };
-		2FF343191C50CCC90066CC1F /* MapUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF343171C50CCC90066CC1F /* MapUtil.m */; };
 		2FF3431C1C50CD280066CC1F /* DeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF3431A1C50CD280066CC1F /* DeviceUtil.h */; };
 		2FF3431D1C50CD280066CC1F /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3431B1C50CD280066CC1F /* DeviceUtil.m */; };
 		2FF343201C50CF490066CC1F /* DateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF3431E1C50CF490066CC1F /* DateUtil.h */; };
@@ -798,6 +798,8 @@
 		2F5F2F2D1C540BE600571E49 /* FWFrontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWFrontend.h; sourceTree = "<group>"; };
 		2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Framework.h"; sourceTree = "<group>"; };
 		2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Framework.m"; sourceTree = "<group>"; };
+		2F6596171C5CB51400CC8C06 /* UIScrollView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Framework.h"; sourceTree = "<group>"; };
+		2F6596181C5CB51400CC8C06 /* UIScrollView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Framework.m"; sourceTree = "<group>"; };
 		2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProviderDefault.h; sourceTree = "<group>"; };
 		2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginProviderDefault.m; sourceTree = "<group>"; };
 		2F8E90341C56940D00735A4B /* FWPluginProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProvider.h; sourceTree = "<group>"; };
@@ -1291,8 +1293,6 @@
 		2FF340D21C509FFD0066CC1F /* BaseViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewAction.m; sourceTree = "<group>"; };
 		2FF343121C50C4240066CC1F /* SystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemUtil.h; sourceTree = "<group>"; };
 		2FF343131C50C4240066CC1F /* SystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemUtil.m; sourceTree = "<group>"; };
-		2FF343161C50CCC90066CC1F /* MapUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtil.h; sourceTree = "<group>"; };
-		2FF343171C50CCC90066CC1F /* MapUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtil.m; sourceTree = "<group>"; };
 		2FF3431A1C50CD280066CC1F /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		2FF3431B1C50CD280066CC1F /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
 		2FF3431E1C50CF490066CC1F /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
@@ -1619,6 +1619,8 @@
 				2F2B65531C59BEB30024DC09 /* UIView+Framework.m */,
 				2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */,
 				2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */,
+				2F6596171C5CB51400CC8C06 /* UIScrollView+Framework.h */,
+				2F6596181C5CB51400CC8C06 /* UIScrollView+Framework.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1663,8 +1665,6 @@
 				2FD991531C48BC9C0065293E /* LocationUtil.m */,
 				2FD991541C48BC9C0065293E /* LogUtil.h */,
 				2FD991551C48BC9C0065293E /* LogUtil.m */,
-				2FF343161C50CCC90066CC1F /* MapUtil.h */,
-				2FF343171C50CCC90066CC1F /* MapUtil.m */,
 				2FF3431A1C50CD280066CC1F /* DeviceUtil.h */,
 				2FF3431B1C50CD280066CC1F /* DeviceUtil.m */,
 				2FD991561C48BC9C0065293E /* NotificationUtil.h */,
@@ -2433,7 +2433,6 @@
 				2FD99E461C48CE6F0065293E /* MJRefresh.h in Headers */,
 				2FD99E841C48CE6F0065293E /* RKManagedObjectMappingOperationDataSource.h in Headers */,
 				2FD99E541C48CE6F0065293E /* PINMemoryCache.h in Headers */,
-				2FF343181C50CCC90066CC1F /* MapUtil.h in Headers */,
 				2F1C77781C575054009080A3 /* UIColor+Hex.h in Headers */,
 				2FD99E161C48CE6F0065293E /* MASConstraintMaker.h in Headers */,
 				2FD99E891C48CE6F0065293E /* RKMapping.h in Headers */,
@@ -2761,6 +2760,7 @@
 				2FD993EA1C48BE710065293E /* BaseView.h in Headers */,
 				2FD993EB1C48BE710065293E /* BaseViewController.h in Headers */,
 				2FAA250E1C53A56C00933669 /* BaseWidget.h in Headers */,
+				2F6596191C5CB51400CC8C06 /* UIScrollView+Framework.h in Headers */,
 				2FF343201C50CF490066CC1F /* DateUtil.h in Headers */,
 				2FD993F71C48BE720065293E /* ErrorEntity.h in Headers */,
 				2FCBAC791C54CAF6003D9786 /* BaseXmlPage.h in Headers */,
@@ -2848,7 +2848,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD993491C48BC9D0065293E /* TimerUtil.m in Sources */,
-				2FF343191C50CCC90066CC1F /* MapUtil.m in Sources */,
 				2F1C77A51C576DAD009080A3 /* UIScrollView+RefreshLoading.m in Sources */,
 				2FD99D751C48CE6F0065293E /* FLEXArgumentInputDateView.m in Sources */,
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
@@ -3020,6 +3019,7 @@
 				2FD99D731C48CE6F0065293E /* FLEXArgumentInputColorView.m in Sources */,
 				2F1C35FA1C4C89310060E793 /* ILabel.m in Sources */,
 				2F1C77B11C576EE3009080A3 /* NSString+Framework.m in Sources */,
+				2F65961A1C5CB51400CC8C06 /* UIScrollView+Framework.m in Sources */,
 				2FD993451C48BC9D0065293E /* PickerUtil.m in Sources */,
 				2F1C36061C4C89310060E793 /* IDTHTMLViewLoader.m in Sources */,
 				2FD99E511C48CE6F0065293E /* PINCache.m in Sources */,
