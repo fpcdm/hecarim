@@ -70,7 +70,7 @@
 #import "LocaleUtil.h"
 
 //加载日志文件
-#import "LogUtil.h"
+#import "FWLog.h"
 
 //定义弹出框停留时间
 #define DIALOG_SHOW_TIME 2.0

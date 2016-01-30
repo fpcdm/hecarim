@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "LttAppDelegate.h"
-#import "DebugUtil.h"
+#import "FWDebug.h"
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
         
 #if TARGET_IPHONE_SIMULATOR
         //监听视图改变
-        [[DebugUtil sharedInstance] watchPath:@(__FILE__) exts:nil];
+        [[FWDebug sharedInstance] watchPath:@(__FILE__) exts:nil];
 #endif
         
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([LttAppDelegate class]));

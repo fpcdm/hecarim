@@ -17,9 +17,9 @@ static NSString *patchPath = nil;
 #define XMLVIEW_CACHE_PREFIX @"XmlView."
 
 #ifdef APP_DEBUG
-#import "DebugUtil.h"
+#import "FWDebug.h"
 
-@interface BaseXmlView () <DebugUtilDelegate>
+@interface BaseXmlView () <FWDebugDelegate>
 
 @end
 #endif
@@ -115,11 +115,11 @@ static NSString *patchPath = nil;
     
 #ifdef APP_DEBUG
     //注册调试代理
-    [DebugUtil sharedInstance].delegate = self;
+    [FWDebug sharedInstance].delegate = self;
     
     //监听URL改变
     if (_xmlIsUrl) {
-        [[DebugUtil sharedInstance] watchUrlStart:_xmlPath];
+        [[FWDebug sharedInstance] watchUrlStart:_xmlPath];
     }
     
     //关闭XML缓存
@@ -291,11 +291,11 @@ static NSString *patchPath = nil;
 - (void)dealloc
 {
     //解除调试代理
-    [DebugUtil sharedInstance].delegate = nil;
+    [FWDebug sharedInstance].delegate = nil;
     
     //移除URL监听
     if (_xmlIsUrl) {
-        [[DebugUtil sharedInstance] watchUrlEnd:_xmlPath];
+        [[FWDebug sharedInstance] watchUrlEnd:_xmlPath];
     }
 }
 #endif

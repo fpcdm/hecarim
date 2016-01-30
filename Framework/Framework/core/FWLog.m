@@ -1,13 +1,12 @@
 //
-//  LogUtil.m
-//  LttMember
+//  FWLog.m
+//  Framework
 //
-//  Created by wuyong on 16/1/6.
-//  Copyright © 2016年 Gilbert. All rights reserved.
+//  Created by 吴勇 on 16/1/30.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "LogUtil.h"
-#import "FrameworkConfig.h"
+#import "FWLog.h"
 
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
@@ -24,13 +23,13 @@ static BOOL isDDLogInited = false;
 #endif
 #endif
 
-@implementation LogUtil
+@implementation FWLog
 
 + (void)_log:(LogType)type message:(NSString *)message
 {
-//开发环境
+    //开发环境
 #ifdef APP_DEBUG
-//模拟器
+    //模拟器
 #if TARGET_IPHONE_SIMULATOR
     
     if (!isDDLogInited) {
@@ -64,7 +63,7 @@ static BOOL isDDLogInited = false;
             break;
     }
     
-//真机
+    //真机
 #else
     
     switch (type) {
@@ -86,7 +85,7 @@ static BOOL isDDLogInited = false;
     }
     
 #endif
-//正式环境
+    //正式环境
 #else
     
     //什么也不做

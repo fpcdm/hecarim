@@ -17,7 +17,7 @@
 #import "LocationUtil.h"
 #import "TimerUtil.h"
 #import "Harpy.h"
-#import "DebugUtil.h"
+#import "FWDebug.h"
 
 @interface LttAppDelegate () <LocationUtilDelegate>
 
@@ -37,7 +37,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //初始化调试工具
-    [[DebugUtil sharedInstance] benchmarkStart:@"START"];
+    [[FWDebug sharedInstance] benchmarkStart:@"START"];
     
     //全局导航栏颜色
     UINavigationBar *navigationBar = [UINavigationBar appearance];
@@ -103,7 +103,7 @@
     [self checkUpdate];
     
     //标记启动结束
-    [[DebugUtil sharedInstance] benchmarkEnd:@"START"];
+    [[FWDebug sharedInstance] benchmarkEnd:@"START"];
     
     return YES;
 }

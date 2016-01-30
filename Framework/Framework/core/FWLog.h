@@ -1,9 +1,9 @@
 //
-//  LogUtil.h
-//  LttMember
+//  FWLog.h
+//  Framework
 //
-//  Created by wuyong on 16/1/6.
-//  Copyright © 2016年 Gilbert. All rights reserved.
+//  Created by 吴勇 on 16/1/30.
+//  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,7 +16,7 @@ typedef enum {
     LogTypeError
 } LogType;
 
-@interface LogUtil : NSObject
+@interface FWLog : NSObject
 
 + (void)log:(LogType)type format:(NSString *)format, ...;
 

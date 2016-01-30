@@ -1,13 +1,12 @@
 //
-//  DebugUtil.m
-//  LttMember
+//  FWDebug.m
+//  Framework
 //
 //  Created by wuyong on 16/1/5.
 //  Copyright © 2016年 Gilbert. All rights reserved.
 //
 
-#import "DebugUtil.h"
-#import "FrameworkConfig.h"
+#import "FWDebug.h"
 
 #ifdef APP_DEBUG
 #import "FLEX.h"
@@ -20,9 +19,9 @@
 #import "DeviceUtil.h"
 #endif
 
-static DebugUtil *sharedInstance = nil;
+static FWDebug *sharedInstance = nil;
 
-@implementation DebugUtil
+@implementation FWDebug
 {
     NSMutableDictionary *benchmarks;
     NSMutableDictionary *memorys;
@@ -41,7 +40,7 @@ static DebugUtil *sharedInstance = nil;
 #endif
 }
 
-+ (DebugUtil *) sharedInstance
++ (FWDebug *) sharedInstance
 {
     //多线程唯一
     @synchronized(self){

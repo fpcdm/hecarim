@@ -36,7 +36,6 @@
 {
     [super loadView];
     self.view.backgroundColor = COLOR_MAIN_BG;
-    [self.view showLoading];
 }
 
 - (void)viewDidLoad {
@@ -46,6 +45,8 @@
     [super viewDidLoad];
     
     self.navigationItem.title = TIP_LOADING_MESSAGE;
+    
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
 }
 
 //查询状态切换视图

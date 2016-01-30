@@ -147,6 +147,10 @@
 		2F6596161C5CA31100CC8C06 /* UIImage+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */; };
 		2F6596191C5CB51400CC8C06 /* UIScrollView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596171C5CB51400CC8C06 /* UIScrollView+Framework.h */; };
 		2F65961A1C5CB51400CC8C06 /* UIScrollView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596181C5CB51400CC8C06 /* UIScrollView+Framework.m */; };
+		2F65961E1C5CCDA200CC8C06 /* FWLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F65961C1C5CCDA200CC8C06 /* FWLog.h */; };
+		2F65961F1C5CCDA200CC8C06 /* FWLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F65961D1C5CCDA200CC8C06 /* FWLog.m */; };
+		2F6596221C5CCF1400CC8C06 /* FWDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596201C5CCF1400CC8C06 /* FWDebug.h */; };
+		2F6596231C5CCF1400CC8C06 /* FWDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596211C5CCF1400CC8C06 /* FWDebug.m */; };
 		2F8E90321C56937700735A4B /* FWPluginProviderDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */; };
 		2F8E90331C56937700735A4B /* FWPluginProviderDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */; };
 		2F8E90351C56940D00735A4B /* FWPluginProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90341C56940D00735A4B /* FWPluginProvider.h */; };
@@ -171,10 +175,8 @@
 		2FD9933D1C48BC9D0065293E /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991481C48BC9C0065293E /* FileEntity.m */; };
 		2FD9933E1C48BC9D0065293E /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9914A1C48BC9C0065293E /* ResultEntity.m */; };
 		2FD9933F1C48BC9D0065293E /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9914C1C48BC9C0065293E /* UserEntity.m */; };
-		2FD993401C48BC9D0065293E /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9914F1C48BC9C0065293E /* DebugUtil.m */; };
 		2FD993411C48BC9D0065293E /* LocaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991511C48BC9C0065293E /* LocaleUtil.m */; };
 		2FD993421C48BC9D0065293E /* LocationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991531C48BC9C0065293E /* LocationUtil.m */; };
-		2FD993431C48BC9D0065293E /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991551C48BC9C0065293E /* LogUtil.m */; };
 		2FD993441C48BC9D0065293E /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991571C48BC9C0065293E /* NotificationUtil.m */; };
 		2FD993451C48BC9D0065293E /* PickerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD991591C48BC9C0065293E /* PickerUtil.m */; };
 		2FD993461C48BC9D0065293E /* RestKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9915B1C48BC9C0065293E /* RestKitUtil.m */; };
@@ -196,10 +198,8 @@
 		2FD993F81C48BE720065293E /* FileEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991471C48BC9C0065293E /* FileEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993F91C48BE720065293E /* ResultEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991491C48BC9C0065293E /* ResultEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FA1C48BE720065293E /* UserEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9914B1C48BC9C0065293E /* UserEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FD993FB1C48BE720065293E /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9914E1C48BC9C0065293E /* DebugUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FC1C48BE720065293E /* LocaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991501C48BC9C0065293E /* LocaleUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FD1C48BE720065293E /* LocationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991521C48BC9C0065293E /* LocationUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FD993FE1C48BE720065293E /* LogUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991541C48BC9C0065293E /* LogUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD993FF1C48BE720065293E /* NotificationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991561C48BC9C0065293E /* NotificationUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD994001C48BE720065293E /* PickerUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD991581C48BC9C0065293E /* PickerUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD994011C48BE720065293E /* RestKitUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD9915A1C48BC9C0065293E /* RestKitUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -800,6 +800,10 @@
 		2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Framework.m"; sourceTree = "<group>"; };
 		2F6596171C5CB51400CC8C06 /* UIScrollView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Framework.h"; sourceTree = "<group>"; };
 		2F6596181C5CB51400CC8C06 /* UIScrollView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Framework.m"; sourceTree = "<group>"; };
+		2F65961C1C5CCDA200CC8C06 /* FWLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWLog.h; sourceTree = "<group>"; };
+		2F65961D1C5CCDA200CC8C06 /* FWLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWLog.m; sourceTree = "<group>"; };
+		2F6596201C5CCF1400CC8C06 /* FWDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWDebug.h; sourceTree = "<group>"; };
+		2F6596211C5CCF1400CC8C06 /* FWDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWDebug.m; sourceTree = "<group>"; };
 		2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProviderDefault.h; sourceTree = "<group>"; };
 		2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginProviderDefault.m; sourceTree = "<group>"; };
 		2F8E90341C56940D00735A4B /* FWPluginProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProvider.h; sourceTree = "<group>"; };
@@ -839,14 +843,10 @@
 		2FD9914A1C48BC9C0065293E /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
 		2FD9914B1C48BC9C0065293E /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
 		2FD9914C1C48BC9C0065293E /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
-		2FD9914E1C48BC9C0065293E /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
-		2FD9914F1C48BC9C0065293E /* DebugUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugUtil.m; sourceTree = "<group>"; };
 		2FD991501C48BC9C0065293E /* LocaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleUtil.h; sourceTree = "<group>"; };
 		2FD991511C48BC9C0065293E /* LocaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleUtil.m; sourceTree = "<group>"; };
 		2FD991521C48BC9C0065293E /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
 		2FD991531C48BC9C0065293E /* LocationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtil.m; sourceTree = "<group>"; };
-		2FD991541C48BC9C0065293E /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUtil.h; sourceTree = "<group>"; };
-		2FD991551C48BC9C0065293E /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogUtil.m; sourceTree = "<group>"; };
 		2FD991561C48BC9C0065293E /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
 		2FD991571C48BC9C0065293E /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtil.m; sourceTree = "<group>"; };
 		2FD991581C48BC9C0065293E /* PickerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerUtil.h; sourceTree = "<group>"; };
@@ -1596,6 +1596,10 @@
 				2F2B655D1C59C4BE0024DC09 /* FWModel.m */,
 				2F2B65601C59C4F00024DC09 /* FWViewModel.h */,
 				2F2B65611C59C4F00024DC09 /* FWViewModel.m */,
+				2F65961C1C5CCDA200CC8C06 /* FWLog.h */,
+				2F65961D1C5CCDA200CC8C06 /* FWLog.m */,
+				2F6596201C5CCF1400CC8C06 /* FWDebug.h */,
+				2F6596211C5CCF1400CC8C06 /* FWDebug.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -1657,14 +1661,10 @@
 		2FD9914D1C48BC9C0065293E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				2FD9914E1C48BC9C0065293E /* DebugUtil.h */,
-				2FD9914F1C48BC9C0065293E /* DebugUtil.m */,
 				2FD991501C48BC9C0065293E /* LocaleUtil.h */,
 				2FD991511C48BC9C0065293E /* LocaleUtil.m */,
 				2FD991521C48BC9C0065293E /* LocationUtil.h */,
 				2FD991531C48BC9C0065293E /* LocationUtil.m */,
-				2FD991541C48BC9C0065293E /* LogUtil.h */,
-				2FD991551C48BC9C0065293E /* LogUtil.m */,
 				2FF3431A1C50CD280066CC1F /* DeviceUtil.h */,
 				2FF3431B1C50CD280066CC1F /* DeviceUtil.m */,
 				2FD991561C48BC9C0065293E /* NotificationUtil.h */,
@@ -2565,6 +2565,7 @@
 				2FD99E421C48CE6F0065293E /* MJRefreshNormalHeader.h in Headers */,
 				2FD99D541C48CE6F0065293E /* ActionSheetPicker.h in Headers */,
 				2FD99D861C48CE6F0065293E /* FLEXArgumentInputTextView.h in Headers */,
+				2F6596221C5CCF1400CC8C06 /* FWDebug.h in Headers */,
 				2FD99EA41C48CE6F0065293E /* RKRequestDescriptor.h in Headers */,
 				2FD99DF41C48CE6F0065293E /* FLEXKeyboardHelpViewController.h in Headers */,
 				2FD99DFA1C48CE6F0065293E /* FLEXResources.h in Headers */,
@@ -2768,11 +2769,9 @@
 				2FD993F81C48BE720065293E /* FileEntity.h in Headers */,
 				2FD993F91C48BE720065293E /* ResultEntity.h in Headers */,
 				2FD993FA1C48BE720065293E /* UserEntity.h in Headers */,
-				2FD993FB1C48BE720065293E /* DebugUtil.h in Headers */,
 				2FD993FC1C48BE720065293E /* LocaleUtil.h in Headers */,
 				2F4750131C48F11A001CA674 /* DynamicEntity.h in Headers */,
 				2FD993FD1C48BE720065293E /* LocationUtil.h in Headers */,
-				2FD993FE1C48BE720065293E /* LogUtil.h in Headers */,
 				2FD993FF1C48BE720065293E /* NotificationUtil.h in Headers */,
 				2FD994001C48BE720065293E /* PickerUtil.h in Headers */,
 				2FD994011C48BE720065293E /* RestKitUtil.h in Headers */,
@@ -2781,6 +2780,7 @@
 				2F5F2F2E1C540BE600571E49 /* FWFrontend.h in Headers */,
 				2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */,
 				2FD994041C48BE720065293E /* TimerUtil.h in Headers */,
+				2F65961E1C5CCDA200CC8C06 /* FWLog.h in Headers */,
 				2FD994051C48BE720065293E /* ValidateUtil.h in Headers */,
 				2FD995131C48BED80065293E /* Framework.h in Headers */,
 				2FD993E21C48BD5F0065293E /* FrameworkConfig.h in Headers */,
@@ -2873,7 +2873,6 @@
 				2FD99DC11C48CE6F0065293E /* FLEXLibrariesTableViewController.m in Sources */,
 				2FD99E211C48CE6F0065293E /* NSArray+MASAdditions.m in Sources */,
 				2FD99EE01C48CE700065293E /* TPKeyboardAvoidingScrollView.m in Sources */,
-				2FD993431C48BC9D0065293E /* LogUtil.m in Sources */,
 				2FD99E571C48CE6F0065293E /* Reachability.m in Sources */,
 				2FD99D791C48CE6F0065293E /* FLEXArgumentInputFontView.m in Sources */,
 				2FD993301C48BC9D0065293E /* BaseViewController.m in Sources */,
@@ -3008,6 +3007,7 @@
 				2FD99DD31C48CE6F0065293E /* FLEXNetworkTransaction.m in Sources */,
 				2FD99DCB1C48CE6F0065293E /* FLEXSystemLogTableViewController.m in Sources */,
 				2F1C36041C4C89310060E793 /* DTHTMLParser.m in Sources */,
+				2F65961F1C5CCDA200CC8C06 /* FWLog.m in Sources */,
 				2F2B655B1C59C3630024DC09 /* FWPresenter.m in Sources */,
 				2FD99DD51C48CE6F0065293E /* FLEXNetworkTransactionDetailTableViewController.m in Sources */,
 				2FD99DE91C48CE6F0065293E /* FLEXObjectExplorerFactory.m in Sources */,
@@ -3059,6 +3059,7 @@
 				2FD99DFB1C48CE6F0065293E /* FLEXResources.m in Sources */,
 				2FD99DC71C48CE6F0065293E /* FLEXSystemLogMessage.m in Sources */,
 				2FD99D991C48CE6F0065293E /* FLEXExplorerToolbar.m in Sources */,
+				2F6596231C5CCF1400CC8C06 /* FWDebug.m in Sources */,
 				2FD99EC31C48CE700065293E /* SDImageCache.m in Sources */,
 				2FD99DDF1C48CE6F0065293E /* FLEXDefaultsExplorerViewController.m in Sources */,
 				2FD9932C1C48BC9D0065293E /* BaseModel.m in Sources */,
@@ -3075,7 +3076,6 @@
 				2FD99D5A1C48CE6F0065293E /* SWActionSheet.m in Sources */,
 				2FD99D851C48CE6F0065293E /* FLEXArgumentInputSwitchView.m in Sources */,
 				2F1C35E01C4C89310060E793 /* ICell.m in Sources */,
-				2FD993401C48BC9D0065293E /* DebugUtil.m in Sources */,
 				2FD99E071C48CE6F0065293E /* FMDatabase.m in Sources */,
 				2FD9932A1C48BC9D0065293E /* BaseEntity.m in Sources */,
 				2FD99EEA1C48CE700065293E /* TSMessageView.m in Sources */,
