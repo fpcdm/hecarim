@@ -1496,6 +1496,13 @@
 			path = javascript;
 			sourceTree = "<group>";
 		};
+		2F6596421C5CF45E00CC8C06 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
 		2FAA25101C53AB4800933669 /* plugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1652,6 +1659,7 @@
 			children = (
 				2F5F2F201C53F48600571E49 /* frontend */,
 				2FAA25101C53AB4800933669 /* plugin */,
+				2F6596421C5CF45E00CC8C06 /* helper */,
 				2FD991441C48BC9C0065293E /* entity */,
 			);
 			path = library;
