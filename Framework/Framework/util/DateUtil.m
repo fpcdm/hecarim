@@ -27,6 +27,7 @@
         return [NSString stringWithFormat:@"%ld分钟前",  (long)(ABS([gap minute]))];
     }
 }
+
 +(NSTimeInterval)formatTimeSinceNow:(NSTimeInterval)timestamp{
     NSDate *time = [NSDate dateWithTimeIntervalSinceNow:timestamp];
     

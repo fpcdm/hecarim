@@ -7,6 +7,7 @@
 //
 
 #import "ValidateUtil.h"
+#import "NSString+Framework.h"
 
 @implementation ValidateUtil
 

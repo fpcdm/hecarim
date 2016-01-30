@@ -1,16 +1,16 @@
 //
-//  ObjectUtil.m
+//  UIImage+Framework.m
 //  Framework
 //
-//  Created by wuyong on 16/1/21.
+//  Created by 吴勇 on 16/1/30.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "ObjectUtil.h"
+#import "UIImage+Framework.h"
 
-@implementation ObjectUtil
+@implementation UIImage (Framework)
 
-+ (UIImage *)getImageFromView:(UIView *)view
++ (instancetype)imageFromView:(UIView *)view
 {
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, YES, view.layer.contentsScale);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];

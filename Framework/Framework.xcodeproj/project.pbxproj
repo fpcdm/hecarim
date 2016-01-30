@@ -143,6 +143,8 @@
 		2F5F2F2A1C5400B500571E49 /* UIViewController+Javascript.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F281C5400B500571E49 /* UIViewController+Javascript.h */; };
 		2F5F2F2B1C5400B500571E49 /* UIViewController+Javascript.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F291C5400B500571E49 /* UIViewController+Javascript.m */; };
 		2F5F2F2E1C540BE600571E49 /* FWFrontend.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F2D1C540BE600571E49 /* FWFrontend.h */; };
+		2F6596151C5CA31100CC8C06 /* UIImage+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */; };
+		2F6596161C5CA31100CC8C06 /* UIImage+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */; };
 		2F8E90321C56937700735A4B /* FWPluginProviderDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */; };
 		2F8E90331C56937700735A4B /* FWPluginProviderDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */; };
 		2F8E90351C56940D00735A4B /* FWPluginProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8E90341C56940D00735A4B /* FWPluginProvider.h */; };
@@ -641,8 +643,6 @@
 		2FF3431D1C50CD280066CC1F /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3431B1C50CD280066CC1F /* DeviceUtil.m */; };
 		2FF343201C50CF490066CC1F /* DateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF3431E1C50CF490066CC1F /* DateUtil.h */; };
 		2FF343211C50CF490066CC1F /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3431F1C50CF490066CC1F /* DateUtil.m */; };
-		2FF343241C50D0720066CC1F /* ObjectUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF343221C50D0720066CC1F /* ObjectUtil.h */; };
-		2FF343251C50D0720066CC1F /* ObjectUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF343231C50D0720066CC1F /* ObjectUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -796,6 +796,8 @@
 		2F5F2F281C5400B500571E49 /* UIViewController+Javascript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Javascript.h"; sourceTree = "<group>"; };
 		2F5F2F291C5400B500571E49 /* UIViewController+Javascript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Javascript.m"; sourceTree = "<group>"; };
 		2F5F2F2D1C540BE600571E49 /* FWFrontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWFrontend.h; sourceTree = "<group>"; };
+		2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Framework.h"; sourceTree = "<group>"; };
+		2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Framework.m"; sourceTree = "<group>"; };
 		2F8E90301C56937700735A4B /* FWPluginProviderDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProviderDefault.h; sourceTree = "<group>"; };
 		2F8E90311C56937700735A4B /* FWPluginProviderDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginProviderDefault.m; sourceTree = "<group>"; };
 		2F8E90341C56940D00735A4B /* FWPluginProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginProvider.h; sourceTree = "<group>"; };
@@ -1295,8 +1297,6 @@
 		2FF3431B1C50CD280066CC1F /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
 		2FF3431E1C50CF490066CC1F /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
 		2FF3431F1C50CF490066CC1F /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
-		2FF343221C50D0720066CC1F /* ObjectUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectUtil.h; sourceTree = "<group>"; };
-		2FF343231C50D0720066CC1F /* ObjectUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1617,6 +1617,8 @@
 				2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */,
 				2F2B65521C59BEB30024DC09 /* UIView+Framework.h */,
 				2F2B65531C59BEB30024DC09 /* UIView+Framework.m */,
+				2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */,
+				2F6596141C5CA31100CC8C06 /* UIImage+Framework.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1679,8 +1681,6 @@
 				2FD9915F1C48BC9C0065293E /* ThemeUtil.m */,
 				2FF3431E1C50CF490066CC1F /* DateUtil.h */,
 				2FF3431F1C50CF490066CC1F /* DateUtil.m */,
-				2FF343221C50D0720066CC1F /* ObjectUtil.h */,
-				2FF343231C50D0720066CC1F /* ObjectUtil.m */,
 				2FD991601C48BC9C0065293E /* TimerUtil.h */,
 				2FD991611C48BC9C0065293E /* TimerUtil.m */,
 				2FD991621C48BC9C0065293E /* ValidateUtil.h */,
@@ -2574,6 +2574,7 @@
 				2F1C35EF1C4C89310060E793 /* IView.h in Headers */,
 				2FD99E991C48CE6F0065293E /* RKObjectUtilities.h in Headers */,
 				2FD99EE31C48CE700065293E /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */,
+				2F6596151C5CA31100CC8C06 /* UIImage+Framework.h in Headers */,
 				2FD99E641C48CE6F0065293E /* lcl_config_extensions_RK.h in Headers */,
 				2FD99E661C48CE6F0065293E /* lcl_RK.h in Headers */,
 				2FD99E961C48CE6F0065293E /* RKObjectParameterization.h in Headers */,
@@ -2612,7 +2613,6 @@
 				2F1C36071C4C89310060E793 /* INSXmlViewLoader.h in Headers */,
 				2F1C77741C574F7E009080A3 /* UIColor+Framework.h in Headers */,
 				2FD99D4D1C48CE6F0065293E /* ActionSheetCustomPickerDelegate.h in Headers */,
-				2FF343241C50D0720066CC1F /* ObjectUtil.h in Headers */,
 				2FD99E621C48CE6F0065293E /* ISO8601DateFormatterValueTransformer.h in Headers */,
 				2FD99D691C48CE6F0065293E /* DDLogMacros.h in Headers */,
 				2FD99E8E1C48CE6F0065293E /* RKMappingTest.h in Headers */,
@@ -2944,6 +2944,7 @@
 				2FD99E481C48CE6F0065293E /* MJRefreshConst.m in Sources */,
 				2FD99DC91C48CE6F0065293E /* FLEXSystemLogTableViewCell.m in Sources */,
 				2FF3431D1C50CD280066CC1F /* DeviceUtil.m in Sources */,
+				2F6596161C5CA31100CC8C06 /* UIImage+Framework.m in Sources */,
 				2FD99D8F1C48CE6F0065293E /* FLEXFieldEditorView.m in Sources */,
 				2FD99DA01C48CE6F0065293E /* FLEXToolbarItem.m in Sources */,
 				2F1C35FC1C4C89310060E793 /* IPopover.m in Sources */,
@@ -2986,7 +2987,6 @@
 				2FD99D5F1C48CE6F0065293E /* DDASLLogCapture.m in Sources */,
 				2FD993291C48BC9D0065293E /* BaseCollectionView.m in Sources */,
 				2F1C77AD1C576DAD009080A3 /* UIViewController+BackButtonHandler.m in Sources */,
-				2FF343251C50D0720066CC1F /* ObjectUtil.m in Sources */,
 				2FD99E351C48CE6F0065293E /* MJRefreshAutoGifFooter.m in Sources */,
 				2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */,
 				2FF340CC1C509E390066CC1F /* AspectUtil.m in Sources */,

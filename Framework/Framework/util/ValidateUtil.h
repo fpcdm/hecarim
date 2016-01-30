@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+trim.h"
 
 @interface ValidateUtil : NSObject
 

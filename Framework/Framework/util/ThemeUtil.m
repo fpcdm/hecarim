@@ -7,7 +7,7 @@
 //
 
 #import "ThemeUtil.h"
-#import "UIColor+Hex.h"
+#import "UIColor+Framework.h"
 
 static NSMutableDictionary *themes = nil;
 static NSString *theme = nil;
@@ -47,7 +47,7 @@ static NSString *theme = nil;
 {
     NSDictionary *definition = [self definition];
     NSString *color = definition ? [definition objectForKey:key] : nil;
-    return color ? [UIColor colorWithHexString:color] : nil;
+    return color ? [UIColor colorWithValue:color] : nil;
 }
 
 @end
