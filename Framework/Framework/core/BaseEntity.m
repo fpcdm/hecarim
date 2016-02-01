@@ -30,6 +30,38 @@
     return [self copyWithZone:zone];
 }
 
+//编码
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    NSDictionary *dict = [self toDictionary];
+    for (NSString *key in dict) {
+        id object = [dict objectForKey:key];
+        if (object != nil && object != [NSNull null]) {
+            [aCoder encodeObject:object forKey:key];
+        }
+    }
+}
+
+//解码
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        NSDictionary *dict = [self toDictionary];
+        for (NSString *key in dict) {
+            id object = [aDecoder decodeObjectForKey:key];
+            if (object != nil && object != [NSNull null]) {
+                NSString *selectorStr = [NSString stringWithFormat:@"set%@%@:",[[key substringToIndex:1] uppercaseString], [key substringFromIndex:1]];
+                SEL selector = NSSelectorFromString(selectorStr);
+                if ([self respondsToSelector:selector]) {
+                    [self performSelector:selector withObject:object];
+                }
+            }
+        }
+    }
+    return self;
+}
+
 //从字典初始化
 - (instancetype) initWithDictionary: (NSDictionary *) dict
 {
