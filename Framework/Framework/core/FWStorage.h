@@ -13,10 +13,4 @@
 
 @singleton(FWStorage)
 
-//NSUserDefaults原生对象
-@prop_readonly(NSUserDefaults *, storage)
-
-//格式化字典，去掉NSNull和nil，使其可以保存至NSUserDefaults
-- (NSDictionary *)formatDictionary:(NSDictionary *)dictionary;
-
 @end

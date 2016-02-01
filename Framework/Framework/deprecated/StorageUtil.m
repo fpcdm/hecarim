@@ -7,11 +7,13 @@
 //
 
 #import "StorageUtil.h"
-#import "FWStorage.h"
 
 static StorageUtil *sharedStorage = nil;
 
 @implementation StorageUtil
+{
+    NSUserDefaults *storage;
+}
 
 + (StorageUtil *) sharedStorage
 {
@@ -24,15 +26,24 @@ static StorageUtil *sharedStorage = nil;
     return sharedStorage;
 }
 
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        storage = [NSUserDefaults standardUserDefaults];
+    }
+    return self;
+}
+
 - (NSUserDefaults *) storage
 {
-    return [FWStorage sharedInstance].storage;
+    return storage;
 }
 
 //整理字典数据，去掉NSNull和nil，使其可以保存至NSUserDefaults
 - (NSDictionary *) prepareDictionary: (NSDictionary *) dictionary
 {
-    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
     
     if (dictionary) {
         for (id key in dictionary) {
@@ -53,13 +64,13 @@ static StorageUtil *sharedStorage = nil;
         NSDictionary *userDict = [user toDictionary];
         userDict = [self prepareDictionary:userDict];
         
-        [self.storage setObject:userDict forKey:@"user"];
-        [self.storage synchronize];
+        [storage setObject:userDict forKey:@"user"];
+        [storage synchronize];
         
         NSLog(@"set user: %@", userDict);
     } else {
-        [self.storage removeObjectForKey:@"user"];
-        [self.storage synchronize];
+        [storage removeObjectForKey:@"user"];
+        [storage synchronize];
         
         NSLog(@"delete user: %@", user);
     }
@@ -67,7 +78,7 @@ static StorageUtil *sharedStorage = nil;
 
 - (UserEntity *) getUser
 {
-    NSDictionary *userDict = (NSDictionary *) [self.storage objectForKey:@"user"];
+    NSDictionary *userDict = (NSDictionary *) [storage objectForKey:@"user"];
     if (!userDict) {
         return nil;
     }
@@ -133,12 +144,28 @@ static StorageUtil *sharedStorage = nil;
 
 - (void)setData:(NSString *)key object:(id)object
 {
-    [[FWStorage sharedInstance] set:key object:object];
+    if (object) {
+        [self.storage setObject:object forKey:key];
+        [self.storage synchronize];
+        
+        NSLog(@"set %@: %@", key, object);
+    } else {
+        [self.storage removeObjectForKey:key];
+        [self.storage synchronize];
+        
+        NSLog(@"delete %@", key);
+    }
 }
 
 - (id)getData:(NSString *)key
 {
-    return [[FWStorage sharedInstance] get:key];
+    id object = [self.storage objectForKey:key];
+    if (!object) {
+        return nil;
+    }
+    
+    NSLog(@"get %@: %@", key, object);
+    return object;
 }
 
 @end

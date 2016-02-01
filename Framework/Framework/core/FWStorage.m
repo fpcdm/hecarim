@@ -24,29 +24,24 @@
     return self;
 }
 
-- (NSUserDefaults *) storage
+- (id)encode:(id)object
 {
-    return storage;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
+    return data;
 }
 
-- (NSDictionary *)formatDictionary:(NSDictionary *)dictionary
+- (id)decode:(id)object
 {
-    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] init];
-    if (dictionary) {
-        for (id key in dictionary) {
-            id value = [dictionary objectForKey:key];
-            if (value != nil && value != [NSNull null]) {
-                [mutableDictionary setObject:value forKey:key];
-            }
-        }
+    if ([object isKindOfClass:[NSData class]]) {
+        object = [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)object];
     }
-    return [NSDictionary dictionaryWithDictionary:mutableDictionary];
+    return object;
 }
 
 - (id) get:(NSString *)key
 {
     id object = [storage objectForKey:key];
-    return object ? object : nil;
+    return object ? [self decode:object] : nil;
 }
 
 - (BOOL) has:(NSString *)key
@@ -57,18 +52,18 @@
 
 - (void) set:(NSString *)key object:(id)object
 {
-    if (object && object != [NSNull null]) {
-        [storage setObject:object forKey:key];
+    if (object) {
+        [storage setObject:[self encode:object] forKey:key];
         [storage synchronize];
     } else {
-        [storage removeObjectForKey:key];
-        [storage synchronize];
+        [self remove:key];
     }
 }
 
 - (void) remove:(NSString *)key
 {
-    [self set:key object:nil];
+    [storage removeObjectForKey:key];
+    [storage synchronize];
 }
 
 - (void) clear
