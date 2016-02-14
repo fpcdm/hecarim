@@ -7,7 +7,6 @@
 //
 
 #import "FWStorage.h"
-#import "EncodeUtil.h"
 
 @implementation FWStorage
 {
@@ -30,8 +29,6 @@
     //是否实现NSCoding
     if ([object conformsToProtocol:@protocol(NSCoding)]) {
         object = [NSKeyedArchiver archivedDataWithRootObject:object];
-    } else {
-        object = [EncodeUtil jsonEncode:object];
     }
     return object;
 }
@@ -41,8 +38,6 @@
     //NSCoding解码
     if ([object isKindOfClass:[NSData class]]) {
         object = [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)object];
-    } else if ([object isKindOfClass:[NSString class]]) {
-        object = [EncodeUtil jsonDecode:object];
     }
     return object;
 }
