@@ -73,6 +73,11 @@
 		2F004E4A1C70730E000B4F97 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E241C70730E000B4F97 /* UserEntity.m */; };
 		2F004E4B1C70730E000B4F97 /* ValidateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E251C70730E000B4F97 /* ValidateUtil.h */; };
 		2F004E4C1C70730E000B4F97 /* ValidateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E261C70730E000B4F97 /* ValidateUtil.m */; };
+		2F004E581C7074B5000B4F97 /* FWFrontend.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E511C7074B5000B4F97 /* FWFrontend.h */; };
+		2F004E591C7074B5000B4F97 /* FWUrl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E541C7074B5000B4F97 /* FWUrl.h */; };
+		2F004E5A1C7074B5000B4F97 /* FWUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E551C7074B5000B4F97 /* FWUrl.m */; };
+		2F004E5B1C7074B5000B4F97 /* UIViewController+Javascript.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E561C7074B5000B4F97 /* UIViewController+Javascript.h */; };
+		2F004E5C1C7074B5000B4F97 /* UIViewController+Javascript.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */; };
 		2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */; };
 		2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */; };
 		2F09D72A1C55F537003BB601 /* UIViewController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7281C55F537003BB601 /* UIViewController+Framework.h */; };
@@ -722,6 +727,11 @@
 		2F004E241C70730E000B4F97 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
 		2F004E251C70730E000B4F97 /* ValidateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateUtil.h; sourceTree = "<group>"; };
 		2F004E261C70730E000B4F97 /* ValidateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateUtil.m; sourceTree = "<group>"; };
+		2F004E511C7074B5000B4F97 /* FWFrontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWFrontend.h; sourceTree = "<group>"; };
+		2F004E541C7074B5000B4F97 /* FWUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWUrl.h; sourceTree = "<group>"; };
+		2F004E551C7074B5000B4F97 /* FWUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWUrl.m; sourceTree = "<group>"; };
+		2F004E561C7074B5000B4F97 /* UIViewController+Javascript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Javascript.h"; sourceTree = "<group>"; };
+		2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Javascript.m"; sourceTree = "<group>"; };
 		2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogDefault.h; sourceTree = "<group>"; };
 		2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogDefault.m; sourceTree = "<group>"; };
 		2F09D7281C55F537003BB601 /* UIViewController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Framework.h"; sourceTree = "<group>"; };
@@ -1305,6 +1315,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F004E4F1C7074B5000B4F97 /* frontend */ = {
+			isa = PBXGroup;
+			children = (
+				2F004E501C7074B5000B4F97 /* css */,
+				2F004E511C7074B5000B4F97 /* FWFrontend.h */,
+				2F004E521C7074B5000B4F97 /* html */,
+				2F004E531C7074B5000B4F97 /* javascript */,
+			);
+			path = frontend;
+			sourceTree = "<group>";
+		};
+		2F004E501C7074B5000B4F97 /* css */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		2F004E521C7074B5000B4F97 /* html */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = html;
+			sourceTree = "<group>";
+		};
+		2F004E531C7074B5000B4F97 /* javascript */ = {
+			isa = PBXGroup;
+			children = (
+				2F004E541C7074B5000B4F97 /* FWUrl.h */,
+				2F004E551C7074B5000B4F97 /* FWUrl.m */,
+				2F004E561C7074B5000B4F97 /* UIViewController+Javascript.h */,
+				2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */,
+			);
+			path = javascript;
+			sourceTree = "<group>";
+		};
 		2F09D7301C560482003BB601 /* deprecated */ = {
 			isa = PBXGroup;
 			children = (
@@ -1640,6 +1686,7 @@
 		2FD991431C48BC9C0065293E /* library */ = {
 			isa = PBXGroup;
 			children = (
+				2F004E4F1C7074B5000B4F97 /* frontend */,
 				2FAA25101C53AB4800933669 /* plugin */,
 				2F6596421C5CF45E00CC8C06 /* helper */,
 			);
@@ -2367,6 +2414,7 @@
 				2F1C77661C570489009080A3 /* FWPluginCache.h in Headers */,
 				2FD99ED91C48CE700065293E /* UIImageView+WebCache.h in Headers */,
 				2FD99E9D1C48CE6F0065293E /* RKPathUtilities.h in Headers */,
+				2F004E581C7074B5000B4F97 /* FWFrontend.h in Headers */,
 				2FD99DEC1C48CE6F0065293E /* FLEXSetExplorerViewController.h in Headers */,
 				2FD99E861C48CE6F0065293E /* RKManagedObjectStore+RKSearchAdditions.h in Headers */,
 				2F004E2B1C70730E000B4F97 /* DeviceUtil.h in Headers */,
@@ -2460,6 +2508,7 @@
 				2FD99EA81C48CE6F0065293E /* RKRouter.h in Headers */,
 				2F004E351C70730E000B4F97 /* FrameworkConfig.h in Headers */,
 				2FD99E981C48CE6F0065293E /* RKObjectRequestOperationSubclass.h in Headers */,
+				2F004E5B1C7074B5000B4F97 /* UIViewController+Javascript.h in Headers */,
 				2FD99EA21C48CE6F0065293E /* RKRelationshipConnectionOperation.h in Headers */,
 				2F004E4B1C70730E000B4F97 /* ValidateUtil.h in Headers */,
 				2FD99EAC1C48CE6F0065293E /* RKSearchWord.h in Headers */,
@@ -2589,6 +2638,7 @@
 				2F004DFE1C706936000B4F97 /* BaseXmlView.h in Headers */,
 				2FD99DD61C48CE6F0065293E /* FLEXNetworkTransactionTableViewCell.h in Headers */,
 				2FD99DDE1C48CE6F0065293E /* FLEXDefaultsExplorerViewController.h in Headers */,
+				2F004E591C7074B5000B4F97 /* FWUrl.h in Headers */,
 				2FD99D571C48CE6F0065293E /* DistancePickerView.h in Headers */,
 				2FD99D621C48CE6F0065293E /* DDAssertMacros.h in Headers */,
 				2F004DE81C706936000B4F97 /* BaseCollectionView.h in Headers */,
@@ -2912,6 +2962,7 @@
 				2F004E341C70730E000B4F97 /* FileEntity.m in Sources */,
 				2F004DCB1C706441000B4F97 /* FWView.m in Sources */,
 				2F004E4A1C70730E000B4F97 /* UserEntity.m in Sources */,
+				2F004E5A1C7074B5000B4F97 /* FWUrl.m in Sources */,
 				2F65962E1C5CDC6500CC8C06 /* FWLocale.m in Sources */,
 				2FD99D9E1C48CE6F0065293E /* FLEXManager.m in Sources */,
 				2FD99E171C48CE6F0065293E /* MASConstraintMaker.m in Sources */,
@@ -3035,6 +3086,7 @@
 				2FD99D511C48CE6F0065293E /* ActionSheetDistancePicker.m in Sources */,
 				2F1C35E71C4C89310060E793 /* IMaskUIView.m in Sources */,
 				2FD99E3B1C48CE6F0065293E /* MJRefreshBackGifFooter.m in Sources */,
+				2F004E5C1C7074B5000B4F97 /* UIViewController+Javascript.m in Sources */,
 				2F1C77A31C576DAD009080A3 /* UINavigationController+Vertical.m in Sources */,
 				2F1C77751C574F7E009080A3 /* UIColor+Framework.m in Sources */,
 				2FD99DC51C48CE6F0065293E /* FLEXWebViewController.m in Sources */,
