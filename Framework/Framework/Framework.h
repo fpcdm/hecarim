@@ -9,6 +9,6 @@
 #ifndef Framework_Framework_h
 #define Framework_Framework_h
 
-#import "FrameworkConfig.h"
+#import "FWConfig.h"
 
 #endif

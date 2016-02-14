@@ -7,6 +7,7 @@
 //
 
 #import "BaseCollectionView.h"
+#import "FrameworkConfig.h"
 
 @interface BaseCollectionView ()
 

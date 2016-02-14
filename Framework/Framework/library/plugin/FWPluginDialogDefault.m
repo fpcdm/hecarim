@@ -51,7 +51,7 @@
                                        subtitle:nil
                                           image:nil
                                            type:type
-                                       duration:(callback || buttonCallback) ? TSMessageNotificationDurationEndless : DIALOG_SHOW_TIME
+                                       duration:(callback || buttonCallback) ? TSMessageNotificationDurationEndless : 2.0
                                        callback:nil
                                     buttonTitle:buttonTitle
                                  buttonCallback:buttonCallback
@@ -59,7 +59,7 @@
                            canBeDismissedByUser:(callback || buttonCallback) ? NO : YES];
     
     if (callback) {
-        [self performSelector:@selector(hideDialogCallback:) withObject:callback afterDelay:DIALOG_SHOW_TIME];
+        [self performSelector:@selector(hideDialogCallback:) withObject:callback afterDelay:2.0];
     }
 }
 

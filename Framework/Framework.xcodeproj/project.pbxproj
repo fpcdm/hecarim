@@ -50,7 +50,6 @@
 		2F004E331C70730E000B4F97 /* FileEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E0D1C70730E000B4F97 /* FileEntity.h */; };
 		2F004E341C70730E000B4F97 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E0E1C70730E000B4F97 /* FileEntity.m */; };
 		2F004E351C70730E000B4F97 /* FrameworkConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E0F1C70730E000B4F97 /* FrameworkConfig.h */; };
-		2F004E361C70730E000B4F97 /* FrameworkPredefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E101C70730E000B4F97 /* FrameworkPredefine.h */; };
 		2F004E371C70730E000B4F97 /* HttpUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E111C70730E000B4F97 /* HttpUtil.h */; };
 		2F004E381C70730E000B4F97 /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E121C70730E000B4F97 /* HttpUtil.m */; };
 		2F004E391C70730E000B4F97 /* LocationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E131C70730E000B4F97 /* LocationUtil.h */; };
@@ -78,6 +77,8 @@
 		2F004E5A1C7074B5000B4F97 /* FWUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E551C7074B5000B4F97 /* FWUrl.m */; };
 		2F004E5B1C7074B5000B4F97 /* UIViewController+Javascript.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E561C7074B5000B4F97 /* UIViewController+Javascript.h */; };
 		2F004E5C1C7074B5000B4F97 /* UIViewController+Javascript.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */; };
+		2F004E5F1C7075B6000B4F97 /* FWConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E5E1C7075B6000B4F97 /* FWConfig.h */; };
+		2F004E611C707755000B4F97 /* FWDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E601C707755000B4F97 /* FWDefine.h */; };
 		2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */; };
 		2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */; };
 		2F09D72A1C55F537003BB601 /* UIViewController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7281C55F537003BB601 /* UIViewController+Framework.h */; };
@@ -704,7 +705,6 @@
 		2F004E0D1C70730E000B4F97 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
 		2F004E0E1C70730E000B4F97 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
 		2F004E0F1C70730E000B4F97 /* FrameworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkConfig.h; sourceTree = "<group>"; };
-		2F004E101C70730E000B4F97 /* FrameworkPredefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameworkPredefine.h; sourceTree = "<group>"; };
 		2F004E111C70730E000B4F97 /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		2F004E121C70730E000B4F97 /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
 		2F004E131C70730E000B4F97 /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
@@ -732,6 +732,8 @@
 		2F004E551C7074B5000B4F97 /* FWUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWUrl.m; sourceTree = "<group>"; };
 		2F004E561C7074B5000B4F97 /* UIViewController+Javascript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Javascript.h"; sourceTree = "<group>"; };
 		2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Javascript.m"; sourceTree = "<group>"; };
+		2F004E5E1C7075B6000B4F97 /* FWConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWConfig.h; sourceTree = "<group>"; };
+		2F004E601C707755000B4F97 /* FWDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWDefine.h; sourceTree = "<group>"; };
 		2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogDefault.h; sourceTree = "<group>"; };
 		2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogDefault.m; sourceTree = "<group>"; };
 		2F09D7281C55F537003BB601 /* UIViewController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Framework.h"; sourceTree = "<group>"; };
@@ -1369,7 +1371,6 @@
 				2F004E0D1C70730E000B4F97 /* FileEntity.h */,
 				2F004E0E1C70730E000B4F97 /* FileEntity.m */,
 				2F004E0F1C70730E000B4F97 /* FrameworkConfig.h */,
-				2F004E101C70730E000B4F97 /* FrameworkPredefine.h */,
 				2F004E111C70730E000B4F97 /* HttpUtil.h */,
 				2F004E121C70730E000B4F97 /* HttpUtil.m */,
 				2F004E131C70730E000B4F97 /* LocationUtil.h */,
@@ -1619,6 +1620,8 @@
 		2FD991181C48BC9C0065293E /* config */ = {
 			isa = PBXGroup;
 			children = (
+				2F004E5E1C7075B6000B4F97 /* FWConfig.h */,
+				2F004E601C707755000B4F97 /* FWDefine.h */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -2461,11 +2464,11 @@
 				2FD99EE11C48CE700065293E /* TPKeyboardAvoidingTableView.h in Headers */,
 				2FD99E1B1C48CE6F0065293E /* MASUtilities.h in Headers */,
 				2FD99DCE1C48CE6F0065293E /* FLEXNetworkRecorder.h in Headers */,
-				2F004E361C70730E000B4F97 /* FrameworkPredefine.h in Headers */,
 				2F2B655E1C59C4BE0024DC09 /* FWModel.h in Headers */,
 				2F24FB4E1C5672A500A82ABD /* FWResponse.h in Headers */,
 				2FD99D4E1C48CE6F0065293E /* ActionSheetDatePicker.h in Headers */,
 				2FD99E561C48CE6F0065293E /* Reachability.h in Headers */,
+				2F004E611C707755000B4F97 /* FWDefine.h in Headers */,
 				2FD99E6D1C48CE6F0065293E /* RKAttributeMapping.h in Headers */,
 				2FD99DA11C48CE6F0065293E /* FLEXWindow.h in Headers */,
 				2FD99EC61C48CE700065293E /* SDWebImageDecoder.h in Headers */,
@@ -2563,6 +2566,7 @@
 				2F1C35D61C4C89310060E793 /* ICssRule.h in Headers */,
 				2FD99E751C48CE6F0065293E /* RKEntityByAttributeCache.h in Headers */,
 				2FD99E4B1C48CE6F0065293E /* UIScrollView+MJRefresh.h in Headers */,
+				2F004E5F1C7075B6000B4F97 /* FWConfig.h in Headers */,
 				2FD99ED51C48CE700065293E /* UIImage+MultiFormat.h in Headers */,
 				2FD99EB11C48CE6F0065293E /* RKTestFixture.h in Headers */,
 				2FD99E501C48CE6F0065293E /* PINCache.h in Headers */,

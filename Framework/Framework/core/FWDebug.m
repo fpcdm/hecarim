@@ -208,7 +208,7 @@ static FWDebug *sharedInstance = nil;
 - (void)watchUrlResponse:(NSString *)url
 {
     //检查刷新间隔
-    if (urlInterval == 0) urlInterval = DEBUG_WATCHURL_INTERVAL;
+    if (urlInterval == 0) urlInterval = 5.0;
     if (urlInterval <= 0) return;
     
     //是否开启URL监听

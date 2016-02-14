@@ -10,27 +10,12 @@
 #define LttFramework_FrameworkConfig_h
 
 
-#pragma mark - 环境切换
-/********环境切换>>>********/
-//调试Xcode变量，Xcode自动根据Debug和Release环境生成
-#ifdef DEBUG
-
-//调试自定义变量，项目建议使用此变量区分环境
-#define APP_DEBUG
-
-#endif
-/********<<<环境切换********/
-
-
 #pragma mark - 环境配置
+//引入框架配置
+#import "FWConfig.h"
+
 #ifdef APP_DEBUG
 /********开发环境>>>********/
-//是否是开发环境，项目建议使用此变量判断环境
-#define IS_DEBUG YES
-
-//是否是正式环境，项目建议使用此变量判断环境
-#define IS_RELEASE NO
-
 //接口服务器根地址
 #define APP_REST_SERVER @"http://maokai.web.dm/"
 //#define APP_REST_SERVER @"http://mfz0hbeutmqhsxr.lttok.com/"
@@ -40,15 +25,6 @@
 /********>>>开发环境********/
 #else
 /********正式环境>>>********/
-//是否是开发环境，项目建议使用此变量判断环境
-#define IS_DEBUG NO
-
-//是否是正式环境，项目建议使用此变量判断环境
-#define IS_RELEASE YES
-
-//关闭NSLog
-#define NSLog(...)
-
 //接口服务器根地址
 #define APP_REST_SERVER @"http://maokai.lttok.com/"
 
@@ -60,18 +36,8 @@
 
 #pragma mark - 公用配置
 /********公用配置>>>********/
-//框架版本号
-#define FRAMEWORK_VERSION @"1.0-dev"
-
-//加载预编译指令
-#import "FrameworkPredefine.h"
-
 //加载本地化文件
-#import "FWLocale.h"
 #import "LocaleUtil.h"
-
-//加载日志文件
-#import "FWLog.h"
 
 //定义弹出框停留时间
 #define DIALOG_SHOW_TIME 2.0
@@ -115,15 +81,10 @@
 /********系统定义>>>********/
 #pragma mark - 系统常量
 //屏幕尺寸常量
-#define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
-#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
-#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
-#define SCREEN_STATUSBAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+#define SCREEN_STATUSBAR_HEIGHT STATUSBAR_HEIGHT
 #define SCREEN_NAVIGATIONBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
 #define SCREEN_AVAILABLE_HEIGHT (SCREEN_HEIGHT - SCREEN_STATUSBAR_HEIGHT - SCREEN_NAVIGATIONBAR_HEIGHT)
 
-// 判断ios系统版本，不能用于宏判断
-#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 // 判断是否大于等于ios9
 #define IS_IOS9_PLUS (IOS_VERSION >= 9.0 ? YES : NO)
 // 判断是否大于等于ios8
@@ -137,18 +98,7 @@
 // 是否大于等于iPhone5(屏幕尺寸)
 #define IS_IPHONE5_PLUS (SCREEN_HEIGHT >= 568.0 ? YES : NO)
 
-//判断屏幕尺寸，是否是3.5英寸屏幕
-#define IS_SCREEN_INCH35 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
-//是否是4英寸屏幕
-#define IS_SCREEN_INCH4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-//是否是4.7英寸屏幕
-#define IS_SCREEN_INCH47 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
-//是否是5.5英寸屏幕
-#define IS_SCREEN_INCH55 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
-
 //设备类型
-#define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad   ? YES : NO)
-#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? YES : NO)
 #define IS_RETINA ([[UIScreen mainScreen] scale] > 1 ? YES : NO)
 
 //判断是否是模拟器
@@ -158,11 +108,6 @@
 #else
 #define IS_IPHONE_SIMULATOR NO
 #define IS_IPHONE_OS YES
-#endif
-
-//判断SDK版本
-#ifndef __IPHONE_6_0
-#error "SDK版本过低，必须IOS SDK 6.0以上"
 #endif
 
 //修正ios6表格数据异常
