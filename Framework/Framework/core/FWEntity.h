@@ -6,12 +6,28 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "JSONModel.h"
+#import <Foundation/Foundation.h>
 
-@interface FWEntity : JSONModel
+@protocol FWEntityProtocol <NSObject>
 
+@optional
+//模型关联映射
++ (NSDictionary *)classMap;
+
+@end
+
+@interface FWEntity : NSObject<FWEntityProtocol>
+
+//从字典创建
++ (instancetype)fromDictionary:(NSDictionary *)dict;
+
+//从字典初始化
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 
-- (void)mergeFromDictionary:(NSDictionary *)dict;
+//合并字典
+- (void)mergeDictionary:(NSDictionary *)dict;
+
+//转为字典
+- (NSDictionary *)toDictionary;
 
 @end

@@ -10,6 +10,19 @@
 #define FWDefine_h
 
 
+//ignored_selector
+#define ignored_selector \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
+
+//ignored_end
+#define ignored_end \
+_Pragma("clang diagnostic pop")
+
+//deprecated_message
+#define deprecated_message(message) \
+__attribute__((deprecated(message)))
+
 //@weakify
 #ifndef	weakify
 #if __has_feature(objc_arc)

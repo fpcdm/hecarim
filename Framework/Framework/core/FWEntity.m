@@ -7,17 +7,41 @@
 //
 
 #import "FWEntity.h"
+#import "MJExtension.h"
+#import <objc/runtime.h>
 
 @implementation FWEntity
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict
++ (NSDictionary *)mj_objectClassInArray
 {
-    return [self initWithDictionary:dict error:nil];
+    if (class_respondsToSelector([self class], @selector(classMap))) {
+        return [self classMap];
+    }
+    return nil;
 }
 
-- (void)mergeFromDictionary:(NSDictionary *)dict
++ (instancetype)fromDictionary:(NSDictionary *)dict
 {
-    [self mergeFromDictionary:dict useKeyMapping:YES error:nil];
+    return [[self alloc] initWithDictionary:dict];
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dict
+{
+    self = [self init];
+    if (self) {
+        [self mj_setKeyValues:dict];
+    }
+    return self;
+}
+
+- (void)mergeDictionary:(NSDictionary *)dict
+{
+    [self mj_setKeyValues:dict];
+}
+
+- (NSDictionary *)toDictionary
+{
+    return [self mj_keyValues];
 }
 
 @end
