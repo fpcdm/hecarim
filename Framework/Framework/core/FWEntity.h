@@ -8,15 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol FWEntityProtocol <NSObject>
+@interface FWEntity : NSObject
 
-@optional
 //模型关联映射
 + (NSDictionary *)classMap;
-
-@end
-
-@interface FWEntity : NSObject<FWEntityProtocol>
 
 //从字典创建
 + (instancetype)fromDictionary:(NSDictionary *)dict;

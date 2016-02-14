@@ -8,15 +8,16 @@
 
 #import "FWEntity.h"
 #import "MJExtension.h"
-#import <objc/runtime.h>
 
 @implementation FWEntity
 
 + (NSDictionary *)mj_objectClassInArray
 {
-    if (class_respondsToSelector([self class], @selector(classMap))) {
-        return [self classMap];
-    }
+    return [self classMap];
+}
+
++ (NSDictionary *)classMap
+{
     return nil;
 }
 
