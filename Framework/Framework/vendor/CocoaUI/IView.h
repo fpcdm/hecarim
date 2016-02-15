@@ -67,6 +67,8 @@ typedef enum{
  * the first UIViewController, if not any found, it will return nil.
  */
 - (UIViewController *)viewController;
+- (BOOL)issetViewController;
+- (void)setViewController:(UIViewController *)viewController;
 
 
 - (void)show;

@@ -39,6 +39,10 @@ typedef enum{
 	NSMutableArray *parse_stack;
 	NSMutableString *_text;
 	NSString *_last_tag;
+    
+    //保存meta数据
+    NSString *_title;
+    NSMutableArray *_metas;
 }
 @property (nonatomic) NSMutableDictionary *viewsById;
 @property (nonatomic) NSMutableArray *rootViews;
@@ -137,6 +141,9 @@ typedef enum{
 	}
 	// 未来每一个 view 都应指向 viewLoader, 当 view 被从节点树中删除时, 也要从相应的 viewLoader 中删除
 	retView.viewLoader = self;
+    
+    // 解析标题和mata
+    [self parseTitleMetas:retView];
 	
 	// 避免循环引用
 	if(retView.vid){
@@ -146,6 +153,9 @@ typedef enum{
 	parse_stack = nil;
 	parentView = nil;
 	_text = nil;
+    
+    _title = nil;
+    _metas = nil;
 	
 	// 之前设置的 class 属性并没有立即生效
 	[retView.style renderAllCss];
@@ -198,7 +208,12 @@ typedef enum{
 			NSLog(@"load image element from data URI");
 			img.image = [IKitUtil loadImageFromDataURI:src];
 		}else{
-			src = [IKitUtil buildPath:_basePath src:src];
+            //不含小数点默认为本地
+            NSArray *comps = [src componentsSeparatedByString:@"."];
+            if ([comps count] > 1) {
+                src = [IKitUtil buildPath:_basePath src:src];
+            }
+            
 			[[IResourceMananger sharedMananger] loadImage:src callback:^(UIImage *_img) {
 				img.image = _img;
 			}];
@@ -318,6 +333,11 @@ typedef enum{
         [self parseIfIsJS:attributeDict];
 		return;
 	}
+    if ([tagName isEqualToString:@"meta"]) {
+        [self parseIfIsMeta:attributeDict];
+        return;
+    }
+    
 	if(state != ParseView){
 		if([tagName isEqualToString:@"body"]){
 			state = ParseView;
@@ -382,6 +402,15 @@ typedef enum{
 		_text = [[NSMutableString alloc] init];
 		return;
 	}
+    if ([tagName isEqualToString:@"meta"]) {
+        _text = [[NSMutableString alloc] init];
+        return;
+    }
+    if ([tagName isEqualToString:@"title"]) {
+        _title = [self getAndResetText];
+        _text = [[NSMutableString alloc] init];
+        return;
+    }
 	if([tagName isEqualToString:@"style"]){
 		[_styleSheet parseCss:_text baseUrl:_basePath];
 		_text = [[NSMutableString alloc] init];
@@ -430,6 +459,27 @@ typedef enum{
     if(src){
         src = [IKitUtil buildPath:_basePath src:src];
         [[IResourceMananger sharedMananger] loadJs:src];
+    }
+}
+
+- (void)parseIfIsMeta:(NSDictionary *)attributeDict
+{
+    if (!attributeDict) return;
+    
+    if (!_metas) {
+        _metas = [[NSMutableArray alloc] init];
+    }
+    
+    [_metas addObject:attributeDict];
+}
+
+- (void)parseTitleMetas:(IView *)view
+{
+    if (_title) {
+        [view setAssociatedObject:_title forKey:"iview_title"];
+    }
+    if (_metas) {
+        [view setAssociatedObject:_metas forKey:"iview_metas"];
     }
 }
 

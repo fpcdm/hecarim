@@ -238,6 +238,11 @@ static NSString *patchPath = nil;
 {
     //移除之前的视图
     if (_xmlView) {
+        //刷新关联控制器
+        if ([_xmlView issetViewController]) {
+            view.viewController = _xmlView.viewController;
+        }
+        
         [_xmlView removeFromSuperview];
         _xmlView = nil;
     }

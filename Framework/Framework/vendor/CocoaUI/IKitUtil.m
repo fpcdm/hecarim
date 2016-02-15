@@ -8,7 +8,7 @@
  */
 
 #import "IKitUtil.h"
-#import "UIColor+Hex.h"
+#import "UIColor+Framework.h"
 
 @implementation IKitUtil
 
