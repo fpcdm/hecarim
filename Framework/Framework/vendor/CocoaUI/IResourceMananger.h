@@ -25,4 +25,8 @@
 // TODO: 如果要支持异步加载 css, 需要对 IStyle 进行改造
 - (IStyleSheet *)loadCss:(NSString *)path;
 
+- (void)loadJs:(NSString *)path;
+//暂时不支持异步加载js，也不支持include远程js
+- (void)parseJs:(NSString *)text basePath:(NSString *)basePath;
+
 @end

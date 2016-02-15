@@ -11,6 +11,7 @@
 #import "IResourceMananger.h"
 #import "IKitUtil.h"
 #import "IStyleSheet.h"
+#import "JPEngine.h"
 
 @interface IResourceMananger (){
 }
@@ -234,6 +235,62 @@ static IResourceMananger *_sharedMananger;
 	}
 
 	return sheet;
+}
+
+- (void)loadJs:(NSString *)path{
+    NSString *js = nil;
+    NSString *baseUrl = [IKitUtil getBasePath:path];
+    
+    if(_enableCssCache){
+        js = [_cache objectForKey:path];
+        if(js){
+            NSLog(@"load js from cache: %@", path);
+            [self parseJs:js basePath:baseUrl];
+            return;
+        }
+    }
+    
+    NSString *text = nil;
+    NSError *err;
+    if([IKitUtil isHttpUrl:path]){
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setHTTPMethod:@"GET"];
+        [request setURL:[NSURL URLWithString:path]];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
+        if(data){
+            text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if(text){
+                NSLog(@"load js from remote: %@", path);
+                [self parseJs:text basePath:baseUrl];
+            }
+        }
+    }else{
+        text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+        NSLog(@"load js from local: %@", path);
+        if(!err){
+            [self parseJs:text basePath:baseUrl];
+        }
+    }
+    
+    if(_enableCssCache && text){
+        [_cache setObject:text forKey:path];
+    }
+}
+
+- (void)parseJs:(NSString *)text basePath:(NSString *)basePath
+{
+    static BOOL jspatchStarted = NO;
+    if (!jspatchStarted) {
+        jspatchStarted = YES;
+        
+        //启动引擎
+        [JPEngine startEngine];
+        //基本扩展
+        [JPEngine addExtensions:@[@"JPInclude"]];
+    }
+    
+    //执行代码
+    [JPEngine evaluateScript:text];
 }
 
 @end

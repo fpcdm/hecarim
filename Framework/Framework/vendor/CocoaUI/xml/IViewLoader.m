@@ -281,6 +281,22 @@ typedef enum{
 	}
 }
 
+- (void)bindEventToView:(IView *)view attributes:(NSDictionary *)attributeDict{
+    // 1. onclick
+    NSString *onclick = [attributeDict objectForKey:@"onclick"];
+    if (onclick) {
+        [view addEvent:IEventClick handler:^(IEventType event, IView *view) {
+            UIViewController *viewController = view.viewController;
+            SEL selector = NSSelectorFromString(onclick);
+            if (viewController && [viewController respondsToSelector:selector]) {
+                ignored_selector
+                [viewController performSelector:selector withObject:view];
+                ignored_end
+            }
+        }];
+    }
+}
+
 // 对于不支持的标签, 转成纯文本
 
 - (void)didStartElement:(NSString *)tagName attributes:(NSDictionary *)attributeDict{
@@ -299,6 +315,7 @@ typedef enum{
 		return;
 	}
 	if([tagName isEqualToString:@"script"]){
+        [self parseIfIsJS:attributeDict];
 		return;
 	}
 	if(state != ParseView){
@@ -336,6 +353,8 @@ typedef enum{
 		view.style.tagName = tagName;
 		[self checkPlainTextNode];
 		[self bindStyleToView:view attributes:attributeDict];
+        
+		[self bindEventToView:view attributes:attributeDict];
 		
 		if(parentView){
 			[parentView addSubview:view];
@@ -359,6 +378,7 @@ typedef enum{
 	_last_tag = nil;
 	tagName = [tagName lowercaseString];
 	if([tagName isEqualToString:@"script"]){
+        [[IResourceMananger sharedMananger] parseJs:_text basePath:_basePath];
 		_text = [[NSMutableString alloc] init];
 		return;
 	}
@@ -398,6 +418,19 @@ typedef enum{
 	if(!parentView){
 		[_rootViews addObject:view];
 	}
+}
+
+- (void)parseIfIsJS:(NSDictionary *)attributeDict
+{
+    NSString *src = nil;
+    src = [attributeDict objectForKey:@"src"];
+    if(!src){
+        src = [attributeDict objectForKey:@"href"];
+    }
+    if(src){
+        src = [IKitUtil buildPath:_basePath src:src];
+        [[IResourceMananger sharedMananger] loadJs:src];
+    }
 }
 
 - (NSString *)getAndResetText{
