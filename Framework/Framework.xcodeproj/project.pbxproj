@@ -87,6 +87,10 @@
 		2F09D7341C560482003BB601 /* UIViewController+Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7321C560482003BB601 /* UIViewController+Dialog.m */; };
 		2F118DF91C5B529700680951 /* UINavigationController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F118DF71C5B529700680951 /* UINavigationController+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F118DFA1C5B529700680951 /* UINavigationController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F118DF81C5B529700680951 /* UINavigationController+Framework.m */; };
+		2F17A6161C71EF3500C77940 /* FWViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F17A6141C71EF3500C77940 /* FWViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F17A6171C71EF3500C77940 /* FWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F17A6151C71EF3500C77940 /* FWViewController.m */; };
+		2F17A61A1C71EFA900C77940 /* FWXmlViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F17A6181C71EFA900C77940 /* FWXmlViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F17A61B1C71EFA900C77940 /* FWXmlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F17A6191C71EFA900C77940 /* FWXmlViewController.m */; };
 		2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35971C4C89310060E793 /* ICssBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35981C4C89310060E793 /* ICssBlock.m */; };
 		2F1C35D41C4C89310060E793 /* ICssDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35991C4C89310060E793 /* ICssDecl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -767,6 +771,10 @@
 		2F09D7321C560482003BB601 /* UIViewController+Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dialog.m"; sourceTree = "<group>"; };
 		2F118DF71C5B529700680951 /* UINavigationController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Framework.h"; sourceTree = "<group>"; };
 		2F118DF81C5B529700680951 /* UINavigationController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Framework.m"; sourceTree = "<group>"; };
+		2F17A6141C71EF3500C77940 /* FWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWViewController.h; sourceTree = "<group>"; };
+		2F17A6151C71EF3500C77940 /* FWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWViewController.m; sourceTree = "<group>"; };
+		2F17A6181C71EFA900C77940 /* FWXmlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWXmlViewController.h; sourceTree = "<group>"; };
+		2F17A6191C71EFA900C77940 /* FWXmlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWXmlViewController.m; sourceTree = "<group>"; };
 		2F1C35971C4C89310060E793 /* ICssBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssBlock.h; sourceTree = "<group>"; };
 		2F1C35981C4C89310060E793 /* ICssBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICssBlock.m; sourceTree = "<group>"; };
 		2F1C35991C4C89310060E793 /* ICssDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssDecl.h; sourceTree = "<group>"; };
@@ -1737,6 +1745,10 @@
 				2F65963E1C5CEFA100CC8C06 /* FWTheme.m */,
 				2FE6B5A41C70A4530039838D /* FWEntity.h */,
 				2FE6B5A51C70A4530039838D /* FWEntity.m */,
+				2F17A6141C71EF3500C77940 /* FWViewController.h */,
+				2F17A6151C71EF3500C77940 /* FWViewController.m */,
+				2F17A6181C71EFA900C77940 /* FWXmlViewController.h */,
+				2F17A6191C71EFA900C77940 /* FWXmlViewController.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -2484,6 +2496,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F17A61A1C71EFA900C77940 /* FWXmlViewController.h in Headers */,
+				2F17A6161C71EF3500C77940 /* FWViewController.h in Headers */,
 				2FC2154B1C70BF42000520B4 /* MJPropertyType.h in Headers */,
 				2FC2154D1C70BF42000520B4 /* NSObject+MJClass.h in Headers */,
 				2FC215421C70BF42000520B4 /* MJExtension.h in Headers */,
@@ -3025,6 +3039,7 @@
 				2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */,
 				2F1C35E91C4C89310060E793 /* IPullRefresh.m in Sources */,
 				2FD99E391C48CE6F0065293E /* MJRefreshAutoStateFooter.m in Sources */,
+				2F17A61B1C71EFA900C77940 /* FWXmlViewController.m in Sources */,
 				2FD99D831C48CE6F0065293E /* FLEXArgumentInputStructView.m in Sources */,
 				2F1C35FE1C4C89310060E793 /* IRefreshControl.m in Sources */,
 				2FD99DD11C48CE6F0065293E /* FLEXNetworkSettingsTableViewController.m in Sources */,
@@ -3201,6 +3216,7 @@
 				2F1C77751C574F7E009080A3 /* UIColor+Framework.m in Sources */,
 				2FD99DC51C48CE6F0065293E /* FLEXWebViewController.m in Sources */,
 				2FD99ED81C48CE700065293E /* UIImageView+HighlightedWebCache.m in Sources */,
+				2F17A6171C71EF3500C77940 /* FWViewController.m in Sources */,
 				2FD99DA71C48CE6F0065293E /* FLEXMultiColumnTableView.m in Sources */,
 				2FD99E331C48CE6F0065293E /* MJRefreshHeader.m in Sources */,
 				2F1C35E51C4C89310060E793 /* IKitUtil.m in Sources */,

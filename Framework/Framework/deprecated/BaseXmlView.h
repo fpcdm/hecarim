@@ -43,6 +43,12 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 //视图加载失败钩子，子类重写
 - (void)xmlViewFailed;
 
+//获取控制器
+- (UIViewController *)viewController;
+
+//设置控制器
+- (void)setViewController:(UIViewController *)viewController;
+
 //获取主元素
 - (FIView *)body;
 

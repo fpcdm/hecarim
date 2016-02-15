@@ -20,8 +20,10 @@
 		<meta name="statusbar-style" content="dark"/>
 		<meta name="statusbar-style" content="light"/>
         
+        <!--
 		<meta name="navbar-left-item" content="Left" onclick="actionLeft" />
-		<meta name="navbar-right-item" content="search" style="system" onclick="actionRight1" />
+         -->
+		<meta name="navbar-right-item" content="refresh" style="system" onclick="gotoFirst" />
 	</head>
 
 	<body>
@@ -47,15 +49,39 @@
                 </div>
             </div>
             
-            <button id="submit" onclick="gotoLogin">Login</button>
+            <button id="submit" class="submit" onclick="gotoLogin">Login</button>
+            
+            <button id="submit2" class="submit" onclick="gotoTest">Test</button>
+            
+            <button id="submit3" class="submit" onclick="gotoDynamic">Dynamic</button>
         </div>
         
         <script>
-            require('LoginViewController');
+            require('UIViewController,HomeViewController,LoginViewController,FWXmlViewController');
+            defineClass('UIViewController', {
+                gotoFirst: function() {
+                    var viewController = HomeViewController.alloc().init();
+                    self.navigationController().pushViewController_animated(viewController, YES);
+                },
+            });
             defineClass('HomeViewController', {
                 gotoLogin: function() {
                     var loginViewController = LoginViewController.alloc().init();
                         self.navigationController().pushViewController_animated(loginViewController, YES);
+                },
+                gotoTest: function() {
+                    var viewController = FWXmlViewController.alloc().init();
+                    viewController.setBackBarTitle("");
+                    viewController.setXmlName("Test");
+                    self.navigationController().pushViewController_animated(viewController, YES);
+                },
+            });
+            defineClass('FWXmlViewController', {
+                gotoDynamic: function() {
+                    var viewController = FWXmlViewController.alloc().init();
+                    viewController.setBackBarTitle("");
+                    viewController.setXmlName("Test");
+                    self.navigationController().pushViewController_animated(viewController, YES);
                 },
             });
         </script>
@@ -76,7 +102,7 @@
         #captcha_img{
             float: right; margin: 10 0 0 4; width: 120; height: 50; background: #eee;
         }
-        #submit{
+        .submit{
             clear: both; width: 100%; height: 40; font-size: large; margin: 15 0 0 0; color: #fff; background: #6cf; border-radius: 5;
         }
         </style>

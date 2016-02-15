@@ -315,6 +315,18 @@ static NSString *patchPath = nil;
     
 }
 
+- (UIViewController *)viewController
+{
+    return _xmlView ? _xmlView.viewController : nil;
+}
+
+- (void)setViewController:(UIViewController *)viewController
+{
+    if (_xmlView) {
+        _xmlView.viewController = viewController;
+    }
+}
+
 - (IView *)body
 {
     return _xmlView;
@@ -322,7 +334,7 @@ static NSString *patchPath = nil;
 
 - (IView *)getElementById:(NSString *)id
 {
-    return [_xmlView getElementById:id];
+    return _xmlView ? [_xmlView getElementById:id] : nil;
 }
 
 @end
