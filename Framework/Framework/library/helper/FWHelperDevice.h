@@ -1,15 +1,14 @@
 //
-//  DeviceUtil.h
+//  FWHelperDevice.h
 //  Framework
 //
-//  Created by wuyong on 16/1/21.
+//  Created by 吴勇 on 16/2/15.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "FWHelperDevice.h"
 
-@interface DeviceUtil : NSObject
+@interface FWHelperDevice : NSObject
 
 //播放声音
 + (BOOL)playMusic:(NSString *)file;
@@ -28,8 +27,5 @@
 
 //打电话
 + (BOOL)makePhoneCall:(NSString *)phone;
-
-//获取电话姓名
-+ (NSString *)getPhoneName:(NSString *)phone;
 
 @end
