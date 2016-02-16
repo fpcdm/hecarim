@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+//todo: 观察者模式
+
 typedef NS_ENUM(NSInteger, FWHelperNetworkStatus) {
     FWHelperNetworkUnavailable = 0,
     FWHelperNetworkWwan = 1,

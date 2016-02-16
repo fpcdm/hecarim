@@ -16,7 +16,7 @@
 
 #import "HttpUtil.h"
 #import "EncodeUtil.h"
-#import "DeviceUtil.h"
+#import "FWHelperDevice.h"
 #endif
 
 static FWDebug *sharedInstance = nil;
@@ -329,7 +329,7 @@ static FWDebug *sharedInstance = nil;
     //此处不调用[self swizzle_motionEnded:motion withEvent:event]，因子类未实现会导致崩溃
     if (event.subtype == UIEventSubtypeMotionShake) {
         //播放声音
-        [DeviceUtil playMusic:@"Framework.bundle/DebugShake.m4r"];
+        [FWHelperDevice playMusic:@"Framework.bundle/DebugShake.m4r"];
         
         //显示调试器
         [[FLEXManager sharedManager] toggleExplorer];

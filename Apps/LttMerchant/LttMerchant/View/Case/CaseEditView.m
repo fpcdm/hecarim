@@ -8,7 +8,6 @@
 
 #import "CaseEditView.h"
 #import "CaseEntity.h"
-#import "UITextView+Placeholder.h"
 
 @implementation CaseEditView
 {

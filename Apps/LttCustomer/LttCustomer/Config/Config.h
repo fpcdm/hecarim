@@ -13,7 +13,7 @@
 
 #pragma mark - 框架配置
 /********框架配置>>>********/
-#import "FrameworkConfig.h"
+#import "LttFramework.h"
 /********<<<框架配置********/
 
 
@@ -25,11 +25,6 @@
 #else
 #import "Config_product.h"
 #endif
-
-//系统配置
-#import "UIColor+Hex.h"
-#import "NSString+trim.h"
-#import "UITextView+Placeholder.h"
 /********>>>加载环境配置********/
 
 

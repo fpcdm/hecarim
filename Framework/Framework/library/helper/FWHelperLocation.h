@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+//观察者模式
+
 @interface FWHelperLocation : NSObject
 
 @end

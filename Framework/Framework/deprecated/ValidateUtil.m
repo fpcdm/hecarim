@@ -7,7 +7,6 @@
 //
 
 #import "ValidateUtil.h"
-#import "NSString+Trim.h"
 
 @implementation ValidateUtil
 
