@@ -1,14 +1,14 @@
 //
-//  SystemUtil.m
+//  FWHelperBundle.m
 //  Framework
 //
-//  Created by wuyong on 16/1/21.
+//  Created by wuyong on 16/2/16.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "SystemUtil.h"
+#import "FWHelperBundle.h"
 
-@implementation SystemUtil
+@implementation FWHelperBundle
 
 + (NSString *)homePath
 {
@@ -73,38 +73,6 @@
 {
     NSString *value = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
     return value;
-}
-
-+ (BOOL)isJailbreak
-{
-    static const char * jbApps[] = {
-        "/Application/Cydia.app",
-        "/Application/limera1n.app",
-        "/Application/greenpois0n.app",
-        "/Application/blackra1n.app",
-        "/Application/blacksn0w.app",
-        "/Application/redsn0w.app",
-        NULL
-    };
-    
-    // method 1
-    for ( int i = 0; jbApps[i]; ++i ) {
-        if ( [[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithUTF8String:jbApps[i]]] ) {
-            return YES;
-        }
-    }
-    
-    // method 2
-    if ( [[NSFileManager defaultManager] fileExistsAtPath:@"/private/var/lib/apt/"] ) {
-        return YES;
-    }
-    
-    // method 3
-    if ( 0 == system("ls") ) {
-        return YES;
-    }
-    
-    return NO;
 }
 
 @end

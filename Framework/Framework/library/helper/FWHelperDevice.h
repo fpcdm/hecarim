@@ -28,4 +28,7 @@
 //打电话
 + (BOOL)makePhoneCall:(NSString *)phone;
 
+//判断设备是否越狱
++ (BOOL)isJailbreak;
+
 @end

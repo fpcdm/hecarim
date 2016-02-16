@@ -1,14 +1,14 @@
 //
-//  SystemUtil.h
+//  FWHelperBundle.h
 //  Framework
 //
-//  Created by wuyong on 16/1/21.
+//  Created by wuyong on 16/2/16.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface SystemUtil : NSObject
+@interface FWHelperBundle : NSObject
 
 //应用程序目录的路径，在该目录下有三个文件夹：Documents、Library、temp以及一个.app包！该目录下就是应用程序的沙盒，应用程序只能访问该目录下的文件夹！！！
 + (NSString *)homePath;
@@ -42,8 +42,5 @@
 
 //获取App标识
 + (NSString *)appIdentifier;
-
-//判断设备是否越狱
-+ (BOOL)isJailbreak;
 
 @end

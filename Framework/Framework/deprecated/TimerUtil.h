@@ -7,23 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWHelperTimer.h"
 
-@interface TimerUtil : NSObject
+typedef FWHelperTimer TimerUtil;
+
+@interface FWHelperTimer (Interval)
 
 //计算离当前时间的间隔
 + (NSTimeInterval) timeInterval: (NSDate *) time;
-
-//默认并列队列
-+ (TimerUtil *) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block;
-
-//自定义队列
-+ (TimerUtil *) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block queue:(dispatch_queue_t) queue;
-
-- (void) suspend;
-
-- (void) resume;
-
-- (void) invalidate;
 
 + (void) test;
 

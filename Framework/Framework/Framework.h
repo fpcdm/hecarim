@@ -49,5 +49,8 @@
 #import "FWHelperDevice.h"
 #import "FWHelperDate.h"
 #import "FWHelperNetwork.h"
+#import "FWHelperTimer.h"
+#import "FWHelperBundle.h"
+#import "FWHelperLocation.h"
 
 #endif
