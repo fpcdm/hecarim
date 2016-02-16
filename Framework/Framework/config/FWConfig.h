@@ -60,6 +60,15 @@
 /********公用配置>>>********/
 //框架版本号
 #define FRAMEWORK_VERSION @"1.0.0"
+
+//定义弹出框停留时间
+#define FRAMEWORK_TIMEINTERVAL_DIALOG 2.0
+//定义成功框显示时间
+#define FRAMEWORK_TIMEINTERVAL_LOADING 0.5
+//定义WatchUrl默认刷新间隔
+#define FRAMEWORK_TIMEINTERVAL_DEBUG 5.0
+//定义HTTP请求超时时间
+#define FRAMEWORK_TIMEINTERVAL_REQUEST 10
 /********<<<公用配置********/
 
 

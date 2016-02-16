@@ -6,9 +6,9 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "BaseEntity.h"
+#import "FWEntity.h"
 
-@interface PaginationEntity : BaseEntity
+@interface PaginationEntity : FWEntity
 
 @prop_strong(NSNumber *, page)
 @prop_strong(NSNumber *, pageSize)

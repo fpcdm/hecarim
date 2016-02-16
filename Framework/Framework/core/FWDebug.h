@@ -27,9 +27,6 @@
 //监听代码文件改变，全局设置，仅模拟器有效
 - (void) watchPath:(NSString *)path exts:(NSArray *)exts;
 
-//设置监听URL刷新间隔，0为默认，负数不监听
-- (void) watchUrlInterval:(NSTimeInterval)interval;
-
 //监听某个URL内容改变，仅调试模式有效
 - (void) watchUrlStart:(NSString *)url;
 

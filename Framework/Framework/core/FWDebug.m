@@ -36,7 +36,6 @@ static FWDebug *sharedInstance = nil;
     
 #ifdef APP_DEBUG
     NSMutableDictionary *watchUrls;
-    NSTimeInterval urlInterval;
 #endif
 }
 
@@ -170,13 +169,6 @@ static FWDebug *sharedInstance = nil;
 #endif
 #endif
 
-- (void)watchUrlInterval:(NSTimeInterval)interval
-{
-#ifdef APP_DEBUG
-    urlInterval = interval;
-#endif
-}
-
 - (void)watchUrlStart:(NSString *)url
 {
 #ifdef APP_DEBUG
@@ -208,8 +200,7 @@ static FWDebug *sharedInstance = nil;
 - (void)watchUrlResponse:(NSString *)url
 {
     //检查刷新间隔
-    if (urlInterval == 0) urlInterval = 5.0;
-    if (urlInterval <= 0) return;
+    if (FRAMEWORK_TIMEINTERVAL_DEBUG <= 0) return;
     
     //是否开启URL监听
     NSString *oldHash = watchUrls ? [watchUrls objectForKey:url] : nil;
@@ -239,7 +230,7 @@ static FWDebug *sharedInstance = nil;
         }
         
         //执行轮询
-        [self performSelector:@selector(watchUrlResponse:) withObject:url afterDelay:urlInterval];
+        [self performSelector:@selector(watchUrlResponse:) withObject:url afterDelay:FRAMEWORK_TIMEINTERVAL_DEBUG];
     }];
 }
 #endif

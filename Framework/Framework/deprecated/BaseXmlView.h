@@ -43,6 +43,9 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 //视图加载失败钩子，子类重写
 - (void)xmlViewFailed;
 
+//todo: 设置事件代理，不一定是viewController
+//todo: delegate,作用1.代理事件 2.解析meta和title 如viewController实现XmlViewDelegate:parseMeta等
+
 //获取控制器
 - (UIViewController *)viewController;
 

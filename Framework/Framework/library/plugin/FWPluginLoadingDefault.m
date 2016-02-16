@@ -58,7 +58,7 @@
     [loading show:YES];
     
     if (callback) {
-        [self performSelector:@selector(finishLoadingCallback:) withObject:callback afterDelay:0.5];
+        [self performSelector:@selector(finishLoadingCallback:) withObject:callback afterDelay:FRAMEWORK_TIMEINTERVAL_LOADING];
     }
 }
 

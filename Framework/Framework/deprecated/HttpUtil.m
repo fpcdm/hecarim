@@ -121,7 +121,7 @@
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-    [request setTimeoutInterval:INTERVAL_HTTP_TIMEOUT];
+    [request setTimeoutInterval:FRAMEWORK_TIMEINTERVAL_REQUEST];
     
     //添加Header
     if (headers) {

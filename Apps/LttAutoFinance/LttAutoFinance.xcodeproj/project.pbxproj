@@ -126,6 +126,18 @@
 		2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7958D1AE7ACC900D51FB0 /* main.m */; };
 		2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795901AE7ACC900D51FB0 /* LttAppDelegate.m */; };
 		2FD795A81AE7ACC900D51FB0 /* LttAutoFinanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD795A71AE7ACC900D51FB0 /* LttAutoFinanceTests.m */; };
+		2FFD85331C7345F200602873 /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD851B1C7345F200602873 /* BaseCollectionView.m */; };
+		2FFD85341C7345F200602873 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD851D1C7345F200602873 /* BaseEntity.m */; };
+		2FFD85351C7345F200602873 /* BaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD851F1C7345F200602873 /* BaseHandler.m */; };
+		2FFD85361C7345F200602873 /* BaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD85211C7345F200602873 /* BaseScrollView.m */; };
+		2FFD85371C7345F200602873 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD85231C7345F200602873 /* BaseTableView.m */; };
+		2FFD85381C7345F200602873 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD85251C7345F200602873 /* BaseView.m */; };
+		2FFD85391C7345F200602873 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD85271C7345F200602873 /* BaseViewController.m */; };
+		2FFD853A1C7345F200602873 /* ErrorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD852A1C7345F200602873 /* ErrorEntity.m */; };
+		2FFD853B1C7345F200602873 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD852C1C7345F200602873 /* FileEntity.m */; };
+		2FFD853C1C7345F200602873 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD852E1C7345F200602873 /* ResultEntity.m */; };
+		2FFD853D1C7345F200602873 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD85301C7345F200602873 /* UserEntity.m */; };
+		2FFD853E1C7345F200602873 /* LttFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD85321C7345F200602873 /* LttFramework.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -364,6 +376,30 @@
 		2FD795A61AE7ACC900D51FB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FD795A71AE7ACC900D51FB0 /* LttAutoFinanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LttAutoFinanceTests.m; sourceTree = "<group>"; };
 		2FED7DCC1B1EA31D00306A11 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		2FFD851A1C7345F200602873 /* BaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionView.h; sourceTree = "<group>"; };
+		2FFD851B1C7345F200602873 /* BaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionView.m; sourceTree = "<group>"; };
+		2FFD851C1C7345F200602873 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
+		2FFD851D1C7345F200602873 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
+		2FFD851E1C7345F200602873 /* BaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHandler.h; sourceTree = "<group>"; };
+		2FFD851F1C7345F200602873 /* BaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHandler.m; sourceTree = "<group>"; };
+		2FFD85201C7345F200602873 /* BaseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScrollView.h; sourceTree = "<group>"; };
+		2FFD85211C7345F200602873 /* BaseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScrollView.m; sourceTree = "<group>"; };
+		2FFD85221C7345F200602873 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		2FFD85231C7345F200602873 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		2FFD85241C7345F200602873 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		2FFD85251C7345F200602873 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		2FFD85261C7345F200602873 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		2FFD85271C7345F200602873 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		2FFD85291C7345F200602873 /* ErrorEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorEntity.h; sourceTree = "<group>"; };
+		2FFD852A1C7345F200602873 /* ErrorEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorEntity.m; sourceTree = "<group>"; };
+		2FFD852B1C7345F200602873 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
+		2FFD852C1C7345F200602873 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
+		2FFD852D1C7345F200602873 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
+		2FFD852E1C7345F200602873 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
+		2FFD852F1C7345F200602873 /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
+		2FFD85301C7345F200602873 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
+		2FFD85311C7345F200602873 /* LttFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttFramework.h; sourceTree = "<group>"; };
+		2FFD85321C7345F200602873 /* LttFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttFramework.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -697,6 +733,7 @@
 		2F3AD9691C48E1EC00D37BA1 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				2FFD85181C7345F200602873 /* Lttok */,
 				2F3AD96F1C48E1EC00D37BA1 /* AXRatingView */,
 				2F3AD9751C48E1EC00D37BA1 /* DLRadioButton */,
 				2F3AD97C1C48E1EC00D37BA1 /* iCarousel */,
@@ -825,6 +862,53 @@
 				2FD795A61AE7ACC900D51FB0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2FFD85181C7345F200602873 /* Lttok */ = {
+			isa = PBXGroup;
+			children = (
+				2FFD85191C7345F200602873 /* Base */,
+				2FFD85281C7345F200602873 /* Entity */,
+				2FFD85311C7345F200602873 /* LttFramework.h */,
+				2FFD85321C7345F200602873 /* LttFramework.m */,
+			);
+			path = Lttok;
+			sourceTree = "<group>";
+		};
+		2FFD85191C7345F200602873 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2FFD851A1C7345F200602873 /* BaseCollectionView.h */,
+				2FFD851B1C7345F200602873 /* BaseCollectionView.m */,
+				2FFD851C1C7345F200602873 /* BaseEntity.h */,
+				2FFD851D1C7345F200602873 /* BaseEntity.m */,
+				2FFD851E1C7345F200602873 /* BaseHandler.h */,
+				2FFD851F1C7345F200602873 /* BaseHandler.m */,
+				2FFD85201C7345F200602873 /* BaseScrollView.h */,
+				2FFD85211C7345F200602873 /* BaseScrollView.m */,
+				2FFD85221C7345F200602873 /* BaseTableView.h */,
+				2FFD85231C7345F200602873 /* BaseTableView.m */,
+				2FFD85241C7345F200602873 /* BaseView.h */,
+				2FFD85251C7345F200602873 /* BaseView.m */,
+				2FFD85261C7345F200602873 /* BaseViewController.h */,
+				2FFD85271C7345F200602873 /* BaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2FFD85281C7345F200602873 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2FFD85291C7345F200602873 /* ErrorEntity.h */,
+				2FFD852A1C7345F200602873 /* ErrorEntity.m */,
+				2FFD852B1C7345F200602873 /* FileEntity.h */,
+				2FFD852C1C7345F200602873 /* FileEntity.m */,
+				2FFD852D1C7345F200602873 /* ResultEntity.h */,
+				2FFD852E1C7345F200602873 /* ResultEntity.m */,
+				2FFD852F1C7345F200602873 /* UserEntity.h */,
+				2FFD85301C7345F200602873 /* UserEntity.m */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		9CB345F8FF6391BAA4D3F5E4 /* Frameworks */ = {
@@ -982,6 +1066,7 @@
 				2F16E63A1B5DF162007947D0 /* DeviceEntity.m in Sources */,
 				2B8346E41BE07C23001530F0 /* ResetPasswordSuccess.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
+				2FFD85351C7345F200602873 /* BaseHandler.m in Sources */,
 				2B8346E21BE07C23001530F0 /* ForgetPasswordCodeView.m in Sources */,
 				2F16E63B1B5DF162007947D0 /* GoodsEntity.m in Sources */,
 				2F16E5E81B5DF08F007947D0 /* AddressDetailViewController.m in Sources */,
@@ -993,19 +1078,24 @@
 				2F3ADA291C48E1EC00D37BA1 /* RECommonFunctions.m in Sources */,
 				2F16E5F61B5DF08F007947D0 /* LoginViewController.m in Sources */,
 				2F16E5EF1B5DF08F007947D0 /* SettingViewController.m in Sources */,
+				2FFD853C1C7345F200602873 /* ResultEntity.m in Sources */,
 				2F16E5A31B5DEFEE007947D0 /* ProfileView.m in Sources */,
+				2FFD85361C7345F200602873 /* BaseScrollView.m in Sources */,
 				2F16E5E71B5DF08F007947D0 /* AccountViewController.m in Sources */,
 				2F16E59F1B5DEFEE007947D0 /* AddressDetailView.m in Sources */,
+				2FFD853D1C7345F200602873 /* UserEntity.m in Sources */,
 				2B8346D91BE07BF5001530F0 /* ForgetPasswordViewController.m in Sources */,
 				2F3ADA281C48E1EC00D37BA1 /* ReflectionView.m in Sources */,
 				2F16E5B51B5DEFEE007947D0 /* RegisterMobileView.m in Sources */,
 				2F16E5A61B5DEFEE007947D0 /* SettingView.m in Sources */,
+				2FFD85341C7345F200602873 /* BaseEntity.m in Sources */,
 				2F16E6311B5DF162007947D0 /* AppUIUtil.m in Sources */,
 				2F16E5F51B5DF08F007947D0 /* HomeViewController.m in Sources */,
 				2F16E5ED1B5DF08F007947D0 /* SafetyPasswordViewController.m in Sources */,
 				2F16E5EE1B5DF08F007947D0 /* SafetyViewController.m in Sources */,
 				2FB72F631BB8D72400CB8E62 /* CasePropertyViewController.m in Sources */,
 				2F16E5E61B5DF08F007947D0 /* AboutViewController.m in Sources */,
+				2FFD853B1C7345F200602873 /* FileEntity.m in Sources */,
 				2F16E5A81B5DEFEE007947D0 /* AddressSelectorView.m in Sources */,
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F16E5F21B5DF08F007947D0 /* CaseFormViewController.m in Sources */,
@@ -1022,6 +1112,7 @@
 				2F16E5AF1B5DEFEE007947D0 /* CaseSuccessView.m in Sources */,
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
 				2F16E5A71B5DEFEE007947D0 /* SuggestionView.m in Sources */,
+				2FFD85391C7345F200602873 /* BaseViewController.m in Sources */,
 				2F16E5B01B5DEFEE007947D0 /* CaseTopayView.m in Sources */,
 				2F3ADA341C48E1EC00D37BA1 /* TAPageControl.m in Sources */,
 				2F3ADA2A1C48E1EC00D37BA1 /* REFrostedContainerViewController.m in Sources */,
@@ -1030,6 +1121,7 @@
 				2F16E5A01B5DEFEE007947D0 /* AddressFormView.m in Sources */,
 				2F7F8C0A1B7C2C0300EF4938 /* CaseDetailView.m in Sources */,
 				2F16E5B71B5DEFEE007947D0 /* RegisterSuccessView.m in Sources */,
+				2FFD85371C7345F200602873 /* BaseTableView.m in Sources */,
 				2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */,
 				2F16E6421B5DF162007947D0 /* HelperHandler.m in Sources */,
 				2F3ADA331C48E1EC00D37BA1 /* TADotView.m in Sources */,
@@ -1045,6 +1137,7 @@
 				2F16E5E91B5DF08F007947D0 /* AddressFormViewController.m in Sources */,
 				2F16E5B31B5DEFEE007947D0 /* RegisterCodeView.m in Sources */,
 				2F16E5EA1B5DF08F007947D0 /* AddressViewController.m in Sources */,
+				2FFD85331C7345F200602873 /* BaseCollectionView.m in Sources */,
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
 				2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */,
 				2F3ADA321C48E1EC00D37BA1 /* TAAnimatedDotView.m in Sources */,
@@ -1060,6 +1153,7 @@
 				2F3ADA101C48E1EC00D37BA1 /* AXRatingView.m in Sources */,
 				2FB72F5D1BB8D3A200CB8E62 /* PropertyEntity.m in Sources */,
 				2F16E5AA1B5DEFEE007947D0 /* CaseFormView.m in Sources */,
+				2FFD853A1C7345F200602873 /* ErrorEntity.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,
 				2F16E5B61B5DEFEE007947D0 /* RegisterPasswordView.m in Sources */,
 				2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */,
@@ -1067,6 +1161,8 @@
 				2F16E5A41B5DEFEE007947D0 /* SafetyPasswordView.m in Sources */,
 				2F16E5B21B5DEFEE007947D0 /* LoginView.m in Sources */,
 				2F16E5A21B5DEFEE007947D0 /* ProfileNicknameView.m in Sources */,
+				2FFD85381C7345F200602873 /* BaseView.m in Sources */,
+				2FFD853E1C7345F200602873 /* LttFramework.m in Sources */,
 				2B8346E51BE07C23001530F0 /* ResetPasswordView.m in Sources */,
 				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
 				2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */,
