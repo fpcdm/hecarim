@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+Framework.h"
 
 @interface NSString (Trim)
+
++ (NSString *)trim:(NSString *)str;
+
+- (NSString *)trim;
 
 @end

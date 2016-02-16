@@ -8,6 +8,7 @@
 
 #import "FWCache.h"
 #import "FWPluginManager.h"
+#import "FWPluginCache.h"
 
 @implementation FWCache
 

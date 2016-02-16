@@ -12,7 +12,13 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
-    #import "Framework.h"
+
+    #import "FWConfig.h"
+    #import "FWDefine.h"
+    #import "FWProtocol.h"
+
+    #import "NSObject+Framework.h"
+    #import "UIColor+Framework.h"
 #endif
 
 #endif

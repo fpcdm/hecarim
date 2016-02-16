@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWPluginCache.h"
 
-@interface FWStorage : NSObject<FWPluginCache>
+@interface FWStorage : NSObject<FWProtocolRegistry>
 
 @singleton(FWStorage)
 

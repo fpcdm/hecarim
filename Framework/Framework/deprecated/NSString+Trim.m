@@ -10,4 +10,15 @@
 
 @implementation NSString (Trim)
 
++ (NSString *)trim:(NSString *)str
+{
+    return str ? [str trim] : str;
+}
+
+- (NSString *)trim
+{
+    NSString *trimStr = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return trimStr;
+}
+
 @end

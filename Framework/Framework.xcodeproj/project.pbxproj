@@ -166,8 +166,6 @@
 		2F1C77AB1C576DAD009080A3 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77991C576DAD009080A3 /* UIView+Loading.m */; };
 		2F1C77AC1C576DAD009080A3 /* UIViewController+BackButtonHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C779A1C576DAD009080A3 /* UIViewController+BackButtonHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C77AD1C576DAD009080A3 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C779B1C576DAD009080A3 /* UIViewController+BackButtonHandler.m */; };
-		2F1C77B01C576EE3009080A3 /* NSString+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77AE1C576EE3009080A3 /* NSString+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1C77B11C576EE3009080A3 /* NSString+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */; };
 		2F1C77B81C577663009080A3 /* FWPluginLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B71C577663009080A3 /* FWPluginLoading.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */; };
@@ -851,8 +849,6 @@
 		2F1C77991C576DAD009080A3 /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
 		2F1C779A1C576DAD009080A3 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		2F1C779B1C576DAD009080A3 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
-		2F1C77AE1C576EE3009080A3 /* NSString+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Framework.h"; sourceTree = "<group>"; };
-		2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Framework.m"; sourceTree = "<group>"; };
 		2F1C77B71C577663009080A3 /* FWPluginLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoading.h; sourceTree = "<group>"; };
 		2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoadingDefault.h; sourceTree = "<group>"; };
 		2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginLoadingDefault.m; sourceTree = "<group>"; };
@@ -1769,8 +1765,6 @@
 				2F1C77731C574F7E009080A3 /* UIColor+Framework.m */,
 				2F1C77861C576C44009080A3 /* UITextView+Framework.h */,
 				2F1C77871C576C44009080A3 /* UITextView+Framework.m */,
-				2F1C77AE1C576EE3009080A3 /* NSString+Framework.h */,
-				2F1C77AF1C576EE3009080A3 /* NSString+Framework.m */,
 				2F2B65521C59BEB30024DC09 /* UIView+Framework.h */,
 				2F2B65531C59BEB30024DC09 /* UIView+Framework.m */,
 				2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */,
@@ -2532,7 +2526,6 @@
 				2F004E3B1C70730E000B4F97 /* NotificationUtil.h in Headers */,
 				2F1C77781C575054009080A3 /* UIColor+Hex.h in Headers */,
 				2F1C35FB1C4C89310060E793 /* IPopover.h in Headers */,
-				2F1C77B01C576EE3009080A3 /* NSString+Framework.h in Headers */,
 				2F1C779E1C576DAD009080A3 /* NSString+Trim.h in Headers */,
 				2F1C77A21C576DAD009080A3 /* UINavigationController+Vertical.h in Headers */,
 				2F2B655E1C59C4BE0024DC09 /* FWModel.h in Headers */,
@@ -3154,7 +3147,6 @@
 				2F6596401C5CEFA100CC8C06 /* FWTheme.m in Sources */,
 				2F004DED1C706936000B4F97 /* BaseHandler.m in Sources */,
 				2F1C35FA1C4C89310060E793 /* ILabel.m in Sources */,
-				2F1C77B11C576EE3009080A3 /* NSString+Framework.m in Sources */,
 				2F65961A1C5CB51400CC8C06 /* UIScrollView+Framework.m in Sources */,
 				2F1C36061C4C89310060E793 /* IDTHTMLViewLoader.m in Sources */,
 				2FD99E511C48CE6F0065293E /* PINCache.m in Sources */,

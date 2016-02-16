@@ -11,16 +11,6 @@
 //定义插件池默认保存名称
 #define FWPluginCacheName @"FWPluginCache"
 
-@protocol FWPluginCache <NSObject>
-
-- (id)get:(NSString *)key;
-
-- (BOOL)has:(NSString *)key;
-
-- (void)set:(NSString *)key object:(id)object;
-
-- (void)remove:(NSString *)key;
-
-- (void)clear;
+@protocol FWPluginCache <FWProtocolRegistry>
 
 @end

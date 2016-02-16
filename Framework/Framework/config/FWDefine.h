@@ -144,7 +144,6 @@
 
 #pragma mark -
 //@def_prop
-#import "NSObject+Framework.h"
 #define def_prop_readonly( type, name ) \
     synthesize name = _##name;
 
@@ -187,6 +186,70 @@
     dynamic name; \
     - (type)name { return [self getAssociatedObjectForKey:#name]; } \
     - (void)setName:(type)obj { [self attr##AssociatedObject:obj forKey:#name]; }
+
+#pragma mark -
+//@static_property
+#undef  static_property
+#define static_property( __name ) \
+    property (nonatomic, readonly) NSString * __name; \
+    - (NSString *)__name; \
+    + (NSString *)__name;
+
+#undef	def_static_property
+#define def_static_property( __name ) \
+    dynamic __name; \
+    - (NSString *)__name { return [NSString stringWithFormat:@"%s", #__name]; } \
+    + (NSString *)__name { return [NSString stringWithFormat:@"%s", #__name]; }
+
+#undef	def_static_property1
+#define def_static_property1( __name, prefix ) \
+    dynamic __name; \
+    - (NSString *)__name { return [NSString stringWithFormat:@"%@.%s", prefix, #__name]; } \
+    + (NSString *)__name { return [NSString stringWithFormat:@"%@.%s", prefix, #__name]; }
+
+#undef	def_static_property2
+#define def_static_property2( __name, prefix, prefix2 ) \
+    dynamic __name; \
+    - (NSString *)__name { return [NSString stringWithFormat:@"%@.%@.%s", prefix, prefix2, #__name]; } \
+    + (NSString *)__name { return [NSString stringWithFormat:@"%@.%@.%s", prefix, prefix2, #__name]; }
+
+#pragma mark -
+//@static_type
+#undef	static_integer
+#define static_integer( __name ) \
+    property (nonatomic, readonly) NSInteger __name; \
+    - (NSInteger)__name; \
+    + (NSInteger)__name;
+
+#undef	def_static_integer
+#define def_static_integer( __name, __value ) \
+    dynamic __name; \
+    - (NSInteger)__name { return __value; } \
+    + (NSInteger)__name { return __value; }
+
+#undef	static_number
+#define static_number( __name ) \
+    property (nonatomic, readonly) NSNumber * __name; \
+    - (NSNumber *)__name; \
+    + (NSNumber *)__name;
+
+#undef	def_static_number
+#define def_static_number( __name, __value ) \
+    dynamic __name; \
+    - (NSNumber *)__name { return @(__value); } \
+    + (NSNumber *)__name { return @(__value); }
+
+#undef	static_string
+#define static_string( __name ) \
+    property (nonatomic, readonly) NSString * __name; \
+    - (NSString *)__name; \
+    + (NSString *)__name;
+
+#undef	def_static_string
+#define def_static_string( __name, __value ) \
+    dynamic __name; \
+    - (NSString *)__name { return __value; } \
+    + (NSString *)__name { return __value; }
 
 
 #endif /* FWDefine_h */

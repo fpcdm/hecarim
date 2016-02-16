@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWPluginCache.h"
 
 //注册表缓存：内存
-@interface FWRegistry : NSObject<FWPluginCache>
+@interface FWRegistry : NSObject<FWProtocolRegistry>
 
 @singleton(FWRegistry)
 
