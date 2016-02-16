@@ -674,7 +674,7 @@
 		2FEF7A4C1C72B36100EBF526 /* FWViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A4A1C72B36100EBF526 /* FWViewAction.m */; };
 		2FEF7A4F1C72B4AD00EBF526 /* FWWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A4D1C72B4AD00EBF526 /* FWWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A501C72B4AD00EBF526 /* FWWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A4E1C72B4AD00EBF526 /* FWWidget.m */; };
-		2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */; };
+		2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FF10B691C4CBF1100365024 /* Framework.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2FF10B681C4CBF1100365024 /* Framework.pch */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -2499,6 +2499,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */,
 				2FE6A0C11C72211600857CE1 /* FWHelperAspect.h in Headers */,
 				2FE6A0CD1C72268C00857CE1 /* FWHelperNetwork.h in Headers */,
 				2FEF7A4B1C72B36100EBF526 /* FWViewAction.h in Headers */,
@@ -2608,7 +2609,6 @@
 				2F1C35E31C4C89310060E793 /* IKit.h in Headers */,
 				2F1C35DC1C4C89310060E793 /* IStyleInternal.h in Headers */,
 				2F24FB3A1C566B5300A82ABD /* FWRegistry.h in Headers */,
-				2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */,
 				2F004DF21C706936000B4F97 /* BaseTableView.h in Headers */,
 				2F1C36091C4C89310060E793 /* IViewLoader.h in Headers */,
 				2F1C35EA1C4C89310060E793 /* IResourceMananger.h in Headers */,

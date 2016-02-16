@@ -12,7 +12,7 @@
 
 #pragma mark - 环境配置
 //引入框架配置
-#import "FWConfig.h"
+#import "Framework.h"
 
 #ifdef APP_DEBUG
 /********开发环境>>>********/
