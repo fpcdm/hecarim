@@ -60,15 +60,6 @@
 /********公用配置>>>********/
 //框架版本号
 #define FRAMEWORK_VERSION @"1.0.0"
-
-//加载预编译指令
-#import "FWDefine.h"
-
-//加载本地化文件
-#import "FWLocale.h"
-
-//加载日志文件
-#import "FWLog.h"
 /********<<<公用配置********/
 
 
