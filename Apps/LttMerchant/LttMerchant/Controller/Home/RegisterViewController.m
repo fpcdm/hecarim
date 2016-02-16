@@ -12,14 +12,11 @@
 #import "RegisterPasswordView.h"
 #import "RegisterSuccessView.h"
 #import "RegisterInfoView.h"
-#import "ValidateUtil.h"
 #import "UserHandler.h"
 #import "HelperHandler.h"
-#import "TimerUtil.h"
 #import "LoginViewController.h"
 #import "MerchantHandler.h"
 #import "ProtocolViewController.h"
-#import "PickerUtil.h"
 #import "AddressEntity.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterPasswordViewDelegate,RegisterInfoViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>

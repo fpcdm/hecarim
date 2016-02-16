@@ -10,7 +10,6 @@
 #import "LoginView.h"
 #import "UserEntity.h"
 #import "HomeViewController.h"
-#import "ValidateUtil.h"
 #import "UserHandler.h"
 #import "AppExtension.h"
 #import "RegisterViewController.h"

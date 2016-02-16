@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RestKitUtil.h"
 #import "ResultEntity.h"
 
 /**

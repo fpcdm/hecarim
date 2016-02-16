@@ -12,7 +12,6 @@
 #import "AppExtension.h"
 #import "REFrostedViewController.h"
 #import "MenuViewController.h"
-#import "NotificationUtil.h"
 #import "CaseDetailViewController.h"
 #import "AppView.h"
 #import "CNPPopupController.h"

@@ -9,7 +9,6 @@
 #import "CityViewController.h"
 #import "CityView.h"
 #import "HelperHandler.h"
-#import "LocationUtil.h"
 
 @interface CityViewController () <CityViewDelegate>
 

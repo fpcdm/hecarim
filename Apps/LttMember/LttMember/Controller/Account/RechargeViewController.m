@@ -8,7 +8,6 @@
 
 #import "RechargeViewController.h"
 #import "RechargeView.h"
-#import "ValidateUtil.h"
 #import "CaseHandler.h"
 #import "PaymentHandler.h"
 #import "LttAppDelegate.h"

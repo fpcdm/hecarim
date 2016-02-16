@@ -11,7 +11,6 @@
 #import "CaseViewController.h"
 #import "CaseHandler.h"
 #import "AddressSelectorViewController.h"
-#import "ValidateUtil.h"
 #import "UserHandler.h"
 
 @interface CaseFormViewController () <CaseFormViewDelegate>

@@ -13,8 +13,6 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "HelperHandler.h"
-#import "LocationUtil.h"
-#import "TimerUtil.h"
 
 //GPS数据缓存，优化GPS耗电
 static NSString *lastAddress = nil;

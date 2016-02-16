@@ -11,7 +11,6 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "CaseDetailViewController.h"
-#import "LocationUtil.h"
 
 @interface CaseListViewController () <CaseListViewDelegate>
 

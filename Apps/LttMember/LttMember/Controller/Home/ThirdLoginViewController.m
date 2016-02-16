@@ -9,11 +9,9 @@
 #import "ThirdLoginViewController.h"
 #import "UserEntity.h"
 #import "HomeViewController.h"
-#import "ValidateUtil.h"
 #import "UserHandler.h"
 #import "AppExtension.h"
 #import "ThirdLoginView.h"
-#import "TimerUtil.h"
 #import "HelperHandler.h"
 
 @interface ThirdLoginViewController () <ThirdLoginViewDelegate>

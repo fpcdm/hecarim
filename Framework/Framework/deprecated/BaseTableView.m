@@ -7,7 +7,6 @@
 //
 
 #import "BaseTableView.h"
-#import "FrameworkConfig.h"
 
 @interface BaseTableView ()
 

@@ -9,7 +9,6 @@
 #import "RecommendViewController.h"
 #import "RecommendView.h"
 #import "UserHandler.h"
-#import "ValidateUtil.h"
 
 @interface RecommendViewController () <RecommendViewDelegate, UIActionSheetDelegate>
 

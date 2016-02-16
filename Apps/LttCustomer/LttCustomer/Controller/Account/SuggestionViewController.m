@@ -9,7 +9,6 @@
 #import "SuggestionViewController.h"
 #import "SuggestionView.h"
 #import "UserHandler.h"
-#import "ValidateUtil.h"
 
 @interface SuggestionViewController () <SuggestionViewDelegate>
 

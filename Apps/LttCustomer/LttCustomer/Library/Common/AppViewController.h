@@ -11,7 +11,6 @@
 #import "Config.h"
 #import "AppUIUtil.h"
 #import "AppExtension.h"
-#import "NotificationUtil.h"
 
 @interface AppViewController : BaseViewController
 {

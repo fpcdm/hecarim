@@ -8,7 +8,6 @@
 
 #import "HttpUtil.h"
 #import "IKitUtil.h"
-#import "FrameworkConfig.h"
 
 @implementation HttpUtil
 

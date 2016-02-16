@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FrameworkConfig.h"
-#import "UIViewController+Framework.h"
 #import "BaseHandler.h"
 #import "BaseXmlView.h"
 

@@ -9,12 +9,9 @@
 #import "LttAppDelegate.h"
 #import "HomeViewController.h"
 #import "AppUIUtil.h"
-#import "RestKitUtil.h"
 #import "LoginViewController.h"
 #import "DeviceEntity.h"
 #import "UserHandler.h"
-#import "NotificationUtil.h"
-#import "TimerUtil.h"
 
 @interface LttAppDelegate ()
 

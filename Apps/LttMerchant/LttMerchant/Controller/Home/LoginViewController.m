@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "UserEntity.h"
-#import "ValidateUtil.h"
 #import "AppExtension.h"
 #import "HomeViewController.h"
 #import "UserHandler.h"

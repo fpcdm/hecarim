@@ -13,7 +13,6 @@
 #import "AddressSelectorViewController.h"
 #import "CasePropertyViewController.h"
 #import "AddressEntity.h"
-#import "ValidateUtil.h"
 #import "UserHandler.h"
 
 @interface CaseFormViewController () <CaseFormViewDelegate>

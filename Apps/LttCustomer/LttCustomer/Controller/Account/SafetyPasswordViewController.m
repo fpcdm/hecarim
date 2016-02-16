@@ -9,7 +9,6 @@
 #import "SafetyPasswordViewController.h"
 #import "SafetyPasswordView.h"
 #import "UserHandler.h"
-#import "ValidateUtil.h"
 
 @interface SafetyPasswordViewController () <SafetyPasswordViewDelegate>
 

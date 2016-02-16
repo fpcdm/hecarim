@@ -12,11 +12,9 @@
 #import "RegisterCodeView.h"
 #import "RegisterPasswordView.h"
 #import "RegisterSuccessView.h"
-#import "ValidateUtil.h"
 #import "UserHandler.h"
 #import "HelperHandler.h"
 #import "HomeViewController.h"
-#import "TimerUtil.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate, RegisterSuccessViewDelegate>
 

@@ -8,9 +8,7 @@
 
 #import "PayPasswordViewController.h"
 #import "SetPayPasswordCodeView.h"
-#import "ValidateUtil.h"
 #import "HelperHandler.h"
-#import "TimerUtil.h"
 #import "SetPayPasswordView.h"
 #import "MyWalletViewController.h"
 #import "UpdatePayPasswordView.h"
