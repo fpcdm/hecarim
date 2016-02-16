@@ -187,6 +187,18 @@
 		2FD99FD71C48CF060065293E /* ZCTradeKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F951C48CF050065293E /* ZCTradeKeyboard.m */; };
 		2FD99FD81C48CF060065293E /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F971C48CF050065293E /* ZCTradeView.m */; };
 		2FD99FDC1C48CFEA0065293E /* libFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD99FDB1C48CF070065293E /* libFramework.a */; };
+		2FEF7A9E1C73224300EBF526 /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A861C73224300EBF526 /* BaseCollectionView.m */; };
+		2FEF7A9F1C73224300EBF526 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A881C73224300EBF526 /* BaseEntity.m */; };
+		2FEF7AA01C73224300EBF526 /* BaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A8A1C73224300EBF526 /* BaseHandler.m */; };
+		2FEF7AA11C73224300EBF526 /* BaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A8C1C73224300EBF526 /* BaseScrollView.m */; };
+		2FEF7AA21C73224300EBF526 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A8E1C73224300EBF526 /* BaseTableView.m */; };
+		2FEF7AA31C73224300EBF526 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A901C73224300EBF526 /* BaseView.m */; };
+		2FEF7AA41C73224300EBF526 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A921C73224300EBF526 /* BaseViewController.m */; };
+		2FEF7AA51C73224300EBF526 /* ErrorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A951C73224300EBF526 /* ErrorEntity.m */; };
+		2FEF7AA61C73224300EBF526 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A971C73224300EBF526 /* FileEntity.m */; };
+		2FEF7AA71C73224300EBF526 /* ResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A991C73224300EBF526 /* ResultEntity.m */; };
+		2FEF7AA81C73224300EBF526 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A9B1C73224300EBF526 /* UserEntity.m */; };
+		2FEF7AA91C73224300EBF526 /* LttFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A9D1C73224300EBF526 /* LttFramework.m */; };
 		2FFA37891C3B8F22008E6389 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA37881C3B8F22008E6389 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -549,6 +561,30 @@
 		2FD99F961C48CF050065293E /* ZCTradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeView.h; sourceTree = "<group>"; };
 		2FD99F971C48CF050065293E /* ZCTradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeView.m; sourceTree = "<group>"; };
 		2FED7DCC1B1EA31D00306A11 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		2FEF7A851C73224300EBF526 /* BaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionView.h; sourceTree = "<group>"; };
+		2FEF7A861C73224300EBF526 /* BaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionView.m; sourceTree = "<group>"; };
+		2FEF7A871C73224300EBF526 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
+		2FEF7A881C73224300EBF526 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
+		2FEF7A891C73224300EBF526 /* BaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHandler.h; sourceTree = "<group>"; };
+		2FEF7A8A1C73224300EBF526 /* BaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHandler.m; sourceTree = "<group>"; };
+		2FEF7A8B1C73224300EBF526 /* BaseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScrollView.h; sourceTree = "<group>"; };
+		2FEF7A8C1C73224300EBF526 /* BaseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScrollView.m; sourceTree = "<group>"; };
+		2FEF7A8D1C73224300EBF526 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		2FEF7A8E1C73224300EBF526 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		2FEF7A8F1C73224300EBF526 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		2FEF7A901C73224300EBF526 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		2FEF7A911C73224300EBF526 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		2FEF7A921C73224300EBF526 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		2FEF7A941C73224300EBF526 /* ErrorEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorEntity.h; sourceTree = "<group>"; };
+		2FEF7A951C73224300EBF526 /* ErrorEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorEntity.m; sourceTree = "<group>"; };
+		2FEF7A961C73224300EBF526 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
+		2FEF7A971C73224300EBF526 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
+		2FEF7A981C73224300EBF526 /* ResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultEntity.h; sourceTree = "<group>"; };
+		2FEF7A991C73224300EBF526 /* ResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultEntity.m; sourceTree = "<group>"; };
+		2FEF7A9A1C73224300EBF526 /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
+		2FEF7A9B1C73224300EBF526 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
+		2FEF7A9C1C73224300EBF526 /* LttFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttFramework.h; sourceTree = "<group>"; };
+		2FEF7A9D1C73224300EBF526 /* LttFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttFramework.m; sourceTree = "<group>"; };
 		2FFA37881C3B8F22008E6389 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1001,6 +1037,7 @@
 		2FD99EF51C48CF040065293E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				2FEF7A831C73224300EBF526 /* Lttok */,
 				2FD99EF61C48CF040065293E /* AlipaySDK */,
 				2FD99EFB1C48CF040065293E /* AXRatingView */,
 				2FD99EFE1C48CF040065293E /* CNPPopupController */,
@@ -1232,6 +1269,53 @@
 			path = ZCTradeView;
 			sourceTree = "<group>";
 		};
+		2FEF7A831C73224300EBF526 /* Lttok */ = {
+			isa = PBXGroup;
+			children = (
+				2FEF7A841C73224300EBF526 /* Base */,
+				2FEF7A931C73224300EBF526 /* Entity */,
+				2FEF7A9C1C73224300EBF526 /* LttFramework.h */,
+				2FEF7A9D1C73224300EBF526 /* LttFramework.m */,
+			);
+			path = Lttok;
+			sourceTree = "<group>";
+		};
+		2FEF7A841C73224300EBF526 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2FEF7A851C73224300EBF526 /* BaseCollectionView.h */,
+				2FEF7A861C73224300EBF526 /* BaseCollectionView.m */,
+				2FEF7A871C73224300EBF526 /* BaseEntity.h */,
+				2FEF7A881C73224300EBF526 /* BaseEntity.m */,
+				2FEF7A891C73224300EBF526 /* BaseHandler.h */,
+				2FEF7A8A1C73224300EBF526 /* BaseHandler.m */,
+				2FEF7A8B1C73224300EBF526 /* BaseScrollView.h */,
+				2FEF7A8C1C73224300EBF526 /* BaseScrollView.m */,
+				2FEF7A8D1C73224300EBF526 /* BaseTableView.h */,
+				2FEF7A8E1C73224300EBF526 /* BaseTableView.m */,
+				2FEF7A8F1C73224300EBF526 /* BaseView.h */,
+				2FEF7A901C73224300EBF526 /* BaseView.m */,
+				2FEF7A911C73224300EBF526 /* BaseViewController.h */,
+				2FEF7A921C73224300EBF526 /* BaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2FEF7A931C73224300EBF526 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2FEF7A941C73224300EBF526 /* ErrorEntity.h */,
+				2FEF7A951C73224300EBF526 /* ErrorEntity.m */,
+				2FEF7A961C73224300EBF526 /* FileEntity.h */,
+				2FEF7A971C73224300EBF526 /* FileEntity.m */,
+				2FEF7A981C73224300EBF526 /* ResultEntity.h */,
+				2FEF7A991C73224300EBF526 /* ResultEntity.m */,
+				2FEF7A9A1C73224300EBF526 /* UserEntity.h */,
+				2FEF7A9B1C73224300EBF526 /* UserEntity.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		9CB345F8FF6391BAA4D3F5E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1415,6 +1499,7 @@
 				2F16E5E81B5DF08F007947D0 /* AddressDetailViewController.m in Sources */,
 				2F16E6351B5DF162007947D0 /* AddressEntity.m in Sources */,
 				2F16E5A01B5DEFEE007947D0 /* AddressFormView.m in Sources */,
+				2FEF7AA31C73224300EBF526 /* BaseView.m in Sources */,
 				2F16E5E91B5DF08F007947D0 /* AddressFormViewController.m in Sources */,
 				2F16E5A81B5DEFEE007947D0 /* AddressSelectorView.m in Sources */,
 				2F16E5F11B5DF08F007947D0 /* AddressSelectorViewController.m in Sources */,
@@ -1422,6 +1507,7 @@
 				2F16E5EA1B5DF08F007947D0 /* AddressViewController.m in Sources */,
 				2F60BE3E1BF4944900BD99CC /* AdvertEntity.m in Sources */,
 				2FB72F6C1BB935B700CB8E62 /* AppCollectionView.m in Sources */,
+				2FEF7AA41C73224300EBF526 /* BaseViewController.m in Sources */,
 				2F16E62F1B5DF162007947D0 /* AppExtension.m in Sources */,
 				2F16E6301B5DF162007947D0 /* AppTableView.m in Sources */,
 				2F16E6311B5DF162007947D0 /* AppUIUtil.m in Sources */,
@@ -1435,6 +1521,7 @@
 				2FD99FB51C48CF050065293E /* RECommonFunctions.m in Sources */,
 				2F5C8B251BD8C8A300EF1586 /* CaseCategoryViewController.m in Sources */,
 				2F16E5AE1B5DEFEE007947D0 /* CaseCommentView.m in Sources */,
+				2FEF7A9F1C73224300EBF526 /* BaseEntity.m in Sources */,
 				2F16E5A91B5DEFEE007947D0 /* CaseConfirmedView.m in Sources */,
 				2F7F8C0A1B7C2C0300EF4938 /* CaseDetailView.m in Sources */,
 				2F16E6381B5DF162007947D0 /* CaseEntity.m in Sources */,
@@ -1456,6 +1543,7 @@
 				2FD99FB61C48CF050065293E /* REFrostedContainerViewController.m in Sources */,
 				2F25383B1C1E6095009FC19B /* RechargeView.m in Sources */,
 				2FD99FD81C48CF060065293E /* ZCTradeView.m in Sources */,
+				2FEF7AA51C73224300EBF526 /* ErrorEntity.m in Sources */,
 				2F16E6391B5DF162007947D0 /* CategoryEntity.m in Sources */,
 				2F39B38A1BF43D9D00234ACF /* CityView.m in Sources */,
 				2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */,
@@ -1468,6 +1556,7 @@
 				2F2538381C1E6066009FC19B /* RechargeViewController.m in Sources */,
 				2F75B5701C27AD410091FEAE /* PaymentEntity.m in Sources */,
 				2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */,
+				2FEF7AA81C73224300EBF526 /* UserEntity.m in Sources */,
 				2FD99FB91C48CF050065293E /* UIView+REFrostedViewController.m in Sources */,
 				2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */,
 				2BB0C0A01BDF55F900293737 /* ForgetPasswordViewController.m in Sources */,
@@ -1492,6 +1581,7 @@
 				2F16E63D1B5DF162007947D0 /* ModelEntity.m in Sources */,
 				2B59B9151C1AC4FA00918756 /* SetPayPasswordView.m in Sources */,
 				2F16E5A21B5DEFEE007947D0 /* ProfileNicknameView.m in Sources */,
+				2FEF7AA61C73224300EBF526 /* FileEntity.m in Sources */,
 				2FD99FBC1C48CF050065293E /* SpringBoardButton.m in Sources */,
 				2FD99FBD1C48CF050065293E /* TAAbstractDotView.m in Sources */,
 				2FD99FD71C48CF060065293E /* ZCTradeKeyboard.m in Sources */,
@@ -1513,7 +1603,11 @@
 				2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */,
 				2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */,
 				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
+				2FEF7AA11C73224300EBF526 /* BaseScrollView.m in Sources */,
 				2F16E5A41B5DEFEE007947D0 /* SafetyPasswordView.m in Sources */,
+				2FEF7AA21C73224300EBF526 /* BaseTableView.m in Sources */,
+				2FEF7AA71C73224300EBF526 /* ResultEntity.m in Sources */,
+				2FEF7AA91C73224300EBF526 /* LttFramework.m in Sources */,
 				2F16E5ED1B5DF08F007947D0 /* SafetyPasswordViewController.m in Sources */,
 				2F16E5A51B5DEFEE007947D0 /* SafetyView.m in Sources */,
 				2F16E5EE1B5DF08F007947D0 /* SafetyViewController.m in Sources */,
@@ -1526,8 +1620,10 @@
 				2F16E5F01B5DF08F007947D0 /* SuggestionViewController.m in Sources */,
 				2B59B91F1C1AC50F00918756 /* MyWalletViewController.m in Sources */,
 				2FD99FD61C48CF060065293E /* ZCTradeInputView.m in Sources */,
+				2FEF7AA01C73224300EBF526 /* BaseHandler.m in Sources */,
 				2F20ECC81C1AB8E3009B9ED6 /* ProtocolViewController.m in Sources */,
 				2B59B91E1C1AC50F00918756 /* BalanceListViewController.m in Sources */,
+				2FEF7A9E1C73224300EBF526 /* BaseCollectionView.m in Sources */,
 				2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */,
 				2F20ECCB1C1AB9BD009B9ED6 /* ProtocolView.m in Sources */,
 			);

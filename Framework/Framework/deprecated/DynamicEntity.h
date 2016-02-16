@@ -6,9 +6,9 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "BaseEntity.h"
+#import "FWEntity.h"
 
-@interface DynamicEntity : BaseEntity
+@interface DynamicEntity : FWEntity
 
 @prop_strong(NSDictionary *, data)
 

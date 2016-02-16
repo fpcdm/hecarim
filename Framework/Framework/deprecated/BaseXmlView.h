@@ -6,7 +6,7 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "BaseView.h"
+#import "FWView.h"
 #import "IView+Xml.h"
 
 @class BaseXmlView;
@@ -16,7 +16,7 @@ typedef IView FIView;
 //视图加载成功回调
 typedef void (^XmlViewCallback)(BaseXmlView *view);
 
-@interface BaseXmlView : BaseView
+@interface BaseXmlView : FWView
 
 //设置xml文件路径，支持URL
 + (void)setXmlPath:(NSString *)xmlPath;
