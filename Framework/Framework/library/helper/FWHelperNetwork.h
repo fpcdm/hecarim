@@ -34,9 +34,9 @@ typedef NS_ENUM(NSInteger, FWHelperNetworkStatus) {
 + (BOOL) networkAvailable;
 
 //开始监听网络变化
-- (void) startWatch;
+- (void) startNotifier;
 
 //结束监听网络变化
-- (void) endWatch;
+- (void) endNotifier;
 
 @end

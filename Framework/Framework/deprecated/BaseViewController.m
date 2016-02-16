@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "Reachability.h"
+#import "FWHelperNetwork.h"
 
 @interface BaseViewController ()
 
@@ -86,25 +86,7 @@
 
 - (BOOL) checkNetwork
 {
-    Reachability *reach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus status = [reach currentReachabilityStatus];
-    
-    BOOL result = NO;
-    switch (status) {
-            //WIFI
-        case ReachableViaWiFi:
-            result = YES;
-            break;
-            //WWAN
-        case ReachableViaWWAN:
-            result = YES;
-            break;
-            //不能访问
-        case NotReachable:
-        default:
-            result = NO;
-            break;
-    }
+    BOOL result = [FWHelperNetwork networkAvailable];
     
     //错误提示
     if (!result) {
@@ -112,60 +94,6 @@
     }
     
     return result;
-}
-
-//切换视图,类似push效果
-- (void) pushView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion
-{
-    if (animated) {
-        [UIView animateWithDuration:0.1f
-                         animations:^{
-                            self.view.frame = CGRectMake(-self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                         }
-                         completion:^(BOOL finished){
-                             self.view = view;
-                             self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                             [UIView animateWithDuration:0.2f
-                                              animations:^{
-                                                  self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                                              }
-                                              completion:^(BOOL finished){
-                                                  if (completion) completion();
-                                              }
-                              ];
-                         }
-         ];
-    } else {
-        self.view = view;
-        if (completion) completion();
-    }
-}
-
-//切换视图,类似pop效果
-- (void) popView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion
-{
-    if (animated) {
-        [UIView animateWithDuration:0.1f
-                         animations:^{
-                             self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                         }
-                         completion:^(BOOL finished){
-                             self.view = view;
-                             self.view.frame = CGRectMake(-self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                             [UIView animateWithDuration:0.2f
-                                              animations:^{
-                                                  self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-                                              }
-                                              completion:^(BOOL finished){
-                                                  if (completion) completion();
-                                              }
-                              ];
-                         }
-         ];
-    } else {
-        self.view = view;
-        if (completion) completion();
-    }
 }
 
 @end

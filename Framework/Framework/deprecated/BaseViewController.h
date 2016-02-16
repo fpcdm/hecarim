@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FrameworkConfig.h"
+#import "UIViewController+Framework.h"
 #import "UIViewController+Dialog.h"
 #import "BaseHandler.h"
 #import "BaseXmlView.h"
@@ -34,11 +35,5 @@ typedef void (^CallbackBlock)(id object);
 
 //加载数据通用方法，完成后执行回调，不自动调用
 - (void) loadData: (CallbackBlock) success failure: (CallbackBlock) failure;
-
-//切换self.view视图,类似push效果
-- (void) pushView: (UIView *) view animated: (BOOL) animated completion: (void (^)())completion;
-
-//切换self.view视图,类似pop效果
-- (void) popView: (UIView *) view animated: (BOOL) animated completion: (void (^)()) completion;
 
 @end

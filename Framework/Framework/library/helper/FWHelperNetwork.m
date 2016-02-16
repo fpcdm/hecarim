@@ -51,7 +51,7 @@
 }
 
 //开始监听网络变化
-- (void) startWatch
+- (void) startNotifier
 {
     if (reachability) return;
     
@@ -63,7 +63,7 @@
 }
 
 //结束监听网络变化
-- (void) endWatch
+- (void) endNotifier
 {
     if (!reachability) return;
     
@@ -93,7 +93,7 @@
 
 - (void)dealloc
 {
-    [self endWatch];
+    [self endNotifier];
 }
 
 @end

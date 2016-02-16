@@ -50,4 +50,10 @@
 //隐藏弹出框
 - (void)hideDialog;
 
+//切换view视图,类似push效果
+- (void)pushView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion;
+
+//切换view视图,类似pop效果
+- (void)popView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion;
+
 @end
