@@ -9,7 +9,6 @@
 #import "RestKitUtil.h"
 #import "FrameworkConfig.h"
 #import "UserEntity.h"
-#import "StorageUtil.h"
 
 static RestKitUtil *sharedClient = nil;
 

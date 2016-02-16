@@ -7,7 +7,6 @@
 //
 
 #import "AppTableView.h"
-#import "UIScrollView+RefreshLoading.h"
 
 @protocol BalanceListViewDelegate <NSObject>
 

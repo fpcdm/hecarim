@@ -13,7 +13,6 @@
 #import "RegisterSuccessView.h"
 #import "RegisterInfoView.h"
 #import "ValidateUtil.h"
-#import "UIViewController+BackButtonHandler.h"
 #import "UserHandler.h"
 #import "HelperHandler.h"
 #import "TimerUtil.h"

@@ -14,7 +14,6 @@
 #import "TimerUtil.h"
 #import "ResetPasswordView.h"
 #import "ResetPasswordSuccess.h"
-#import "UIViewController+BackButtonHandler.h"
 #import "LoginViewController.h"
 #import "UserHandler.h"
 

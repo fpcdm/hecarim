@@ -16,7 +16,6 @@
 #import "UpdatePayPasswordView.h"
 #import "UpdatePayPasswordSuccessView.h"
 #import "UserHandler.h"
-#import "UIView+Loading.h"
 
 @interface PayPasswordViewController ()<SetPayPasswordCodeViewDelegate,SetPayPasswordViewDelegate,UpdatePayPasswordViewDelegate,UpdatePayPasswordSuccessViewDelegate>
 

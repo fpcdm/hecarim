@@ -10,7 +10,6 @@
 #import "CityView.h"
 #import "HelperHandler.h"
 #import "LocationUtil.h"
-#import "UINavigationController+Vertical.h"
 
 @interface CityViewController () <CityViewDelegate>
 

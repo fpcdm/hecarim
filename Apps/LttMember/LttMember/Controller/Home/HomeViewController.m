@@ -15,14 +15,12 @@
 #import "HelperHandler.h"
 #import "LocationUtil.h"
 #import "TimerUtil.h"
-#import "UIView+Loading.h"
 #import "LttNavigationController.h"
 #import "CaseCategoryViewController.h"
 #import "CNPPopupController.h"
 #import "CasePropertyView.h"
 #import "AddressEntity.h"
 #import "CityViewController.h"
-#import "UINavigationController+Vertical.h"
 
 //GPS数据缓存，优化GPS耗电
 static LocationEntity *lastLocation = nil;

@@ -8,7 +8,6 @@
 
 #import "AppTableView.h"
 #import "StaffEntity.h"
-#import "UIScrollView+RefreshLoading.h"
 
 @protocol StaffListViewDelegate <NSObject>
 

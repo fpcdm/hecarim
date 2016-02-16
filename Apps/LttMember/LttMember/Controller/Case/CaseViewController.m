@@ -20,7 +20,6 @@
 #import "TimerUtil.h"
 #import "CaseHandler.h"
 #import "HomeViewController.h"
-#import "UIView+Loading.h"
 #import "LttAppDelegate.h"
 #import "ZCTradeView.h"
 #import "UserHandler.h"

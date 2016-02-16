@@ -7,7 +7,6 @@
 //
 
 #import "AppExtension.h"
-#import "StorageUtil.h"
 
 //StorageUtil分类
 @interface StorageUtil (App)

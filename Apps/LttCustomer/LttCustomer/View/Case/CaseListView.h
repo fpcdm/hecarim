@@ -8,7 +8,6 @@
 
 #import "AppTableView.h"
 #import "CaseEntity.h"
-#import "UIScrollView+RefreshLoading.h"
 
 @protocol CaseListViewDelegate <NSObject>
 

@@ -10,7 +10,6 @@
 #import "GoodsEntity.h"
 #import "ServiceEntity.h"
 #import "UIImageView+WebCache.h"
-#import "UIView+Loading.h"
 
 @implementation CaseEntity
 

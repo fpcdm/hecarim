@@ -17,7 +17,6 @@
 #import "RecommendShareViewController.h"
 #import "HomeViewController.h"
 #import "UserHandler.h"
-#import "UIViewController+BackButtonHandler.h"
 #import "MyWalletViewController.h"
 
 @interface AccountViewController () <AccountViewDelegate>
