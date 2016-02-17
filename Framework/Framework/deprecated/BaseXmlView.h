@@ -7,11 +7,9 @@
 //
 
 #import "FWView.h"
-#import "IView+Xml.h"
+#import "IView.h"
 
 @class BaseXmlView;
-
-typedef IView FIView;
 
 //视图加载成功回调
 typedef void (^XmlViewCallback)(BaseXmlView *view);
@@ -43,17 +41,8 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 //视图加载失败钩子，子类重写
 - (void)xmlViewFailed;
 
-//todo: 设置事件代理，不一定是viewController
-//todo: delegate,作用1.代理事件 2.解析meta和title 如viewController实现XmlViewDelegate:parseMeta等
-
-//获取控制器
-- (UIViewController *)viewController;
-
-//设置控制器
-- (void)setViewController:(UIViewController *)viewController;
-
-//获取主元素
-- (FIView *)body;
+//获取文档主元素
+- (FIView *)document;
 
 //获取子元素
 - (FIView *)getElementById:(NSString *)id;

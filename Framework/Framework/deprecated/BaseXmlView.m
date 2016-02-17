@@ -9,6 +9,7 @@
 #import "BaseXmlView.h"
 #import "FWCache.h"
 #import "HttpUtil.h"
+#import "IResourceMananger.h"
 
 static NSString *xmlPath = nil;
 static NSString *xmlExt = @"html";
@@ -123,7 +124,7 @@ static NSString *patchPath = nil;
     }
     
     //关闭XML缓存
-    [IView xmlCacheEnabled:NO];
+    [IResourceMananger sharedMananger].enableCssCache = NO;
 #endif
     
     //检查补丁缓存是否存在
@@ -236,13 +237,19 @@ static NSString *patchPath = nil;
 
 - (void)loadCallback:(IView *)view
 {
+    //自动设置代理
+    if (view) {
+        //转移代理
+        if (_xmlView && _xmlView.delegate) {
+            view.delegate = _xmlView.delegate;
+        //默认代理，子类才自动设置
+        } else if (![self isMemberOfClass:[BaseXmlView class]]) {
+            view.delegate = self;
+        }
+    }
+    
     //移除之前的视图
     if (_xmlView) {
-        //刷新关联控制器
-        if ([_xmlView issetViewController]) {
-            view.viewController = _xmlView.viewController;
-        }
-        
         [_xmlView removeFromSuperview];
         _xmlView = nil;
     }
@@ -315,19 +322,7 @@ static NSString *patchPath = nil;
     
 }
 
-- (UIViewController *)viewController
-{
-    return _xmlView ? _xmlView.viewController : nil;
-}
-
-- (void)setViewController:(UIViewController *)viewController
-{
-    if (_xmlView) {
-        _xmlView.viewController = viewController;
-    }
-}
-
-- (IView *)body
+- (IView *)document
 {
     return _xmlView;
 }

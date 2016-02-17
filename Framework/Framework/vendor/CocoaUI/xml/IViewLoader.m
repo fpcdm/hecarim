@@ -301,11 +301,10 @@ typedef enum{
     NSString *onclick = [attributeDict objectForKey:@"onclick"];
     if (onclick) {
         [view addEvent:IEventClick handler:^(IEventType event, IView *view) {
-            UIViewController *viewController = view.viewController;
             SEL selector = NSSelectorFromString(onclick);
-            if (viewController && [viewController respondsToSelector:selector]) {
+            if (view.delegate && [view.delegate respondsToSelector:selector]) {
                 ignored_selector
-                [viewController performSelector:selector withObject:view];
+                [view.delegate performSelector:selector withObject:view];
                 ignored_end
             }
         }];

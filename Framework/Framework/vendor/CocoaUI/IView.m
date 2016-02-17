@@ -16,6 +16,7 @@
 #import "IStyleSheet.h"
 #import "ICssRule.h"
 #import "UIColor+Framework.h"
+#import "UIViewController+FIView.h"
 
 @interface IView (){
 	id _data;
@@ -29,14 +30,74 @@
 	IMaskUIView *maskView;
 	UIView *contentView;
 	BOOL _needRenderOnUnhighlight;
-    
-    UIViewController *_viewController;
 }
 @property (nonatomic) BOOL need_layout;
 @property (nonatomic) UIView *backgroundView;
 @end
 
 @implementation IView
+
++ (IView *)viewWithString:(NSString *)string
+{
+    return [IView viewFromXml:string];
+}
+
++ (IView *)viewWithString:(NSString *)string basePath:(NSString *)basePath
+{
+    return [IViewLoader viewFromXml:string basePath:basePath];
+}
+
++ (IView *)viewWithFile:(NSString *)file
+{
+    return [IView viewWithContentsOfFile:file];
+}
+
++ (IView *)viewWithName:(NSString *)name
+{
+    return [IView namedView:name];
+}
+
++ (void)viewWithUrl:(NSString *)url callback:(FIViewCallback)callback
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [IViewLoader loadUrl:url callback:^(IView *view) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        if (callback) {
+            callback(view);
+        }
+    }];
+}
+
+- (IView *)getElementById:(NSString *)id
+{
+    return [self getViewById:id];
+}
+
+- (void)css:(NSString *)css
+{
+    [self.style set:css];
+}
+
+- (NSString *)attr:(NSString *)name
+{
+    return nil;
+}
+
+- (void)attr:(NSString *)name value:(NSString *)value
+{
+    
+}
+
+- (NSString *)text
+{
+    return nil;
+}
+
+- (void)text:(NSString *)value
+{
+    
+}
 
 + (IView *)viewWithUIView:(UIView *)view{
 	IView *ret = [[IView alloc] init];
@@ -185,8 +246,6 @@
 }
 
 - (UIViewController *)viewController{
-    if (_viewController) return _viewController;
-    
 	UIResponder *responder = self;
 	while (responder){
 		if([responder isKindOfClass:[UIViewController class]]){
@@ -197,110 +256,27 @@
 	return nil;
 }
 
-- (BOOL)issetViewController
+- (void)setDelegate:(id)delegate
 {
-    return _viewController ? YES : NO;
-}
-
-- (void)setViewController:(UIViewController *)viewController
-{
-    _viewController = viewController;
-    if (!_viewController) return;
+    _delegate = delegate;
+    if (!_delegate ||
+        ![_delegate conformsToProtocol:@protocol(FIViewDelegate)]) return;
     
+    //必须实现FIViewDelegate才往下执行
+    //renderTitle:
     NSString *title = [self getAssociatedObjectForKey:"iview_title"];
     if (title) {
-        viewController.navigationItem.title = title;
+        if ([_delegate respondsToSelector:@selector(renderTitle:)]) {
+            [_delegate renderTitle:title];
+        }
     }
     
+    //renderMeta:
     NSArray *metas = [self getAssociatedObjectForKey:"iview_metas"];
     if (metas) {
         for (NSDictionary *meta in metas) {
-            NSString *metaName = [meta objectForKey:@"name"];
-            NSString *metaContent = [meta objectForKey:@"content"];
-            if (!metaName || !metaContent) continue;
-            
-            if ([metaName isEqualToString:@"navbar-bg-color"]) {
-                viewController.navigationController.navigationBar.barTintColor = [UIColor colorWithValue:metaContent];
-            }
-            if ([metaName isEqualToString:@"navbar-tint-color"]) {
-                viewController.navigationController.navigationBar.tintColor = [UIColor colorWithValue:metaContent];
-            }
-            if ([metaName isEqualToString:@"navbar-text-color"]) {
-                NSDictionary *oldAttrs = viewController.navigationController.navigationBar.titleTextAttributes;
-                NSMutableDictionary *attrs = oldAttrs ? [NSMutableDictionary dictionaryWithDictionary:oldAttrs] : [[NSMutableDictionary alloc] init];
-                [attrs setObject:[UIColor colorWithValue:metaContent] forKey:NSForegroundColorAttributeName];
-            }
-            
-            if ([metaName isEqualToString:@"navbar-hidden"]) {
-                if ([metaContent isEqualToString:@"true"]) {
-                    viewController.navigationController.navigationBar.hidden = YES;
-                } else {
-                    viewController.navigationController.navigationBar.hidden = NO;
-                }
-            }
-            
-            if ([metaName isEqualToString:@"statusbar-style"]) {
-                if ([metaContent isEqualToString:@"light"]) {
-                    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-                } else {
-                    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-                }
-            }
-            
-            if ([metaName isEqualToString:@"navbar-left-item"] || [metaName isEqualToString:@"navbar-right-item"]) {
-                NSString *metaOnclick = [meta objectForKey:@"onclick"];
-                NSString *metaStyle = [meta objectForKey:@"style"];
-                UIBarButtonItem *barItem = nil;
-                SEL action = metaOnclick ? NSSelectorFromString(metaOnclick) : nil;
-                if (action && ![viewController respondsToSelector:action]) {
-                    action = nil;
-                }
-                if (metaStyle && [metaStyle isEqualToString:@"image"]) {
-                    barItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:metaContent] style:UIBarButtonItemStylePlain target:viewController action:action];
-                } else if (metaStyle && [metaStyle isEqualToString:@"system"]) {
-                    //todo: back
-                    static NSDictionary *systemStyles = nil;
-                    if (!systemStyles) {
-                        systemStyles = @{
-                                         @"done": @(UIBarButtonSystemItemDone),
-                                         @"cancel": @(UIBarButtonSystemItemCancel),
-                                         @"edit": @(UIBarButtonSystemItemEdit),
-                                         @"save": @(UIBarButtonSystemItemSave),
-                                         @"add": @(UIBarButtonSystemItemAdd),
-                                         //@"flexiblespace": @(UIBarButtonSystemItemFlexibleSpace),
-                                         //@"fixedspace": @(UIBarButtonSystemItemFixedSpace),
-                                         @"compose": @(UIBarButtonSystemItemCompose),
-                                         @"reply": @(UIBarButtonSystemItemReply),
-                                         @"action": @(UIBarButtonSystemItemAction),
-                                         @"organize": @(UIBarButtonSystemItemOrganize),
-                                         @"bookmarks": @(UIBarButtonSystemItemBookmarks),
-                                         @"search": @(UIBarButtonSystemItemSearch),
-                                         @"refresh": @(UIBarButtonSystemItemRefresh),
-                                         @"stop": @(UIBarButtonSystemItemStop),
-                                         @"camera": @(UIBarButtonSystemItemCamera),
-                                         @"trash": @(UIBarButtonSystemItemTrash),
-                                         @"play": @(UIBarButtonSystemItemPlay),
-                                         @"pause": @(UIBarButtonSystemItemPause),
-                                         @"rewind": @(UIBarButtonSystemItemRewind),
-                                         @"fastforward": @(UIBarButtonSystemItemFastForward),
-                                         @"undo": @(UIBarButtonSystemItemUndo),
-                                         @"redo": @(UIBarButtonSystemItemRedo),
-                                         //@"pagecurl": @(UIBarButtonSystemItemPageCurl),
-                                         };
-                    }
-                    
-                    NSNumber *systemItem = [systemStyles objectForKey:metaContent];
-                    if (!systemItem) systemItem = @(UIBarButtonSystemItemDone);
-                    barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:[systemItem integerValue] target:viewController action:action];
-                } else {
-                    barItem = [[UIBarButtonItem alloc] initWithTitle:metaContent style:UIBarButtonItemStylePlain target:viewController action:action];
-                }
-                
-                if ([metaName isEqualToString:@"navbar-left-item"]) {
-                    viewController.navigationItem.leftBarButtonItem = barItem;
-                } else {
-                    viewController.navigationItem.rightBarButtonItem = barItem;
-                }
+            if ([_delegate respondsToSelector:@selector(renderMeta:)]) {
+                [_delegate renderMeta:meta];
             }
         }
     }

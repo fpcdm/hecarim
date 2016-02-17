@@ -28,8 +28,8 @@
     
     self.view = [BaseXmlView viewWithName:self.xmlName callback:^(BaseXmlView *view) {
         if (view) {
-            //关联控制器
-            view.viewController = self;
+            //自动设置事件代理
+            view.document.delegate = self;
             
             [self xmlViewLoaded];
         } else {

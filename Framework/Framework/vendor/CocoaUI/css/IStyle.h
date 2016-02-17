@@ -65,6 +65,7 @@
  */
 - (void)addClass:(NSString *)clz;
 - (void)removeClass:(NSString *)clz;
+- (void)toggleClass:(NSString *)clz;
 - (BOOL)hasClass:(NSString *)clz;
 
 @end

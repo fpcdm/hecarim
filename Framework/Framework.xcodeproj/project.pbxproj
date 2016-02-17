@@ -103,8 +103,6 @@
 		2F1C777F1C575B8F009080A3 /* NSObject+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */; };
 		2F1C77881C576C44009080A3 /* UITextView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77861C576C44009080A3 /* UITextView+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C77891C576C44009080A3 /* UITextView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77871C576C44009080A3 /* UITextView+Framework.m */; };
-		2F1C779C1C576DAD009080A3 /* IView+Xml.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C778A1C576DAD009080A3 /* IView+Xml.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1C779D1C576DAD009080A3 /* IView+Xml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C778B1C576DAD009080A3 /* IView+Xml.m */; };
 		2F1C77B81C577663009080A3 /* FWPluginLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B71C577663009080A3 /* FWPluginLoading.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */; };
@@ -112,6 +110,8 @@
 		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
 		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5171C4F1CC200B0DC4B /* JPInclude.m */; };
+		2F1FE8C11C740B8B00C76B8B /* UIViewController+FIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8BF1C740B8B00C76B8B /* UIViewController+FIView.h */; };
+		2F1FE8C21C740B8B00C76B8B /* UIViewController+FIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8C01C740B8B00C76B8B /* UIViewController+FIView.m */; };
 		2F24FB3A1C566B5300A82ABD /* FWRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB381C566B5300A82ABD /* FWRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F24FB3B1C566B5300A82ABD /* FWRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F24FB391C566B5300A82ABD /* FWRegistry.m */; };
 		2F24FB421C566E7800A82ABD /* FWCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB401C566E7800A82ABD /* FWCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -727,8 +727,6 @@
 		2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Framework.m"; sourceTree = "<group>"; };
 		2F1C77861C576C44009080A3 /* UITextView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Framework.h"; sourceTree = "<group>"; };
 		2F1C77871C576C44009080A3 /* UITextView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Framework.m"; sourceTree = "<group>"; };
-		2F1C778A1C576DAD009080A3 /* IView+Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IView+Xml.h"; sourceTree = "<group>"; };
-		2F1C778B1C576DAD009080A3 /* IView+Xml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IView+Xml.m"; sourceTree = "<group>"; };
 		2F1C77B71C577663009080A3 /* FWPluginLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoading.h; sourceTree = "<group>"; };
 		2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoadingDefault.h; sourceTree = "<group>"; };
 		2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginLoadingDefault.m; sourceTree = "<group>"; };
@@ -736,6 +734,8 @@
 		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
 		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
 		2F1CD5171C4F1CC200B0DC4B /* JPInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPInclude.m; sourceTree = "<group>"; };
+		2F1FE8BF1C740B8B00C76B8B /* UIViewController+FIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FIView.h"; sourceTree = "<group>"; };
+		2F1FE8C01C740B8B00C76B8B /* UIViewController+FIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FIView.m"; sourceTree = "<group>"; };
 		2F24FB381C566B5300A82ABD /* FWRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWRegistry.h; sourceTree = "<group>"; };
 		2F24FB391C566B5300A82ABD /* FWRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWRegistry.m; sourceTree = "<group>"; };
 		2F24FB401C566E7800A82ABD /* FWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCache.h; sourceTree = "<group>"; };
@@ -1303,8 +1303,6 @@
 				2F004E181C70730E000B4F97 /* PaginationEntity.m */,
 				2F004DE41C706936000B4F97 /* BaseXmlView.h */,
 				2F004DE51C706936000B4F97 /* BaseXmlView.m */,
-				2F1C778A1C576DAD009080A3 /* IView+Xml.h */,
-				2F1C778B1C576DAD009080A3 /* IView+Xml.m */,
 			);
 			path = deprecated;
 			sourceTree = "<group>";
@@ -1331,6 +1329,8 @@
 				2F1C35B31C4C89310060E793 /* ITableInternal.h */,
 				2F1C35B41C4C89310060E793 /* IView.h */,
 				2F1C35B51C4C89310060E793 /* IView.m */,
+				2F1FE8BF1C740B8B00C76B8B /* UIViewController+FIView.h */,
+				2F1FE8C01C740B8B00C76B8B /* UIViewController+FIView.m */,
 				2F1C35B61C4C89310060E793 /* IViewInternal.h */,
 				2F1C35B81C4C89310060E793 /* widgets */,
 				2F1C35C91C4C89310060E793 /* xml */,
@@ -2350,6 +2350,7 @@
 				2F24FB4E1C5672A500A82ABD /* FWResponse.h in Headers */,
 				2F004E611C707755000B4F97 /* FWDefine.h in Headers */,
 				2F1C35F31C4C89310060E793 /* IButton.h in Headers */,
+				2F1FE8C11C740B8B00C76B8B /* UIViewController+FIView.h in Headers */,
 				2F004E2D1C70730E000B4F97 /* DynamicEntity.h in Headers */,
 				2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */,
 				2FE6B5A61C70A4530039838D /* FWEntity.h in Headers */,
@@ -2372,7 +2373,6 @@
 				2F1C35EF1C4C89310060E793 /* IView.h in Headers */,
 				2F6596151C5CA31100CC8C06 /* UIImage+Framework.h in Headers */,
 				2F1C35E61C4C89310060E793 /* IMaskUIView.h in Headers */,
-				2F1C779C1C576DAD009080A3 /* IView+Xml.h in Headers */,
 				2FF10B691C4CBF1100365024 /* Framework.pch in Headers */,
 				2F24FB421C566E7800A82ABD /* FWCache.h in Headers */,
 				2F1C35F91C4C89310060E793 /* ILabel.h in Headers */,
@@ -2808,7 +2808,6 @@
 				2F1C35DB1C4C89310060E793 /* IStyle.m in Sources */,
 				2F1C35F61C4C89310060E793 /* IImage.m in Sources */,
 				2FD99E311C48CE6F0065293E /* MJRefreshFooter.m in Sources */,
-				2F1C779D1C576DAD009080A3 /* IView+Xml.m in Sources */,
 				2FD99EE61C48CE700065293E /* TSBlurView.m in Sources */,
 				2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */,
 				2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */,
@@ -2914,6 +2913,7 @@
 				2FD99E241C48CE6F0065293E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2FD99D731C48CE6F0065293E /* FLEXArgumentInputColorView.m in Sources */,
 				2F6596401C5CEFA100CC8C06 /* FWTheme.m in Sources */,
+				2F1FE8C21C740B8B00C76B8B /* UIViewController+FIView.m in Sources */,
 				2F1C35FA1C4C89310060E793 /* ILabel.m in Sources */,
 				2F65961A1C5CB51400CC8C06 /* UIScrollView+Framework.m in Sources */,
 				2F1C36061C4C89310060E793 /* IDTHTMLViewLoader.m in Sources */,

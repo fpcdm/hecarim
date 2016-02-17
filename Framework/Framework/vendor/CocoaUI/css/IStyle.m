@@ -299,6 +299,15 @@
 	}
 }
 
+- (void)toggleClass:(NSString *)clz
+{
+    if ([self hasClass:clz]) {
+        [self removeClass:clz];
+    } else {
+        [self addClass:clz];
+    }
+}
+
 - (BOOL)hasClass:(NSString *)clz{
 	clz = [clz lowercaseString];
 	return [_classes containsObject:clz];

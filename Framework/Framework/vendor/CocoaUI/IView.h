@@ -20,6 +20,7 @@ typedef enum{
 	IEventTap          = IEventClick,
 	IEventChange       = 1<<3,
 	IEventReturn       = 1<<4,
+	FIEventClick       = 1<<2,
 }IEventType;
 
 typedef enum{
@@ -29,10 +30,52 @@ typedef enum{
 }IRefreshState;
 
 @class ITable;
+@class IView;
+
+//为重构需要，只能使用FIView,FIViewDelegate,FIEvent,FIViewCallback
+typedef IView FIView;
+typedef IEventType FIEvent;
+
+//视图初始化成功回调
+typedef void (^FIViewCallback)(FIView *view);
+
+@protocol FIViewDelegate <NSObject>
+
+@optional
+- (void)renderTitle:(NSString *)title;
+- (void)renderMeta:(NSDictionary *)meta;
+
+@end
 
 @interface IView : UIView
 
+//创建相关
++ (IView *)viewWithString:(NSString *)string;
+
++ (IView *)viewWithString:(NSString *)string basePath:(NSString *)basePath;
+
++ (IView *)viewWithFile:(NSString *)file;
+
++ (IView *)viewWithName:(NSString *)name;
+
++ (void)viewWithUrl:(NSString *)url callback:(FIViewCallback)callback;
+
+//样式相关
+- (void)css:(NSString *)css;
+//todo:attr get?
+- (NSString *)attr:(NSString *)name;
+- (void)attr:(NSString *)name value:(NSString *)value;
+//todo:text get?
+- (NSString *)text;
+- (void)text:(NSString *)value;
+
+//文档相关
+- (IView *)getElementById:(NSString *)id;
+
 @property (nonatomic, readonly) IStyle *style;
+
+//事件代理
+@property (nonatomic, retain) id delegate;
 
 + (IView *)viewWithUIView:(UIView *)view;
 + (IView *)viewWithUIView:(UIView *)view style:(NSString *)css;
@@ -67,9 +110,6 @@ typedef enum{
  * the first UIViewController, if not any found, it will return nil.
  */
 - (UIViewController *)viewController;
-- (BOOL)issetViewController;
-- (void)setViewController:(UIViewController *)viewController;
-
 
 - (void)show;
 - (void)hide;
