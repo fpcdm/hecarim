@@ -36,9 +36,6 @@ typedef enum{
 typedef IView FIView;
 typedef IEventType FIEvent;
 
-//视图初始化成功回调
-typedef void (^FIViewCallback)(FIView *view);
-
 @protocol FIViewDelegate <NSObject>
 
 @optional
@@ -58,7 +55,7 @@ typedef void (^FIViewCallback)(FIView *view);
 
 + (IView *)viewWithName:(NSString *)name;
 
-+ (void)viewWithUrl:(NSString *)url callback:(FIViewCallback)callback;
++ (void)viewWithUrl:(NSString *)url callback:(void (^)(FIView *view))callback;
 
 //样式相关
 - (void)css:(NSString *)css;

@@ -57,7 +57,7 @@
     return [IView namedView:name];
 }
 
-+ (void)viewWithUrl:(NSString *)url callback:(FIViewCallback)callback
++ (void)viewWithUrl:(NSString *)url callback:(void (^)(FIView *))callback
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [IViewLoader loadUrl:url callback:^(IView *view) {

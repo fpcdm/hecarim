@@ -1,20 +1,15 @@
 //
-//  BaseXmlView.h
+//  FWXmlView.h
 //  Framework
 //
-//  Created by wuyong on 16/1/19.
+//  Created by wuyong on 16/2/17.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import "FWView.h"
 #import "IView.h"
 
-@class BaseXmlView;
-
-//视图加载成功回调
-typedef void (^XmlViewCallback)(BaseXmlView *view);
-
-@interface BaseXmlView : FWView
+@interface FWXmlConfig : NSObject
 
 //设置xml文件路径，支持URL
 + (void)setXmlPath:(NSString *)xmlPath;
@@ -23,14 +18,18 @@ typedef void (^XmlViewCallback)(BaseXmlView *view);
 + (void)setXmlExt:(NSString *)xmlExt;
 
 //设置补丁URL路径模板，优先加载补丁，补丁及时生效
-//@todo：子类实现补丁，支持版本（url定义版本）或者支持单个设置，全局损耗性能
+//@todo：支持单个设置，全局损耗性能
 + (void)setPatchPath:(NSString *)patchPath;
 
-//加载某视图不执行回调
-+ (BaseXmlView *)viewWithName:(NSString *)xmlName;
+@end
 
-//加载某视图并执行回调，事件绑定需在页面加载完成后
-+ (BaseXmlView *)viewWithName:(NSString *)xmlName callback:(XmlViewCallback)callback;
+@interface FWXmlView : FWView
+
+//加载某视图不执行回调，用于本地文件
++ (FWXmlView *)viewWithName:(NSString *)xmlName;
+
+//加载某视图并执行回调，事件绑定需在页面加载完成后，用于本地和远程文件
++ (FWXmlView *)viewWithName:(NSString *)xmlName callback:(void (^)(FWXmlView *view))callback;
 
 //视图名称，默认为视图名称去掉XmlView和View后的字符串，子类可重写
 - (NSString *)xmlName;

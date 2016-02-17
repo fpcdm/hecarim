@@ -34,4 +34,9 @@
 
 - (void)removeAllAssociatedObjects;
 
+//Empty
+- (BOOL)isNotNull;
+
+- (BOOL)isNotEmpty;
+
 @end

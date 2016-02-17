@@ -14,8 +14,8 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 
-#import "HttpUtil.h"
-#import "EncodeUtil.h"
+#import "FWHelperHttp.h"
+#import "FWHelperEncoder.h"
 #import "FWHelperDevice.h"
 #endif
 
@@ -207,11 +207,11 @@ static FWDebug *sharedInstance = nil;
     if (!oldHash) return;
     
     //开始解析
-    [HttpUtil get:url params:nil callback:^(NSData *data) {
+    [FWHelperHttp get:url params:nil callback:^(NSData *data, NSError *error) {
         //响应正常
         if (data != nil) {
             NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSString *newHash = [EncodeUtil md5:response];
+            NSString *newHash = [FWHelperEncoder md5:response];
             
             //判断是否响应改变
             BOOL hashChanged = oldHash.length > 0 && ![oldHash isEqualToString:newHash];

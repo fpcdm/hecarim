@@ -1,40 +1,21 @@
 //
-//  BaseXmlView.m
+//  FWXmlView.m
 //  Framework
 //
-//  Created by wuyong on 16/1/19.
+//  Created by wuyong on 16/2/17.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "BaseXmlView.h"
+#import "FWXmlView.h"
 #import "FWCache.h"
-#import "HttpUtil.h"
+#import "FWHelperHttp.h"
 #import "IResourceMananger.h"
 
 static NSString *xmlPath = nil;
 static NSString *xmlExt = @"html";
 static NSString *patchPath = nil;
 
-#define XMLVIEW_CACHE_PREFIX @"XmlView."
-
-#ifdef APP_DEBUG
-#import "FWDebug.h"
-
-@interface BaseXmlView () <FWDebugDelegate>
-
-@end
-#endif
-
-@implementation BaseXmlView
-{
-    NSString *_xmlName;
-    NSString *_xmlFileName;
-    NSString *_xmlPath;
-    BOOL _xmlIsUrl;
-    XmlViewCallback _xmlCallback;
-    
-    IView *_xmlView;
-}
+@implementation FWXmlConfig
 
 + (void)setXmlPath:(NSString *)_xmlPath
 {
@@ -51,14 +32,37 @@ static NSString *patchPath = nil;
     patchPath = _patchPath;
 }
 
-+ (BaseXmlView *)viewWithName:(NSString *)xmlName
+@end
+
+#define XMLVIEW_CACHE_PREFIX @"XmlView."
+
+#ifdef APP_DEBUG
+#import "FWDebug.h"
+
+@interface FWXmlView () <FWDebugDelegate>
+
+@end
+#endif
+
+@implementation FWXmlView
+{
+    NSString *_xmlName;
+    NSString *_xmlFileName;
+    NSString *_xmlPath;
+    BOOL _xmlIsUrl;
+    void (^_xmlCallback)(FWXmlView *view);
+    
+    IView *_xmlView;
+}
+
++ (FWXmlView *)viewWithName:(NSString *)xmlName
 {
     return [self viewWithName:xmlName callback:nil];
 }
 
-+ (BaseXmlView *)viewWithName:(NSString *)xmlName callback:(XmlViewCallback)callback
++ (FWXmlView *)viewWithName:(NSString *)xmlName callback:(void (^)(FWXmlView *view))callback
 {
-    BaseXmlView *xmlView = [[BaseXmlView alloc] initWithXmlName:xmlName callback:callback];
+    FWXmlView *xmlView = [[FWXmlView alloc] initWithXmlName:xmlName callback:callback];
     return xmlView;
 }
 
@@ -75,7 +79,7 @@ static NSString *patchPath = nil;
     return self;
 }
 
-- (instancetype)initWithXmlName:(NSString *)xmlName callback:(XmlViewCallback)callback
+- (instancetype)initWithXmlName:(NSString *)xmlName callback:(void (^)(FWXmlView *view))callback
 {
     self = [super init];
     if (!self) return nil;
@@ -110,9 +114,9 @@ static NSString *patchPath = nil;
     
     _xmlPath = _xmlFileName;
     if (xmlPath) {
-        _xmlPath = [HttpUtil joinPath:xmlPath path:_xmlPath];
+        _xmlPath = [FWHelperHttp joinPath:xmlPath path:_xmlPath];
     }
-    _xmlIsUrl = [HttpUtil isUrl:_xmlPath];
+    _xmlIsUrl = [FWHelperHttp isUrl:_xmlPath];
     
 #ifdef APP_DEBUG
     //注册调试代理
@@ -135,7 +139,7 @@ static NSString *patchPath = nil;
             //刷新缓存
             [self refreshCache:patchXml];
         }];
-    //缓存不存在
+        //缓存不存在
     } else {
         [self reloadXmlView:nil isFile:NO callback:^{
             //监听补丁
@@ -155,7 +159,7 @@ static NSString *patchPath = nil;
         if (isFile) {
             IView *view = [IView viewWithFile:patchXml];
             [self loadCallback:view];
-        //补丁字符串
+            //补丁字符串
         } else {
             IView *view = [IView viewWithString:patchXml basePath:patchPath];
             [self loadCallback:view];
@@ -163,14 +167,14 @@ static NSString *patchPath = nil;
         
         //执行回调
         if (callback) callback();
-    //原始Xml
+        //原始Xml
     } else {
         if (!_xmlIsUrl) {
             //自定义路径
             if (xmlPath) {
                 IView *view = [IView viewWithFile:_xmlPath];
                 [self loadCallback:view];
-            //默认路径
+                //默认路径
             } else {
                 IView *view = [IView viewWithName:_xmlPath];
                 [self loadCallback:view];
@@ -202,10 +206,10 @@ static NSString *patchPath = nil;
 
 - (void)refreshCache:(NSString *)oldXml
 {
-    NSString *patchUrl = [HttpUtil joinPath:patchPath path:_xmlFileName];
+    NSString *patchUrl = [FWHelperHttp joinPath:patchPath path:_xmlFileName];
     
-    if ([HttpUtil isUrl:patchUrl]) {
-        [HttpUtil get:patchUrl params:nil callback:^(NSData *data) {
+    if ([FWHelperHttp isUrl:patchUrl]) {
+        [FWHelperHttp get:patchUrl params:nil callback:^(NSData *data, NSError *error) {
             [self refreshCallback:data xml:oldXml];
         }];
     } else {
@@ -243,7 +247,7 @@ static NSString *patchPath = nil;
         if (_xmlView && _xmlView.delegate) {
             view.delegate = _xmlView.delegate;
         //默认代理，子类才自动设置
-        } else if (![self isMemberOfClass:[BaseXmlView class]]) {
+        } else if (![self isMemberOfClass:[FWXmlView class]]) {
             view.delegate = self;
         }
     }
@@ -265,7 +269,7 @@ static NSString *patchPath = nil;
         if (_xmlCallback) {
             _xmlCallback(self);
         }
-    //加载失败
+        //加载失败
     } else {
         //回调函数
         [self xmlViewFailed];

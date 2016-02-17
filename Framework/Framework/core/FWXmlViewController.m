@@ -7,7 +7,7 @@
 //
 
 #import "FWXmlViewController.h"
-#import "BaseXmlView.h"
+#import "FWXmlView.h"
 
 @interface FWXmlViewController ()
 
@@ -26,7 +26,7 @@
         return;
     }
     
-    self.view = [BaseXmlView viewWithName:self.xmlName callback:^(BaseXmlView *view) {
+    self.view = [FWXmlView viewWithName:self.xmlName callback:^(FWXmlView *view) {
         if (view) {
             //自动设置事件代理
             view.document.delegate = self;

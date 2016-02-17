@@ -1,15 +1,16 @@
 //
-//  HttpUtil.m
+//  FWHelperHttp.m
 //  Framework
 //
-//  Created by wuyong on 16/1/20.
+//  Created by wuyong on 16/2/17.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "HttpUtil.h"
+#import "FWHelperHttp.h"
 #import "IKitUtil.h"
+#import "FWHelperEncoder.h"
 
-@implementation HttpUtil
+@implementation FWHelperHttp
 
 + (NSString *)getRootPath:(NSString *)path
 {
@@ -26,49 +27,47 @@
     return [IKitUtil buildPath:basePath src:path];
 }
 
-+ (NSString *)urlEncode:(NSString *)str
-{
-    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
-    str = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(
-                                                                       NULL,
-                                                                       (CFStringRef)str,
-                                                                       NULL,
-                                                                       CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                       cfEncoding
-                                                                       );
-    return str;
-}
-
-+ (NSString *)urlDecode:(NSString *)str
-{
-    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
-    str = (__bridge NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding (
-                                                                                        NULL,
-                                                                                        (CFStringRef)str,
-                                                                                        CFSTR(""),
-                                                                                        cfEncoding
-                                                                                        );
-    return str;
-}
-
-+ (NSString *)queryString:(NSDictionary *)dict encoding:(BOOL)encoding
++ (NSString *)queryString:(NSDictionary *)dict
 {
     NSMutableArray * pairs = [NSMutableArray array];
     for ( NSString * key in dict.allKeys )
     {
         NSString * value = [dict objectForKey:key];
-        NSString * urlEncoding = encoding ? [self urlEncode:value] : value;
+        NSString * urlEncoding = [FWHelperEncoder urlEncodeComponent:value];
         [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, urlEncoding]];
     }
     return [pairs componentsJoinedByString:@"&"];
 }
 
-+ (NSString *)appendParam:(NSString *)url param:(NSDictionary *)param encoding:(BOOL)encoding
++ (NSString *)addParams:(NSString *)url params:(NSDictionary *)params
 {
     NSURL * parsedURL = [NSURL URLWithString:url];
     NSString * queryPrefix = parsedURL.query ? @"&" : @"?";
-    NSString * query = [self queryString:param encoding:encoding];
+    NSString * query = [self queryString:params];
     return [NSString stringWithFormat:@"%@%@%@", url, queryPrefix, query];
+}
+
++ (NSDictionary *)getParams:(NSString *)url
+{
+    NSMutableDictionary* pairs = [NSMutableDictionary dictionary];
+    if (NSNotFound != [url rangeOfString:@"?"].location) {
+        NSString *paramString = [url substringFromIndex:
+                                 ([url rangeOfString:@"?"].location + 1)];
+        NSCharacterSet* delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&"];
+        NSScanner* scanner = [[NSScanner alloc] initWithString:paramString];
+        while (![scanner isAtEnd]) {
+            NSString* pairString = nil;
+            [scanner scanUpToCharactersFromSet:delimiterSet intoString:&pairString];
+            [scanner scanCharactersFromSet:delimiterSet intoString:NULL];
+            NSArray* kvPair = [pairString componentsSeparatedByString:@"="];
+            if (kvPair.count == 2) {
+                NSString* key = [FWHelperEncoder urlDecodeComponent:[kvPair objectAtIndex:0]];
+                NSString* value = [FWHelperEncoder urlDecodeComponent:[kvPair objectAtIndex:1]];
+                [pairs setValue:value forKey:key];
+            }
+        }
+    }
+    return [NSDictionary dictionaryWithDictionary:pairs];
 }
 
 + (BOOL)isUrl:(NSString *)url
@@ -91,17 +90,17 @@
     return NO;
 }
 
-+ (void)get:(NSString *)url params:(id)params callback:(HttpUtilCallback)callback
++ (void)get:(NSString *)url params:(id)params callback:(void (^)(NSData *data, NSError *error))callback
 {
-    [self request:url params:params headers:nil method:HttpUtilMethodGet callback:callback];
+    [self request:url params:params headers:nil method:FWHelperHttpMethodGet callback:callback];
 }
 
-+ (void)post:(NSString *)url params:(id)params callback:(HttpUtilCallback)callback
++ (void)post:(NSString *)url params:(id)params callback:(void (^)(NSData *data, NSError *error))callback
 {
-    [self request:url params:params headers:nil method:HttpUtilMethodPost callback:callback];
+    [self request:url params:params headers:nil method:FWHelperHttpMethodPost callback:callback];
 }
 
-+ (void)request:(NSString *)url params:(id)params headers:(NSDictionary *)headers method:(HttpUtilMethod)method callback:(HttpUtilCallback)callback
++ (void)request:(NSString *)url params:(id)params headers:(NSDictionary *)headers method:(FWHelperHttpMethod)method callback:(void (^)(NSData *data, NSError *error))callback
 {
     NSMutableString *query = [[NSMutableString alloc] init];
     if (params && [params isKindOfClass: [NSString class]]) {
@@ -110,9 +109,9 @@
         NSUInteger n = [(NSDictionary *)params count];
         for (NSString *key in params) {
             NSString *val = [NSString stringWithFormat:@"%@", [params objectForKey:key]];
-            [query appendString:[self urlEncode:key]];
+            [query appendString:[FWHelperEncoder urlEncodeComponent:key]];
             [query appendString:@"="];
-            [query appendString:[self urlEncode:val]];
+            [query appendString:[FWHelperEncoder urlEncodeComponent:val]];
             if (--n > 0) {
                 [query appendString:@"&"];
             }
@@ -130,7 +129,7 @@
         }
     }
     
-    if (method == HttpUtilMethodPost) {
+    if (method == FWHelperHttpMethodPost) {
         NSData *reqData = [query dataUsingEncoding:NSUTF8StringEncoding];
         [request setHTTPBody:reqData];
         [request setHTTPMethod:@"POST"];
@@ -158,7 +157,7 @@
             if (statusCode != 200 || error) data = nil;
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                callback(data);
+                callback(data, error);
             });
         }
     }];

@@ -18,6 +18,7 @@
     #import "FWProtocol.h"
 
     #import "NSObject+Framework.h"
+    #import "NSString+Framework.h"
     #import "UIColor+Framework.h"
 #endif
 
