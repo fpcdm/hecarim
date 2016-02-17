@@ -21,12 +21,12 @@
 @interface BaseView (Deprecated)
 
 //设置数据，已废弃，请使用assign
-- (void)setData:(NSString *)key value:(id)value deprecated_message("Please use assign:value:");
+- (void)setData:(NSString *)key value:(id)value DEPRECATED_MESSAGE("Please use assign:value:");
 
 //获取数据，已废弃，请使用fetch
-- (id)getData:(NSString *)key deprecated_message("Please use fetch:");
+- (id)getData:(NSString *)key DEPRECATED_MESSAGE("Please use fetch:");
 
 //渲染所有数据，子类重写，需手工调用，已废弃，请使用display
-- (void)renderData deprecated_message("Please use display");
+- (void)renderData DEPRECATED_MESSAGE("Please use display");
 
 @end

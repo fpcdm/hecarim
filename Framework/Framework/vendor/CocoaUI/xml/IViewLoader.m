@@ -303,9 +303,9 @@ typedef enum{
         [view addEvent:IEventClick handler:^(IEventType event, IView *view) {
             SEL selector = NSSelectorFromString(onclick);
             if (view.delegate && [view.delegate respondsToSelector:selector]) {
-                ignored_selector
+                IGNORED_SELECTOR
                 [view.delegate performSelector:selector withObject:view];
-                ignored_end
+                IGNORED_END
             }
         }];
     }

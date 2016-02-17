@@ -10,20 +10,35 @@
 #define FWDefine_h
 
 
-#pragma mark - ignore
-//ignored_selector
-#define ignored_selector \
+#pragma mark - global
+//DEPRECATED
+#ifndef	DEPRECATED
+#define	DEPRECATED \
+    __attribute__((deprecated))
+#endif
+
+//DEPRECATED_MESSAGE
+#define DEPRECATED_MESSAGE( x ) \
+    __attribute__((deprecated(x)))
+
+//IGNORED_SELECTOR
+#define IGNORED_SELECTOR \
     _Pragma("clang diagnostic push") \
     _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
 
-//ignored_end
-#define ignored_end \
+//IGNORED_END
+#define IGNORED_END \
     _Pragma("clang diagnostic pop")
 
-#pragma mark - deprecated
-//deprecated_message
-#define deprecated_message(message) \
-    __attribute__((deprecated(message)))
+//MACRO_CSTR
+#define MACRO_CSTR( x ) \
+    #x
+
+//TODO
+#ifndef	TODO
+#define TODO( x ) \
+    _Pragma(MACRO_CSTR(message("✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖ TODO: " x)))
+#endif
 
 #pragma mark - block
 //@weakify

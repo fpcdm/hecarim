@@ -54,9 +54,9 @@
                 NSString *selectorStr = [NSString stringWithFormat:@"set%@%@:",[[key substringToIndex:1] uppercaseString], [key substringFromIndex:1]];
                 SEL selector = NSSelectorFromString(selectorStr);
                 if ([self respondsToSelector:selector]) {
-                    ignored_selector
+                    IGNORED_SELECTOR
                     [self performSelector:selector withObject:object];
-                    ignored_end
+                    IGNORED_END
                 }
             }
         }
