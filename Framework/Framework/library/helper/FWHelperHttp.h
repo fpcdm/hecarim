@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    FWHelperHttpMethodGet = 0,
-    FWHelperHttpMethodPost
-} FWHelperHttpMethod;
-
 @interface FWHelperHttp : NSObject
+
+@static_string(GET)
+
+@static_string(POST)
 
 + (BOOL)isUrl:(NSString *)url;
 
@@ -35,6 +34,6 @@ typedef enum {
 
 + (void)post:(NSString *)url params:(id)params callback:(void (^)(NSData *data, NSError *error))callback;
 
-+ (void)request:(NSString *)url params:(id)params headers:(NSDictionary *)headers method:(FWHelperHttpMethod)method callback:(void (^)(NSData *data, NSError *error))callback;
++ (void)request:(NSString *)url params:(id)params headers:(NSDictionary *)headers method:(NSString *)method callback:(void (^)(NSData *data, NSError *error))callback;
 
 @end

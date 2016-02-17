@@ -14,31 +14,36 @@
     Reachability *reachability;
 }
 
+//状态常量
+@def_static_integer(UNAVAILABLE, 0)
+@def_static_integer(WWAN, 1)
+@def_static_integer(WIFI, 2)
+
 @def_singleton(FWHelperNetwork)
 
-+ (FWHelperNetworkStatus)convertStatus:(NetworkStatus)status
++ (NSInteger)convertStatus:(NetworkStatus)status
 {
-    FWHelperNetworkStatus result;
+    NSInteger result;
     switch (status) {
         //WIFI
         case ReachableViaWiFi:
-            result = FWHelperNetworkWifi;
+            result = self.WIFI;
             break;
         //WWAN
         case ReachableViaWWAN:
-            result = FWHelperNetworkWwan;
+            result = self.WWAN;
             break;
         //不能访问
         case NotReachable:
         default:
-            result = FWHelperNetworkUnavailable;
+            result = self.UNAVAILABLE;
             break;
     }
     
     return result;
 }
 
-+ (FWHelperNetworkStatus)networkStatus
++ (NSInteger)networkStatus
 {
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     NetworkStatus status = [reach currentReachabilityStatus];
@@ -47,7 +52,7 @@
 
 + (BOOL)networkAvailable
 {
-    return [self networkStatus] != FWHelperNetworkUnavailable ? YES : NO;
+    return [self networkStatus] != self.UNAVAILABLE ? YES : NO;
 }
 
 //开始监听网络变化
@@ -84,7 +89,7 @@
 - (void) updateReachability: (Reachability *)curReach
 {
     NetworkStatus status = [curReach currentReachabilityStatus];
-    FWHelperNetworkStatus result = [FWHelperNetwork convertStatus:status];
+    NSInteger result = [FWHelperNetwork convertStatus:status];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(networkChanged:)]) {
         [self.delegate networkChanged:result];

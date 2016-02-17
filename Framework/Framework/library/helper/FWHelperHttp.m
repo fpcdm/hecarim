@@ -12,6 +12,10 @@
 
 @implementation FWHelperHttp
 
+@def_static_string(GET, @"GET")
+
+@def_static_string(POST, @"POST")
+
 + (NSString *)getRootPath:(NSString *)path
 {
     return [IKitUtil getRootPath:path];
@@ -92,15 +96,15 @@
 
 + (void)get:(NSString *)url params:(id)params callback:(void (^)(NSData *data, NSError *error))callback
 {
-    [self request:url params:params headers:nil method:FWHelperHttpMethodGet callback:callback];
+    [self request:url params:params headers:nil method:self.GET callback:callback];
 }
 
 + (void)post:(NSString *)url params:(id)params callback:(void (^)(NSData *data, NSError *error))callback
 {
-    [self request:url params:params headers:nil method:FWHelperHttpMethodPost callback:callback];
+    [self request:url params:params headers:nil method:self.POST callback:callback];
 }
 
-+ (void)request:(NSString *)url params:(id)params headers:(NSDictionary *)headers method:(FWHelperHttpMethod)method callback:(void (^)(NSData *data, NSError *error))callback
++ (void)request:(NSString *)url params:(id)params headers:(NSDictionary *)headers method:(NSString *)method callback:(void (^)(NSData *data, NSError *error))callback
 {
     NSMutableString *query = [[NSMutableString alloc] init];
     if (params && [params isKindOfClass: [NSString class]]) {
@@ -129,12 +133,12 @@
         }
     }
     
-    if (method == FWHelperHttpMethodPost) {
+    if ([self.POST isEqualToString:method.uppercaseString]) {
         NSData *reqData = [query dataUsingEncoding:NSUTF8StringEncoding];
         [request setHTTPBody:reqData];
-        [request setHTTPMethod:@"POST"];
+        [request setHTTPMethod:self.POST];
     } else {
-        [request setHTTPMethod:@"GET"];
+        [request setHTTPMethod:self.GET];
         if (query.length > 0) {
             if ([url rangeOfString:@"?"].location != NSNotFound) {
                 url = [NSString stringWithFormat:@"%@&%@", url, query];

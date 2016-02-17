@@ -8,29 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-//todo: 观察者模式
-
-typedef NS_ENUM(NSInteger, FWHelperNetworkStatus) {
-    FWHelperNetworkUnavailable = 0,
-    FWHelperNetworkWwan = 1,
-    FWHelperNetworkWifi = 2
-};
+TODO("观察者模式")
 
 @protocol FWHelperNetworkDelegate <NSObject>
 
 @optional
-- (void)networkChanged:(FWHelperNetworkStatus)status;
+- (void)networkChanged:(NSInteger)status;
 
 @end
 
 @interface FWHelperNetwork : NSObject
+
+//状态常量
+@static_integer(UNAVAILABLE)
+@static_integer(WWAN)
+@static_integer(WIFI)
 
 @prop_strong(id<FWHelperNetworkDelegate>, delegate)
 
 @singleton(FWHelperNetwork)
 
 //获取网络状态
-+ (FWHelperNetworkStatus)networkStatus;
++ (NSInteger)networkStatus;
 
 //网络是否可用
 + (BOOL) networkAvailable;
