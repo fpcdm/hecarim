@@ -65,6 +65,8 @@
 		2F16E6B51B5DF84B007947D0 /* GoodsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E68A1B5DF84B007947D0 /* GoodsHandler.m */; };
 		2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6901B5DF84B007947D0 /* UserHandler.m */; };
 		2F16E6C21B5E1B03007947D0 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6C11B5E1B03007947D0 /* CaseListViewController.m */; };
+		2F1FE8D01C7419C400C76B8B /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8CD1C7419C400C76B8B /* DynamicEntity.m */; };
+		2F1FE8D11C7419C400C76B8B /* PaginationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8CF1C7419C400C76B8B /* PaginationEntity.m */; };
 		2F20ECCE1C1AC0F0009B9ED6 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F20ECCD1C1AC0F0009B9ED6 /* ProtocolViewController.m */; };
 		2F20ECD11C1AC115009B9ED6 /* ProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F20ECD01C1AC115009B9ED6 /* ProtocolView.m */; };
 		2F3AD91F1C48DFA200D37BA1 /* Framework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F3AD8781C48DFA100D37BA1 /* Framework.bundle */; };
@@ -268,6 +270,10 @@
 		2F16E6901B5DF84B007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		2F16E6C01B5E1B03007947D0 /* CaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListViewController.h; sourceTree = "<group>"; };
 		2F16E6C11B5E1B03007947D0 /* CaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListViewController.m; sourceTree = "<group>"; };
+		2F1FE8CC1C7419C400C76B8B /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
+		2F1FE8CD1C7419C400C76B8B /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
+		2F1FE8CE1C7419C400C76B8B /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
+		2F1FE8CF1C7419C400C76B8B /* PaginationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaginationEntity.m; sourceTree = "<group>"; };
 		2F20ECCC1C1AC0F0009B9ED6 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
 		2F20ECCD1C1AC0F0009B9ED6 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
 		2F20ECCF1C1AC115009B9ED6 /* ProtocolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolView.h; sourceTree = "<group>"; };
@@ -867,6 +873,10 @@
 		2FFD84FF1C73459F00602873 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2F1FE8CC1C7419C400C76B8B /* DynamicEntity.h */,
+				2F1FE8CD1C7419C400C76B8B /* DynamicEntity.m */,
+				2F1FE8CE1C7419C400C76B8B /* PaginationEntity.h */,
+				2F1FE8CF1C7419C400C76B8B /* PaginationEntity.m */,
 				2FFD85001C73459F00602873 /* ErrorEntity.h */,
 				2FFD85011C73459F00602873 /* ErrorEntity.m */,
 				2FFD85021C73459F00602873 /* FileEntity.h */,
@@ -1043,6 +1053,7 @@
 				2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */,
 				2F16E6A71B5DF84B007947D0 /* AppExtension.m in Sources */,
 				2FA0A39F1B69E62B0083365B /* LoginViewController.m in Sources */,
+				2F1FE8D01C7419C400C76B8B /* DynamicEntity.m in Sources */,
 				2FFD850D1C73459F00602873 /* BaseScrollView.m in Sources */,
 				2BF3EDD81C325DC8002BCB72 /* StaffListViewController.m in Sources */,
 				2F0E37DD1B6B62E200CFE2E6 /* CaseEntity.m in Sources */,
@@ -1064,6 +1075,7 @@
 				2F3AD93C1C48DFA200D37BA1 /* RECommonFunctions.m in Sources */,
 				2F6697411B8185C6004BF473 /* CaseListView.m in Sources */,
 				2FFD850C1C73459F00602873 /* BaseHandler.m in Sources */,
+				2F1FE8D11C7419C400C76B8B /* PaginationEntity.m in Sources */,
 				2F4347ED1B7A271200D96AB6 /* ServiceListView.m in Sources */,
 				2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */,
 				2F55F6A51BDF12F400A89174 /* ForgetPasswordCodeView.m in Sources */,

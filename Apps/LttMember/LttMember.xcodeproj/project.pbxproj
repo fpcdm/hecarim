@@ -95,6 +95,8 @@
 		2F16E6401B5DF162007947D0 /* CaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6251B5DF162007947D0 /* CaseHandler.m */; };
 		2F16E6421B5DF162007947D0 /* HelperHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6291B5DF162007947D0 /* HelperHandler.m */; };
 		2F16E6441B5DF162007947D0 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E62D1B5DF162007947D0 /* UserHandler.m */; };
+		2F1FE8C81C74191100C76B8B /* DynamicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8C51C74191100C76B8B /* DynamicEntity.m */; };
+		2F1FE8C91C74191100C76B8B /* PaginationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8C71C74191100C76B8B /* PaginationEntity.m */; };
 		2F20ECC81C1AB8E3009B9ED6 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F20ECC71C1AB8E3009B9ED6 /* ProtocolViewController.m */; };
 		2F20ECCB1C1AB9BD009B9ED6 /* ProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F20ECCA1C1AB9BD009B9ED6 /* ProtocolView.m */; };
 		2F2538381C1E6066009FC19B /* RechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2538371C1E6066009FC19B /* RechargeViewController.m */; };
@@ -393,6 +395,10 @@
 		2F16E6291B5DF162007947D0 /* HelperHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperHandler.m; sourceTree = "<group>"; };
 		2F16E62C1B5DF162007947D0 /* UserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHandler.h; sourceTree = "<group>"; };
 		2F16E62D1B5DF162007947D0 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
+		2F1FE8C41C74191100C76B8B /* DynamicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEntity.h; sourceTree = "<group>"; };
+		2F1FE8C51C74191100C76B8B /* DynamicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicEntity.m; sourceTree = "<group>"; };
+		2F1FE8C61C74191100C76B8B /* PaginationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationEntity.h; sourceTree = "<group>"; };
+		2F1FE8C71C74191100C76B8B /* PaginationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaginationEntity.m; sourceTree = "<group>"; };
 		2F20ECC61C1AB8E3009B9ED6 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
 		2F20ECC71C1AB8E3009B9ED6 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
 		2F20ECC91C1AB9BD009B9ED6 /* ProtocolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolView.h; sourceTree = "<group>"; };
@@ -1304,6 +1310,10 @@
 		2FEF7A931C73224300EBF526 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2F1FE8C41C74191100C76B8B /* DynamicEntity.h */,
+				2F1FE8C51C74191100C76B8B /* DynamicEntity.m */,
+				2F1FE8C61C74191100C76B8B /* PaginationEntity.h */,
+				2F1FE8C71C74191100C76B8B /* PaginationEntity.m */,
 				2FEF7A941C73224300EBF526 /* ErrorEntity.h */,
 				2FEF7A951C73224300EBF526 /* ErrorEntity.m */,
 				2FEF7A961C73224300EBF526 /* FileEntity.h */,
@@ -1600,6 +1610,7 @@
 				2F16E5B61B5DEFEE007947D0 /* RegisterPasswordView.m in Sources */,
 				2B59B9171C1AC4FA00918756 /* UpdatePayPasswordView.m in Sources */,
 				2F16E5B71B5DEFEE007947D0 /* RegisterSuccessView.m in Sources */,
+				2F1FE8C91C74191100C76B8B /* PaginationEntity.m in Sources */,
 				2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */,
 				2BB0C09C1BDF55E600293737 /* ResetPasswordSuccess.m in Sources */,
 				2BB0C09D1BDF55E600293737 /* ResetPasswordView.m in Sources */,
@@ -1619,6 +1630,7 @@
 				2F16E5A71B5DEFEE007947D0 /* SuggestionView.m in Sources */,
 				2F16E5F01B5DF08F007947D0 /* SuggestionViewController.m in Sources */,
 				2B59B91F1C1AC50F00918756 /* MyWalletViewController.m in Sources */,
+				2F1FE8C81C74191100C76B8B /* DynamicEntity.m in Sources */,
 				2FD99FD61C48CF060065293E /* ZCTradeInputView.m in Sources */,
 				2FEF7AA01C73224300EBF526 /* BaseHandler.m in Sources */,
 				2F20ECC81C1AB8E3009B9ED6 /* ProtocolViewController.m in Sources */,
