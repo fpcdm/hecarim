@@ -110,6 +110,10 @@
 		2F1FE8E01C7432C900C76B8B /* NSString+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8DE1C7432C900C76B8B /* NSString+Framework.m */; };
 		2F1FE8E31C74557000C76B8B /* FWXmlView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8E11C74557000C76B8B /* FWXmlView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1FE8E41C74557000C76B8B /* FWXmlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8E21C74557000C76B8B /* FWXmlView.m */; };
+		2F1FE8ED1C746DCC00C76B8B /* Easy_Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8E91C746DCC00C76B8B /* Easy_Runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1FE8EE1C746DCC00C76B8B /* Easy_Runtime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8EA1C746DCC00C76B8B /* Easy_Runtime.mm */; };
+		2F1FE8EF1C746DCC00C76B8B /* NSObject+BeeNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8EB1C746DCC00C76B8B /* NSObject+BeeNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1FE8F01C746DCC00C76B8B /* NSObject+BeeNotification.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8EC1C746DCC00C76B8B /* NSObject+BeeNotification.mm */; };
 		2F24FB3A1C566B5300A82ABD /* FWRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB381C566B5300A82ABD /* FWRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F24FB3B1C566B5300A82ABD /* FWRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F24FB391C566B5300A82ABD /* FWRegistry.m */; };
 		2F24FB421C566E7800A82ABD /* FWCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB401C566E7800A82ABD /* FWCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -732,6 +736,10 @@
 		2F1FE8DE1C7432C900C76B8B /* NSString+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Framework.m"; sourceTree = "<group>"; };
 		2F1FE8E11C74557000C76B8B /* FWXmlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWXmlView.h; sourceTree = "<group>"; };
 		2F1FE8E21C74557000C76B8B /* FWXmlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWXmlView.m; sourceTree = "<group>"; };
+		2F1FE8E91C746DCC00C76B8B /* Easy_Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Easy_Runtime.h; sourceTree = "<group>"; };
+		2F1FE8EA1C746DCC00C76B8B /* Easy_Runtime.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Easy_Runtime.mm; sourceTree = "<group>"; };
+		2F1FE8EB1C746DCC00C76B8B /* NSObject+BeeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BeeNotification.h"; sourceTree = "<group>"; };
+		2F1FE8EC1C746DCC00C76B8B /* NSObject+BeeNotification.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSObject+BeeNotification.mm"; sourceTree = "<group>"; };
 		2F24FB381C566B5300A82ABD /* FWRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWRegistry.h; sourceTree = "<group>"; };
 		2F24FB391C566B5300A82ABD /* FWRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWRegistry.m; sourceTree = "<group>"; };
 		2F24FB401C566E7800A82ABD /* FWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCache.h; sourceTree = "<group>"; };
@@ -1505,6 +1513,10 @@
 		2FD991181C48BC9C0065293E /* config */ = {
 			isa = PBXGroup;
 			children = (
+				2F1FE8E91C746DCC00C76B8B /* Easy_Runtime.h */,
+				2F1FE8EA1C746DCC00C76B8B /* Easy_Runtime.mm */,
+				2F1FE8EB1C746DCC00C76B8B /* NSObject+BeeNotification.h */,
+				2F1FE8EC1C746DCC00C76B8B /* NSObject+BeeNotification.mm */,
 				2F004E5E1C7075B6000B4F97 /* FWConfig.h */,
 				2F004E601C707755000B4F97 /* FWDefine.h */,
 				2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */,
@@ -2302,6 +2314,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F1FE8EF1C746DCC00C76B8B /* NSObject+BeeNotification.h in Headers */,
+				2F1FE8ED1C746DCC00C76B8B /* Easy_Runtime.h in Headers */,
 				2F1FE8E31C74557000C76B8B /* FWXmlView.h in Headers */,
 				2F1FE8DF1C7432C900C76B8B /* NSString+Framework.h in Headers */,
 				2F1FE8C11C740B8B00C76B8B /* UIViewController+FIView.h in Headers */,
@@ -2803,6 +2817,7 @@
 				2FD99D7B1C48CE6F0065293E /* FLEXArgumentInputJSONObjectView.m in Sources */,
 				2FD99DDD1C48CE6F0065293E /* FLEXClassExplorerViewController.m in Sources */,
 				2F1C360A1C4C89310060E793 /* IViewLoader.m in Sources */,
+				2F1FE8EE1C746DCC00C76B8B /* Easy_Runtime.mm in Sources */,
 				2F1C35E91C4C89310060E793 /* IPullRefresh.m in Sources */,
 				2FD99E391C48CE6F0065293E /* MJRefreshAutoStateFooter.m in Sources */,
 				2F17A61B1C71EFA900C77940 /* FWXmlViewController.m in Sources */,
@@ -2841,6 +2856,7 @@
 				2FD99E2F1C48CE6F0065293E /* MJRefreshComponent.m in Sources */,
 				2F1C35F81C4C89310060E793 /* IInput.m in Sources */,
 				2FD99DF91C48CE6F0065293E /* FLEXMultilineTableViewCell.m in Sources */,
+				2F1FE8F01C746DCC00C76B8B /* NSObject+BeeNotification.mm in Sources */,
 				2F004DCB1C706441000B4F97 /* FWView.m in Sources */,
 				2F004E5A1C7074B5000B4F97 /* FWUrl.m in Sources */,
 				2F65962E1C5CDC6500CC8C06 /* FWLocale.m in Sources */,
