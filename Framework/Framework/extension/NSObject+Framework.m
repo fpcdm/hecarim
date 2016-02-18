@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+Framework.h"
+#import "FWRuntime.h"
 #import <objc/runtime.h>
 
 @implementation NSObject (Framework)
@@ -71,7 +72,7 @@
 
 - (void)observeAllNotifications
 {
-    NSArray *methods = [[self class] allInstanceMethods:@"handleNotification_"];
+    NSArray *methods = [FWRuntime allInstanceMethods:[self class] withPrefix:@"handleNotification_"];
     if (nil == methods || 0 == methods.count) return;
     
     for (NSString *selectorName in methods) {
@@ -124,104 +125,6 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:object];
     return YES;
-}
-
-//Runtime
-+ (NSArray *)allInstanceMethods
-{
-    NSMutableArray *methodNames = [NSMutableArray array];
-    
-    Class clazz = [self class];
-    while (NULL != clazz) {
-        unsigned int methodCount = 0;
-        Method *methods = class_copyMethodList(clazz, &methodCount);
-        
-        for (unsigned int i = 0; i < methodCount; ++i) {
-            SEL selector = method_getName(methods[i]);
-            if (selector) {
-                const char *cstrName = sel_getName(selector);
-                if (NULL == cstrName) continue;
-                
-                NSString *selectorName = [NSString stringWithUTF8String:cstrName];
-                if (NULL == selectorName) continue;
-                
-                [methodNames addObject:selectorName];
-            }
-        }
-        
-        clazz = class_getSuperclass(clazz);
-        if (clazz == [NSObject class]) break;
-    }
-    
-    return methodNames;
-}
-
-+ (NSArray *)allInstanceMethods:(NSString *)prefix
-{
-    NSArray *methods = [self allInstanceMethods];
-    if (nil == methods || 0 == methods.count) {
-        return nil;
-    }
-    
-    if (nil == prefix) {
-        return methods;
-    }
-    
-    NSMutableArray *result = [NSMutableArray array];
-    for (NSString *method in methods) {
-        if (NO == [method hasPrefix:prefix]) continue;
-        
-        [result addObject:method];
-    }
-    return result;
-}
-
-+ (NSArray *)allInstanceProperties
-{
-    NSMutableArray *propertyNames = [NSMutableArray array];
-    
-    Class clazz = [self class];
-    while (NULL != clazz) {
-        unsigned int propertyCount = 0;
-        objc_property_t *properties = class_copyPropertyList(clazz, &propertyCount);
-        
-        for (NSUInteger i = 0; i < propertyCount; i++) {
-            const char *name = property_getName(properties[i]);
-            if (NULL == name) continue;
-            
-            NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-            if (NULL == propertyName) continue;
-            
-            [propertyNames addObject:propertyName];
-        }
-        
-        free(properties);
-        
-        clazz = class_getSuperclass(clazz);
-        if (clazz == [NSObject class]) break;
-    }
-    
-    return propertyNames;
-}
-
-+ (NSArray *)allInstanceProperties:(NSString *)prefix
-{
-    NSArray *properties = [self allInstanceProperties];
-    if (nil == properties || 0 == properties.count) {
-        return nil;
-    }
-    
-    if (nil == prefix) {
-        return properties;
-    }
-    
-    NSMutableArray *result = [NSMutableArray array];
-    for (NSString *property in properties) {
-        if (NO == [property hasPrefix:prefix]) continue;
-        
-        [result addObject:property];
-    }
-    return result;
 }
 
 //Swizzle
