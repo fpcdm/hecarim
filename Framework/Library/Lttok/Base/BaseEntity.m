@@ -51,12 +51,11 @@
         for (NSString *key in dict) {
             id object = [aDecoder decodeObjectForKey:key];
             if (object != nil && object != [NSNull null]) {
+                //是否可设置值
                 NSString *selectorStr = [NSString stringWithFormat:@"set%@%@:",[[key substringToIndex:1] uppercaseString], [key substringFromIndex:1]];
                 SEL selector = NSSelectorFromString(selectorStr);
                 if ([self respondsToSelector:selector]) {
-                    IGNORED_SELECTOR
-                    [self performSelector:selector withObject:object];
-                    IGNORED_END
+                    [self setValue:object forKey:key];
                 }
             }
         }
@@ -84,13 +83,14 @@
             NSString *destMethodName = [NSString stringWithFormat:@"set%@%@:",[[keyName substringToIndex:1] uppercaseString], [keyName substringFromIndex:1]];
             SEL destMethodSelector = NSSelectorFromString(destMethodName);
             
+            //是否可设置值
             if ([self respondsToSelector:destMethodSelector]) {
                 //还原属性值，NSNUll转换为nil
                 id value = [dict objectForKey:keyName];
                 if (value == [NSNull null]) {
                     value = nil;
                 }
-                [self performSelector:destMethodSelector withObject:value];
+                [self setValue:value forKey:keyName];
             }
         }
     }
@@ -136,14 +136,16 @@
         objc_property_t prop=properties[i];
         const char* propertyName = property_getName(prop);
         
-        SEL destMethodSelector = NSSelectorFromString([NSString stringWithUTF8String:propertyName]);
+        NSString *keyName = [NSString stringWithUTF8String:propertyName];
+        SEL destMethodSelector = NSSelectorFromString(keyName);
         
+        //是否可读取值
         if ([self respondsToSelector:destMethodSelector]) {
             //添加属性名
-            [propertyArray addObject:[NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding]];
+            [propertyArray addObject:keyName];
             
             //添加属性值，nil转换为NSNull
-            id value = [self performSelector:destMethodSelector];
+            id value = [self valueForKey:keyName];
             if (value == nil) {
                 [valueArray addObject:[NSNull null]];
             } else {

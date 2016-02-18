@@ -344,7 +344,7 @@
 
 @implementation NSNotification (Framework)
 
-- (BOOL)isKind:(NSString *)name
+- (BOOL)isName:(NSString *)name
 {
     return [self.name isEqualToString:name];
 }

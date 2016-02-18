@@ -75,7 +75,7 @@
 
 @interface NSNotification (Framework)
 
-- (BOOL)isKind:(NSString *)name;
+- (BOOL)isName:(NSString *)name;
 
 - (BOOL)isType:(NSString *)type;
 

@@ -131,7 +131,7 @@
 //处理连接改变后的情况
 ON_NOTIFICATION(notification)
 {
-    if (![notification isKind:kReachabilityChangedNotification]) return;
+    if (![notification isName:kReachabilityChangedNotification]) return;
     
     NSInteger status = self.status;
     if (status == self.UNAVAILABLE) {
