@@ -38,6 +38,10 @@
 
 + (NSArray *)allInstanceMethods:(NSString *)prefix;
 
++ (NSArray *)allInstanceProperties;
+
++ (NSArray *)allInstanceProperties:(NSString *)prefix;
+
 //Swizzle
 + (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector;
 

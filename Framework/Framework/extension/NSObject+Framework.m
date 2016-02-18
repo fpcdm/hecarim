@@ -168,36 +168,60 @@
     }
     
     NSMutableArray *result = [NSMutableArray array];
-    for (NSString *selectorName in methods) {
-        if (NO == [selectorName hasPrefix:prefix]) continue;
+    for (NSString *method in methods) {
+        if (NO == [method hasPrefix:prefix]) continue;
         
-        [result addObject:selectorName];
+        [result addObject:method];
     }
     return result;
 }
 
-TODO("属性列表")
-- (void)copyPropertiesFrom:(id)obj
++ (NSArray *)allInstanceProperties
 {
-    for ( Class clazzType = [obj class]; clazzType != [NSObject class]; )
-    {
-        unsigned int		propertyCount = 0;
-        objc_property_t *	properties = class_copyPropertyList( clazzType, &propertyCount );
+    NSMutableArray *propertyNames = [NSMutableArray array];
+    
+    Class clazz = [self class];
+    while (NULL != clazz) {
+        unsigned int propertyCount = 0;
+        objc_property_t *properties = class_copyPropertyList(clazz, &propertyCount);
         
-        for ( NSUInteger i = 0; i < propertyCount; i++ )
-        {
-            const char *	name = property_getName(properties[i]);
-            NSString *		propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+        for (NSUInteger i = 0; i < propertyCount; i++) {
+            const char *name = property_getName(properties[i]);
+            if (NULL == name) continue;
             
-            [self setValue:[obj valueForKey:propertyName] forKey:propertyName];
+            NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            if (NULL == propertyName) continue;
+            
+            [propertyNames addObject:propertyName];
         }
         
-        free( properties );
+        free(properties);
         
-        clazzType = class_getSuperclass( clazzType );
-        if ( nil == clazzType )
-            break;
+        clazz = class_getSuperclass(clazz);
+        if (clazz == [NSObject class]) break;
     }
+    
+    return propertyNames;
+}
+
++ (NSArray *)allInstanceProperties:(NSString *)prefix
+{
+    NSArray *properties = [self allInstanceProperties];
+    if (nil == properties || 0 == properties.count) {
+        return nil;
+    }
+    
+    if (nil == prefix) {
+        return properties;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSString *property in properties) {
+        if (NO == [property hasPrefix:prefix]) continue;
+        
+        [result addObject:property];
+    }
+    return result;
 }
 
 //Swizzle
