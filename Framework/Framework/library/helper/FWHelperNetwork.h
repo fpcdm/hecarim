@@ -8,31 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-TODO("观察者模式")
-
-@protocol FWHelperNetworkDelegate <NSObject>
-
-@optional
-- (void)networkChanged:(NSInteger)status;
-
-@end
-
 @interface FWHelperNetwork : NSObject
+
+//改变通知
+@notification(CHANGED)
+@notification(CHANGED_UNAVAILABLE)
+@notification(CHANGED_WIFI)
+@notification(CHANGED_WLAN)
 
 //状态常量
 @static_integer(UNAVAILABLE)
-@static_integer(WWAN)
+@static_integer(WLAN)
 @static_integer(WIFI)
-
-@prop_strong(id<FWHelperNetworkDelegate>, delegate)
 
 @singleton(FWHelperNetwork)
 
-//获取网络状态
-+ (NSInteger)networkStatus;
+//网络状态
+@prop_readonly(NSInteger, status)
 
 //网络是否可用
-+ (BOOL) networkAvailable;
+@prop_readonly(BOOL, isAvailable)
+
+//本地IP
+@prop_readonly(NSString *, localIp)
 
 //开始监听网络变化
 - (void) startNotifier;

@@ -33,13 +33,13 @@
     if (array && array.count > 1) {
         //NSString *prefix = (NSString *)[array objectAtIndex:0];
         NSString *clazz = (NSString *)[array objectAtIndex:1];
-        NSString *name = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
+        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
         
         NSString *selectorName;
         SEL selector;
         
-        if (name && name.length > 0) {
-            selectorName = [NSString stringWithFormat:@"handleNotification_%@_%@:", clazz, name];
+        if (filter && filter.length > 0) {
+            selectorName = [NSString stringWithFormat:@"handleNotification_%@_%@:", clazz, filter];
             selector = NSSelectorFromString(selectorName);
             
             if ([self respondsToSelector:selector]) {
@@ -174,6 +174,30 @@
         [result addObject:selectorName];
     }
     return result;
+}
+
+TODO("属性列表")
+- (void)copyPropertiesFrom:(id)obj
+{
+    for ( Class clazzType = [obj class]; clazzType != [NSObject class]; )
+    {
+        unsigned int		propertyCount = 0;
+        objc_property_t *	properties = class_copyPropertyList( clazzType, &propertyCount );
+        
+        for ( NSUInteger i = 0; i < propertyCount; i++ )
+        {
+            const char *	name = property_getName(properties[i]);
+            NSString *		propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            
+            [self setValue:[obj valueForKey:propertyName] forKey:propertyName];
+        }
+        
+        free( properties );
+        
+        clazzType = class_getSuperclass( clazzType );
+        if ( nil == clazzType )
+            break;
+    }
 }
 
 //Swizzle

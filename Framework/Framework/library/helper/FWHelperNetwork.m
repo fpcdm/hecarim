@@ -8,20 +8,79 @@
 
 #import "FWHelperNetwork.h"
 #import "Reachability.h"
+#import <ifaddrs.h>
+#import <arpa/inet.h>
+#import <net/if.h>
 
 @implementation FWHelperNetwork
 {
     Reachability *reachability;
+    BOOL notifierStarted;
 }
+
+//改变通知
+@def_notification(CHANGED)
+@def_notification(CHANGED_UNAVAILABLE)
+@def_notification(CHANGED_WIFI)
+@def_notification(CHANGED_WLAN)
 
 //状态常量
 @def_static_integer(UNAVAILABLE, 0)
-@def_static_integer(WWAN, 1)
+@def_static_integer(WLAN, 1)
 @def_static_integer(WIFI, 2)
 
 @def_singleton(FWHelperNetwork)
 
-+ (NSInteger)convertStatus:(NetworkStatus)status
+@def_prop_dynamic(NSInteger, status)
+@def_prop_dynamic(BOOL, isAvailable)
+@def_prop_dynamic(NSString *, localIp)
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        reachability = [Reachability reachabilityForInternetConnection];
+    }
+    return self;
+}
+
+- (NSInteger)status
+{
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    return [self convertStatus:status];
+}
+
+- (BOOL)isAvailable
+{
+    return self.status != self.UNAVAILABLE ? YES : NO;
+}
+
+- (NSString *)localIP
+{
+    NSString *ipAddr = nil;
+    struct ifaddrs *addrs = NULL;
+    
+    int ret = getifaddrs(&addrs);
+    if (0 == ret) {
+        const struct ifaddrs * cursor = addrs;
+        
+        while (cursor) {
+            if (AF_INET == cursor->ifa_addr->sa_family && 0 == (cursor->ifa_flags & IFF_LOOPBACK)) {
+                ipAddr = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)cursor->ifa_addr)->sin_addr)];
+                break;
+            }
+            
+            cursor = cursor->ifa_next;
+        }
+        
+        freeifaddrs(addrs);
+    }
+    
+    return ipAddr;
+}
+
+//转换状态
+- (NSInteger)convertStatus:(NetworkStatus)status
 {
     NSInteger result;
     switch (status) {
@@ -31,7 +90,7 @@
             break;
         //WWAN
         case ReachableViaWWAN:
-            result = self.WWAN;
+            result = self.WLAN;
             break;
         //不能访问
         case NotReachable:
@@ -43,62 +102,47 @@
     return result;
 }
 
-+ (NSInteger)networkStatus
-{
-    Reachability *reach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus status = [reach currentReachabilityStatus];
-    return [self convertStatus:status];
-}
-
-+ (BOOL)networkAvailable
-{
-    return [self networkStatus] != self.UNAVAILABLE ? YES : NO;
-}
-
 //开始监听网络变化
 - (void) startNotifier
 {
-    if (reachability) return;
+    if (notifierStarted) return;
+    notifierStarted = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-    
-    reachability = [Reachability reachabilityForInternetConnection];
+    [self observeNotification:kReachabilityChangedNotification];
     [reachability startNotifier];
-    [self updateReachability:reachability];
 }
 
 //结束监听网络变化
 - (void) endNotifier
 {
-    if (!reachability) return;
+    if (!notifierStarted) return;
+    notifierStarted = NO;
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self unobserveAllNotifications];
     [reachability stopNotifier];
-    reachability = nil;
-}
-
-//连接改变
-- (void) reachabilityChanged:(NSNotification *)note
-{
-    Reachability *curReach = [note object];
-    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
-    [self updateReachability:curReach];
-}
-
-//处理连接改变后的情况
-- (void) updateReachability: (Reachability *)curReach
-{
-    NetworkStatus status = [curReach currentReachabilityStatus];
-    NSInteger result = [FWHelperNetwork convertStatus:status];
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(networkChanged:)]) {
-        [self.delegate networkChanged:result];
-    }
 }
 
 - (void)dealloc
 {
     [self endNotifier];
+    reachability = nil;
+}
+
+//处理连接改变后的情况
+ON_NOTIFICATION(notification)
+{
+    if (![notification isKind:kReachabilityChangedNotification]) return;
+    
+    NSInteger status = self.status;
+    if (status == self.UNAVAILABLE) {
+        [self postNotification:self.CHANGED_UNAVAILABLE];
+    } else if (status == self.WIFI) {
+        [self postNotification:self.CHANGED_WIFI];
+    } else {
+        [self postNotification:self.CHANGED_WLAN];
+    }
+    
+    [self postNotification:self.CHANGED];
 }
 
 @end

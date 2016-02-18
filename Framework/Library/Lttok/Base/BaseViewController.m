@@ -86,7 +86,7 @@
 
 - (BOOL) checkNetwork
 {
-    BOOL result = [FWHelperNetwork networkAvailable];
+    BOOL result = [FWHelperNetwork sharedInstance].isAvailable;
     
     //错误提示
     if (!result) {
