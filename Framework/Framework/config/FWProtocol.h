@@ -19,28 +19,7 @@
 
 @end
 
-/**
- * 观察者协议
- */
-@protocol FWProtocolSubject;
-@protocol FWProtocolObserver <NSObject>
-
-@required
-- (void)update:(id<FWProtocolSubject>)subject;
-
-@end
-
-/**
- * 主题协议
- */
-@protocol FWProtocolSubject <NSObject>
-
-@required
-- (void)attach:(id<FWProtocolObserver>)observer;
-- (void)detach:(id<FWProtocolObserver>)observer;
-- (void)notify;
-
-@end
+TODO("signal, same as notification, 不同之处：不传递对象本身，传递signal对象，相互不知道对方，如viewmodel不知道view")
 
 /**
  * 注册表协议

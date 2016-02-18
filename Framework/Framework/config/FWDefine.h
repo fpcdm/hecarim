@@ -10,261 +10,89 @@
 #define FWDefine_h
 
 
-#pragma mark - global
-//DEPRECATED
-#ifndef	DEPRECATED
-#define	DEPRECATED \
-    __attribute__((deprecated))
+#pragma mark - 环境切换
+/********环境切换>>>********/
+//调试Xcode变量，Xcode自动根据Debug和Release环境生成
+#ifdef DEBUG
+
+//调试自定义变量，项目建议使用此变量区分环境
+#define APP_DEBUG
+
 #endif
+/********<<<环境切换********/
 
-//DEPRECATED_MESSAGE
-#define DEPRECATED_MESSAGE( x ) \
-    __attribute__((deprecated(x)))
 
-//IGNORED_SELECTOR
-#define IGNORED_SELECTOR \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
+#pragma mark - 环境配置
+#ifdef APP_DEBUG
+/********开发环境>>>********/
+//是否是开发环境，项目建议使用此变量判断环境
+#define IS_DEBUG YES
 
-//IGNORED_END
-#define IGNORED_END \
-    _Pragma("clang diagnostic pop")
-
-//MACRO_CSTR
-#define MACRO_CSTR( x ) \
-    #x
-
-//TODO
-#ifndef	TODO
-#define TODO( x ) \
-    _Pragma(MACRO_CSTR(message("✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖ TODO: " x)))
-#endif
-
-#pragma mark - block
-//@weakify
-#ifndef	weakify
-#if __has_feature(objc_arc)
-
-#define weakify( x ) \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Wshadow\"") \
-    autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x; \
-    _Pragma("clang diagnostic pop")
-
+//是否是正式环境，项目建议使用此变量判断环境
+#define IS_RELEASE NO
+/********>>>开发环境********/
 #else
+/********正式环境>>>********/
+//是否是开发环境，项目建议使用此变量判断环境
+#define IS_DEBUG NO
 
-#define weakify( x ) \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Wshadow\"") \
-    autoreleasepool{} __block __typeof__(x) __block_##x##__ = x; \
-    _Pragma("clang diagnostic pop")
+//是否是正式环境，项目建议使用此变量判断环境
+#define IS_RELEASE YES
 
+//关闭NSLog
+#define NSLog(...)
+/********>>>正式环境********/
 #endif
-#endif
 
-//@strongify
-#ifndef	strongify
-#if __has_feature(objc_arc)
-
-#define strongify( x ) \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Wshadow\"") \
-    try{} @finally{} __typeof__(x) x = __weak_##x##__; \
-    _Pragma("clang diagnostic pop")
-
+//判断是否是模拟器
+#if TARGET_OS_SIMULATOR
+/********开发环境>>>********/
+#define IS_SIMULATOR YES
+/********>>>开发环境********/
 #else
-
-#define strongify( x ) \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Wshadow\"") \
-    try{} @finally{} __typeof__(x) x = __block_##x##__; \
-    _Pragma("clang diagnostic pop")
-
-#endif
+/********正式环境>>>********/
+#define IS_SIMULATOR NO
+/********>>>正式环境********/
 #endif
 
-#pragma mark - singleton
-//@singleton
-#undef	singleton
-#define singleton( __class ) \
-    property (nonatomic, readonly) __class * sharedInstance; \
-    - (__class *)sharedInstance; \
-    + (__class *)sharedInstance;
 
-//@def_singleton
-#undef	def_singleton
-#define def_singleton( __class ) \
-    dynamic sharedInstance; \
-    - (__class *)sharedInstance \
-    { \
-        return [__class sharedInstance]; \
-    } \
-    + (__class *)sharedInstance \
-    { \
-        static dispatch_once_t once; \
-        static __strong id __singleton__ = nil; \
-        dispatch_once( &once, ^{ __singleton__ = [[__class alloc] init]; } ); \
-        return __singleton__; \
-    }
+/********系统定义>>>********/
+#pragma mark - 系统常量
+//屏幕尺寸常量
+#define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define STATUSBAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
 
-#pragma mark - property
-//@prop
-#if __has_feature(objc_arc)
+//设备类型
+#define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad   ? YES : NO)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? YES : NO)
 
-#define	prop_readonly( type, name )	\
-    property (nonatomic, readonly) type name;
+// 判断ios系统版本，不能用于宏判断
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+// 判断是否大于等于版本
+#define IS_IOS9P (IOS_VERSION >= 9.0 ? YES : NO)
+#define IS_IOS8P (IOS_VERSION >= 8.0 ? YES : NO)
+#define IS_IOS7P (IOS_VERSION >= 7.0 ? YES : NO)
+// 判断是否是某版本
+#define IS_IOS9 (IOS_VERSION >= 9.0 && IOS_VERSION < 10.0 ? YES : NO)
+#define IS_IOS8 (IOS_VERSION >= 8.0 && IOS_VERSION < 9.0 ? YES : NO)
+#define IS_IOS7 (IOS_VERSION >= 7.0 && IOS_VERSION < 8.0 ? YES : NO)
 
-#define	prop_dynamic( type, name ) \
-    property (nonatomic, strong) type name;
+//判断屏幕尺寸，是否是3.5英寸屏幕
+#define IS_SCREEN35 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+//是否是4.0英寸屏幕
+#define IS_SCREEN40 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+//是否是4.7英寸屏幕
+#define IS_SCREEN47 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+//是否是5.5英寸屏幕
+#define IS_SCREEN55 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
-#define	prop_assign( type, name ) \
-    property (nonatomic, assign) type name;
-
-#define	prop_strong( type, name ) \
-    property (nonatomic, strong) type name;
-
-#define	prop_weak( type, name )	\
-    property (nonatomic, weak) type name;
-
-#define	prop_copy( type, name )	\
-    property (nonatomic, copy) type name;
-
-#define	prop_unsafe( type, name ) \
-    property (nonatomic, unsafe_unretained) type name;
-
-#else
-
-#define	prop_readonly( type, name )	\
-    property (nonatomic, readonly) type name;
-
-#define	prop_dynamic( type, name ) \
-    property (nonatomic, retain) type name;
-
-#define	prop_assign( type, name ) \
-    property (nonatomic, assign) type name;
-
-#define	prop_strong( type, name ) \
-    property (nonatomic, retain) type name;
-
-#define	prop_weak( type, name )	\
-    property (nonatomic, assign) type name;
-
-#define	prop_copy( type, name )	\
-    property (nonatomic, copy) type name;
-
-#define	prop_unsafe( type, name ) \
-    property (nonatomic, assign) type name;
-
+//判断SDK版本
+#ifndef __IPHONE_7_0
+#error "SDK版本过低，必须IOS SDK 7.0以上"
 #endif
-
-#pragma mark -
-//@def_prop
-#define def_prop_readonly( type, name ) \
-    synthesize name = _##name;
-
-#define def_prop_assign( type, name ) \
-    synthesize name = _##name;
-
-#define def_prop_strong( type, name ) \
-    synthesize name = _##name;
-
-#define def_prop_weak( type, name ) \
-    synthesize name = _##name;
-
-#define def_prop_unsafe( type, name ) \
-    synthesize name = _##name;
-
-#define def_prop_copy( type, name ) \
-    synthesize name = _##name;
-
-#define def_prop_dynamic( type, name ) \
-    dynamic name;
-
-#define def_prop_dynamic_copy( type, name, setName ) \
-    def_prop_custom( type, name, setName, copy )
-
-#define def_prop_dynamic_strong( type, name, setName ) \
-    def_prop_custom( type, name, setName, retain )
-
-#define def_prop_dynamic_unsafe( type, name, setName ) \
-    def_prop_custom( type, name, setName, assign )
-
-#define def_prop_dynamic_weak( type, name, setName ) \
-    def_prop_custom( type, name, setName, assign )
-
-#define def_prop_dynamic_pod( type, name, setName, pod_type ) \
-    dynamic name; \
-    - (type)name { return (type)[[self getAssociatedObjectForKey:#name] pod_type##Value]; } \
-    - (void)setName:(type)obj { [self assignAssociatedObject:@((pod_type)obj) forKey:#name]; }
-
-#define def_prop_custom( type, name, setName, attr ) \
-    dynamic name; \
-    - (type)name { return [self getAssociatedObjectForKey:#name]; } \
-    - (void)setName:(type)obj { [self attr##AssociatedObject:obj forKey:#name]; }
-
-#pragma mark -
-//@static_property
-#undef  static_property
-#define static_property( __name ) \
-    property (nonatomic, readonly) NSString * __name; \
-    - (NSString *)__name; \
-    + (NSString *)__name;
-
-#undef	def_static_property
-#define def_static_property( __name ) \
-    dynamic __name; \
-    - (NSString *)__name { return [NSString stringWithFormat:@"%s", #__name]; } \
-    + (NSString *)__name { return [NSString stringWithFormat:@"%s", #__name]; }
-
-#undef	def_static_property1
-#define def_static_property1( __name, prefix ) \
-    dynamic __name; \
-    - (NSString *)__name { return [NSString stringWithFormat:@"%@.%s", prefix, #__name]; } \
-    + (NSString *)__name { return [NSString stringWithFormat:@"%@.%s", prefix, #__name]; }
-
-#undef	def_static_property2
-#define def_static_property2( __name, prefix, prefix2 ) \
-    dynamic __name; \
-    - (NSString *)__name { return [NSString stringWithFormat:@"%@.%@.%s", prefix, prefix2, #__name]; } \
-    + (NSString *)__name { return [NSString stringWithFormat:@"%@.%@.%s", prefix, prefix2, #__name]; }
-
-#pragma mark -
-//@static_type
-#undef	static_integer
-#define static_integer( __name ) \
-    property (nonatomic, readonly) NSInteger __name; \
-    - (NSInteger)__name; \
-    + (NSInteger)__name;
-
-#undef	def_static_integer
-#define def_static_integer( __name, __value ) \
-    dynamic __name; \
-    - (NSInteger)__name { return __value; } \
-    + (NSInteger)__name { return __value; }
-
-#undef	static_number
-#define static_number( __name ) \
-    property (nonatomic, readonly) NSNumber * __name; \
-    - (NSNumber *)__name; \
-    + (NSNumber *)__name;
-
-#undef	def_static_number
-#define def_static_number( __name, __value ) \
-    dynamic __name; \
-    - (NSNumber *)__name { return @(__value); } \
-    + (NSNumber *)__name { return @(__value); }
-
-#undef	static_string
-#define static_string( __name ) \
-    property (nonatomic, readonly) NSString * __name; \
-    - (NSString *)__name; \
-    + (NSString *)__name;
-
-#undef	def_static_string
-#define def_static_string( __name, __value ) \
-    dynamic __name; \
-    - (NSString *)__name { return __value; } \
-    + (NSString *)__name { return __value; }
+/********<<<系统定义********/
 
 
 #endif /* FWDefine_h */

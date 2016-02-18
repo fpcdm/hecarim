@@ -10,6 +10,34 @@
 
 @interface NSObject (Framework)
 
+//Notification
+@static_string(NOTIFICATION)
+
+@static_string(NOTIFICATION_TYPE)
+
+- (void)handleNotification:(NSNotification *)notification;
+
+- (void)observeNotification:(NSString *)name;
+
+- (void)observeAllNotifications;
+
+- (void)unobserveNotification:(NSString *)name;
+
+- (void)unobserveAllNotifications;
+
+- (BOOL)postNotification:(NSString *)name;
+
+- (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
+
++ (BOOL)postNotification:(NSString *)name;
+
++ (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
+
+//Runtime
++ (NSArray *)allInstanceMethods;
+
++ (NSArray *)allInstanceMethods:(NSString *)prefix;
+
 //Swizzle
 + (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector;
 
@@ -38,5 +66,13 @@
 - (BOOL)isNotNull;
 
 - (BOOL)isNotEmpty;
+
+@end
+
+@interface NSNotification (Framework)
+
+- (BOOL)isKind:(NSString *)name;
+
+- (BOOL)isType:(NSString *)type;
 
 @end

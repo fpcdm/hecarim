@@ -13,4 +13,6 @@
 
 @protocol FWPluginCache <FWProtocolRegistry>
 
+TODO("set key value expire")
+
 @end

@@ -12,6 +12,7 @@
 //config
 #import "FWConfig.h"
 #import "FWDefine.h"
+#import "FWCompile.h"
 #import "FWProtocol.h"
 
 //core

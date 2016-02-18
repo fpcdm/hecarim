@@ -110,6 +110,7 @@
 		2F1FE8E01C7432C900C76B8B /* NSString+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8DE1C7432C900C76B8B /* NSString+Framework.m */; };
 		2F1FE8E31C74557000C76B8B /* FWXmlView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8E11C74557000C76B8B /* FWXmlView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1FE8E41C74557000C76B8B /* FWXmlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8E21C74557000C76B8B /* FWXmlView.m */; };
+		2F219B101C755E3B00561D95 /* FWCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F219B0F1C755E3B00561D95 /* FWCompile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F24FB3A1C566B5300A82ABD /* FWRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB381C566B5300A82ABD /* FWRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F24FB3B1C566B5300A82ABD /* FWRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F24FB391C566B5300A82ABD /* FWRegistry.m */; };
 		2F24FB421C566E7800A82ABD /* FWCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB401C566E7800A82ABD /* FWCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -732,6 +733,7 @@
 		2F1FE8DE1C7432C900C76B8B /* NSString+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Framework.m"; sourceTree = "<group>"; };
 		2F1FE8E11C74557000C76B8B /* FWXmlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWXmlView.h; sourceTree = "<group>"; };
 		2F1FE8E21C74557000C76B8B /* FWXmlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWXmlView.m; sourceTree = "<group>"; };
+		2F219B0F1C755E3B00561D95 /* FWCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCompile.h; sourceTree = "<group>"; };
 		2F24FB381C566B5300A82ABD /* FWRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWRegistry.h; sourceTree = "<group>"; };
 		2F24FB391C566B5300A82ABD /* FWRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWRegistry.m; sourceTree = "<group>"; };
 		2F24FB401C566E7800A82ABD /* FWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCache.h; sourceTree = "<group>"; };
@@ -1507,6 +1509,7 @@
 			children = (
 				2F004E5E1C7075B6000B4F97 /* FWConfig.h */,
 				2F004E601C707755000B4F97 /* FWDefine.h */,
+				2F219B0F1C755E3B00561D95 /* FWCompile.h */,
 				2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */,
 			);
 			path = config;
@@ -2302,6 +2305,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F219B101C755E3B00561D95 /* FWCompile.h in Headers */,
 				2F1FE8E31C74557000C76B8B /* FWXmlView.h in Headers */,
 				2F1FE8DF1C7432C900C76B8B /* NSString+Framework.h in Headers */,
 				2F1FE8C11C740B8B00C76B8B /* UIViewController+FIView.h in Headers */,

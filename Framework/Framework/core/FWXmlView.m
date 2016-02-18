@@ -12,7 +12,7 @@
 #import "IResourceMananger.h"
 
 static NSString *xmlPath = nil;
-static NSString *xmlExt = @"html";
+static NSString *xmlExt = FRAMEWORK_XMLVIEW_EXT;
 static NSString *patchPath = nil;
 
 @implementation FWXmlConfig
