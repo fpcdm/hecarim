@@ -29,8 +29,6 @@
 //	IN THE SOFTWARE.
 //
 
-#import "Easy_Runtime.h"
-
 #import "NSObject+BeeNotification.h"
 
 // ----------------------------------
@@ -122,6 +120,7 @@
 
 - (void)observeAllNotifications
 {
+    /*
 	NSArray * methods = [BeeRuntime allInstanceMethodsOf:[self class] withPrefix:@"handleNotification_"];
 	if ( nil == methods || 0 == methods.count )
 	{
@@ -140,6 +139,7 @@
 
 		[self observeNotification:notificationName];
 	}
+    */
 }
 
 - (void)unobserveNotification:(NSString *)name
@@ -178,16 +178,3 @@
 }
 
 @end
-
-// ----------------------------------
-// Unit test
-// ----------------------------------
-
-#if defined(__BEE_UNITTEST__) && __BEE_UNITTEST__
-
-TEST_CASE( NSObject_BeeNotification )
-{
-}
-TEST_CASE_END
-
-#endif	// #if defined(__BEE_UNITTEST__) && __BEE_UNITTEST__

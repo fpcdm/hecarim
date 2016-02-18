@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSObject+BeeNotification.h"
-#import "Easy_Runtime.h"
 
 @interface NSObject (Framework)
 
