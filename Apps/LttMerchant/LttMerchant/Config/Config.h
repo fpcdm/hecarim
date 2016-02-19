@@ -52,11 +52,11 @@
 //友盟分享AppKey
 #define UMENG_SHARE_APPKEY @"56c66e48e0f55a8994000518"
 //友盟分享链接，根据平台自动跳转
-#define UMENG_SHARE_URL @"http://www.lttok.com/mobile"
+#define UMENG_SHARE_URL @"http://www.lttok.com/mobile?type=merchant"
 //友盟分享标题
 #define UMENG_SHARE_TITLE @"我在使用两条腿生意宝"
 //友盟分享内容
-#define UMENG_SHARE_TEXT @"中国同城送货上门服务第一品牌。\n中国首家专注提供同城上门服务的服务品牌。\nhttp://www.lttok.com/mobile"
+#define UMENG_SHARE_TEXT @"中国同城送货上门服务第一品牌。\n中国首家专注提供同城上门服务的服务品牌。\nhttp://www.lttok.com/mobile?type=merchant"
 //友盟微信APPID，还需要替换URL schemes中的APPID
 #define UMENG_WEIXIN_APPID @"wx13027d38d8233000"
 //友盟微信APPKEY
