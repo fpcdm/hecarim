@@ -79,7 +79,7 @@
         }
         
         //是否还有更多
-        hasMore = [result count] >= LTT_PAGESIZE_DEFAULT ? YES : NO;
+        hasMore = [result count] >= LTT_PAGESIZE_DEFAULT * 2 ? YES : NO;
         
         success(nil);
 
