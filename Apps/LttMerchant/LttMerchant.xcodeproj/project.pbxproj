@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B759E951BE7032000CBAD28 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B759E941BE7032000CBAD28 /* HomeView.m */; };
+		2B829A851C755CBD00EA82D8 /* RecommendShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B829A841C755CBD00EA82D8 /* RecommendShareViewController.m */; };
+		2B829A891C7563A900EA82D8 /* RecommendShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B829A881C7563A900EA82D8 /* RecommendShareView.m */; };
+		2B829A8D1C756A5900EA82D8 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B829A8C1C756A5900EA82D8 /* RecommendView.m */; };
+		2B829A901C756E1800EA82D8 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B829A8F1C756E1800EA82D8 /* RecommendViewController.m */; };
+		2B829A931C75C41300EA82D8 /* RecommendMerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B829A921C75C41300EA82D8 /* RecommendMerchantView.m */; };
+		2B829A961C75C7AC00EA82D8 /* RecommendMerchantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B829A951C75C7AC00EA82D8 /* RecommendMerchantViewController.m */; };
 		2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346F61BE0B422001530F0 /* RegisterViewController.m */; };
 		2B8347031BE0B4CE001530F0 /* RegisterExistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FB1BE0B4CE001530F0 /* RegisterExistView.m */; };
 		2B8347041BE0B4CE001530F0 /* RegisterMobileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8346FD1BE0B4CE001530F0 /* RegisterMobileView.m */; };
@@ -158,6 +164,18 @@
 /* Begin PBXFileReference section */
 		2B759E931BE7032000CBAD28 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		2B759E941BE7032000CBAD28 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		2B829A831C755CBD00EA82D8 /* RecommendShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendShareViewController.h; sourceTree = "<group>"; };
+		2B829A841C755CBD00EA82D8 /* RecommendShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendShareViewController.m; sourceTree = "<group>"; };
+		2B829A871C7563A900EA82D8 /* RecommendShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendShareView.h; sourceTree = "<group>"; };
+		2B829A881C7563A900EA82D8 /* RecommendShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendShareView.m; sourceTree = "<group>"; };
+		2B829A8B1C756A5900EA82D8 /* RecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
+		2B829A8C1C756A5900EA82D8 /* RecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
+		2B829A8E1C756E1800EA82D8 /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
+		2B829A8F1C756E1800EA82D8 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
+		2B829A911C75C41300EA82D8 /* RecommendMerchantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendMerchantView.h; sourceTree = "<group>"; };
+		2B829A921C75C41300EA82D8 /* RecommendMerchantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendMerchantView.m; sourceTree = "<group>"; };
+		2B829A941C75C7AC00EA82D8 /* RecommendMerchantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendMerchantViewController.h; sourceTree = "<group>"; };
+		2B829A951C75C7AC00EA82D8 /* RecommendMerchantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendMerchantViewController.m; sourceTree = "<group>"; };
 		2B8346F51BE0B422001530F0 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2B8346F61BE0B422001530F0 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2B8346FA1BE0B4CE001530F0 /* RegisterExistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterExistView.h; sourceTree = "<group>"; };
@@ -433,6 +451,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B829A801C755C8A00EA82D8 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				2B829A831C755CBD00EA82D8 /* RecommendShareViewController.h */,
+				2B829A841C755CBD00EA82D8 /* RecommendShareViewController.m */,
+				2B829A8E1C756E1800EA82D8 /* RecommendViewController.h */,
+				2B829A8F1C756E1800EA82D8 /* RecommendViewController.m */,
+				2B829A941C75C7AC00EA82D8 /* RecommendMerchantViewController.h */,
+				2B829A951C75C7AC00EA82D8 /* RecommendMerchantViewController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		2B829A821C755C9F00EA82D8 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				2B829A871C7563A900EA82D8 /* RecommendShareView.h */,
+				2B829A881C7563A900EA82D8 /* RecommendShareView.m */,
+				2B829A8B1C756A5900EA82D8 /* RecommendView.h */,
+				2B829A8C1C756A5900EA82D8 /* RecommendView.m */,
+				2B829A911C75C41300EA82D8 /* RecommendMerchantView.h */,
+				2B829A921C75C41300EA82D8 /* RecommendMerchantView.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		2BF3EDD11C3259C0002BCB72 /* Staff */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +517,7 @@
 		2F16E6521B5DF84B007947D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2B829A801C755C8A00EA82D8 /* Account */,
 				2BF3EDD11C3259C0002BCB72 /* Staff */,
 				2F16E6531B5DF84B007947D0 /* Case */,
 				2F16E65E1B5DF84B007947D0 /* Home */,
@@ -610,6 +655,7 @@
 		2F16E6911B5DF84B007947D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B829A821C755C9F00EA82D8 /* Account */,
 				2BF3EDD21C3259D7002BCB72 /* Staff */,
 				2F16E6921B5DF84B007947D0 /* Case */,
 				2F55F69C1BDF12F400A89174 /* Home */,
@@ -1048,6 +1094,7 @@
 				2F3AD9241C48DFA200D37BA1 /* CNPPopupController.m in Sources */,
 				2BD4FAD61BF43F96003B727B /* RegisterInfoView.m in Sources */,
 				2F3AD9271C48DFA200D37BA1 /* Harpy.m in Sources */,
+				2B829A901C756E1800EA82D8 /* RecommendViewController.m in Sources */,
 				2BBBBF5D1C153731001DFAB8 /* GoodsFormView.m in Sources */,
 				2F55F69B1BDF12D000A89174 /* ForgetPasswordViewController.m in Sources */,
 				2B8346F71BE0B422001530F0 /* RegisterViewController.m in Sources */,
@@ -1075,12 +1122,16 @@
 				2F3AD93C1C48DFA200D37BA1 /* RECommonFunctions.m in Sources */,
 				2F6697411B8185C6004BF473 /* CaseListView.m in Sources */,
 				2FFD850C1C73459F00602873 /* BaseHandler.m in Sources */,
+				2B829A931C75C41300EA82D8 /* RecommendMerchantView.m in Sources */,
 				2F1FE8D11C7419C400C76B8B /* PaginationEntity.m in Sources */,
+				2B829A961C75C7AC00EA82D8 /* RecommendMerchantViewController.m in Sources */,
+				2B829A891C7563A900EA82D8 /* RecommendShareView.m in Sources */,
 				2F4347ED1B7A271200D96AB6 /* ServiceListView.m in Sources */,
 				2F16E6B81B5DF84B007947D0 /* UserHandler.m in Sources */,
 				2F55F6A51BDF12F400A89174 /* ForgetPasswordCodeView.m in Sources */,
 				2F20ECCE1C1AC0F0009B9ED6 /* ProtocolViewController.m in Sources */,
 				2B8347041BE0B4CE001530F0 /* RegisterMobileView.m in Sources */,
+				2B829A8D1C756A5900EA82D8 /* RecommendView.m in Sources */,
 				2B8347061BE0B4CE001530F0 /* RegisterSuccessView.m in Sources */,
 				2BD4FADC1BF47D94003B727B /* MerchantHandler.m in Sources */,
 				2BF3EDE41C32833F002BCB72 /* StaffDetailView.m in Sources */,
@@ -1099,6 +1150,7 @@
 				2BF3EDE71C32888A002BCB72 /* StaffDetailViewController.m in Sources */,
 				2FD795C01AE7ADD300D51FB0 /* main.m in Sources */,
 				2BBBBF611C153731001DFAB8 /* ServicesContainerView.m in Sources */,
+				2B829A851C755CBD00EA82D8 /* RecommendShareViewController.m in Sources */,
 				2F81ADEA1B9D6C2500E381B0 /* ConsumeHistoryViewController.m in Sources */,
 				2F16E6AB1B5DF84B007947D0 /* AppView.m in Sources */,
 				2F0E37D11B6B214900CFE2E6 /* GoodsListViewController.m in Sources */,

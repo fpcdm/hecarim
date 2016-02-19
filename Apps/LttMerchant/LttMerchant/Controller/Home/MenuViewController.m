@@ -79,6 +79,7 @@
         menuList = [[NSArray alloc] initWithObjects:
                     @[@"首页", @"HomeViewController", @"show"],
                     @[@"服务单", @"CaseListViewController", @"show"],
+                    @[@"推荐与分享", @"RecommendShareViewController", @"show"],
                     @[@"退出", @"LoginViewController", @"logout"],
                     nil];
         
@@ -159,6 +160,7 @@
     
     //切换viewController
     UINavigationController *navigationController = (UINavigationController *) self.frostedViewController.contentViewController;
+    
     [navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
     
     [self.frostedViewController hideMenuViewController];

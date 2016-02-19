@@ -104,6 +104,59 @@
     }];
 }
 
+- (void) getUserRecommendInfo:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"mobile": @"mobile"}];
+    
+    [sharedClient getObject:user path:@"staff/promotion" param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+
+}
+
+//设置我的推荐人
+- (void) setRecommend:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    
+    [sharedClient putObject:user path:@"staff/promotion" param:param success:^(NSArray *result){
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        
+        failure(error);
+    }];
+
+}
+
+//获取我推荐的人
+- (void) getMyRecommendList:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    //调用接口
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[UserEntity class] mappingParam:@{@"name": @"name"} keyPath:@"list"];
+    
+    [sharedClient getObject:user path:@"staff/inferior" param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+
+}
+
 
 
 @end

@@ -64,6 +64,30 @@
  */
 - (void) queryConsumeHistory: (UserEntity *)user param: (NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
 
+/**
+ * 获取推荐人信息
+ * @param mobile 登录用户的手机号
+ * @param success
+ * @param failure
+ */
+- (void) getUserRecommendInfo:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
+
+/**
+ * 获取推荐人信息
+ * @param mobile 被推荐的人的手机号
+ * @param success
+ * @param failure
+ */
+- (void) setRecommend:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
+
+/**
+ * 获取我推荐的人
+ * @param param 参数
+ * @param success
+ * @param failure
+ */
+- (void) getMyRecommendList:(UserEntity *)user param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
+ 
 
 
 @end

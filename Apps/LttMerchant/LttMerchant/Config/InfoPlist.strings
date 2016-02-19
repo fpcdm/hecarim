@@ -42,6 +42,7 @@
 "ERROR.Category.NotFound" = "暂无商品类别";
 "ERROR.Model.NotGoods" = "该型号暂无商品";
 "ERROR.Area.Required" = "请选择区域哦~亲！";
+"ERROR.RecommendMobile.Required" = "推荐人手机号不能为空！";
 
 
 "INFO.ResetPassword.Success" = "重置密码成功";
