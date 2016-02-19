@@ -48,6 +48,29 @@
 //用户登录类型
 #define USER_TYPE_MERCHANT @"merchant"
 
+/*** 友盟分享配置 ***/
+//友盟分享AppKey
+#define UMENG_SHARE_APPKEY @"56c66e48e0f55a8994000518"
+//友盟分享链接，根据平台自动跳转
+#define UMENG_SHARE_URL @"http://www.lttok.com/mobile"
+//友盟分享标题
+#define UMENG_SHARE_TITLE @"我在使用两条腿生意宝"
+//友盟分享内容
+#define UMENG_SHARE_TEXT @"中国同城送货上门服务第一品牌。\n中国首家专注提供同城上门服务的服务品牌。\nhttp://www.lttok.com/mobile"
+//友盟微信APPID，还需要替换URL schemes中的APPID
+#define UMENG_WEIXIN_APPID @"wx00a2b7c29ef17dbc"
+//友盟微信APPKEY
+#define UMENG_WEIXIN_APPKEY @"6577e11279f937b04293038f3b5a14ba"
+//友盟新浪微博APPKEY，还需要替换URL schemes中的APPKEY
+#define UMENG_SINA_APPKEY @"1411372117"
+//友盟新浪回调地址
+#define UMENG_SINA_REDIRECTURL @"http://sns.whalecloud.com/sina2/callback"
+//友盟QQ和空间APPID，还需要替换URL schemes中的"tencent"+appId和"QQ"+appId转换成十六进制（不足8位前面补0）
+#define UMENG_QQ_APPID @"1105115627"
+//友盟QQ和空间APPKEY
+#define UMENG_QQ_APPKEY @"wtMZqqD5SN4CaZy9"
+/*** 友盟分享配置 ***/
+
 //通用服务类型
 #define LTT_SERVICE_CATEGORYID -1
 #define LTT_SERVICE_CATEGORYNAME @"上门服务"

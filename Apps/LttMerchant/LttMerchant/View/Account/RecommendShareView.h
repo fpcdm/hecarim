@@ -14,7 +14,7 @@
 
 - (void)actionMerchant;
 
-- (void)actionInvite;
+- (void)actionShare;
 
 @end
 

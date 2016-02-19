@@ -33,7 +33,7 @@
                         @{@"id" : @"merchant", @"type" : @"action", @"action": @"actionMerchant", @"image": @"", @"text" : @"我推荐的商户"},
                         ],
                       @[
-                        @{@"id" : @"invite", @"type" : @"action", @"action": @"actionInvite", @"image": @"", @"text" : @"要请好友使用生意宝"},
+                        @{@"id" : @"invite", @"type" : @"action", @"action": @"actionShare", @"image": @"", @"text" : @"邀请好友使用生意宝"},
                         ],
                       nil];
     } else {
@@ -42,7 +42,7 @@
                         @{@"id" : @"merchant", @"type" : @"action", @"action": @"actionMerchant", @"image": @"", @"text" : @"我推荐的商户"},
                         ],
                       @[
-                        @{@"id" : @"invite", @"type" : @"action", @"action": @"actionInvite", @"image": @"", @"text" : @"要请好友使用生意宝"},
+                        @{@"id" : @"invite", @"type" : @"action", @"action": @"actionShare", @"image": @"", @"text" : @"邀请好友使用生意宝"},
                         ],
                       nil];
     }
@@ -71,9 +71,9 @@
     [self.delegate actionMerchant];
 }
 
-- (void)actionInvite
+- (void)actionShare
 {
-    [self.delegate actionInvite];
+    [self.delegate actionShare];
 }
 
 //让分割线左侧不留空白

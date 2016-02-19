@@ -15,6 +15,10 @@
 #import "UserHandler.h"
 #import "Harpy.h"
 #import "FWDebug.h"
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialQQHandler.h"
 
 @interface LttAppDelegate () <LocationUtilDelegate>
 
@@ -95,6 +99,9 @@
     
     //初始化用户心跳
     [self initHeartbeat];
+    
+    //初始化友盟分享
+    [self initUmeng];
     
     //检查版本更新
     [self checkUpdate];
@@ -295,6 +302,26 @@
             NSLog(@"更新用户心跳失败");
         }];
     }
+}
+
+//初始化友盟分享
+- (void)initUmeng
+{
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:UMENG_SHARE_APPKEY];
+    
+    //设置微信AppId，设置分享url，默认使用友盟的网址
+    [UMSocialWechatHandler setWXAppId:UMENG_WEIXIN_APPID appSecret:UMENG_WEIXIN_APPKEY url:UMENG_SHARE_URL];
+    
+    // 打开新浪微博的SSO开关，并配置应用appkey、redirectURL，redirectURL需和后台设置保持一致
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:UMENG_SINA_APPKEY RedirectURL:UMENG_SINA_REDIRECTURL];
+    
+    //设置分享到QQ空间的应用Id，和分享url链接，并设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setQQWithAppId:UMENG_QQ_APPID appKey:UMENG_QQ_APPKEY url:UMENG_SHARE_URL];
+    [UMSocialQQHandler setSupportWebView:YES];
+    
+    //隐藏没有安装的平台
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone,UMShareToSina]];
 }
 
 #pragma mark - GPS
