@@ -8,6 +8,15 @@
 
 #import "FWLog.h"
 
+//日志类型枚举
+typedef enum {
+    FWLogTypeLog = 0,
+    FWLogTypeDebug,
+    FWLogTypeInfo,
+    FWLogTypeWarn,
+    FWLogTypeError
+} FWLogType;
+
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 
@@ -25,7 +34,7 @@ static BOOL isDDLogInited = false;
 
 @implementation FWLog
 
-+ (void)_log:(LogType)type message:(NSString *)message
++ (void)_log:(FWLogType)type message:(NSString *)message
 {
     //开发环境
 #ifdef APP_DEBUG
@@ -46,16 +55,16 @@ static BOOL isDDLogInited = false;
     }
     
     switch (type) {
-        case LogTypeDebug:
+        case FWLogTypeDebug:
             DDLogDebug(@"DEBUG: %@", message);
             break;
-        case LogTypeInfo:
+        case FWLogTypeInfo:
             DDLogInfo(@"INFO: %@", message);
             break;
-        case LogTypeWarn:
+        case FWLogTypeWarn:
             DDLogWarn(@"WARN: %@", message);
             break;
-        case LogTypeError:
+        case FWLogTypeError:
             DDLogError(@"ERROR: %@", message);
             break;
         default:
@@ -67,16 +76,16 @@ static BOOL isDDLogInited = false;
 #else
     
     switch (type) {
-        case LogTypeDebug:
+        case FWLogTypeDebug:
             NSLog(@"DEBUG: %@", message);
             break;
-        case LogTypeInfo:
+        case FWLogTypeInfo:
             NSLog(@"INFO: %@", message);
             break;
-        case LogTypeWarn:
+        case FWLogTypeWarn:
             NSLog(@"WARN: %@", message);
             break;
-        case LogTypeError:
+        case FWLogTypeError:
             NSLog(@"ERROR: %@", message);
             break;
         default:
@@ -93,19 +102,6 @@ static BOOL isDDLogInited = false;
 #endif
 }
 
-+ (void)log:(LogType)type format:(NSString *)format, ...
-{
-#ifdef APP_DEBUG
-    va_list args;
-    if (format) {
-        va_start(args, format);
-        NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:type message:message];
-        va_end(args);
-    }
-#endif
-}
-
 + (void)log:(NSString *)format, ...
 {
 #ifdef APP_DEBUG
@@ -113,7 +109,7 @@ static BOOL isDDLogInited = false;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:LogTypeLog message:message];
+        [self _log:FWLogTypeLog message:message];
         va_end(args);
     }
 #endif
@@ -126,7 +122,7 @@ static BOOL isDDLogInited = false;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:LogTypeDebug message:message];
+        [self _log:FWLogTypeDebug message:message];
         va_end(args);
     }
 #endif
@@ -139,7 +135,7 @@ static BOOL isDDLogInited = false;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:LogTypeInfo message:message];
+        [self _log:FWLogTypeInfo message:message];
         va_end(args);
     }
 #endif
@@ -152,7 +148,7 @@ static BOOL isDDLogInited = false;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:LogTypeWarn message:message];
+        [self _log:FWLogTypeWarn message:message];
         va_end(args);
     }
 #endif
@@ -165,9 +161,16 @@ static BOOL isDDLogInited = false;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:LogTypeError message:message];
+        [self _log:FWLogTypeError message:message];
         va_end(args);
     }
+#endif
+}
+
++ (void)dump:(id)object
+{
+#ifdef APP_DEBUG
+    [self error:@"%@: %@", [[object class] description], [object description]];
 #endif
 }
 

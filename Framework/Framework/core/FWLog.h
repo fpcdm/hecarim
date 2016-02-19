@@ -8,17 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    LogTypeLog = 0,
-    LogTypeDebug,
-    LogTypeInfo,
-    LogTypeWarn,
-    LogTypeError
-} LogType;
-
 @interface FWLog : NSObject
-
-+ (void)log:(LogType)type format:(NSString *)format, ...;
 
 + (void)log:(NSString *)format, ...;
 
@@ -29,5 +19,10 @@ typedef enum {
 + (void)warn:(NSString *)format, ...;
 
 + (void)error:(NSString *)format, ...;
+
+/**
+ *  调试对象
+ */
++ (void)dump:(id)object;
 
 @end
