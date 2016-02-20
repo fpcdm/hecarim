@@ -215,7 +215,7 @@
 
 + (BOOL)isAtomClass:(Class)clazz
 {
-    if ( clazz == [NSArray class] || [[clazz description] isEqualToString:@"__NSCFArray"] )
+    if ( clazz == [NSArray class] )
         return YES;
     if ( clazz == [NSData class] )
         return YES;
@@ -225,7 +225,7 @@
         return YES;
     if ( clazz == [NSNull class] )
         return YES;
-    if ( clazz == [NSNumber class] || [[clazz description] isEqualToString:@"__NSCFNumber"] )
+    if ( clazz == [NSNumber class])
         return YES;
     if ( clazz == [NSObject class] )
         return YES;
@@ -234,6 +234,10 @@
     if ( clazz == [NSURL class] )
         return YES;
     if ( clazz == [NSValue class] )
+        return YES;
+    
+    //__NSCFArray,__NSCFNumber,__NSArrayI,...
+    if ( [[clazz description] hasPrefix:@"__NS"] )
         return YES;
     
     return NO;
@@ -256,7 +260,7 @@
     {
         methodNames = [NSMutableArray array];
         
-        while (NULL != clazz) {
+        while (clazz != NULL) {
             unsigned int methodCount = 0;
             Method *methods = class_copyMethodList(clazz, &methodCount);
             
@@ -268,6 +272,7 @@
                     
                     NSString *selectorName = [NSString stringWithUTF8String:cstrName];
                     if (NULL == selectorName) continue;
+                    if ([methodNames containsObject:selectorName]) continue;
                     
                     [methodNames addObject:selectorName];
                 }
@@ -296,7 +301,7 @@
     
     NSMutableArray *result = [NSMutableArray array];
     for (NSString *method in methods) {
-        if (NO == [method hasPrefix:prefix]) continue;
+        if (![method hasPrefix:prefix]) continue;
         
         [result addObject:method];
     }
@@ -319,7 +324,7 @@
     {
         propertyNames = [NSMutableArray array];
         
-        while (NULL != clazz) {
+        while (clazz != NULL) {
             unsigned int propertyCount = 0;
             objc_property_t *properties = class_copyPropertyList(clazz, &propertyCount);
             
@@ -329,6 +334,7 @@
                 
                 NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
                 if (NULL == propertyName) continue;
+                if ([propertyNames containsObject:propertyName]) continue;
                 
                 [propertyNames addObject:propertyName];
             }
@@ -345,22 +351,25 @@
     return propertyNames;
 }
 
-+ (NSArray *)allInstanceProperties:(Class)clazz withPrefix:(NSString *)prefix
++ (NSDictionary *)getInstanceProperties:(id)obj
 {
-    NSArray *properties = [self allInstanceProperties:clazz];
+    if (!obj) return nil;
+    
+    NSArray *properties = [self allInstanceProperties:[obj class]];
     if (nil == properties || 0 == properties.count) {
         return nil;
     }
     
-    if (nil == prefix) {
-        return properties;
-    }
-    
-    NSMutableArray *result = [NSMutableArray array];
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
     for (NSString *property in properties) {
-        if (NO == [property hasPrefix:prefix]) continue;
+        if (![obj respondsToSelector:NSSelectorFromString(property)])
+            continue;
         
-        [result addObject:property];
+        id value = [obj valueForKey:property];
+        if (value == nil) {
+            value = [NSNull null];
+        }
+        [result setObject:value forKey:property];
     }
     return result;
 }

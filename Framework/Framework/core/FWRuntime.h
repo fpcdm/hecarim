@@ -33,6 +33,6 @@
 + (NSArray *)allInstanceMethods:(Class)clazz withPrefix:(NSString *)prefix;
 
 + (NSArray *)allInstanceProperties:(Class)clazz;
-+ (NSArray *)allInstanceProperties:(Class)clazz withPrefix:(NSString *)prefix;
++ (NSDictionary *)getInstanceProperties:(id)obj;
 
 @end

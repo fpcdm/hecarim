@@ -18,6 +18,13 @@ typedef enum {
 } FWLogType;
 
 #ifdef APP_DEBUG
+
+//dump
+#import "FWRuntime.h"
+
+#endif
+
+#ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 
 //DDLog调试级别，需要安装XcodeColors，需在导入DDLog前设置
@@ -170,7 +177,12 @@ static BOOL isDDLogInited = false;
 + (void)dump:(id)object
 {
 #ifdef APP_DEBUG
-    [self error:@"%@: %@", [[object class] description], [object description]];
+    NSString *clazz = NSStringFromClass([object class]);
+    if (!object || [FWRuntime isAtomClass:[object class]]) {
+        [self debug:@"%@: %@", clazz, object];
+    } else {
+        [self debug:@"%@: %@", clazz, [FWRuntime getInstanceProperties:object]];
+    }
 #endif
 }
 
