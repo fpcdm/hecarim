@@ -55,7 +55,7 @@
     return self.status != self.UNAVAILABLE ? YES : NO;
 }
 
-- (NSString *)localIP
+- (NSString *)localIp
 {
     NSString *ipAddr = nil;
     struct ifaddrs *addrs = NULL;

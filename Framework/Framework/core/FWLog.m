@@ -177,11 +177,10 @@ static BOOL isDDLogInited = false;
 + (void)dump:(id)object
 {
 #ifdef APP_DEBUG
-    NSString *clazz = NSStringFromClass([object class]);
     if (!object || [FWRuntime isAtomClass:[object class]]) {
-        [self debug:@"%@: %@", clazz, object];
+        [self debug:@"%@: %@", [[object class] description], object];
     } else {
-        [self debug:@"%@: %@", clazz, [FWRuntime getInstanceProperties:object]];
+        [self debug:@"%@: %@", [[object class] description], [FWRuntime getInstanceProperties:object]];
     }
 #endif
 }
