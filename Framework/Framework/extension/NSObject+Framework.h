@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWSignal.h"
 
 @interface NSObject (Framework)
 
@@ -32,6 +33,13 @@
 + (BOOL)postNotification:(NSString *)name;
 
 + (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
+
+//Signal
+@static_string(SIGNAL)
+
+@static_string(SIGNAL_TYPE)
+
+- (void)handleSignal:(FWSignal *)signal;
 
 //Swizzle
 + (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector;

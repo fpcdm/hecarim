@@ -10,4 +10,20 @@
 
 @interface FWSignal : NSObject
 
++ (FWSignal *)signal;
+
+@prop_assign(id, source)
+
+@prop_assign(id, target)
+
+@prop_strong(NSString *, name)
+
+@prop_strong(id, object)
+
+- (void)send;
+
+- (BOOL)isName:(NSString *)name;
+
+- (BOOL)isType:(NSString *)type;
+
 @end

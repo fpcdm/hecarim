@@ -288,7 +288,27 @@
 #define ON_NOTIFICATION3( __class, __name, __notification ) \
     - (void)handleNotification_##__class##_##__name:(NSNotification *)__notification
 
-TODO("signal")
+#pragma mark - signal
+//@signal
+#undef signal
+#define signal( __name ) \
+    static_property( __name )
+
+#undef def_signal
+#define def_signal( __name ) \
+    def_static_property3( __name, @"signal", NSStringFromClass([self class]) )
+
+#undef	ON_SIGNAL
+#define ON_SIGNAL( __signal ) \
+- (void)handleSignal:(FWSignal *)__signal
+
+#undef	ON_SIGNAL2
+#define ON_SIGNAL2( __filter, __signal ) \
+- (void)handleSignal_##__filter:(FWSignal *)__signal
+
+#undef	ON_SIGNAL3
+#define ON_SIGNAL3( __class, __name, __signal ) \
+- (void)handleSignal_##__class##_##__name:(FWSignal *)__signal
 
 
 #endif /* FWCompile_h */
