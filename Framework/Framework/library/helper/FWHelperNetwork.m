@@ -129,7 +129,7 @@
 }
 
 //处理连接改变后的情况
-ON_NOTIFICATION(notification)
+handleNotification(notification)
 {
     if (![notification isName:kReachabilityChangedNotification]) return;
     

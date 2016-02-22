@@ -11,6 +11,19 @@
 
 
 #pragma mark - global
+//macro_cstr
+#define macro_cstr( x ) \
+    #x
+
+//macro_string
+#define macro_string( x ) \
+    @(#x)
+
+//macro_concat
+#define macro_concat( x, y ) \
+    x##y
+
+#pragma mark - custom
 //DEPRECATED
 #ifndef	DEPRECATED
 #define	DEPRECATED \
@@ -30,14 +43,10 @@
 #define IGNORED_END \
     _Pragma("clang diagnostic pop")
 
-//MACRO_CSTR
-#define MACRO_CSTR( x ) \
-    #x
-
 //TODO
 #ifndef	TODO
 #define TODO( x ) \
-    _Pragma(MACRO_CSTR(message("✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖ TODO: " x)))
+    _Pragma(macro_cstr(message("✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖ TODO: " x)))
 #endif
 
 #pragma mark - block
@@ -276,16 +285,16 @@
 #define def_notification( __name ) \
     def_static_property3( __name, @"notification", NSStringFromClass([self class]) )
 
-#undef	ON_NOTIFICATION
-#define ON_NOTIFICATION( __notification ) \
+#undef	handleNotification
+#define handleNotification( __notification ) \
     - (void)handleNotification:(NSNotification *)__notification
 
-#undef	ON_NOTIFICATION2
-#define ON_NOTIFICATION2( __filter, __notification ) \
+#undef	handleNotification2
+#define handleNotification2( __filter, __notification ) \
     - (void)handleNotification_##__filter:(NSNotification *)__notification
 
-#undef	ON_NOTIFICATION3
-#define ON_NOTIFICATION3( __class, __name, __notification ) \
+#undef	handleNotification3
+#define handleNotification3( __class, __name, __notification ) \
     - (void)handleNotification_##__class##_##__name:(NSNotification *)__notification
 
 #pragma mark - signal
@@ -298,16 +307,16 @@
 #define def_signal( __name ) \
     def_static_property3( __name, @"signal", NSStringFromClass([self class]) )
 
-#undef	ON_SIGNAL
-#define ON_SIGNAL( __signal ) \
+#undef	handleSignal
+#define handleSignal( __signal ) \
 - (void)handleSignal:(FWSignal *)__signal
 
-#undef	ON_SIGNAL2
-#define ON_SIGNAL2( __filter, __signal ) \
+#undef	handleSignal2
+#define handleSignal2( __filter, __signal ) \
 - (void)handleSignal_##__filter:(FWSignal *)__signal
 
-#undef	ON_SIGNAL3
-#define ON_SIGNAL3( __class, __name, __signal ) \
+#undef	handleSignal3
+#define handleSignal3( __class, __name, __signal ) \
 - (void)handleSignal_##__class##_##__name:(FWSignal *)__signal
 
 
