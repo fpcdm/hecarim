@@ -43,6 +43,12 @@
 #define IGNORED_END \
     _Pragma("clang diagnostic pop")
 
+//UNUSED
+#ifndef	UNUSED
+#define	UNUSED( __x ) \
+    { id __unused_var__ __attribute__((unused)) = (id)(__x); }
+#endif
+
 //TODO
 #ifndef	TODO
 #define TODO( x ) \

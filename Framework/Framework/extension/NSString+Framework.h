@@ -78,11 +78,6 @@
 - (BOOL)isFormatIp;
 
 /**
- *  是否是合法域名
- */
-- (BOOL)isFormatDomain;
-
-/**
  *  是否全是中文
  */
 - (BOOL)isFormatChinese;

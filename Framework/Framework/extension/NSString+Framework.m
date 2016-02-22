@@ -67,8 +67,7 @@
 
 - (BOOL)isFormatIdcard
 {
-    ///^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}(\d|x|X)$/
-    return NO;
+    return [self isFormatRegex:@"^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}(\\d|x|X)$"];
 }
 
 - (BOOL)isFormatIp
@@ -78,20 +77,12 @@
 
 - (BOOL)isFormatUrl
 {
-    //(((f|ht){1}(tp|tps)://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)
-    return [self isFormatRegex:@""];
-}
-
-- (BOOL)isFormatDomain
-{
-    //[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
-    return [self isFormatRegex:@""];
+    return ([self hasPrefix:@"http://"] || [self hasPrefix:@"https://"]) ? YES : NO;
 }
 
 - (BOOL)isFormatEmail
 {
-    ///^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
-    return [self isFormatRegex:@""];
+    return [self isFormatRegex:@"^[A-Z0-9a-z._\%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"];
 }
 
 - (BOOL)isFormatChinese
