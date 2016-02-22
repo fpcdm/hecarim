@@ -132,6 +132,10 @@
 		2F2B655F1C59C4BE0024DC09 /* FWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B655D1C59C4BE0024DC09 /* FWModel.m */; };
 		2F2B65621C59C4F00024DC09 /* FWViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65601C59C4F00024DC09 /* FWViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F2B65631C59C4F00024DC09 /* FWViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65611C59C4F00024DC09 /* FWViewModel.m */; };
+		2F4AF9C61C7B2D400061A566 /* FWHelperSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4AF9C41C7B2D400061A566 /* FWHelperSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F4AF9C71C7B2D400061A566 /* FWHelperSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */; };
+		2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F4AF9CB1C7B30D80061A566 /* FWHelperPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AF9C91C7B30D80061A566 /* FWHelperPath.m */; };
 		2F5F2F1D1C53F27500571E49 /* FWPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */; };
 		2F6596151C5CA31100CC8C06 /* UIImage+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -613,8 +617,6 @@
 		2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A641C72FCE400EBF526 /* FWHelperTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A621C72FCE400EBF526 /* FWHelperTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A651C72FCE400EBF526 /* FWHelperTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A631C72FCE400EBF526 /* FWHelperTimer.m */; };
-		2FEF7A6A1C73031F00EBF526 /* FWHelperBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A681C73031F00EBF526 /* FWHelperBundle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FEF7A6B1C73031F00EBF526 /* FWHelperBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A691C73031F00EBF526 /* FWHelperBundle.m */; };
 		2FEF7A6E1C73055300EBF526 /* FWHelperLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A6C1C73055300EBF526 /* FWHelperLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A6F1C73055300EBF526 /* FWHelperLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A6D1C73055300EBF526 /* FWHelperLocation.m */; };
 		2FF10B691C4CBF1100365024 /* Framework.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2FF10B681C4CBF1100365024 /* Framework.pch */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -759,6 +761,10 @@
 		2F2B655D1C59C4BE0024DC09 /* FWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWModel.m; sourceTree = "<group>"; };
 		2F2B65601C59C4F00024DC09 /* FWViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWViewModel.h; sourceTree = "<group>"; };
 		2F2B65611C59C4F00024DC09 /* FWViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWViewModel.m; sourceTree = "<group>"; };
+		2F4AF9C41C7B2D400061A566 /* FWHelperSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperSystem.h; sourceTree = "<group>"; };
+		2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperSystem.m; sourceTree = "<group>"; };
+		2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperPath.h; sourceTree = "<group>"; };
+		2F4AF9C91C7B30D80061A566 /* FWHelperPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperPath.m; sourceTree = "<group>"; };
 		2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginManager.h; sourceTree = "<group>"; };
 		2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginManager.m; sourceTree = "<group>"; };
 		2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Framework.h"; sourceTree = "<group>"; };
@@ -1241,8 +1247,6 @@
 		2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWProtocol.h; sourceTree = "<group>"; };
 		2FEF7A621C72FCE400EBF526 /* FWHelperTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperTimer.h; sourceTree = "<group>"; };
 		2FEF7A631C72FCE400EBF526 /* FWHelperTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperTimer.m; sourceTree = "<group>"; };
-		2FEF7A681C73031F00EBF526 /* FWHelperBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperBundle.h; sourceTree = "<group>"; };
-		2FEF7A691C73031F00EBF526 /* FWHelperBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperBundle.m; sourceTree = "<group>"; };
 		2FEF7A6C1C73055300EBF526 /* FWHelperLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperLocation.h; sourceTree = "<group>"; };
 		2FEF7A6D1C73055300EBF526 /* FWHelperLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperLocation.m; sourceTree = "<group>"; };
 		2FF10B681C4CBF1100365024 /* Framework.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framework.pch; sourceTree = "<group>"; };
@@ -1412,12 +1416,14 @@
 				2FE6A0C01C72211600857CE1 /* FWHelperAspect.m */,
 				2FE6A0C31C72229800857CE1 /* FWHelperDevice.h */,
 				2FE6A0C41C72229800857CE1 /* FWHelperDevice.m */,
+				2F4AF9C41C7B2D400061A566 /* FWHelperSystem.h */,
+				2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */,
 				2FE6A0CB1C72268C00857CE1 /* FWHelperNetwork.h */,
 				2FE6A0CC1C72268C00857CE1 /* FWHelperNetwork.m */,
 				2FEF7A621C72FCE400EBF526 /* FWHelperTimer.h */,
 				2FEF7A631C72FCE400EBF526 /* FWHelperTimer.m */,
-				2FEF7A681C73031F00EBF526 /* FWHelperBundle.h */,
-				2FEF7A691C73031F00EBF526 /* FWHelperBundle.m */,
+				2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */,
+				2F4AF9C91C7B30D80061A566 /* FWHelperPath.m */,
 				2FEF7A6C1C73055300EBF526 /* FWHelperLocation.h */,
 				2FEF7A6D1C73055300EBF526 /* FWHelperLocation.m */,
 				2F1FE8D51C741ABE00C76B8B /* FWHelperEncoder.h */,
@@ -2317,6 +2323,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */,
+				2F4AF9C61C7B2D400061A566 /* FWHelperSystem.h in Headers */,
 				2F13200E1C7AB6D700C8699A /* NSDate+Framework.h in Headers */,
 				2F70C4901C75EBDC0077D14A /* FWSignal.h in Headers */,
 				2F70C48C1C75EB580077D14A /* FWRuntime.h in Headers */,
@@ -2326,7 +2334,6 @@
 				2F1FE8C11C740B8B00C76B8B /* UIViewController+FIView.h in Headers */,
 				2F1FE8D71C741ABE00C76B8B /* FWHelperEncoder.h in Headers */,
 				2F1FE8DB1C741AF300C76B8B /* FWHelperHttp.h in Headers */,
-				2FEF7A6A1C73031F00EBF526 /* FWHelperBundle.h in Headers */,
 				2FEF7A6E1C73055300EBF526 /* FWHelperLocation.h in Headers */,
 				2FEF7A641C72FCE400EBF526 /* FWHelperTimer.h in Headers */,
 				2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */,
@@ -2807,6 +2814,7 @@
 				2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */,
 				2FD99D6D1C48CE6F0065293E /* DDContextFilterLogFormatter.m in Sources */,
 				2FD99DBD1C48CE6F0065293E /* FLEXGlobalsTableViewController.m in Sources */,
+				2F4AF9C71C7B2D400061A566 /* FWHelperSystem.m in Sources */,
 				2F1C776A1C5704AF009080A3 /* FWPluginCacheDefault.m in Sources */,
 				2FD99DCD1C48CE6F0065293E /* FLEXNetworkHistoryTableViewController.m in Sources */,
 				2F1C35DB1C4C89310060E793 /* IStyle.m in Sources */,
@@ -2876,7 +2884,6 @@
 				2FD99D561C48CE6F0065293E /* ActionSheetStringPicker.m in Sources */,
 				2F24FB4B1C566F4E00A82ABD /* FWCacheRequest.m in Sources */,
 				2FD99DBF1C48CE6F0065293E /* FLEXInstancesTableViewController.m in Sources */,
-				2FEF7A6B1C73031F00EBF526 /* FWHelperBundle.m in Sources */,
 				2FD99DDB1C48CE6F0065293E /* FLEXArrayExplorerViewController.m in Sources */,
 				2FD99EC71C48CE700065293E /* SDWebImageDecoder.m in Sources */,
 				2F2B65631C59C4F00024DC09 /* FWViewModel.m in Sources */,
@@ -2897,6 +2904,7 @@
 				2FD99D641C48CE6F0065293E /* DDFileLogger.m in Sources */,
 				2FD99E011C48CE6F0065293E /* FLEXHierarchyTableViewCell.m in Sources */,
 				2FD99DE11C48CE6F0065293E /* FLEXDictionaryExplorerViewController.m in Sources */,
+				2F4AF9CB1C7B30D80061A566 /* FWHelperPath.m in Sources */,
 				2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */,
 				2FD99E3F1C48CE6F0065293E /* MJRefreshBackStateFooter.m in Sources */,
 				2FD99E051C48CE6F0065293E /* FLEXImagePreviewViewController.m in Sources */,

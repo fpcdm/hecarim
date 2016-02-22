@@ -1,14 +1,14 @@
 //
-//  FWHelperBundle.m
+//  FWHelperPath.m
 //  Framework
 //
-//  Created by wuyong on 16/2/16.
+//  Created by 吴勇 on 16/2/22.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWHelperBundle.h"
+#import "FWHelperPath.h"
 
-@implementation FWHelperBundle
+@implementation FWHelperPath
 
 + (NSString *)homePath
 {
@@ -58,21 +58,6 @@
 + (NSString *)resourcePath
 {
     return [[NSBundle mainBundle] resourcePath];
-}
-
-+ (NSString *)appVersion
-{
-    NSString * value = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-    if ( nil == value || 0 == value.length ) {
-        value = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersion"];
-    }
-    return value;
-}
-
-+ (NSString *)appIdentifier
-{
-    NSString *value = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-    return value;
 }
 
 @end

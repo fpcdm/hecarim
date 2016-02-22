@@ -1,14 +1,14 @@
 //
-//  FWHelperBundle.h
+//  FWHelperPath.h
 //  Framework
 //
-//  Created by wuyong on 16/2/16.
+//  Created by 吴勇 on 16/2/22.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface FWHelperBundle : NSObject
+@interface FWHelperPath : NSObject
 
 //应用程序目录的路径，在该目录下有三个文件夹：Documents、Library、temp以及一个.app包！该目录下就是应用程序的沙盒，应用程序只能访问该目录下的文件夹！！！
 + (NSString *)homePath;
@@ -36,11 +36,5 @@
 
 // .app 程序绝对目录，不能存任何东西
 + (NSString *)resourcePath;
-
-//获取App版本
-+ (NSString *)appVersion;
-
-//获取App标识
-+ (NSString *)appIdentifier;
 
 @end
