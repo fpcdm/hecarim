@@ -45,6 +45,7 @@
 //extension
 #import "NSObject+Framework.h"
 #import "NSString+Framework.h"
+#import "NSDate+Framework.h"
 #import "UIColor+Framework.h"
 #import "UIImage+Framework.h"
 #import "UIView+Framework.h"
@@ -66,7 +67,6 @@
 
 #import "FWHelperAspect.h"
 #import "FWHelperDevice.h"
-#import "FWHelperDate.h"
 #import "FWHelperNetwork.h"
 #import "FWHelperTimer.h"
 #import "FWHelperBundle.h"

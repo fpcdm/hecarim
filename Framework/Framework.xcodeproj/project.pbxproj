@@ -22,6 +22,8 @@
 		2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7291C55F537003BB601 /* UIViewController+Framework.m */; };
 		2F118DF91C5B529700680951 /* UINavigationController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F118DF71C5B529700680951 /* UINavigationController+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F118DFA1C5B529700680951 /* UINavigationController+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F118DF81C5B529700680951 /* UINavigationController+Framework.m */; };
+		2F13200E1C7AB6D700C8699A /* NSDate+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F13200C1C7AB6D700C8699A /* NSDate+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F13200F1C7AB6D700C8699A /* NSDate+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F13200D1C7AB6D700C8699A /* NSDate+Framework.m */; };
 		2F17A6161C71EF3500C77940 /* FWViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F17A6141C71EF3500C77940 /* FWViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F17A6171C71EF3500C77940 /* FWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F17A6151C71EF3500C77940 /* FWViewController.m */; };
 		2F17A61A1C71EFA900C77940 /* FWXmlViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F17A6181C71EFA900C77940 /* FWXmlViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -600,8 +602,6 @@
 		2FE6A0C21C72211600857CE1 /* FWHelperAspect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6A0C01C72211600857CE1 /* FWHelperAspect.m */; };
 		2FE6A0C51C72229900857CE1 /* FWHelperDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE6A0C31C72229800857CE1 /* FWHelperDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FE6A0C61C72229900857CE1 /* FWHelperDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6A0C41C72229800857CE1 /* FWHelperDevice.m */; };
-		2FE6A0C91C7224D000857CE1 /* FWHelperDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE6A0C71C7224D000857CE1 /* FWHelperDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FE6A0CA1C7224D000857CE1 /* FWHelperDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6A0C81C7224D000857CE1 /* FWHelperDate.m */; };
 		2FE6A0CD1C72268C00857CE1 /* FWHelperNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE6A0CB1C72268C00857CE1 /* FWHelperNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FE6A0CE1C72268C00857CE1 /* FWHelperNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6A0CC1C72268C00857CE1 /* FWHelperNetwork.m */; };
 		2FE6B5A61C70A4530039838D /* FWEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE6B5A41C70A4530039838D /* FWEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -649,6 +649,8 @@
 		2F09D7291C55F537003BB601 /* UIViewController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Framework.m"; sourceTree = "<group>"; };
 		2F118DF71C5B529700680951 /* UINavigationController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Framework.h"; sourceTree = "<group>"; };
 		2F118DF81C5B529700680951 /* UINavigationController+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Framework.m"; sourceTree = "<group>"; };
+		2F13200C1C7AB6D700C8699A /* NSDate+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Framework.h"; sourceTree = "<group>"; };
+		2F13200D1C7AB6D700C8699A /* NSDate+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Framework.m"; sourceTree = "<group>"; };
 		2F17A6141C71EF3500C77940 /* FWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWViewController.h; sourceTree = "<group>"; };
 		2F17A6151C71EF3500C77940 /* FWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWViewController.m; sourceTree = "<group>"; };
 		2F17A6181C71EFA900C77940 /* FWXmlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWXmlViewController.h; sourceTree = "<group>"; };
@@ -1228,8 +1230,6 @@
 		2FE6A0C01C72211600857CE1 /* FWHelperAspect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperAspect.m; sourceTree = "<group>"; };
 		2FE6A0C31C72229800857CE1 /* FWHelperDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperDevice.h; sourceTree = "<group>"; };
 		2FE6A0C41C72229800857CE1 /* FWHelperDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperDevice.m; sourceTree = "<group>"; };
-		2FE6A0C71C7224D000857CE1 /* FWHelperDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperDate.h; sourceTree = "<group>"; };
-		2FE6A0C81C7224D000857CE1 /* FWHelperDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperDate.m; sourceTree = "<group>"; };
 		2FE6A0CB1C72268C00857CE1 /* FWHelperNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperNetwork.h; sourceTree = "<group>"; };
 		2FE6A0CC1C72268C00857CE1 /* FWHelperNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperNetwork.m; sourceTree = "<group>"; };
 		2FE6B5A41C70A4530039838D /* FWEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWEntity.h; sourceTree = "<group>"; };
@@ -1412,8 +1412,6 @@
 				2FE6A0C01C72211600857CE1 /* FWHelperAspect.m */,
 				2FE6A0C31C72229800857CE1 /* FWHelperDevice.h */,
 				2FE6A0C41C72229800857CE1 /* FWHelperDevice.m */,
-				2FE6A0C71C7224D000857CE1 /* FWHelperDate.h */,
-				2FE6A0C81C7224D000857CE1 /* FWHelperDate.m */,
 				2FE6A0CB1C72268C00857CE1 /* FWHelperNetwork.h */,
 				2FE6A0CC1C72268C00857CE1 /* FWHelperNetwork.m */,
 				2FEF7A621C72FCE400EBF526 /* FWHelperTimer.h */,
@@ -1581,6 +1579,8 @@
 				2F1C777D1C575B8F009080A3 /* NSObject+Framework.m */,
 				2F1FE8DD1C7432C900C76B8B /* NSString+Framework.h */,
 				2F1FE8DE1C7432C900C76B8B /* NSString+Framework.m */,
+				2F13200C1C7AB6D700C8699A /* NSDate+Framework.h */,
+				2F13200D1C7AB6D700C8699A /* NSDate+Framework.m */,
 				2F1C77721C574F7E009080A3 /* UIColor+Framework.h */,
 				2F1C77731C574F7E009080A3 /* UIColor+Framework.m */,
 				2F6596131C5CA31100CC8C06 /* UIImage+Framework.h */,
@@ -2317,6 +2317,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F13200E1C7AB6D700C8699A /* NSDate+Framework.h in Headers */,
 				2F70C4901C75EBDC0077D14A /* FWSignal.h in Headers */,
 				2F70C48C1C75EB580077D14A /* FWRuntime.h in Headers */,
 				2F219B101C755E3B00561D95 /* FWCompile.h in Headers */,
@@ -2333,7 +2334,6 @@
 				2FE6A0CD1C72268C00857CE1 /* FWHelperNetwork.h in Headers */,
 				2FEF7A4B1C72B36100EBF526 /* FWViewAction.h in Headers */,
 				2FE6A0C51C72229900857CE1 /* FWHelperDevice.h in Headers */,
-				2FE6A0C91C7224D000857CE1 /* FWHelperDate.h in Headers */,
 				2FEF7A4F1C72B4AD00EBF526 /* FWWidget.h in Headers */,
 				2F17A61A1C71EFA900C77940 /* FWXmlViewController.h in Headers */,
 				2F17A6161C71EF3500C77940 /* FWViewController.h in Headers */,
@@ -2838,6 +2838,7 @@
 				2F70C4911C75EBDC0077D14A /* FWSignal.m in Sources */,
 				2FD99D681C48CE6F0065293E /* DDLog.m in Sources */,
 				2FD99DF31C48CE6F0065293E /* FLEXHeapEnumerator.m in Sources */,
+				2F13200F1C7AB6D700C8699A /* NSDate+Framework.m in Sources */,
 				2FD99ECD1C48CE700065293E /* SDWebImageManager.m in Sources */,
 				2F1C77891C576C44009080A3 /* UITextView+Framework.m in Sources */,
 				2FD99E481C48CE6F0065293E /* MJRefreshConst.m in Sources */,
@@ -2896,7 +2897,6 @@
 				2FD99D641C48CE6F0065293E /* DDFileLogger.m in Sources */,
 				2FD99E011C48CE6F0065293E /* FLEXHierarchyTableViewCell.m in Sources */,
 				2FD99DE11C48CE6F0065293E /* FLEXDictionaryExplorerViewController.m in Sources */,
-				2FE6A0CA1C7224D000857CE1 /* FWHelperDate.m in Sources */,
 				2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */,
 				2FD99E3F1C48CE6F0065293E /* MJRefreshBackStateFooter.m in Sources */,
 				2FD99E051C48CE6F0065293E /* FLEXImagePreviewViewController.m in Sources */,
