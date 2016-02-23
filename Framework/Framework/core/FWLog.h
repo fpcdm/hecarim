@@ -10,14 +10,29 @@
 
 @interface FWLog : NSObject
 
+/**
+ *  普通日志
+ */
 + (void)log:(NSString *)format, ...;
 
+/**
+ *  调试日志
+ */
 + (void)debug:(NSString *)format, ...;
 
+/**
+ *  消息日志
+ */
 + (void)info:(NSString *)format, ...;
 
+/**
+ *  警告日志
+ */
 + (void)warn:(NSString *)format, ...;
 
+/**
+ *  错误日志
+ */
 + (void)error:(NSString *)format, ...;
 
 /**

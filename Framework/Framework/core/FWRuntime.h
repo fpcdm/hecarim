@@ -10,29 +10,15 @@
 
 @interface FWRuntime : NSObject
 
-@static_integer( UNKNOWN )
-@static_integer( OBJECT )
-@static_integer( NSNUMBER )
-@static_integer( NSSTRING )
-@static_integer( NSARRAY )
-@static_integer( NSDICTIONARY )
-@static_integer( NSDATE )
+//获取类方法
++ (NSArray *)methodsOfClass:(Class)clazz;
++ (NSArray *)methodsOfClass:(Class)clazz withPrefix:(NSString *)prefix;
 
-+ (NSInteger)typeOf:(const char *)attr;
-+ (NSInteger)typeOfAttribute:(const char *)attr;
-+ (NSInteger)typeOfObject:(id)obj;
+//获取类属性
++ (NSArray *)propertiesOfClass:(Class)clazz;
++ (NSArray *)propertiesOfClass:(Class)clazz withPrefix:(NSString *)prefix;
 
-+ (NSString *)classNameOf:(const char *)attr;
-+ (NSString *)classNameOfAttribute:(const char *)attr;
-
-+ (Class)classOfAttribute:(const char *)attr;
-
-+ (BOOL)isAtomClass:(Class)clazz;
-
-+ (NSArray *)allInstanceMethods:(Class)clazz;
-+ (NSArray *)allInstanceMethods:(Class)clazz withPrefix:(NSString *)prefix;
-
-+ (NSArray *)allInstanceProperties:(Class)clazz;
-+ (NSDictionary *)getInstanceProperties:(id)obj;
+//获取对象属性
++ (NSDictionary *)propertiesOfObject:(id)obj;
 
 @end

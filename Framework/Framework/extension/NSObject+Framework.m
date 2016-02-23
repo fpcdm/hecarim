@@ -72,7 +72,7 @@
 
 - (void)observeAllNotifications
 {
-    NSArray *methods = [FWRuntime allInstanceMethods:[self class] withPrefix:@"handleNotification_"];
+    NSArray *methods = [FWRuntime methodsOfClass:[self class] withPrefix:@"handleNotification_"];
     if (nil == methods || 0 == methods.count) return;
     
     for (NSString *selectorName in methods) {
