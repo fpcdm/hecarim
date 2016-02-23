@@ -8,6 +8,7 @@
 
 #import "FWSignal.h"
 
+#pragma mark -
 @implementation FWSignal
 
 @def_prop_assign(id, source)
@@ -51,7 +52,9 @@
             selector = NSSelectorFromString(selectorName);
             
             if ([self.target respondsToSelector:selector]) {
-                [self handleSignalSelector:selector];
+                IGNORED_SELECTOR
+                [self.target performSelector:selector withObject:self];
+                IGNORED_END
                 return;
             }
         }
@@ -60,18 +63,15 @@
         selector = NSSelectorFromString(selectorName);
         
         if ([self.target respondsToSelector:selector]) {
-            [self handleSignalSelector:selector];
+            IGNORED_SELECTOR
+            [self.target performSelector:selector withObject:self];
+            IGNORED_END
             return;
         }
     }
     
-    [self handleSignalSelector:@selector(handleSignal:)];
-}
-
-- (void)handleSignalSelector:(SEL)selector
-{
     IGNORED_SELECTOR
-    [self.target performSelector:selector withObject:self];
+    [self.target performSelector:@selector(handleSignal:) withObject:self];
     IGNORED_END
 }
 
@@ -83,6 +83,22 @@
 - (BOOL)isType:(NSString *)type
 {
     return [self.name hasPrefix:type];
+}
+
+@end
+
+#pragma mark -
+@implementation NSObject (FWSignal)
+
+//signal.Class.name
+@def_static_string(SIGNAL, [[self class] SIGNAL_TYPE])
+
+//signal.Class.
+@def_static_string(SIGNAL_TYPE, [[[NSString stringWithUTF8String:"signal."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
+
+- (void)handleSignal:(FWSignal *)signal
+{
+    
 }
 
 @end

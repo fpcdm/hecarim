@@ -16,6 +16,8 @@
 		2F004E5C1C7074B5000B4F97 /* UIViewController+Javascript.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */; };
 		2F004E5F1C7075B6000B4F97 /* FWConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E5E1C7075B6000B4F97 /* FWConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F004E611C707755000B4F97 /* FWDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E601C707755000B4F97 /* FWDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F085E101C7C39520055BFD3 /* FWNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F085E0E1C7C39510055BFD3 /* FWNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F085E111C7C39520055BFD3 /* FWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F085E0F1C7C39520055BFD3 /* FWNotification.m */; };
 		2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */; };
 		2F09D72A1C55F537003BB601 /* UIViewController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7281C55F537003BB601 /* UIViewController+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -645,6 +647,8 @@
 		2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Javascript.m"; sourceTree = "<group>"; };
 		2F004E5E1C7075B6000B4F97 /* FWConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWConfig.h; sourceTree = "<group>"; };
 		2F004E601C707755000B4F97 /* FWDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWDefine.h; sourceTree = "<group>"; };
+		2F085E0E1C7C39510055BFD3 /* FWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWNotification.h; sourceTree = "<group>"; };
+		2F085E0F1C7C39520055BFD3 /* FWNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWNotification.m; sourceTree = "<group>"; };
 		2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogDefault.h; sourceTree = "<group>"; };
 		2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogDefault.m; sourceTree = "<group>"; };
 		2F09D7281C55F537003BB601 /* UIViewController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Framework.h"; sourceTree = "<group>"; };
@@ -1572,6 +1576,8 @@
 				2F17A6191C71EFA900C77940 /* FWXmlViewController.m */,
 				2F70C48A1C75EB580077D14A /* FWRuntime.h */,
 				2F70C48B1C75EB580077D14A /* FWRuntime.m */,
+				2F085E0E1C7C39510055BFD3 /* FWNotification.h */,
+				2F085E0F1C7C39520055BFD3 /* FWNotification.m */,
 				2F70C48E1C75EBDC0077D14A /* FWSignal.h */,
 				2F70C48F1C75EBDC0077D14A /* FWSignal.m */,
 			);
@@ -2323,6 +2329,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F085E101C7C39520055BFD3 /* FWNotification.h in Headers */,
 				2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */,
 				2F4AF9C61C7B2D400061A566 /* FWHelperSystem.h in Headers */,
 				2F13200E1C7AB6D700C8699A /* NSDate+Framework.h in Headers */,
@@ -2929,6 +2936,7 @@
 				2F6596401C5CEFA100CC8C06 /* FWTheme.m in Sources */,
 				2F1FE8C21C740B8B00C76B8B /* UIViewController+FIView.m in Sources */,
 				2F1C35FA1C4C89310060E793 /* ILabel.m in Sources */,
+				2F085E111C7C39520055BFD3 /* FWNotification.m in Sources */,
 				2F65961A1C5CB51400CC8C06 /* UIScrollView+Framework.m in Sources */,
 				2F1C36061C4C89310060E793 /* IDTHTMLViewLoader.m in Sources */,
 				2FD99E511C48CE6F0065293E /* PINCache.m in Sources */,

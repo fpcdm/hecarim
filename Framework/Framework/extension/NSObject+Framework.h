@@ -7,40 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWNotification.h"
 #import "FWSignal.h"
 
 @interface NSObject (Framework)
-
-//Notification
-@static_string(NOTIFICATION)
-
-@static_string(NOTIFICATION_TYPE)
-
-- (void)handleNotification:(NSNotification *)notification;
-
-- (void)observeNotification:(NSString *)name;
-
-- (void)observeAllNotifications;
-
-- (void)unobserveNotification:(NSString *)name;
-
-- (void)unobserveAllNotifications;
-
-- (BOOL)postNotification:(NSString *)name;
-
-- (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
-
-+ (BOOL)postNotification:(NSString *)name;
-
-+ (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
-
-//Signal
-@static_string(SIGNAL)
-
-@static_string(SIGNAL_TYPE)
-
-- (void)handleSignal:(FWSignal *)signal;
-
 //Swizzle
 + (BOOL)swizzleMethod:(SEL)originalSelector with:(SEL)anotherSelector;
 
@@ -69,13 +39,5 @@
 - (BOOL)isNotNull;
 
 - (BOOL)isNotEmpty;
-
-@end
-
-@interface NSNotification (Framework)
-
-- (BOOL)isName:(NSString *)name;
-
-- (BOOL)isType:(NSString *)type;
 
 @end
