@@ -11,11 +11,17 @@
 
 @interface FWView : UIView
 
-//单个赋值，暂不提供批量方法，防止参数为nil崩溃
+//单个赋值，建议使用此方法赋值，防止参数为nil崩溃
 - (void)assign:(NSString *)key value:(id)value;
 
-//获取数据
+//批量赋值，注意字典不能有nil值，否则会引起崩溃
+- (void)assign:(NSDictionary *)data;
+
+//获取单个数据
 - (id)fetch:(NSString *)key;
+
+//获取所有数据
+- (NSDictionary *)fetchAll;
 
 //展示数据，子类重写
 - (void)display;

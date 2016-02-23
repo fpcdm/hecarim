@@ -12,23 +12,23 @@
 //@notification
 #undef notification
 #define notification( __name ) \
-static_property( __name )
+    static_property( __name )
 
 #undef def_notification
 #define def_notification( __name ) \
-def_static_property3( __name, @"notification", NSStringFromClass([self class]) )
+    def_static_property3( __name, @"notification", NSStringFromClass([self class]) )
 
 #undef	handleNotification
 #define handleNotification( __notification ) \
-- (void)handleNotification:(NSNotification *)__notification
+    - (void)handleNotification:(NSNotification *)__notification
 
 #undef	handleNotification2
 #define handleNotification2( __filter, __notification ) \
-- (void)handleNotification_##__filter:(NSNotification *)__notification
+    - (void)handleNotification_##__filter:(NSNotification *)__notification
 
 #undef	handleNotification3
 #define handleNotification3( __class, __name, __notification ) \
-- (void)handleNotification_##__class##_##__name:(NSNotification *)__notification
+    - (void)handleNotification_##__class##_##__name:(NSNotification *)__notification
 
 #pragma mark -
 @interface NSNotification (FWNotification)

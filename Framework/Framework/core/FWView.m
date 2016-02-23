@@ -15,25 +15,28 @@
 
 - (void)assign:(NSString *)key value:(id)value
 {
-    //参数检查
     if (value == nil) return;
+    if (!viewData) viewData = [[NSMutableDictionary alloc] init];
     
-    //初始化参数
-    if (!viewData) {
-        viewData = [[NSMutableDictionary alloc] init];
-    }
-    
-    //赋值
     [viewData setObject:value forKey:key];
+}
+
+- (void)assign:(NSDictionary *)data
+{
+    if (data == nil) return;
+    if (!viewData) viewData = [[NSMutableDictionary alloc] init];
+    
+    [viewData addEntriesFromDictionary:data];
 }
 
 - (id)fetch:(NSString *)key
 {
-    //未赋值
-    if (!viewData) return nil;
-    
-    id value = [viewData objectForKey:key];
-    return value;
+    return viewData ? [viewData objectForKey:key] : nil;
+}
+
+- (NSDictionary *)fetchAll
+{
+    return viewData ? viewData : nil;
 }
 
 - (void)display

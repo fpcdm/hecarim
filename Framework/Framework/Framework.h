@@ -21,6 +21,8 @@
 #import "FWLocale.h"
 #import "FWRegistry.h"
 #import "FWStorage.h"
+#import "FWProperty.h"
+#import "FWHandler.h"
 #import "FWNotification.h"
 #import "FWSignal.h"
 #import "FWRuntime.h"

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWHandler.h"
 #import "FWNotification.h"
 #import "FWSignal.h"
 

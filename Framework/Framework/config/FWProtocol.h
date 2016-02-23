@@ -19,8 +19,6 @@
 
 @end
 
-TODO("signal, same as notification, 不同之处：不传递对象本身，传递signal对象，相互不知道对方，如viewmodel不知道view")
-
 /**
  * 注册表协议
  */
