@@ -138,8 +138,6 @@ typedef FWLocale LocaleUtil;
 
 + (NSString *)trim:(NSString *)str;
 
-- (NSString *)trim;
-
 @end
 
 /****************************/

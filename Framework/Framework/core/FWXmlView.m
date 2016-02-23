@@ -12,25 +12,25 @@
 #import "IKitUtil.h"
 #import "IResourceMananger.h"
 
-static NSString *xmlPath = nil;
-static NSString *xmlExt = FRAMEWORK_XMLVIEW_EXT;
-static NSString *patchPath = nil;
+static NSString *globalXmlPath = nil;
+static NSString *globalXmlExt = FRAMEWORK_XMLVIEW_EXT;
+static NSString *globalPatchPath = nil;
 
 @implementation FWXmlConfig
 
-+ (void)setXmlPath:(NSString *)_xmlPath
++ (void)setXmlPath:(NSString *)xmlPath
 {
-    xmlPath = _xmlPath;
+    globalXmlPath = xmlPath;
 }
 
-+ (void)setXmlExt:(NSString *)_xmlExt
++ (void)setXmlExt:(NSString *)xmlExt
 {
-    xmlExt = _xmlExt;
+    globalXmlExt = xmlExt;
 }
 
-+ (void)setPatchPath:(NSString *)_patchPath
++ (void)setPatchPath:(NSString *)patchPath
 {
-    patchPath = _patchPath;
+    globalPatchPath = patchPath;
 }
 
 @end
@@ -109,13 +109,13 @@ static NSString *patchPath = nil;
 - (void)loadXmlView
 {
     _xmlFileName = _xmlName;
-    if (xmlExt && [[_xmlFileName lastPathComponent] rangeOfString:@"."].length < 1) {
-        _xmlFileName = [NSString stringWithFormat:@"%@.%@", _xmlFileName, xmlExt];
+    if (globalXmlExt && [[_xmlFileName lastPathComponent] rangeOfString:@"."].length < 1) {
+        _xmlFileName = [NSString stringWithFormat:@"%@.%@", _xmlFileName, globalXmlExt];
     }
     
     _xmlPath = _xmlFileName;
-    if (xmlPath) {
-        _xmlPath = [IKitUtil buildPath:xmlPath src:_xmlPath];
+    if (globalXmlPath) {
+        _xmlPath = [IKitUtil buildPath:globalXmlPath src:_xmlPath];
     }
     _xmlIsUrl = [IKitUtil isHttpUrl:_xmlPath];
     
@@ -144,7 +144,7 @@ static NSString *patchPath = nil;
     } else {
         [self reloadXmlView:nil isFile:NO callback:^{
             //监听补丁
-            if (patchPath) {
+            if (globalPatchPath) {
                 [self refreshCache:nil];
             }
         }];
@@ -162,7 +162,7 @@ static NSString *patchPath = nil;
             [self loadCallback:view];
             //补丁字符串
         } else {
-            IView *view = [IView viewWithString:patchXml basePath:patchPath];
+            IView *view = [IView viewWithString:patchXml basePath:globalPatchPath];
             [self loadCallback:view];
         }
         
@@ -172,7 +172,7 @@ static NSString *patchPath = nil;
     } else {
         if (!_xmlIsUrl) {
             //自定义路径
-            if (xmlPath) {
+            if (globalXmlPath) {
                 IView *view = [IView viewWithFile:_xmlPath];
                 [self loadCallback:view];
                 //默认路径
@@ -198,7 +198,7 @@ static NSString *patchPath = nil;
 - (NSString *)loadCache
 {
     NSString *xmlStr = nil;
-    if (patchPath) {
+    if (globalPatchPath) {
         NSString *cacheKey = [NSString stringWithFormat:@"%@%@", XMLVIEW_CACHE_PREFIX, _xmlFileName];
         xmlStr = [[FWCache sharedInstance] get:cacheKey];
     }
@@ -207,7 +207,7 @@ static NSString *patchPath = nil;
 
 - (void)refreshCache:(NSString *)oldXml
 {
-    NSString *patchUrl = [IKitUtil buildPath:patchPath src:_xmlFileName];
+    NSString *patchUrl = [IKitUtil buildPath:globalPatchPath src:_xmlFileName];
     
     if ([IKitUtil isHttpUrl:patchUrl]) {
         [FWHelperHttp get:patchUrl params:nil callback:^(NSData *data, NSError *error) {

@@ -31,12 +31,6 @@
     return str ? [str trim] : str;
 }
 
-- (NSString *)trim
-{
-    NSString *trimStr = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    return trimStr;
-}
-
 @end
 
 /**************************/
@@ -272,12 +266,7 @@ static StorageUtil *sharedStorage = nil;
 
 + (BOOL) isMobile: (NSString *) value
 {
-    NSPredicate *regexMobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^1\\d{10}$"];
-    if ([regexMobile evaluateWithObject:value] == YES) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return [value isFormatMobile];
 }
 
 + (BOOL) isLengthBetween: (NSString *) value from: (NSInteger) from to: (NSInteger) to;
@@ -288,23 +277,12 @@ static StorageUtil *sharedStorage = nil;
 
 + (BOOL) isPositiveInteger:(NSString *)value
 {
-    NSPredicate *regex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[1-9]\\d*$"];
-    if ([regex evaluateWithObject:value] == YES) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return [value isFormatInteger] && [value integerValue] > 0;
 }
 
 + (BOOL) isPositiveNumber:(NSString *)value
 {
-    NSPredicate *regex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[\\d\\.]+$"];
-    if ([regex evaluateWithObject:value] == YES) {
-        float number = [value floatValue];
-        return number > 0 ? YES : NO;
-    } else {
-        return NO;
-    }
+    return [value isFormatNumber] && [value floatValue] > 0;
 }
 
 @end
