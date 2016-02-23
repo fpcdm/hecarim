@@ -16,7 +16,8 @@
     #import "FWConfig.h"
     #import "FWDefine.h"
     #import "FWCompile.h"
-    #import "FWProtocol.h"
+    #import "FWSingleton.h"
+    #import "FWProperty.h"
 
     #import "NSObject+Framework.h"
     #import "NSString+Framework.h"

@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWRegistry.h"
 
 //框架缓存：文件
 @interface FWCache : NSObject<FWProtocolRegistry>
 
 @singleton(FWCache)
+
+TODO("set key value expire")
 
 @end

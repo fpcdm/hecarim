@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWRegistry.h"
 
 //定义插件池默认保存名称
 #define FWPluginCacheName @"FWPluginCache"
 
 @protocol FWPluginCache <FWProtocolRegistry>
-
-TODO("set key value expire")
 
 @end

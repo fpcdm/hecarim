@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * 注册表协议
+ */
+@protocol FWProtocolRegistry <NSObject>
+
+@required
+- (id)get:(NSString *)key;
+- (BOOL)has:(NSString *)key;
+- (void)set:(NSString *)key object:(id)object;
+- (void)remove:(NSString *)key;
+- (void)clear;
+
+@end
+
 //注册表缓存：内存
 @interface FWRegistry : NSObject<FWProtocolRegistry>
 

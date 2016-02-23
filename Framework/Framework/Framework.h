@@ -13,7 +13,8 @@
 #import "FWConfig.h"
 #import "FWDefine.h"
 #import "FWCompile.h"
-#import "FWProtocol.h"
+#import "FWSingleton.h"
+#import "FWProperty.h"
 
 //core
 #import "FWDebug.h"
@@ -21,7 +22,6 @@
 #import "FWLocale.h"
 #import "FWRegistry.h"
 #import "FWStorage.h"
-#import "FWProperty.h"
 #import "FWHandler.h"
 #import "FWNotification.h"
 #import "FWSignal.h"

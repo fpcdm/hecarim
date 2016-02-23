@@ -136,6 +136,8 @@
 		2F2B655F1C59C4BE0024DC09 /* FWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B655D1C59C4BE0024DC09 /* FWModel.m */; };
 		2F2B65621C59C4F00024DC09 /* FWViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65601C59C4F00024DC09 /* FWViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F2B65631C59C4F00024DC09 /* FWViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65611C59C4F00024DC09 /* FWViewModel.m */; };
+		2F389FAB1C7C8941001851EB /* FWProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F389FAA1C7C8941001851EB /* FWProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F389FAD1C7C8950001851EB /* FWSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F389FAC1C7C8950001851EB /* FWSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F4AF9C61C7B2D400061A566 /* FWHelperSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4AF9C41C7B2D400061A566 /* FWHelperSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F4AF9C71C7B2D400061A566 /* FWHelperSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */; };
 		2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -618,7 +620,6 @@
 		2FEF7A4C1C72B36100EBF526 /* FWViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A4A1C72B36100EBF526 /* FWViewAction.m */; };
 		2FEF7A4F1C72B4AD00EBF526 /* FWWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A4D1C72B4AD00EBF526 /* FWWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A501C72B4AD00EBF526 /* FWWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A4E1C72B4AD00EBF526 /* FWWidget.m */; };
-		2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A641C72FCE400EBF526 /* FWHelperTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A621C72FCE400EBF526 /* FWHelperTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FEF7A651C72FCE400EBF526 /* FWHelperTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF7A631C72FCE400EBF526 /* FWHelperTimer.m */; };
 		2FEF7A6E1C73055300EBF526 /* FWHelperLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEF7A6C1C73055300EBF526 /* FWHelperLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -769,6 +770,8 @@
 		2F2B655D1C59C4BE0024DC09 /* FWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWModel.m; sourceTree = "<group>"; };
 		2F2B65601C59C4F00024DC09 /* FWViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWViewModel.h; sourceTree = "<group>"; };
 		2F2B65611C59C4F00024DC09 /* FWViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWViewModel.m; sourceTree = "<group>"; };
+		2F389FAA1C7C8941001851EB /* FWProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWProperty.h; sourceTree = "<group>"; };
+		2F389FAC1C7C8950001851EB /* FWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSingleton.h; sourceTree = "<group>"; };
 		2F4AF9C41C7B2D400061A566 /* FWHelperSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperSystem.h; sourceTree = "<group>"; };
 		2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperSystem.m; sourceTree = "<group>"; };
 		2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperPath.h; sourceTree = "<group>"; };
@@ -1252,7 +1255,6 @@
 		2FEF7A4A1C72B36100EBF526 /* FWViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWViewAction.m; sourceTree = "<group>"; };
 		2FEF7A4D1C72B4AD00EBF526 /* FWWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWWidget.h; sourceTree = "<group>"; };
 		2FEF7A4E1C72B4AD00EBF526 /* FWWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWWidget.m; sourceTree = "<group>"; };
-		2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWProtocol.h; sourceTree = "<group>"; };
 		2FEF7A621C72FCE400EBF526 /* FWHelperTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperTimer.h; sourceTree = "<group>"; };
 		2FEF7A631C72FCE400EBF526 /* FWHelperTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperTimer.m; sourceTree = "<group>"; };
 		2FEF7A6C1C73055300EBF526 /* FWHelperLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperLocation.h; sourceTree = "<group>"; };
@@ -1530,7 +1532,8 @@
 				2F004E5E1C7075B6000B4F97 /* FWConfig.h */,
 				2F004E601C707755000B4F97 /* FWDefine.h */,
 				2F219B0F1C755E3B00561D95 /* FWCompile.h */,
-				2FEF7A5D1C72E45700EBF526 /* FWProtocol.h */,
+				2F389FAC1C7C8950001851EB /* FWSingleton.h */,
+				2F389FAA1C7C8941001851EB /* FWProperty.h */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -2335,6 +2338,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F389FAD1C7C8950001851EB /* FWSingleton.h in Headers */,
+				2F389FAB1C7C8941001851EB /* FWProperty.h in Headers */,
 				2F085E151C7C3EE20055BFD3 /* FWHandler.h in Headers */,
 				2F085E101C7C39520055BFD3 /* FWNotification.h in Headers */,
 				2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */,
@@ -2350,7 +2355,6 @@
 				2F1FE8DB1C741AF300C76B8B /* FWHelperHttp.h in Headers */,
 				2FEF7A6E1C73055300EBF526 /* FWHelperLocation.h in Headers */,
 				2FEF7A641C72FCE400EBF526 /* FWHelperTimer.h in Headers */,
-				2FEF7A5E1C72E45700EBF526 /* FWProtocol.h in Headers */,
 				2FE6A0C11C72211600857CE1 /* FWHelperAspect.h in Headers */,
 				2FE6A0CD1C72268C00857CE1 /* FWHelperNetwork.h in Headers */,
 				2FEF7A4B1C72B36100EBF526 /* FWViewAction.h in Headers */,
