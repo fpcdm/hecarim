@@ -14,16 +14,6 @@
 
 @static_string(POST)
 
-+ (BOOL)isUrl:(NSString *)url;
-
-+ (BOOL)isHtml:(NSString *)str;
-
-+ (NSString *)getRootPath:(NSString *)path;
-
-+ (NSString *)getBasePath:(NSString *)path;
-
-+ (NSString *)joinPath:(NSString *)basePath path:(NSString *)path;
-
 + (NSString *)queryString:(NSDictionary *)dict;
 
 + (NSString *)addParams:(NSString *)url params:(NSDictionary *)params;

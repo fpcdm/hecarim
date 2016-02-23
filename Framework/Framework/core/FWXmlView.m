@@ -9,6 +9,7 @@
 #import "FWXmlView.h"
 #import "FWCache.h"
 #import "FWHelperHttp.h"
+#import "IKitUtil.h"
 #import "IResourceMananger.h"
 
 static NSString *xmlPath = nil;
@@ -114,9 +115,9 @@ static NSString *patchPath = nil;
     
     _xmlPath = _xmlFileName;
     if (xmlPath) {
-        _xmlPath = [FWHelperHttp joinPath:xmlPath path:_xmlPath];
+        _xmlPath = [IKitUtil buildPath:xmlPath src:_xmlPath];
     }
-    _xmlIsUrl = [FWHelperHttp isUrl:_xmlPath];
+    _xmlIsUrl = [IKitUtil isHttpUrl:_xmlPath];
     
 #ifdef APP_DEBUG
     //注册调试代理
@@ -206,9 +207,9 @@ static NSString *patchPath = nil;
 
 - (void)refreshCache:(NSString *)oldXml
 {
-    NSString *patchUrl = [FWHelperHttp joinPath:patchPath path:_xmlFileName];
+    NSString *patchUrl = [IKitUtil buildPath:patchPath src:_xmlFileName];
     
-    if ([FWHelperHttp isUrl:patchUrl]) {
+    if ([IKitUtil isHttpUrl:patchUrl]) {
         [FWHelperHttp get:patchUrl params:nil callback:^(NSData *data, NSError *error) {
             [self refreshCallback:data xml:oldXml];
         }];

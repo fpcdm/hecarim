@@ -17,8 +17,7 @@
 //设置xml文件后缀，默认html
 + (void)setXmlExt:(NSString *)xmlExt;
 
-//设置补丁URL路径模板，优先加载补丁，补丁及时生效
-//@todo：支持单个设置，全局损耗性能
+//设置补丁路径模板，优先加载补丁，建议根据版本使用补丁zip包，下载到本地解压到补丁路径
 + (void)setPatchPath:(NSString *)patchPath;
 
 @end

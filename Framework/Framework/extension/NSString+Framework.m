@@ -90,14 +90,9 @@
     return [self isFormatRegex:@"^[\\x{4e00}-\\x{9fa5}]+$"];
 }
 
-- (BOOL)isFormatDate
+- (BOOL) isFormatDate
 {
-    return [self isFormatRegex:@"^\\d{4}\\-\\d{1,2}\\-\\d{1,2}$"];
-}
-
-- (BOOL) isFormatTime
-{
-    return [self isFormatRegex:@"^\\d{4}\\-\\d{1,2}\\-\\d{1,2}\\s\\d{2}\\:\\d{2}(\\:\\d{2})?$"];
+    return [self isFormatRegex:@"^\\d{4}\\-\\d{2}\\-\\d{2}\\s\\d{2}\\:\\d{2}\\:\\d{2}$"];
 }
 
 @end

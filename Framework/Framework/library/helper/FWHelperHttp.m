@@ -7,7 +7,6 @@
 //
 
 #import "FWHelperHttp.h"
-#import "IKitUtil.h"
 #import "FWHelperEncoder.h"
 
 @implementation FWHelperHttp
@@ -15,21 +14,6 @@
 @def_static_string(GET, @"GET")
 
 @def_static_string(POST, @"POST")
-
-+ (NSString *)getRootPath:(NSString *)path
-{
-    return [IKitUtil getRootPath:path];
-}
-
-+ (NSString *)getBasePath:(NSString *)path
-{
-    return [IKitUtil getBasePath:path];
-}
-
-+ (NSString *)joinPath:(NSString *)basePath path:(NSString *)path
-{
-    return [IKitUtil buildPath:basePath src:path];
-}
 
 + (NSString *)queryString:(NSDictionary *)dict
 {
@@ -72,26 +56,6 @@
         }
     }
     return [NSDictionary dictionaryWithDictionary:pairs];
-}
-
-+ (BOOL)isUrl:(NSString *)url
-{
-    if (!url) return NO;
-    
-    if([url rangeOfString:@"http://"].location == 0 || [url rangeOfString:@"https://"].location == 0){
-        return YES;
-    }
-    return NO;
-}
-
-+ (BOOL)isHtml:(NSString *)str
-{
-    if ([str rangeOfString:@"</html>"].length > 0 || [str rangeOfString:@"</HTML>"].length > 0) {
-        if ([str rangeOfString:@"</body>"].length > 0 || [str rangeOfString:@"</BODY>"].length > 0) {
-            return YES;
-        }
-    }
-    return NO;
 }
 
 + (void)get:(NSString *)url params:(id)params callback:(void (^)(NSData *data, NSError *error))callback

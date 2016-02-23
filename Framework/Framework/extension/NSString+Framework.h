@@ -83,13 +83,8 @@
 - (BOOL)isFormatChinese;
 
 /**
- *  是否是合法日期
+ *  是否是合法日期，格式：yyyy-MM-dd HH:mm:ss
  */
 - (BOOL)isFormatDate;
-
-/**
- *  是否是合法时间
- */
-- (BOOL)isFormatTime;
 
 @end
