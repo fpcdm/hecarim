@@ -16,6 +16,7 @@ typedef void (^FWHandlerBlock)(id object);
 - (BOOL)trigger:(NSString *)name;
 - (BOOL)trigger:(NSString *)name withObject:(id)object;
 
+- (BOOL)hasBlock:(NSString *)name;
 - (void)setBlock:(NSString *)name block:(FWHandlerBlock)block;
 - (void)removeBlock:(NSString *)name;
 - (void)clearBlocks;

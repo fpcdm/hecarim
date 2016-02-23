@@ -33,9 +33,27 @@
 //notification.Class.
 @def_static_string(NOTIFICATION_TYPE, [[[NSString stringWithUTF8String:"notification."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
 
+- (void)onNotification:(NSString *)name block:(FWNotificationBlock)block
+{
+    if (block) {
+        [self.blockHandler setBlock:name block:block];
+        [self observeNotification:name];
+    } else {
+        [self.blockHandler removeBlock:name];
+        [self unobserveNotification:name];
+    }
+}
+
 - (void)handleNotification:(NSNotification *)notification
 {
     
+}
+
+- (void)handleNotificationBlock:(NSNotification *)notification
+{
+    if (![self.blockHandler hasBlock:notification.name]) return;
+    
+    [self.blockHandler trigger:notification.name withObject:notification];
 }
 
 - (void)observeNotification:(NSString *)name
@@ -76,6 +94,15 @@
                                                        object:nil];
             return;
         }
+    }
+    
+    
+    if ([self.blockHandler hasBlock:name]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleNotificationBlock:)
+                                                     name:name
+                                                   object:nil];
+        return;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self

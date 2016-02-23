@@ -45,6 +45,14 @@
     return YES;
 }
 
+- (BOOL)hasBlock:(NSString *)name
+{
+    if (!name) return NO;
+    
+    FWHandlerBlock block = (FWHandlerBlock)[_blocks objectForKey:name];
+    return block ? YES : NO;
+}
+
 - (void)setBlock:(NSString *)name block:(FWHandlerBlock)block
 {
     if (!name) return;

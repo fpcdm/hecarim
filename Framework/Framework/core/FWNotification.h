@@ -30,6 +30,8 @@
 #define handleNotification3( __class, __name, __notification ) \
     - (void)handleNotification_##__class##_##__name:(NSNotification *)__notification
 
+typedef void (^FWNotificationBlock)(NSNotification *notification);
+
 #pragma mark -
 @interface NSNotification (FWNotification)
 
@@ -45,6 +47,8 @@
 @static_string(NOTIFICATION)
 
 @static_string(NOTIFICATION_TYPE)
+
+- (void)onNotification:(NSString *)name block:(FWNotificationBlock)block;
 
 - (void)handleNotification:(NSNotification *)notification;
 

@@ -22,6 +22,30 @@
 /********<<<环境切换********/
 
 
+#pragma mark - 功能开关
+/********功能开关>>>********/
+#ifdef APP_DEBUG
+
+//调试开关
+#define FRAMEWORK_DEBUG (1)
+//测试开关
+#define FRAMEWORK_TEST  (1)
+//日志开关
+#define FRAMEWORK_LOG   (1)
+
+#else
+
+//调试开关
+#define FRAMEWORK_DEBUG (0)
+//测试开关
+#define FRAMEWORK_TEST  (0)
+//日志开关
+#define FRAMEWORK_LOG   (0)
+
+#endif
+/********<<<功能开关********/
+
+
 #pragma mark - 环境配置
 #ifdef APP_DEBUG
 /********开发环境>>>********/
