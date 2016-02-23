@@ -20,8 +20,6 @@
 		2F085E111C7C39520055BFD3 /* FWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F085E0F1C7C39520055BFD3 /* FWNotification.m */; };
 		2F085E151C7C3EE20055BFD3 /* FWHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F085E131C7C3EE20055BFD3 /* FWHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F085E161C7C3EE20055BFD3 /* FWHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F085E141C7C3EE20055BFD3 /* FWHandler.m */; };
-		2F085E191C7C55C70055BFD3 /* FWProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F085E171C7C55C70055BFD3 /* FWProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F085E1A1C7C55C70055BFD3 /* FWProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F085E181C7C55C70055BFD3 /* FWProperty.m */; };
 		2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */; };
 		2F09D72A1C55F537003BB601 /* UIViewController+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7281C55F537003BB601 /* UIViewController+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -655,8 +653,6 @@
 		2F085E0F1C7C39520055BFD3 /* FWNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWNotification.m; sourceTree = "<group>"; };
 		2F085E131C7C3EE20055BFD3 /* FWHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHandler.h; sourceTree = "<group>"; };
 		2F085E141C7C3EE20055BFD3 /* FWHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHandler.m; sourceTree = "<group>"; };
-		2F085E171C7C55C70055BFD3 /* FWProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWProperty.h; sourceTree = "<group>"; };
-		2F085E181C7C55C70055BFD3 /* FWProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWProperty.m; sourceTree = "<group>"; };
 		2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogDefault.h; sourceTree = "<group>"; };
 		2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogDefault.m; sourceTree = "<group>"; };
 		2F09D7281C55F537003BB601 /* UIViewController+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Framework.h"; sourceTree = "<group>"; };
@@ -1584,8 +1580,6 @@
 				2F17A6191C71EFA900C77940 /* FWXmlViewController.m */,
 				2F70C48A1C75EB580077D14A /* FWRuntime.h */,
 				2F70C48B1C75EB580077D14A /* FWRuntime.m */,
-				2F085E171C7C55C70055BFD3 /* FWProperty.h */,
-				2F085E181C7C55C70055BFD3 /* FWProperty.m */,
 				2F085E131C7C3EE20055BFD3 /* FWHandler.h */,
 				2F085E141C7C3EE20055BFD3 /* FWHandler.m */,
 				2F085E0E1C7C39510055BFD3 /* FWNotification.h */,
@@ -2341,7 +2335,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F085E191C7C55C70055BFD3 /* FWProperty.h in Headers */,
 				2F085E151C7C3EE20055BFD3 /* FWHandler.h in Headers */,
 				2F085E101C7C39520055BFD3 /* FWNotification.h in Headers */,
 				2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */,
@@ -2980,7 +2973,6 @@
 				2FD99D581C48CE6F0065293E /* DistancePickerView.m in Sources */,
 				2FD99ED21C48CE700065293E /* UIButton+WebCache.m in Sources */,
 				2FD99D6F1C48CE6F0065293E /* DDDispatchQueueLogFormatter.m in Sources */,
-				2F085E1A1C7C55C70055BFD3 /* FWProperty.m in Sources */,
 				2FD99DFB1C48CE6F0065293E /* FLEXResources.m in Sources */,
 				2FD99DC71C48CE6F0065293E /* FLEXSystemLogMessage.m in Sources */,
 				2FD99D991C48CE6F0065293E /* FLEXExplorerToolbar.m in Sources */,
