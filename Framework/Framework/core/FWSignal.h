@@ -30,6 +30,9 @@
 #define handleSignal3( __class, __name, __signal ) \
     - (void)handleSignal_##__class##_##__name:(FWSignal *)__signal
 
+@class FWSignal;
+typedef void (^FWSignalBlock)(FWSignal *signal);
+
 #pragma mark -
 @interface FWSignal : NSObject
 
@@ -52,12 +55,19 @@
 @end
 
 #pragma mark -
-@interface NSObject (FWSignal)
+@interface NSObject (FWSignalResponder)
+
+- (void)handleSignal:(FWSignal *)signal;
+
+- (void)onSignal:(NSString *)name block:(FWSignalBlock)block;
+
+@end
+
+#pragma mark -
+@interface NSObject (FWSignalSender)
 
 @static_string(SIGNAL)
 
 @static_string(SIGNAL_TYPE)
-
-- (void)handleSignal:(FWSignal *)signal;
 
 @end

@@ -88,17 +88,31 @@
 @end
 
 #pragma mark -
-@implementation NSObject (FWSignal)
+@implementation NSObject (FWSignalResponder)
+
+- (void)handleSignal:(FWSignal *)signal
+{
+    
+}
+
+- (void)onSignal:(NSString *)name block:(FWSignalBlock)block
+{
+    if (block) {
+        [self.blockHandler setBlock:name block:block];
+    } else {
+        [self.blockHandler removeBlock:name];
+    }
+}
+
+@end
+
+#pragma mark -
+@implementation NSObject (FWSignalSender)
 
 //signal.Class.name
 @def_static_string(SIGNAL, [[self class] SIGNAL_TYPE])
 
 //signal.Class.
 @def_static_string(SIGNAL_TYPE, [[[NSString stringWithUTF8String:"signal."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
-
-- (void)handleSignal:(FWSignal *)signal
-{
-    
-}
 
 @end

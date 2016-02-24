@@ -42,30 +42,30 @@ typedef void (^FWNotificationBlock)(NSNotification *notification);
 @end
 
 #pragma mark -
-@interface NSObject (FWNotification)
-
-@static_string(NOTIFICATION)
-
-@static_string(NOTIFICATION_TYPE)
+@interface NSObject (FWNotificationResponder)
 
 - (void)handleNotification:(NSNotification *)notification;
 
 - (void)onNotification:(NSString *)name block:(FWNotificationBlock)block;
 
 - (void)observeNotification:(NSString *)name;
-
 - (void)observeAllNotifications;
 
 - (void)unobserveNotification:(NSString *)name;
-
 - (void)unobserveAllNotifications;
 
+@end
+
+#pragma mark -
+@interface NSObject (FWNotificationSender)
+
+@static_string(NOTIFICATION)
+@static_string(NOTIFICATION_TYPE)
+
++ (BOOL)postNotification:(NSString *)name;
 - (BOOL)postNotification:(NSString *)name;
 
 - (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
-
-+ (BOOL)postNotification:(NSString *)name;
-
 + (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
 
 @end

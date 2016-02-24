@@ -25,13 +25,7 @@
 @end
 
 #pragma mark -
-@implementation NSObject (FWNotification)
-
-//notification.Class.name
-@def_static_string(NOTIFICATION, [[self class] NOTIFICATION_TYPE])
-
-//notification.Class.
-@def_static_string(NOTIFICATION_TYPE, [[[NSString stringWithUTF8String:"notification."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
+@implementation NSObject (FWNotificationResponder)
 
 - (void)handleNotification:(NSNotification *)notification
 {
@@ -141,15 +135,16 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (BOOL)postNotification:(NSString *)name
-{
-    return [[self class] postNotification:name];
-}
+@end
 
-- (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object
-{
-    return [[self class] postNotification:name withObject:object];
-}
+#pragma mark -
+@implementation NSObject (FWNotificationSender)
+
+//notification.Class.name
+@def_static_string(NOTIFICATION, [[self class] NOTIFICATION_TYPE])
+
+//notification.Class.
+@def_static_string(NOTIFICATION_TYPE, [[[NSString stringWithUTF8String:"notification."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
 
 + (BOOL)postNotification:(NSString *)name
 {
@@ -157,10 +152,20 @@
     return YES;
 }
 
+- (BOOL)postNotification:(NSString *)name
+{
+    return [[self class] postNotification:name];
+}
+
 + (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:object];
     return YES;
+}
+
+- (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object
+{
+    return [[self class] postNotification:name withObject:object];
 }
 
 @end
