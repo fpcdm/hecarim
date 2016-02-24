@@ -169,3 +169,30 @@
 }
 
 @end
+
+//UnitTest
+#if FRAMEWORK_TEST
+
+TEST_CASE( Core, FWNotification )
+{
+    NSArray * _testArray;
+}
+
+DESCRIBE( before )
+{
+    _testArray = @[ @"1", @"2", @"3", @"4", @"5", @"6" ];
+}
+
+DESCRIBE( count )
+{
+    EXPECTED( _testArray.count == 6 );
+}
+
+DESCRIBE( after )
+{
+    _testArray = nil;
+}
+
+TEST_CASE_END
+
+#endif

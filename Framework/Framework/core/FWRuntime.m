@@ -12,6 +12,51 @@
 @implementation FWRuntime
 
 #pragma mark -
++ (NSArray *)allClasses
+{
+    static dispatch_once_t once;
+    static NSMutableArray *classNames;
+    
+    dispatch_once( &once, ^{
+        classNames = [[NSMutableArray alloc] init];
+        
+        unsigned int classesCount = 0;
+        Class *classes = objc_copyClassList(&classesCount);
+        
+        for (unsigned int i = 0; i < classesCount; ++i) {
+            Class classType = classes[i];
+            if (class_isMetaClass(classType)) continue;
+            
+            Class superClass = class_getSuperclass(classType);
+            if (nil == superClass) continue;
+            
+            [classNames addObject:[NSString stringWithUTF8String:class_getName(classType)]];
+        }
+        
+        [classNames sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            return [obj1 compare:obj2];
+        }];
+        
+        free(classes);
+    });
+    
+    return classNames;
+}
+
++ (NSArray *)subclassesOfClass:(Class)clazz
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSString *className in [self allClasses]) {
+        Class classType = NSClassFromString(className);
+        if (classType == clazz) continue;
+        if (![classType isSubclassOfClass:clazz]) continue;
+        
+        [result addObject:className];
+    }
+    return result;
+}
+
+#pragma mark -
 + (NSArray *)methodsOfClass:(Class)clazz
 {
     static NSMutableDictionary * __cache = nil;

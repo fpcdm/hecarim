@@ -65,6 +65,10 @@
     fprintf( stderr, "  +----------------------------------------------------------------------------+   \n" );
     fprintf( stderr, "                                                                                   \n" );
     fprintf( stderr, "                                                                                   \n" );
+    
+#if FRAMEWORK_TEST
+    [[FWUnitTest sharedInstance] run];
+#endif
 }
 
 @end

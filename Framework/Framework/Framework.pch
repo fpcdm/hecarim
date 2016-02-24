@@ -18,6 +18,7 @@
     #import "FWCompile.h"
     #import "FWSingleton.h"
     #import "FWProperty.h"
+    #import "FWUnitTest.h"
 
     #import "NSObject+Framework.h"
     #import "NSString+Framework.h"
