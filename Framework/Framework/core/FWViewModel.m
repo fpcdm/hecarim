@@ -10,4 +10,9 @@
 
 @implementation FWViewModel
 
++ (instancetype)viewModel
+{
+    return [[self alloc] init];
+}
+
 @end

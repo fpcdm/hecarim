@@ -55,35 +55,4 @@
     return nil;
 }
 
-- (void)sendSignal:(NSString *)name
-{
-    [self sendSignal:name withObject:nil];
-}
-
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object
-{
-    [self sendSignal:name withObject:object from:self];
-}
-
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object from:(id)source
-{
-    [self sendSignal:name withObject:object from:source to:self];
-}
-
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object to:(id)target
-{
-    [self sendSignal:name withObject:object from:self to:target];
-}
-
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object from:(id)source to:(id)target
-{
-    FWSignal *signal = [FWSignal signal];
-    signal.source = source ? source : self;
-    signal.target = target ? target : self;
-    signal.name = name;
-    signal.object = object;
-    
-    [signal send];
-}
-
 @end

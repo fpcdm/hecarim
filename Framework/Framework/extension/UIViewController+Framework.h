@@ -50,15 +50,6 @@
 //隐藏弹出框
 - (void)hideDialog;
 
-//发送信号
-- (void) sendSignal:(NSString *)name;
-
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object;
-
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object from:(id)source;
-
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object to:(id)target;
-
 //切换view视图,类似push效果
 - (void)pushView:(UIView *)view animated:(BOOL)animated completion:(void (^)())completion;
 

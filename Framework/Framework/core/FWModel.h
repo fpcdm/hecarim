@@ -10,4 +10,6 @@
 
 @interface FWModel : NSObject
 
++ (instancetype)model;
+
 @end

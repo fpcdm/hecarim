@@ -26,6 +26,9 @@
 
 //定义XML视图默认文件后缀
 #define FRAMEWORK_XMLVIEW_EXT @"html"
+
+//框架错误域
+#define FRAMEWORK_ERRORDOMAIN @"Framework"
 /********<<<框架配置********/
 
 

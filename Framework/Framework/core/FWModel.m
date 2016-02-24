@@ -10,4 +10,9 @@
 
 @implementation FWModel
 
++ (instancetype)model
+{
+    return [[self alloc] init];
+}
+
 @end

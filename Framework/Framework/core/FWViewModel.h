@@ -11,6 +11,8 @@
 //ViewController作为View层，View和Model无联系
 @interface FWViewModel : NSObject
 
++ (instancetype)viewModel;
+
 //View持有ViewModel，ViewModel不知道View的任何事情
 //ViewModel持有并更新Model，不知道View的任何事情
 //ViewModel是UI控件及控件的状态
