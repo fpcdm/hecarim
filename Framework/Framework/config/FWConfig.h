@@ -13,7 +13,7 @@
 #pragma mark - 框架配置
 /********框架配置>>>********/
 //框架版本号
-#define FRAMEWORK_VERSION @"1.0.0"
+#define FRAMEWORK_VERSION "1.0.0"
 
 //定义弹出框停留时间
 #define FRAMEWORK_TIMEINTERVAL_DIALOG 2.0

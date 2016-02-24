@@ -128,6 +128,10 @@
 		2F24FB4E1C5672A500A82ABD /* FWResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB4C1C5672A500A82ABD /* FWResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F24FB4F1C5672A500A82ABD /* FWResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F24FB4D1C5672A500A82ABD /* FWResponse.m */; };
 		2F24FB631C568D6800A82ABD /* FWPluginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F24FB621C568D6800A82ABD /* FWPluginDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F26A7911C7DA9030097D6A6 /* FWFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F26A78F1C7DA9030097D6A6 /* FWFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F26A7921C7DA9030097D6A6 /* FWFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F26A7901C7DA9030097D6A6 /* FWFramework.m */; };
+		2F26A7951C7DA9250097D6A6 /* FWUnitTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F26A7931C7DA9250097D6A6 /* FWUnitTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F26A7961C7DA9250097D6A6 /* FWUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F26A7941C7DA9250097D6A6 /* FWUnitTest.m */; };
 		2F2B65541C59BEB30024DC09 /* UIView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65521C59BEB30024DC09 /* UIView+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F2B65551C59BEB30024DC09 /* UIView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B65531C59BEB30024DC09 /* UIView+Framework.m */; };
 		2F2B655A1C59C3630024DC09 /* FWPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2B65581C59C3630024DC09 /* FWPresenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -762,6 +766,10 @@
 		2F24FB4C1C5672A500A82ABD /* FWResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWResponse.h; sourceTree = "<group>"; };
 		2F24FB4D1C5672A500A82ABD /* FWResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWResponse.m; sourceTree = "<group>"; };
 		2F24FB621C568D6800A82ABD /* FWPluginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialog.h; sourceTree = "<group>"; };
+		2F26A78F1C7DA9030097D6A6 /* FWFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWFramework.h; sourceTree = "<group>"; };
+		2F26A7901C7DA9030097D6A6 /* FWFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWFramework.m; sourceTree = "<group>"; };
+		2F26A7931C7DA9250097D6A6 /* FWUnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWUnitTest.h; sourceTree = "<group>"; };
+		2F26A7941C7DA9250097D6A6 /* FWUnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWUnitTest.m; sourceTree = "<group>"; };
 		2F2B65521C59BEB30024DC09 /* UIView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Framework.h"; sourceTree = "<group>"; };
 		2F2B65531C59BEB30024DC09 /* UIView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Framework.m"; sourceTree = "<group>"; };
 		2F2B65581C59C3630024DC09 /* FWPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPresenter.h; sourceTree = "<group>"; };
@@ -1541,6 +1549,10 @@
 		2FD9911B1C48BC9C0065293E /* core */ = {
 			isa = PBXGroup;
 			children = (
+				2F26A78F1C7DA9030097D6A6 /* FWFramework.h */,
+				2F26A7901C7DA9030097D6A6 /* FWFramework.m */,
+				2F26A7931C7DA9250097D6A6 /* FWUnitTest.h */,
+				2F26A7941C7DA9250097D6A6 /* FWUnitTest.m */,
 				2F24FB381C566B5300A82ABD /* FWRegistry.h */,
 				2F24FB391C566B5300A82ABD /* FWRegistry.m */,
 				2F24FB401C566E7800A82ABD /* FWCache.h */,
@@ -2338,6 +2350,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F26A7951C7DA9250097D6A6 /* FWUnitTest.h in Headers */,
+				2F26A7911C7DA9030097D6A6 /* FWFramework.h in Headers */,
 				2F389FAD1C7C8950001851EB /* FWSingleton.h in Headers */,
 				2F389FAB1C7C8941001851EB /* FWProperty.h in Headers */,
 				2F085E151C7C3EE20055BFD3 /* FWHandler.h in Headers */,
@@ -2829,6 +2843,7 @@
 				2FD99DB31C48CE6F0065293E /* FLEXClassesTableViewController.m in Sources */,
 				2FD99D4C1C48CE6F0065293E /* ActionSheetCustomPicker.m in Sources */,
 				2F1FE8E41C74557000C76B8B /* FWXmlView.m in Sources */,
+				2F26A7961C7DA9250097D6A6 /* FWUnitTest.m in Sources */,
 				2FD99E371C48CE6F0065293E /* MJRefreshAutoNormalFooter.m in Sources */,
 				2F09D72B1C55F537003BB601 /* UIViewController+Framework.m in Sources */,
 				2FD99D6D1C48CE6F0065293E /* DDContextFilterLogFormatter.m in Sources */,
@@ -2843,6 +2858,7 @@
 				2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */,
 				2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */,
 				2FD99E151C48CE6F0065293E /* MASConstraint.m in Sources */,
+				2F26A7921C7DA9030097D6A6 /* FWFramework.m in Sources */,
 				2F1C35F41C4C89310060E793 /* IButton.m in Sources */,
 				2FD99D8D1C48CE6F0065293E /* FLEXDefaultEditorViewController.m in Sources */,
 				2FD99D7B1C48CE6F0065293E /* FLEXArgumentInputJSONObjectView.m in Sources */,
