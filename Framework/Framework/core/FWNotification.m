@@ -33,6 +33,11 @@
 //notification.Class.
 @def_static_string(NOTIFICATION_TYPE, [[[NSString stringWithUTF8String:"notification."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
 
+- (void)handleNotification:(NSNotification *)notification
+{
+    
+}
+
 - (void)onNotification:(NSString *)name block:(FWNotificationBlock)block
 {
     if (block) {
@@ -44,25 +49,14 @@
     }
 }
 
-- (void)handleNotification:(NSNotification *)notification
+- (void)routeNotification:(NSNotification *)notification
 {
+    //1. FWNotificationBlock
+    if ([self.blockHandler trigger:notification.name withObject:notification]) {
+        return;
+    }
     
-}
-
-- (void)handleNotificationBlock:(NSNotification *)notification
-{
-    if (![self.blockHandler hasBlock:notification.name]) return;
-    
-    [self.blockHandler trigger:notification.name withObject:notification];
-}
-
-- (void)observeNotification:(NSString *)name
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:name
-                                                  object:nil];
-    
-    NSArray *array = [name componentsSeparatedByString:@"."];
+    NSArray *array = [notification.name componentsSeparatedByString:@"."];
     if (array && array.count > 1) {
         //NSString *prefix = (NSString *)[array objectAtIndex:0];
         NSString *clazz = (NSString *)[array objectAtIndex:1];
@@ -75,11 +69,11 @@
             selectorName = [NSString stringWithFormat:@"handleNotification_%@_%@:", clazz, filter];
             selector = NSSelectorFromString(selectorName);
             
+            //2. handleNotification_Class_name
             if ([self respondsToSelector:selector]) {
-                [[NSNotificationCenter defaultCenter] addObserver:self
-                                                         selector:selector
-                                                             name:name
-                                                           object:nil];
+                IGNORED_SELECTOR
+                [self performSelector:selector withObject:notification];
+                IGNORED_END
                 return;
             }
         }
@@ -87,28 +81,17 @@
         selectorName = [NSString stringWithFormat:@"handleNotification_%@:", clazz];
         selector = NSSelectorFromString(selectorName);
         
+        //3. handleNotification_Class
         if ([self respondsToSelector:selector]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:selector
-                                                         name:name
-                                                       object:nil];
+            IGNORED_SELECTOR
+            [self performSelector:selector withObject:notification];
+            IGNORED_END
             return;
         }
     }
     
-    
-    if ([self.blockHandler hasBlock:name]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(handleNotificationBlock:)
-                                                     name:name
-                                                   object:nil];
-        return;
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleNotification:)
-                                                 name:name
-                                               object:nil];
+    //4. handleNotification
+    [self handleNotification:notification];
 }
 
 - (void)observeAllNotifications
@@ -116,14 +99,14 @@
     NSArray *methods = [FWRuntime methodsOfClass:[self class] withPrefix:@"handleNotification_"];
     if (nil == methods || 0 == methods.count) return;
     
-    for (NSString *selectorName in methods) {
-        NSString *name = [selectorName stringByReplacingOccurrencesOfString:@"handleNotification_" withString:@"notification."];
+    for (NSString *method in methods) {
+        NSString *name = [method stringByReplacingOccurrencesOfString:@"handleNotification_" withString:@"notification."];
         //是否包含下划线
         NSRange range = [name rangeOfString:@"_"];
         if (range.location != NSNotFound) {
             //替换为格式：notification.Class.name
-            name = [name stringByReplacingOccurrencesOfString:@":" withString:@""];
             name = [name stringByReplacingCharactersInRange:range withString:@"."];
+            name = [name stringByReplacingOccurrencesOfString:@":" withString:@""];
         } else {
             //替换为默认格式：notification.Class.
             name = [name stringByReplacingOccurrencesOfString:@":" withString:@"."];
@@ -132,6 +115,18 @@
         
         [self observeNotification:name];
     }
+}
+
+- (void)observeNotification:(NSString *)name
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:name
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(routeNotification:)
+                                                 name:name
+                                               object:nil];
 }
 
 - (void)unobserveNotification:(NSString *)name

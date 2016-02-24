@@ -48,9 +48,9 @@ typedef void (^FWNotificationBlock)(NSNotification *notification);
 
 @static_string(NOTIFICATION_TYPE)
 
-- (void)onNotification:(NSString *)name block:(FWNotificationBlock)block;
-
 - (void)handleNotification:(NSNotification *)notification;
+
+- (void)onNotification:(NSString *)name block:(FWNotificationBlock)block;
 
 - (void)observeNotification:(NSString *)name;
 

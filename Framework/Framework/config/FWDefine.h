@@ -19,11 +19,22 @@
 #define APP_DEBUG
 
 #endif
+
+//定义开关
+#define __ON__    (1)
+#define __OFF__   (0)
+#ifdef APP_DEBUG
+#define __AUTO__  (1)
+#else
+#define __AUTO__  (0)
+#endif
 /********<<<环境切换********/
 
 
 #pragma mark - 功能开关
 /********功能开关>>>********/
+
+
 #ifdef APP_DEBUG
 
 //调试开关
