@@ -10,21 +10,6 @@
 #import "FWRuntime.h"
 
 #pragma mark -
-@implementation NSNotification (FWNotification)
-
-- (BOOL)isName:(NSString *)name
-{
-    return [self.name isEqualToString:name];
-}
-
-- (BOOL)isType:(NSString *)type
-{
-    return [self.name hasPrefix:type];
-}
-
-@end
-
-#pragma mark -
 @implementation NSObject (FWNotificationResponder)
 
 - (void)handleNotification:(NSNotification *)notification
@@ -166,6 +151,21 @@
 - (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object
 {
     return [[self class] postNotification:name withObject:object];
+}
+
+@end
+
+#pragma mark -
+@implementation NSNotification (FWNotification)
+
+- (BOOL)isName:(NSString *)name
+{
+    return [self.name isEqualToString:name];
+}
+
+- (BOOL)isType:(NSString *)type
+{
+    return [self.name hasPrefix:type];
 }
 
 @end

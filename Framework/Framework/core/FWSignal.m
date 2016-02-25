@@ -9,9 +9,131 @@
 #import "FWSignal.h"
 
 #pragma mark -
+@implementation NSObject (FWSignalResponder)
+
+- (id)signalResponder
+{
+    id responder = [self getAssociatedObjectForKey:"signalResponder"];
+    if (responder != nil) {
+        return responder;
+    } else {
+        //默认响应对象为自己
+        return self;
+    }
+}
+
+- (void)setSignalResponder:(id)responder
+{
+    if (nil == responder) {
+        [self removeAssociatedObjectForKey:"signalResponder"];
+    } else {
+        [self retainAssociatedObject:responder forKey:"signalResponder"];
+    }
+}
+
+- (void)handleSignal:(FWSignal *)signal
+{
+    
+}
+
+- (void)onSignal:(NSString *)name block:(FWSignalBlock)block
+{
+    if (block) {
+        [self.blockHandler setBlock:name block:block];
+    } else {
+        [self.blockHandler removeBlock:name];
+    }
+}
+
+- (void)routeSignal:(FWSignal *)signal
+{
+    //1. FWSignalBlock
+    if ([self.blockHandler trigger:signal.name withObject:signal]) {
+        return;
+    }
+    
+    NSArray *array = [signal.name componentsSeparatedByString:@"."];
+    if (array && array.count > 1) {
+        //NSString *prefix = (NSString *)[array objectAtIndex:0];
+        NSString *clazz = (NSString *)[array objectAtIndex:1];
+        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
+        
+        NSString *selectorName;
+        SEL selector;
+        
+        if (filter && filter.length > 0) {
+            selectorName = [NSString stringWithFormat:@"handleSignal____%@____%@:", clazz, filter];
+            selector = NSSelectorFromString(selectorName);
+            
+            //2. handleSignal_Class_name
+            if ([self respondsToSelector:selector]) {
+                IGNORED_SELECTOR
+                [self performSelector:selector withObject:signal];
+                IGNORED_END
+                return;
+            }
+        }
+        
+        selectorName = [NSString stringWithFormat:@"handleSignal____%@:", clazz];
+        selector = NSSelectorFromString(selectorName);
+        
+        //3. handleSignal_Class
+        if ([self respondsToSelector:selector]) {
+            IGNORED_SELECTOR
+            [self performSelector:selector withObject:signal];
+            IGNORED_END
+            return;
+        }
+    }
+    
+    //4. handleSignal
+    [self handleSignal:signal];
+}
+
+@end
+
+#pragma mark -
+@implementation NSObject (FWSignalSender)
+
+//signal.Class.name
+@def_static_string(SIGNAL, [[self class] SIGNAL_TYPE])
+
+//signal.Class.
+@def_static_string(SIGNAL_TYPE, [[[NSString stringWithUTF8String:"signal."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
+
+- (void)sendSignal:(NSString *)name
+{
+    [self sendSignal:name callback:nil];
+}
+
+- (void)sendSignal:(NSString *)name callback:(FWSignalBlock)callback
+{
+    [self sendSignal:name withObject:nil callback:callback];
+}
+
+- (void)sendSignal:(NSString *)name withObject:(NSObject *)object
+{
+    [self sendSignal:name withObject:object callback:nil];
+}
+
+- (void)sendSignal:(NSString *)name withObject:(NSObject *)object callback:(FWSignalBlock)callback
+{
+    FWSignal *signal = [FWSignal signal];
+    signal.name = name;
+    signal.object = object;
+    signal.source = self;
+    signal.target = self.signalResponder;
+    
+    [signal setCallback:callback];
+    [signal send];
+}
+
+@end
+
+#pragma mark -
 @implementation FWSignal
 {
-    FWSignalBlock _block;
+    FWSignalBlock _callback;
     BOOL _isError;
     id _response;
     NSError *_error;
@@ -71,52 +193,13 @@
     //检查参数
     if (!self.name || !self.source || !self.target) return;
     
-    //1. FWSignalBlock
-    if ([self.target.blockHandler trigger:self.name withObject:self]) {
-        return;
-    }
-    
-    NSArray *array = [self.name componentsSeparatedByString:@"."];
-    if (array && array.count > 1) {
-        //NSString *prefix = (NSString *)[array objectAtIndex:0];
-        NSString *clazz = (NSString *)[array objectAtIndex:1];
-        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
-        
-        NSString *selectorName;
-        SEL selector;
-        
-        if (filter && filter.length > 0) {
-            selectorName = [NSString stringWithFormat:@"handleSignal____%@____%@:", clazz, filter];
-            selector = NSSelectorFromString(selectorName);
-            
-            //2. handleSignal_Class_name
-            if ([self.target respondsToSelector:selector]) {
-                IGNORED_SELECTOR
-                [self.target performSelector:selector withObject:self];
-                IGNORED_END
-                return;
-            }
-        }
-        
-        selectorName = [NSString stringWithFormat:@"handleSignal____%@:", clazz];
-        selector = NSSelectorFromString(selectorName);
-        
-        //3. handleSignal_Class
-        if ([self.target respondsToSelector:selector]) {
-            IGNORED_SELECTOR
-            [self.target performSelector:selector withObject:self];
-            IGNORED_END
-            return;
-        }
-    }
-    
-    //4. handleSignal
-    [self.target handleSignal:self];
+    //target调用信号
+    [self.target routeSignal:self];
 }
 
-- (void)setBlock:(FWSignalBlock)block
+- (void)setCallback:(FWSignalBlock)callback
 {
-    _block = block;
+    _callback = callback;
 }
 
 - (void)success:(id)response
@@ -125,8 +208,8 @@
     _error = nil;
     _response = response;
     
-    if (_block) {
-        _block(self);
+    if (_callback) {
+        _callback(self);
     }
 }
 
@@ -136,72 +219,14 @@
     _error = error;
     _response = nil;
     
-    if (_block) {
-        _block(self);
+    if (_callback) {
+        _callback(self);
     }
 }
 
 - (BOOL)isError
 {
     return _isError;
-}
-
-@end
-
-#pragma mark -
-@implementation NSObject (FWSignalResponder)
-
-- (void)handleSignal:(FWSignal *)signal
-{
-    
-}
-
-- (void)onSignal:(NSString *)name block:(FWSignalBlock)block
-{
-    if (block) {
-        [self.blockHandler setBlock:name block:block];
-    } else {
-        [self.blockHandler removeBlock:name];
-    }
-}
-
-@end
-
-#pragma mark -
-@implementation NSObject (FWSignalSender)
-
-//signal.Class.name
-@def_static_string(SIGNAL, [[self class] SIGNAL_TYPE])
-
-//signal.Class.
-@def_static_string(SIGNAL_TYPE, [[[NSString stringWithUTF8String:"signal."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
-
-- (void)sendSignal:(NSString *)name
-{
-    [self sendSignal:name callback:nil];
-}
-
-- (void)sendSignal:(NSString *)name callback:(FWSignalBlock)callback
-{
-    [self sendSignal:name withObject:nil callback:callback];
-}
-
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object
-{
-    [self sendSignal:name withObject:object callback:nil];
-}
-
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object callback:(FWSignalBlock)callback
-{
-    FWSignal *signal = [FWSignal signal];
-    signal.name = name;
-    signal.object = object;
-    signal.source = self;
-    signal.target = self;
-    
-    [signal setBlock:callback];
-    
-    [signal send];
 }
 
 @end

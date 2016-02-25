@@ -34,6 +34,33 @@
 typedef void (^FWSignalBlock)(FWSignal *signal);
 
 #pragma mark -
+@interface NSObject (FWSignalResponder)
+
+//设置或获取响应对象
+- (id)signalResponder;
+- (void)setSignalResponder:(id)responder;
+
+- (void)handleSignal:(FWSignal *)signal;
+
+- (void)onSignal:(NSString *)name block:(FWSignalBlock)block;
+
+@end
+
+#pragma mark -
+@interface NSObject (FWSignalSender)
+
+@static_string(SIGNAL)
+@static_string(SIGNAL_TYPE)
+
+//发送信号
+- (void) sendSignal:(NSString *)name;
+- (void) sendSignal:(NSString *)name callback:(FWSignalBlock)callback;
+- (void) sendSignal:(NSString *)name withObject:(NSObject *)object;
+- (void) sendSignal:(NSString *)name withObject:(NSObject *)object callback:(FWSignalBlock)callback;
+
+@end
+
+#pragma mark -
 @interface FWSignal : NSObject
 
 //静态方法
@@ -58,32 +85,9 @@ typedef void (^FWSignalBlock)(FWSignal *signal);
 - (void)send;
 
 //响应方法
-- (void)setBlock:(FWSignalBlock)block;
+- (void)setCallback:(FWSignalBlock)callback;
 - (void)success:(id)response;
 - (void)error:(NSError *)error;
 - (BOOL)isError;
-
-@end
-
-#pragma mark -
-@interface NSObject (FWSignalResponder)
-
-- (void)handleSignal:(FWSignal *)signal;
-
-- (void)onSignal:(NSString *)name block:(FWSignalBlock)block;
-
-@end
-
-#pragma mark -
-@interface NSObject (FWSignalSender)
-
-@static_string(SIGNAL)
-@static_string(SIGNAL_TYPE)
-
-//发送信号
-- (void) sendSignal:(NSString *)name;
-- (void) sendSignal:(NSString *)name callback:(FWSignalBlock)callback;
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object;
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object callback:(FWSignalBlock)callback;
 
 @end
