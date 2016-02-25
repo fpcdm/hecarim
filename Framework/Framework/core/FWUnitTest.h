@@ -10,9 +10,9 @@
 
 #undef	TEST_CASE
 #define	TEST_CASE( __module, __name ) \
-		@interface FWTestCase_##__module##_##__name : FWTestCase \
+		@interface FWTestCase____##__module##____##__name : FWTestCase \
 		@end \
-		@implementation FWTestCase_##__module##_##__name
+		@implementation FWTestCase____##__module##____##__name
 
 #undef	TEST_CASE_END
 #define	TEST_CASE_END \
@@ -70,7 +70,6 @@
 
 @singleton(FWUnitTest)
 
-//框架自动执行
 - (void)run;
 
 @end

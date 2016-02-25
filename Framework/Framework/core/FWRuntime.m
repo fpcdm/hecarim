@@ -14,10 +14,9 @@
 #pragma mark -
 + (NSArray *)allClasses
 {
-    static dispatch_once_t once;
     static NSMutableArray *classNames;
     
-    dispatch_once( &once, ^{
+    if (!classNames) {
         classNames = [[NSMutableArray alloc] init];
         
         unsigned int classesCount = 0;
@@ -38,7 +37,7 @@
         }];
         
         free(classes);
-    });
+    }
     
     return classNames;
 }
@@ -46,7 +45,8 @@
 + (NSArray *)subclassesOfClass:(Class)clazz
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (NSString *className in [self allClasses]) {
+    NSArray *allClasses = [self allClasses];
+    for (NSString *className in allClasses) {
         Class classType = NSClassFromString(className);
         if (classType == clazz) continue;
         if (![classType isSubclassOfClass:clazz]) continue;
