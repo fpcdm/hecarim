@@ -85,13 +85,7 @@
     
 #if FRAMEWORK_TEST
     //自动执行测试
-    fprintf(stderr, "\n");
-    fprintf(stderr,  "========== UnitTest ==========\n");
-    
     [[FWUnitTest sharedInstance] run];
-    
-    fprintf(stderr,  "========== UnitTest ==========\n");
-    fprintf(stderr,  "\n");
 #endif
     
 }
@@ -102,60 +96,58 @@
 {
     NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
     
-    //开始单元测试
-    fprintf(stderr,  "\n");
-    fprintf(stderr,  "===== UnitTest : Start =====\n");
+    //单元测试开始
+    fprintf(stderr, "\n");
+    fprintf(stderr,  "========== UnitTest ==========\n");
     
     CFTimeInterval beginTime = CACurrentMediaTime();
+    
     for (NSString *className in classes) {
         Class classType = NSClassFromString(className);
         if (nil == classType) continue;
         
-        NSString *formatClass = [className stringByReplacingOccurrencesOfString:@"FWTestCase____" withString:@""];
-        formatClass = [formatClass stringByReplacingOccurrencesOfString:@"____" withString:@"."];
-        
         CFTimeInterval time1 = CACurrentMediaTime();
         BOOL testCasePassed = YES;
         
-        NSString *methodName = nil;
-        NSString *errorMsg = nil;
+        NSString *formatClass = [className stringByReplacingOccurrencesOfString:@"FWTestCase____" withString:@""];
+        formatClass = [formatClass stringByReplacingOccurrencesOfString:@"____" withString:@"."];
+        NSString *formatMethod = nil;
+        NSString *formatError = nil;
+        
         @try {
             NSArray *selectorNames = [FWRuntime methodsOfClass:classType withPrefix:@"test"];
             if (selectorNames && selectorNames.count > 0) {
                 FWTestCase *testCase = [[classType alloc] init];
                 for (NSString * selectorName in selectorNames) {
-                    methodName = selectorName;
+                    formatMethod = [selectorName stringByReplacingOccurrencesOfString:@"test" withString:@""];
                     SEL selector = NSSelectorFromString(selectorName);
                     if (selector && [testCase respondsToSelector:selector]) {
+                        //setUp
                         [testCase setUp];
                         
-                        //调用测试方法
+                        //test
                         NSMethodSignature *signature = [testCase methodSignatureForSelector:selector];
                         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
                         [invocation setTarget:testCase];
                         [invocation setSelector:selector];
                         [invocation invoke];
                         
+                        //tearDown
                         [testCase tearDown];
                         
-                        //成功次数加1
                         _succeedTest += 1;
                     }
                 }
             }
         } @catch (FWTestException *e) {
-            errorMsg = [NSString stringWithFormat:@"      %@ (#%lu) : EXPECTED( %@ ); [Assertion failed]", e.file, (long)e.line, e.expr];
+            formatError = [NSString stringWithFormat:@"%@ (#%lu) : EXPECTED( %@ ); [Assertion failed]", e.file, (long)e.line, e.expr];
             
             testCasePassed = NO;
-            
-            //失败次数加1
             _failedTest += 1;
         } @catch (NSException *e) {
-            errorMsg = [NSString stringWithFormat:@"      %@ : %@( ); [%@]", formatClass, methodName, e.reason];
+            formatError = [NSString stringWithFormat:@"%@ : %@( ); [%@]", formatClass, formatMethod, e.reason];
             
             testCasePassed = NO;
-            
-            //失败次数加1
             _failedTest += 1;
         } @finally {
         }
@@ -169,7 +161,7 @@
         } else {
             _failedCase += 1;
             fprintf( stderr, "      %s : [FAIL]   %.003fs\n", [formatClass UTF8String], time );
-            fprintf( stderr, "          %s\n", [errorMsg UTF8String] );
+            fprintf( stderr, "          %s\n", [formatError UTF8String] );
         }
     }
     
@@ -177,12 +169,11 @@
     CFTimeInterval totalTime = endTime - beginTime;
     
     float passRate = (_succeedCase * 1.0f) / ((_succeedCase + _failedCase) * 1.0f) * 100.0f;
-    
     fprintf( stderr, "      Result : %lu cases  [%.0f%%]   %.003fs\n", (unsigned long)[classes count], passRate, totalTime);
     
     //单元测试结束
-    fprintf(stderr,  "===== UnitTest : End =====\n");
-    fprintf(stderr, "\n");
+    fprintf(stderr,  "========== UnitTest ==========\n");
+    fprintf(stderr,  "\n");
 }
 
 @end
