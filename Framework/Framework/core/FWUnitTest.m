@@ -19,7 +19,7 @@
 
 + (FWTestException *)exceptionWithExpr:(const char *)expr file:(const char *)file line:(int)line
 {
-    FWTestException *exception = [[FWTestException alloc] initWithName:@"FWUnitTest" reason:nil userInfo:nil];
+    FWTestException *exception = [[FWTestException alloc] initWithName:@"FWUnitTest" reason:@"Assertion failed" userInfo:nil];
     exception.expr = @(expr);
     exception.file = [@(file) lastPathComponent];
     exception.line = line;
@@ -55,15 +55,12 @@
 
 @implementation FWUnitTest
 {
-    NSUInteger _failedCase;
-    NSUInteger _succeedCase;
-    NSUInteger _failedTest;
-    NSUInteger _succeedTest;
+    NSUInteger _failedCount;
+    NSUInteger _succeedCount;
 }
 
 @def_singleton(FWUnitTest)
 
-//调试模式生效
 #if FRAMEWORK_DEBUG
 
 + (void)load
@@ -74,13 +71,13 @@
     const char *opts[] = {"NO", "YES"};
     
     fprintf(stderr, "\n");
-    fprintf(stderr,  "========== Framework ==========\n");
-    fprintf(stderr,  "      Version   : %s\n", FRAMEWORK_VERSION);
-    fprintf(stderr,  "      Debug     : %s\n", opts[FRAMEWORK_DEBUG]);
-    fprintf(stderr,  "      Log       : %s\n", opts[FRAMEWORK_LOG]);
-    fprintf(stderr,  "      Test      : %s\n", opts[FRAMEWORK_TEST]);
-    fprintf(stderr,  "========== Framework ==========\n");
-    fprintf(stderr,  "\n");
+    fprintf(stderr, "========== FRAMEWORK ==========\n");
+    fprintf(stderr, " VERSION : %s\n", FRAMEWORK_VERSION);
+    fprintf(stderr, "   DEBUG : %s\n", opts[FRAMEWORK_DEBUG]);
+    fprintf(stderr, "    TEST : %s\n", opts[FRAMEWORK_TEST]);
+    fprintf(stderr, "     LOG : %s\n", opts[FRAMEWORK_LOG]);
+    fprintf(stderr, "========== FRAMEWORK ==========\n");
+    fprintf(stderr, "\n");
 #endif
     
 #if FRAMEWORK_TEST
@@ -94,11 +91,13 @@
 
 - (void)run
 {
+#if FRAMEWORK_TEST
+    //获取测试列表
     NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
     
     //单元测试开始
     fprintf(stderr, "\n");
-    fprintf(stderr,  "========== UnitTest ==========\n");
+    fprintf(stderr, "========== UNITTEST  ==========\n");
     
     CFTimeInterval beginTime = CACurrentMediaTime();
     
@@ -134,21 +133,17 @@
                         
                         //tearDown
                         [testCase tearDown];
-                        
-                        _succeedTest += 1;
                     }
                 }
             }
         } @catch (FWTestException *e) {
-            formatError = [NSString stringWithFormat:@"%@ (#%lu) : EXPECTED( %@ ); [Assertion failed]", e.file, (long)e.line, e.expr];
+            formatError = [NSString stringWithFormat:@"- EXPECTED( %@ ); ( %@ - %@ #%lu )", e.expr, formatMethod, e.file, (long)e.line];
             
             testCasePassed = NO;
-            _failedTest += 1;
         } @catch (NSException *e) {
-            formatError = [NSString stringWithFormat:@"%@ : %@( ); [%@]", formatClass, formatMethod, e.reason];
+            formatError = [NSString stringWithFormat:@"- %@ ( %@ )", e.reason, formatMethod];
             
             testCasePassed = NO;
-            _failedTest += 1;
         } @finally {
         }
         
@@ -156,24 +151,29 @@
         CFTimeInterval time = time2 - time1;
         
         if ( testCasePassed ) {
-            _succeedCase += 1;
-            fprintf( stderr, "      %s : [ OK ]   %.003fs\n", [formatClass UTF8String], time );
+            //测试通过
+            _succeedCount += 1;
+            fprintf( stderr, "[  OK  ] : %s ( %.003fs )\n", [formatClass UTF8String], time );
         } else {
-            _failedCase += 1;
-            fprintf( stderr, "      %s : [FAIL]   %.003fs\n", [formatClass UTF8String], time );
-            fprintf( stderr, "          %s\n", [formatError UTF8String] );
+            //测试失败
+            _failedCount += 1;
+            fprintf( stderr, "[ FAIL ] : %s ( %.003fs )\n", [formatClass UTF8String], time );
+            fprintf( stderr, "    %s\n", [formatError UTF8String] );
         }
     }
     
     CFTimeInterval endTime = CACurrentMediaTime();
     CFTimeInterval totalTime = endTime - beginTime;
     
-    float passRate = (_succeedCase * 1.0f) / ((_succeedCase + _failedCase) * 1.0f) * 100.0f;
-    fprintf( stderr, "      Result : %lu cases  [%.0f%%]   %.003fs\n", (unsigned long)[classes count], passRate, totalTime);
+    //统计信息
+    NSUInteger totalCount = _succeedCount + _failedCount;
+    float passRate = (_succeedCount * 1.0f) / (totalCount * 1.0f) * 100.0f;
+    fprintf( stderr, "  TOTAL  : [ %s ] ( %lu/%lu ) ( %.0f%% ) ( %.003fs )\n", _failedCount < 1 ? "OK" : "FAIL", (long)(_succeedCount), (long)(totalCount), passRate, totalTime);
     
     //单元测试结束
-    fprintf(stderr,  "========== UnitTest ==========\n");
-    fprintf(stderr,  "\n");
+    fprintf(stderr, "========== UNITTEST  ==========\n");
+    fprintf(stderr, "\n");
+#endif
 }
 
 @end
