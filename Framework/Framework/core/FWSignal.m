@@ -14,12 +14,7 @@
 - (id)signalResponder
 {
     id responder = [self getAssociatedObjectForKey:"signalResponder"];
-    if (responder != nil) {
-        return responder;
-    } else {
-        //默认响应对象为自己
-        return self;
-    }
+    return responder;
 }
 
 - (void)setSignalResponder:(id)responder
@@ -122,7 +117,7 @@
     signal.name = name;
     signal.object = object;
     signal.source = self;
-    signal.target = self.signalResponder;
+    signal.target = self.signalResponder ? self.signalResponder : self;
     
     [signal setCallback:callback];
     [signal send];
