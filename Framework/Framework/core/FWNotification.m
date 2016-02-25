@@ -60,7 +60,7 @@
         SEL selector;
         
         if (filter && filter.length > 0) {
-            selectorName = [NSString stringWithFormat:@"handleNotification_%@_%@:", clazz, filter];
+            selectorName = [NSString stringWithFormat:@"handleNotification____%@____%@:", clazz, filter];
             selector = NSSelectorFromString(selectorName);
             
             //2. handleNotification_Class_name
@@ -72,7 +72,7 @@
             }
         }
         
-        selectorName = [NSString stringWithFormat:@"handleNotification_%@:", clazz];
+        selectorName = [NSString stringWithFormat:@"handleNotification____%@:", clazz];
         selector = NSSelectorFromString(selectorName);
         
         //3. handleNotification_Class
@@ -90,13 +90,13 @@
 
 - (void)observeAllNotifications
 {
-    NSArray *methods = [FWRuntime methodsOfClass:[self class] withPrefix:@"handleNotification_"];
+    NSArray *methods = [FWRuntime methodsOfClass:[self class] withPrefix:@"handleNotification____"];
     if (nil == methods || 0 == methods.count) return;
     
     for (NSString *method in methods) {
-        NSString *name = [method stringByReplacingOccurrencesOfString:@"handleNotification_" withString:@"notification."];
-        //是否包含下划线
-        NSRange range = [name rangeOfString:@"_"];
+        NSString *name = [method stringByReplacingOccurrencesOfString:@"handleNotification____" withString:@"notification."];
+        //是否包含分隔符号
+        NSRange range = [name rangeOfString:@"____"];
         if (range.location != NSNotFound) {
             //替换为格式：notification.Class.name
             name = [name stringByReplacingCharactersInRange:range withString:@"."];
@@ -173,26 +173,75 @@
 //UnitTest
 #if FRAMEWORK_TEST
 
-TEST_CASE( Core, FWNotification )
+@interface FWTestCase_core_FWNotification_Test : NSObject
+
+@notification(CHANGED)
+
+@end
+
+@implementation FWTestCase_core_FWNotification_Test
+
+@def_notification(CHANGED)
+
+@end
+
+TEST_CASE(core, FWNotification)
 {
-    NSArray * _testArray;
+    NSInteger value;
+    FWTestCase_core_FWNotification_Test *obj;
 }
 
-DESCRIBE( before )
+SETUP()
 {
-    _testArray = @[ @"1", @"2", @"3", @"4", @"5", @"6" ];
+    value = 0;
+    obj = [[FWTestCase_core_FWNotification_Test alloc] init];
+    
+    [self observeAllNotifications];
 }
 
-DESCRIBE( count )
+TEST(notification)
 {
-    EXPECTED( _testArray.count == 6 );
+    EXPECTED(0 == value);
+    
+    TIMES(10)
+    {
+        [obj postNotification:obj.CHANGED];
+    }
+    EXPECTED(10 == value)
+    
+    TIMES(10)
+    {
+        [FWTestCase_core_FWNotification_Test postNotification:[FWTestCase_core_FWNotification_Test CHANGED]];
+    }
+    EXPECTED(20 == value)
 }
 
-DESCRIBE( after )
+handleNotification3(FWTestCase_core_FWNotification_Test, CHANGED, notification)
 {
-    _testArray = nil;
+    EXPECTED([notification.name isEqualToString:[FWTestCase_core_FWNotification_Test CHANGED]])
+    
+    value += 1;
+}
+
+TEST(onNotification)
+{
+    [self onNotification:obj.CHANGED block:^(NSNotification *notification) {
+        EXPECTED([notification.name isEqualToString:obj.CHANGED])
+        value += 2;
+    }];
+    
+    TIMES(5)
+    {
+        [obj postNotification:obj.CHANGED];
+    }
+    EXPECTED(10 == value)
+}
+
+TEARDOWN()
+{
+    obj = nil;
+    [self unobserveAllNotifications];
 }
 
 TEST_CASE_END
-
 #endif

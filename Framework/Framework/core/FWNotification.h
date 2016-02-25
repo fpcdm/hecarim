@@ -24,11 +24,11 @@
 
 #undef	handleNotification2
 #define handleNotification2( __filter, __notification ) \
-    - (void)handleNotification_##__filter:(NSNotification *)__notification
+    - (void)handleNotification____##__filter:(NSNotification *)__notification
 
 #undef	handleNotification3
 #define handleNotification3( __class, __name, __notification ) \
-    - (void)handleNotification_##__class##_##__name:(NSNotification *)__notification
+    - (void)handleNotification____##__class##____##__name:(NSNotification *)__notification
 
 typedef void (^FWNotificationBlock)(NSNotification *notification);
 

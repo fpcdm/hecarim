@@ -17,7 +17,6 @@
 #import "FWProperty.h"
 
 //core
-#import "FWFramework.h"
 #import "FWUnitTest.h"
 #import "FWDebug.h"
 #import "FWLog.h"

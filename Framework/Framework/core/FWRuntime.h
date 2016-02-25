@@ -12,6 +12,7 @@
 
 //获取子类列表，不含类本身
 + (NSArray *)subclassesOfClass:(Class)clazz;
++ (NSArray *)subclassesOfClass:(Class)clazz withPrefix:(NSString *)prefix;
 
 //获取类方法
 + (NSArray *)methodsOfClass:(Class)clazz;

@@ -10,23 +10,30 @@
 
 #undef	TEST_CASE
 #define	TEST_CASE( __module, __name ) \
-		@interface __TestCase__##__module##_##__name : FWTestCase \
+		@interface FWTestCase_##__module##_##__name : FWTestCase \
 		@end \
-		@implementation __TestCase__##__module##_##__name
+		@implementation FWTestCase_##__module##_##__name
 
 #undef	TEST_CASE_END
 #define	TEST_CASE_END \
 		@end
 
-#undef	DESCRIBE
-#define	DESCRIBE( __test ) \
-		- (void) macro_concat( test, __test )
+#undef  SETUP
+#define SETUP( ) \
+        - (void) setUp
+
+#undef  TEARDOWN
+#define TEARDOWN( ) \
+        - (void) tearDown
+
+#undef	TEST
+#define	TEST( __name ) \
+		- (void) macro_concat( test, __name )
 
 #undef	EXPECTED
 #define EXPECTED( ... ) \
-		if ( !(__VA_ARGS__) ) \
-		{ \
-			@throw [FWTestException expr:#__VA_ARGS__ file:__FILE__ line:__LINE__]; \
+		if ( !(__VA_ARGS__) ) { \
+			@throw [FWTestException exceptionWithExpr:#__VA_ARGS__ file:__FILE__ line:__LINE__]; \
 		}
 
 #undef	TIMES
@@ -41,13 +48,19 @@
 @prop_strong(NSString *, file)
 @prop_assign(NSInteger, line)
 
-+ (FWTestException *)expr:(const char *)expr file:(const char *)file line:(int)line;
++ (FWTestException *)exceptionWithExpr:(const char *)expr file:(const char *)file line:(int)line;
 
 @end
 
 #pragma mark -
 
 @interface FWTestCase : NSObject
+
+- (void)setUp;
+
+- (void)expected:(BOOL)value;
+
+- (void)tearDown;
 
 @end
 
@@ -57,6 +70,7 @@
 
 @singleton(FWUnitTest)
 
+//框架自动执行
 - (void)run;
 
 @end

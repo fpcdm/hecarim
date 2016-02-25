@@ -10,7 +10,7 @@
 #import "FWRuntime.h"
 
 //最大日志数量
-#define FWUnitTest_MAX_LOGS (100)
+#define FWUnitTest_MAX_LOGS 100
 
 #pragma mark -
 
@@ -20,7 +20,7 @@
 @def_prop_strong(NSString *, file);
 @def_prop_assign(NSInteger, line);
 
-+ (FWTestException *)expr:(const char *)expr file:(const char *)file line:(int)line
++ (FWTestException *)exceptionWithExpr:(const char *)expr file:(const char *)file line:(int)line
 {
     FWTestException *exception = [[FWTestException alloc] initWithName:@"FWUnitTest" reason:nil userInfo:nil];
     exception.expr = @(expr);
@@ -35,6 +35,23 @@
 
 @implementation FWTestCase
 
+- (void)setUp
+{
+    
+}
+
+- (void)expected:(BOOL)value
+{
+    if (!value) {
+        @throw [NSException exceptionWithName:@"FWUnitTest" reason:@"Assertion failed" userInfo:nil];
+    }
+}
+
+- (void)tearDown
+{
+    
+}
+
 @end
 
 #pragma mark -
@@ -42,16 +59,29 @@
 @implementation FWUnitTest
 {
     NSMutableArray *_logs;
+    
     NSUInteger _failedCount;
     NSUInteger _succeedCount;
 }
 
 @def_singleton(FWUnitTest)
 
++ (void)load
+{
+#if FRAMEWORK_TEST
+    //显示框架配置信息
+    const char *opts[] = {"OFF", "ON"};
+    fprintf(stderr,  "===== Framework : [version:%s] [debug:%s] [log:%s] [test:%s] =====\n", FRAMEWORK_VERSION, opts[FRAMEWORK_DEBUG], opts[FRAMEWORK_LOG], opts[FRAMEWORK_TEST]);
+    
+    //测试环境自动执行
+    [[FWUnitTest sharedInstance] run];
+#endif
+}
+
 - (id)init
 {
     self = [super init];
-    if ( self ) {
+    if (self) {
         _logs = [[NSMutableArray alloc] init];
     }
     return self;
@@ -64,9 +94,12 @@
 
 - (void)run
 {
-    fprintf( stderr, "  =============================================================\n" );
-    fprintf( stderr, "   Unit testing ...\n" );
-    fprintf( stderr, "  -------------------------------------------------------------\n" );
+    
+    //框架信息
+    
+    fprintf( stderr, "=============================================================\n" );
+    fprintf( stderr, "Unit testing ...\n" );
+    fprintf( stderr, "-------------------------------------------------------------\n" );
     
     NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
     
@@ -81,7 +114,7 @@
         
         NSString * testCaseName;
         testCaseName = [classType description];
-        testCaseName = [testCaseName stringByReplacingOccurrencesOfString:@"__TestCase__" withString:@"  TEST_CASE( "];
+        testCaseName = [testCaseName stringByReplacingOccurrencesOfString:@"FWTestCase_" withString:@"  TEST_CASE( "];
         testCaseName = [testCaseName stringByAppendingString:@" )"];
         
         NSString * formattedName = [testCaseName stringByPaddingToLength:48 withString:@" " startingAtIndex:0];
@@ -107,12 +140,16 @@
                         SEL selector = NSSelectorFromString( selectorName );
                         if ( selector && [testCase respondsToSelector:selector] )
                         {
+                            [testCase setUp];
+                            
                             NSMethodSignature * signature = [testCase methodSignatureForSelector:selector];
                             NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:signature];
                             
                             [invocation setTarget:testCase];
                             [invocation setSelector:selector];
                             [invocation invoke];
+                            
+                            [testCase tearDown];
                         }
                     }
                 }

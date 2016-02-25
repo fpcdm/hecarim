@@ -96,3 +96,62 @@
 }
 
 @end
+
+//UnitTest
+#if FRAMEWORK_TEST
+TEST_CASE(extension, NSString_Framework)
+
+TEST(trim)
+{
+    EXPECTED([@"trim" isEqualToString:[@" trim " trim]])
+    EXPECTED([@"trim " isEqualToString:[@" trim " ltrim]])
+    EXPECTED([@" trim" isEqualToString:[@" trim " rtrim]])
+}
+
+TEST(format)
+{
+    EXPECTED(@"18875001455".isFormatMobile)
+    EXPECTED(!@"1887500145".isFormatMobile)
+    
+    EXPECTED(@"023-86754321".isFormatTelephone)
+    EXPECTED(@"7654321".isFormatTelephone)
+    EXPECTED(!@"0238-87654321".isFormatTelephone)
+    EXPECTED(!@"654321".isFormatTelephone)
+    
+    EXPECTED(@"-20".isFormatInteger)
+    EXPECTED(@"0".isFormatInteger)
+    EXPECTED(!@"20.1".isFormatInteger)
+    
+    EXPECTED(@"20.123".isFormatNumber)
+    EXPECTED(@"0".isFormatNumber)
+    EXPECTED(!@"20.X".isFormatNumber)
+    
+    EXPECTED(@"20.12".isFormatMoney)
+    EXPECTED(@"0".isFormatMoney)
+    EXPECTED(!@"-5".isFormatMoney)
+    EXPECTED(!@"20.1234".isFormatMoney)
+    
+    EXPECTED(@"511222198701014343".isFormatIdcard)
+    EXPECTED(@"51122219870101434X".isFormatIdcard)
+    EXPECTED(!@"51122219871332434X".isFormatIdcard)
+    EXPECTED(!@"51122219870101".isFormatIdcard)
+    
+    EXPECTED(@"127.0.0.1".isFormatIp)
+    EXPECTED(!@"127.0.0".isFormatIp)
+    
+    EXPECTED(@"http://www.baidu.com".isFormatUrl)
+    EXPECTED(!@"www.baidu.com".isFormatUrl)
+    
+    EXPECTED(@"test@test.com".isFormatEmail)
+    EXPECTED(!@"test.com".isFormatEmail)
+    
+    EXPECTED(@"中文".isFormatChinese)
+    EXPECTED(!@"中文abc".isFormatChinese)
+    EXPECTED(!@"abc".isFormatChinese)
+    
+    EXPECTED(@"2014-01-01 12:00:00".isFormatDate)
+    EXPECTED(!@"20140101".isFormatDate)
+}
+
+TEST_CASE_END
+#endif

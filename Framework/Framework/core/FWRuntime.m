@@ -56,6 +56,27 @@
     return result;
 }
 
++ (NSArray *)subclassesOfClass:(Class)clazz withPrefix:(NSString *)prefix
+{
+    NSArray *classNames = [self subclassesOfClass:clazz];
+    if (nil == classNames || 0 == classNames.count) {
+        return classNames;
+    }
+    
+    if (nil == prefix) {
+        return classNames;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSString *className in classNames) {
+        if (![className hasPrefix:prefix]) continue;
+        
+        [result addObject:className];
+    }
+    
+    return result;
+}
+
 #pragma mark -
 + (NSArray *)methodsOfClass:(Class)clazz
 {

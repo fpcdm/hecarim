@@ -86,7 +86,7 @@
         SEL selector;
         
         if (filter && filter.length > 0) {
-            selectorName = [NSString stringWithFormat:@"handleSignal_%@_%@:", clazz, filter];
+            selectorName = [NSString stringWithFormat:@"handleSignal____%@____%@:", clazz, filter];
             selector = NSSelectorFromString(selectorName);
             
             //2. handleSignal_Class_name
@@ -98,7 +98,7 @@
             }
         }
         
-        selectorName = [NSString stringWithFormat:@"handleSignal_%@:", clazz];
+        selectorName = [NSString stringWithFormat:@"handleSignal____%@:", clazz];
         selector = NSSelectorFromString(selectorName);
         
         //3. handleSignal_Class

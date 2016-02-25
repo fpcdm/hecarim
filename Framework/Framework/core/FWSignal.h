@@ -24,11 +24,11 @@
 
 #undef	handleSignal2
 #define handleSignal2( __filter, __signal ) \
-    - (void)handleSignal_##__filter:(FWSignal *)__signal
+    - (void)handleSignal____##__filter:(FWSignal *)__signal
 
 #undef	handleSignal3
 #define handleSignal3( __class, __name, __signal ) \
-    - (void)handleSignal_##__class##_##__name:(FWSignal *)__signal
+    - (void)handleSignal____##__class##____##__name:(FWSignal *)__signal
 
 @class FWSignal;
 typedef void (^FWSignalBlock)(FWSignal *signal);
