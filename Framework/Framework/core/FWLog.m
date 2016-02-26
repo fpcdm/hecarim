@@ -30,17 +30,8 @@ static BOOL isDDLogInited = false;
 #endif
 #endif
 
-#if FRAMEWORK_DEBUG
-
-//调试环境默认全部级别
-static FWLogLevel globalLogLevel = FWLogLevelAll;
-
-#else
-
-//正式环境默认关闭日志
-static FWLogLevel globalLogLevel = FWLogLevelOff;
-
-#endif
+//全局日志级别
+static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
 
 @implementation FWLog
 
@@ -51,6 +42,11 @@ static FWLogLevel globalLogLevel = FWLogLevelOff;
 
 + (void)_log:(FWLogType)type message:(NSString *)message
 {
+#ifdef APP_DEBUG
+    //过滤级别
+    if (!(globalLogLevel & type)) return;
+#endif
+    
     //开发环境
 #ifdef APP_DEBUG
     //模拟器
@@ -204,9 +200,9 @@ static FWLogLevel globalLogLevel = FWLogLevelOff;
     if ([clazz hasPrefix:@"NS"] || [clazz hasPrefix:@"_NS"] || [clazz hasPrefix:@"__NS"] ||
         //UIView,...
         [clazz hasPrefix:@"UI"]) {
-        [self debug:@"%@: %@", clazz, object];
+        [self warn:@"%@: %@", clazz, object];
     } else {
-        [self debug:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
+        [self warn:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
     }
 #endif
 }

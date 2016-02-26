@@ -20,12 +20,12 @@ typedef NS_OPTIONS(NSUInteger, FWLogType) {
 //日志级别定义
 typedef NS_ENUM(NSUInteger, FWLogLevel) {
     FWLogLevelOff       = 0,
-    FWLogLevelError     = (FWLogTypeError),                    // 0...00001
-    FWLogLevelWarn      = (FWLogTypeError | FWLogTypeWarn),    // 0...00011
-    FWLogLevelInfo      = (FWLogTypeWarn  | FWLogTypeInfo),    // 0...00111
-    FWLogLevelDebug     = (FWLogTypeInfo  | FWLogTypeDebug),   // 0...01111
-    FWLogLevelVerbose   = (FWLogTypeDebug | FWLogTypeVerbose), // 0...11111
-    FWLogLevelAll       = NSUIntegerMax                        // 1...11111
+    FWLogLevelError     = (FWLogTypeError),                     // 0...00001
+    FWLogLevelWarn      = (FWLogLevelError | FWLogTypeWarn),    // 0...00011
+    FWLogLevelInfo      = (FWLogLevelWarn  | FWLogTypeInfo),    // 0...00111
+    FWLogLevelDebug     = (FWLogLevelInfo  | FWLogTypeDebug),   // 0...01111
+    FWLogLevelVerbose   = (FWLogLevelDebug | FWLogTypeVerbose), // 0...11111
+    FWLogLevelAll       = NSUIntegerMax                         // 1...11111
 };
 
 @interface FWLog : NSObject

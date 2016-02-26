@@ -44,6 +44,9 @@
 //日志开关
 #define FRAMEWORK_LOG   (1)
 
+//日志级别
+#define FRAMEWORK_LOG_LEVEL FWLogLevelAll
+
 #else
 
 //调试开关
@@ -52,6 +55,9 @@
 #define FRAMEWORK_TEST  (0)
 //日志开关
 #define FRAMEWORK_LOG   (0)
+
+//日志级别
+#define FRAMEWORK_LOG_LEVEL FWLogLevelOff
 
 #endif
 /********<<<功能开关********/
