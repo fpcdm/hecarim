@@ -22,7 +22,16 @@
 
 @prop_weak(id<FWDebugDelegate>, delegate)
 
-+ (FWDebug *) sharedInstance;
+@singleton(FWDebug)
+
+//调试对象
++ (void) dump:(id)object;
+
+//标记开始
+- (void) benchmarkStart:(NSString *)name;
+
+//标记结束
+- (void) benchmarkEnd:(NSString *)name;
 
 //监听代码文件改变，全局设置，仅模拟器有效
 - (void) watchPath:(NSString *)path exts:(NSArray *)exts;
@@ -32,11 +41,5 @@
 
 //停止监听某个试图，仅调试模式有效
 - (void) watchUrlEnd:(NSString *)url;
-
-//标记开始
-- (void) benchmarkStart:(NSString *)name;
-
-//标记结束
-- (void) benchmarkEnd:(NSString *)name;
 
 @end

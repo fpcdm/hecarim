@@ -14,12 +14,11 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 
+#import "FWRuntime.h"
 #import "FWHelperHttp.h"
 #import "FWHelperEncoder.h"
 #import "FWHelperDevice.h"
 #endif
-
-static FWDebug *sharedInstance = nil;
 
 @implementation FWDebug
 {
@@ -39,15 +38,21 @@ static FWDebug *sharedInstance = nil;
 #endif
 }
 
-+ (FWDebug *) sharedInstance
+@def_singleton(FWDebug)
+
++ (void)dump:(id)object
 {
-    //多线程唯一
-    @synchronized(self){
-        if (!sharedInstance) {
-            sharedInstance = [[self alloc] init];
-        }
+#ifdef APP_DEBUG
+    NSString *clazz = [[object class] description];
+    //NSClass,_NSInlineClass,__NSClass,...
+    if ([clazz hasPrefix:@"NS"] || [clazz hasPrefix:@"_NS"] || [clazz hasPrefix:@"__NS"] ||
+        //UIView,...
+        [clazz hasPrefix:@"UI"]) {
+        [FWLog debug:@"%@: %@", clazz, object];
+    } else {
+        [FWLog debug:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
     }
-    return sharedInstance;
+#endif
 }
 
 - (instancetype)init

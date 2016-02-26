@@ -20,6 +20,7 @@
     #import "FWProperty.h"
 
     #import "FWLog.h"
+    #import "FWDebug.h"
     #import "FWUnitTest.h"
 
     #import "NSObject+Framework.h"

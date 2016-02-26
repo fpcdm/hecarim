@@ -8,12 +8,8 @@
 
 #import "FWLog.h"
 
-#ifdef APP_DEBUG
-
-//dump
-#import "FWRuntime.h"
-
-#endif
+//定义默认log级别，小于Verbose
+#define FWLogTypeDefault (1 << 5)  // 0...100000
 
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
@@ -67,19 +63,24 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     }
     
     switch (type) {
-        case FWLogTypeDebug:
-            DDLogDebug(@"DEBUG: %@", message);
-            break;
-        case FWLogTypeInfo:
-            DDLogInfo(@"INFO: %@", message);
+        case FWLogTypeError:
+            DDLogError(@"ERROR: %@", message);
             break;
         case FWLogTypeWarn:
             DDLogWarn(@"WARN: %@", message);
             break;
-        case FWLogTypeError:
-            DDLogError(@"ERROR: %@", message);
+        case FWLogTypeInfo:
+            DDLogInfo(@"INFO: %@", message);
+            break;
+        case FWLogTypeDebug:
+            DDLogDebug(@"DEBUG: %@", message);
+            break;
+        case FWLogTypeVerbose:
+            [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagVerbose];
+            DDLogVerbose(@"VERBOSE: %@", message);
             break;
         default:
+            [[DDTTYLogger sharedInstance] setForegroundColor:nil backgroundColor:nil forFlag:DDLogFlagVerbose];
             DDLogVerbose(@"%@", message);
             break;
     }
@@ -88,17 +89,20 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
 #else
     
     switch (type) {
-        case FWLogTypeDebug:
-            NSLog(@"DEBUG: %@", message);
-            break;
-        case FWLogTypeInfo:
-            NSLog(@"INFO: %@", message);
+        case FWLogTypeError:
+            NSLog(@"ERROR: %@", message);
             break;
         case FWLogTypeWarn:
             NSLog(@"WARN: %@", message);
             break;
-        case FWLogTypeError:
-            NSLog(@"ERROR: %@", message);
+        case FWLogTypeInfo:
+            NSLog(@"INFO: %@", message);
+            break;
+        case FWLogTypeDebug:
+            NSLog(@"DEBUG: %@", message);
+            break;
+        case FWLogTypeVerbose:
+            NSLog(@"VERBOSE: %@", message);
             break;
         default:
             NSLog(@"%@", message);
@@ -121,7 +125,7 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:FWLogTypeInfo message:message];
+        [self _log:FWLogTypeDefault message:message];
         va_end(args);
     }
 #endif
@@ -188,21 +192,6 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
         [self _log:FWLogTypeError message:message];
         va_end(args);
-    }
-#endif
-}
-
-+ (void)dump:(id)object
-{
-#ifdef APP_DEBUG
-    NSString *clazz = [[object class] description];
-    //NSClass,_NSInlineClass,__NSClass,...
-    if ([clazz hasPrefix:@"NS"] || [clazz hasPrefix:@"_NS"] || [clazz hasPrefix:@"__NS"] ||
-        //UIView,...
-        [clazz hasPrefix:@"UI"]) {
-        [self debug:@"%@: %@", clazz, object];
-    } else {
-        [self debug:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
     }
 #endif
 }
