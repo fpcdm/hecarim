@@ -8,12 +8,42 @@
 
 #import <Foundation/Foundation.h>
 
+//日志类型定义
+typedef NS_OPTIONS(NSUInteger, FWLogType) {
+    FWLogTypeError   = (1 << 0), // 0...00001
+    FWLogTypeWarn    = (1 << 1), // 0...00010
+    FWLogTypeInfo    = (1 << 2), // 0...00100
+    FWLogTypeDebug   = (1 << 3), // 0...01000
+    FWLogTypeVerbose = (1 << 4)  // 0...10000
+};
+
+//日志级别定义
+typedef NS_ENUM(NSUInteger, FWLogLevel) {
+    FWLogLevelOff       = 0,
+    FWLogLevelError     = (FWLogTypeError),                    // 0...00001
+    FWLogLevelWarn      = (FWLogTypeError | FWLogTypeWarn),    // 0...00011
+    FWLogLevelInfo      = (FWLogTypeWarn  | FWLogTypeInfo),    // 0...00111
+    FWLogLevelDebug     = (FWLogTypeInfo  | FWLogTypeDebug),   // 0...01111
+    FWLogLevelVerbose   = (FWLogTypeDebug | FWLogTypeVerbose), // 0...11111
+    FWLogLevelAll       = NSUIntegerMax                        // 1...11111
+};
+
 @interface FWLog : NSObject
 
 /**
- *  普通日志
+ *  设置日志级别
+ */
++ (void)setLevel:(FWLogLevel)level;
+
+/**
+ *  默认日志
  */
 + (void)log:(NSString *)format, ...;
+
+/**
+ *  详细日志
+ */
++ (void)verbose:(NSString *)format, ...;
 
 /**
  *  调试日志

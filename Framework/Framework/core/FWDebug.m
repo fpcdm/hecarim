@@ -143,12 +143,12 @@ static FWDebug *sharedInstance = nil;
                                    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:NULL];
                                    if (exists) {
                                        if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileChanged:)]) {
-                                           NSLog(@"sourceFileChanged:%@", filePath);
+                                           [FWLog debug:@"sourceFileChanged:%@", filePath];
                                            [self.delegate sourceFileChanged:filePath];
                                        }
                                    } else {
                                        if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileDeleted:)]) {
-                                           NSLog(@"sourceFileDeleted:%@", filePath);
+                                           [FWLog debug:@"sourceFileDeleted:%@", filePath];
                                            [self.delegate sourceFileDeleted:filePath];
                                        }
                                    }
@@ -179,7 +179,7 @@ static FWDebug *sharedInstance = nil;
         [watchUrls setObject:@"" forKey:url];
     }
     
-    NSLog(@"watchUrlStart:%@", url);
+    [FWLog debug:@"watchUrlStart:%@", url];
     [self watchUrlResponse:url];
 #endif
 }
@@ -192,7 +192,7 @@ static FWDebug *sharedInstance = nil;
         [watchUrls removeObjectForKey:url];
     }
     
-    NSLog(@"watchUrlEnd:%@", url);
+    [FWLog debug:@"watchUrlEnd:%@", url];
 #endif
 }
 
@@ -218,13 +218,13 @@ static FWDebug *sharedInstance = nil;
             [watchUrls setObject:newHash forKey:url];
             if (hashChanged) {
                 if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseChanged:)]) {
-                    NSLog(@"urlResponseChanged:%@", url);
+                    [FWLog debug:@"urlResponseChanged:%@", url];
                     [self.delegate urlResponseChanged:url];
                 }
             }
         } else {
             if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseError:)]) {
-                NSLog(@"urlResponseError:%@", url);
+                [FWLog debug:@"urlResponseError:%@", url];
                 [self.delegate urlResponseError:url];
             }
         }
@@ -279,7 +279,7 @@ static FWDebug *sharedInstance = nil;
     if (memory == NSNotFound) memory = 0;
     memorys[name] = @(memory);
     
-    NSLog(@"BENCHMARK-START-%@: %.3fs %.3fMB", name, [now timeIntervalSince1970], memory);
+    [FWLog debug:@"BENCHMARK-START-%@: %.3fs %.3fMB", name, [now timeIntervalSince1970], memory];
 #endif
 }
 
@@ -291,7 +291,7 @@ static FWDebug *sharedInstance = nil;
     double memory = [self usedMemory];
     if (memory == NSNotFound) memory = 0;
     
-    NSLog(@"BENCHMARK-END-%@: %.3fs %.3fMB", name, [now timeIntervalSince1970], memory);
+    [FWLog debug:@"BENCHMARK-END-%@: %.3fs %.3fMB", name, [now timeIntervalSince1970], memory];
     
     NSDate *timeStart = [benchmarks objectForKey:name];
     if (!timeStart) return;
@@ -300,7 +300,7 @@ static FWDebug *sharedInstance = nil;
     //获取间隔
     float timeInterval = [now timeIntervalSince1970] - [timeStart timeIntervalSince1970];
     double memoryInterval = memory - [memoryStart doubleValue];
-    NSLog(@"BENCHMARK-INFO-%@: %.3fs %.3fMB", name, timeInterval, memoryInterval);
+    [FWLog debug:@"BENCHMARK-INFO-%@: %.3fs %.3fMB", name, timeInterval, memoryInterval];
 #endif
 }
 

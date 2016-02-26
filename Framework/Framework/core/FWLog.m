@@ -8,15 +8,6 @@
 
 #import "FWLog.h"
 
-//日志类型枚举
-typedef enum {
-    FWLogTypeLog = 0,
-    FWLogTypeDebug,
-    FWLogTypeInfo,
-    FWLogTypeWarn,
-    FWLogTypeError
-} FWLogType;
-
 #ifdef APP_DEBUG
 
 //dump
@@ -39,7 +30,24 @@ static BOOL isDDLogInited = false;
 #endif
 #endif
 
+#if FRAMEWORK_DEBUG
+
+//调试环境默认全部级别
+static FWLogLevel globalLogLevel = FWLogLevelAll;
+
+#else
+
+//正式环境默认关闭日志
+static FWLogLevel globalLogLevel = FWLogLevelOff;
+
+#endif
+
 @implementation FWLog
+
++ (void)setLevel:(FWLogLevel)level
+{
+    globalLogLevel = level;
+}
 
 + (void)_log:(FWLogType)type message:(NSString *)message
 {
@@ -56,9 +64,10 @@ static BOOL isDDLogInited = false;
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
         [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
         
-        //自定义颜色
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor blueColor] backgroundColor:nil forFlag:DDLogFlagInfo];
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor grayColor] backgroundColor:nil forFlag:DDLogFlagDebug];
+        //自定义颜色，区别于NSLog
+        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#20B2AA"] backgroundColor:nil forFlag:DDLogFlagInfo];
+        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#808080"] backgroundColor:nil forFlag:DDLogFlagDebug];
+        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagVerbose];
     }
     
     switch (type) {
@@ -116,7 +125,20 @@ static BOOL isDDLogInited = false;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:FWLogTypeLog message:message];
+        [self _log:FWLogTypeInfo message:message];
+        va_end(args);
+    }
+#endif
+}
+
++ (void)verbose:(NSString *)format, ...
+{
+#ifdef APP_DEBUG
+    va_list args;
+    if (format) {
+        va_start(args, format);
+        NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
+        [self _log:FWLogTypeVerbose message:message];
         va_end(args);
     }
 #endif

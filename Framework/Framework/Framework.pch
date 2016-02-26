@@ -18,6 +18,8 @@
     #import "FWCompile.h"
     #import "FWSingleton.h"
     #import "FWProperty.h"
+
+    #import "FWLog.h"
     #import "FWUnitTest.h"
 
     #import "NSObject+Framework.h"

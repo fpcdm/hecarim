@@ -61,46 +61,15 @@
 
 @def_singleton(FWUnitTest)
 
-#if FRAMEWORK_DEBUG
-
-+ (void)load
-{
-    
-#if FRAMEWORK_LOG
-    //显示框架配置
-    const char *opts[] = {"NO", "YES"};
-    
-    fprintf(stderr, "\n");
-    fprintf(stderr, "========== FRAMEWORK ==========\n");
-    fprintf(stderr, " VERSION : %s\n", FRAMEWORK_VERSION);
-    fprintf(stderr, "   DEBUG : %s\n", opts[FRAMEWORK_DEBUG]);
-    fprintf(stderr, "    TEST : %s\n", opts[FRAMEWORK_TEST]);
-    fprintf(stderr, "     LOG : %s\n", opts[FRAMEWORK_LOG]);
-    fprintf(stderr, "========== FRAMEWORK ==========\n");
-    fprintf(stderr, "\n");
-#endif
-    
-#if FRAMEWORK_TEST
-    //自动执行测试
-    [[FWUnitTest sharedInstance] run];
-#endif
-    
-}
-
-#endif
-
 - (void)run
 {
 #if FRAMEWORK_TEST
+    //测试日志信息
+    NSMutableString *testLog = [[NSMutableString alloc] init];
+    
     //获取测试列表
     NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
-    
-    //单元测试开始
-    fprintf(stderr, "\n");
-    fprintf(stderr, "========== UNITTEST  ==========\n");
-    
     CFTimeInterval beginTime = CACurrentMediaTime();
-    
     for (NSString *className in classes) {
         Class classType = NSClassFromString(className);
         if (nil == classType) continue;
@@ -153,12 +122,13 @@
         if ( testCasePassed ) {
             //测试通过
             _succeedCount += 1;
-            fprintf( stderr, "[  OK  ] : %s ( %.003fs )\n", [formatClass UTF8String], time );
+            
+            [testLog appendFormat:@"[  OK  ] : %@ ( %.003fs )\n", formatClass, time];
         } else {
             //测试失败
             _failedCount += 1;
-            fprintf( stderr, "[ FAIL ] : %s ( %.003fs )\n", [formatClass UTF8String], time );
-            fprintf( stderr, "    %s\n", [formatError UTF8String] );
+            [testLog appendFormat:@"[ FAIL ] : %@ ( %.003fs )\n", formatClass, time];
+            [testLog appendFormat:@"    %@\n", formatError];
         }
     }
     
@@ -167,42 +137,23 @@
     
     //统计信息
     NSUInteger totalCount = _succeedCount + _failedCount;
-    float passRate = (_succeedCount * 1.0f) / (totalCount * 1.0f) * 100.0f;
-    fprintf( stderr, "  TOTAL  : [ %s ] ( %lu/%lu ) ( %.0f%% ) ( %.003fs )\n", _failedCount < 1 ? "OK" : "FAIL", (long)(_succeedCount), (long)(totalCount), passRate, totalTime);
+    float passRate = totalCount > 0 ? (_succeedCount * 1.0f) / (totalCount * 1.0f) * 100.0f : 100.0f;
     
-    //单元测试结束
-    fprintf(stderr, "========== UNITTEST  ==========\n");
-    fprintf(stderr, "\n");
+    //显示日志
+    NSString *log = [NSString stringWithFormat:@"\n\n\
+========== UNITTEST  ==========\n%@\
+  TOTAL  : [ %@ ] ( %lu/%lu ) ( %.0f%@ ) ( %.003fs )\n\
+========== UNITTEST  ==========\n",
+                     testLog,
+                     _failedCount < 1 ? @"OK" : @"FAIL",
+                     (unsigned long)_succeedCount,
+                     (unsigned long)totalCount,
+                     passRate,
+                     @"%%",
+                     totalTime
+                     ];
+    [FWLog verbose:log];
 #endif
 }
 
 @end
-
-//UnitTest
-#if FRAMEWORK_TEST
-
-TEST_CASE(core, FWUnitTestDefine)
-
-TEST(error)
-{
-    EXPECTED(1)
-    EXPECTED(!0)
-    
-    EXPECTED(0)
-}
-
-TEST_CASE_END
-
-TEST_CASE(core, FWUnitTestObject)
-
-TEST(error)
-{
-    EXPECTED(nil == NULL)
-    EXPECTED(nil != [NSNull null])
-    
-    [self expected:NULL != nil];
-}
-
-TEST_CASE_END
-
-#endif
