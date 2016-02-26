@@ -225,3 +225,106 @@
 }
 
 @end
+
+//UnitTest
+#if FRAMEWORK_TEST
+
+@interface FWTestCase_core_FWSignal_Test : NSObject
+
+@signal(CLICK)
+
+@end
+
+@implementation FWTestCase_core_FWSignal_Test
+
+@def_signal(CLICK)
+
+@end
+
+TEST_CASE(core, FWSignal)
+{
+    NSInteger value;
+    FWTestCase_core_FWSignal_Test *obj;
+    int callbackCount;
+}
+
+SETUP()
+{
+    value = 0;
+    obj = [[FWTestCase_core_FWSignal_Test alloc] init];
+    callbackCount = 0;
+}
+
+TEST(signal)
+{
+    EXPECTED(0 == value);
+    EXPECTED(nil == obj.signalResponder);
+    
+    TIMES(10)
+    {
+        [obj sendSignal:obj.CLICK];
+    }
+    EXPECTED(0 == value)
+    
+    obj.signalResponder = self;
+    EXPECTED(self == obj.signalResponder)
+    
+    TIMES(10)
+    {
+        [obj sendSignal:obj.CLICK];
+    }
+    EXPECTED(10 == value)
+    
+    EXPECTED(callbackCount == 0)
+    TIMES(10)
+    {
+        [obj sendSignal:obj.CLICK callback:^(FWSignal *signal) {
+            EXPECTED(nil == signal.response);
+            
+            callbackCount += 1;
+        }];
+    }
+    EXPECTED(20 == value)
+    EXPECTED(10 == callbackCount)
+}
+
+handleSignal3(FWTestCase_core_FWSignal_Test, CLICK, signal)
+{
+    EXPECTED([signal.name isEqualToString:obj.CLICK]);
+    
+    value += 1;
+    
+    [signal success:nil];
+}
+
+TEST(onSignal)
+{
+    obj.signalResponder = self;
+    
+    [self onSignal:obj.CLICK block:^(FWSignal *signal) {
+        EXPECTED([signal isName:obj.CLICK])
+        EXPECTED([@1 isEqualToNumber:signal.object])
+        value += 2;
+        
+        [signal success:@"result"];
+    }];
+    
+    TIMES(5)
+    {
+        [obj sendSignal:obj.CLICK withObject:@1 callback:^(FWSignal *signal) {
+            EXPECTED([@"result" isEqualToString:signal.response])
+            
+            callbackCount += 2;
+        }];
+    }
+    EXPECTED(10 == value)
+    EXPECTED(10 == callbackCount)
+}
+
+TEARDOWN()
+{
+    obj = nil;
+}
+
+TEST_CASE_END
+#endif

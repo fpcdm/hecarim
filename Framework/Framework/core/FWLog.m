@@ -200,9 +200,9 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     if ([clazz hasPrefix:@"NS"] || [clazz hasPrefix:@"_NS"] || [clazz hasPrefix:@"__NS"] ||
         //UIView,...
         [clazz hasPrefix:@"UI"]) {
-        [self warn:@"%@: %@", clazz, object];
+        [self debug:@"%@: %@", clazz, object];
     } else {
-        [self warn:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
+        [self debug:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
     }
 #endif
 }
