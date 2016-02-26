@@ -10,23 +10,27 @@
 #define Framework_pch
 
 #ifdef __OBJC__
+    //foundation
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 
+    //config
     #import "FWConfig.h"
     #import "FWDefine.h"
     #import "FWCompile.h"
     #import "FWSingleton.h"
     #import "FWProperty.h"
 
-    #import "FWLog.h"
-    #import "FWDebug.h"
-    #import "FWUnitTest.h"
-
+    //extension
     #import "NSObject+Framework.h"
     #import "NSString+Framework.h"
     #import "NSDate+Framework.h"
     #import "UIColor+Framework.h"
+
+    //core
+    #import "FWLog.h"
+    #import "FWDebug.h"
+    #import "FWUnitTest.h"
 #endif
 
 #endif

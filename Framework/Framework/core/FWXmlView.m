@@ -37,14 +37,6 @@ static NSString *globalPatchPath = nil;
 
 #define XMLVIEW_CACHE_PREFIX @"XmlView."
 
-#ifdef APP_DEBUG
-#import "FWDebug.h"
-
-@interface FWXmlView () <FWDebugDelegate>
-
-@end
-#endif
-
 @implementation FWXmlView
 {
     NSString *_xmlName;
@@ -120,8 +112,9 @@ static NSString *globalPatchPath = nil;
     _xmlIsUrl = [IKitUtil isHttpUrl:_xmlPath];
     
 #ifdef APP_DEBUG
-    //注册调试代理
-    [FWDebug sharedInstance].delegate = self;
+    //注册监听者
+    [self observeNotification:FWDebug.SourceFileChanged];
+    [self observeNotification:FWDebug.UrlResponseChanged];
     
     //监听URL改变
     if (_xmlIsUrl) {
@@ -283,9 +276,10 @@ static NSString *globalPatchPath = nil;
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 //文件改变自动重新渲染
-- (void)sourceFileChanged:(NSString *)filePath
+handleNotification3(FWDebug, SourceFileChanged, notification)
 {
     //本地文件名匹配
+    NSString *filePath = notification.object;
     if (!_xmlIsUrl && [_xmlFileName isEqualToString:[filePath lastPathComponent]]) {
         [self reloadXmlView:filePath isFile:YES callback:nil];
     }
@@ -295,9 +289,10 @@ static NSString *globalPatchPath = nil;
 
 #ifdef APP_DEBUG
 //Url内容改变自动重新渲染
-- (void)urlResponseChanged:(NSString *)url
+handleNotification3(FWDebug, UrlResponseChanged, notification)
 {
     //远程URL和文件名匹配
+    NSString *url = notification.object;
     if (_xmlIsUrl && [_xmlPath isEqualToString:url]) {
         [self reloadXmlView:nil isFile:NO callback:nil];
     }
@@ -307,8 +302,8 @@ static NSString *globalPatchPath = nil;
 #ifdef APP_DEBUG
 - (void)dealloc
 {
-    //解除调试代理
-    [FWDebug sharedInstance].delegate = nil;
+    //解除监听者
+    [self unobserveAllNotifications];
     
     //移除URL监听
     if (_xmlIsUrl) {

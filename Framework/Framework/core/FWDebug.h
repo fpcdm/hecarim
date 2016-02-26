@@ -8,19 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol FWDebugDelegate <NSObject>
-
-@optional
-- (void)sourceFileChanged:(NSString *)filePath;
-- (void)sourceFileDeleted:(NSString *)filePath;
-- (void)urlResponseChanged:(NSString *)url;
-- (void)urlResponseError:(NSString *)url;
-
-@end
-
 @interface FWDebug : NSObject
 
-@prop_weak(id<FWDebugDelegate>, delegate)
+@notification(SourceFileChanged)
+@notification(SourceFileDeleted)
+@notification(UrlResponseChanged)
+@notification(UrlResponseFailed)
 
 @singleton(FWDebug)
 

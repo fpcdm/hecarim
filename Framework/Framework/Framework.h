@@ -16,6 +16,18 @@
 #import "FWSingleton.h"
 #import "FWProperty.h"
 
+//extension
+#import "NSObject+Framework.h"
+#import "NSString+Framework.h"
+#import "NSDate+Framework.h"
+#import "UIColor+Framework.h"
+#import "UIImage+Framework.h"
+#import "UIView+Framework.h"
+#import "UITextView+Framework.h"
+#import "UIScrollView+Framework.h"
+#import "UIViewController+Framework.h"
+#import "UINavigationController+Framework.h"
+
 //core
 #import "FWBooter.h"
 #import "FWLog.h"
@@ -46,18 +58,6 @@
 #import "FWViewController.h"
 #import "FWViewAction.h"
 #import "FWXmlViewController.h"
-
-//extension
-#import "NSObject+Framework.h"
-#import "NSString+Framework.h"
-#import "NSDate+Framework.h"
-#import "UIColor+Framework.h"
-#import "UIImage+Framework.h"
-#import "UIView+Framework.h"
-#import "UITextView+Framework.h"
-#import "UIScrollView+Framework.h"
-#import "UIViewController+Framework.h"
-#import "UINavigationController+Framework.h"
 
 //library
 #import "FWPluginManager.h"

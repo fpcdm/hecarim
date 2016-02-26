@@ -38,6 +38,11 @@
 #endif
 }
 
+@def_notification(SourceFileChanged)
+@def_notification(SourceFileDeleted)
+@def_notification(UrlResponseChanged)
+@def_notification(UrlResponseFailed)
+
 @def_singleton(FWDebug)
 
 + (void)dump:(id)object
@@ -147,15 +152,11 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                                    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:NULL];
                                    if (exists) {
-                                       if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileChanged:)]) {
-                                           [FWLog debug:@"sourceFileChanged:%@", filePath];
-                                           [self.delegate sourceFileChanged:filePath];
-                                       }
+                                       [FWLog debug:@"sourceFileChanged:%@", filePath];
+                                       [self postNotification:self.SourceFileChanged withObject:filePath];
                                    } else {
-                                       if (self.delegate && [self.delegate respondsToSelector:@selector(sourceFileDeleted:)]) {
-                                           [FWLog debug:@"sourceFileDeleted:%@", filePath];
-                                           [self.delegate sourceFileDeleted:filePath];
-                                       }
+                                       [FWLog debug:@"sourceFileDeleted:%@", filePath];
+                                       [self postNotification:self.SourceFileDeleted withObject:filePath];
                                    }
                                });
                 [self watchSourceFile:filePath];
@@ -222,16 +223,12 @@
             BOOL hashChanged = oldHash.length > 0 && ![oldHash isEqualToString:newHash];
             [watchUrls setObject:newHash forKey:url];
             if (hashChanged) {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseChanged:)]) {
-                    [FWLog debug:@"urlResponseChanged:%@", url];
-                    [self.delegate urlResponseChanged:url];
-                }
+                [FWLog debug:@"urlResponseChanged:%@", url];
+                [self postNotification:self.UrlResponseChanged withObject:url];
             }
         } else {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(urlResponseError:)]) {
-                [FWLog debug:@"urlResponseError:%@", url];
-                [self.delegate urlResponseError:url];
-            }
+            [FWLog debug:@"urlResponseError:%@", url];
+            [self postNotification:self.UrlResponseFailed withObject:url];
         }
         
         //执行轮询
