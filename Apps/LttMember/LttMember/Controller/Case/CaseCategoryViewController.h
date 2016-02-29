@@ -10,7 +10,4 @@
 
 @interface CaseCategoryViewController : AppUserViewController
 
-//分类Id为空时选择场景，否则选择类型
-@property (retain, nonatomic) NSNumber *categoryId;
-
 @end

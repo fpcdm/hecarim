@@ -16,13 +16,11 @@
 - (void)actionMenu;
 - (void)actionGps;
 - (void)actionCity;
-- (void)actionCategory: (NSNumber *) id;
+- (void)actionTypes;
 - (void)actionCase: (NSNumber *) type;
 - (void)actionError: (NSString *) message;
-- (void)actionAddCategory;
-- (void)actionAddType: (NSNumber *) categoryId;
-- (void)actionSaveCategories: (NSArray *) categories;
-- (void)actionSaveTypes: (NSNumber *) categoryId types: (NSArray *) types;
+- (void)actionAddType;
+- (void)actionSaveTypes: (NSArray *) types;
 - (void)actionProperty:(PropertyEntity *)property;
 
 @end
@@ -34,8 +32,6 @@
 @property (retain, nonatomic) UIScrollView *typeView;
 
 - (void) setLogin: (BOOL) login;
-- (void) reloadRecommends;
-- (void) reloadCategories;
 - (void) reloadTypes;
 
 - (void) reloadAds;
@@ -43,9 +39,6 @@
 //切换二级分类
 - (void) showProperties;
 - (void) clearProperties;
-
-//重新保存当前的分类
-- (void) saveCategories;
 
 //重新保存当前的服务列表
 - (void) saveTypes;

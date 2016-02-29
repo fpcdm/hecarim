@@ -11,33 +11,7 @@
 
 @implementation CaseHandler
 
-- (void) queryCategories:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
-{
-    //调用接口
-    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    
-    NSDictionary *mappingParam = @{
-                                   @"category_id": @"id",
-                                   @"category_name": @"name",
-                                   @"img": @"icon",
-                                   @"img_focus": @"selectedIcon"
-                                   };
-    
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
-    
-    NSString *restPath = @"casetype/categories";
-    [sharedClient getObject:[CategoryEntity new] path:restPath param:param success:^(NSArray *result){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        success(result);
-    } failure:^(ErrorEntity *error){
-        [sharedClient removeResponseDescriptor:responseDescriptor];
-        
-        failure(error);
-    }];
-}
-
-- (void) queryTypes:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void)queryFavoriteTypes:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
@@ -51,7 +25,7 @@
     
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
     
-    NSString *restPath = @"casetype/types";
+    NSString *restPath = @"casetype/favorites";
     [sharedClient getObject:[CategoryEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
         
@@ -63,35 +37,33 @@
     }];
 }
 
-- (void) saveCategories:(NSArray *)categories success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void)queryUnfavoriteTypes:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
-    //组装参数
-    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *categoriesDict = [[NSMutableDictionary alloc] init];
-    int i = 0;
-    for (CategoryEntity *category in categories) {
-        //为解决数组传参问题，使用Dictionary
-        NSDictionary *categoryDict = @{
-                                   @"sort": category.sort ? category.sort : @0,
-                                   @"category_id": category.id ? category.id : @0
-                                   };
-        [categoriesDict setObject:categoryDict forKey:[NSString stringWithFormat:@"%d", i]];
-        
-        i++;
-    }
-    
-    [param setObject:categoriesDict forKey:@"category_list"];
-    
+    //调用接口
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
-    [sharedClient putObject:[CategoryEntity new] path:@"casetype/member_categories" param:param success:^(NSArray *result){
+    NSDictionary *mappingParam = @{
+                                   @"type_id": @"id",
+                                   @"type_name": @"name",
+                                   @"img": @"icon",
+                                   @"remark": @"remark"
+                                   };
+    
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CategoryEntity class] mappingParam:mappingParam keyPath:@"list"];
+    
+    NSString *restPath = @"casetype/not_favorites";
+    [sharedClient getObject:[CategoryEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
         success(result);
     } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
         failure(error);
     }];
 }
 
-- (void) saveTypes:(NSNumber *)categoryId types:(NSArray *)types success:(SuccessBlock)success failure:(FailedBlock)failure
+- (void)saveFavoriteTypes:(NSArray *)types success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     //组装参数
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
@@ -108,12 +80,11 @@
         i++;
     }
     
-    [param setObject:categoryId ? categoryId : @0 forKey:@"category_id"];
     [param setObject:typesDict forKey:@"type_list"];
     
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
     
-    [sharedClient putObject:[CategoryEntity new] path:@"casetype/relations" param:param success:^(NSArray *result){
+    [sharedClient postObject:[CategoryEntity new] path:@"casetype/favorites" param:param success:^(NSArray *result){
         success(result);
     } failure:^(ErrorEntity *error){
         failure(error);

@@ -13,7 +13,6 @@
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "HelperHandler.h"
-#import "LttNavigationController.h"
 #import "CaseCategoryViewController.h"
 #import "CNPPopupController.h"
 #import "CasePropertyView.h"
@@ -23,8 +22,6 @@
 //GPS数据缓存，优化GPS耗电
 static LocationEntity *lastLocation = nil;
 static NSDate   *lastDate = nil;
-static NSMutableArray *caseRecommends = nil;
-static NSMutableArray *caseCategories = nil;
 static NSMutableDictionary *caseTypes = nil;
 static NSArray *slideAdverts = nil;
 
@@ -40,7 +37,6 @@ static NSArray *slideAdverts = nil;
     TimerUtil *gpsTimer;
     NSString *gpsStatus;
     
-    NSNumber *categoryId;
     NSNumber *typeId;
     NSNumber *propertyId;
     
@@ -61,17 +57,20 @@ static NSArray *slideAdverts = nil;
 
 - (void)loadView
 {
-    homeView = [[HomeView alloc] init];
+    homeView = [[HomeView alloc] initWithData:@{
+                                                @"statusBarHeight": @(SCREEN_STATUSBAR_HEIGHT),
+                                                @"navigationBarHeight": @(SCREEN_NAVIGATIONBAR_HEIGHT),
+                                                @"tabBarHeight": @(self.tabBarController.tabBar.frame.size.height)
+                                                }];
     homeView.delegate = self;
     self.view = homeView;
 }
 
 - (void)viewDidLoad
 {
+    showTabBar = YES;
     isIndexNavBar = YES;
     isIndexStatusBar = YES;
-    isMenuEnabled = [self isLogin];
-    disableMenuGesture = YES;
     hideBackButton = YES;
     hideNavigationBar = YES;
     [super viewDidLoad];
@@ -158,57 +157,13 @@ static NSArray *slideAdverts = nil;
         [homeView reloadAds];
     }
     
-    //获取推荐列表
-    if (!caseRecommends) {
-        CaseHandler *caseHandler = [[CaseHandler alloc] init];
-        NSDictionary *param = @{@"recommend": @1};
-        [caseHandler queryTypes:param success:^(NSArray *result) {
-            caseRecommends = [NSMutableArray arrayWithArray:result];
-            
-            //重载推荐
-            [homeView assign:@"recommends" value:caseRecommends];
-            [homeView reloadRecommends];
-        } failure:^(ErrorEntity *error) {
-            [self showError:error.message];
-        }];
-    } else {
-        //重载推荐
-        [homeView assign:@"recommends" value:caseRecommends];
-        [homeView reloadRecommends];
-    }
+    //标记已渲染
+    viewRendered = YES;
     
-    //获取分类列表
-    if (!caseCategories) {
-        [homeView.typeView showIndicator];
-        
-        CaseHandler *caseHandler = [[CaseHandler alloc] init];
-        [caseHandler queryCategories:nil success:^(NSArray *result) {
-            [homeView.typeView hideIndicator];
-            
-            caseCategories = [NSMutableArray arrayWithArray:result];
-            
-            //重新加载菜单
-            [homeView assign:@"categories" value:caseCategories];
-            [homeView reloadCategories];
-            viewRendered = YES;
-            
-            //设置定时器
-            [self setTimer];
-        } failure:^(ErrorEntity *error) {
-            [homeView.typeView hideIndicator];
-            
-            [self showError:error.message];
-        }];
-    } else {
-        //重新加载菜单
-        if (!viewRendered) {
-            [homeView assign:@"categories" value:caseCategories];
-            [homeView reloadCategories];
-        }
-        
-        //设置定时器
-        [self setTimer];
-    }
+    [self actionTypes];
+    
+    //设置定时器
+    [self setTimer];
 }
 
 //渲染视图
@@ -219,7 +174,7 @@ static NSArray *slideAdverts = nil;
     NSNumber *count = lastLocation.serviceNumber ? lastLocation.serviceNumber : @-1;
     
     [homeView assign:@"city" value:cityName];
-    [homeView assign:@"address" value:lastLocation.detailAddress];
+    [homeView assign:@"address" value:lastLocation.address];
     [homeView assign:@"gps" value:gpsStatus];
     [homeView assign:@"count" value:count];
     [homeView display];
@@ -302,7 +257,8 @@ static NSArray *slideAdverts = nil;
         }
         
         //获取位置
-        if (location.detailAddress && [location.detailAddress length] > 0) {
+        if (location.address && [location.address length] > 0) {
+            lastLocation.address = location.address;
             lastLocation.detailAddress = location.detailAddress;
             lastLocation.cityCode = location.cityCode;
             lastLocation.city = location.city;
@@ -353,6 +309,7 @@ static NSArray *slideAdverts = nil;
     if (lastLocation.detailAddress) return;
     
     //重置数据
+    lastLocation.address = nil;
     lastLocation.detailAddress = nil;
     lastLocation.cityCode = nil;
     lastLocation.city = nil;
@@ -409,9 +366,7 @@ static NSArray *slideAdverts = nil;
 - (void)refreshCityView
 {
     //刷新城市服务列表
-    if (categoryId) {
-        [self actionCategory:categoryId];
-    }
+    [self actionTypes];
 }
 
 #pragma mark - Case
@@ -510,8 +465,6 @@ static NSArray *slideAdverts = nil;
 
 - (void)actionMenu
 {
-    //已经登录，显示菜单
-    [(LttNavigationController *) self.navigationController showMenu];
 }
 
 - (void)actionGps
@@ -557,26 +510,22 @@ static NSArray *slideAdverts = nil;
     [self.navigationController pushViewController:cityViewController animated:YES vertical:YES];
 }
 
-- (void)actionCategory:(NSNumber *)id
+- (void)actionTypes
 {
     //初始化缓存
     if (!caseTypes) caseTypes = [NSMutableDictionary dictionary];
-    
-    //当前分类id
-    categoryId = id;
     
     //加载效果
     [homeView.typeView showIndicator];
     NSTimeInterval totalInterval = 0.3;
     
     //缓存是否存在
-    NSString *idStr = [NSString stringWithFormat:@"%@", id];
+    NSString *idStr = @"favorites";
     //切换城市换服务列表，不使用缓存
     NSDate *beginDate = [NSDate date];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    NSDictionary *param = @{@"category_id": id};
-    [caseHandler queryTypes:param success:^(NSArray *result) {
+    [caseHandler queryFavoriteTypes:nil success:^(NSArray *result) {
         //设置缓存
         [caseTypes setObject:result forKey:idStr];
         
@@ -602,53 +551,14 @@ static NSArray *slideAdverts = nil;
     [homeView reloadTypes];
 }
 
-- (void)actionAddCategory
+- (void)actionAddType
 {
     CaseCategoryViewController *viewController = [[CaseCategoryViewController alloc] init];
-    viewController.categoryId = nil;
-    viewController.callbackBlock = ^(NSArray *categories){
-        if (!caseCategories) return;
-        
-        //添加到缓存数据
-        BOOL hasNew = NO;
-        for (CategoryEntity *category in categories) {
-            //检查重复数据
-            BOOL isExist = NO;
-            for (CategoryEntity *cacheCategory in caseCategories) {
-                if ([cacheCategory.id isEqualToNumber:category.id]) {
-                    isExist = YES;
-                    break;
-                }
-                
-            }
-            
-            if (!isExist) {
-                [caseCategories addObject:category];
-                hasNew = YES;
-            }
-        }
-        if (!hasNew) return;
-        
-        //有新数据重新渲染视图并保存
-        [homeView assign:@"categories" value:caseCategories];
-        [homeView reloadCategories];
-        
-        //重新保存场景
-        [homeView saveCategories];
-    };
-    
-    [self pushViewController:viewController animated:YES];
-}
-
-- (void)actionAddType:(NSNumber *)id
-{
-    CaseCategoryViewController *viewController = [[CaseCategoryViewController alloc] init];
-    viewController.categoryId = id;
     viewController.callbackBlock = ^(NSArray *types){
         if (!caseTypes) return;
         
         //添加到缓存数据
-        NSString *idStr = [NSString stringWithFormat:@"%@", id];
+        NSString *idStr = @"favorites";
         NSArray *idTypes = [caseTypes objectForKey:idStr];
         if (idTypes == nil) return;
         
@@ -686,28 +596,15 @@ static NSArray *slideAdverts = nil;
     [self pushViewController:viewController animated:YES];
 }
 
-- (void)actionSaveCategories:(NSArray *)categories
+- (void)actionSaveTypes:(NSArray *)types
 {
     //不显示请求效果
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    [caseHandler saveCategories:categories success:^(NSArray *result) {
-        //更新缓存数据及顺序
-        caseCategories = [NSMutableArray arrayWithArray:categories];
-        
-    } failure:^(ErrorEntity *error) {
-        [self showError:error.message];
-    }];
-}
-
-- (void)actionSaveTypes:(NSNumber *)id types:(NSArray *)types
-{
-    //不显示请求效果
-    CaseHandler *caseHandler = [[CaseHandler alloc] init];
-    [caseHandler saveTypes:id types:types success:^(NSArray *result) {
+    [caseHandler saveFavoriteTypes:types success:^(NSArray *result) {
         if (!caseTypes) return;
         
         //更新缓存数据
-        NSString *idStr = [NSString stringWithFormat:@"%@", id];
+        NSString *idStr = @"favorites";
         [caseTypes setObject:types forKey:idStr];
         
     } failure:^(ErrorEntity *error) {

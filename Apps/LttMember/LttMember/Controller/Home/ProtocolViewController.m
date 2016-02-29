@@ -26,7 +26,6 @@
 }
 
 - (void)viewDidLoad {
-    isMenuEnabled = NO;
     hideBackButton = NO;
     [super viewDidLoad];
     

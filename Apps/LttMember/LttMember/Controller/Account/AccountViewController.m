@@ -42,7 +42,7 @@
 
 - (void)viewDidLoad
 {
-    isMenuEnabled = NO;
+    showTabBar = YES;
     hideBackButton = NO;
     isIndexNavBar = YES;
     [super viewDidLoad];

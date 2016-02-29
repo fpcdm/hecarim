@@ -14,17 +14,14 @@
 
 @interface CaseHandler : BaseHandler
 
-//需求分类列表
-- (void) queryCategories: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+//用户收藏的需求类型列表
+- (void)queryFavoriteTypes:(NSDictionary *)param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
-//需求类型列表
-- (void) queryTypes: (NSDictionary *) param success: (SuccessBlock) success failure: (FailedBlock) failure;
+//查询未收藏的需求类型列表
+- (void)queryUnfavoriteTypes:(NSDictionary *)param success: (SuccessBlock) success failure: (FailedBlock) failure;
 
-//保存分类列表
-- (void) saveCategories: (NSArray *) categories success: (SuccessBlock) success failure: (FailedBlock) failure;
-
-//保存需求类型
-- (void) saveTypes: (NSNumber *) categoryId types: (NSArray *) types success: (SuccessBlock) success failure: (FailedBlock) failure;
+//保存收藏的类型列表
+- (void)saveFavoriteTypes: (NSArray *) types success: (SuccessBlock) success failure: (FailedBlock) failure;
 
 //需求属性列表
 - (void) queryProperties: (CategoryEntity *) type success: (SuccessBlock) success failure: (FailedBlock) failure;

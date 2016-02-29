@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.categoryId ? @"添加服务" : @"添加场景";
+    self.navigationItem.title = @"添加服务";
     
     UIBarButtonItem *barButtonItem = [AppUIUtil makeBarButtonItem:@"保存"];
     barButtonItem.target = self;
@@ -42,41 +42,21 @@
 {
     [super viewWillAppear:animated];
     
-    //获取分类列表
-    if (!self.categoryId) {
-        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
-        
-        CaseHandler *caseHandler = [[CaseHandler alloc] init];
-        NSDictionary *param = @{@"target": @"other"};
-        [caseHandler queryCategories:param success:^(NSArray *result) {
-            [self hideLoading];
-            
-            categoryList = result;
-            
-            //刷新页面
-            [categoryView assign:@"categories" value:categoryList];
-            [categoryView display];
-        } failure:^(ErrorEntity *error) {
-            [self showError:error.message];
-        }];
     //获取服务列表
-    } else {
-        [self showLoading:[LocaleUtil system:@"Loading.Start"]];
+    [self showLoading:[LocaleUtil system:@"Loading.Start"]];
+    
+    CaseHandler *caseHandler = [[CaseHandler alloc] init];
+    [caseHandler queryUnfavoriteTypes:nil success:^(NSArray *result) {
+        [self hideLoading];
         
-        CaseHandler *caseHandler = [[CaseHandler alloc] init];
-        NSDictionary *param = @{@"category_id": self.categoryId, @"target": @"other"};
-        [caseHandler queryTypes:param success:^(NSArray *result) {
-            [self hideLoading];
-            
-            categoryList = result;
-            
-            //刷新页面
-            [categoryView assign:@"categories" value:categoryList];
-            [categoryView display];
-        } failure:^(ErrorEntity *error) {
-            [self showError:error.message];
-        }];
-    }
+        categoryList = result;
+        
+        //刷新页面
+        [categoryView assign:@"categories" value:categoryList];
+        [categoryView display];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
 }
 
 #pragma mark - Action
@@ -85,7 +65,7 @@
     //获取选中的列表
     NSArray *categories = [categoryView selectedCategories];
     if (!categories || [categories count] < 1) {
-        [self showError:self.categoryId ? [LocaleUtil error:@"Services.Required"] : [LocaleUtil error:@"Scenes.Required"]];
+        [self showError:[LocaleUtil error:@"Services.Required"]];
         return;
     }
     

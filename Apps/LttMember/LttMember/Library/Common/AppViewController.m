@@ -10,7 +10,6 @@
 #import "LoginViewController.h"
 #import "AppExtension.h"
 #import "AppUserViewController.h"
-#import "LttNavigationController.h"
 #import "LttAppDelegate.h"
 #import "CaseViewController.h"
 #import "CaseListViewController.h"
@@ -37,6 +36,13 @@
         self.navigationItem.hidesBackButton = NO;
     }
     
+    //自动隐藏tabBar
+    if (showTabBar) {
+        self.tabBarController.tabBar.hidden = NO;
+    } else {
+        self.tabBarController.tabBar.hidden = YES;
+    }
+    
     //是否隐藏导航栏
     if (hideNavigationBar) {
         self.navigationController.navigationBar.hidden = YES;
@@ -48,27 +54,6 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //是否有左侧菜单
-    if (isMenuEnabled) {
-        //启用手势
-        [(LttNavigationController *) self.navigationController menuEnable:YES];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"]
-                                                                                 style:UIBarButtonItemStyleBordered
-                                                                                target:(LttNavigationController *)self.navigationController
-                                                                                action:@selector(showMenu)];
-    } else {
-        //禁用手势
-        [(LttNavigationController *) self.navigationController menuEnable:NO];
-    }
-    
-    //是否禁用菜单手势
-    if (disableMenuGesture) {
-        [(LttNavigationController *) self.navigationController menuGestured:NO];
-    } else {
-        [(LttNavigationController *) self.navigationController menuGestured:YES];
-    }
     
     //状态栏颜色
     if (isIndexStatusBar) {
@@ -100,6 +85,13 @@
                                               };
     }
     
+    //自动隐藏tabBar
+    if (showTabBar) {
+        self.tabBarController.tabBar.hidden = NO;
+    } else {
+        self.tabBarController.tabBar.hidden = YES;
+    }
+    
     //是否隐藏导航栏
     if (hideNavigationBar) {
         self.navigationController.navigationBar.hidden = YES;
@@ -124,6 +116,8 @@
     
     //显示导航栏
     self.navigationController.navigationBar.hidden = NO;
+    //隐藏tabBar
+    self.tabBarController.tabBar.hidden = YES;
     
     //隐藏远程通知
     if (!hideRemoteNotification) {
@@ -191,11 +185,7 @@
 
 - (void) refreshMenu
 {
-    LttAppDelegate *appDelegate = (LttAppDelegate *) [UIApplication sharedApplication].delegate;
-    
-    REFrostedViewController *frostedViewController = (REFrostedViewController *) appDelegate.window.rootViewController;
-    MenuViewController *menuViewController = (MenuViewController *) frostedViewController.menuViewController;
-    [menuViewController refresh];
+    //todo
 }
 
 - (void) checkRemoteNotification

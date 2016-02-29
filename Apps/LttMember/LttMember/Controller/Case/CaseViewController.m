@@ -50,9 +50,8 @@
 }
 
 - (void)viewDidLoad {
-    hideBackButton = YES;
+    hideBackButton = NO;
     isIndexNavBar = YES;
-    isMenuEnabled = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = [LocaleUtil system:@"Loading.Start"];

@@ -73,8 +73,6 @@
 		2F16E5F41B5DF08F007947D0 /* CaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5DA1B5DF08F007947D0 /* CaseViewController.m */; };
 		2F16E5F51B5DF08F007947D0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5DD1B5DF08F007947D0 /* HomeViewController.m */; };
 		2F16E5F61B5DF08F007947D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5DF1B5DF08F007947D0 /* LoginViewController.m */; };
-		2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5E11B5DF08F007947D0 /* LttNavigationController.m */; };
-		2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5E31B5DF08F007947D0 /* MenuViewController.m */; };
 		2F16E5F91B5DF08F007947D0 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */; };
 		2F16E62F1B5DF162007947D0 /* AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6011B5DF162007947D0 /* AppExtension.m */; };
 		2F16E6301B5DF162007947D0 /* AppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16E6031B5DF162007947D0 /* AppTableView.m */; };
@@ -153,12 +151,6 @@
 		2FD99F9E1C48CF050065293E /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F031C48CF040065293E /* DLRadioButton.m */; };
 		2FD99F9F1C48CF050065293E /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2FD99F051C48CF040065293E /* Harpy.bundle */; };
 		2FD99FA01C48CF050065293E /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F071C48CF040065293E /* Harpy.m */; };
-		2FD99FB51C48CF050065293E /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F3C1C48CF040065293E /* RECommonFunctions.m */; };
-		2FD99FB61C48CF050065293E /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F3E1C48CF040065293E /* REFrostedContainerViewController.m */; };
-		2FD99FB71C48CF050065293E /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F401C48CF040065293E /* REFrostedViewController.m */; };
-		2FD99FB81C48CF050065293E /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F421C48CF040065293E /* UIImage+REFrostedViewController.m */; };
-		2FD99FB91C48CF050065293E /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F441C48CF040065293E /* UIView+REFrostedViewController.m */; };
-		2FD99FBA1C48CF050065293E /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F461C48CF040065293E /* UIViewController+REFrostedViewController.m */; };
 		2FD99FBC1C48CF050065293E /* SpringBoardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F4C1C48CF040065293E /* SpringBoardButton.m */; };
 		2FD99FBD1C48CF050065293E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F4F1C48CF040065293E /* TAAbstractDotView.m */; };
 		2FD99FBE1C48CF050065293E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99F511C48CF040065293E /* TAAnimatedDotView.m */; };
@@ -351,10 +343,6 @@
 		2F16E5DD1B5DF08F007947D0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2F16E5DE1B5DF08F007947D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2F16E5DF1B5DF08F007947D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		2F16E5E01B5DF08F007947D0 /* LttNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LttNavigationController.h; sourceTree = "<group>"; };
-		2F16E5E11B5DF08F007947D0 /* LttNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LttNavigationController.m; sourceTree = "<group>"; };
-		2F16E5E21B5DF08F007947D0 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		2F16E5E31B5DF08F007947D0 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		2F16E5E41B5DF08F007947D0 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2F16E6001B5DF162007947D0 /* AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppExtension.h; sourceTree = "<group>"; };
@@ -488,18 +476,6 @@
 		2FD99F051C48CF040065293E /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
 		2FD99F061C48CF040065293E /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
 		2FD99F071C48CF040065293E /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
-		2FD99F3B1C48CF040065293E /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
-		2FD99F3C1C48CF040065293E /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
-		2FD99F3D1C48CF040065293E /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
-		2FD99F3E1C48CF040065293E /* REFrostedContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedContainerViewController.m; sourceTree = "<group>"; };
-		2FD99F3F1C48CF040065293E /* REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedViewController.h; sourceTree = "<group>"; };
-		2FD99F401C48CF040065293E /* REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedViewController.m; sourceTree = "<group>"; };
-		2FD99F411C48CF040065293E /* UIImage+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+REFrostedViewController.h"; sourceTree = "<group>"; };
-		2FD99F421C48CF040065293E /* UIImage+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+REFrostedViewController.m"; sourceTree = "<group>"; };
-		2FD99F431C48CF040065293E /* UIView+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+REFrostedViewController.h"; sourceTree = "<group>"; };
-		2FD99F441C48CF040065293E /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
-		2FD99F451C48CF040065293E /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
-		2FD99F461C48CF040065293E /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
 		2FD99F4B1C48CF040065293E /* SpringBoardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardButton.h; sourceTree = "<group>"; };
 		2FD99F4C1C48CF040065293E /* SpringBoardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBoardButton.m; sourceTree = "<group>"; };
 		2FD99F4E1C48CF040065293E /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -867,10 +843,6 @@
 				2F16E5DF1B5DF08F007947D0 /* LoginViewController.m */,
 				2F27A6981C19573700D59588 /* ThirdLoginViewController.h */,
 				2F27A6991C19573700D59588 /* ThirdLoginViewController.m */,
-				2F16E5E01B5DF08F007947D0 /* LttNavigationController.h */,
-				2F16E5E11B5DF08F007947D0 /* LttNavigationController.m */,
-				2F16E5E21B5DF08F007947D0 /* MenuViewController.h */,
-				2F16E5E31B5DF08F007947D0 /* MenuViewController.m */,
 				2F16E5E41B5DF08F007947D0 /* RegisterViewController.h */,
 				2F16E5E51B5DF08F007947D0 /* RegisterViewController.m */,
 				2F20ECC61C1AB8E3009B9ED6 /* ProtocolViewController.h */,
@@ -1049,7 +1021,6 @@
 				2FD99EFE1C48CF040065293E /* CNPPopupController */,
 				2FD99F011C48CF040065293E /* DLRadioButton */,
 				2FD99F041C48CF040065293E /* Harpy */,
-				2FD99F3A1C48CF040065293E /* REFrostedViewController */,
 				2FD99F4A1C48CF040065293E /* SpringBoardButton */,
 				2FD99F4D1C48CF040065293E /* TAPageControl */,
 				2FD99F561C48CF040065293E /* UMSocialSdk */,
@@ -1106,25 +1077,6 @@
 				2FD99F071C48CF040065293E /* Harpy.m */,
 			);
 			path = Harpy;
-			sourceTree = "<group>";
-		};
-		2FD99F3A1C48CF040065293E /* REFrostedViewController */ = {
-			isa = PBXGroup;
-			children = (
-				2FD99F3B1C48CF040065293E /* RECommonFunctions.h */,
-				2FD99F3C1C48CF040065293E /* RECommonFunctions.m */,
-				2FD99F3D1C48CF040065293E /* REFrostedContainerViewController.h */,
-				2FD99F3E1C48CF040065293E /* REFrostedContainerViewController.m */,
-				2FD99F3F1C48CF040065293E /* REFrostedViewController.h */,
-				2FD99F401C48CF040065293E /* REFrostedViewController.m */,
-				2FD99F411C48CF040065293E /* UIImage+REFrostedViewController.h */,
-				2FD99F421C48CF040065293E /* UIImage+REFrostedViewController.m */,
-				2FD99F431C48CF040065293E /* UIView+REFrostedViewController.h */,
-				2FD99F441C48CF040065293E /* UIView+REFrostedViewController.m */,
-				2FD99F451C48CF040065293E /* UIViewController+REFrostedViewController.h */,
-				2FD99F461C48CF040065293E /* UIViewController+REFrostedViewController.m */,
-			);
-			path = REFrostedViewController;
 			sourceTree = "<group>";
 		};
 		2FD99F4A1C48CF040065293E /* SpringBoardButton */ = {
@@ -1501,7 +1453,6 @@
 				2F16E59D1B5DEFEE007947D0 /* AboutView.m in Sources */,
 				2F16E5E61B5DF08F007947D0 /* AboutViewController.m in Sources */,
 				2F16E59E1B5DEFEE007947D0 /* AccountView.m in Sources */,
-				2FD99FB81C48CF050065293E /* UIImage+REFrostedViewController.m in Sources */,
 				2B59B9141C1AC4FA00918756 /* SetPayPasswordCodeView.m in Sources */,
 				2FD99FC01C48CF050065293E /* TAPageControl.m in Sources */,
 				2F16E5E71B5DF08F007947D0 /* AccountViewController.m in Sources */,
@@ -1528,7 +1479,6 @@
 				2F16E6371B5DF162007947D0 /* BrandEntity.m in Sources */,
 				2F593C641BE85AE400698AFA /* CaseCashierView.m in Sources */,
 				2F5C8B281BD8C9A700EF1586 /* CaseCategoryView.m in Sources */,
-				2FD99FB51C48CF050065293E /* RECommonFunctions.m in Sources */,
 				2F5C8B251BD8C8A300EF1586 /* CaseCategoryViewController.m in Sources */,
 				2F16E5AE1B5DEFEE007947D0 /* CaseCommentView.m in Sources */,
 				2FEF7A9F1C73224300EBF526 /* BaseEntity.m in Sources */,
@@ -1542,7 +1492,6 @@
 				2F16E5AB1B5DEFEE007947D0 /* CaseListView.m in Sources */,
 				2F27A69D1C19574300D59588 /* ThirdLoginView.m in Sources */,
 				2F16E5F31B5DF08F007947D0 /* CaseListViewController.m in Sources */,
-				2FD99FB71C48CF050065293E /* REFrostedViewController.m in Sources */,
 				2F16E5AC1B5DEFEE007947D0 /* CaseLockedView.m in Sources */,
 				2F16E5AD1B5DEFEE007947D0 /* CaseNewView.m in Sources */,
 				2F593C671BE85BEE00698AFA /* CasePayedView.m in Sources */,
@@ -1550,7 +1499,6 @@
 				2FB72F661BB8D75600CB8E62 /* CasePropertyView.m in Sources */,
 				2F16E5AF1B5DEFEE007947D0 /* CaseSuccessView.m in Sources */,
 				2F16E5F41B5DF08F007947D0 /* CaseViewController.m in Sources */,
-				2FD99FB61C48CF050065293E /* REFrostedContainerViewController.m in Sources */,
 				2F25383B1C1E6095009FC19B /* RechargeView.m in Sources */,
 				2FD99FD81C48CF060065293E /* ZCTradeView.m in Sources */,
 				2FEF7AA51C73224300EBF526 /* ErrorEntity.m in Sources */,
@@ -1558,7 +1506,6 @@
 				2F39B38A1BF43D9D00234ACF /* CityView.m in Sources */,
 				2F39B3871BF43C9000234ACF /* CityViewController.m in Sources */,
 				2B59B9201C1AC50F00918756 /* PayPasswordViewController.m in Sources */,
-				2FD99FBA1C48CF050065293E /* UIViewController+REFrostedViewController.m in Sources */,
 				2B59B9131C1AC4FA00918756 /* MyWalletView.m in Sources */,
 				2B59B9161C1AC4FA00918756 /* UpdatePayPasswordSuccessView.m in Sources */,
 				2F16E63A1B5DF162007947D0 /* DeviceEntity.m in Sources */,
@@ -1567,7 +1514,6 @@
 				2F75B5701C27AD410091FEAE /* PaymentEntity.m in Sources */,
 				2BB0C09A1BDF55E600293737 /* ForgetPasswordCodeView.m in Sources */,
 				2FEF7AA81C73224300EBF526 /* UserEntity.m in Sources */,
-				2FD99FB91C48CF050065293E /* UIView+REFrostedViewController.m in Sources */,
 				2BB0C09B1BDF55E600293737 /* ForgetPasswordView.m in Sources */,
 				2BB0C0A01BDF55F900293737 /* ForgetPasswordViewController.m in Sources */,
 				2F16E63B1B5DF162007947D0 /* GoodsEntity.m in Sources */,
@@ -1579,11 +1525,9 @@
 				2F16E5F61B5DF08F007947D0 /* LoginViewController.m in Sources */,
 				2FD795911AE7ACC900D51FB0 /* LttAppDelegate.m in Sources */,
 				2FD99F9C1C48CF050065293E /* AXRatingView.m in Sources */,
-				2F16E5F71B5DF08F007947D0 /* LttNavigationController.m in Sources */,
 				2FD99FD51C48CF060065293E /* UIView+ZCTradeView.m in Sources */,
 				2FD7958E1AE7ACC900D51FB0 /* main.m in Sources */,
 				2F16D4251C2B8DE50076EDEC /* PaymentHandler.m in Sources */,
-				2F16E5F81B5DF08F007947D0 /* MenuViewController.m in Sources */,
 				2FD99FBE1C48CF050065293E /* TAAnimatedDotView.m in Sources */,
 				2B001AF61C0D6C6E0026F948 /* RegisterRecommendView.m in Sources */,
 				2FD99FBF1C48CF050065293E /* TADotView.m in Sources */,
