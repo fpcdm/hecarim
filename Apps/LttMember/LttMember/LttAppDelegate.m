@@ -92,6 +92,11 @@
         //自动隐藏tabBar
         viewController.hidesBottomBarWhenPushed = YES;
     } error:nil];
+    [UINavigationController aspect_hookSelector:@selector(setViewControllers:animated:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, NSArray *viewControllers, BOOL animated){
+        //自动隐藏tabBar
+        UIViewController *viewController = [viewControllers lastObject];
+        viewController.hidesBottomBarWhenPushed = YES;
+    } error:nil];
     
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
@@ -112,8 +117,8 @@
     accountNavigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbarAccountSelected"];
     
     tabBarController = [[UITabBarController alloc] init];
-    tabBarController.tabBar.tintColor = [UIColor colorWithHex:@"#33BC07"];
-    tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithHex:@"#33BC07"];
+    tabBarController.tabBar.tintColor = COLOR_MAIN_HIGHLIGHT;
+    tabBarController.tabBar.selectedImageTintColor = COLOR_MAIN_HIGHLIGHT;
     tabBarController.delegate = self;
     tabBarController.viewControllers = [NSArray arrayWithObjects:homeNavigationController, caseNavigationController, accountNavigationController, nil];
     

@@ -32,6 +32,7 @@
 {
     accountView = [[AccountView alloc] init];
     accountView.delegate = self;
+    [accountView layoutViewController:self];
     self.view = accountView;
     
     //加载数据

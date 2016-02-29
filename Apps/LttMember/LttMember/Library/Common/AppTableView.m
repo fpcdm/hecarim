@@ -28,4 +28,15 @@
     return view;
 }
 
+- (void)layoutViewController:(UIViewController *)viewController
+{
+    CGFloat tabBarHeight = viewController.tabBarController.tabBar.frame.size.height;
+    if (tabBarHeight > 0) {
+        UIView *superview = self;
+        [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(superview.mas_bottom).offset(-tabBarHeight);
+        }];
+    }
+}
+
 @end
