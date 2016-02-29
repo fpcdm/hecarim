@@ -7,11 +7,12 @@
 //
 
 #import "FWPluginManager.h"
-#import "FWPluginProviderDefault.h"
+#import <objc/runtime.h>
 
 @implementation FWPluginManager
 {
-    NSMutableDictionary *providerPool;
+    //插件缓存池
+    NSMutableDictionary *pluginPool;
 }
 
 @def_singleton(FWPluginManager)
@@ -20,28 +21,39 @@
 {
     self = [super init];
     if (self) {
-        providerPool = [[NSMutableDictionary alloc] init];
+        pluginPool = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
-- (void)setProvider:(NSString *)name provider:(id<FWPluginProvider>)provider
+- (void)setPlugin:(NSString *)name plugin:(id)plugin
 {
-    if (provider) {
-        [providerPool setObject:provider forKey:name];
+    if (plugin) {
+        [pluginPool setObject:plugin forKey:name];
     } else {
-        [providerPool removeObjectForKey:name];
+        [pluginPool removeObjectForKey:name];
     }
 }
 
 - (id)getPlugin:(NSString *)name
 {
-    id<FWPluginProvider> provider = [providerPool objectForKey:name];
-    if (!provider) {
-        //默认提供者
-        provider = [FWPluginProviderDefault sharedInstance];
+    id plugin = [pluginPool objectForKey:name];
+    if (!plugin) {
+        //默认插件规则：nameDefault，优先调用sharedInstance，没有才调用alloc、init
+        Class pluginClass = NSClassFromString([NSString stringWithFormat:@"%@Default", name]);
+        if (pluginClass) {
+            //检测sharedInstance方法
+            if (class_respondsToSelector(pluginClass, @selector(sharedInstance))) {
+                plugin = [pluginClass sharedInstance];
+            } else {
+                plugin = [[pluginClass alloc] init];
+            }
+            
+            //设置缓存
+            [pluginPool setObject:plugin forKey:name];
+        }
     }
-    return [provider providePlugin:name];
+    return plugin;
 }
 
 @end

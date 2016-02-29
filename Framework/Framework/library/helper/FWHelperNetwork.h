@@ -35,7 +35,7 @@
 //开始监听网络变化
 - (void) startNotifier;
 
-//结束监听网络变化
-- (void) endNotifier;
+//停止监听网络变化
+- (void) stopNotifier;
 
 @end

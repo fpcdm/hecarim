@@ -11,8 +11,6 @@
 //定义插件池默认保存名称
 #define FWPluginDialogName @"FWPluginDialog"
 
-TODO("去掉枚举，用static_integer")
-
 //弹出框类型枚举
 typedef NS_ENUM(NSInteger, FWPluginDialogType) {
     FWPluginDialogTypeMessage = 0,

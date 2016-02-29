@@ -61,8 +61,6 @@
 
 //library
 #import "FWPluginManager.h"
-#import "FWPluginProvider.h"
-#import "FWPluginProviderDefault.h"
 #import "FWPluginDialog.h"
 #import "FWPluginDialogDefault.h"
 #import "FWPluginLoading.h"

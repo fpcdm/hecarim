@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWPluginProvider.h"
 
 //插件管理池
 @interface FWPluginManager : NSObject
 
 @singleton(FWPluginManager)
 
-//设置插件提供者对象
-- (void)setProvider:(NSString *)name provider:(id<FWPluginProvider>)provider;
+//自定义插件，替换默认插件
+- (void)setPlugin:(NSString *)name plugin:(id)plugin;
 
 //获取插件对象
 - (id)getPlugin:(NSString *)name;

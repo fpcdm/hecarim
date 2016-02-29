@@ -113,7 +113,7 @@
 }
 
 //结束监听网络变化
-- (void) endNotifier
+- (void) stopNotifier
 {
     if (!notifierStarted) return;
     notifierStarted = NO;
@@ -124,7 +124,7 @@
 
 - (void)dealloc
 {
-    [self endNotifier];
+    [self stopNotifier];
     reachability = nil;
 }
 

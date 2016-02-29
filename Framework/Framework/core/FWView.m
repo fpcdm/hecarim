@@ -15,6 +15,29 @@
     NSMutableDictionary *viewData;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self initView];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initView];
+    }
+    return self;
+}
+
+- (void)initView
+{
+    //子类重写
+}
+
 - (void)setViewController:(UIViewController *)viewController
 {
     _viewController = viewController;

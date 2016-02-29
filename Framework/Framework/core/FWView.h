@@ -12,6 +12,7 @@
 @interface FWView : UIView
 
 //初始化钩子方法
+- (void) initView;
 
 //设置当前控制器
 - (void) setViewController:(UIViewController *)viewController;
