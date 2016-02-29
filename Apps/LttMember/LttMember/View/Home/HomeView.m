@@ -67,12 +67,11 @@
 - (void) topView
 {
     //计算参数
-    CGFloat topHeight = SCREEN_WIDTH * 0.548;
-    CGFloat imageHeight = topHeight - statusBarHeight - navigationBarHeight;
+    CGFloat imageHeight = SCREEN_WIDTH * 0.548;
+    CGFloat statusHeight = SCREEN_STATUSBAR_HEIGHT;
     
     //顶部容器
     topView = [[UIView alloc] init];
-    topView.backgroundColor = [UIColor colorWithHex:@"#474955"];
     [self addSubview:topView];
     
     UIView *superview = self;
@@ -80,11 +79,11 @@
         make.top.equalTo(superview.mas_top);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@(topHeight));
+        make.height.equalTo(@(imageHeight));
     }];
     
     //幻灯片
-    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, statusBarHeight + navigationBarHeight, SCREEN_WIDTH, imageHeight)];
+    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, imageHeight)];
     adView.tag = 2;
     adView.scrollEnabled = YES;
     adView.pagingEnabled = YES;
@@ -106,13 +105,27 @@
     adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
     
     //图片控件
-    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 30, SCREEN_WIDTH, 30)];
+    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, imageHeight - 30, SCREEN_WIDTH, 30)];
     adPageControl.tag = 2;
     adPageControl.alpha = 0.8;
     adPageControl.dotSize = CGSizeMake(5, 5);
     adPageControl.numberOfPages = imagesData.count;
     adPageControl.delegate = self;
     [topView addSubview:adPageControl];
+    
+    //菜单背景
+    UIImageView *menuBg = [[UIImageView alloc] init];
+    menuBg.image = [UIImage imageNamed:@"homeMenuBg"];
+    menuBg.alpha = 0.5;
+    [topView addSubview:menuBg];
+    
+    superview = topView;
+    [menuBg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(statusHeight);
+        make.left.equalTo(superview.mas_left);
+        make.right.equalTo(superview.mas_right);
+        make.height.equalTo(@30);
+    }];
     
     //城市切换按钮
     cityButton = [[UIButton alloc] init];
@@ -125,7 +138,7 @@
     
     superview = topView;
     [cityButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(superview.mas_top).offset(statusBarHeight + navigationBarHeight / 2);
+        make.top.equalTo(superview.mas_top).offset(statusHeight);
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(@30);
     }];
@@ -151,7 +164,7 @@
     
     superview = topView;
     [locationButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(superview.mas_top).offset(statusBarHeight + navigationBarHeight / 2);
+        make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(cityButton.mas_left).offset(5);
         make.height.equalTo(@25);
@@ -279,7 +292,7 @@
     [imagesData addObject:firstAdvert];
     
     //添加图片
-    CGFloat imageHeight = SCREEN_WIDTH * 0.548 - statusBarHeight - navigationBarHeight;
+    CGFloat imageHeight = SCREEN_WIDTH * 0.548;
     [imagesData enumerateObjectsUsingBlock:^(AdvertEntity *advert, NSUInteger idx, BOOL *stop){
         //图片容器
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
@@ -382,12 +395,14 @@
     addType.id = @-1;
     addType.name = @"增加";
     [types addObject:addType];
+    /*
     //减少
     CategoryEntity *deleteType = [[CategoryEntity alloc] init];
     deleteType.icon = @"homeItemDelete";
     deleteType.id = @-2;
     deleteType.name = @"减少";
     [types addObject:deleteType];
+    */
     
     //计算宽高
     CGFloat buttonWidth = 50;
@@ -460,7 +475,6 @@
     //计算容器宽高
     CGFloat contentY = frameY + buttonHeight;
     typeView.contentSize = CGSizeMake(SCREEN_WIDTH, contentY);
-    typeView.contentOffset = CGPointMake(0, 0);
 }
 
 //计算高度，解决图标显示一半问题

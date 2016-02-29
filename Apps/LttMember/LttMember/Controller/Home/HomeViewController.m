@@ -21,8 +21,8 @@
 
 //GPS数据缓存，优化GPS耗电
 static LocationEntity *lastLocation = nil;
-static NSDate   *lastDate = nil;
-static NSMutableDictionary *caseTypes = nil;
+static NSDate *lastDate = nil;
+static NSArray *cacheTypes = nil;
 static NSArray *slideAdverts = nil;
 
 @interface HomeViewController () <HomeViewDelegate, LocationUtilDelegate, CNPPopupControllerDelegate>
@@ -32,7 +32,6 @@ static NSArray *slideAdverts = nil;
 @implementation HomeViewController
 {
     HomeView *homeView;
-    BOOL viewRendered;
     
     TimerUtil *gpsTimer;
     NSString *gpsStatus;
@@ -157,13 +156,18 @@ static NSArray *slideAdverts = nil;
         [homeView reloadAds];
     }
     
-    //标记已渲染
-    viewRendered = YES;
-    
-    [self actionTypes];
-    
-    //设置定时器
-    [self setTimer];
+    //获取收藏列表
+    if (!cacheTypes) {
+        [self actionTypes];
+        
+        //设置定时器
+        [self setTimer];
+    } else {
+        [self reloadTypes:[NSMutableArray arrayWithArray:cacheTypes]];
+        
+        //设置定时器
+        [self setTimer];
+    }
 }
 
 //渲染视图
@@ -512,22 +516,17 @@ static NSArray *slideAdverts = nil;
 
 - (void)actionTypes
 {
-    //初始化缓存
-    if (!caseTypes) caseTypes = [NSMutableDictionary dictionary];
-    
     //加载效果
     [homeView.typeView showIndicator];
     NSTimeInterval totalInterval = 0.3;
     
-    //缓存是否存在
-    NSString *idStr = @"favorites";
     //切换城市换服务列表，不使用缓存
     NSDate *beginDate = [NSDate date];
     
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler queryFavoriteTypes:nil success:^(NSArray *result) {
         //设置缓存
-        [caseTypes setObject:result forKey:idStr];
+        cacheTypes = result;
         
         //重新加载项目
         NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
@@ -555,11 +554,10 @@ static NSArray *slideAdverts = nil;
 {
     CaseCategoryViewController *viewController = [[CaseCategoryViewController alloc] init];
     viewController.callbackBlock = ^(NSArray *types){
-        if (!caseTypes) return;
+        if (!cacheTypes) return;
         
         //添加到缓存数据
-        NSString *idStr = @"favorites";
-        NSArray *idTypes = [caseTypes objectForKey:idStr];
+        NSArray *idTypes = cacheTypes;
         if (idTypes == nil) return;
         
         NSMutableArray *result = [NSMutableArray arrayWithArray:idTypes];
@@ -583,7 +581,7 @@ static NSArray *slideAdverts = nil;
         if (!hasNew) return;
         
         //有新数据重新渲染视图并保存
-        [caseTypes setObject:result forKey:idStr];
+        cacheTypes = result;
         
         NSMutableArray *categoryTypes = [NSMutableArray arrayWithArray:result];
         [homeView assign:@"types" value:categoryTypes];
@@ -601,12 +599,10 @@ static NSArray *slideAdverts = nil;
     //不显示请求效果
     CaseHandler *caseHandler = [[CaseHandler alloc] init];
     [caseHandler saveFavoriteTypes:types success:^(NSArray *result) {
-        if (!caseTypes) return;
+        if (!cacheTypes) return;
         
         //更新缓存数据
-        NSString *idStr = @"favorites";
-        [caseTypes setObject:types forKey:idStr];
-        
+        cacheTypes = types;
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];
     }];
