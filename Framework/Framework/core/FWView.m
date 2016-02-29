@@ -10,7 +10,28 @@
 
 @implementation FWView
 {
+    UIViewController *_viewController;
+    
     NSMutableDictionary *viewData;
+}
+
+- (void)setViewController:(UIViewController *)viewController
+{
+    _viewController = viewController;
+}
+
+- (UIViewController *) viewController
+{
+    if (_viewController) return _viewController;
+    
+    UIResponder *responder = [self nextResponder];
+    while (responder) {
+        if ([responder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
 }
 
 - (void)assign:(NSString *)key value:(id)value

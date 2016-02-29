@@ -11,6 +11,14 @@
 
 @interface FWView : UIView
 
+//初始化钩子方法
+
+//设置当前控制器
+- (void) setViewController:(UIViewController *)viewController;
+
+//获取当前控制器
+- (UIViewController *) viewController;
+
 //单个赋值，建议使用此方法赋值，防止参数为nil崩溃
 - (void)assign:(NSString *)key value:(id)value;
 

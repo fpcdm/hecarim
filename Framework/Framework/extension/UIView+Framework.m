@@ -43,16 +43,4 @@
     }
 }
 
-- (UIViewController *) viewController
-{
-    UIResponder *responder = [self nextResponder];
-    while (responder) {
-        if ([responder isKindOfClass:[UIViewController class]]) {
-            return (UIViewController *)responder;
-        }
-        responder = [responder nextResponder];
-    }
-    return nil;
-}
-
 @end

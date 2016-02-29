@@ -14,7 +14,4 @@
 
 - (void) hideIndicator;
 
-//获取当前控制器
-- (UIViewController *) viewController;
-
 @end
