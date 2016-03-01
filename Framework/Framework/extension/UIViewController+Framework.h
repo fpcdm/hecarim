@@ -20,6 +20,12 @@
 
 @interface UIViewController (Framework) <UIViewControllerFrameworkDelegate>
 
+//屏幕边界
+- (CGRect)screenBounds;
+
+//有效边界(自动扣除状态栏，导航栏，TabBar)
+- (CGRect)availBounds;
+
 //显示加载条
 - (void)showLoading:(NSString *)message;
 

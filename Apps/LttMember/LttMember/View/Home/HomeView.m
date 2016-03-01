@@ -23,6 +23,11 @@
     CGFloat navigationBarHeight;
     CGFloat tabBarHeight;
     
+    //顶部(定位+幻灯片)总高度
+    CGFloat topHeight;
+    //中间(服务)总高度
+    CGFloat middleHeight;
+    
     UIScrollView *adView;
     NSMutableArray *imagesData;
     TAPageControl *adPageControl;
@@ -56,6 +61,10 @@
     navigationBarHeight = navigationBarNumber && navigationBarNumber.floatValue > 0 ? navigationBarNumber.floatValue : 44;
     tabBarHeight = tabBarNumber && tabBarNumber.floatValue > 0 ? tabBarNumber.floatValue : 49;
     
+    //计算高度
+    topHeight = SCREEN_WIDTH * 0.548;
+    middleHeight = SCREEN_HEIGHT - topHeight - tabBarHeight;
+    
     [self topView];
     [self middleView];
     
@@ -64,10 +73,6 @@
 
 - (void) topView
 {
-    //计算参数
-    CGFloat topHeight = SCREEN_WIDTH * 0.548;
-    CGFloat imageHeight = topHeight - statusBarHeight - navigationBarHeight;
-    
     //顶部容器
     topView = [[UIView alloc] init];
     topView.backgroundColor = [UIColor colorWithHex:@"#474955"];
@@ -80,37 +85,6 @@
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(@(topHeight));
     }];
-    
-    //幻灯片
-    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, statusBarHeight + navigationBarHeight, SCREEN_WIDTH, imageHeight)];
-    adView.tag = 2;
-    adView.scrollEnabled = YES;
-    adView.pagingEnabled = YES;
-    adView.showsHorizontalScrollIndicator = NO;
-    adView.showsVerticalScrollIndicator = NO;
-    adView.delegate = self;
-    [topView addSubview:adView];
-    
-    //默认没有图片
-    imagesData = [NSMutableArray arrayWithArray:@[@"homeAd.jpg"]];
-    [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
-        //图片容器
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
-        imageView.contentMode = UIViewContentModeScaleToFill;
-        imageView.image = [UIImage imageNamed:imageName];
-        imageView.layer.masksToBounds = YES;
-        [adView addSubview:imageView];
-    }];
-    adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
-    
-    //图片控件
-    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 30, SCREEN_WIDTH, 30)];
-    adPageControl.tag = 2;
-    adPageControl.alpha = 0.8;
-    adPageControl.dotSize = CGSizeMake(5, 5);
-    adPageControl.numberOfPages = imagesData.count;
-    adPageControl.delegate = self;
-    [topView addSubview:adPageControl];
     
     //城市切换按钮
     cityButton = [[UIButton alloc] init];
@@ -195,6 +169,46 @@
         make.right.equalTo(superview.mas_right);
         make.height.equalTo(superview.mas_height);
     }];
+    
+    //幻灯片
+    [self adView];
+}
+
+- (void) adView
+{
+    //计算参数
+    CGFloat imageHeight = topHeight - statusBarHeight - navigationBarHeight;
+    
+    //幻灯片
+    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, statusBarHeight + navigationBarHeight, SCREEN_WIDTH, imageHeight)];
+    adView.tag = 2;
+    adView.scrollEnabled = YES;
+    adView.pagingEnabled = YES;
+    adView.showsHorizontalScrollIndicator = NO;
+    adView.showsVerticalScrollIndicator = NO;
+    adView.delegate = self;
+    [topView addSubview:adView];
+    
+    //默认没有图片
+    imagesData = [NSMutableArray arrayWithArray:@[@"homeAd.jpg"]];
+    [imagesData enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop){
+        //图片容器
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.image = [UIImage imageNamed:imageName];
+        imageView.layer.masksToBounds = YES;
+        [adView addSubview:imageView];
+    }];
+    adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
+    
+    //图片控件
+    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 30, SCREEN_WIDTH, 30)];
+    adPageControl.tag = 2;
+    adPageControl.alpha = 0.8;
+    adPageControl.dotSize = CGSizeMake(5, 5);
+    adPageControl.numberOfPages = imagesData.count;
+    adPageControl.delegate = self;
+    [topView addSubview:adPageControl];
 }
 
 - (void) middleView
@@ -210,7 +224,7 @@
         make.top.equalTo(topView.mas_bottom);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@(middleHeight));
     }];
     
     //中部容器
@@ -221,7 +235,7 @@
         make.top.equalTo(topView.mas_bottom);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.bottom.equalTo(superview.mas_bottom);
+        make.height.equalTo(@(middleHeight));
     }];
     
     //服务菜单
@@ -272,7 +286,7 @@
     [imagesData addObject:firstAdvert];
     
     //添加图片
-    CGFloat imageHeight = SCREEN_WIDTH * 0.548 - statusBarHeight - navigationBarHeight;
+    CGFloat imageHeight = topHeight - statusBarHeight - navigationBarHeight;
     [imagesData enumerateObjectsUsingBlock:^(AdvertEntity *advert, NSUInteger idx, BOOL *stop){
         //图片容器
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];
@@ -461,7 +475,7 @@
 - (CGFloat) heightForTypeButton
 {
     //计算滚动视图总高度
-    CGFloat totalHeight = SCREEN_HEIGHT - SCREEN_WIDTH * 0.548 - tabBarHeight;
+    CGFloat totalHeight = middleHeight;
     //默认按钮高度
     CGFloat height = 80;
     

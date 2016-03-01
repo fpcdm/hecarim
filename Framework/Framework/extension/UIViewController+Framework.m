@@ -11,6 +11,27 @@
 
 @implementation UIViewController (Framework)
 
+- (CGRect)screenBounds
+{
+    return SCREEN_BOUNDS;
+}
+
+- (CGRect)availBounds
+{
+    CGFloat availHeight = SCREEN_HEIGHT;
+    
+    //有导航栏时: -(状态栏+导航栏); 无导航栏时: 不扣除状态栏
+    if (self.navigationController && self.navigationController.navigationBar.hidden != YES) {
+        availHeight -= STATUSBAR_HEIGHT + NAVIGATIONBAR_HEIGHT;
+    }
+    //有TabBar时: -(TabBar)
+    if (self.tabBarController && self.tabBarController.tabBar.hidden != YES) {
+        availHeight -= TABBAR_HEIGHT;
+    }
+    
+    return CGRectMake(0, 0, SCREEN_WIDTH, availHeight);
+}
+
 - (id<FWPluginDialog>)dialogPlugin
 {
     id plugin = [[FWPluginManager sharedInstance] getPlugin:FWPluginDialogName];
