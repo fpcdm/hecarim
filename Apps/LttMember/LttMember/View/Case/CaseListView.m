@@ -12,6 +12,11 @@
 
 @synthesize delegate;
 
+- (BOOL)hasTabBar
+{
+    return YES;
+}
+
 - (id) init
 {
     self = [super init];

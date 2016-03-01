@@ -30,7 +30,6 @@
 {
     listView = [[CaseListView alloc] init];
     listView.delegate = self;
-    [listView layoutViewController:self];
     self.view = listView;
 }
 

@@ -16,9 +16,6 @@
 //全局自定义，修改背景色
 - (void) customView;
 
-//根据控制器修正布局
-- (void) layoutViewController:(UIViewController *)viewController;
-
 @end
 
 @interface AppView : BaseView

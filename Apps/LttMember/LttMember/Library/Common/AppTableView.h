@@ -13,6 +13,8 @@
 
 - (void) customTableView;
 
+- (BOOL) hasTabBar;
+
 @end
 
 @interface AppTableView : BaseTableView

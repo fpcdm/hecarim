@@ -18,6 +18,11 @@
     UILabel *nameLabel;
 }
 
+- (BOOL)hasTabBar
+{
+    return YES;
+}
+
 - (id)init
 {
     self = [super init];

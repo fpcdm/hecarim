@@ -16,11 +16,6 @@
     self.backgroundColor = COLOR_MAIN_BG;
 }
 
-- (void) layoutViewController:(UIViewController *)viewController
-{
-    //子类重写
-}
-
 @end
 
 @implementation AppView
