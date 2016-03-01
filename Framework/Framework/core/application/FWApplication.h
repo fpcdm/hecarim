@@ -1,5 +1,5 @@
 //
-//  FWApp.h
+//  FWApplication.h
 //  Framework
 //
 //  Created by wuyong on 16/3/1.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FWApp : NSObject
+@interface FWApplication : NSObject
 
 //单例对象
-@singleton(FWApp)
+@singleton(FWApplication)
 
 //只读属性
 @prop_readonly(id<UIApplicationDelegate>, delegate)

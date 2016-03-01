@@ -1,12 +1,12 @@
 //
-//  FWUnitTest.m
+//  FWTest.m
 //  Framework
 //
 //  Created by wuyong on 16/2/24.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWUnitTest.h"
+#import "FWTest.h"
 #import "FWRuntime.h"
 
 #pragma mark -
@@ -53,13 +53,13 @@
 
 #pragma mark -
 
-@implementation FWUnitTest
+@implementation FWTest
 {
     NSUInteger _failedCount;
     NSUInteger _succeedCount;
 }
 
-@def_singleton(FWUnitTest)
+@def_singleton(FWTest)
 
 - (void)run
 {

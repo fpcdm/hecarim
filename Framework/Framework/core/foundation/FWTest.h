@@ -1,5 +1,5 @@
 //
-//  FWUnitTest.h
+//  FWTest.h
 //  Framework
 //
 //  Created by wuyong on 16/2/24.
@@ -66,9 +66,9 @@
 
 #pragma mark -
 
-@interface FWUnitTest : NSObject
+@interface FWTest : NSObject
 
-@singleton(FWUnitTest)
+@singleton(FWTest)
 
 - (void)run;
 

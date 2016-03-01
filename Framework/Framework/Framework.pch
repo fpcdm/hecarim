@@ -30,7 +30,7 @@
     //core
     #import "FWLog.h"
     #import "FWDebug.h"
-    #import "FWUnitTest.h"
+    #import "FWTest.h"
 #endif
 
 #endif

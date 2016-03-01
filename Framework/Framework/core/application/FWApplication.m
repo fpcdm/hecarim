@@ -1,14 +1,14 @@
 //
-//  FWApp.m
+//  FWApplication.m
 //  Framework
 //
 //  Created by wuyong on 16/3/1.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWApp.h"
+#import "FWApplication.h"
 
-@implementation FWApp
+@implementation FWApplication
 
 //调试模式自动启动日志和单元测试
 #if FRAMEWORK_DEBUG
@@ -34,13 +34,13 @@
     
 #if FRAMEWORK_TEST
     //开启测试
-    [[FWUnitTest sharedInstance] run];
+    [[FWTest sharedInstance] run];
 #endif
 }
 #endif
 
 //单例对象
-@def_singleton(FWApp)
+@def_singleton(FWApplication)
 
 //init
 - (id)init
