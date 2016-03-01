@@ -29,7 +29,7 @@
 #import "UINavigationController+Framework.h"
 
 //core
-#import "FWBooter.h"
+#import "FWApp.h"
 #import "FWLog.h"
 #import "FWDebug.h"
 #import "FWUnitTest.h"

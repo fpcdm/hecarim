@@ -13,23 +13,24 @@
 
 - (CGRect)screenBounds
 {
-    return SCREEN_BOUNDS;
+    return [UIScreen mainScreen].bounds;
 }
 
 - (CGRect)availBounds
 {
-    CGFloat availHeight = SCREEN_HEIGHT;
+    CGFloat availHeight = [UIScreen mainScreen].bounds.size.height;
     
     //有导航栏时: -(状态栏+导航栏); 无导航栏时: 不扣除状态栏
     if (self.navigationController && self.navigationController.navigationBar.hidden != YES) {
-        availHeight -= STATUSBAR_HEIGHT + NAVIGATIONBAR_HEIGHT;
+        availHeight -= [[UIApplication sharedApplication] statusBarFrame].size.height;
+        availHeight -= self.navigationController.navigationBar.frame.size.height;
     }
     //有TabBar时: -(TabBar)
     if (self.tabBarController && self.tabBarController.tabBar.hidden != YES) {
-        availHeight -= TABBAR_HEIGHT;
+        availHeight -= self.tabBarController.tabBar.frame.size.height;
     }
     
-    return CGRectMake(0, 0, SCREEN_WIDTH, availHeight);
+    return CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, availHeight);
 }
 
 - (id<FWPluginDialog>)dialogPlugin

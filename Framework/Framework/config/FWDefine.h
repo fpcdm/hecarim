@@ -104,9 +104,9 @@
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define STATUSBAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
-//仅控制器能用
-#define NAVIGATIONBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
-#define TABBAR_HEIGHT self.tabBarController.tabBar.frame.size.height
+//导航和TabBar高度常量与hidden属性无关
+#define NAVIGATIONBAR_HEIGHT [FWApp sharedInstance].navigationController.navigationBar.frame.size.height
+#define TABBAR_HEIGHT [FWApp sharedInstance].tabBarController.tabBar.frame.size.height
 
 //设备类型
 #define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad   ? YES : NO)
