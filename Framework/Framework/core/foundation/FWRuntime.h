@@ -25,4 +25,12 @@
 //获取对象属性
 + (NSDictionary *)propertiesOfObject:(id)obj;
 
+//拷贝对象
++ (id)copyObject:(id)obj;
++ (id)copyObject:(id)obj withZone:(NSZone *)zone;
+
+//对象编码解码
++ (void)encodeObject:(id)obj withCoder:(NSCoder *)aCoder;
++ (id)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder;
+
 @end

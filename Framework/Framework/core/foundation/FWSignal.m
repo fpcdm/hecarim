@@ -118,8 +118,8 @@
     signal.object = object;
     signal.source = self;
     signal.target = self.signalResponder ? self.signalResponder : self;
+    signal.callback = callback;
     
-    [signal setCallback:callback];
     [signal send];
 }
 
@@ -128,7 +128,6 @@
 #pragma mark -
 @implementation FWSignal
 {
-    FWSignalBlock _callback;
     BOOL _isError;
     id _response;
     NSError *_error;
@@ -150,6 +149,7 @@
 @def_prop_strong(id, object)
 @def_prop_assign(NSObject *, source)
 @def_prop_assign(NSObject *, target)
+@def_prop_copy(FWSignalBlock, callback)
 
 @def_prop_dynamic(id, response)
 @def_prop_dynamic(NSError *, error)
@@ -190,11 +190,6 @@
     
     //target调用信号
     [self.target routeSignal:self];
-}
-
-- (void)setCallback:(FWSignalBlock)callback
-{
-    _callback = callback;
 }
 
 - (void)success:(id)response

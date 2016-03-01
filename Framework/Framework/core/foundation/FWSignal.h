@@ -33,6 +33,11 @@
 @class FWSignal;
 typedef void (^FWSignalBlock)(FWSignal *signal);
 
+TODO("support array responders")
+TODO("FWSignalCenter route send")
+TODO("nsobject signalKvo observeProperty")
+TODO("FWSignal NSCopying NSCoding")
+
 #pragma mark -
 @interface NSObject (FWSignalResponder)
 
@@ -72,6 +77,7 @@ typedef void (^FWSignalBlock)(FWSignal *signal);
 @prop_strong(id, object)
 @prop_assign(NSObject *, source)
 @prop_assign(NSObject *, target)
+@prop_copy(FWSignalBlock, callback)
 
 //响应属性
 @prop_readonly(id, response)
@@ -85,7 +91,6 @@ typedef void (^FWSignalBlock)(FWSignal *signal);
 - (void)send;
 
 //响应方法
-- (void)setCallback:(FWSignalBlock)callback;
 - (void)success:(id)response;
 - (void)error:(NSError *)error;
 - (BOOL)isError;

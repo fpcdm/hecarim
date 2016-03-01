@@ -236,4 +236,87 @@
     return result;
 }
 
+#pragma mark -
++ (id)copyObject:(id)obj
+{
+    return [self copyObject:obj withZone:nil];
+}
+
+TODO("优化代码，统一方法，获取属性内部方法返回字典，附带attr")
++ (id)copyObject:(id)obj withZone:(NSZone *)zone
+{
+    if (!obj) return nil;
+    
+    Class clazz = [obj class];
+    id newObj = zone ? [[clazz allocWithZone:zone] init] : [[clazz alloc] init];
+    if (!newObj) return nil;
+    
+    while (clazz != NULL) {
+        unsigned int propertyCount = 0;
+        objc_property_t *properties = class_copyPropertyList(clazz, &propertyCount);
+        
+        for (NSUInteger i = 0; i < propertyCount; i++) {
+            const char *name = property_getName(properties[i]);
+            const char *attr = property_getAttributes(properties[i]);
+            //忽略只读属性
+            if ([self isReadonly:attr]) {
+                continue;
+            }
+            
+            NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            id propertyValue = [obj valueForKey:propertyName];
+            
+            [newObj setValue:propertyValue forKey:propertyName];
+        }
+        
+        free(properties);
+        
+        clazz = class_getSuperclass(clazz);
+        if (nil == clazz || clazz == [NSObject class]) break;
+    }
+    
+    return newObj;
+}
+
++ (BOOL)isReadonly:(const char *)attr
+{
+    if (strstr(attr, "_ro") || strstr(attr, ",R")) {
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark -
++ (void)encodeObject:(id)obj withCoder:(NSCoder *)aCoder
+{
+    /*
+    NSDictionary *dict = [self toDictionary];
+    for (NSString *key in dict) {
+        id object = [dict objectForKey:key];
+        if (object != nil && object != [NSNull null]) {
+            [aCoder encodeObject:object forKey:key];
+        }
+    }
+    */
+}
+
++ (id)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder
+{
+    /*
+    NSDictionary *dict = [self toDictionary];
+    for (NSString *key in dict) {
+        id object = [aDecoder decodeObjectForKey:key];
+        if (object != nil && object != [NSNull null]) {
+            //是否可设置值
+            NSString *selectorStr = [NSString stringWithFormat:@"set%@%@:",[[key substringToIndex:1] uppercaseString], [key substringFromIndex:1]];
+            SEL selector = NSSelectorFromString(selectorStr);
+            if ([self respondsToSelector:selector]) {
+                [self setValue:object forKey:key];
+            }
+        }
+    }
+    */
+    return nil;
+}
+
 @end
