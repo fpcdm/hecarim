@@ -216,7 +216,7 @@
     contactLabel.text = [NSString stringWithFormat:@"%@  %@", name, mobile];
     
     //是否有地址
-    if (address) {
+    if (address && address.length > 0) {
         contactLabel.hidden = NO;
         addressBorder.hidden = NO;
         addressLabel.text = address;

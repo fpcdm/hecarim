@@ -15,15 +15,16 @@
     NSMutableDictionary *viewData;
 }
 
-- (id)init
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super init];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         [self initView];
     }
     return self;
 }
 
+//init会自动调用initWithFrame:CGRectZero
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

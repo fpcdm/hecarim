@@ -32,7 +32,6 @@
     
     UIView *topView;
     UIView *middleView;
-    UIView *bottomView;
     
     CasePropertyView *propertyView;
     
@@ -46,7 +45,7 @@
 
 - (id) initWithData:(NSDictionary *)data
 {
-    self = [super init];
+    self = [super initWithData:data];
     if (!self) return nil;
     
     //获取状态，导航栏高度
@@ -59,7 +58,6 @@
     
     [self topView];
     [self middleView];
-    //[self bottomView];
     
     return self;
 }
@@ -67,11 +65,12 @@
 - (void) topView
 {
     //计算参数
-    CGFloat imageHeight = SCREEN_WIDTH * 0.548;
-    CGFloat statusHeight = SCREEN_STATUSBAR_HEIGHT;
+    CGFloat topHeight = SCREEN_WIDTH * 0.548;
+    CGFloat imageHeight = topHeight - statusBarHeight - navigationBarHeight;
     
     //顶部容器
     topView = [[UIView alloc] init];
+    topView.backgroundColor = [UIColor colorWithHex:@"#474955"];
     [self addSubview:topView];
     
     UIView *superview = self;
@@ -79,11 +78,11 @@
         make.top.equalTo(superview.mas_top);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@(imageHeight));
+        make.height.equalTo(@(topHeight));
     }];
     
     //幻灯片
-    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, imageHeight)];
+    adView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, statusBarHeight + navigationBarHeight, SCREEN_WIDTH, imageHeight)];
     adView.tag = 2;
     adView.scrollEnabled = YES;
     adView.pagingEnabled = YES;
@@ -105,27 +104,13 @@
     adView.contentSize = CGSizeMake(SCREEN_WIDTH * imagesData.count, imageHeight);
     
     //图片控件
-    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, imageHeight - 30, SCREEN_WIDTH, 30)];
+    adPageControl = [[TAPageControl alloc] initWithFrame:CGRectMake(0, topHeight - 30, SCREEN_WIDTH, 30)];
     adPageControl.tag = 2;
     adPageControl.alpha = 0.8;
     adPageControl.dotSize = CGSizeMake(5, 5);
     adPageControl.numberOfPages = imagesData.count;
     adPageControl.delegate = self;
     [topView addSubview:adPageControl];
-    
-    //菜单背景
-    UIImageView *menuBg = [[UIImageView alloc] init];
-    menuBg.image = [UIImage imageNamed:@"homeMenuBg"];
-    menuBg.alpha = 0.5;
-    [topView addSubview:menuBg];
-    
-    superview = topView;
-    [menuBg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(statusHeight);
-        make.left.equalTo(superview.mas_left);
-        make.right.equalTo(superview.mas_right);
-        make.height.equalTo(@30);
-    }];
     
     //城市切换按钮
     cityButton = [[UIButton alloc] init];
@@ -138,8 +123,8 @@
     
     superview = topView;
     [cityButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(statusHeight);
-        make.right.equalTo(superview.mas_right);
+        make.centerY.equalTo(superview.mas_top).offset(statusBarHeight + navigationBarHeight / 2);
+        make.right.equalTo(superview.mas_right).offset(-4);
         make.height.equalTo(@30);
     }];
     
@@ -164,10 +149,10 @@
     
     superview = topView;
     [locationButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(statusHeight + 2.5);
+        make.centerY.equalTo(superview.mas_top).offset(statusBarHeight + navigationBarHeight / 2);
         make.left.equalTo(superview.mas_left);
         make.right.equalTo(cityButton.mas_left).offset(5);
-        make.height.equalTo(@25);
+        make.height.equalTo(@30);
     }];
     
     UIImageView *pointView = [[UIImageView alloc] init];
@@ -177,7 +162,7 @@
     
     superview = locationButton;
     [pointView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superview.mas_left).offset(3);
+        make.left.equalTo(superview.mas_left).offset(5);
         make.centerY.equalTo(superview.mas_centerY);
         make.height.equalTo(@15);
         make.width.equalTo(@20);
@@ -258,11 +243,6 @@
     }];
 }
 
-- (void) bottomView
-{
-    
-}
-
 - (void)adjustCityButton
 {
     [cityButton.titleLabel sizeToFit];
@@ -292,7 +272,7 @@
     [imagesData addObject:firstAdvert];
     
     //添加图片
-    CGFloat imageHeight = SCREEN_WIDTH * 0.548;
+    CGFloat imageHeight = SCREEN_WIDTH * 0.548 - statusBarHeight - navigationBarHeight;
     [imagesData enumerateObjectsUsingBlock:^(AdvertEntity *advert, NSUInteger idx, BOOL *stop){
         //图片容器
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * idx, 0, SCREEN_WIDTH, imageHeight)];

@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     showTabBar = YES;
+    isIndexNavBar = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"微商";
