@@ -8,7 +8,6 @@
 
 #import "ThirdLoginViewController.h"
 #import "UserEntity.h"
-#import "HomeViewController.h"
 #import "UserHandler.h"
 #import "AppExtension.h"
 #import "ThirdLoginView.h"
@@ -196,8 +195,7 @@
                 UserEntity *apiUser = [result firstObject];
                 [self syncUser:thirdUser apiUser:apiUser];
                 
-                HomeViewController *viewController = [[HomeViewController alloc] init];
-                [self toggleViewController:viewController animated:YES];
+                [[TabbarViewController sharedInstance] gotoHome];
             }];
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
@@ -226,9 +224,6 @@
     
     //保存数据
     [[StorageUtil sharedStorage] setUser:user];
-    
-    //刷新菜单
-    [self refreshMenu];
 }
 
 @end

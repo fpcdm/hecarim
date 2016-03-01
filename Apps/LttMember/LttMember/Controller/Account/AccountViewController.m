@@ -10,12 +10,10 @@
 #import "AccountView.h"
 #import "SettingViewController.h"
 #import "ProfileViewController.h"
-#import "LoginViewController.h"
 #import "SafetyViewController.h"
 #import "AddressViewController.h"
 #import "SuggestionViewController.h"
 #import "RecommendShareViewController.h"
-#import "HomeViewController.h"
 #import "UserHandler.h"
 #import "MyWalletViewController.h"
 
@@ -59,8 +57,7 @@
 #pragma mark - Home
 - (BOOL)navigationShouldPopOnBackButton
 {
-    HomeViewController *viewController = [[HomeViewController alloc] init];
-    [self toggleViewController:viewController animated:YES];
+    [[TabbarViewController sharedInstance] gotoHome];
     
     return NO;
 }
@@ -103,21 +100,13 @@
         [[StorageUtil sharedStorage] setUser:nil];
         [[StorageUtil sharedStorage] setRemoteNotification:nil];
         
-        //刷新菜单
-        [self refreshMenu];
-        
-        LoginViewController *viewController = [[LoginViewController alloc] init];
-        [self pushViewController:viewController animated:YES];
+        [[TabbarViewController sharedInstance] gotoLogin];
     } failure:^(ErrorEntity *error){
         //接口失败也同样退出
         [[StorageUtil sharedStorage] setUser:nil];
         [[StorageUtil sharedStorage] setRemoteNotification:nil];
         
-        //刷新菜单
-        [self refreshMenu];
-        
-        LoginViewController *viewController = [[LoginViewController alloc] init];
-        [self pushViewController:viewController animated:YES];
+        [[TabbarViewController sharedInstance] gotoLogin];
     }];
 }
 

@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "UserEntity.h"
-#import "HomeViewController.h"
 #import "UserHandler.h"
 #import "AppExtension.h"
 #import "RegisterViewController.h"
@@ -65,8 +64,7 @@
 //修改返回按钮事件
 - (BOOL) navigationShouldPopOnBackButton
 {
-    HomeViewController *viewController = [[HomeViewController alloc] init];
-    [self toggleViewController:viewController animated:YES];
+    [[TabbarViewController sharedInstance] gotoHome];
     return YES;
 }
 
@@ -113,8 +111,7 @@
             UserEntity *apiUser = [result firstObject];
             [self syncUser:user apiUser:apiUser];
             
-            HomeViewController *viewController = [[HomeViewController alloc] init];
-            [self toggleViewController:viewController animated:YES];
+            [[TabbarViewController sharedInstance] gotoHome];
         }];
         
     } failure:^(ErrorEntity *error){
@@ -141,9 +138,6 @@
     
     //保存数据
     [[StorageUtil sharedStorage] setUser:user];
-    
-    //刷新菜单
-    [self refreshMenu];
 }
 
 - (void)actionLoginWechat
@@ -223,8 +217,7 @@
                 //赋值并释放资源
                 [self syncUser:user apiUser:apiUser];
                 
-                HomeViewController *viewController = [[HomeViewController alloc] init];
-                [self toggleViewController:viewController animated:YES];
+                [[TabbarViewController sharedInstance] gotoHome];
             }];
         } else {
             [self hideLoading];

@@ -15,7 +15,6 @@
 #import "RegisterSuccessView.h"
 #import "UserHandler.h"
 #import "HelperHandler.h"
-#import "HomeViewController.h"
 #import "ProtocolViewController.h"
 
 @interface RegisterViewController () <RegisterMobileViewDelegate, RegisterExistViewDelegate, RegisterCodeViewDelegate, RegisterPasswordViewDelegate,RegisterRecommendViewDelegate, RegisterSuccessViewDelegate,UIActionSheetDelegate>
@@ -302,11 +301,7 @@
             //保存数据
             [[StorageUtil sharedStorage] setUser:user];
             
-            //刷新菜单
-            [self refreshMenu];
-            
             [self pushView:[self recommendView] animated:YES completion:nil];
-            
         }];
     } failure:^(ErrorEntity *error){
         [self showError:error.message];
@@ -316,8 +311,7 @@
 //返回首页
 - (void)actionHome
 {
-    HomeViewController *viewController = [[HomeViewController alloc] init];
-    [self toggleViewController:viewController animated:YES];
+    [[TabbarViewController sharedInstance] gotoHome];
 }
 
 - (void)actionProtocol

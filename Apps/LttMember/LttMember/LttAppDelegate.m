@@ -7,11 +7,9 @@
 //
 
 #import "LttAppDelegate.h"
-#import "HomeViewController.h"
-#import "AppUIUtil.h"
+#import "TabbarViewController.h"
 #import "LoginViewController.h"
-#import "CaseListViewController.h"
-#import "AccountViewController.h"
+#import "AppUIUtil.h"
 #import "DeviceEntity.h"
 #import "UserHandler.h"
 #import "UMSocial.h"
@@ -30,8 +28,6 @@
 
 @implementation LttAppDelegate
 {
-    UITabBarController *tabBarController;
-    
     TimerUtil *heartbeatTimer;
 }
 
@@ -87,42 +83,9 @@
 }
 
 - (void)initViewController {
-    //修正hidesBottomBarWhenPushed闪烁问题
-    [UINavigationController aspect_hookSelector:@selector(pushViewController:animated:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, UIViewController *viewController, BOOL animated){
-        //自动隐藏tabBar
-        viewController.hidesBottomBarWhenPushed = YES;
-    } error:nil];
-    [UINavigationController aspect_hookSelector:@selector(setViewControllers:animated:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, NSArray *viewControllers, BOOL animated){
-        //自动隐藏tabBar
-        UIViewController *viewController = [viewControllers lastObject];
-        viewController.hidesBottomBarWhenPushed = YES;
-    } error:nil];
-    
-    HomeViewController *homeViewController = [[HomeViewController alloc] init];
-    UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-    homeNavigationController.title = @"服务";
-    homeNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbarHome"];
-    homeNavigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbarHomeSelected"];
-    
-    CaseListViewController *caseViewController = [[CaseListViewController alloc] init];
-    UINavigationController *caseNavigationController = [[UINavigationController alloc] initWithRootViewController:caseViewController];
-    caseNavigationController.title = @"订单";
-    caseNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbarOrder"];
-    caseNavigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbarOrderSelected"];
-    
-    AccountViewController *accountViewController = [[AccountViewController alloc] init];
-    UINavigationController *accountNavigationController = [[UINavigationController alloc] initWithRootViewController:accountViewController];
-    accountNavigationController.title = @"我";
-    accountNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbarAccount"];
-    accountNavigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbarAccountSelected"];
-    
-    tabBarController = [[UITabBarController alloc] init];
-    tabBarController.tabBar.tintColor = COLOR_MAIN_HIGHLIGHT;
-    tabBarController.tabBar.selectedImageTintColor = COLOR_MAIN_HIGHLIGHT;
-    tabBarController.delegate = self;
-    tabBarController.viewControllers = [NSArray arrayWithObjects:homeNavigationController, caseNavigationController, accountNavigationController, nil];
-    
-    self.window.rootViewController = tabBarController;
+    //全局TabBarController
+    TabbarViewController *tabbarViewController = [TabbarViewController sharedInstance];
+    self.window.rootViewController = tabbarViewController;
     self.window.backgroundColor = COLOR_MAIN_BG;
     [self.window makeKeyAndVisible];
     
@@ -135,34 +98,15 @@
             [[StorageUtil sharedStorage] setUser:nil];
             [[StorageUtil sharedStorage] setRemoteNotification:nil];
             
-            LoginViewController *loginViewController = [[LoginViewController alloc] init];
-            loginViewController.tokenExpired = YES;
-            
-            UINavigationController *navigationController = (UINavigationController *) tabBarController.selectedViewController;
-            [navigationController pushViewController:loginViewController animated:YES];
+            //跳转登陆并提示token过期
+            LoginViewController *viewController = [[LoginViewController alloc] init];
+            viewController.tokenExpired = YES;
+            UINavigationController *navigationController = [TabbarViewController sharedInstance].selectedNavigationController;
+            [navigationController pushViewController:viewController animated:YES];
             return NO;
         }
         return YES;
     };
-}
-
-- (BOOL)tabBarController:(UITabBarController *)_tabBarController shouldSelectViewController:(UIViewController *)viewController
-{
-    //用户是否登陆
-    UserEntity *user = [[StorageUtil sharedStorage] getUser];
-    if (user) {
-        return YES;
-    } else {
-        LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        UINavigationController *navigationController = (UINavigationController *) tabBarController.selectedViewController;
-        [navigationController pushViewController:loginViewController animated:YES];
-        return NO;
-    }
-}
-
-- (void)tabBarController:(UITabBarController *)_tabBarController didSelectViewController:(UIViewController *)viewController
-{
-    tabBarController.tabBar.hidden = NO;
 }
 
 - (void)checkUpdate
@@ -170,7 +114,7 @@
     [[Harpy sharedInstance] setAppID:LTT_APPSTORE_ID];
     [[Harpy sharedInstance] setPresentingViewController:self.window.rootViewController];
     
-    [[Harpy sharedInstance] checkVersionWeekly];
+    [[Harpy sharedInstance] checkVersionDaily];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -309,7 +253,7 @@
     [NotificationUtil receiveRemoteNotification:userInfo];
     
     // 及时检查通知
-    UINavigationController *navigationController = (UINavigationController *) tabBarController.selectedViewController;
+    UINavigationController *navigationController = [TabbarViewController sharedInstance].selectedNavigationController;
     UIViewController *viewController = [navigationController.viewControllers lastObject];
     if (viewController && [viewController isViewLoaded] &&
         [viewController isKindOfClass:[AppViewController class]]) {
@@ -456,7 +400,7 @@
     }
     
     //判断是否在充值页面
-    UINavigationController *navigationController = (UINavigationController *) tabBarController.selectedViewController;
+    UINavigationController *navigationController = [TabbarViewController sharedInstance].selectedNavigationController;
     UIViewController *viewController = [navigationController.viewControllers count] > 0 ? navigationController.viewControllers.lastObject : nil;
     if (viewController && [viewController isKindOfClass:[RechargeViewController class]]) {
         if (status == LttPayStatusSuccess) {

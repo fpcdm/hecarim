@@ -18,7 +18,6 @@
 #import "CaseSuccessView.h"
 #import "CaseDetailView.h"
 #import "CaseHandler.h"
-#import "HomeViewController.h"
 #import "LttAppDelegate.h"
 #import "ZCTradeView.h"
 #import "UserHandler.h"
@@ -571,8 +570,7 @@
 
 - (void)actionHome
 {
-    HomeViewController *viewController = [[HomeViewController alloc] init];
-    [self toggleViewController:viewController animated:YES];
+    [[TabbarViewController sharedInstance] gotoHome];
 }
 
 @end

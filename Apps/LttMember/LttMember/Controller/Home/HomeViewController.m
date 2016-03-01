@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "HomeView.h"
 #import "CaseFormViewController.h"
-#import "LoginViewController.h"
 #import "CaseEntity.h"
 #import "CaseHandler.h"
 #import "HelperHandler.h"
@@ -463,8 +462,7 @@ static NSArray *slideAdverts = nil;
 #pragma mark - Action
 - (void)actionLogin
 {
-    LoginViewController *loginViewController = [[LoginViewController alloc] init];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+    [[TabbarViewController sharedInstance] gotoLogin];
 }
 
 - (void)actionMenu

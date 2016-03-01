@@ -55,7 +55,7 @@
 - (void) loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //初始化数据
-    addressList = [[NSMutableArray alloc] initWithObjects:nil];
+    addressList = [NSMutableArray array];
     
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler queryUserAddresses:nil success:^(NSArray *result){

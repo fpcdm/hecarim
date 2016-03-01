@@ -12,7 +12,6 @@
 #import "AppUserViewController.h"
 #import "LttAppDelegate.h"
 #import "CaseViewController.h"
-#import "CaseListViewController.h"
 #import "AppView.h"
 
 @interface AppViewController ()
@@ -148,19 +147,6 @@
     }
 }
 
-- (void) toggleViewController: (AppViewController *)viewController animated: (BOOL)animated
-{
-    //需要登陆
-    if ([viewController isKindOfClass:[AppUserViewController class]] &&
-        ![viewController isMemberOfClass:[LoginViewController class]] &&
-        ![self isLogin]) {
-        LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        [self.navigationController setViewControllers:[NSArray arrayWithObject:loginViewController] animated:YES];
-    } else {
-        [self.navigationController setViewControllers:[NSArray arrayWithObject:viewController] animated:YES];
-    }
-}
-
 - (void)replaceViewController:(AppViewController *)viewController animate:(BOOL)animated
 {
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
@@ -181,11 +167,6 @@
     }
     
     [self.navigationController setViewControllers:viewControllers animated:animated];
-}
-
-- (void) refreshMenu
-{
-    //todo
 }
 
 - (void) checkRemoteNotification
@@ -233,12 +214,11 @@
                 
                 CaseViewController *viewController = [[CaseViewController alloc] init];
                 viewController.caseId = caseId;
-                [self toggleViewController:viewController animated:YES];
+                [self pushViewController:viewController animated:YES];
             }
         } else if ([@"CASE_MERCHANT_CANCEL" isEqualToString:type]) {
             //跳转服务单
-            CaseListViewController *viewController = [[CaseListViewController alloc] init];
-            [self toggleViewController:viewController animated:YES];
+            [[TabbarViewController sharedInstance] gotoOrder];
         }
         
         //隐藏弹出框

@@ -12,7 +12,6 @@
 #import "HelperHandler.h"
 #import "ResetPasswordView.h"
 #import "ResetPasswordSuccess.h"
-#import "LoginViewController.h"
 #import "UserHandler.h"
 
 @interface ForgetPasswordViewController ()<ForgetPasswordViewDelegate,ForgetPasswordCodeViewDelegate,ResetPasswordSuccessDelegate,ResetPasswordViewDelegate>
@@ -64,8 +63,7 @@
 //跳转到登录界面
 - (void)actionLogin
 {
-    LoginViewController *loginView = [[LoginViewController alloc] init];
-    [self pushViewController:loginView animated:YES];
+    [[TabbarViewController sharedInstance] gotoLogin];
 }
 
 - (void) actionCheckMobile:(NSString *)inputMobile
@@ -174,8 +172,7 @@
             [forgetView display];
         }];
     }else{
-        LoginViewController *loginView = [[LoginViewController alloc] init];
-        [self pushViewController:loginView animated:YES];
+        [[TabbarViewController sharedInstance] gotoLogin];
     }
     return NO;
 }

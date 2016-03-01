@@ -8,8 +8,6 @@
 
 #import "AppUIUtil.h"
 #import "Config.h"
-#import "AppUserViewController.h"
-#import "LoginViewController.h"
 #import "AppExtension.h"
 
 @implementation AppUIUtil

@@ -133,9 +133,6 @@
             [profileView assign:@"user" value:user];
             [profileView display];
             
-            //刷新菜单
-            [self refreshMenu];
-            
             //回调上级
             if (self.callbackBlock) {
                 self.callbackBlock(user);
@@ -173,9 +170,6 @@
         
         [profileView assign:@"user" value:user];
         [profileView display];
-        
-        //刷新菜单
-        [self refreshMenu];
         
         //回调上级
         if (self.callbackBlock) {

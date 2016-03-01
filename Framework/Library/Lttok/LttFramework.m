@@ -69,7 +69,7 @@ static StorageUtil *sharedStorage = nil;
 //整理字典数据，去掉NSNull和nil，使其可以保存至NSUserDefaults
 - (NSDictionary *) prepareDictionary: (NSDictionary *) dictionary
 {
-    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
     
     if (dictionary) {
         for (id key in dictionary) {
@@ -81,6 +81,16 @@ static StorageUtil *sharedStorage = nil;
     }
     
     return [NSDictionary dictionaryWithDictionary:mutableDictionary];
+}
+
+- (BOOL) isLogin
+{
+    UserEntity *user = [self getUser];
+    if (user) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void) setUser: (UserEntity *) user
