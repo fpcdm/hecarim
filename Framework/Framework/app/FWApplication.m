@@ -52,22 +52,14 @@
     return self;
 }
 
-//只读属性
-@def_prop_dynamic(id<UIApplicationDelegate>, delegate)
-@def_prop_dynamic(UIWindow *, window)
-
 //导航根属性：最内层
+@def_prop_dynamic(UIWindow *, window)
 @def_prop_dynamic(UIViewController *, rootViewController)
 
 //导航活动属性：最外层
 @def_prop_dynamic(UITabBarController *, tabBarController)
 @def_prop_dynamic(UINavigationController *, navigationController)
 @def_prop_dynamic(UIViewController *, viewController)
-
-- (id<UIApplicationDelegate>)delegate
-{
-    return [UIApplication sharedApplication].delegate;
-}
 
 - (UIWindow *)window
 {
