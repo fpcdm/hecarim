@@ -10,4 +10,6 @@
 
 @interface BusinessViewController : AppViewController
 
+@property (retain, nonatomic) NSNumber *businessId;
+
 @end

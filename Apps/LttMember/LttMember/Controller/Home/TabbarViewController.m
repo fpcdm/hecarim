@@ -8,7 +8,7 @@
 
 #import "TabbarViewController.h"
 #import "HomeViewController.h"
-#import "BusinessViewController.h"
+#import "BusinessListViewController.h"
 #import "CaseListViewController.h"
 #import "AccountViewController.h"
 #import "LoginViewController.h"
@@ -44,7 +44,7 @@
         homeNavigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbarHomeSelected"];
         
         //微商
-        BusinessViewController *businessViewController = [[BusinessViewController alloc] init];
+        BusinessListViewController *businessViewController = [[BusinessListViewController alloc] init];
         UINavigationController *businessNavigationController = [[UINavigationController alloc] initWithRootViewController:businessViewController];
         businessNavigationController.title = @"微商";
         businessNavigationController.tabBarItem.image = [UIImage imageNamed:@"tabbarMerchant"];

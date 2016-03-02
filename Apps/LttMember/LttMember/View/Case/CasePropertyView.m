@@ -31,13 +31,14 @@
     NSMutableArray *section = [NSMutableArray array];
     
     //计算宽度
+    CGFloat cellHeight = 75;
     CGFloat cellWidth = (SCREEN_WIDTH - 50) / 4;
     
     //循环属性
     NSArray *properties = [self fetch:@"properties"];
     if (properties) {
         for (PropertyEntity *property in properties) {
-            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @(cellWidth), @"data": property}];
+            [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@(cellHeight), @"width": @(cellWidth), @"data": property}];
         }
     }
     
@@ -46,7 +47,7 @@
     cancelProperty.id = @-1;
     cancelProperty.name = @"取消";
     cancelProperty.icon = @"homeItemCancel";
-    [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@85, @"width": @(cellWidth), @"data": cancelProperty}];
+    [section addObject:@{@"id" : @"address", @"type" : @"custom", @"view": @"cellProperty:cellData:", @"action": @"actionChoose:", @"height":@(cellHeight), @"width": @(cellWidth), @"data": cancelProperty}];
     
     self.collectionData = [[NSMutableArray alloc] initWithObjects:section,nil];
     [self.collectionView reloadData];
@@ -78,8 +79,8 @@
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(5);
         make.centerX.equalTo(superview.mas_centerX);
-        make.width.equalTo(@50);
-        make.height.equalTo(@50);
+        make.width.equalTo(@45);
+        make.height.equalTo(@45);
     }];
     
     //文字显示
@@ -92,7 +93,7 @@
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(imageView.mas_bottom);
         make.centerX.equalTo(superview.mas_centerX);
-        make.height.equalTo(@25);
+        make.height.equalTo(@20);
     }];
     
     return cell;

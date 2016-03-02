@@ -7,16 +7,27 @@
 //
 
 #import "BusinessViewController.h"
+#import "BusinessView.h"
+#import "BusinessEntity.h"
+#import "BusinessHandler.h"
 
-@interface BusinessViewController ()
+@interface BusinessViewController () <BusinessViewDelegate>
 
 @end
 
 @implementation BusinessViewController
+{
+    BusinessView *businessView;
+}
+
+- (void)loadView
+{
+    businessView = [[BusinessView alloc] init];
+    businessView.delegate = self;
+    self.view = businessView;
+}
 
 - (void)viewDidLoad {
-    showTabBar = YES;
-    isIndexNavBar = YES;
     [super viewDidLoad];
     
     self.navigationItem.title = @"微商";
