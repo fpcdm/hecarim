@@ -20,11 +20,12 @@ Framework
 	Framework.xcodeproj: 框架静态库Xcode项目文件
 	Framework: 框架源代码
 		Framework.h: 框架入口头文件
+		Framework.pch: 框架预加载头文件
+		app: 框架应用及MVC基类
     	config: 框架配置
-    	core: 框架核心，MVC基类
+    	core: 框架核心
     	extension: OC分类扩展
     	library: 框架常用类库
-    	util: OC组件工具包
     	vendor: 第三方OC组件
 
 依赖

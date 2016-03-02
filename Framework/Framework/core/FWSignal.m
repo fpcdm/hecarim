@@ -283,7 +283,7 @@ TEST(signal)
     EXPECTED(10 == callbackCount)
 }
 
-handleSignal3(FWTestCase_core_FWSignal_Test, CLICK, signal)
+handleSignal(FWTestCase_core_FWSignal_Test, CLICK)
 {
     EXPECTED([signal.name isEqualToString:obj.CLICK]);
     

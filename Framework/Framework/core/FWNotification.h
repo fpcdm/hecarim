@@ -10,34 +10,30 @@
 
 #pragma mark -
 //@notification
-#undef notification
+#undef  notification
 #define notification( __name ) \
     static_property( __name )
 
-#undef def_notification
+#undef  def_notification
 #define def_notification( __name ) \
     def_static_property3( __name, @"notification", NSStringFromClass([self class]) )
 
+#undef  makeNotification
+#define makeNotification( ... ) \
+    macro_string(macro_make(notification, __VA_ARGS__))
+
 #undef	handleNotification
-#define handleNotification( __notification ) \
-    - (void)handleNotification:(NSNotification *)__notification
+#define handleNotification( ... ) \
+    - (void) macro_method(handleNotification, __VA_ARGS__):(NSNotification *)notification
 
-#undef	handleNotification2
-#define handleNotification2( __filter, __notification ) \
-    - (void)handleNotification____##__filter:(NSNotification *)__notification
-
-#undef	handleNotification3
-#define handleNotification3( __class, __name, __notification ) \
-    - (void)handleNotification____##__class##____##__name:(NSNotification *)__notification
-
-typedef void (^FWNotificationBlock)(NSNotification *notification);
+typedef NSObject* (^FWNotificationBlock)(NSString *name, id block);
 
 #pragma mark -
 @interface NSObject (FWNotificationResponder)
 
-- (void)handleNotification:(NSNotification *)notification;
+@prop_readonly(FWNotificationBlock, onNotification)
 
-- (void)onNotification:(NSString *)name block:(FWNotificationBlock)block;
+- (void)handleNotification:(NSNotification *)notification;
 
 - (void)observeNotification:(NSString *)name;
 - (void)observeAllNotifications;
@@ -49,9 +45,6 @@ typedef void (^FWNotificationBlock)(NSNotification *notification);
 
 #pragma mark -
 @interface NSObject (FWNotificationSender)
-
-@static_string(NOTIFICATION)
-@static_string(NOTIFICATION_TYPE)
 
 + (BOOL)postNotification:(NSString *)name;
 - (BOOL)postNotification:(NSString *)name;
@@ -65,7 +58,5 @@ typedef void (^FWNotificationBlock)(NSNotification *notification);
 @interface NSNotification (FWNotification)
 
 - (BOOL)isName:(NSString *)name;
-
-- (BOOL)isType:(NSString *)type;
 
 @end

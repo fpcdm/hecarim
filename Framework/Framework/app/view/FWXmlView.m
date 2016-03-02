@@ -276,7 +276,7 @@ static NSString *globalPatchPath = nil;
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 //文件改变自动重新渲染
-handleNotification3(FWDebug, SourceFileChanged, notification)
+handleNotification(FWDebug, SourceFileChanged)
 {
     //本地文件名匹配
     NSString *filePath = notification.object;
@@ -289,7 +289,7 @@ handleNotification3(FWDebug, SourceFileChanged, notification)
 
 #ifdef APP_DEBUG
 //Url内容改变自动重新渲染
-handleNotification3(FWDebug, UrlResponseChanged, notification)
+handleNotification(FWDebug, UrlResponseChanged)
 {
     //远程URL和文件名匹配
     NSString *url = notification.object;

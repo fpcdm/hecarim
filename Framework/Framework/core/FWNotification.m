@@ -12,20 +12,33 @@
 #pragma mark -
 @implementation NSObject (FWNotificationResponder)
 
+@def_prop_dynamic(FWNotificationBlock, onNotification)
+
+- (FWNotificationBlock)onNotification
+{
+    @weakify(self);
+    
+    FWNotificationBlock onBlock = ^ NSObject* (NSString *name, id block)
+    {
+        @strongify(self);
+        
+        if (block) {
+            [self.blockHandler setBlock:name block:block];
+            [self observeNotification:name];
+        } else {
+            [self.blockHandler removeBlock:name];
+            [self unobserveNotification:name];
+        }
+        
+        return self;
+    };
+    
+    return [onBlock copy];
+}
+
 - (void)handleNotification:(NSNotification *)notification
 {
     
-}
-
-- (void)onNotification:(NSString *)name block:(FWNotificationBlock)block
-{
-    if (block) {
-        [self.blockHandler setBlock:name block:block];
-        [self observeNotification:name];
-    } else {
-        [self.blockHandler removeBlock:name];
-        [self unobserveNotification:name];
-    }
 }
 
 - (void)routeNotification:(NSNotification *)notification
@@ -35,32 +48,45 @@
         return;
     }
     
+    NSString *selectorName;
+    SEL selector;
+    
     NSArray *array = [notification.name componentsSeparatedByString:@"."];
     if (array && array.count > 1) {
         //NSString *prefix = (NSString *)[array objectAtIndex:0];
         NSString *clazz = (NSString *)[array objectAtIndex:1];
         NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
         
-        NSString *selectorName;
-        SEL selector;
-        
         if (filter && filter.length > 0) {
             selectorName = [NSString stringWithFormat:@"handleNotification____%@____%@:", clazz, filter];
             selector = NSSelectorFromString(selectorName);
             
-            //2. handleNotification_Class_name
+            //2. handleNotification(class, notification)
             if ([self respondsToSelector:selector]) {
                 IGNORED_SELECTOR
                 [self performSelector:selector withObject:notification];
                 IGNORED_END
                 return;
             }
+            
+            if ([[self.class description] isEqualToString:clazz]) {
+                selectorName = [NSString stringWithFormat:@"handleNotification____%@:", filter];
+                selector = NSSelectorFromString(selectorName);
+                
+                //3. handleNotification(notification)
+                if ([self respondsToSelector:selector]) {
+                    IGNORED_SELECTOR
+                    [self performSelector:selector withObject:notification];
+                    IGNORED_END
+                    return;
+                }
+            }
         }
         
         selectorName = [NSString stringWithFormat:@"handleNotification____%@:", clazz];
         selector = NSSelectorFromString(selectorName);
         
-        //3. handleNotification_Class
+        //4. handleNotification(class)
         if ([self respondsToSelector:selector]) {
             IGNORED_SELECTOR
             [self performSelector:selector withObject:notification];
@@ -69,7 +95,38 @@
         }
     }
     
-    //4. handleNotification
+    //5. handleNotification(name)
+    if ([notification.name hasPrefix:@"notification."]) {
+        selectorName = [notification.name stringByReplacingOccurrencesOfString:@"notification." withString:@"handleNotification____"];
+    } else {
+        selectorName = [NSString stringWithFormat:@"handleNotification____%@:", notification.name];
+    }
+    selectorName = [selectorName stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
+    selectorName = [selectorName stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+    selectorName = [selectorName stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    if (![selectorName hasSuffix:@":"]) {
+        selectorName = [selectorName stringByAppendingString:@":"];
+    }
+    
+    selector = NSSelectorFromString(selectorName);
+    if ([self respondsToSelector:selector]) {
+        IGNORED_SELECTOR
+        [self performSelector:selector withObject:notification];
+        IGNORED_END
+        return;
+    }
+
+    //6. handleNotification()
+    selectorName = @"handleNotification____:";
+    selector = NSSelectorFromString(selectorName);
+    if ([self respondsToSelector:selector]) {
+        IGNORED_SELECTOR
+        [self performSelector:selector withObject:notification];
+        IGNORED_END
+        return;
+    }
+    
+    //7. handleNotification
     [self handleNotification:notification];
 }
 
@@ -79,19 +136,11 @@
     if (nil == methods || 0 == methods.count) return;
     
     for (NSString *method in methods) {
-        NSString *name = [method stringByReplacingOccurrencesOfString:@"handleNotification____" withString:@"notification."];
-        //是否包含分隔符号
-        NSRange range = [name rangeOfString:@"____"];
-        if (range.location != NSNotFound) {
-            //替换为格式：notification.Class.name
-            name = [name stringByReplacingCharactersInRange:range withString:@"."];
-            name = [name stringByReplacingOccurrencesOfString:@":" withString:@""];
-        } else {
-            //替换为默认格式：notification.Class.
-            name = [name stringByReplacingOccurrencesOfString:@":" withString:@"."];
+        NSString *name = [method stringByReplacingOccurrencesOfString:@"handleNotification" withString:@"notification"];
+        name = [name stringByReplacingOccurrencesOfString:@"____" withString:@"."];
+        if ([name hasSuffix:@":"]) {
+            name = [name substringToIndex:(name.length - 1)];
         }
-        if (nil == name) continue;
-        
         [self observeNotification:name];
     }
 }
@@ -125,12 +174,6 @@
 #pragma mark -
 @implementation NSObject (FWNotificationSender)
 
-//notification.Class.name
-@def_static_string(NOTIFICATION, [[self class] NOTIFICATION_TYPE])
-
-//notification.Class.
-@def_static_string(NOTIFICATION_TYPE, [[[NSString stringWithUTF8String:"notification."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
-
 + (BOOL)postNotification:(NSString *)name
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil];
@@ -161,11 +204,6 @@
 - (BOOL)isName:(NSString *)name
 {
     return [self.name isEqualToString:name];
-}
-
-- (BOOL)isType:(NSString *)type
-{
-    return [self.name hasPrefix:type];
 }
 
 @end
@@ -216,7 +254,7 @@ TEST(notification)
     EXPECTED(20 == value)
 }
 
-handleNotification3(FWTestCase_core_FWNotification_Test, CHANGED, notification)
+handleNotification(FWTestCase_core_FWNotification_Test, CHANGED)
 {
     EXPECTED([notification.name isEqualToString:[FWTestCase_core_FWNotification_Test CHANGED]])
     
@@ -225,10 +263,10 @@ handleNotification3(FWTestCase_core_FWNotification_Test, CHANGED, notification)
 
 TEST(onNotification)
 {
-    [self onNotification:obj.CHANGED block:^(NSNotification *notification) {
+    self.onNotification(obj.CHANGED, ^(NSNotification *notification){
         EXPECTED([notification.name isEqualToString:obj.CHANGED])
         value += 2;
-    }];
+    });
     
     TIMES(5)
     {
