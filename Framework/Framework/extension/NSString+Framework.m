@@ -95,6 +95,20 @@
     return [self isFormatRegex:@"^\\d{4}\\-\\d{2}\\-\\d{2}\\s\\d{2}\\:\\d{2}\\:\\d{2}$"];
 }
 
+- (CGSize) boundingSize:(CGSize)size withFont:(UIFont *)font
+{
+    //参数默认值
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        size = CGSizeMake(SCREEN_WIDTH, MAXFLOAT);
+    }
+    if (font == nil) {
+        font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    }
+    
+    CGRect rect = [self boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil];
+    return rect.size;
+}
+
 @end
 
 //UnitTest

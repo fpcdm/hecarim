@@ -611,6 +611,8 @@
 		2FD99EE81C48CE700065293E /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99D461C48CE6F0065293E /* TSMessage.m */; };
 		2FD99EE91C48CE700065293E /* TSMessageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FD99D471C48CE6F0065293E /* TSMessageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD99EEA1C48CE700065293E /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD99D481C48CE6F0065293E /* TSMessageView.m */; };
+		2FE5E3561C8713AF00DEDC1F /* FWScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE5E3541C8713AF00DEDC1F /* FWScreen.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FE5E3571C8713AF00DEDC1F /* FWScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5E3551C8713AF00DEDC1F /* FWScreen.m */; };
 		2FE6A0C11C72211600857CE1 /* FWHelperAspect.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE6A0BF1C72211600857CE1 /* FWHelperAspect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FE6A0C21C72211600857CE1 /* FWHelperAspect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE6A0C01C72211600857CE1 /* FWHelperAspect.m */; };
 		2FE6A0C51C72229900857CE1 /* FWHelperDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE6A0C31C72229800857CE1 /* FWHelperDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1243,6 +1245,8 @@
 		2FD99D461C48CE6F0065293E /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
 		2FD99D471C48CE6F0065293E /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		2FD99D481C48CE6F0065293E /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		2FE5E3541C8713AF00DEDC1F /* FWScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWScreen.h; sourceTree = "<group>"; };
+		2FE5E3551C8713AF00DEDC1F /* FWScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWScreen.m; sourceTree = "<group>"; };
 		2FE6A0BF1C72211600857CE1 /* FWHelperAspect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperAspect.h; sourceTree = "<group>"; };
 		2FE6A0C01C72211600857CE1 /* FWHelperAspect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperAspect.m; sourceTree = "<group>"; };
 		2FE6A0C31C72229800857CE1 /* FWHelperDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperDevice.h; sourceTree = "<group>"; };
@@ -1419,6 +1423,8 @@
 				2F1D2CA31C867816008F3B50 /* controller */,
 				2F1D2CA81C867816008F3B50 /* FWApplication.h */,
 				2F1D2CA91C867816008F3B50 /* FWApplication.m */,
+				2FE5E3541C8713AF00DEDC1F /* FWScreen.h */,
+				2FE5E3551C8713AF00DEDC1F /* FWScreen.m */,
 				2F1D2CAA1C867816008F3B50 /* FWLocale.h */,
 				2F1D2CAB1C867816008F3B50 /* FWLocale.m */,
 				2F1D2CAC1C867816008F3B50 /* FWTheme.h */,
@@ -2361,6 +2367,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE5E3561C8713AF00DEDC1F /* FWScreen.h in Headers */,
 				2F1D2CF81C867817008F3B50 /* FWXmlView.h in Headers */,
 				2F1D2CE01C867816008F3B50 /* FWLocale.h in Headers */,
 				2F1D2CE21C867816008F3B50 /* FWTheme.h in Headers */,
@@ -2858,6 +2865,7 @@
 				2FD99D6D1C48CE6F0065293E /* DDContextFilterLogFormatter.m in Sources */,
 				2FD99DBD1C48CE6F0065293E /* FLEXGlobalsTableViewController.m in Sources */,
 				2F4AF9C71C7B2D400061A566 /* FWHelperSystem.m in Sources */,
+				2FE5E3571C8713AF00DEDC1F /* FWScreen.m in Sources */,
 				2F1D2D051C867817008F3B50 /* FWRegistry.m in Sources */,
 				2F1C776A1C5704AF009080A3 /* FWPluginCacheDefault.m in Sources */,
 				2FD99DCD1C48CE6F0065293E /* FLEXNetworkHistoryTableViewController.m in Sources */,

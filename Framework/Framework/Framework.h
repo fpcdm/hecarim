@@ -33,6 +33,7 @@
 #import "FWLog.h"
 #import "FWDebug.h"
 #import "FWTest.h"
+#import "FWScreen.h"
 #import "FWLocale.h"
 #import "FWRegistry.h"
 #import "FWStorage.h"

@@ -87,4 +87,9 @@
  */
 - (BOOL)isFormatDate;
 
+/**
+ * 计算边界尺寸
+ */
+- (CGSize)boundingSize:(CGSize)size withFont:(UIFont *)font;
+
 @end
