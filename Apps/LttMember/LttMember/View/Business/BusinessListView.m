@@ -28,6 +28,14 @@
 }
 
 #pragma mark - RenderData
+- (CGFloat) adjustTextHeight:(NSString *)content
+{
+    if (!content || content.length < 1) return 0;
+    
+    CGSize size = [content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: FONT_MAIN} context:nil].size;
+    return size.height;
+}
+
 - (void)display
 {
     //显示数据
@@ -36,8 +44,10 @@
     if (businessList != nil) {
         for (BusinessEntity *business in businessList) {
             //计算高度
-            NSNumber *height = @50;
-            [tableData addObject:@{@"type" : @"custom", @"action": @"actionDetail:", @"height": height, @"data": business}];
+            CGFloat textHeight = [self adjustTextHeight:business.content];
+            CGFloat cellHeight = 50 + textHeight;
+            
+            [tableData addObject:@{@"type" : @"custom", @"action": @"actionDetail:", @"height": @(cellHeight), @"data": business}];
         }
     }
     self.tableData = [[NSMutableArray alloc] initWithObjects:tableData, nil];
@@ -49,7 +59,34 @@
     NSDictionary *cellData = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
     BusinessEntity *business = [cellData objectForKey:@"data"];
     
+    //公司名称
+    UILabel *merchantLabel = [[UILabel alloc] init];
+    merchantLabel.font = FONT_MAIN;
+    merchantLabel.textColor = [UIColor colorWithHex:@"#0099CC"];
+    merchantLabel.text = business.merchantName;
+    [cell addSubview:merchantLabel];
+    
     UIView *superview = cell;
+    [merchantLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview.mas_top).offset(10);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.height.equalTo(@16);
+    }];
+    
+    UILabel *contentLabel = [[UILabel alloc] init];
+    contentLabel.font = FONT_MAIN;
+    contentLabel.textColor = COLOR_MAIN_BLACK;
+    contentLabel.numberOfLines = 0;
+    contentLabel.text = business.content;
+    [cell addSubview:contentLabel];
+    
+    [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(merchantLabel.mas_bottom).offset(10);
+        make.left.equalTo(superview.mas_left).offset(10);
+        make.right.equalTo(superview.mas_right).offset(-10);
+        make.bottom.equalTo(superview.mas_bottom).offset(-10);
+    }];
     
     return cell;
 }
