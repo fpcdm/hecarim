@@ -29,7 +29,7 @@
 #import "UINavigationController+Framework.h"
 
 //core
-#import "FWApplication.h"
+#import "FWContext.h"
 #import "FWLog.h"
 #import "FWDebug.h"
 #import "FWTest.h"
@@ -45,6 +45,9 @@
 #import "FWCache.h"
 #import "FWTheme.h"
 #import "FWEntity.h"
+#import "FWPresenter.h"
+#import "FWRouter.h"
+#import "FWService.h"
 
 #import "FWRequest.h"
 #import "FWResponse.h"

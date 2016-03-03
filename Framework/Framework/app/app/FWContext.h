@@ -1,5 +1,5 @@
 //
-//  FWApplication.h
+//  FWContext.h
 //  Framework
 //
 //  Created by wuyong on 16/3/1.
@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-TODO("FWApp?")
-
-@interface FWApplication : NSObject
+@interface FWContext : NSObject
 
 //单例对象
-@singleton(FWApplication)
+@singleton(FWContext)
 
 //导航根属性：最内层
 @prop_readonly(UIWindow *, window)

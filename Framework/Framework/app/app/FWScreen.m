@@ -7,7 +7,7 @@
 //
 
 #import "FWScreen.h"
-#import "FWApplication.h"
+#import "FWContext.h"
 
 @implementation FWScreen
 {
@@ -90,7 +90,7 @@
     CGFloat availHeight = _bounds.size.height;
     
     //有导航栏时: -(状态栏+导航栏); 无导航栏时: 不扣除状态栏
-    UIViewController *viewController = [FWApplication sharedInstance].viewController;
+    UIViewController *viewController = [FWContext sharedInstance].viewController;
     if (viewController.navigationController && viewController.navigationController.navigationBar.hidden != YES) {
         availHeight -= (self.statusBarHeight + viewController.navigationController.navigationBar.frame.size.height);
     }
@@ -124,7 +124,7 @@
 - (CGFloat)navigationBarHeight
 {
     if (_navigationBarHeight <= 0) {
-        UINavigationController *navigationController = [FWApplication sharedInstance].navigationController;
+        UINavigationController *navigationController = [FWContext sharedInstance].navigationController;
         if (navigationController) {
             _navigationBarHeight = navigationController.navigationBar.frame.size.height;
         }
@@ -135,7 +135,7 @@
 - (CGFloat)tabBarHeight
 {
     if (_tabBarHeight <= 0) {
-        UITabBarController *tabBarContoller = [FWApplication sharedInstance].tabBarController;
+        UITabBarController *tabBarContoller = [FWContext sharedInstance].tabBarController;
         if (tabBarContoller) {
             _tabBarHeight = tabBarContoller.tabBar.frame.size.height;
         }
@@ -165,13 +165,13 @@
 
 - (BOOL)navigationBarHidden
 {
-    UINavigationController *navigationController = [FWApplication sharedInstance].navigationController;
+    UINavigationController *navigationController = [FWContext sharedInstance].navigationController;
     return navigationController ? navigationController.navigationBar.hidden : YES;
 }
 
 - (BOOL)tabBarHidden
 {
-    UITabBarController *tabBarContoller = [FWApplication sharedInstance].tabBarController;
+    UITabBarController *tabBarContoller = [FWContext sharedInstance].tabBarController;
     return tabBarContoller ? tabBarContoller.tabBar.hidden : YES;
 }
 
