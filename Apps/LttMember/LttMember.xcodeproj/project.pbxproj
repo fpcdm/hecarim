@@ -170,6 +170,7 @@
 		2F68EEAE1C0D49E500FDC346 /* RecommendShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEAD1C0D49E500FDC346 /* RecommendShareView.m */; };
 		2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */; };
 		2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */; };
+		2F6E85EF1C87EDB1004FADB8 /* ImageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E85EE1C87EDB1004FADB8 /* ImageEntity.m */; };
 		2F7057FD1B4665F3000DBEB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F7057FC1B4665F3000DBEB8 /* Images.xcassets */; };
 		2F75B5701C27AD410091FEAE /* PaymentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F75B56F1C27AD410091FEAE /* PaymentEntity.m */; };
 		2F7A56E01B09C11700D12500 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7A56DF1B09C11700D12500 /* Foundation.framework */; };
@@ -554,6 +555,8 @@
 		2F68EEB01C0D4C5F00FDC346 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		2F68EEB21C0D4CBD00FDC346 /* RecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
 		2F68EEB31C0D4CBD00FDC346 /* RecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
+		2F6E85ED1C87EDB1004FADB8 /* ImageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEntity.h; sourceTree = "<group>"; };
+		2F6E85EE1C87EDB1004FADB8 /* ImageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEntity.m; sourceTree = "<group>"; };
 		2F7057FC1B4665F3000DBEB8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2F75B56E1C27AD410091FEAE /* PaymentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentEntity.h; sourceTree = "<group>"; };
 		2F75B56F1C27AD410091FEAE /* PaymentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentEntity.m; sourceTree = "<group>"; };
@@ -1044,6 +1047,8 @@
 				2F75B56F1C27AD410091FEAE /* PaymentEntity.m */,
 				2F66DA1F1C86D59B0021E45A /* BusinessEntity.h */,
 				2F66DA201C86D59B0021E45A /* BusinessEntity.m */,
+				2F6E85ED1C87EDB1004FADB8 /* ImageEntity.h */,
+				2F6E85EE1C87EDB1004FADB8 /* ImageEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1843,6 +1848,7 @@
 				2F27A69A1C19573700D59588 /* ThirdLoginViewController.m in Sources */,
 				2F68EEB41C0D4CBD00FDC346 /* RecommendView.m in Sources */,
 				2F66DA8C1C86DE190021E45A /* MWPhoto.m in Sources */,
+				2F6E85EF1C87EDB1004FADB8 /* ImageEntity.m in Sources */,
 				2F68EEB11C0D4C5F00FDC346 /* RecommendViewController.m in Sources */,
 				2F66DA211C86D59B0021E45A /* BusinessEntity.m in Sources */,
 				2F16E5B31B5DEFEE007947D0 /* RegisterCodeView.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "BaseEntity.h"
+#import "ImageEntity.h"
 
 @interface BusinessEntity : BaseEntity
 

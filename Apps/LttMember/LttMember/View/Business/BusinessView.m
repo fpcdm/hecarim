@@ -82,7 +82,6 @@
 
 - (void)middleView
 {
-    
     //适应尺寸
     self.contentSize = CGSizeMake(SCREEN_WIDTH, scrollHeight);
 }
