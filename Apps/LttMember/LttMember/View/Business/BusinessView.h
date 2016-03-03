@@ -12,6 +12,7 @@
 @protocol BusinessViewDelegate <NSObject>
 
 - (void)actionBusiness;
+- (void)actionPreview:(NSUInteger)index;
 
 @end
 

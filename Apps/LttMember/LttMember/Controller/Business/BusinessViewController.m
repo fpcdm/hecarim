@@ -66,4 +66,9 @@
     
 }
 
+- (void)actionPreview:(NSUInteger)index
+{
+    NSLog(@"preview: %ld", index);
+}
+
 @end

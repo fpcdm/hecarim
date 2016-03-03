@@ -82,6 +82,47 @@
 
 - (void)middleView
 {
+    //有图片
+    NSArray *images = business.images;
+    if (images.isNotEmpty) {
+        //计算宽高
+        NSInteger buttonSize = 3;
+        CGFloat buttonWidth = (SCREEN_WIDTH - 60) / buttonSize;
+        CGFloat buttonHeight = buttonWidth + 20;
+        CGFloat spaceWidth = 60 / buttonSize;
+        CGFloat spaceHeight = 10;
+        
+        //绘制图片
+        NSInteger imagesCount = [images count];
+        CGFloat frameX = 0;
+        CGFloat frameY = 0;
+        for (int i = 0; i < imagesCount; i++) {
+            //计算位置
+            NSInteger itemRow = (int)(i / buttonSize) + 1;
+            NSInteger itemCol = i % buttonSize + 1;
+            frameX = spaceWidth / 2 + (buttonWidth + spaceWidth) * (itemCol - 1);
+            frameY = buttonHeight * (itemRow - 1);
+            
+            //添加按钮
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frameX, frameY + scrollHeight + spaceHeight, buttonWidth, buttonHeight - 20)];
+            [button addTarget:self action:@selector(actionPreview:) forControlEvents:UIControlEventTouchUpInside];
+            button.backgroundColor = COLOR_MAIN_CLEAR;
+            button.tag = i;
+            [self.contentView addSubview:button];
+            
+            //添加图片
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:button.bounds];
+            [button addSubview:imageView];
+            
+            //加载图片
+            ImageEntity *image = [images objectAtIndex:i];
+            [imageView setImageUrl:image.thumbUrl indicator:YES];
+        }
+        
+        //计算容器宽高
+        scrollHeight += frameY + buttonHeight;
+    }
+    
     //适应尺寸
     self.contentSize = CGSizeMake(SCREEN_WIDTH, scrollHeight);
 }
@@ -114,6 +155,11 @@
 - (void)actionBusiness
 {
     [self.delegate actionBusiness];
+}
+
+- (void)actionPreview:(UIButton *)button
+{
+    [self.delegate actionPreview:button.tag];
 }
 
 @end
