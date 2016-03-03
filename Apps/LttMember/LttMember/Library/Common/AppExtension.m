@@ -7,7 +7,6 @@
 //
 
 #import "AppExtension.h"
-#import "UIImageView+WebCache.h"
 
 //StorageUtil分类
 @implementation StorageUtil (App)
@@ -73,7 +72,7 @@
 {
     if (self.avatar && [self.avatar length] > 0) {
         NSLog(@"加载头像缓存：%@", self.avatar);
-        [view sd_setImageWithURL:[NSURL URLWithString:self.avatar] placeholderImage:[UIImage imageNamed:@"nopic"]];
+        [view setImageUrl:self.avatar placeholder:[UIImage imageNamed:@"nopic"]];
     } else {
         view.image = [UIImage imageNamed:@"nopic"];
     }

@@ -7,7 +7,6 @@
 //
 
 #import "CaseEntity.h"
-#import "UIImageView+WebCache.h"
 #import "GoodsEntity.h"
 #import "ServiceEntity.h"
 
@@ -28,7 +27,7 @@ totalAmount, goodsAmount, servicesAmount, goods, services, goodsParam, servicesP
 {
     if (self.staffAvatar && [self.staffAvatar length] > 0) {
         NSLog(@"加载头像缓存：%@", self.staffAvatar);
-        [view sd_setImageWithURL:[NSURL URLWithString:self.staffAvatar] placeholderImage:[UIImage imageNamed:@"support"]];
+        [view setImageUrl:self.staffAvatar placeholder:[UIImage imageNamed:@"support"]];
     } else {
         view.image = [UIImage imageNamed:@"support"];
     }

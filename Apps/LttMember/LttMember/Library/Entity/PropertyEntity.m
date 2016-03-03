@@ -7,7 +7,6 @@
 //
 
 #import "PropertyEntity.h"
-#import "UIImageView+WebCache.h"
 
 @implementation PropertyEntity
 
@@ -20,7 +19,7 @@
 - (void)iconView:(UIImageView *)imageView
 {
     if (self.icon && [self.icon length] > 0) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:nil];
+        imageView.imageUrl = self.icon;
     } else {
         imageView.image = nil;
     }

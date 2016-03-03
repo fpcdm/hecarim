@@ -23,6 +23,7 @@
 #import "UIColor+Framework.h"
 #import "UIImage+Framework.h"
 #import "UIView+Framework.h"
+#import "UIImageView+Framework.h"
 #import "UITextView+Framework.h"
 #import "UIScrollView+Framework.h"
 #import "UIViewController+Framework.h"

@@ -7,7 +7,6 @@
 //
 
 #import "AdvertEntity.h"
-#import "UIImageView+WebCache.h"
 
 @implementation AdvertEntity
 
@@ -18,7 +17,7 @@
 - (void) imageView:(UIImageView *)view
 {
     if (self.image && [self.image length] > 0) {
-        [view sd_setImageWithURL:[NSURL URLWithString:self.image] placeholderImage:nil];
+        view.imageUrl = self.image;
     } else {
         view.image = nil;
     }

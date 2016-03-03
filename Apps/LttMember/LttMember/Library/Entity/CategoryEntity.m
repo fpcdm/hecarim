@@ -7,7 +7,6 @@
 //
 
 #import "CategoryEntity.h"
-#import "UIImageView+WebCache.h"
 
 @implementation CategoryEntity
 
@@ -26,7 +25,7 @@
 - (void) iconView:(UIImageView *)view placeholder:(UIImage *)placeholder
 {
     if (self.icon && [self.icon length] > 0) {
-        [view sd_setImageWithURL:[NSURL URLWithString:self.icon] placeholderImage:nil];
+        view.imageUrl = self.icon;
     } else {
         view.image = placeholder;
     }
@@ -35,7 +34,7 @@
 - (void) selectedIconView:(UIImageView *)view placeholder:(UIImage *)placeholder
 {
     if (self.selectedIcon && [self.selectedIcon length] > 0) {
-        [view sd_setImageWithURL:[NSURL URLWithString:self.selectedIcon] placeholderImage:nil];
+        view.imageUrl = self.selectedIcon;
     } else {
         view.image = placeholder;
     }

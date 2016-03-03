@@ -176,6 +176,8 @@
 		2F6E85E81C87D724004FADB8 /* FWService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E85DC1C87D724004FADB8 /* FWService.m */; };
 		2F6E85E91C87D724004FADB8 /* FWTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6E85DD1C87D724004FADB8 /* FWTheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F6E85EA1C87D724004FADB8 /* FWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E85DE1C87D724004FADB8 /* FWTheme.m */; };
+		2F6E85F81C880628004FADB8 /* UIImageView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6E85F61C880628004FADB8 /* UIImageView+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F6E85F91C880628004FADB8 /* UIImageView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E85F71C880628004FADB8 /* UIImageView+Framework.m */; };
 		2FC215401C70BF42000520B4 /* MJDictionaryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FC215291C70BF42000520B4 /* MJDictionaryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FC215411C70BF42000520B4 /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2152A1C70BF42000520B4 /* MJDictionaryCache.m */; };
 		2FC215421C70BF42000520B4 /* MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FC2152B1C70BF42000520B4 /* MJExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -815,6 +817,8 @@
 		2F6E85DC1C87D724004FADB8 /* FWService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWService.m; sourceTree = "<group>"; };
 		2F6E85DD1C87D724004FADB8 /* FWTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTheme.h; sourceTree = "<group>"; };
 		2F6E85DE1C87D724004FADB8 /* FWTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTheme.m; sourceTree = "<group>"; };
+		2F6E85F61C880628004FADB8 /* UIImageView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Framework.h"; sourceTree = "<group>"; };
+		2F6E85F71C880628004FADB8 /* UIImageView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Framework.m"; sourceTree = "<group>"; };
 		2FC215291C70BF42000520B4 /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		2FC2152A1C70BF42000520B4 /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		2FC2152B1C70BF42000520B4 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -1551,16 +1555,18 @@
 				2F6E85931C87D36B004FADB8 /* UIColor+Framework.m */,
 				2F6E85941C87D36B004FADB8 /* UIImage+Framework.h */,
 				2F6E85951C87D36B004FADB8 /* UIImage+Framework.m */,
-				2F6E85961C87D36B004FADB8 /* UINavigationController+Framework.h */,
-				2F6E85971C87D36B004FADB8 /* UINavigationController+Framework.m */,
+				2F6E859C1C87D36B004FADB8 /* UIView+Framework.h */,
+				2F6E859D1C87D36B004FADB8 /* UIView+Framework.m */,
 				2F6E85981C87D36B004FADB8 /* UIScrollView+Framework.h */,
 				2F6E85991C87D36B004FADB8 /* UIScrollView+Framework.m */,
 				2F6E859A1C87D36B004FADB8 /* UITextView+Framework.h */,
 				2F6E859B1C87D36B004FADB8 /* UITextView+Framework.m */,
-				2F6E859C1C87D36B004FADB8 /* UIView+Framework.h */,
-				2F6E859D1C87D36B004FADB8 /* UIView+Framework.m */,
+				2F6E85F61C880628004FADB8 /* UIImageView+Framework.h */,
+				2F6E85F71C880628004FADB8 /* UIImageView+Framework.m */,
 				2F6E859E1C87D36B004FADB8 /* UIViewController+Framework.h */,
 				2F6E859F1C87D36B004FADB8 /* UIViewController+Framework.m */,
+				2F6E85961C87D36B004FADB8 /* UINavigationController+Framework.h */,
+				2F6E85971C87D36B004FADB8 /* UINavigationController+Framework.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -2409,6 +2415,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6E85F81C880628004FADB8 /* UIImageView+Framework.h in Headers */,
 				2F6E85E91C87D724004FADB8 /* FWTheme.h in Headers */,
 				2F6E85E51C87D724004FADB8 /* FWScreen.h in Headers */,
 				2F6E85E71C87D724004FADB8 /* FWService.h in Headers */,
@@ -3002,6 +3009,7 @@
 				2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */,
 				2F6E85E01C87D724004FADB8 /* FWContext.m in Sources */,
 				2FD99E3F1C48CE6F0065293E /* MJRefreshBackStateFooter.m in Sources */,
+				2F6E85F91C880628004FADB8 /* UIImageView+Framework.m in Sources */,
 				2FD99E051C48CE6F0065293E /* FLEXImagePreviewViewController.m in Sources */,
 				2FD99E291C48CE6F0065293E /* MBProgressHUD.m in Sources */,
 				2FEF7A6F1C73055300EBF526 /* FWHelperLocation.m in Sources */,
