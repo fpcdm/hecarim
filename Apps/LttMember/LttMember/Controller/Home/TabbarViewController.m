@@ -106,24 +106,28 @@
 {
     self.selectedIndex = 0;
     self.tabBar.hidden = NO;
+    [self.selectedNavigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)gotoBusiness
 {
     self.selectedIndex = 1;
     self.tabBar.hidden = NO;
+    [self.selectedNavigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)gotoOrder
 {
     self.selectedIndex = 2;
     self.tabBar.hidden = NO;
+    [self.selectedNavigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)gotoAccount
 {
     self.selectedIndex = 3;
     self.tabBar.hidden = NO;
+    [self.selectedNavigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)gotoLogin

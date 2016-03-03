@@ -6,13 +6,16 @@
 //  Copyright © 2016年 Gilbert. All rights reserved.
 //
 
-#import "AppTableView.h"
+#import "AppView.h"
+#import "BaseScrollView.h"
 
 @protocol BusinessViewDelegate <NSObject>
 
+- (void)actionBusiness;
+
 @end
 
-@interface BusinessView : AppTableView
+@interface BusinessView : BaseScrollView
 
 @property (retain, nonatomic) id<BusinessViewDelegate> delegate;
 

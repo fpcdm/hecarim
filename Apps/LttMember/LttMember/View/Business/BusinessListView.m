@@ -32,7 +32,7 @@
 {
     if (!content || content.length < 1) return 0;
     
-    CGSize size = [content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: FONT_MAIN} context:nil].size;
+    CGSize size = [content boundingSize:CGSizeMake(SCREEN_WIDTH - 20, MAXFLOAT) withFont:FONT_MAIN];
     return size.height;
 }
 

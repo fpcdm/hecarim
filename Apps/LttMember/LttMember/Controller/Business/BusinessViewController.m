@@ -18,6 +18,7 @@
 @implementation BusinessViewController
 {
     BusinessView *businessView;
+    BusinessEntity *business;
 }
 
 - (void)loadView
@@ -30,7 +31,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"微商";
+    self.navigationItem.title = @"详情";
+    
+    [self showLoading:[FWLocale system:@"Loading.Start"]];
+    [self loadData:^(id object) {
+        [self hideLoading];
+        
+        [businessView assign:@"business" value:business];
+        [businessView display];
+    } failure:^(ErrorEntity *error) {
+        [self showError:error.message];
+    }];
+}
+
+//加载微商数据
+- (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
+{
+    BusinessEntity *businessEntity = [[BusinessEntity alloc] init];
+    businessEntity.id = self.businessId;
+    
+    BusinessHandler *businessHandler = [[BusinessHandler alloc] init];
+    [businessHandler queryBusiness:businessEntity success:^(NSArray *result) {
+        business = [result firstObject];
+        
+        success(nil);
+    } failure:^(ErrorEntity *error) {
+        failure(error);
+    }];
+}
+
+#pragma mark - Action
+- (void)actionBusiness
+{
+    
 }
 
 @end

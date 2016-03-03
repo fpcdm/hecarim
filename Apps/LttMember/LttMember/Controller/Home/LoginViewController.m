@@ -65,7 +65,7 @@
 - (BOOL) navigationShouldPopOnBackButton
 {
     [[TabbarViewController sharedInstance] gotoHome];
-    return YES;
+    return NO;
 }
 
 #pragma mark - Action
