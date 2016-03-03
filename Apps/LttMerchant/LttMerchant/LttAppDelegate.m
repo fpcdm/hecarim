@@ -117,7 +117,7 @@
     [[Harpy sharedInstance] setAppID:LTT_APPSTORE_ID];
     [[Harpy sharedInstance] setPresentingViewController:self.window.rootViewController];
     
-    [[Harpy sharedInstance] checkVersionWeekly];
+    [[Harpy sharedInstance] checkVersionDaily];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

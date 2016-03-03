@@ -11,6 +11,7 @@
 @implementation HomeView
 {
     UIButton *staffBtn;
+    UIButton *businessBtn;
 }
 
 - (id)init
@@ -37,6 +38,25 @@
         make.height.equalTo(@50);
     }];
     
+    businessBtn = [[UIButton alloc] init];
+    businessBtn.hidden = YES;
+    businessBtn.layer.borderWidth = 0.5f;
+    businessBtn.layer.borderColor = CGCOLOR_MAIN_BORDER;
+    businessBtn.backgroundColor = COLOR_MAIN_WHITE;
+    businessBtn.titleLabel.font = [UIFont boldSystemFontOfSize:25];
+    [businessBtn addTarget:self action:@selector(actionBusiness) forControlEvents:UIControlEventTouchUpInside];
+    [businessBtn setTitle:@"生意圈管理" forState:UIControlStateNormal];
+    [businessBtn setTitleColor:COLOR_MAIN_BLACK forState:UIControlStateNormal];
+    [self addSubview:businessBtn];
+    
+    [businessBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(serviceBtn.mas_bottom).offset(10);
+        make.left.equalTo(superView.mas_left).offset(-0.5);
+        make.right.equalTo(superView.mas_right).offset(0.5);
+        make.height.equalTo(@50);
+    }];
+
+    
     staffBtn = [[UIButton alloc] init];
     staffBtn.hidden = YES;
     staffBtn.layer.borderWidth = 0.5f;
@@ -49,7 +69,7 @@
     [self addSubview:staffBtn];
     
     [staffBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(serviceBtn.mas_bottom).offset(10);
+        make.top.equalTo(businessBtn.mas_bottom).offset(10);
         make.left.equalTo(superView.mas_left).offset(-0.5);
         make.right.equalTo(superView.mas_right).offset(0.5);
         make.height.equalTo(@50);
@@ -63,12 +83,18 @@
     NSNumber *is_admin = [self fetch:@"is_admin"];
     if ([@1 isEqualToNumber:is_admin]) {
         staffBtn.hidden = NO;
+        businessBtn.hidden = NO;
     }
 }
 
 - (void)actionCaseList
 {
     [self.delegate actionCaseList];
+}
+
+- (void)actionBusiness
+{
+    [self.delegate actionBusiness];
 }
 
 - (void)actionStaff

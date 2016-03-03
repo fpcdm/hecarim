@@ -43,6 +43,8 @@
 "ERROR.Model.NotGoods" = "该型号暂无商品";
 "ERROR.Area.Required" = "请选择区域哦~亲！";
 "ERROR.RecommendMobile.Required" = "推荐人手机号不能为空！";
+"ERROR.BusinessContent.Required" = "信息不能为空！";
+"ERROR.CaseId.Required" = "服务不能为空！";
 
 
 "INFO.ResetPassword.Success" = "重置密码成功";
@@ -55,3 +57,5 @@
 "INFO.Challenge.Suceess" = "抢单成功";
 "INFO.Challenge.Fail" = "抢单失败，下次手快点哦~亲！";
 "INFO.Challenge.Lose" = "该需求已被处理，你来晚了哦~亲！";
+"INFO.Upload.Start" = "上传中……";
+"INFO.Upload.Success" = "上传成功";

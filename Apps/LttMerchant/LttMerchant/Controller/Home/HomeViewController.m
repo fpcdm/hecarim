@@ -12,6 +12,7 @@
 #import "StaffListViewController.h"
 #import "StaffEntity.h"
 #import "StaffHandler.h"
+#import "BusinessListViewController.h"
 
 @interface HomeViewController ()<HomeViewDelegate>
 
@@ -67,6 +68,12 @@
 {
     StaffListViewController *staffViewController = [[StaffListViewController alloc] init];
     [self pushViewController:staffViewController animated:YES];
+}
+
+- (void)actionBusiness
+{
+    BusinessListViewController *businessViewController = [[BusinessListViewController alloc] init];
+    [self pushViewController:businessViewController animated:YES];
 }
 
 @end

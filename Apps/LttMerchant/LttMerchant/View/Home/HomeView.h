@@ -14,6 +14,8 @@
 
 - (void)actionStaff;
 
+- (void)actionBusiness;
+
 @end
 
 @interface HomeView : AppView
