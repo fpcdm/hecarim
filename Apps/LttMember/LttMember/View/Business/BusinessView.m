@@ -87,10 +87,10 @@
     if (images.isNotEmpty) {
         //计算宽高
         NSInteger buttonSize = 3;
-        CGFloat buttonWidth = (SCREEN_WIDTH - 60) / buttonSize;
-        CGFloat buttonHeight = buttonWidth + 20;
-        CGFloat spaceWidth = 60 / buttonSize;
+        CGFloat spaceWidth = 10;
         CGFloat spaceHeight = 10;
+        CGFloat buttonWidth = (SCREEN_WIDTH - (buttonSize + 1) * spaceWidth) / buttonSize;
+        CGFloat buttonHeight = buttonWidth + spaceHeight;
         
         //绘制图片
         NSInteger imagesCount = [images count];
@@ -100,11 +100,11 @@
             //计算位置
             NSInteger itemRow = (int)(i / buttonSize) + 1;
             NSInteger itemCol = i % buttonSize + 1;
-            frameX = spaceWidth / 2 + (buttonWidth + spaceWidth) * (itemCol - 1);
+            frameX = spaceWidth + (buttonWidth + spaceWidth) * (itemCol - 1);
             frameY = buttonHeight * (itemRow - 1);
             
             //添加按钮
-            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frameX, frameY + scrollHeight + spaceHeight, buttonWidth, buttonHeight - 20)];
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frameX, frameY + scrollHeight + spaceHeight, buttonWidth, buttonHeight - spaceHeight)];
             [button addTarget:self action:@selector(actionPreview:) forControlEvents:UIControlEventTouchUpInside];
             button.backgroundColor = COLOR_MAIN_CLEAR;
             button.tag = i;
