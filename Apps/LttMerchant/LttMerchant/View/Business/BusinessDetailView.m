@@ -53,12 +53,10 @@
     int y = 0;
     int x = 0;
     
-    BusinessEntity *businessEntity = [[BusinessEntity alloc] init];
     for (NSDictionary *imgs in imgArr) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        [businessEntity uploadPicView:imageView imgUrl:[imgs objectForKey:@"thumb_url"]];
-        imageView.frame = CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh);
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh)];
         [imagesBox addSubview:imageView];
+        [imageView setImageUrl:[imgs objectForKey:@"thumb_url"] indicator:YES];
         x++;
         i++;
         if (i % 3 == 0 && i > 1) {

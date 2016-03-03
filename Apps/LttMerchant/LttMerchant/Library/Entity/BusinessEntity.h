@@ -26,8 +26,4 @@
 
 @property (retain, nonatomic) NSString *createTime;
 
-
-//上传图片view显示（图片缓存预加载）
-- (void) uploadPicView: (UIImageView *) view imgUrl:(NSString *)imgUrl;
-
 @end

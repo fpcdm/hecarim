@@ -7,7 +7,6 @@
 //
 
 #import "BusinessEntity.h"
-#import "UIImageView+WebCache.h"
 
 @implementation BusinessEntity
 
@@ -26,17 +25,5 @@
 @synthesize newsImgs;
 
 @synthesize createTime;
-
-
-- (void)uploadPicView:(UIImageView *)view imgUrl:(NSString *)imgUrl
-{
-    if (imgUrl && [imgUrl length] > 0) {
-        
-        [view sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@""]];
-    } else {
-        view.image = [UIImage imageNamed:@""];
-    }
-
-}
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "BusinessAddView.h"
-#import "BusinessEntity.h"
 
 @implementation BusinessAddView
 {
@@ -173,11 +172,10 @@
     int y = 0;
     int x = 0;
     
-    BusinessEntity *businessEntity = [[BusinessEntity alloc] init];
     for (NSString *imgUrl in imgArr) {
         UIImageView *imageView = [[UIImageView alloc] init];
-        [businessEntity uploadPicView:imageView imgUrl:imgUrl];
-                imageView.frame = CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh);
+        [imageView setImageUrl:imgUrl];
+        imageView.frame = CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh);
         [imagesBox addSubview:imageView];
         x++;
         i++;
