@@ -12,8 +12,8 @@
 @protocol HomeViewDelegate <NSObject>
 
 @required
+- (BOOL)actionIsLogin;
 - (void)actionLogin;
-- (void)actionMenu;
 - (void)actionGps;
 - (void)actionCity;
 - (void)actionTypes;
@@ -31,7 +31,6 @@
 
 @property (retain, nonatomic) UIScrollView *typeView;
 
-- (void) setLogin: (BOOL) login;
 - (void) reloadTypes;
 
 - (void) reloadAds;

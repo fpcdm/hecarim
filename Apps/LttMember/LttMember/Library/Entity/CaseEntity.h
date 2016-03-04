@@ -78,6 +78,12 @@
 
 @property (nonatomic, retain) NSNumber *propertyId;
 
+@property (nonatomic, retain) NSNumber *merchantId;
+
+@property (nonatomic, retain) NSString *source;
+
+@property (nonatomic, retain) NSNumber *sourceId;
+
 - (void) avatarView: (UIImageView *)view;
 
 - (NSString *)statusName;

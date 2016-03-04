@@ -18,8 +18,7 @@
 #import "AddressEntity.h"
 #import "CityViewController.h"
 
-//GPS数据缓存，优化GPS耗电
-static LocationEntity *lastLocation = nil;
+//数据缓存
 static NSDate *lastDate = nil;
 static NSArray *cacheTypes = nil;
 static NSArray *slideAdverts = nil;
@@ -51,6 +50,26 @@ static NSArray *slideAdverts = nil;
     
     //选择城市
     CityViewController *cityViewController;
+    
+    //定位地址
+    LocationEntity *lastLocation;
+}
+
+//定位地址内存缓存
+- (LocationEntity *)cacheLocation
+{
+    LocationEntity *location = nil;
+    
+    //读取内存缓存
+    FWRegistry *registry = [FWRegistry sharedInstance];
+    NSString *cacheKey = @"location";
+    if ([registry has:cacheKey]) {
+        location = [registry get:cacheKey];
+    } else {
+        location = [[LocationEntity alloc] init];
+        [registry set:cacheKey object:location];
+    }
+    return location;
 }
 
 - (void)loadView
@@ -73,15 +92,10 @@ static NSArray *slideAdverts = nil;
     hideNavigationBar = YES;
     [super viewDidLoad];
     
-    //是否登陆
-    [homeView setLogin:[self isLogin]];
-    
     self.navigationItem.title = @"两条腿";
     
-    //初始化缓存数据
-    if (!lastLocation) {
-        lastLocation = [[LocationEntity alloc] init];
-    }
+    //读取内存缓存
+    lastLocation = [self cacheLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -460,13 +474,14 @@ static NSArray *slideAdverts = nil;
 }
 
 #pragma mark - Action
+- (BOOL)actionIsLogin
+{
+    return [self isLogin];
+}
+
 - (void)actionLogin
 {
     [[TabbarViewController sharedInstance] gotoLogin];
-}
-
-- (void)actionMenu
-{
 }
 
 - (void)actionGps

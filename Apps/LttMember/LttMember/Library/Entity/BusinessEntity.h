@@ -15,6 +15,8 @@
 
 @property (retain, nonatomic) NSNumber *typeId;
 
+@property (retain, nonatomic) NSNumber *propertyId;
+
 @property (retain, nonatomic) NSString *content;
 
 @property (retain, nonatomic) NSNumber *merchantId;

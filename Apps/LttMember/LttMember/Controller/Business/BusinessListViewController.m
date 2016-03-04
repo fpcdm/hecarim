@@ -24,6 +24,8 @@
     //当前页数
     int page;
     BOOL hasMore;
+    
+    NSString *cityCode;
 }
 
 - (void)loadView
@@ -44,6 +46,45 @@
     businessList = [NSMutableArray array];
     page = 0;
     hasMore = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //检查城市是否改变
+    BOOL isCityChanged = NO;
+    NSString *newCityCode = [[StorageUtil sharedStorage] getCityCode];
+    if (cityCode && newCityCode && ![newCityCode isEqualToString:cityCode]) {
+        isCityChanged = YES;
+        cityCode = newCityCode;
+    } else {
+        cityCode = newCityCode;
+    }
+    
+    //城市改变重新加载
+    if (isCityChanged) {
+        [self refreshData];
+    }
+}
+
+- (void)refreshData
+{
+    //清空之前的数据
+    if (businessList && [businessList count] > 0) {
+        businessList = [[NSMutableArray alloc] init];
+        [listView assign:@"businessList" value:businessList];
+        [listView display];
+    }
+    
+    //还原数据
+    businessList = [[NSMutableArray alloc] init];
+    page = 0;
+    hasMore = YES;
+    
+    //加载数据
+    [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
+    [listView.tableView startLoading];
 }
 
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure

@@ -90,6 +90,7 @@
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
     self.tabBar.hidden = NO;
+    [self.selectedNavigationController popToRootViewControllerAnimated:NO];
 }
 
 - (UINavigationController *)selectedNavigationController

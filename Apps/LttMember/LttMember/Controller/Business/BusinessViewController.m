@@ -11,6 +11,10 @@
 #import "BusinessEntity.h"
 #import "BusinessHandler.h"
 #import "MWPhotoBrowser.h"
+#import "LocationEntity.h"
+#import "AddressEntity.h"
+#import "CaseEntity.h"
+#import "CaseFormViewController.h"
 
 @interface BusinessViewController () <BusinessViewDelegate, MWPhotoBrowserDelegate>
 
@@ -68,7 +72,54 @@
 #pragma mark - Action
 - (void)actionBusiness
 {
+    //当前定位地址
+    AddressEntity *currentAddress = [self currentAddress];
     
+    //获取参数
+    CaseEntity *intentionEntity = [[CaseEntity alloc] init];
+    intentionEntity.typeId = business.typeId;
+    intentionEntity.propertyId = business.propertyId ? business.propertyId : @0;
+    intentionEntity.buyerAddress = [@1 isEqualToNumber:currentAddress.isEnable] ? currentAddress.address : nil;
+    intentionEntity.source = CASE_SOURCE_BUSINESS;
+    intentionEntity.sourceId = business.id;
+    intentionEntity.merchantId = business.merchantId;
+    
+    NSLog(@"intention: %@", [intentionEntity toDictionary]);
+    
+    //跳转表单页面
+    CaseFormViewController *viewController = [[CaseFormViewController alloc] init];
+    viewController.caseEntity = intentionEntity;
+    viewController.currentAddress = currentAddress;
+    [self pushViewController:viewController animated:YES];
+}
+
+//获取当前定位地址对象
+- (AddressEntity *) currentAddress
+{
+    //读取当前地址缓存
+    LocationEntity *lastLocation = [[FWRegistry sharedInstance] get:@"location"];
+    if (!lastLocation) lastLocation = [[LocationEntity alloc] init];
+    
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    
+    AddressEntity *currentAddress = [[AddressEntity alloc] init];
+    currentAddress.name = [user displayName];
+    currentAddress.mobile = user.mobile;
+    currentAddress.address = lastLocation.detailAddress;
+    
+    //定位城市是否可用
+    NSString *cityCode = [[StorageUtil sharedStorage] getCityCode];
+    //没有设置城市，则可以使用定位地址
+    if (!cityCode) {
+        currentAddress.isEnable = @1;
+    //定位城市和设置的城市相同，可以使用定位地址
+    } else if (lastLocation.cityCode && [cityCode isEqualToString:lastLocation.cityCode]) {
+        currentAddress.isEnable = @1;
+    } else {
+        currentAddress.isEnable = @0;
+    }
+    
+    return currentAddress;
 }
 
 - (void)actionPreview:(NSUInteger)index

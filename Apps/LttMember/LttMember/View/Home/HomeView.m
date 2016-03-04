@@ -42,7 +42,6 @@
     
     NSMutableArray *typeBtns;
     
-    BOOL isLogin;
     NSMutableArray *types;
 }
 
@@ -303,10 +302,10 @@
     adPageControl.numberOfPages = imagesData.count - 2;
 }
 
-#pragma mark - setLogin
-- (void) setLogin:(BOOL)login
+#pragma mark - isLogin
+- (BOOL)isLogin
 {
-    isLogin = login;
+    return [self.delegate actionIsLogin];
 }
 
 #pragma mark - RenderData
@@ -431,7 +430,7 @@
         if ([type.id integerValue] < 1) {
             button.isEditable = NO;
         }
-        if (!isLogin) {
+        if (![self isLogin]) {
             button.isEditable = NO;
         }
         [typeView addSubview:button];
@@ -511,7 +510,7 @@
 - (void) actionBoardItemClicked:(SpringBoardButton *)item
 {
     //未登录
-    if (!isLogin) {
+    if (![self isLogin]) {
         [self actionLogin];
         return;
     }
@@ -633,19 +632,9 @@
     [self.delegate actionLogin];
 }
 
-- (void) actionMenu
-{
-    if (!isLogin) {
-        [self actionLogin];
-        return;
-    }
-    
-    [self.delegate actionMenu];
-}
-
 - (void) actionCase: (UIButton *)sender
 {
-    if (!isLogin) {
+    if (![self isLogin]) {
         [self actionLogin];
         return;
     }

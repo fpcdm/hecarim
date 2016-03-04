@@ -121,6 +121,9 @@ typedef enum {
     LttPayStatusFailed
 } LttPayStatus;
 
+//需求来源
+#define CASE_SOURCE_BUSINESS @"mer_news"
+
 //需求状态
 #define CASE_STATUS_NEW @"new"
 #define CASE_STATUS_LOCKED @"locked"

@@ -43,6 +43,7 @@
     
     NSDictionary *mappingParam = @{
                                    @"case_type_id": @"typeId",
+                                   @"case_type_property_id": @"propertyId",
                                    @"create_time": @"createTime",
                                    @"merchant_id":@"merchantId",
                                    @"merchant_name": @"merchantName",
