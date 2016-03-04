@@ -21,27 +21,59 @@
 
 - (id)get:(NSString *)key
 {
+    if (![self has:key]) return nil;
     return [[self plugin] get:key];
 }
 
 - (BOOL)has:(NSString *)key
 {
-    return [[self plugin] has:key];
+    BOOL result = [[self plugin] has:key];
+    if (result) {
+        NSDate *cacheDate = [[self plugin] get:[self expireKey:key]];
+        if (cacheDate) {
+            //检查是否过期，大于0为过期
+            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:cacheDate];
+            if (interval > 0) {
+                [self remove:key];
+                result = NO;
+            }
+        }
+    }
+    return result;
 }
 
 - (void)set:(NSString *)key object:(id)object
 {
+    [self set:key object:object expire:0];
+}
+
+- (void)set:(NSString *)key object:(id)object expire:(NSTimeInterval)expire
+{
     [[self plugin] set:key object:object];
+    
+    //小于等于0为永久有效
+    if (expire <= 0) {
+        [[self plugin] remove:[self expireKey:key]];
+    } else {
+        [[self plugin] set:[self expireKey:key] object:[NSDate dateWithTimeIntervalSinceNow:expire]];
+    }
 }
 
 - (void)remove:(NSString *)key
 {
     [[self plugin] remove:key];
+    
+    [[self plugin] remove:[self expireKey:key]];
 }
 
 - (void)clear
 {
     [[self plugin] clear];
+}
+
+- (NSString *)expireKey:(NSString *)key
+{
+    return [key stringByAppendingString:@".__EXPIRE__"];
 }
 
 @end

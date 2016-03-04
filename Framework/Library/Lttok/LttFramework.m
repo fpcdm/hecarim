@@ -300,6 +300,16 @@ static StorageUtil *sharedStorage = nil;
 /********************************/
 @implementation FWHelperTimer (Interval)
 
++ (instancetype)repeatTimer:(NSTimeInterval)seconds block:(void (^)(void))block
+{
+    return [self timerWithInterval:seconds block:block];
+}
+
++ (instancetype)repeatTimer:(NSTimeInterval)seconds block:(void (^)(void))block queue:(dispatch_queue_t)queue
+{
+    return [self timerWithInterval:seconds block:block queue:queue];
+}
+
 + (NSTimeInterval) timeInterval: (NSDate *) time
 {
     return time ? [[NSDate date] timeIntervalSinceDate:time] : 0;

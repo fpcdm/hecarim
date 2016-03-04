@@ -14,6 +14,7 @@
 
 @singleton(FWCache)
 
-TODO("set key value expire")
+//设置缓存，支持有效期
+- (void)set:(NSString *)key object:(id)object expire:(NSTimeInterval)expire;
 
 @end

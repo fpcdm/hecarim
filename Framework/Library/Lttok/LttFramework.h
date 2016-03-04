@@ -218,6 +218,12 @@ typedef FWHelperTimer TimerUtil;
 
 @interface FWHelperTimer (Interval)
 
+//默认并行队列
++ (instancetype) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block;
+
+//自定义队列
++ (instancetype) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block queue:(dispatch_queue_t) queue;
+
 //计算离当前时间的间隔
 + (NSTimeInterval) timeInterval: (NSDate *) time;
 

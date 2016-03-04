@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-//为防止ARC自动释放，可声明为静态变量或者类变量，否则只会执行一次
+//为防止block获取不到Timer，可声明为静态变量或者类变量，否则invalidate无效
 @interface FWHelperTimer : NSObject
 
 //默认并列队列
-+ (instancetype) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block;
++ (instancetype) timerWithInterval:(NSTimeInterval)interval block:(void(^)(void))block;
 
 //自定义队列
-+ (instancetype) repeatTimer: (NSTimeInterval) seconds block: (void(^)(void)) block queue:(dispatch_queue_t) queue;
++ (instancetype) timerWithInterval:(NSTimeInterval)interval block:(void (^)(void))block queue:(dispatch_queue_t) queue;
 
 - (void) suspend;
 
