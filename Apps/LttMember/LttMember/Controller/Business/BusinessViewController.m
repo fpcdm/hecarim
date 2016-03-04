@@ -161,6 +161,10 @@
     //Model弹出
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:photoBrowser];
     navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    navigationController.navigationBar.titleTextAttributes = @{
+                                          NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                          NSForegroundColorAttributeName: COLOR_MAIN_WHITE
+                                          };
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
