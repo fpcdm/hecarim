@@ -9,6 +9,10 @@
 #import "FWLog.h"
 
 #ifdef APP_DEBUG
+#import "FWRuntime.h"
+#endif
+
+#ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 
 //DDLog调试级别，需要安装XcodeColors，需在导入DDLog前设置
@@ -174,6 +178,45 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
         [self _log:FWLogTypeError message:message];
+        va_end(args);
+    }
+#endif
+}
+
++ (void)dump:(NSString *)format, ...
+{
+#ifdef APP_DEBUG
+    va_list args;
+    if (format) {
+        va_start(args, format);
+        //format%@
+        NSArray *formatArray = [format componentsSeparatedByString:@"%@"];
+        NSUInteger count = formatArray.count > 1 ? formatArray.count - 1 : 0;
+        NSString *message = nil;
+        if (count < 1) {
+            message = [[NSString alloc] initWithFormat:format arguments:args];
+        } else {
+            id arg;
+            NSUInteger i = 0;
+            NSString *argClass = nil;
+            message = [formatArray objectAtIndex:i];
+            while (i < count) {
+                arg = va_arg(args, id);
+                
+                argClass = [[arg class] description];
+                //NSClass,_NSInlineClass,__NSClass,...
+                if ([argClass hasPrefix:@"NS"] || [argClass hasPrefix:@"_NS"] || [argClass hasPrefix:@"__NS"] ||
+                    //UIView,...
+                    [argClass hasPrefix:@"UI"]) {
+                    message = [message stringByAppendingFormat:@"<%@>%@", argClass, arg];
+                } else {
+                    message = [message stringByAppendingFormat:@"<%@>%@", argClass, [FWRuntime propertiesOfObject:arg]];
+                }
+                message = [message stringByAppendingString:[formatArray objectAtIndex:i+1]];
+                i++;
+            }
+        }
+        [self _log:FWLogTypeDebug message:message];
         va_end(args);
     }
 #endif

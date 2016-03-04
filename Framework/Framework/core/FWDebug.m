@@ -14,7 +14,6 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 
-#import "FWRuntime.h"
 #import "FWHelperHttp.h"
 #import "FWHelperEncoder.h"
 #import "FWHelperDevice.h"
@@ -44,21 +43,6 @@
 @def_notification(UrlResponseFailed)
 
 @def_singleton(FWDebug)
-
-+ (void)dump:(id)object
-{
-#ifdef APP_DEBUG
-    NSString *clazz = [[object class] description];
-    //NSClass,_NSInlineClass,__NSClass,...
-    if ([clazz hasPrefix:@"NS"] || [clazz hasPrefix:@"_NS"] || [clazz hasPrefix:@"__NS"] ||
-        //UIView,...
-        [clazz hasPrefix:@"UI"]) {
-        [FWLog debug:@"%@: %@", clazz, object];
-    } else {
-        [FWLog debug:@"%@: %@", clazz, [FWRuntime propertiesOfObject:object]];
-    }
-#endif
-}
 
 - (instancetype)init
 {

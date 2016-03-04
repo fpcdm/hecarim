@@ -33,8 +33,6 @@
 
 #pragma mark - 功能开关
 /********功能开关>>>********/
-
-
 #ifdef APP_DEBUG
 
 //调试开关
@@ -55,6 +53,34 @@
 
 #endif
 /********<<<功能开关********/
+
+
+#pragma mark - 日志配置
+/********日志配置>>>********/
+#if FRAMEWORK_LOG
+
+//日志级别
+#define FRAMEWORK_LOG_LEVEL FWLogLevelAll
+
+//定义log方法默认级别，搭配level可配置log是否显示
+#define FRAMEWORK_LOG_TYPE FWLogTypeVerbose
+
+//重定义NSLog
+#define NSLog(...) FWLOG(__VA_ARGS__)
+
+#else
+
+//日志级别
+#define FRAMEWORK_LOG_LEVEL FWLogLevelOff
+
+//定义log方法默认级别，搭配level可配置log是否显示
+#define FRAMEWORK_LOG_TYPE FWLogTypeVerbose
+
+//关闭NSLog
+#define NSLog(...)
+
+#endif
+/********<<<日志配置********/
 
 
 #pragma mark - 环境配置

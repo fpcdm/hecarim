@@ -17,6 +17,12 @@
 #define macro_first_( A, ... ) \
     A
 
+//macro_last
+#define macro_last(...) \
+    macro_last_( __VA_ARGS__, nil )
+#define macro_last_( A, ... ) \
+    __VA_ARGS__
+
 //macro_concat
 #define macro_concat( A, B ) \
     macro_concat_( A, B )
@@ -137,6 +143,54 @@
 #ifndef	TODO
 #define TODO( x ) \
     _Pragma(macro_cstr(message("✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖✖ TODO: " x)))
+#endif
+
+//FWLOG_
+#ifndef FWLOG_
+#define FWLOG_( type, ... ) \
+    [FWLog type:[NSString stringWithFormat:@"(%@ #%@) %@", [@(__FILE__) lastPathComponent], @(__LINE__), macro_first(__VA_ARGS__)], macro_last(__VA_ARGS__)];
+#endif
+
+//FWLOG
+#ifndef	FWLOG
+#define FWLOG( ... ) \
+    FWLOG_(log, __VA_ARGS__)
+#endif
+
+//FWVERBOSE
+#ifndef	FWVERBOSE
+#define FWVERBOSE( ... ) \
+    FWLOG_(verbose, __VA_ARGS__)
+#endif
+
+//FWDEBUG
+#ifndef	FWDEBUG
+#define FWDEBUG( ... ) \
+    FWLOG_(debug, __VA_ARGS__)
+#endif
+
+//FWINFO
+#ifndef	FWINFO
+#define FWINFO( ... ) \
+    FWLOG_(info, __VA_ARGS__)
+#endif
+
+//FWWARN
+#ifndef	FWWARN
+#define FWWARN( ... ) \
+    FWLOG_(warn, __VA_ARGS__)
+#endif
+
+//FWERROR
+#ifndef	FWERROR
+#define FWERROR( ... ) \
+    FWLOG_(error, __VA_ARGS__)
+#endif
+
+//FWDUMP
+#ifndef	FWDUMP
+#define FWDUMP( ... ) \
+    FWLOG_(dump, __VA_ARGS__)
 #endif
 
 #pragma mark - block

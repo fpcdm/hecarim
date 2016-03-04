@@ -17,9 +17,6 @@
 
 @singleton(FWDebug)
 
-//调试对象
-+ (void) dump:(id)object;
-
 //标记开始
 - (void) benchmarkStart:(NSString *)name;
 
