@@ -47,10 +47,6 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     if (!isDDLogInited) {
         isDDLogInited = YES;
         
-        //添加ASL终端日志和TTYXcode日志
-        [DDLog addLogger:[DDASLLogger sharedInstance]];
-        [DDLog addLogger:[DDTTYLogger sharedInstance]];
-        
         //模拟器开启并自定义颜色
         #if TARGET_IPHONE_SIMULATOR
         setenv("XcodeColors", "YES", 1);
@@ -59,6 +55,10 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
         [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagDebug];
         [[DDTTYLogger sharedInstance] setForegroundColor:nil backgroundColor:nil forFlag:DDLogFlagVerbose];
         #endif
+        
+        //添加ASL终端日志和TTYXcode日志
+        [DDLog addLogger:[DDASLLogger sharedInstance]];
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
     }
     
     switch (type) {
