@@ -8,6 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+//调试环境
+#if FRAMEWORK_LOG
+    //日志级别
+    #define FRAMEWORK_LOG_LEVEL FWLogLevelAll
+
+    //定义log方法默认级别，搭配level可配置log是否显示
+    #define FRAMEWORK_LOG_TYPE FWLogTypeVerbose
+
+    //重定义NSLog
+    #define NSLog(...) [FWLog log:__VA_ARGS__];
+//正式环境
+#else
+    //日志级别
+    #define FRAMEWORK_LOG_LEVEL FWLogLevelOff
+
+    //定义log方法默认级别，搭配level可配置log是否显示
+    #define FRAMEWORK_LOG_TYPE FWLogTypeVerbose
+
+    //关闭NSLog
+    #define NSLog(...)
+#endif
+
 //日志类型定义
 typedef NS_OPTIONS(NSUInteger, FWLogType) {
     FWLogTypeError   = (1 << 0), // 0...00001
@@ -19,13 +41,13 @@ typedef NS_OPTIONS(NSUInteger, FWLogType) {
 
 //日志级别定义
 typedef NS_ENUM(NSUInteger, FWLogLevel) {
-    FWLogLevelOff       = 0,
-    FWLogLevelError     = (FWLogTypeError),                     // 0...00001
-    FWLogLevelWarn      = (FWLogLevelError | FWLogTypeWarn),    // 0...00011
-    FWLogLevelInfo      = (FWLogLevelWarn  | FWLogTypeInfo),    // 0...00111
-    FWLogLevelDebug     = (FWLogLevelInfo  | FWLogTypeDebug),   // 0...01111
-    FWLogLevelVerbose   = (FWLogLevelDebug | FWLogTypeVerbose), // 0...11111
-    FWLogLevelAll       = NSUIntegerMax                         // 1...11111
+    FWLogLevelOff     = 0,
+    FWLogLevelError   = (FWLogTypeError),                     // 0...00001
+    FWLogLevelWarn    = (FWLogLevelError | FWLogTypeWarn),    // 0...00011
+    FWLogLevelInfo    = (FWLogLevelWarn  | FWLogTypeInfo),    // 0...00111
+    FWLogLevelDebug   = (FWLogLevelInfo  | FWLogTypeDebug),   // 0...01111
+    FWLogLevelVerbose = (FWLogLevelDebug | FWLogTypeVerbose), // 0...11111
+    FWLogLevelAll     = NSUIntegerMax                         // 1...11111
 };
 
 @interface FWLog : NSObject
@@ -36,7 +58,7 @@ typedef NS_ENUM(NSUInteger, FWLogLevel) {
 + (void)setLevel:(FWLogLevel)level;
 
 /**
- *  默认日志
+ *  默认级别
  */
 + (void)log:(NSString *)format, ...;
 

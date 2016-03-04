@@ -152,7 +152,7 @@
                      @"%%",
                      totalTime
                      ];
-    [FWLog verbose:log];
+    [FWLog debug:log];
 #endif
 }
 

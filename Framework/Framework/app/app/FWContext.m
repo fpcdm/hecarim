@@ -29,7 +29,7 @@
                      opts[FRAMEWORK_TEST],
                      opts[FRAMEWORK_LOG]
                      ];
-    [FWLog verbose:log];
+    [FWLog debug:log];
 #endif
     
 #if FRAMEWORK_TEST

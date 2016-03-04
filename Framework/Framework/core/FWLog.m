@@ -8,9 +8,6 @@
 
 #import "FWLog.h"
 
-//定义默认log级别，小于Verbose
-#define FWLogTypeDefault (1 << 5)  // 0...100000
-
 #ifdef APP_DEBUG
 #if TARGET_IPHONE_SIMULATOR
 
@@ -43,11 +40,10 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     if (!(globalLogLevel & type)) return;
 #endif
     
-    //开发环境
+//开发环境
 #ifdef APP_DEBUG
     //模拟器
-#if TARGET_IPHONE_SIMULATOR
-    
+    #if TARGET_IPHONE_SIMULATOR
     if (!isDDLogInited) {
         isDDLogInited = YES;
         
@@ -58,9 +54,10 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
         
         //自定义颜色，区别于NSLog
         [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#20B2AA"] backgroundColor:nil forFlag:DDLogFlagInfo];
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#808080"] backgroundColor:nil forFlag:DDLogFlagDebug];
-        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagVerbose];
+        [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagDebug];
+        [[DDTTYLogger sharedInstance] setForegroundColor:nil backgroundColor:nil forFlag:DDLogFlagVerbose];
     }
+    #endif
     
     switch (type) {
         case FWLogTypeError:
@@ -75,17 +72,12 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
         case FWLogTypeDebug:
             DDLogDebug(@"DEBUG: %@", message);
             break;
-        case FWLogTypeVerbose:
-            [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagVerbose];
-            DDLogVerbose(@"VERBOSE: %@", message);
-            break;
         default:
-            [[DDTTYLogger sharedInstance] setForegroundColor:nil backgroundColor:nil forFlag:DDLogFlagVerbose];
             DDLogVerbose(@"%@", message);
             break;
     }
     
-    //真机
+//正式环境
 #else
     
     switch (type) {
@@ -101,19 +93,10 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
         case FWLogTypeDebug:
             NSLog(@"DEBUG: %@", message);
             break;
-        case FWLogTypeVerbose:
-            NSLog(@"VERBOSE: %@", message);
-            break;
         default:
             NSLog(@"%@", message);
             break;
     }
-    
-#endif
-    //正式环境
-#else
-    
-    //什么也不做
     
 #endif
 }
@@ -125,7 +108,7 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     if (format) {
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self _log:FWLogTypeDefault message:message];
+        [self _log:FRAMEWORK_LOG_TYPE message:message];
         va_end(args);
     }
 #endif
