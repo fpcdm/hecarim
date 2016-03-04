@@ -12,6 +12,9 @@
 
 @singleton(FWScreen)
 
+//当前控制器，默认FWContext.viewController
+@prop_weak(UIViewController *, viewController)
+
 //屏幕边界
 @prop_readonly(CGRect, bounds)
 @prop_readonly(CGFloat, width)

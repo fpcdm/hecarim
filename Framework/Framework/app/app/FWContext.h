@@ -13,9 +13,8 @@
 //单例对象
 @singleton(FWContext)
 
-//导航根属性：最内层
+//导航窗口属性：最内层
 @prop_readonly(UIWindow *, window)
-@prop_readonly(UIViewController *, rootViewController)
 
 //导航活动属性：最外层
 @prop_readonly(UITabBarController *, tabBarController)

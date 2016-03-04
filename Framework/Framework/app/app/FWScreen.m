@@ -12,13 +12,13 @@
 @implementation FWScreen
 {
     CGRect _bounds;
-    
     CGFloat _statusBarHeight;
-    CGFloat _navigationBarHeight;
-    CGFloat _tabBarHeight;
 }
 
 @def_singleton(FWScreen)
+
+//当前控制器
+@def_prop_weak(UIViewController *, viewController)
 
 //屏幕边界
 @def_prop_dynamic(CGRect, bounds)
@@ -84,23 +84,6 @@
     }
     
     return CGRectMake(0, 0, _bounds.size.width, availHeight);
-    
-    /*
-    //2. 根据活动ViewController取有效边界
-    CGFloat availHeight = _bounds.size.height;
-    
-    //有导航栏时: -(状态栏+导航栏); 无导航栏时: 不扣除状态栏
-    UIViewController *viewController = [FWContext sharedInstance].viewController;
-    if (viewController.navigationController && viewController.navigationController.navigationBar.hidden != YES) {
-        availHeight -= (self.statusBarHeight + viewController.navigationController.navigationBar.frame.size.height);
-    }
-    //有TabBar时: -(TabBar)
-    if (viewController.tabBarController && viewController.tabBarController.tabBar.hidden != YES) {
-        availHeight -= viewController.tabBarController.tabBar.frame.size.height;
-    }
-    
-    return CGRectMake(0, 0, _bounds.size.width, availHeight);
-    */
 }
 
 - (CGFloat)availWidth
@@ -123,24 +106,14 @@
 
 - (CGFloat)navigationBarHeight
 {
-    if (_navigationBarHeight <= 0) {
-        UINavigationController *navigationController = [FWContext sharedInstance].navigationController;
-        if (navigationController) {
-            _navigationBarHeight = navigationController.navigationBar.frame.size.height;
-        }
-    }
-    return _navigationBarHeight;
+    UINavigationController *navigationController = _viewController ? _viewController.navigationController : [FWContext sharedInstance].navigationController;
+    return navigationController ? navigationController.navigationBar.frame.size.height : 0;
 }
 
 - (CGFloat)tabBarHeight
 {
-    if (_tabBarHeight <= 0) {
-        UITabBarController *tabBarContoller = [FWContext sharedInstance].tabBarController;
-        if (tabBarContoller) {
-            _tabBarHeight = tabBarContoller.tabBar.frame.size.height;
-        }
-    }
-    return _tabBarHeight;
+    UITabBarController *tabBarContoller = _viewController ? _viewController.tabBarController : [FWContext sharedInstance].tabBarController;
+    return tabBarContoller ? tabBarContoller.tabBar.frame.size.height : 0;
 }
 
 - (CGFloat)availStatusBarHeight
@@ -165,13 +138,13 @@
 
 - (BOOL)navigationBarHidden
 {
-    UINavigationController *navigationController = [FWContext sharedInstance].navigationController;
+    UINavigationController *navigationController = _viewController ? _viewController.navigationController : [FWContext sharedInstance].navigationController;
     return navigationController ? navigationController.navigationBar.hidden : YES;
 }
 
 - (BOOL)tabBarHidden
 {
-    UITabBarController *tabBarContoller = [FWContext sharedInstance].tabBarController;
+    UITabBarController *tabBarContoller = _viewController ? _viewController.tabBarController : [FWContext sharedInstance].tabBarController;
     return tabBarContoller ? tabBarContoller.tabBar.hidden : YES;
 }
 

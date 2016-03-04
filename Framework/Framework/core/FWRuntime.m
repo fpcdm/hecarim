@@ -226,6 +226,8 @@
         if (![obj respondsToSelector:NSSelectorFromString(property)])
             continue;
         
+        TODO("fix tabbarviewcontroller readonly")
+        
         id value = [obj valueForKey:property];
         if (value == nil) {
             value = [NSNull null];
