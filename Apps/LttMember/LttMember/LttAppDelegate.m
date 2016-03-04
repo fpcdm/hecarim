@@ -22,7 +22,7 @@
 #import "Harpy.h"
 #import "FWDebug.h"
 
-@interface LttAppDelegate () <WXApiDelegate, UITabBarControllerDelegate>
+@interface LttAppDelegate () <WXApiDelegate>
 
 @end
 

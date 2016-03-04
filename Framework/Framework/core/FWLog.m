@@ -9,11 +9,9 @@
 #import "FWLog.h"
 
 #ifdef APP_DEBUG
-#import "FWRuntime.h"
-#endif
 
-#ifdef APP_DEBUG
-#if TARGET_IPHONE_SIMULATOR
+//导入Runtime
+#import "FWRuntime.h"
 
 //DDLog调试级别，需要安装XcodeColors，需在导入DDLog前设置
 #define LOG_LEVEL_DEF DDLogLevelAll
@@ -24,7 +22,6 @@
 //模拟器DDLog配置
 static BOOL isDDLogInited = false;
 
-#endif
 #endif
 
 //全局日志级别
@@ -46,22 +43,23 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     
 //开发环境
 #ifdef APP_DEBUG
-    //模拟器
-    #if TARGET_IPHONE_SIMULATOR
+    //开启DDLog
     if (!isDDLogInited) {
         isDDLogInited = YES;
         
-        //模拟器开启颜色
-        setenv("XcodeColors", "YES", 1);
+        //添加ASL终端日志和TTYXcode日志
+        [DDLog addLogger:[DDASLLogger sharedInstance]];
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
-        [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
         
-        //自定义颜色，区别于NSLog
+        //模拟器开启并自定义颜色
+        #if TARGET_IPHONE_SIMULATOR
+        setenv("XcodeColors", "YES", 1);
+        [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
         [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#20B2AA"] backgroundColor:nil forFlag:DDLogFlagInfo];
         [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor colorWithHex:@"#9370D8"] backgroundColor:nil forFlag:DDLogFlagDebug];
         [[DDTTYLogger sharedInstance] setForegroundColor:nil backgroundColor:nil forFlag:DDLogFlagVerbose];
+        #endif
     }
-    #endif
     
     switch (type) {
         case FWLogTypeError:
