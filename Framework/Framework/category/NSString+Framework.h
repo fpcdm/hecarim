@@ -26,6 +26,26 @@
 - (NSString *)rtrim;
 
 /**
+ *  首字母大写
+ */
+- (NSString *)ucfirst;
+
+/**
+ *  首字母小写
+ */
+- (NSString *)lcfirst;
+
+/**
+ *  驼峰转下划线
+ */
+- (NSString *)underlineString;
+
+/**
+ *  下划线转驼峰
+ */
+- (NSString *)camelString;
+
+/**
  *  是否符合正则表达式
  *
  *  @param regex 正则表达式

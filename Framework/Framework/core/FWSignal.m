@@ -169,18 +169,9 @@
     return [FWRuntime copyObject:self withZone:zone];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)mutableCopyWithZone:(NSZone *)zone
 {
-    self = [self init];
-    if (self) {
-        [FWRuntime decodeObject:self withCoder:aDecoder];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    [FWRuntime encodeObject:self withCoder:aCoder];
+    return [self copyWithZone:zone];
 }
 
 - (id)response

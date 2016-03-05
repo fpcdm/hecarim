@@ -62,7 +62,7 @@ TODO("FWSignal NSCopying NSCoding")
 @end
 
 #pragma mark -
-@interface FWSignal : NSObject<NSCopying, NSCoding>
+@interface FWSignal : NSObject<NSCopying, NSMutableCopying>
 
 //静态方法
 + (FWSignal *)signal;
