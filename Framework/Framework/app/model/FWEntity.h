@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FWEntity : NSObject
+@interface FWEntity : NSObject<NSCopying, NSMutableCopying, NSCoding>
 
 //模型关联映射
 + (NSDictionary *)classMap;

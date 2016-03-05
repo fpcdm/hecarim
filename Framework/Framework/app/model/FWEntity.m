@@ -35,6 +35,34 @@
     return self;
 }
 
+//深拷贝
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [[[self class] allocWithZone:zone] initWithDictionary:[self toDictionary]];
+}
+
+//深拷贝
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    return [self copyWithZone:zone];
+}
+
+//编码
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [self mj_encode:aCoder];
+}
+
+//解码
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        [self mj_decode:aDecoder];
+    }
+    return self;
+}
+
 - (void)mergeDictionary:(NSDictionary *)dict
 {
     [self mj_setKeyValues:dict];

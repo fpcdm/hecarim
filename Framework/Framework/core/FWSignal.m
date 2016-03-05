@@ -7,6 +7,7 @@
 //
 
 #import "FWSignal.h"
+#import "FWRuntime.h"
 
 #pragma mark -
 @implementation NSObject (FWSignalResponder)
@@ -161,6 +162,25 @@
         //
     }
     return self;
+}
+
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+    return [FWRuntime copyObject:self withZone:zone];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [self init];
+    if (self) {
+        [FWRuntime decodeObject:self withCoder:aDecoder];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [FWRuntime encodeObject:self withCoder:aCoder];
 }
 
 - (id)response
