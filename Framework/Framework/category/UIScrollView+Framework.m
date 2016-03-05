@@ -11,6 +11,55 @@
 
 @implementation UIScrollView (Framework)
 
+#pragma mark - Additions
+- (CGFloat)contentOffsetX
+{
+    return self.contentOffset.x;
+}
+
+- (void)setContentOffsetX:(CGFloat)offsetX
+{
+    CGPoint offset = self.contentOffset;
+    offset.x = offsetX;
+    self.contentOffset = offset;
+}
+
+- (CGFloat)contentOffsetY
+{
+    return self.contentOffset.y;
+}
+
+- (void)setContentOffsetY:(CGFloat)offsetY
+{
+    CGPoint offset = self.contentOffset;
+    offset.y = offsetY;
+    self.contentOffset = offset;
+}
+
+- (CGFloat)contentWidth
+{
+    return self.contentSize.width;
+}
+
+- (void)setContentWidth:(CGFloat)width
+{
+    CGSize size = self.contentSize;
+    size.width = width;
+    self.contentSize = size;
+}
+
+- (CGFloat)contentHeight
+{
+    return self.contentSize.height;
+}
+
+- (void)setContentHeight:(CGFloat)height
+{
+    CGSize size = self.contentSize;
+    size.height = height;
+    self.contentSize = size;
+}
+
 #pragma mark - emptyView
 - (void)setEmptyView:(UIView *)emptyView
 {

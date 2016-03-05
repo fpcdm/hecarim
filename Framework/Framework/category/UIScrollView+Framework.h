@@ -20,6 +20,13 @@ typedef enum {
 
 @interface UIScrollView (Framework)
 
+//Additions
+@prop_assign(CGFloat, contentOffsetX)
+@prop_assign(CGFloat, contentOffsetY)
+
+@prop_assign(CGFloat, contentWidth)
+@prop_assign(CGFloat, contentHeight)
+
 //空数据视图，不设置和没有更多效果一致
 @property (strong, nonatomic) UIView *emptyView;
 
