@@ -80,18 +80,14 @@
 #pragma mark -
 + (NSArray *)methodsOfClass:(Class)clazz
 {
-    static NSMutableDictionary * __cache = nil;
-    
-    if ( nil == __cache )
-    {
-        __cache = [[NSMutableDictionary alloc] init];
+    static NSMutableDictionary *classMethodNames = nil;
+    if (nil == classMethodNames) {
+        classMethodNames = [[NSMutableDictionary alloc] init];
     }
     
-    NSString *cacheKey = NSStringFromClass(clazz);
-    
-    NSMutableArray * methodNames = [__cache objectForKey:cacheKey];
-    if ( nil == methodNames )
-    {
+    NSString *className = NSStringFromClass(clazz);
+    NSMutableArray *methodNames = [classMethodNames objectForKey:className];
+    if (nil == methodNames) {
         methodNames = [NSMutableArray array];
         
         while (clazz != NULL) {
@@ -118,7 +114,7 @@
             if (nil == clazz || clazz == [NSObject class]) break;
         }
         
-        [__cache setObject:methodNames forKey:cacheKey];
+        [classMethodNames setObject:methodNames forKey:className];
     }
     
     return methodNames;
@@ -146,21 +142,17 @@
 }
 
 #pragma mark -
-+ (NSArray *)propertiesOfClass:(Class)clazz
++ (NSDictionary *)allProperties:(Class)clazz
 {
-    static NSMutableDictionary * __cache = nil;
-    
-    if ( nil == __cache )
-    {
-        __cache = [[NSMutableDictionary alloc] init];
+    static NSMutableDictionary *classPropertyNames = nil;
+    if (nil == classPropertyNames) {
+        classPropertyNames = [[NSMutableDictionary alloc] init];
     }
     
-    NSString *cacheKey = NSStringFromClass(clazz);
-    
-    NSMutableArray * propertyNames = [__cache objectForKey:cacheKey];
-    if ( nil == propertyNames )
-    {
-        propertyNames = [NSMutableArray array];
+    NSString *className = NSStringFromClass(clazz);
+    NSMutableDictionary *propertyNames = [classPropertyNames objectForKey:className];
+    if (nil == propertyNames) {
+        propertyNames = [[NSMutableDictionary alloc] init];
         
         while (clazz != NULL) {
             unsigned int propertyCount = 0;
@@ -168,13 +160,14 @@
             
             for (NSUInteger i = 0; i < propertyCount; i++) {
                 const char *name = property_getName(properties[i]);
+                const char *attr = property_getAttributes(properties[i]);
                 if (NULL == name) continue;
                 
-                NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+                NSString *propertyName = [NSString stringWithUTF8String:name];
+                NSString *attrName = [NSString stringWithUTF8String:attr];
                 if (NULL == propertyName) continue;
-                if ([propertyNames containsObject:propertyName]) continue;
                 
-                [propertyNames addObject:propertyName];
+                [propertyNames setObject:(attrName ? attrName : @"") forKey:propertyName];
             }
             
             free(properties);
@@ -183,10 +176,26 @@
             if (nil == clazz || clazz == [NSObject class]) break;
         }
         
-        [__cache setObject:propertyNames forKey:cacheKey];
+        [classPropertyNames setObject:propertyNames forKey:className];
     }
     
     return propertyNames;
+    
+}
+
++ (BOOL)isReadonly:(const char *)attr
+{
+    if (strstr(attr, "_ro") || strstr(attr, ",R")) {
+        return YES;
+    }
+    return NO;
+}
+
++ (NSArray *)propertiesOfClass:(Class)clazz
+{
+    NSDictionary *properties = [self allProperties:clazz];
+    NSArray *result = [properties allKeys];
+    return result;
 }
 
 + (NSArray *)propertiesOfClass:(Class)clazz withPrefix:(NSString *)prefix
@@ -215,19 +224,13 @@
 {
     if (!obj) return nil;
     
-    NSArray *properties = [self propertiesOfClass:[obj class]];
-    if (nil == properties || 0 == properties.count) {
-        return @{};
-    }
-    
+    NSDictionary *properties = [self allProperties:[obj class]];
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     for (NSString *property in properties) {
-        //检查属性
-        if (![obj respondsToSelector:NSSelectorFromString(property)])
-            continue;
+        //检查是否可获取属性
+        if (![obj respondsToSelector:NSSelectorFromString(property)]) continue;
         
-        TODO("fix tabbarviewcontroller readonly")
-        
+        //包含Readonly属性
         id value = [obj valueForKey:property];
         if (value == nil) {
             value = [NSNull null];
@@ -244,7 +247,6 @@
     return [self copyObject:obj withZone:nil];
 }
 
-TODO("优化代码，统一方法，获取属性内部方法返回字典，附带attr")
 + (id)copyObject:(id)obj withZone:(NSZone *)zone
 {
     if (!obj) return nil;
@@ -253,72 +255,46 @@ TODO("优化代码，统一方法，获取属性内部方法返回字典，附�
     id newObj = zone ? [[clazz allocWithZone:zone] init] : [[clazz alloc] init];
     if (!newObj) return nil;
     
-    while (clazz != NULL) {
-        unsigned int propertyCount = 0;
-        objc_property_t *properties = class_copyPropertyList(clazz, &propertyCount);
+    NSDictionary *properties = [self allProperties:clazz];
+    for (NSString *property in properties) {
+        //忽略只读属性
+        NSString *attrName = [properties objectForKey:property];
+        if ([self isReadonly:[attrName UTF8String]]) continue;
         
-        for (NSUInteger i = 0; i < propertyCount; i++) {
-            const char *name = property_getName(properties[i]);
-            const char *attr = property_getAttributes(properties[i]);
-            //忽略只读属性
-            if ([self isReadonly:attr]) {
-                continue;
-            }
-            
-            NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-            id propertyValue = [obj valueForKey:propertyName];
-            
-            [newObj setValue:propertyValue forKey:propertyName];
-        }
-        
-        free(properties);
-        
-        clazz = class_getSuperclass(clazz);
-        if (nil == clazz || clazz == [NSObject class]) break;
+        id value = [obj valueForKey:property];
+        [newObj setValue:value forKey:property];
     }
     
     return newObj;
 }
 
-+ (BOOL)isReadonly:(const char *)attr
-{
-    if (strstr(attr, "_ro") || strstr(attr, ",R")) {
-        return YES;
-    }
-    return NO;
-}
-
 #pragma mark -
 + (void)encodeObject:(id)obj withCoder:(NSCoder *)aCoder
 {
-    /*
-    NSDictionary *dict = [self toDictionary];
-    for (NSString *key in dict) {
-        id object = [dict objectForKey:key];
-        if (object != nil && object != [NSNull null]) {
-            [aCoder encodeObject:object forKey:key];
-        }
-    }
-    */
-}
-
-+ (id)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder
-{
-    /*
-    NSDictionary *dict = [self toDictionary];
-    for (NSString *key in dict) {
-        id object = [aDecoder decodeObjectForKey:key];
-        if (object != nil && object != [NSNull null]) {
-            //是否可设置值
-            NSString *selectorStr = [NSString stringWithFormat:@"set%@%@:",[[key substringToIndex:1] uppercaseString], [key substringFromIndex:1]];
-            SEL selector = NSSelectorFromString(selectorStr);
-            if ([self respondsToSelector:selector]) {
-                [self setValue:object forKey:key];
+    NSDictionary *properties = [self propertiesOfObject:obj];
+    if (properties) {
+        for (NSString *property in properties) {
+            id value = [properties objectForKey:property];
+            if (value != nil && value != [NSNull null]) {
+                [aCoder encodeObject:value forKey:property];
             }
         }
     }
-    */
-    return nil;
+}
+
++ (void)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder
+{
+    NSDictionary *properties = [self allProperties:[obj class]];
+    for (NSString *property in properties) {
+        id value = [aDecoder decodeObjectForKey:property];
+        if (value != nil && value != [NSNull null]) {
+            //是否可设置值
+            NSString *selectorName = [NSString stringWithFormat:@"set%@%@:",[[property substringToIndex:1] uppercaseString], [property substringFromIndex:1]];
+            if ([obj respondsToSelector:NSSelectorFromString(selectorName)]) {
+                [obj setValue:value forKey:property];
+            }
+        }
+    }
 }
 
 @end

@@ -31,6 +31,6 @@
 
 //对象编码解码
 + (void)encodeObject:(id)obj withCoder:(NSCoder *)aCoder;
-+ (id)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder;
++ (void)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder;
 
 @end
