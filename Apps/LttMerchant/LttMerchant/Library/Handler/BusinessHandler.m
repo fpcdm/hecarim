@@ -102,4 +102,23 @@
 
 }
 
+- (void)selectChildBusiness:(NSNumber *)caseId param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
+{
+    RestKitUtil *sharedClient = [RestKitUtil sharedClient];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[CaseEntity class] mappingParam:@{@"id" : @"propertyId",@"name" : @"propertyName"} keyPath:@"list"];
+    
+    NSString *restPath = [NSString stringWithFormat:@"casetype/properties/%@",caseId];
+    
+    [sharedClient getObject:[BusinessEntity new] path:restPath param:param success:^(NSArray *result){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        success(result);
+    } failure:^(ErrorEntity *error){
+        [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        failure(error);
+    }];
+
+}
+
 @end

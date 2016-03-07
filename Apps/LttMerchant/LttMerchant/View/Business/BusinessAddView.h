@@ -14,6 +14,8 @@
 
 - (void)actionAddImage;
 
+- (void)actionDeletedItemImages:(NSInteger)imagesId;
+
 @end
 
 @interface BusinessAddView : AppScrollView

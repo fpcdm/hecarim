@@ -20,6 +20,7 @@
 {
     BusinessAddView *addView;
     NSNumber *caseId;
+    NSNumber *propertyId;
     NSMutableArray *newsImgs;
 }
 
@@ -61,9 +62,12 @@
     BusinessHandler *businessHandler = [[BusinessHandler alloc] init];
     NSDictionary *param = @{
                             @"case_type":caseId,
+                            @"case_type_property":propertyId,
                             @"content" : content,
                             @"img_list" : newsImgs
                             };
+    NSLog(@"请求数据\n");
+    [FWDebug dump:param];
     [businessHandler addBusiness:businessEntity param:param success:^(NSArray *result){
         [self hideLoading];
         [self.navigationController popViewControllerAnimated:YES];
@@ -78,6 +82,7 @@
     BusinessServicesListViewController *viewController = [[BusinessServicesListViewController alloc] init];
     viewController.callbackBlock = ^(NSDictionary *servicesData){
         caseId = [servicesData objectForKey:@"type_id"];
+        propertyId = [servicesData objectForKey:@"propertyId"];
         [addView assign:@"selectServices" value:servicesData];
         [addView showServices];
     };
@@ -98,6 +103,14 @@
     
     sheet.tag = 1;
     [sheet showInView:self.view];
+}
+
+- (void)actionDeletedItemImages:(NSInteger)imagesId
+{
+    [newsImgs removeObjectAtIndex:imagesId];
+    [addView assign:@"newsImgs" value:newsImgs];
+    [addView showImg];
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

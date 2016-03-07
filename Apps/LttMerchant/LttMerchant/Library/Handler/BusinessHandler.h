@@ -9,6 +9,7 @@
 #import "BaseHandler.h"
 #import "ResultEntity.h"
 #import "BusinessEntity.h"
+#import "CaseEntity.h"
 
 @interface BusinessHandler : BaseHandler
 
@@ -29,5 +30,9 @@
 
 //删除
 - (void)deleteBusiness:(BusinessEntity *)business param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
+
+//查找是否有下级服务
+- (void)selectChildBusiness:(NSNumber *)caseId param:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure;
+
 
 @end

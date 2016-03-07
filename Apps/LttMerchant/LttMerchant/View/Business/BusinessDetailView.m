@@ -55,6 +55,7 @@
     
     for (NSDictionary *imgs in imgArr) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh)];
+        imageView.contentMode = UIViewContentModeScaleToFill;
         [imagesBox addSubview:imageView];
         [imageView setImageUrl:[imgs objectForKey:@"thumb_url"] indicator:YES];
         x++;

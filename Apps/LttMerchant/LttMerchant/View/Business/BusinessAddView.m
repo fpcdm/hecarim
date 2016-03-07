@@ -159,8 +159,13 @@
 
 - (void)showImg
 {
+    for (UIView *view in [imagesBox subviews]) {
+        if (view.tag == 1) {
+            [view removeFromSuperview];
+        }
+    }
     NSArray *imgArr = [self fetch:@"newsImgs"];
-    [FWDebug dump:imgArr];
+    
     CGFloat wh = (SCREEN_WIDTH - 60) / 5;
     CGFloat boxHeight = ceil((imgArr.count + 1) / 5.0) * wh + (ceil((imgArr.count + 1) / 5.0) + 1) * 10;
     
@@ -174,9 +179,25 @@
     
     for (NSString *imgUrl in imgArr) {
         UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.tag = 1;
         [imageView setImageUrl:imgUrl];
+        imageView.userInteractionEnabled = YES;
         imageView.frame = CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh);
+        imageView.contentMode = UIViewContentModeScaleToFill;
         [imagesBox addSubview:imageView];
+        
+        
+        //添加删除按钮
+        CGRect deleteFrame = CGRectMake(-10, -10, 30, 30);
+        UIImage *deleteImage = [UIImage imageNamed:@"deleteItem"];
+        UIButton *deleteButton = [[UIButton alloc] initWithFrame:deleteFrame];
+        deleteButton.tag = i;
+        [deleteButton setBackgroundImage:deleteImage forState:UIControlStateNormal];
+        [deleteButton setBackgroundImage:deleteImage forState:UIControlStateHighlighted];
+        [deleteButton addTarget:self action:@selector(actionItemDeleted:) forControlEvents:UIControlEventTouchUpInside];
+        [imageView addSubview:deleteButton];
+        
+        
         x++;
         i++;
         if (i % 5 == 0 && i > 1) {
@@ -186,6 +207,12 @@
     }
     addButton.frame = CGRectMake(wh * x + 10*(x+1), wh * y + 10*(y+1), wh, wh);
     self.contentSize = CGSizeMake(SCREEN_WIDTH, 120 + boxHeight + 50 + 10 * 4);
+}
+
+- (void)actionItemDeleted:(UIButton *)sender
+{
+    NSLog(@"删除的是：%ld",sender.tag);
+    [self.delegate actionDeletedItemImages:sender.tag];
 }
 
 - (void)showServices
