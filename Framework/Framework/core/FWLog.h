@@ -66,7 +66,7 @@ typedef NS_ENUM(NSUInteger, FWLogLevel) {
 + (void)error:(NSString *)format, ...;
 
 /**
- *  调试对象，仅支持%@对象
+ *  调试对象，仅支持部分格式，详见代码
  */
 + (void)dump:(NSString *)format, ...;
 

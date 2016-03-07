@@ -127,6 +127,10 @@
 		2F1D2D0A1C867817008F3B50 /* FWSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD71C867816008F3B50 /* FWSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1D2D0B1C867817008F3B50 /* FWTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD81C867816008F3B50 /* FWTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1D2D0C1C867817008F3B50 /* FWTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D2CD91C867816008F3B50 /* FWTest.m */; };
+		2F1E131E1C8D6E3000EC79CE /* FWWidgetGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */; };
+		2F1E131F1C8D6E3000EC79CE /* FWWidgetGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E131D1C8D6E3000EC79CE /* FWWidgetGrid.m */; };
+		2F1E13221C8D6E5400EC79CE /* FWWidgetSlide.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E13201C8D6E5400EC79CE /* FWWidgetSlide.h */; };
+		2F1E13231C8D6E5400EC79CE /* FWWidgetSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E13211C8D6E5400EC79CE /* FWWidgetSlide.m */; };
 		2F1FE8C11C740B8B00C76B8B /* UIViewController+FIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8BF1C740B8B00C76B8B /* UIViewController+FIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1FE8C21C740B8B00C76B8B /* UIViewController+FIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FE8C01C740B8B00C76B8B /* UIViewController+FIView.m */; };
 		2F1FE8D71C741ABE00C76B8B /* FWHelperEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1FE8D51C741ABE00C76B8B /* FWHelperEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -768,6 +772,10 @@
 		2F1D2CD71C867816008F3B50 /* FWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSingleton.h; sourceTree = "<group>"; };
 		2F1D2CD81C867816008F3B50 /* FWTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTest.h; sourceTree = "<group>"; };
 		2F1D2CD91C867816008F3B50 /* FWTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTest.m; sourceTree = "<group>"; };
+		2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWWidgetGrid.h; sourceTree = "<group>"; };
+		2F1E131D1C8D6E3000EC79CE /* FWWidgetGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWWidgetGrid.m; sourceTree = "<group>"; };
+		2F1E13201C8D6E5400EC79CE /* FWWidgetSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWWidgetSlide.h; sourceTree = "<group>"; };
+		2F1E13211C8D6E5400EC79CE /* FWWidgetSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWWidgetSlide.m; sourceTree = "<group>"; };
 		2F1FE8BF1C740B8B00C76B8B /* UIViewController+FIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FIView.h"; sourceTree = "<group>"; };
 		2F1FE8C01C740B8B00C76B8B /* UIViewController+FIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FIView.m"; sourceTree = "<group>"; };
 		2F1FE8D51C741ABE00C76B8B /* FWHelperEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperEncoder.h; sourceTree = "<group>"; };
@@ -1517,6 +1525,17 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		2F1E131B1C8D6DB000EC79CE /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */,
+				2F1E131D1C8D6E3000EC79CE /* FWWidgetGrid.m */,
+				2F1E13201C8D6E5400EC79CE /* FWWidgetSlide.h */,
+				2F1E13211C8D6E5400EC79CE /* FWWidgetSlide.m */,
+			);
+			path = widget;
+			sourceTree = "<group>";
+		};
 		2F6596421C5CF45E00CC8C06 /* helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,6 +1722,7 @@
 				2F004E4F1C7074B5000B4F97 /* frontend */,
 				2FAA25101C53AB4800933669 /* plugin */,
 				2F6596421C5CF45E00CC8C06 /* helper */,
+				2F1E131B1C8D6DB000EC79CE /* widget */,
 			);
 			path = library;
 			sourceTree = "<group>";
@@ -2562,6 +2582,7 @@
 				2FD99E3C1C48CE6F0065293E /* MJRefreshBackNormalFooter.h in Headers */,
 				2FD99E2A1C48CE6F0065293E /* MJRefreshAutoFooter.h in Headers */,
 				2FD99EE51C48CE700065293E /* TSBlurView.h in Headers */,
+				2F1E13221C8D6E5400EC79CE /* FWWidgetSlide.h in Headers */,
 				2FD99DF61C48CE6F0065293E /* FLEXKeyboardShortcutManager.h in Headers */,
 				2FD99E9E1C48CE6F0065293E /* RKPropertyInspector+CoreData.h in Headers */,
 				2FD99DBA1C48CE6F0065293E /* FLEXFileBrowserTableViewController.h in Headers */,
@@ -2787,6 +2808,7 @@
 				2FD99E731C48CE6F0065293E /* RKDotNetDateFormatter.h in Headers */,
 				2FD99E911C48CE6F0065293E /* RKNSJSONSerialization.h in Headers */,
 				2FD99D601C48CE6F0065293E /* DDASLLogger.h in Headers */,
+				2F1E131E1C8D6E3000EC79CE /* FWWidgetGrid.h in Headers */,
 				2FD99D631C48CE6F0065293E /* DDFileLogger.h in Headers */,
 				2FD99E951C48CE6F0065293E /* RKObjectMappingOperationDataSource.h in Headers */,
 				2FD99EC01C48CE700065293E /* NSData+ImageContentType.h in Headers */,
@@ -2936,6 +2958,7 @@
 				2F6E85A71C87D36B004FADB8 /* UIColor+Framework.m in Sources */,
 				2F1FE8DC1C741AF300C76B8B /* FWHelperHttp.m in Sources */,
 				2FD99D831C48CE6F0065293E /* FLEXArgumentInputStructView.m in Sources */,
+				2F1E131F1C8D6E3000EC79CE /* FWWidgetGrid.m in Sources */,
 				2F1C35FE1C4C89310060E793 /* IRefreshControl.m in Sources */,
 				2FD99DD11C48CE6F0065293E /* FLEXNetworkSettingsTableViewController.m in Sources */,
 				2FD99ED41C48CE700065293E /* UIImage+GIF.m in Sources */,
@@ -2945,6 +2968,7 @@
 				2FC215411C70BF42000520B4 /* MJDictionaryCache.m in Sources */,
 				2FD99D681C48CE6F0065293E /* DDLog.m in Sources */,
 				2F1D2CDB1C867816008F3B50 /* FWViewController.m in Sources */,
+				2F1E13231C8D6E5400EC79CE /* FWWidgetSlide.m in Sources */,
 				2F6E85AF1C87D36B004FADB8 /* UITextView+Framework.m in Sources */,
 				2FD99DF31C48CE6F0065293E /* FLEXHeapEnumerator.m in Sources */,
 				2FD99ECD1C48CE700065293E /* SDWebImageManager.m in Sources */,

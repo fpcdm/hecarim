@@ -187,37 +187,57 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
     va_list args;
     if (format) {
         va_start(args, format);
-        //format%@
-        NSArray *formatArray = [format componentsSeparatedByString:@"%@"];
-        NSUInteger count = formatArray.count > 1 ? formatArray.count - 1 : 0;
-        NSString *message = nil;
-        if (count < 1) {
-            message = [[NSString alloc] initWithFormat:format arguments:args];
-        } else {
-            id arg;
-            NSUInteger i = 0;
-            NSString *argClass = nil;
-            message = [formatArray objectAtIndex:i];
-            while (i < count) {
-                arg = va_arg(args, id);
-                
-                argClass = [[arg class] description];
-                //NSClass,_NSInlineClass,__NSClass,...
-                if ([argClass hasPrefix:@"NS"] || [argClass hasPrefix:@"_NS"] || [argClass hasPrefix:@"__NS"] ||
-                    //UIView,...
-                    [argClass hasPrefix:@"UI"]) {
-                    message = [message stringByAppendingFormat:@"<%@>%@", argClass, arg];
-                } else {
-                    message = [message stringByAppendingFormat:@"<%@>%@", argClass, [FWRuntime propertiesOfObject:arg]];
-                }
-                message = [message stringByAppendingString:[formatArray objectAtIndex:i+1]];
-                i++;
-            }
-        }
-        [self _log:FWLogTypeDebug message:message];
+        NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
         va_end(args);
+        
+        //检查是否含有%@
+        NSMutableString *result = [NSMutableString string];
+        NSRange range = [format rangeOfString:@"%@"];
+        NSUInteger location = 0, total = format.length;
+        NSString *subFormat, *subMessage, *tmpMessage, *appendMessage;
+        while (range.location != NSNotFound) {
+            va_start(args, format);
+            subFormat  = [format substringWithRange:NSMakeRange(0, range.location)];
+            subMessage = [[NSString alloc] initWithFormat:subFormat arguments:args];
+            
+            //计算增加的字符串
+            appendMessage = !tmpMessage ? subMessage : [subMessage substringFromIndex:tmpMessage.length];
+            [result appendString:appendMessage];
+            id object = va_arg(args, id);
+            [result appendString:[self _dump:object]];
+            va_end(args);
+            
+            tmpMessage = [NSString stringWithFormat:@"%@%@", subMessage, object];
+            location = range.location + 2;
+            range = [format rangeOfString:@"%@" options:0 range:NSMakeRange(location, total - location)];
+        }
+        
+        //计算增加的字符串
+        appendMessage = !tmpMessage ? message : [message substringFromIndex:tmpMessage.length];
+        [result appendString:appendMessage];
+        
+        [self _log:FWLogTypeDebug message:result];
     }
 #endif
 }
+
+#ifdef APP_DEBUG
++ (NSString *)_dump:(id)object
+{
+    NSString *objClass = [[object class] description];
+    NSString *objDesc  = [NSString stringWithFormat:@"%@", object];
+    
+    //<Class>description
+    BOOL objFormat = [objDesc hasPrefix:[NSString stringWithFormat:@"<%@:", objClass]] && [objDesc hasSuffix:@">"];
+    if (!objFormat) objDesc = [NSString stringWithFormat:@"<%@>", objClass];
+    
+    //NSClass,_NSInlineClass,__NSClass,UIView,...
+    if ([objClass hasPrefix:@"NS"] || [objClass hasPrefix:@"_NS"] || [objClass hasPrefix:@"__NS"] || [objClass hasPrefix:@"UI"]) {
+        return [NSString stringWithFormat:@"%@%@", objDesc, objFormat ? @"" : object];
+    } else {
+        return [NSString stringWithFormat:@"%@%@", objDesc, [FWRuntime propertiesOfObject:object]];
+    }
+}
+#endif
 
 @end
