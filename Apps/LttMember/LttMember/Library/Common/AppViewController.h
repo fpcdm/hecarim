@@ -40,6 +40,9 @@
 //处理远程通知钩子（默认顶部弹出框）
 - (void) handleRemoteNotification:(NSString *) message type: (NSString *) type data: (NSString *) data;
 
+//处理切换用户钩子
+- (void) handleUserChanged;
+
 //是否登陆
 - (BOOL) isLogin;
 

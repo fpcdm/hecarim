@@ -53,6 +53,14 @@
     self.navigationItem.rightBarButtonItem = rightButtonItem;
 }
 
+- (void)handleUserChanged
+{
+    //切换用户重新渲染
+    UserEntity *user = [[StorageUtil sharedStorage] getUser];
+    [accountView assign:@"user" value:user];
+    [accountView display];
+}
+
 #pragma mark - Home
 - (BOOL)navigationShouldPopOnBackButton
 {

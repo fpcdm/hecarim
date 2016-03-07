@@ -138,6 +138,9 @@
     
     //保存数据
     [[StorageUtil sharedStorage] setUser:user];
+    
+    //刷新菜单
+    [[TabbarViewController sharedInstance] refreshMenu];
 }
 
 - (void)actionLoginWechat

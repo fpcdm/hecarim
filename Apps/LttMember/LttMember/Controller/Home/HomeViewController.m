@@ -150,6 +150,12 @@ static NSArray *slideAdverts = nil;
     }
 }
 
+- (void)handleUserChanged
+{
+    //切换用户清空cacheTypes，重新加载
+    cacheTypes = nil;
+}
+
 - (void)initData
 {
     //获取广告列表
@@ -164,23 +170,15 @@ static NSArray *slideAdverts = nil;
         } failure:^(ErrorEntity *error) {
             [self showError:error.message];
         }];
-    } else {
-        [homeView assign:@"adverts" value:slideAdverts];
-        [homeView reloadAds];
     }
     
     //获取收藏列表
     if (!cacheTypes) {
         [self actionTypes];
-        
-        //设置定时器
-        [self setTimer];
-    } else {
-        [self reloadTypes:[NSMutableArray arrayWithArray:cacheTypes]];
-        
-        //设置定时器
-        [self setTimer];
     }
+    
+    //设置定时器
+    [self setTimer];
 }
 
 //渲染视图

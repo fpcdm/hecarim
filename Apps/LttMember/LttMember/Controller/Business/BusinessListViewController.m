@@ -68,6 +68,12 @@
     }
 }
 
+- (void)handleUserChanged
+{
+    //切换用户重新加载
+    [self refreshData];
+}
+
 - (void)refreshData
 {
     //清空之前的数据

@@ -10,6 +10,4 @@
 
 @interface BusinessListViewController : AppUserViewController
 
-TODO("change city to reload")
-
 @end

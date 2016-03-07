@@ -226,4 +226,10 @@
     }];
 }
 
+//用户切换钩子
+- (void)handleUserChanged
+{
+    
+}
+
 @end

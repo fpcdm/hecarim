@@ -103,6 +103,16 @@
     }
 }
 
+//刷新每个子菜单的第一个页面
+- (void)refreshMenu
+{
+    //通知每个子菜单第一个页面用户已经切换
+    for (UINavigationController *navigationController in self.viewControllers) {
+        AppViewController *viewController = [navigationController.viewControllers firstObject];
+        [viewController handleUserChanged];
+    }
+}
+
 - (void)gotoHome
 {
     self.selectedIndex = 0;

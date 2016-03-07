@@ -46,6 +46,31 @@
     hasMore = YES;
 }
 
+- (void)handleUserChanged
+{
+    //切换用户重新加载
+    [self refreshData];
+}
+
+- (void)refreshData
+{
+    //清空之前的数据
+    if (intentionList && [intentionList count] > 0) {
+        intentionList = [[NSMutableArray alloc] init];
+        [listView assign:@"intentionList" value:intentionList];
+        [listView display];
+    }
+    
+    //还原数据
+    intentionList = [[NSMutableArray alloc] init];
+    page = 0;
+    hasMore = YES;
+    
+    //加载数据
+    [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
+    [listView.tableView startLoading];
+}
+
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
 {
     //分页加载

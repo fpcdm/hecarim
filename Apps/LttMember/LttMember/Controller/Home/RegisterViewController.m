@@ -284,7 +284,7 @@
     //登录接口调用
     UserHandler *userHandler = [[UserHandler alloc] init];
     [userHandler loginWithUser:user success:^(NSArray *result){
-        [self loadingSuccess:[LocaleUtil system:@"Loading.Success"] callback:^{
+        [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
             //赋值并释放资源
             UserEntity *apiUser = [result firstObject];
             user.id = apiUser.id;
@@ -300,6 +300,9 @@
             
             //保存数据
             [[StorageUtil sharedStorage] setUser:user];
+            
+            //刷新菜单
+            [[TabbarViewController sharedInstance] refreshMenu];
             
             [self pushView:[self recommendView] animated:YES completion:nil];
         }];

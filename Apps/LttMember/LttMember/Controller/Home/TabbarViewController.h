@@ -15,6 +15,9 @@
 //当前选中的导航栏
 - (UINavigationController *)selectedNavigationController;
 
+//刷新菜单
+- (void)refreshMenu;
+
 //跳转首页
 - (void)gotoHome;
 
