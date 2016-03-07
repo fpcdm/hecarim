@@ -33,6 +33,7 @@
 
 @def_prop_dynamic(NSInteger, status)
 @def_prop_dynamic(BOOL, isAvailable)
+@def_prop_dynamic(NSString *, hostname)
 @def_prop_dynamic(NSString *, localIp)
 
 - (instancetype)init
@@ -53,6 +54,20 @@
 - (BOOL)isAvailable
 {
     return self.status != self.UNAVAILABLE ? YES : NO;
+}
+
+- (NSString *)hostname
+{
+    char baseHostName[256];
+    int success = gethostname(baseHostName, 255);
+    if (success != 0) return nil;
+    baseHostName[255] = '/0';
+    
+#if TARGET_IPHONE_SIMULATOR
+    return [NSString stringWithFormat:@"%s", baseHostName];
+#else
+    return [NSString stringWithFormat:@"%s.local", baseHostName];
+#endif
 }
 
 - (NSString *)localIp

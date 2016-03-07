@@ -29,6 +29,9 @@
 //网络是否可用
 @prop_readonly(BOOL, isAvailable)
 
+//本地hostname
+@prop_readonly(NSString *, hostname)
+
 //本地IP
 @prop_readonly(NSString *, localIp)
 
