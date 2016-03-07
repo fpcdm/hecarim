@@ -66,8 +66,7 @@
                             @"content" : content,
                             @"img_list" : newsImgs
                             };
-    NSLog(@"请求数据\n");
-    [FWDebug dump:param];
+    FWDUMP(@"request data: %@", param);
     [businessHandler addBusiness:businessEntity param:param success:^(NSArray *result){
         [self hideLoading];
         [self.navigationController popViewControllerAnimated:YES];

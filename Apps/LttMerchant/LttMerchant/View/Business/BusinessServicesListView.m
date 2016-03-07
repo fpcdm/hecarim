@@ -26,8 +26,7 @@
     //显示数据
     NSMutableArray *servicesList = [self fetch:@"servicesList"];
     NSMutableArray *tableData = [[NSMutableArray alloc] init];
-    NSLog(@"数据是：\n");
-    [FWDebug dump:servicesList];
+    FWDUMP(@"data: %@", servicesList);
     if (servicesList != nil) {
         for (NSDictionary *param in servicesList) {
             [tableData addObject:@{@"id" : @"services", @"type" : @"custom", @"action": @"actionServices:", @"height": @"", @"data": param, @"text":[param objectForKey:@"type_name"]}];

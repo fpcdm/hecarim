@@ -54,8 +54,7 @@
     [businessHandler getBusinessDetail:businessEntity param:nil success:^(NSArray *result) {
         [self hideLoading];
         businessEntity = [result firstObject];
-        NSLog(@"详情是：\n");
-        [FWDebug dump:businessEntity];
+        FWDUMP(@"detail: %@", businessEntity);
         [detailView assign:@"businessDetail" value:businessEntity];
         [detailView display];
     } failure:^(ErrorEntity *error) {

@@ -65,7 +65,7 @@
 {
     NSMutableDictionary *muDic = [[NSMutableDictionary alloc] initWithDictionary:services];
     [muDic setObject:@0 forKey:@"propertyId"];
-    [FWDebug dump:muDic];
+    FWDUMP(@"services:%@", muDic);
     //判断是否有下级服务
     
     NSDictionary *param = @{
@@ -79,7 +79,7 @@
         for (CaseEntity *caseEntity in result) {
             [childServicesList addObject:caseEntity];
         }
-        [FWDebug dump:childServicesList];
+        FWDUMP(@"child services: %@", childServicesList);
         [listView assign:@"childService" value:childServicesList];
         
         //显示子服务
