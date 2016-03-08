@@ -11,7 +11,7 @@
 
 @implementation StaffEntity
 
-@synthesize id,is_admin;
+@synthesize id,is_admin,isMerchant;
 
 @synthesize no,name,nickname,mobile,avatar;
 

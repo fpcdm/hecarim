@@ -48,7 +48,10 @@
     StaffHandler *staffHandler = [[StaffHandler alloc] init];
     [staffHandler userPermissions:nil success:^(NSArray *result) {
         StaffEntity *staffEntity = [result firstObject];
+        NSLog(@"权限是%@\n",staffEntity.isMerchant);
+        //[FWLog dump:staffEntity.isMerchant];
         [homeView assign:@"is_admin" value:staffEntity.is_admin];
+        [homeView assign:@"isMerchant" value:staffEntity.isMerchant];
         [homeView display];
     } failure:^(ErrorEntity *error) {
         [self showError:error.message];

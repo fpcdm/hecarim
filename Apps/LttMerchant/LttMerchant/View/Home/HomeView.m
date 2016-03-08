@@ -12,6 +12,7 @@
 {
     UIButton *staffBtn;
     UIButton *businessBtn;
+    UIButton *serviceBtn;
 }
 
 - (id)init
@@ -21,7 +22,7 @@
     
     UIView *superView = self;
     
-    UIButton *serviceBtn = [[UIButton alloc] init];
+    serviceBtn = [[UIButton alloc] init];
     serviceBtn.layer.borderWidth = 0.5f;
     serviceBtn.layer.borderColor = CGCOLOR_MAIN_BORDER;
     serviceBtn.backgroundColor = COLOR_MAIN_WHITE;
@@ -55,7 +56,6 @@
         make.right.equalTo(superView.mas_right).offset(0.5);
         make.height.equalTo(@50);
     }];
-
     
     staffBtn = [[UIButton alloc] init];
     staffBtn.hidden = YES;
@@ -81,9 +81,16 @@
 - (void)display
 {
     NSNumber *is_admin = [self fetch:@"is_admin"];
-    if ([@1 isEqualToNumber:is_admin]) {
+    NSNumber *isMerchant = [self fetch:@"isMerchant"];
+    
+    if ([@1 isEqualToNumber:is_admin] && [@1 isEqualToNumber:isMerchant]) {
         staffBtn.hidden = NO;
         businessBtn.hidden = NO;
+    } else if ([@1 isEqualToNumber:is_admin]) {
+        staffBtn.hidden = NO;
+        [staffBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(serviceBtn.mas_bottom).offset(10);
+        }];
     }
 }
 

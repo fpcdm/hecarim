@@ -14,7 +14,7 @@
 - (void)userPermissions:(NSDictionary *)param success:(SuccessBlock)success failure:(FailedBlock)failure
 {
     RestKitUtil *sharedClient = [RestKitUtil sharedClient];
-    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[StaffEntity class] mappingParam:@{@"is_admin": @"is_admin"}];
+    RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[StaffEntity class] mappingParam:@{@"is_admin": @"is_admin",@"is_merchant": @"isMerchant"}];
     
     [sharedClient getObject:[StaffEntity new] path:@"user/permissions" param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];

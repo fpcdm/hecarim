@@ -24,6 +24,8 @@
 
 @property (retain, nonatomic) NSNumber *is_admin;
 
+@property (retain, nonatomic) NSNumber *isMerchant;
+
 
 //员工头像绑定view显示（图片缓存预加载）
 - (void) staffAvatarView: (UIImageView *) view;
