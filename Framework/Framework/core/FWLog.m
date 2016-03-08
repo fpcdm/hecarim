@@ -186,37 +186,46 @@ static FWLogLevel globalLogLevel = FRAMEWORK_LOG_LEVEL;
 #ifdef APP_DEBUG
     va_list args;
     if (format) {
+        //获取默认日志
         va_start(args, format);
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
         va_end(args);
         
         //检查是否含有%@
-        NSMutableString *result = [NSMutableString string];
         NSRange range = [format rangeOfString:@"%@"];
-        NSUInteger location = 0, total = format.length;
-        NSString *subFormat, *subMessage, *tmpMessage, *appendMessage;
-        while (range.location != NSNotFound) {
-            va_start(args, format);
-            subFormat  = [format substringWithRange:NSMakeRange(0, range.location)];
-            subMessage = [[NSString alloc] initWithFormat:subFormat arguments:args];
-            
-            //计算增加的字符串
-            appendMessage = !tmpMessage ? subMessage : [subMessage substringFromIndex:tmpMessage.length];
-            [result appendString:appendMessage];
-            id object = va_arg(args, id);
-            [result appendString:[self _dump:object]];
-            va_end(args);
-            
-            tmpMessage = [NSString stringWithFormat:@"%@%@", subMessage, object];
-            location = range.location + 2;
-            range = [format rangeOfString:@"%@" options:0 range:NSMakeRange(location, total - location)];
+        if (range.location != NSNotFound) {
+            NSMutableString *result = [NSMutableString string];
+            NSUInteger location = 0;
+            NSString *incMessage, *apdMessage, *subFormat, *subMessage;
+            while (range.location != NSNotFound) {
+                va_start(args, format);
+                subFormat = [format substringWithRange:NSMakeRange(0, range.location)];
+                //参数指针会自动指向%@对应的前一个对象
+                subMessage = [[NSString alloc] initWithFormat:subFormat arguments:args];
+                //获取增加的字符串
+                apdMessage = incMessage ? [subMessage substringFromIndex:incMessage.length] : subMessage;
+                [result appendString:apdMessage];
+                //当前va_arg获取的是%@对应的id对象
+                id object = va_arg(args, id);
+                //保存当前递增字符串
+                incMessage = [NSString stringWithFormat:@"%@%@", subMessage, object];
+                //替换%@位置的日志
+                [result appendString:[self _dump:object]];
+                va_end(args);
+                
+                //计算下一个%@位置
+                location = range.location + range.length;
+                range = [format rangeOfString:@"%@" options:0 range:NSMakeRange(location, format.length - location)];
+            }
+            //添加最后一个%@后面的日志
+            apdMessage = incMessage ? [message substringFromIndex:incMessage.length] : message;
+            [result appendString:apdMessage];
+            //替换当前日志
+            message = result;
         }
         
-        //计算增加的字符串
-        appendMessage = !tmpMessage ? message : [message substringFromIndex:tmpMessage.length];
-        [result appendString:appendMessage];
-        
-        [self _log:FWLogTypeDebug message:result];
+        //打印日志
+        [self _log:FWLogTypeDebug message:message];
     }
 #endif
 }
