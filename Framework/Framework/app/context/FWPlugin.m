@@ -7,6 +7,7 @@
 //
 
 #import "FWPlugin.h"
+#import <objc/runtime.h>
 
 @implementation FWPluginManager
 {
@@ -66,11 +67,19 @@
         NSString *className = [pluginClasses objectForKey:protocolName];
         if (className) {
             Class implClass = NSClassFromString(className);
+            //检查pluginLoaded方法
+            if (class_respondsToSelector(implClass, @selector(pluginLoaded))) {
+                [implClass pluginLoaded];
+            }
             //检查sharedInstance方法
-            if ([implClass resolveClassMethod:@selector(sharedInstance)]) {
+            if (class_respondsToSelector(implClass, @selector(sharedInstance))) {
                 plugin = [implClass sharedInstance];
             } else {
                 plugin = [[implClass alloc] init];
+            }
+            //检查pluginInited方法
+            if ([plugin respondsToSelector:@selector(pluginInited)]) {
+                [plugin pluginInited];
             }
             //设置对象缓存
             [pluginPool setObject:plugin forKey:protocolName];

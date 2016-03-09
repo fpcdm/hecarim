@@ -8,6 +8,7 @@
 
 #import "FWContext.h"
 #import "FWPlugin.h"
+#import "FWService.h"
 
 @implementation FWContext
 
@@ -42,7 +43,8 @@
     //调试插件
     [[FWPluginManager sharedInstance] loadPlugins];
     
-    //todo: 调试服务
+    //调试服务
+    [[FWServiceManager sharedInstance] loadServices];
 #endif
 }
 #endif

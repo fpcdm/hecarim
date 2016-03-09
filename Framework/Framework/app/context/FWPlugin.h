@@ -15,6 +15,13 @@
 //插件协议
 @protocol FWPlugin <NSObject>
 
+@optional
+//插件已加载完成钩子
++ (void)pluginLoaded;
+
+//插件初始化完成钩子
+- (void)pluginInited;
+
 @end
 
 //插件管理池
