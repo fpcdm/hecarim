@@ -25,6 +25,9 @@
 
 @singleton(FWCache)
 
+//设置后台对象，仅能设置一次
+@prop_strong(id<FWProtocolCache>, backend)
+
 //设置缓存，支持有效期
 - (void)set:(NSString *)key object:(id)object expire:(NSTimeInterval)expire;
 

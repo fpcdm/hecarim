@@ -61,7 +61,7 @@ static NSArray *slideAdverts = nil;
     LocationEntity *location = nil;
     
     //读取内存缓存
-    FWRegistry *registry = [FWRegistry sharedInstance];
+    FWCacheMemory *registry = [FWCacheMemory sharedInstance];
     NSString *cacheKey = @"location";
     if ([registry has:cacheKey]) {
         location = [registry get:cacheKey];

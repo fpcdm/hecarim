@@ -124,10 +124,6 @@
 		2F1E06C41C8FF9F900BE6C73 /* FWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06C21C8FF9F900BE6C73 /* FWPlugin.m */; };
 		2F1E06D61C901E9900BE6C73 /* FWCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06D01C901E9900BE6C73 /* FWCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1E06D71C901E9900BE6C73 /* FWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06D11C901E9900BE6C73 /* FWCache.m */; };
-		2F1E06D81C901E9900BE6C73 /* FWRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06D21C901E9900BE6C73 /* FWRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1E06D91C901E9900BE6C73 /* FWRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06D31C901E9900BE6C73 /* FWRegistry.m */; };
-		2F1E06DA1C901E9900BE6C73 /* FWStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06D41C901E9900BE6C73 /* FWStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1E06DB1C901E9900BE6C73 /* FWStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06D51C901E9900BE6C73 /* FWStorage.m */; };
 		2F1E06E01C90233500BE6C73 /* FWCacheFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06DE1C90233500BE6C73 /* FWCacheFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1E06E11C90233500BE6C73 /* FWCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06DF1C90233500BE6C73 /* FWCacheFile.m */; };
 		2F1E131E1C8D6E3000EC79CE /* FWWidgetGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -185,6 +181,10 @@
 		2F6E85BD1C87D3D3004FADB8 /* FWPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E85BB1C87D3D3004FADB8 /* FWPresenter.m */; };
 		2F6E85F81C880628004FADB8 /* UIImageView+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6E85F61C880628004FADB8 /* UIImageView+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F6E85F91C880628004FADB8 /* UIImageView+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E85F71C880628004FADB8 /* UIImageView+Framework.m */; };
+		2F8448C31C9041EF008ED551 /* FWCacheMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8448C11C9041EF008ED551 /* FWCacheMemory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F8448C41C9041EF008ED551 /* FWCacheMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8448C21C9041EF008ED551 /* FWCacheMemory.m */; };
+		2F8448CB1C904927008ED551 /* FWCacheDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F8448C91C904927008ED551 /* FWCacheDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F8448CC1C904927008ED551 /* FWCacheDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8448CA1C904927008ED551 /* FWCacheDefaults.m */; };
 		2FC215401C70BF42000520B4 /* MJDictionaryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FC215291C70BF42000520B4 /* MJDictionaryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FC215411C70BF42000520B4 /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2152A1C70BF42000520B4 /* MJDictionaryCache.m */; };
 		2FC215421C70BF42000520B4 /* MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FC2152B1C70BF42000520B4 /* MJExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -772,10 +772,6 @@
 		2F1E06C21C8FF9F900BE6C73 /* FWPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPlugin.m; sourceTree = "<group>"; };
 		2F1E06D01C901E9900BE6C73 /* FWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCache.h; sourceTree = "<group>"; };
 		2F1E06D11C901E9900BE6C73 /* FWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWCache.m; sourceTree = "<group>"; };
-		2F1E06D21C901E9900BE6C73 /* FWRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWRegistry.h; sourceTree = "<group>"; };
-		2F1E06D31C901E9900BE6C73 /* FWRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWRegistry.m; sourceTree = "<group>"; };
-		2F1E06D41C901E9900BE6C73 /* FWStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWStorage.h; sourceTree = "<group>"; };
-		2F1E06D51C901E9900BE6C73 /* FWStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWStorage.m; sourceTree = "<group>"; };
 		2F1E06DE1C90233500BE6C73 /* FWCacheFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCacheFile.h; sourceTree = "<group>"; };
 		2F1E06DF1C90233500BE6C73 /* FWCacheFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWCacheFile.m; sourceTree = "<group>"; };
 		2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWWidgetGrid.h; sourceTree = "<group>"; };
@@ -833,6 +829,10 @@
 		2F6E85BB1C87D3D3004FADB8 /* FWPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPresenter.m; sourceTree = "<group>"; };
 		2F6E85F61C880628004FADB8 /* UIImageView+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Framework.h"; sourceTree = "<group>"; };
 		2F6E85F71C880628004FADB8 /* UIImageView+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Framework.m"; sourceTree = "<group>"; };
+		2F8448C11C9041EF008ED551 /* FWCacheMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCacheMemory.h; sourceTree = "<group>"; };
+		2F8448C21C9041EF008ED551 /* FWCacheMemory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWCacheMemory.m; sourceTree = "<group>"; };
+		2F8448C91C904927008ED551 /* FWCacheDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWCacheDefaults.h; sourceTree = "<group>"; };
+		2F8448CA1C904927008ED551 /* FWCacheDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWCacheDefaults.m; sourceTree = "<group>"; };
 		2FC215291C70BF42000520B4 /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		2FC2152A1C70BF42000520B4 /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		2FC2152B1C70BF42000520B4 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -1531,12 +1531,12 @@
 			children = (
 				2F1E06D01C901E9900BE6C73 /* FWCache.h */,
 				2F1E06D11C901E9900BE6C73 /* FWCache.m */,
-				2F1E06D21C901E9900BE6C73 /* FWRegistry.h */,
-				2F1E06D31C901E9900BE6C73 /* FWRegistry.m */,
-				2F1E06D41C901E9900BE6C73 /* FWStorage.h */,
-				2F1E06D51C901E9900BE6C73 /* FWStorage.m */,
+				2F8448C11C9041EF008ED551 /* FWCacheMemory.h */,
+				2F8448C21C9041EF008ED551 /* FWCacheMemory.m */,
 				2F1E06DE1C90233500BE6C73 /* FWCacheFile.h */,
 				2F1E06DF1C90233500BE6C73 /* FWCacheFile.m */,
+				2F8448C91C904927008ED551 /* FWCacheDefaults.h */,
+				2F8448CA1C904927008ED551 /* FWCacheDefaults.m */,
 			);
 			path = cache;
 			sourceTree = "<group>";
@@ -2460,9 +2460,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8448CB1C904927008ED551 /* FWCacheDefaults.h in Headers */,
+				2F8448C31C9041EF008ED551 /* FWCacheMemory.h in Headers */,
 				2F1E06E01C90233500BE6C73 /* FWCacheFile.h in Headers */,
-				2F1E06D81C901E9900BE6C73 /* FWRegistry.h in Headers */,
-				2F1E06DA1C901E9900BE6C73 /* FWStorage.h in Headers */,
 				2F1E06D61C901E9900BE6C73 /* FWCache.h in Headers */,
 				2F1E06BF1C8FF9E900BE6C73 /* FWTask.h in Headers */,
 				2F1E06C31C8FF9F900BE6C73 /* FWPlugin.h in Headers */,
@@ -2925,6 +2925,7 @@
 				2FD99DC11C48CE6F0065293E /* FLEXLibrariesTableViewController.m in Sources */,
 				2F6E85B11C87D36B004FADB8 /* UIView+Framework.m in Sources */,
 				2FD99E211C48CE6F0065293E /* NSArray+MASAdditions.m in Sources */,
+				2F8448CC1C904927008ED551 /* FWCacheDefaults.m in Sources */,
 				2FD99EE01C48CE700065293E /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2FE6A0CE1C72268C00857CE1 /* FWHelperNetwork.m in Sources */,
 				2F1D2CDD1C867816008F3B50 /* FWXmlViewController.m in Sources */,
@@ -2964,6 +2965,7 @@
 				2F247E571C8E718100397BD2 /* FWService.m in Sources */,
 				2FD99DCD1C48CE6F0065293E /* FLEXNetworkHistoryTableViewController.m in Sources */,
 				2F1C35DB1C4C89310060E793 /* IStyle.m in Sources */,
+				2F8448C41C9041EF008ED551 /* FWCacheMemory.m in Sources */,
 				2F1D2CF31C867817008F3B50 /* FWView.m in Sources */,
 				2F1C35F61C4C89310060E793 /* IImage.m in Sources */,
 				2FD99E311C48CE6F0065293E /* MJRefreshFooter.m in Sources */,
@@ -2988,7 +2990,6 @@
 				2FE6A0C21C72211600857CE1 /* FWHelperAspect.m in Sources */,
 				2F1C36021C4C89310060E793 /* ITableRow.m in Sources */,
 				2FD99E451C48CE6F0065293E /* MJRefreshStateHeader.m in Sources */,
-				2F1E06DB1C901E9900BE6C73 /* FWStorage.m in Sources */,
 				2FC215411C70BF42000520B4 /* MJDictionaryCache.m in Sources */,
 				2FD99D681C48CE6F0065293E /* DDLog.m in Sources */,
 				2F1D2CDB1C867816008F3B50 /* FWViewController.m in Sources */,
@@ -3111,7 +3112,6 @@
 				2FD99D6F1C48CE6F0065293E /* DDDispatchQueueLogFormatter.m in Sources */,
 				2FD99DFB1C48CE6F0065293E /* FLEXResources.m in Sources */,
 				2FD99DC71C48CE6F0065293E /* FLEXSystemLogMessage.m in Sources */,
-				2F1E06D91C901E9900BE6C73 /* FWRegistry.m in Sources */,
 				2FD99D991C48CE6F0065293E /* FLEXExplorerToolbar.m in Sources */,
 				2FD99EC31C48CE700065293E /* SDImageCache.m in Sources */,
 				2FD99DDF1C48CE6F0065293E /* FLEXDefaultsExplorerViewController.m in Sources */,

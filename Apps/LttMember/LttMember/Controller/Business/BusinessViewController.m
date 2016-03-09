@@ -97,7 +97,7 @@
 - (AddressEntity *) currentAddress
 {
     //读取当前地址缓存
-    LocationEntity *lastLocation = [[FWRegistry sharedInstance] get:@"location"];
+    LocationEntity *lastLocation = [[FWCacheMemory sharedInstance] get:@"location"];
     if (!lastLocation) lastLocation = [[LocationEntity alloc] init];
     
     UserEntity *user = [[StorageUtil sharedStorage] getUser];

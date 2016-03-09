@@ -10,12 +10,24 @@
 #import "PINCache.h"
 
 @implementation FWCacheFile
+{
+    PINCache *cache;
+}
 
 @def_singleton(FWCacheFile)
 
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        cache = [PINCache sharedCache];
+    }
+    return self;
+}
+
 - (id)get:(NSString *)key
 {
-    return [[PINCache sharedCache] objectForKey:key];
+    return [cache objectForKey:key];
 }
 
 - (BOOL)has:(NSString *)key
@@ -25,17 +37,17 @@
 
 - (void)set:(NSString *)key object:(id)object
 {
-    [[PINCache sharedCache] setObject:object forKey:key];
+    [cache setObject:object forKey:key];
 }
 
 - (void)remove:(NSString *)key
 {
-    [[PINCache sharedCache] removeObjectForKey:key];
+    [cache removeObjectForKey:key];
 }
 
 - (void)clear
 {
-    [[PINCache sharedCache] removeAllObjects];
+    [cache removeAllObjects];
 }
 
 @end

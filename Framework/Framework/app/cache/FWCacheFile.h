@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FWCache.h"
 
+//文件缓存
 @interface FWCacheFile : NSObject<FWProtocolCache>
 
 @singleton(FWCacheFile)

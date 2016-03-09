@@ -1,25 +1,25 @@
 //
-//  FWStorage.m
+//  FWCacheDefaults.m
 //  Framework
 //
-//  Created by 吴勇 on 16/1/30.
+//  Created by 吴勇 on 16/3/9.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWStorage.h"
+#import "FWCacheDefaults.h"
 
-@implementation FWStorage
+@implementation FWCacheDefaults
 {
-    NSUserDefaults *storage;
+    NSUserDefaults *defaults;
 }
 
-@def_singleton(FWStorage)
+@def_singleton(FWCacheDefaults)
 
 - (id) init
 {
     self = [super init];
     if (self) {
-        storage = [NSUserDefaults standardUserDefaults];
+        defaults = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -44,21 +44,21 @@
 
 - (id) get:(NSString *)key
 {
-    id object = [storage objectForKey:key];
+    id object = [defaults objectForKey:key];
     return object ? [self decode:object] : nil;
 }
 
 - (BOOL) has:(NSString *)key
 {
-    id object = [storage objectForKey:key];
+    id object = [defaults objectForKey:key];
     return object ? YES : NO;
 }
 
 - (void) set:(NSString *)key object:(id)object
 {
     if (object) {
-        [storage setObject:[self encode:object] forKey:key];
-        [storage synchronize];
+        [defaults setObject:[self encode:object] forKey:key];
+        [defaults synchronize];
     } else {
         [self remove:key];
     }
@@ -66,8 +66,8 @@
 
 - (void) remove:(NSString *)key
 {
-    [storage removeObjectForKey:key];
-    [storage synchronize];
+    [defaults removeObjectForKey:key];
+    [defaults synchronize];
 }
 
 - (void) clear
