@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FWPlugin.h"
-#import "FWRegistry.h"
+#import "FWCache.h"
 
-@protocol FWPluginCache <FWPlugin, FWProtocolRegistry>
+@protocol FWPluginCache <FWPlugin, FWProtocolCache>
 
 @end

@@ -7,10 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWRegistry.h"
+
+//缓存协议
+@protocol FWProtocolCache <NSObject>
+
+@required
+- (id)get:(NSString *)key;
+- (BOOL)has:(NSString *)key;
+- (void)set:(NSString *)key object:(id)object;
+- (void)remove:(NSString *)key;
+- (void)clear;
+
+@end
 
 //框架缓存：文件
-@interface FWCache : NSObject<FWProtocolRegistry>
+@interface FWCache : NSObject<FWProtocolCache>
 
 @singleton(FWCache)
 

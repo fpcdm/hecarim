@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FWRegistry.h"
+#import "FWCache.h"
 
-@interface FWStorage : NSObject<FWProtocolRegistry>
+//框架缓存：NSUserDefaults
+@interface FWStorage : NSObject<FWProtocolCache>
 
 @singleton(FWStorage)
 
