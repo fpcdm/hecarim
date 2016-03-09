@@ -11,6 +11,7 @@
 
 @protocol CaseListViewDelegate <NSObject>
 
+- (void)actionRefresh:(UITableView *)tableView;
 - (void)actionLoad:(UITableView *)tableView;
 - (void)actionDetail:(CaseEntity *)intention;
 

@@ -46,13 +46,7 @@
     hasMore = YES;
 }
 
-- (void)handleUserChanged
-{
-    //切换用户重新加载
-    [self refreshData];
-}
-
-- (void)refreshData
+- (void)refreshHandler
 {
     //清空之前的数据
     if (intentionList && [intentionList count] > 0) {
@@ -69,6 +63,12 @@
     //加载数据
     [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
     [listView.tableView startLoading];
+}
+
+- (void)handleUserChanged
+{
+    //切换用户重新加载
+    [self refreshHandler];
 }
 
 - (void)loadData:(CallbackBlock)success failure:(CallbackBlock)failure
@@ -93,6 +93,33 @@
 }
 
 #pragma mark - Action
+- (void)actionRefresh:(UITableView *)tableView
+{
+    intentionList = [NSMutableArray array];
+    page = 0;
+    hasMore = YES;
+    
+    [self loadData:^(id object){
+        [listView.tableView stopRefreshLoading];
+        
+        [listView assign:@"intentionList" value:intentionList];
+        [listView display];
+        
+        //根据数据切换刷新状态
+        if (hasMore) {
+            [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
+        } else if ([intentionList count] < 1) {
+            [listView.tableView setRefreshLoadingState:RefreshLoadingStateNoData];
+        } else {
+            [listView.tableView setRefreshLoadingState:RefreshLoadingStateNoMoreData];
+        }
+    } failure:^(ErrorEntity *error){
+        [listView.tableView stopRefreshLoading];
+        
+        [self showError:error.message];
+    }];
+}
+
 - (void)actionLoad:(UITableView *)tableView
 {
     //加载数据
@@ -118,6 +145,11 @@
     
     CaseViewController *viewController = [[CaseViewController alloc] init];
     viewController.caseId = intention.id;
+    viewController.callbackBlock = ^(id object){
+        if ([@1 isEqualToNumber:object]) {
+            self.shouldRefresh = YES;
+        }
+    };
     [self pushViewController:viewController animated:YES];
 }
 

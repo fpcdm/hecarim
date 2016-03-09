@@ -115,6 +115,33 @@
 }
 
 #pragma mark - Action
+- (void)actionRefresh:(UITableView *)tableView
+{
+    businessList = [NSMutableArray array];
+    page = 0;
+    hasMore = YES;
+    
+    [self loadData:^(id object){
+        [listView.tableView stopRefreshLoading];
+        
+        [listView assign:@"businessList" value:businessList];
+        [listView display];
+        
+        //根据数据切换刷新状态
+        if (hasMore) {
+            [listView.tableView setRefreshLoadingState:RefreshLoadingStateMoreData];
+        } else if ([businessList count] < 1) {
+            [listView.tableView setRefreshLoadingState:RefreshLoadingStateNoData];
+        } else {
+            [listView.tableView setRefreshLoadingState:RefreshLoadingStateNoMoreData];
+        }
+    } failure:^(ErrorEntity *error){
+        [listView.tableView stopRefreshLoading];
+        
+        [self showError:error.message];
+    }];
+}
+
 - (void)actionLoad:(UITableView *)tableView
 {
     //加载数据

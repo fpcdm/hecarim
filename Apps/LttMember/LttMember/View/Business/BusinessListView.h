@@ -11,6 +11,7 @@
 
 @protocol BusinessListViewDelegate <NSObject>
 
+- (void)actionRefresh:(UITableView *)tableView;
 - (void)actionLoad:(UITableView *)tableView;
 - (void)actionDetail:(BusinessEntity *)business;
 

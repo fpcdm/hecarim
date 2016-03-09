@@ -234,7 +234,9 @@
         NSString *statusName = [intention statusName];
         self.navigationItem.title = statusName;
         
-        [self performSelector:@selector(actionHome) withObject:nil afterDelay:DIALOG_SHOW_TIME];
+        [self showError:@"该需求已取消" callback:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
     }
 }
 
@@ -314,6 +316,11 @@
     CaseHandler *intentionHandler = [[CaseHandler alloc] init];
     [intentionHandler cancelIntention:intentionEntity success:^(NSArray *result){
         [self loadingSuccess:[LocaleUtil system:@"Request.Success"] callback:^{
+            //刷新列表
+            if (self.callbackBlock) {
+                self.callbackBlock(@1);
+            }
+            
             //取消成功
             [self.navigationController popViewControllerAnimated:YES];
         }];

@@ -21,6 +21,7 @@
     if (!self) return nil;
     
     self.tableView.scrollEnabled = YES;
+    [self.tableView setRefreshingHeader:self action:@selector(actionRefresh)];
     [self.tableView setLoadingFooter:self action:@selector(actionLoad)];
     [self.tableView startLoading];
     
@@ -106,6 +107,11 @@
 }
 
 #pragma mark - Action
+- (void)actionRefresh
+{
+    [self.delegate actionRefresh:self.tableView];
+}
+
 - (void)actionLoad
 {
     [self.delegate actionLoad:self.tableView];
