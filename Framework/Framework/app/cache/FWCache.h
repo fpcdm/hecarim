@@ -20,7 +20,7 @@
 
 @end
 
-//框架缓存：文件
+//框架默认缓存
 @interface FWCache : NSObject<FWProtocolCache>
 
 @singleton(FWCache)

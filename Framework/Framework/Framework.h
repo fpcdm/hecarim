@@ -44,6 +44,7 @@
 #import "FWSignal.h"
 #import "FWRuntime.h"
 #import "FWCache.h"
+#import "FWCacheFile.h"
 #import "FWTheme.h"
 #import "FWEntity.h"
 #import "FWPresenter.h"
@@ -70,8 +71,6 @@
 #import "FWPluginDialogImpl.h"
 #import "FWPluginLoading.h"
 #import "FWPluginLoadingImpl.h"
-#import "FWPluginCache.h"
-#import "FWPluginCacheImpl.h"
 
 #import "FWHelperAspect.h"
 #import "FWHelperDevice.h"

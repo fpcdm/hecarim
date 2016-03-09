@@ -1,17 +1,17 @@
 //
-//  FWPluginCacheDefault.m
+//  FWCacheFile.m
 //  Framework
 //
-//  Created by wuyong on 16/1/26.
+//  Created by wuyong on 16/3/9.
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWPluginCacheImpl.h"
+#import "FWCacheFile.h"
 #import "PINCache.h"
 
-@implementation FWPluginCacheImpl
+@implementation FWCacheFile
 
-AS_PLUGIN(FWPluginCache)
+@def_singleton(FWCacheFile)
 
 - (id)get:(NSString *)key
 {

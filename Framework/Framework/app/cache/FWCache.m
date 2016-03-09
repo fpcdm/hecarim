@@ -7,15 +7,15 @@
 //
 
 #import "FWCache.h"
-#import "FWPluginCache.h"
+#import "FWCacheFile.h"
 
 @implementation FWCache
 
 @def_singleton(FWCache)
 
-- (id<FWPluginCache>)plugin
+- (id<FWProtocolCache>)plugin
 {
-    return [[FWPluginManager sharedInstance] getPlugin:@protocol(FWPluginCache)];
+    return [FWCacheFile sharedInstance];
 }
 
 - (id)get:(NSString *)key
