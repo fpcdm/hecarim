@@ -10,6 +10,6 @@
 #import "FWPluginDialog.h"
 
 //默认弹出框
-@interface FWPluginDialogDefault : NSObject<FWPluginDialog>
+@interface FWPluginDialogImpl : NSObject<FWPluginDialog>
 
 @end

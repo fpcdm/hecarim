@@ -7,19 +7,20 @@
 //
 
 #import "UIViewController+Framework.h"
-#import "FWPluginManager.h"
+#import "FWPluginDialog.h"
+#import "FWPluginLoading.h"
 
 @implementation UIViewController (Framework)
 
 - (id<FWPluginDialog>)dialogPlugin
 {
-    id plugin = [[FWPluginManager sharedInstance] getPlugin:FWPluginDialogName];
+    id plugin = [[FWPluginManager sharedInstance] getPlugin:@protocol(FWPluginDialog)];
     return (id<FWPluginDialog>) plugin;
 }
 
 - (id<FWPluginLoading>)loadingPlugin
 {
-    id plugin = [[FWPluginManager sharedInstance] getPlugin:FWPluginLoadingName];
+    id plugin = [[FWPluginManager sharedInstance] getPlugin:@protocol(FWPluginLoading)];
     return (id<FWPluginLoading>) plugin;
 }
 

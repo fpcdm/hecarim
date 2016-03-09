@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FWPluginCache.h"
 
-@interface FWPluginCacheDefault : NSObject<FWPluginCache>
+@interface FWPluginCacheImpl : NSObject<FWPluginCache>
 
 @end

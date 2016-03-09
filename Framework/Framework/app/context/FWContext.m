@@ -7,6 +7,7 @@
 //
 
 #import "FWContext.h"
+#import "FWPlugin.h"
 
 @implementation FWContext
 
@@ -35,6 +36,13 @@
 #if FRAMEWORK_TEST
     //开启测试
     [[FWTest sharedInstance] run];
+#endif
+    
+#if FRAMEWORK_LOG
+    //调试插件
+    [[FWPluginManager sharedInstance] loadPlugins];
+    
+    //todo: 调试服务
 #endif
 }
 #endif

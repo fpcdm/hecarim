@@ -15,7 +15,7 @@ typedef enum {
     FWPluginLoadingModeText,
 } FWPluginLoadingMode;
 
-@interface FWPluginLoadingDefault : NSObject<FWPluginLoading>
+@interface FWPluginLoadingImpl : NSObject<FWPluginLoading>
 
 @prop_assign(FWPluginLoadingMode, mode)
 

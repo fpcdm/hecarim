@@ -14,8 +14,8 @@
 		2F004E5C1C7074B5000B4F97 /* UIViewController+Javascript.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */; };
 		2F004E5F1C7075B6000B4F97 /* FWConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E5E1C7075B6000B4F97 /* FWConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F004E611C707755000B4F97 /* FWDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F004E601C707755000B4F97 /* FWDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */; };
+		2F09D7251C55C962003BB601 /* FWPluginDialogImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F09D7231C55C962003BB601 /* FWPluginDialogImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F09D7261C55C962003BB601 /* FWPluginDialogImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09D7241C55C962003BB601 /* FWPluginDialogImpl.m */; };
 		2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35971C4C89310060E793 /* ICssBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C35D31C4C89310060E793 /* ICssBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C35981C4C89310060E793 /* ICssBlock.m */; };
 		2F1C35D41C4C89310060E793 /* ICssDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C35991C4C89310060E793 /* ICssDecl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,11 +75,11 @@
 		2F1C39791C507AC8000B131E /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C39771C507AC8000B131E /* Aspects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1C397A1C507AC8000B131E /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C39781C507AC8000B131E /* Aspects.m */; };
 		2F1C77661C570489009080A3 /* FWPluginCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77651C570489009080A3 /* FWPluginCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1C77691C5704AF009080A3 /* FWPluginCacheDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1C776A1C5704AF009080A3 /* FWPluginCacheDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */; };
+		2F1C77691C5704AF009080A3 /* FWPluginCacheImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77671C5704AF009080A3 /* FWPluginCacheImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1C776A1C5704AF009080A3 /* FWPluginCacheImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77681C5704AF009080A3 /* FWPluginCacheImpl.m */; };
 		2F1C77B81C577663009080A3 /* FWPluginLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B71C577663009080A3 /* FWPluginLoading.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */; };
+		2F1C77BB1C5776DC009080A3 /* FWPluginLoadingImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1C77B91C5776DC009080A3 /* FWPluginLoadingImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1C77BC1C5776DC009080A3 /* FWPluginLoadingImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C77BA1C5776DC009080A3 /* FWPluginLoadingImpl.m */; };
 		2F1CD5191C4F1CC200B0DC4B /* JPEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1CD51A1C4F1CC200B0DC4B /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */; };
 		2F1CD51B1C4F1CC200B0DC4B /* JPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -127,6 +127,10 @@
 		2F1D2D0A1C867817008F3B50 /* FWSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD71C867816008F3B50 /* FWSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1D2D0B1C867817008F3B50 /* FWTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD81C867816008F3B50 /* FWTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1D2D0C1C867817008F3B50 /* FWTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D2CD91C867816008F3B50 /* FWTest.m */; };
+		2F1E06BF1C8FF9E900BE6C73 /* FWTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06BD1C8FF9E900BE6C73 /* FWTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1E06C01C8FF9E900BE6C73 /* FWTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06BE1C8FF9E900BE6C73 /* FWTask.m */; };
+		2F1E06C31C8FF9F900BE6C73 /* FWPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06C11C8FF9F900BE6C73 /* FWPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1E06C41C8FF9F900BE6C73 /* FWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06C21C8FF9F900BE6C73 /* FWPlugin.m */; };
 		2F1E131E1C8D6E3000EC79CE /* FWWidgetGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1E131F1C8D6E3000EC79CE /* FWWidgetGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E131D1C8D6E3000EC79CE /* FWWidgetGrid.m */; };
 		2F1E13221C8D6E5400EC79CE /* FWWidgetSlide.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E13201C8D6E5400EC79CE /* FWWidgetSlide.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -156,8 +160,6 @@
 		2F4AF9C71C7B2D400061A566 /* FWHelperSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */; };
 		2F4AF9CA1C7B30D80061A566 /* FWHelperPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F4AF9CB1C7B30D80061A566 /* FWHelperPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AF9C91C7B30D80061A566 /* FWHelperPath.m */; };
-		2F5F2F1D1C53F27500571E49 /* FWPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */; };
 		2F6E85A01C87D36B004FADB8 /* NSDate+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6E858C1C87D36B004FADB8 /* NSDate+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F6E85A11C87D36B004FADB8 /* NSDate+Framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E858D1C87D36B004FADB8 /* NSDate+Framework.m */; };
 		2F6E85A21C87D36B004FADB8 /* NSObject+Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6E858E1C87D36B004FADB8 /* NSObject+Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -661,8 +663,8 @@
 		2F004E571C7074B5000B4F97 /* UIViewController+Javascript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Javascript.m"; sourceTree = "<group>"; };
 		2F004E5E1C7075B6000B4F97 /* FWConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWConfig.h; sourceTree = "<group>"; };
 		2F004E601C707755000B4F97 /* FWDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWDefine.h; sourceTree = "<group>"; };
-		2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogDefault.h; sourceTree = "<group>"; };
-		2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogDefault.m; sourceTree = "<group>"; };
+		2F09D7231C55C962003BB601 /* FWPluginDialogImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginDialogImpl.h; sourceTree = "<group>"; };
+		2F09D7241C55C962003BB601 /* FWPluginDialogImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginDialogImpl.m; sourceTree = "<group>"; };
 		2F1C35971C4C89310060E793 /* ICssBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssBlock.h; sourceTree = "<group>"; };
 		2F1C35981C4C89310060E793 /* ICssBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICssBlock.m; sourceTree = "<group>"; };
 		2F1C35991C4C89310060E793 /* ICssDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICssDecl.h; sourceTree = "<group>"; };
@@ -722,11 +724,11 @@
 		2F1C39771C507AC8000B131E /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		2F1C39781C507AC8000B131E /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		2F1C77651C570489009080A3 /* FWPluginCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginCache.h; sourceTree = "<group>"; };
-		2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginCacheDefault.h; sourceTree = "<group>"; };
-		2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginCacheDefault.m; sourceTree = "<group>"; };
+		2F1C77671C5704AF009080A3 /* FWPluginCacheImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginCacheImpl.h; sourceTree = "<group>"; };
+		2F1C77681C5704AF009080A3 /* FWPluginCacheImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginCacheImpl.m; sourceTree = "<group>"; };
 		2F1C77B71C577663009080A3 /* FWPluginLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoading.h; sourceTree = "<group>"; };
-		2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoadingDefault.h; sourceTree = "<group>"; };
-		2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginLoadingDefault.m; sourceTree = "<group>"; };
+		2F1C77B91C5776DC009080A3 /* FWPluginLoadingImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginLoadingImpl.h; sourceTree = "<group>"; };
+		2F1C77BA1C5776DC009080A3 /* FWPluginLoadingImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginLoadingImpl.m; sourceTree = "<group>"; };
 		2F1CD5141C4F1CC200B0DC4B /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
 		2F1CD5151C4F1CC200B0DC4B /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
 		2F1CD5161C4F1CC200B0DC4B /* JPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInclude.h; sourceTree = "<group>"; };
@@ -774,6 +776,10 @@
 		2F1D2CD71C867816008F3B50 /* FWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSingleton.h; sourceTree = "<group>"; };
 		2F1D2CD81C867816008F3B50 /* FWTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTest.h; sourceTree = "<group>"; };
 		2F1D2CD91C867816008F3B50 /* FWTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTest.m; sourceTree = "<group>"; };
+		2F1E06BD1C8FF9E900BE6C73 /* FWTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTask.h; sourceTree = "<group>"; };
+		2F1E06BE1C8FF9E900BE6C73 /* FWTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTask.m; sourceTree = "<group>"; };
+		2F1E06C11C8FF9F900BE6C73 /* FWPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPlugin.h; sourceTree = "<group>"; };
+		2F1E06C21C8FF9F900BE6C73 /* FWPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPlugin.m; sourceTree = "<group>"; };
 		2F1E131C1C8D6E3000EC79CE /* FWWidgetGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWWidgetGrid.h; sourceTree = "<group>"; };
 		2F1E131D1C8D6E3000EC79CE /* FWWidgetGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWWidgetGrid.m; sourceTree = "<group>"; };
 		2F1E13201C8D6E5400EC79CE /* FWWidgetSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWWidgetSlide.h; sourceTree = "<group>"; };
@@ -803,8 +809,6 @@
 		2F4AF9C51C7B2D400061A566 /* FWHelperSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperSystem.m; sourceTree = "<group>"; };
 		2F4AF9C81C7B30D80061A566 /* FWHelperPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWHelperPath.h; sourceTree = "<group>"; };
 		2F4AF9C91C7B30D80061A566 /* FWHelperPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWHelperPath.m; sourceTree = "<group>"; };
-		2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPluginManager.h; sourceTree = "<group>"; };
-		2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPluginManager.m; sourceTree = "<group>"; };
 		2F6E858C1C87D36B004FADB8 /* NSDate+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Framework.h"; sourceTree = "<group>"; };
 		2F6E858D1C87D36B004FADB8 /* NSDate+Framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Framework.m"; sourceTree = "<group>"; };
 		2F6E858E1C87D36B004FADB8 /* NSObject+Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Framework.h"; sourceTree = "<group>"; };
@@ -1448,6 +1452,7 @@
 		2F1D2CA21C867816008F3B50 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				2F1E06C51C90160400BE6C73 /* cache */,
 				2F247E411C8E718100397BD2 /* context */,
 				2F6E85B41C87D383004FADB8 /* presenter */,
 				2F1D2CA31C867816008F3B50 /* controller */,
@@ -1529,6 +1534,13 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		2F1E06C51C90160400BE6C73 /* cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cache;
+			sourceTree = "<group>";
+		};
 		2F1E131B1C8D6DB000EC79CE /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1564,6 +1576,10 @@
 				2F247E4B1C8E718100397BD2 /* FWService.m */,
 				2F247E4C1C8E718100397BD2 /* FWTheme.h */,
 				2F247E4D1C8E718100397BD2 /* FWTheme.m */,
+				2F1E06BD1C8FF9E900BE6C73 /* FWTask.h */,
+				2F1E06BE1C8FF9E900BE6C73 /* FWTask.m */,
+				2F1E06C11C8FF9F900BE6C73 /* FWPlugin.h */,
+				2F1E06C21C8FF9F900BE6C73 /* FWPlugin.m */,
 			);
 			path = context;
 			sourceTree = "<group>";
@@ -1643,17 +1659,15 @@
 		2FAA25101C53AB4800933669 /* plugin */ = {
 			isa = PBXGroup;
 			children = (
-				2F5F2F1B1C53F27500571E49 /* FWPluginManager.h */,
-				2F5F2F1C1C53F27500571E49 /* FWPluginManager.m */,
 				2F24FB621C568D6800A82ABD /* FWPluginDialog.h */,
-				2F09D7231C55C962003BB601 /* FWPluginDialogDefault.h */,
-				2F09D7241C55C962003BB601 /* FWPluginDialogDefault.m */,
+				2F09D7231C55C962003BB601 /* FWPluginDialogImpl.h */,
+				2F09D7241C55C962003BB601 /* FWPluginDialogImpl.m */,
 				2F1C77B71C577663009080A3 /* FWPluginLoading.h */,
-				2F1C77B91C5776DC009080A3 /* FWPluginLoadingDefault.h */,
-				2F1C77BA1C5776DC009080A3 /* FWPluginLoadingDefault.m */,
+				2F1C77B91C5776DC009080A3 /* FWPluginLoadingImpl.h */,
+				2F1C77BA1C5776DC009080A3 /* FWPluginLoadingImpl.m */,
 				2F1C77651C570489009080A3 /* FWPluginCache.h */,
-				2F1C77671C5704AF009080A3 /* FWPluginCacheDefault.h */,
-				2F1C77681C5704AF009080A3 /* FWPluginCacheDefault.m */,
+				2F1C77671C5704AF009080A3 /* FWPluginCacheImpl.h */,
+				2F1C77681C5704AF009080A3 /* FWPluginCacheImpl.m */,
 			);
 			path = plugin;
 			sourceTree = "<group>";
@@ -2449,6 +2463,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F1E06BF1C8FF9E900BE6C73 /* FWTask.h in Headers */,
+				2F1E06C31C8FF9F900BE6C73 /* FWPlugin.h in Headers */,
 				2F247E521C8E718100397BD2 /* FWRouter.h in Headers */,
 				2F247E581C8E718100397BD2 /* FWTheme.h in Headers */,
 				2F247E501C8E718100397BD2 /* FWLocale.h in Headers */,
@@ -2516,7 +2532,6 @@
 				2FC215451C70BF42000520B4 /* MJFoundation.h in Headers */,
 				2FC2154F1C70BF42000520B4 /* NSObject+MJCoding.h in Headers */,
 				2FC215401C70BF42000520B4 /* MJDictionaryCache.h in Headers */,
-				2F5F2F1D1C53F27500571E49 /* FWPluginManager.h in Headers */,
 				2F1C35FD1C4C89310060E793 /* IRefreshControl.h in Headers */,
 				2F1C77661C570489009080A3 /* FWPluginCache.h in Headers */,
 				2F004E581C7074B5000B4F97 /* FWFrontend.h in Headers */,
@@ -2530,11 +2545,11 @@
 				2F24FB631C568D6800A82ABD /* FWPluginDialog.h in Headers */,
 				2F1C36011C4C89310060E793 /* ITableRow.h in Headers */,
 				2F1C35E81C4C89310060E793 /* IPullRefresh.h in Headers */,
-				2F09D7251C55C962003BB601 /* FWPluginDialogDefault.h in Headers */,
+				2F09D7251C55C962003BB601 /* FWPluginDialogImpl.h in Headers */,
 				2F1C35E41C4C89310060E793 /* IKitUtil.h in Headers */,
 				2F1C35D61C4C89310060E793 /* ICssRule.h in Headers */,
 				2F004E5F1C7075B6000B4F97 /* FWConfig.h in Headers */,
-				2F1C77691C5704AF009080A3 /* FWPluginCacheDefault.h in Headers */,
+				2F1C77691C5704AF009080A3 /* FWPluginCacheImpl.h in Headers */,
 				2F1C35EF1C4C89310060E793 /* IView.h in Headers */,
 				2F1C35E61C4C89310060E793 /* IMaskUIView.h in Headers */,
 				2FF10B691C4CBF1100365024 /* Framework.pch in Headers */,
@@ -2560,7 +2575,7 @@
 				2F1C35F11C4C89310060E793 /* IViewInternal.h in Headers */,
 				2F1C35DF1C4C89310060E793 /* ICell.h in Headers */,
 				2F1C35D21C4C89310060E793 /* ICssBlock.h in Headers */,
-				2F1C77BB1C5776DC009080A3 /* FWPluginLoadingDefault.h in Headers */,
+				2F1C77BB1C5776DC009080A3 /* FWPluginLoadingImpl.h in Headers */,
 				2F1C35EE1C4C89310060E793 /* ITableInternal.h in Headers */,
 				2FD99E611C48CE6F0065293E /* CoreData.h in Headers */,
 				2FD99E4F1C48CE6F0065293E /* Nullability.h in Headers */,
@@ -2952,7 +2967,7 @@
 				2FD99DBD1C48CE6F0065293E /* FLEXGlobalsTableViewController.m in Sources */,
 				2F4AF9C71C7B2D400061A566 /* FWHelperSystem.m in Sources */,
 				2F1D2D051C867817008F3B50 /* FWRegistry.m in Sources */,
-				2F1C776A1C5704AF009080A3 /* FWPluginCacheDefault.m in Sources */,
+				2F1C776A1C5704AF009080A3 /* FWPluginCacheImpl.m in Sources */,
 				2F247E571C8E718100397BD2 /* FWService.m in Sources */,
 				2FD99DCD1C48CE6F0065293E /* FLEXNetworkHistoryTableViewController.m in Sources */,
 				2F1C35DB1C4C89310060E793 /* IStyle.m in Sources */,
@@ -2961,7 +2976,6 @@
 				2FD99E311C48CE6F0065293E /* MJRefreshFooter.m in Sources */,
 				2FD99EE61C48CE700065293E /* TSBlurView.m in Sources */,
 				2F1CD51C1C4F1CC200B0DC4B /* JPInclude.m in Sources */,
-				2F5F2F1E1C53F27500571E49 /* FWPluginManager.m in Sources */,
 				2FD99E151C48CE6F0065293E /* MASConstraint.m in Sources */,
 				2F1C35F41C4C89310060E793 /* IButton.m in Sources */,
 				2FD99D8D1C48CE6F0065293E /* FLEXDefaultEditorViewController.m in Sources */,
@@ -3035,6 +3049,7 @@
 				2FD99E351C48CE6F0065293E /* MJRefreshAutoGifFooter.m in Sources */,
 				2FD99D771C48CE6F0065293E /* FLEXArgumentInputFontsPickerView.m in Sources */,
 				2F1D2CF71C867817008F3B50 /* FWWidget.m in Sources */,
+				2F1E06C01C8FF9E900BE6C73 /* FWTask.m in Sources */,
 				2F6E85A11C87D36B004FADB8 /* NSDate+Framework.m in Sources */,
 				2F1C36001C4C89310060E793 /* ISwitch.m in Sources */,
 				2F1C35D51C4C89310060E793 /* ICssDecl.m in Sources */,
@@ -3046,7 +3061,7 @@
 				2FD99E011C48CE6F0065293E /* FLEXHierarchyTableViewCell.m in Sources */,
 				2FD99DE11C48CE6F0065293E /* FLEXDictionaryExplorerViewController.m in Sources */,
 				2F4AF9CB1C7B30D80061A566 /* FWHelperPath.m in Sources */,
-				2F1C77BC1C5776DC009080A3 /* FWPluginLoadingDefault.m in Sources */,
+				2F1C77BC1C5776DC009080A3 /* FWPluginLoadingImpl.m in Sources */,
 				2FD99E3F1C48CE6F0065293E /* MJRefreshBackStateFooter.m in Sources */,
 				2F6E85F91C880628004FADB8 /* UIImageView+Framework.m in Sources */,
 				2FD99E051C48CE6F0065293E /* FLEXImagePreviewViewController.m in Sources */,
@@ -3092,7 +3107,7 @@
 				2FD99D6B1C48CE6F0065293E /* DDTTYLogger.m in Sources */,
 				2F6E85AD1C87D36B004FADB8 /* UIScrollView+Framework.m in Sources */,
 				2FD99ED01C48CE700065293E /* SDWebImagePrefetcher.m in Sources */,
-				2F09D7261C55C962003BB601 /* FWPluginDialogDefault.m in Sources */,
+				2F09D7261C55C962003BB601 /* FWPluginDialogImpl.m in Sources */,
 				2FD99D4F1C48CE6F0065293E /* ActionSheetDatePicker.m in Sources */,
 				2FD99ED61C48CE700065293E /* UIImage+MultiFormat.m in Sources */,
 				2FD99DED1C48CE6F0065293E /* FLEXSetExplorerViewController.m in Sources */,
@@ -3125,6 +3140,7 @@
 				2F1C35D91C4C89310060E793 /* IFlowLayout.m in Sources */,
 				2F247E4F1C8E718100397BD2 /* FWContext.m in Sources */,
 				2FD99D511C48CE6F0065293E /* ActionSheetDistancePicker.m in Sources */,
+				2F1E06C41C8FF9F900BE6C73 /* FWPlugin.m in Sources */,
 				2F1D2D021C867817008F3B50 /* FWNotification.m in Sources */,
 				2F6E85A91C87D36B004FADB8 /* UIImage+Framework.m in Sources */,
 				2F1C35E71C4C89310060E793 /* IMaskUIView.m in Sources */,

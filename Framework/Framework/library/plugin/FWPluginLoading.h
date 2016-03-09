@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWPlugin.h"
 
-//定义插件池默认保存名称
-#define FWPluginLoadingName @"FWPluginLoading"
-
-@protocol FWPluginLoading <NSObject>
+@protocol FWPluginLoading <FWPlugin>
 
 //显示加载条
 - (void)showLoadingInViewController:(UIViewController *)viewController message:(NSString *)message;

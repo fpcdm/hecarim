@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FWPlugin.h"
 #import "FWRegistry.h"
 
-//定义插件池默认保存名称
-#define FWPluginCacheName @"FWPluginCache"
-
-@protocol FWPluginCache <FWProtocolRegistry>
+@protocol FWPluginCache <FWPlugin, FWProtocolRegistry>
 
 @end

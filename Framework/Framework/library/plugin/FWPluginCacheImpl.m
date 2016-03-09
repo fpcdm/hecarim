@@ -6,10 +6,12 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWPluginCacheDefault.h"
+#import "FWPluginCacheImpl.h"
 #import "PINCache.h"
 
-@implementation FWPluginCacheDefault
+@implementation FWPluginCacheImpl
+
+AS_PLUGIN(FWPluginCache)
 
 - (id)get:(NSString *)key
 {

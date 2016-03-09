@@ -49,6 +49,8 @@
 #import "FWPresenter.h"
 #import "FWRouter.h"
 #import "FWService.h"
+#import "FWTask.h"
+#import "FWPlugin.h"
 
 #import "FWRequest.h"
 #import "FWResponse.h"
@@ -64,13 +66,12 @@
 #import "FWXmlViewController.h"
 
 //library
-#import "FWPluginManager.h"
 #import "FWPluginDialog.h"
-#import "FWPluginDialogDefault.h"
+#import "FWPluginDialogImpl.h"
 #import "FWPluginLoading.h"
-#import "FWPluginLoadingDefault.h"
+#import "FWPluginLoadingImpl.h"
 #import "FWPluginCache.h"
-#import "FWPluginCacheDefault.h"
+#import "FWPluginCacheImpl.h"
 
 #import "FWHelperAspect.h"
 #import "FWHelperDevice.h"

@@ -7,7 +7,6 @@
 //
 
 #import "FWCache.h"
-#import "FWPluginManager.h"
 #import "FWPluginCache.h"
 
 @implementation FWCache
@@ -16,7 +15,7 @@
 
 - (id<FWPluginCache>)plugin
 {
-    return [[FWPluginManager sharedInstance] getPlugin:FWPluginCacheName];
+    return [[FWPluginManager sharedInstance] getPlugin:@protocol(FWPluginCache)];
 }
 
 - (id)get:(NSString *)key

@@ -6,13 +6,15 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWPluginLoadingDefault.h"
+#import "FWPluginLoadingImpl.h"
 #import "MBProgressHUD.h"
 
-@implementation FWPluginLoadingDefault
+@implementation FWPluginLoadingImpl
 {
     MBProgressHUD *loading;
 }
+
+AS_PLUGIN(FWPluginLoading)
 
 - (void)showLoadingInViewController:(UIViewController *)viewController message:(NSString *)message
 {

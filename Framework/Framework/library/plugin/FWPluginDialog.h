@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-//定义插件池默认保存名称
-#define FWPluginDialogName @"FWPluginDialog"
+#import "FWPlugin.h"
 
 //弹出框类型枚举
 typedef NS_ENUM(NSInteger, FWPluginDialogType) {
@@ -20,7 +18,7 @@ typedef NS_ENUM(NSInteger, FWPluginDialogType) {
 };
 
 //弹出框协议
-@protocol FWPluginDialog <NSObject>
+@protocol FWPluginDialog <FWPlugin>
 
 //显示弹出框
 - (void)showDialogInViewController:(UIViewController *)viewController type:(FWPluginDialogType)type message:(NSString *)message callback:(void(^)())callback;

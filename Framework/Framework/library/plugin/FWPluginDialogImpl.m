@@ -6,10 +6,12 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWPluginDialogDefault.h"
+#import "FWPluginDialogImpl.h"
 #import "TSMessage.h"
 
-@implementation FWPluginDialogDefault
+@implementation FWPluginDialogImpl
+
+AS_PLUGIN(FWPluginDialog)
 
 - (void)showDialogInViewController:(UIViewController *)viewController type:(FWPluginDialogType)type message:(NSString *)message callback:(void (^)())callback
 {
