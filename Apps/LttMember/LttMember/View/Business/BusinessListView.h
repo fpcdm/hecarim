@@ -14,6 +14,7 @@
 - (void)actionRefresh:(UITableView *)tableView;
 - (void)actionLoad:(UITableView *)tableView;
 - (void)actionDetail:(BusinessEntity *)business;
+- (void)actionPreview:(BusinessEntity *)business index:(NSUInteger)index;
 
 @end
 

@@ -11,8 +11,9 @@
 #import "BusinessEntity.h"
 #import "BusinessHandler.h"
 #import "BusinessViewController.h"
+#import "MWPhotoBrowser.h"
 
-@interface BusinessListViewController () <BusinessListViewDelegate>
+@interface BusinessListViewController () <BusinessListViewDelegate, MWPhotoBrowserDelegate>
 
 @end
 
@@ -20,6 +21,11 @@
 {
     BusinessListView *listView;
     NSMutableArray *businessList;
+    
+    NSMutableArray *photos;
+    NSMutableArray *thumbs;
+    MWPhotoBrowser *photoBrowser;
+    BusinessEntity *photoBusiness;
     
     //当前页数
     int page;
@@ -99,7 +105,7 @@
     page++;
     
     BusinessHandler *businessHandler = [[BusinessHandler alloc] init];
-    NSDictionary *param = @{@"page":[NSNumber numberWithInt:page], @"pagesize":[NSNumber numberWithInt:LTT_PAGESIZE_DEFAULT]};
+    NSDictionary *param = @{@"page":[NSNumber numberWithInt:page], @"page_size":[NSNumber numberWithInt:LTT_PAGESIZE_DEFAULT]};
     [businessHandler queryBusinessList:param success:^(NSArray *result) {
         for (BusinessEntity *business in result) {
             [businessList addObject:business];
@@ -165,6 +171,76 @@
     BusinessViewController *viewController = [[BusinessViewController alloc] init];
     viewController.businessId = business.id;
     [self pushViewController:viewController animated:YES];
+}
+
+- (void)actionPreview:(BusinessEntity *)business index:(NSUInteger)index
+{
+    //是否预览的同一个，不是同一个则重新加载图片
+    BOOL isPreviewLast = photoBusiness && [business.id isEqualToNumber:photoBusiness.id] ? YES : NO;
+    if (!isPreviewLast) {
+        photos = nil;
+        photoBrowser = nil;
+    }
+    
+    //初始化数据
+    if (!photos) {
+        photos = [NSMutableArray array];
+        thumbs = [NSMutableArray array];
+        
+        MWPhoto *photo, *thumb;
+        if (business.images.isNotEmpty) {
+            for (ImageEntity *image in business.images) {
+                photo = [MWPhoto photoWithURL:[NSURL URLWithString:image.imageUrl]];
+                thumb = [MWPhoto photoWithURL:[NSURL URLWithString:image.thumbUrl]];
+                [photos addObject:photo];
+                [thumbs addObject:thumb];
+            }
+        }
+    }
+    
+    //初始化图片浏览器
+    if (!photoBrowser) {
+        photoBrowser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        photoBrowser.displayActionButton = YES;
+        photoBrowser.displayNavArrows = YES;
+        photoBrowser.displaySelectionButtons = NO;
+        photoBrowser.alwaysShowControls = NO;
+        photoBrowser.zoomPhotosToFill = NO;
+        photoBrowser.enableGrid = NO;
+        photoBrowser.startOnGrid = NO;
+        photoBrowser.enableSwipeToDismiss = NO;
+        photoBrowser.autoPlayOnAppear = NO;
+    }
+    
+    //设置索引
+    NSLog(@"preview: %ld", index);
+    [photoBrowser setCurrentPhotoIndex:index];
+    
+    //Model弹出
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:photoBrowser];
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    navigationController.navigationBar.titleTextAttributes = @{
+                                                               NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                                               NSForegroundColorAttributeName: COLOR_MAIN_WHITE
+                                                               };
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+#pragma mark - PhotoBrowser
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < photos.count)
+        return [photos objectAtIndex:index];
+    return nil;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+    if (index < thumbs.count)
+        return [thumbs objectAtIndex:index];
+    return nil;
 }
 
 @end

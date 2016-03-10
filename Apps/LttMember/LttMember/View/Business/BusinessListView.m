@@ -29,14 +29,6 @@
 }
 
 #pragma mark - RenderData
-- (CGFloat) adjustTextHeight:(NSString *)content
-{
-    if (!content || content.length < 1) return 0;
-    
-    CGSize size = [content boundingSize:CGSizeMake(SCREEN_WIDTH - 20, MAXFLOAT) withFont:FONT_MAIN];
-    return size.height;
-}
-
 - (void)display
 {
     //显示数据
@@ -45,8 +37,7 @@
     if (businessList != nil) {
         for (BusinessEntity *business in businessList) {
             //计算高度
-            CGFloat textHeight = [self adjustTextHeight:business.content];
-            CGFloat cellHeight = 50 + textHeight;
+            CGFloat cellHeight = [self cellHeight:business];
             
             [tableData addObject:@{@"type" : @"custom", @"action": @"actionDetail:", @"height": @(cellHeight), @"data": business}];
         }
@@ -82,14 +73,110 @@
     contentLabel.text = business.content;
     [cell addSubview:contentLabel];
     
+    CGFloat textHeight = [self adjustTextHeight:business.content];
+    
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(merchantLabel.mas_bottom).offset(10);
         make.left.equalTo(superview.mas_left).offset(10);
         make.right.equalTo(superview.mas_right).offset(-10);
-        make.bottom.equalTo(superview.mas_bottom).offset(-10);
+        make.height.equalTo(@(textHeight + 4));
     }];
     
+    //渲染图片
+    [self cellImages:cell business:business];
+    
     return cell;
+}
+
+- (CGFloat) adjustTextHeight:(NSString *)content
+{
+    if (!content || content.length < 1) return 0;
+    
+    CGSize size = [content boundingSize:CGSizeMake(SCREEN_WIDTH - 20, MAXFLOAT) withFont:FONT_MAIN];
+    return size.height;
+}
+
+//计算cell高度
+- (CGFloat)cellHeight:(BusinessEntity *)business
+{
+    //计算高度
+    CGFloat textHeight = [self adjustTextHeight:business.content];
+    CGFloat cellHeight = 50 + textHeight;
+    
+    //含有图片
+    if (business.images.isNotEmpty) {
+        //计算宽高
+        NSInteger buttonSize = 3;
+        CGFloat spaceWidth = 10;
+        CGFloat spaceHeight = 10;
+        CGFloat buttonWidth = (SCREEN_WIDTH - (buttonSize + 1) * spaceWidth) / buttonSize;
+        CGFloat buttonHeight = buttonWidth + spaceHeight;
+        
+        //绘制图片
+        NSInteger imagesCount = [business.images count];
+        CGFloat frameX = 0;
+        CGFloat frameY = 0;
+        for (int i = 0; i < imagesCount; i++) {
+            //计算位置
+            NSInteger itemRow = (int)(i / buttonSize) + 1;
+            NSInteger itemCol = i % buttonSize + 1;
+            frameX = spaceWidth + (buttonWidth + spaceWidth) * (itemCol - 1);
+            frameY = buttonHeight * (itemRow - 1);
+        }
+        
+        //计算容器宽高
+        cellHeight += frameY + buttonHeight;
+    }
+    
+    return cellHeight;
+}
+
+- (void)cellImages:(UITableViewCell *)cell business:(BusinessEntity *)business
+{
+    //是否含有图片
+    NSArray *images = business.images;
+    if (!images.isNotEmpty) return;
+    
+    //计算高度
+    CGFloat textHeight = [self adjustTextHeight:business.content];
+    CGFloat cellHeight = 50 + textHeight - 10;
+    
+    //计算宽高
+    NSInteger buttonSize = 3;
+    CGFloat spaceWidth = 10;
+    CGFloat spaceHeight = 10;
+    CGFloat buttonWidth = (SCREEN_WIDTH - (buttonSize + 1) * spaceWidth) / buttonSize;
+    CGFloat buttonHeight = buttonWidth + spaceHeight;
+    
+    //绘制图片
+    NSInteger imagesCount = [images count];
+    CGFloat frameX = 0;
+    CGFloat frameY = 0;
+    for (int i = 0; i < imagesCount; i++) {
+        //计算位置
+        NSInteger itemRow = (int)(i / buttonSize) + 1;
+        NSInteger itemCol = i % buttonSize + 1;
+        frameX = spaceWidth + (buttonWidth + spaceWidth) * (itemCol - 1);
+        frameY = buttonHeight * (itemRow - 1);
+        
+        //添加按钮
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frameX, frameY + cellHeight + spaceHeight, buttonWidth, buttonHeight - spaceHeight)];
+        [button addTarget:self action:@selector(actionPreview:) forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor = COLOR_MAIN_CLEAR;
+        button.tag = i;
+        [cell addSubview:button];
+        
+        //添加图片
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:button.bounds];
+        [button addSubview:imageView];
+        
+        //加载图片
+        ImageEntity *image = [images objectAtIndex:i];
+        [imageView setImageUrl:image.thumbUrl indicator:YES];
+    }
+    
+    //计算容器宽高
+    cellHeight += frameY + buttonHeight;
 }
 
 //让分割线左侧不留空白
@@ -122,6 +209,16 @@
     BusinessEntity *business = [cellData objectForKey:@"data"];
     
     [self.delegate actionDetail:business];
+}
+
+- (void)actionPreview:(UIButton *)button
+{
+    UITableViewCell *cell = (UITableViewCell *) [button superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    NSDictionary *cellData = [self tableView:self.tableView cellDataForRowAtIndexPath:indexPath];
+    BusinessEntity *business = [cellData objectForKey:@"data"];
+    [self.delegate actionPreview:business index:button.tag];
 }
 
 @end

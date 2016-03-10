@@ -20,6 +20,7 @@
                                    @"merchant_name": @"merchantName",
                                    @"news_content": @"content",
                                    @"news_id":@"id",
+                                   @"news_imgs":@"images",
                                    };
     
     RKResponseDescriptor *responseDescriptor = [sharedClient addResponseDescriptor:[BusinessEntity class] mappingParam:mappingParam keyPath:@"list"];
@@ -27,6 +28,21 @@
     NSString *restPath = @"mnews/list";
     [sharedClient getObject:[BusinessEntity new] path:restPath param:param success:^(NSArray *result){
         [sharedClient removeResponseDescriptor:responseDescriptor];
+        
+        //格式化图片
+        for (BusinessEntity *business in result) {
+            NSArray *imagesArray = business.images.isNotEmpty ? business.images : nil;
+            NSMutableArray *images = [NSMutableArray array];
+            if (imagesArray) {
+                for (NSDictionary *image in imagesArray) {
+                    ImageEntity *imageEntity = [[ImageEntity alloc] init];
+                    imageEntity.imageUrl = [image objectForKey:@"img_url"];
+                    imageEntity.thumbUrl = [image objectForKey:@"thumb_url"];
+                    [images addObject:imageEntity];
+                }
+            }
+            business.images = images;
+        }
         
         success(result);
     } failure:^(ErrorEntity *error){

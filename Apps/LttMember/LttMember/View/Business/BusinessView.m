@@ -130,7 +130,7 @@
 - (void)bottomView
 {
     //支付按钮
-    UIButton *button = [AppUIUtil makeButton:@"呼叫商家"];
+    UIButton *button = [AppUIUtil makeButton:@"一键呼叫商家"];
     [button addTarget:self action:@selector(actionBusiness) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     

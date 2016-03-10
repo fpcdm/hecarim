@@ -317,7 +317,7 @@
     if (address) {
         NSNumber *count = [self fetch:@"count"];
         if (count && ![@-1 isEqualToNumber:count]) {
-            //address = [NSString stringWithFormat:@"%@(有%@位信使为您服务)", address, count];
+            address = [NSString stringWithFormat:@"%@(有%@位信使为您服务)", address, count];
         }
         addressLabel.text = address;
     } else if (gps) {
@@ -454,7 +454,7 @@
         
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.text = type.name;
-        nameLabel.font = [UIFont systemFontOfSize:10];
+        nameLabel.font = FONT_SMALL;
         nameLabel.textColor = COLOR_MAIN_WHITE;
         [button addSubview:nameLabel];
         
