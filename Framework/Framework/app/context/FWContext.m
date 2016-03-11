@@ -36,7 +36,7 @@
     
 #if FRAMEWORK_TEST
     //开启测试
-    [[FWTest sharedInstance] run];
+    [[FWUnit sharedInstance] run];
 #endif
     
 #if FRAMEWORK_LOG

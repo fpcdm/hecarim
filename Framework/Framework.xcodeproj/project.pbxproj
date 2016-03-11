@@ -116,8 +116,8 @@
 		2F1D2D081C867817008F3B50 /* FWSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD51C867816008F3B50 /* FWSignal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1D2D091C867817008F3B50 /* FWSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D2CD61C867816008F3B50 /* FWSignal.m */; };
 		2F1D2D0A1C867817008F3B50 /* FWSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD71C867816008F3B50 /* FWSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1D2D0B1C867817008F3B50 /* FWTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD81C867816008F3B50 /* FWTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F1D2D0C1C867817008F3B50 /* FWTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D2CD91C867816008F3B50 /* FWTest.m */; };
+		2F1D2D0B1C867817008F3B50 /* FWUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1D2CD81C867816008F3B50 /* FWUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1D2D0C1C867817008F3B50 /* FWUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D2CD91C867816008F3B50 /* FWUnit.m */; };
 		2F1E06BF1C8FF9E900BE6C73 /* FWTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06BD1C8FF9E900BE6C73 /* FWTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F1E06C01C8FF9E900BE6C73 /* FWTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E06BE1C8FF9E900BE6C73 /* FWTask.m */; };
 		2F1E06C31C8FF9F900BE6C73 /* FWPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F1E06C11C8FF9F900BE6C73 /* FWPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -764,8 +764,8 @@
 		2F1D2CD51C867816008F3B50 /* FWSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSignal.h; sourceTree = "<group>"; };
 		2F1D2CD61C867816008F3B50 /* FWSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSignal.m; sourceTree = "<group>"; };
 		2F1D2CD71C867816008F3B50 /* FWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSingleton.h; sourceTree = "<group>"; };
-		2F1D2CD81C867816008F3B50 /* FWTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTest.h; sourceTree = "<group>"; };
-		2F1D2CD91C867816008F3B50 /* FWTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTest.m; sourceTree = "<group>"; };
+		2F1D2CD81C867816008F3B50 /* FWUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWUnit.h; sourceTree = "<group>"; };
+		2F1D2CD91C867816008F3B50 /* FWUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWUnit.m; sourceTree = "<group>"; };
 		2F1E06BD1C8FF9E900BE6C73 /* FWTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTask.h; sourceTree = "<group>"; };
 		2F1E06BE1C8FF9E900BE6C73 /* FWTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTask.m; sourceTree = "<group>"; };
 		2F1E06C11C8FF9F900BE6C73 /* FWPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPlugin.h; sourceTree = "<group>"; };
@@ -1520,8 +1520,8 @@
 				2F1D2CD51C867816008F3B50 /* FWSignal.h */,
 				2F1D2CD61C867816008F3B50 /* FWSignal.m */,
 				2F1D2CD71C867816008F3B50 /* FWSingleton.h */,
-				2F1D2CD81C867816008F3B50 /* FWTest.h */,
-				2F1D2CD91C867816008F3B50 /* FWTest.m */,
+				2F1D2CD81C867816008F3B50 /* FWUnit.h */,
+				2F1D2CD91C867816008F3B50 /* FWUnit.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -2491,7 +2491,7 @@
 				2F1D2CF81C867817008F3B50 /* FWXmlView.h in Headers */,
 				2F1D2CEC1C867817008F3B50 /* FWRequest.h in Headers */,
 				2F1D2CE61C867817008F3B50 /* FWDatabase.h in Headers */,
-				2F1D2D0B1C867817008F3B50 /* FWTest.h in Headers */,
+				2F1D2D0B1C867817008F3B50 /* FWUnit.h in Headers */,
 				2F1D2CF61C867817008F3B50 /* FWWidget.h in Headers */,
 				2F1D2D031C867817008F3B50 /* FWProperty.h in Headers */,
 				2F1D2D0A1C867817008F3B50 /* FWSingleton.h in Headers */,
@@ -2908,7 +2908,7 @@
 				2FD99D4A1C48CE6F0065293E /* AbstractActionSheetPicker.m in Sources */,
 				2FD99D7D1C48CE6F0065293E /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				2F1C36081C4C89310060E793 /* INSXmlViewLoader.m in Sources */,
-				2F1D2D0C1C867817008F3B50 /* FWTest.m in Sources */,
+				2F1D2D0C1C867817008F3B50 /* FWUnit.m in Sources */,
 				2FD99ECB1C48CE700065293E /* SDWebImageDownloaderOperation.m in Sources */,
 				2FD99EC11C48CE700065293E /* NSData+ImageContentType.m in Sources */,
 				2F1C35F01C4C89310060E793 /* IView.m in Sources */,

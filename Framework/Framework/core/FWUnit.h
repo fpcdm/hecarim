@@ -10,35 +10,35 @@
 
 #undef	TEST_CASE
 #define	TEST_CASE( __module, __name ) \
-		@interface FWTestCase____##__module##____##__name : FWTestCase \
-		@end \
-		@implementation FWTestCase____##__module##____##__name
+	@interface FWTestCase____##__module##____##__name : FWTestCase \
+	@end \
+	@implementation FWTestCase____##__module##____##__name
 
 #undef	TEST_CASE_END
 #define	TEST_CASE_END \
-		@end
+	@end
 
 #undef  SETUP
 #define SETUP( ) \
-        - (void) setUp
+    - (void) setUp
 
 #undef  TEARDOWN
 #define TEARDOWN( ) \
-        - (void) tearDown
+    - (void) tearDown
 
 #undef	TEST
 #define	TEST( __name ) \
-		- (void) macro_concat( test, __name )
+	- (void) macro_concat( test, __name )
 
 #undef	EXPECTED
 #define EXPECTED( ... ) \
-		if ( !(__VA_ARGS__) ) { \
-			@throw [FWTestException exceptionWithExpr:#__VA_ARGS__ file:__FILE__ line:__LINE__]; \
-		}
+	if ( !(__VA_ARGS__) ) { \
+		@throw [FWTestException exceptionWithExpr:#__VA_ARGS__ file:__FILE__ line:__LINE__]; \
+	}
 
 #undef	TIMES
 #define TIMES( __n ) \
-		for ( int __i_##__LINE__ = 0; __i_##__LINE__ < __n; ++__i_##__LINE__ )
+	for ( int __i_##__LINE__ = 0; __i_##__LINE__ < __n; ++__i_##__LINE__ )
 
 #pragma mark -
 
@@ -66,9 +66,11 @@
 
 #pragma mark -
 
-@interface FWTest : NSObject
+@interface FWUnit : NSObject
 
-@singleton(FWTest)
+@singleton(FWUnit)
+
+- (void)addTestCase:(Class)testCase;
 
 - (void)run;
 

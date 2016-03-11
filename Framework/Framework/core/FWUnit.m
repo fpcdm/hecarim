@@ -6,7 +6,7 @@
 //  Copyright © 2016年 ocphp.com. All rights reserved.
 //
 
-#import "FWTest.h"
+#import "FWUnit.h"
 #import "FWRuntime.h"
 
 #pragma mark -
@@ -53,13 +53,41 @@
 
 #pragma mark -
 
-@implementation FWTest
+@implementation FWUnit
 {
+    NSMutableArray *_testCases;
+    
     NSUInteger _failedCount;
     NSUInteger _succeedCount;
 }
 
-@def_singleton(FWTest)
+@def_singleton(FWUnit)
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _testCases = [[NSMutableArray alloc] init];
+        
+        NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
+        [_testCases addObjectsFromArray:classes];
+    }
+    return self;
+}
+
+- (void)addTestCase:(Class)testCase
+{
+#if FRAMEWORK_TEST
+    //必须是FWTestCase子类
+    if (![testCase isSubclassOfClass:[FWTestCase class]]) return;
+    
+    //添加测试用例
+    NSString *className = NSStringFromClass(testCase);
+    if (![_testCases containsObject:className]) {
+        [_testCases addObject:className];
+    }
+#endif
+}
 
 - (void)run
 {
@@ -68,7 +96,8 @@
     NSMutableString *testLog = [[NSMutableString alloc] init];
     
     //获取测试列表
-    NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
+    //NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
+    NSArray *classes = _testCases;
     CFTimeInterval beginTime = CACurrentMediaTime();
     for (NSString *className in classes) {
         Class classType = NSClassFromString(className);
