@@ -12,18 +12,53 @@
 #pragma mark -
 @implementation NSObject (FWSignalResponder)
 
-- (id)signalResponder
+@def_prop_dynamic(FWSignalBlock, onSignal)
+@def_prop_dynamic(NSArray *, signalResponders)
+
+- (FWSignalBlock)onSignal
 {
-    id responder = [self getAssociatedObjectForKey:"signalResponder"];
-    return responder;
+    @weakify(self);
+    
+    FWSignalBlock onBlock = ^ NSObject* (NSString *name, id block)
+    {
+        @strongify(self);
+        
+        if (block) {
+            [self.blockHandler setBlock:name block:block];
+        } else {
+            [self.blockHandler removeBlock:name];
+        }
+        
+        return self;
+    };
+    
+    return [onBlock copy];
 }
 
-- (void)setSignalResponder:(id)responder
+//对外只读
+- (NSArray *)signalResponders
 {
-    if (nil == responder) {
-        [self removeAssociatedObjectForKey:"signalResponder"];
-    } else {
-        [self retainAssociatedObject:responder forKey:"signalResponder"];
+    NSMutableArray *responders = [self getAssociatedObjectForKey:"signalResponders"];
+    if (nil == responders) {
+        responders = [[NSMutableArray alloc] init];
+        [self retainAssociatedObject:responders forKey:"signalResponders"];
+    }
+    return responders;
+}
+
+- (void)addSignalResponder:(NSObject *)responder
+{
+    NSMutableArray *responders = (NSMutableArray *)[self signalResponders];
+    if (![responders containsObject:responder]) {
+        [responders addObject:responder];
+    }
+}
+
+- (void)removeSignalResponder:(NSObject *)responder
+{
+    NSMutableArray *responders = (NSMutableArray *)[self signalResponders];
+    if ([responders containsObject:responder]) {
+        [responders removeObject:responder];
     }
 }
 
@@ -32,96 +67,39 @@
     
 }
 
-- (void)onSignal:(NSString *)name block:(FWSignalBlock)block
-{
-    if (block) {
-        [self.blockHandler setBlock:name block:block];
-    } else {
-        [self.blockHandler removeBlock:name];
-    }
-}
-
-- (void)routeSignal:(FWSignal *)signal
-{
-    //1. FWSignalBlock
-    if ([self.blockHandler trigger:signal.name withObject:signal]) {
-        return;
-    }
-    
-    NSArray *array = [signal.name componentsSeparatedByString:@"."];
-    if (array && array.count > 1) {
-        //NSString *prefix = (NSString *)[array objectAtIndex:0];
-        NSString *clazz = (NSString *)[array objectAtIndex:1];
-        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
-        
-        NSString *selectorName;
-        SEL selector;
-        
-        if (filter && filter.length > 0) {
-            selectorName = [NSString stringWithFormat:@"handleSignal____%@____%@:", clazz, filter];
-            selector = NSSelectorFromString(selectorName);
-            
-            //2. handleSignal_Class_name
-            if ([self respondsToSelector:selector]) {
-                IGNORED_SELECTOR
-                [self performSelector:selector withObject:signal];
-                IGNORED_END
-                return;
-            }
-        }
-        
-        selectorName = [NSString stringWithFormat:@"handleSignal____%@:", clazz];
-        selector = NSSelectorFromString(selectorName);
-        
-        //3. handleSignal_Class
-        if ([self respondsToSelector:selector]) {
-            IGNORED_SELECTOR
-            [self performSelector:selector withObject:signal];
-            IGNORED_END
-            return;
-        }
-    }
-    
-    //4. handleSignal
-    [self handleSignal:signal];
-}
-
 @end
 
 #pragma mark -
 @implementation NSObject (FWSignalSender)
-
-//signal.Class.name
-@def_static_string(SIGNAL, [[self class] SIGNAL_TYPE])
-
-//signal.Class.
-@def_static_string(SIGNAL_TYPE, [[[NSString stringWithUTF8String:"signal."] stringByAppendingString:NSStringFromClass([self class])] stringByAppendingString:[NSString stringWithUTF8String:"."]])
 
 - (void)sendSignal:(NSString *)name
 {
     [self sendSignal:name callback:nil];
 }
 
-- (void)sendSignal:(NSString *)name callback:(FWSignalBlock)callback
+- (void)sendSignal:(NSString *)name callback:(FWSignalCallback)callback
 {
     [self sendSignal:name withObject:nil callback:callback];
 }
 
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object
+- (void)sendSignal:(NSString *)name withObject:(id)object
 {
     [self sendSignal:name withObject:object callback:nil];
 }
 
-- (void)sendSignal:(NSString *)name withObject:(NSObject *)object callback:(FWSignalBlock)callback
+- (void)sendSignal:(NSString *)name withObject:(id)object callback:(FWSignalCallback)callback
 {
-    FWSignal *signal = [FWSignal signal];
-    signal.name = name;
-    signal.object = object;
-    signal.source = self;
-    signal.target = self.signalResponder ? self.signalResponder : self;
-    signal.callback = callback;
-    
-    [signal send];
+    //发送给所有响应者
+    for (NSObject *signalResponder in self.signalResponders) {
+        FWSignal *signal = [FWSignal signal];
+        signal.name = name;
+        signal.object = object;
+        signal.source = self;
+        signal.target = signalResponder;
+        signal.callback = callback;
+        
+        [signal send];
+    }
 }
 
 @end
@@ -150,7 +128,7 @@
 @def_prop_strong(id, object)
 @def_prop_assign(NSObject *, source)
 @def_prop_assign(NSObject *, target)
-@def_prop_copy(FWSignalBlock, callback)
+@def_prop_copy(FWSignalCallback, callback)
 
 @def_prop_dynamic(id, response)
 @def_prop_dynamic(NSError *, error)
@@ -189,18 +167,9 @@
     return [self.name isEqualToString:name];
 }
 
-- (BOOL)isType:(NSString *)type
-{
-    return [self.name hasPrefix:type];
-}
-
 - (void)send
 {
-    //检查参数
-    if (!self.name || !self.source || !self.target) return;
-    
-    //target调用信号
-    [self.target routeSignal:self];
+    [[FWSignalBus sharedInstance] route:self];
 }
 
 - (void)success:(id)response
@@ -232,6 +201,95 @@
 
 @end
 
+#pragma mark -
+@implementation FWSignalBus
+
+@def_singleton(FWSignalBus)
+
+- (void)route:(FWSignal *)signal
+{
+    if (!signal || !signal.source || !signal.target) return;
+    
+    //1. FWSignalBlock
+    NSObject *target = signal.target;
+    if ([target.blockHandler trigger:signal.name withObject:signal]) {
+        return;
+    }
+    
+    NSString *selectorName;
+    SEL selector;
+    
+    if ([signal.name hasPrefix:@"signal."]) {
+        NSArray *array   = [signal.name componentsSeparatedByString:@"."];
+        NSString *clazz  = (NSString *)[array objectAtIndex:1];
+        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
+        
+        if (filter && filter.length > 0) {
+            selectorName = [NSString stringWithFormat:@"handleSignal____%@____%@:", clazz, filter];
+            selector = NSSelectorFromString(selectorName);
+            
+            //2. handleSignal(class, signal)
+            if ([target respondsToSelector:selector]) {
+                IGNORED_SELECTOR
+                [target performSelector:selector withObject:signal];
+                IGNORED_END
+                return;
+            }
+            
+            if ([[target.class description] isEqualToString:clazz]) {
+                selectorName = [NSString stringWithFormat:@"handleSignal____%@:", filter];
+                selector = NSSelectorFromString(selectorName);
+                
+                //3. handleSignal(signal)
+                if ([target respondsToSelector:selector]) {
+                    IGNORED_SELECTOR
+                    [target performSelector:selector withObject:signal];
+                    IGNORED_END
+                    return;
+                }
+            }
+        }
+        
+        selectorName = [NSString stringWithFormat:@"handleSignal____%@:", clazz];
+        selector = NSSelectorFromString(selectorName);
+        
+        //4. handleSignal(class)
+        if ([target respondsToSelector:selector]) {
+            IGNORED_SELECTOR
+            [target performSelector:selector withObject:signal];
+            IGNORED_END
+            return;
+        }
+    }
+    
+    //5. handleSignal(name)
+    selectorName = [signal.name stringByReplacingOccurrencesOfString:@"signal." withString:@""];
+    selectorName = [NSString stringWithFormat:@"handleSignal____%@:", selectorName];
+    selector = NSSelectorFromString(selectorName);
+    if ([target respondsToSelector:selector]) {
+        IGNORED_SELECTOR
+        [target performSelector:selector withObject:signal];
+        IGNORED_END
+        return;
+    }
+    
+    //6. handleSignal()
+    selectorName = @"handleSignal____:";
+    selector = NSSelectorFromString(selectorName);
+    if ([target respondsToSelector:selector]) {
+        IGNORED_SELECTOR
+        [target performSelector:selector withObject:signal];
+        IGNORED_END
+        return;
+    }
+    
+    //7. handleSignal
+    [target handleSignal:signal];
+}
+
+@end
+
+#pragma mark -
 //UnitTest
 #if FRAMEWORK_TEST
 
@@ -264,7 +322,7 @@ SETUP()
 TEST(signal)
 {
     EXPECTED(0 == value);
-    EXPECTED(nil == obj.signalResponder);
+    EXPECTED(0 == obj.signalResponders.count);
     
     TIMES(10)
     {
@@ -272,8 +330,8 @@ TEST(signal)
     }
     EXPECTED(0 == value)
     
-    obj.signalResponder = self;
-    EXPECTED(self == obj.signalResponder)
+    [obj addSignalResponder:self];
+    EXPECTED([obj.signalResponders containsObject:self])
     
     TIMES(10)
     {
@@ -305,15 +363,15 @@ handleSignal(FWTestCase_core_FWSignal_Test, CLICK)
 
 TEST(onSignal)
 {
-    obj.signalResponder = self;
+    [obj addSignalResponder:self];
     
-    [self onSignal:obj.CLICK block:^(FWSignal *signal) {
+    self.onSignal(obj.CLICK, ^(FWSignal *signal) {
         EXPECTED([signal isName:obj.CLICK])
         EXPECTED([@1 isEqualToNumber:signal.object])
         value += 2;
         
         [signal success:@"result"];
-    }];
+    });
     
     TIMES(5)
     {

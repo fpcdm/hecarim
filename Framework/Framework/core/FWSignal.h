@@ -26,38 +26,32 @@
 #define handleSignal( ... ) \
     - (void) macro_method(handleSignal, __VA_ARGS__):(FWSignal *)signal
 
-@class FWSignal;
-typedef void (^FWSignalBlock)(FWSignal *signal);
+typedef NSObject* (^FWSignalBlock)(NSString *name, id block);
 
-TODO("support array responders")
-TODO("FWSignalCenter route send")
-TODO("nsobject signalKvo observeProperty")
-TODO("FWSignal NSCopying NSCoding")
+@class FWSignal;
+typedef void (^FWSignalCallback)(FWSignal *signal);
 
 #pragma mark -
 @interface NSObject (FWSignalResponder)
 
-//设置或获取响应对象
-- (id)signalResponder;
-- (void)setSignalResponder:(id)responder;
+@prop_readonly(FWSignalBlock, onSignal)
+@prop_readonly(NSArray *, signalResponders)
+
+- (void)addSignalResponder:(NSObject *)responder;
+- (void)removeSignalResponder:(NSObject *)responder;
 
 - (void)handleSignal:(FWSignal *)signal;
-
-- (void)onSignal:(NSString *)name block:(FWSignalBlock)block;
 
 @end
 
 #pragma mark -
 @interface NSObject (FWSignalSender)
 
-@static_string(SIGNAL)
-@static_string(SIGNAL_TYPE)
-
 //发送信号
 - (void) sendSignal:(NSString *)name;
-- (void) sendSignal:(NSString *)name callback:(FWSignalBlock)callback;
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object;
-- (void) sendSignal:(NSString *)name withObject:(NSObject *)object callback:(FWSignalBlock)callback;
+- (void) sendSignal:(NSString *)name callback:(FWSignalCallback)callback;
+- (void) sendSignal:(NSString *)name withObject:(id)object;
+- (void) sendSignal:(NSString *)name withObject:(id)object callback:(FWSignalCallback)callback;
 
 @end
 
@@ -73,7 +67,7 @@ TODO("FWSignal NSCopying NSCoding")
 @prop_strong(id, object)
 @prop_assign(NSObject *, source)
 @prop_assign(NSObject *, target)
-@prop_copy(FWSignalBlock, callback)
+@prop_copy(FWSignalCallback, callback)
 
 //响应属性
 @prop_readonly(id, response)
@@ -81,7 +75,6 @@ TODO("FWSignal NSCopying NSCoding")
 
 //判断方法
 - (BOOL)isName:(NSString *)name;
-- (BOOL)isType:(NSString *)type;
 
 //发送信号
 - (void)send;
@@ -90,5 +83,14 @@ TODO("FWSignal NSCopying NSCoding")
 - (void)success:(id)response;
 - (void)error:(NSError *)error;
 - (BOOL)isError;
+
+@end
+
+#pragma mark -
+@interface FWSignalBus : NSObject
+
+@singleton(FWSignalBus)
+
+- (void)route:(FWSignal *)signal;
 
 @end
