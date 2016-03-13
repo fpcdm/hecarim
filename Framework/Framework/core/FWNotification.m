@@ -43,91 +43,19 @@
 
 - (void)routeNotification:(NSNotification *)notification
 {
-    //1. FWNotificationBlock
-    if ([self.blockHandler trigger:notification.name withObject:notification]) {
-        return;
-    }
-    
-    NSString *selectorName;
-    SEL selector;
-    
-    NSArray *array = [notification.name componentsSeparatedByString:@"."];
-    if (array && array.count > 1) {
-        //NSString *prefix = (NSString *)[array objectAtIndex:0];
-        NSString *clazz = (NSString *)[array objectAtIndex:1];
-        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
-        
-        if (filter && filter.length > 0) {
-            selectorName = [NSString stringWithFormat:@"handleNotification____%@____%@:", clazz, filter];
-            selector = NSSelectorFromString(selectorName);
-            
-            //2. handleNotification(class, notification)
-            if ([self respondsToSelector:selector]) {
-                IGNORED_SELECTOR
-                [self performSelector:selector withObject:notification];
-                IGNORED_END
-                return;
-            }
-            
-            if ([[self.class description] isEqualToString:clazz]) {
-                selectorName = [NSString stringWithFormat:@"handleNotification____%@:", filter];
-                selector = NSSelectorFromString(selectorName);
-                
-                //3. handleNotification(notification)
-                if ([self respondsToSelector:selector]) {
-                    IGNORED_SELECTOR
-                    [self performSelector:selector withObject:notification];
-                    IGNORED_END
-                    return;
-                }
-            }
-        }
-        
-        selectorName = [NSString stringWithFormat:@"handleNotification____%@:", clazz];
-        selector = NSSelectorFromString(selectorName);
-        
-        //4. handleNotification(class)
-        if ([self respondsToSelector:selector]) {
-            IGNORED_SELECTOR
-            [self performSelector:selector withObject:notification];
-            IGNORED_END
-            return;
-        }
-    }
-    
-    //5. handleNotification(name)
-    if ([notification.name hasPrefix:@"notification."]) {
-        selectorName = [notification.name stringByReplacingOccurrencesOfString:@"notification." withString:@"handleNotification____"];
-    } else {
-        selectorName = [NSString stringWithFormat:@"handleNotification____%@:", notification.name];
-    }
-    selectorName = [selectorName stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
-    selectorName = [selectorName stringByReplacingOccurrencesOfString:@"." withString:@"_"];
-    selectorName = [selectorName stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
-    if (![selectorName hasSuffix:@":"]) {
-        selectorName = [selectorName stringByAppendingString:@":"];
-    }
-    
-    selector = NSSelectorFromString(selectorName);
-    if ([self respondsToSelector:selector]) {
-        IGNORED_SELECTOR
-        [self performSelector:selector withObject:notification];
-        IGNORED_END
-        return;
-    }
+    [[FWNoficationBus sharedInstance] route:notification target:self];
+}
 
-    //6. handleNotification()
-    selectorName = @"handleNotification____:";
-    selector = NSSelectorFromString(selectorName);
-    if ([self respondsToSelector:selector]) {
-        IGNORED_SELECTOR
-        [self performSelector:selector withObject:notification];
-        IGNORED_END
-        return;
-    }
+- (void)observeNotification:(NSString *)name
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:name
+                                                  object:nil];
     
-    //7. handleNotification
-    [self handleNotification:notification];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(routeNotification:)
+                                                 name:name
+                                               object:nil];
 }
 
 - (void)observeAllNotifications
@@ -143,18 +71,6 @@
         }
         [self observeNotification:name];
     }
-}
-
-- (void)observeNotification:(NSString *)name
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:name
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(routeNotification:)
-                                                 name:name
-                                               object:nil];
 }
 
 - (void)unobserveNotification:(NSString *)name
@@ -185,13 +101,13 @@
     return [[self class] postNotification:name];
 }
 
-+ (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object
++ (BOOL)postNotification:(NSString *)name withObject:(id)object
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:object];
     return YES;
 }
 
-- (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object
+- (BOOL)postNotification:(NSString *)name withObject:(id)object
 {
     return [[self class] postNotification:name withObject:object];
 }
@@ -204,6 +120,93 @@
 - (BOOL)isName:(NSString *)name
 {
     return [self.name isEqualToString:name];
+}
+
+@end
+
+#pragma mark -
+@implementation FWNoficationBus
+
+@def_singleton(FWNoficationBus)
+
+- (void)route:(NSNotification *)notification target:(NSObject *)target
+{
+    if (!notification || !target) return;
+    
+    //1. FWNotificationBlock
+    if ([target.blockHandler trigger:notification.name withObject:notification]) {
+        return;
+    }
+    
+    NSString *selectorName;
+    SEL selector;
+    
+    if ([notification.name hasPrefix:@"notification."]) {
+        NSArray *array   = [notification.name componentsSeparatedByString:@"."];
+        NSString *clazz  = (NSString *)[array objectAtIndex:1];
+        NSString *filter = array.count > 2 ? (NSString *)[array objectAtIndex:2] : nil;
+        
+        if (filter && filter.length > 0) {
+            selectorName = [NSString stringWithFormat:@"handleNotification____%@____%@:", clazz, filter];
+            selector = NSSelectorFromString(selectorName);
+            
+            //2. handleNotification(class, notification)
+            if ([target respondsToSelector:selector]) {
+                IGNORED_SELECTOR
+                [target performSelector:selector withObject:notification];
+                IGNORED_END
+                return;
+            }
+            
+            if ([[target.class description] isEqualToString:clazz]) {
+                selectorName = [NSString stringWithFormat:@"handleNotification____%@:", filter];
+                selector = NSSelectorFromString(selectorName);
+                
+                //3. handleNotification(notification)
+                if ([target respondsToSelector:selector]) {
+                    IGNORED_SELECTOR
+                    [target performSelector:selector withObject:notification];
+                    IGNORED_END
+                    return;
+                }
+            }
+        }
+        
+        selectorName = [NSString stringWithFormat:@"handleNotification____%@:", clazz];
+        selector = NSSelectorFromString(selectorName);
+        
+        //4. handleNotification(class)
+        if ([target respondsToSelector:selector]) {
+            IGNORED_SELECTOR
+            [target performSelector:selector withObject:notification];
+            IGNORED_END
+            return;
+        }
+    }
+    
+    //5. handleNotification(name)
+    selectorName = [notification.name stringByReplacingOccurrencesOfString:@"notification." withString:@""];
+    selectorName = [NSString stringWithFormat:@"handleNotification____%@:", selectorName];
+    selector = NSSelectorFromString(selectorName);
+    if ([target respondsToSelector:selector]) {
+        IGNORED_SELECTOR
+        [target performSelector:selector withObject:notification];
+        IGNORED_END
+        return;
+    }
+    
+    //6. handleNotification()
+    selectorName = @"handleNotification____:";
+    selector = NSSelectorFromString(selectorName);
+    if ([target respondsToSelector:selector]) {
+        IGNORED_SELECTOR
+        [target performSelector:selector withObject:notification];
+        IGNORED_END
+        return;
+    }
+    
+    //7. handleNotification
+    [target handleNotification:notification];
 }
 
 @end

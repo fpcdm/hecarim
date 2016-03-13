@@ -49,8 +49,8 @@ typedef NSObject* (^FWNotificationBlock)(NSString *name, id block);
 + (BOOL)postNotification:(NSString *)name;
 - (BOOL)postNotification:(NSString *)name;
 
-- (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
-+ (BOOL)postNotification:(NSString *)name withObject:(NSObject *)object;
+- (BOOL)postNotification:(NSString *)name withObject:(id)object;
++ (BOOL)postNotification:(NSString *)name withObject:(id)object;
 
 @end
 
@@ -60,3 +60,13 @@ typedef NSObject* (^FWNotificationBlock)(NSString *name, id block);
 - (BOOL)isName:(NSString *)name;
 
 @end
+
+#pragma mark -
+@interface FWNoficationBus : NSObject
+
+@singleton(FWNoficationBus)
+
+- (void)route:(NSNotification *)notification target:(NSObject *)target;
+
+@end
+
