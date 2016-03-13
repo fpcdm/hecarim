@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, FWTaskState) {
 
 - (void)executeTask
 {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+    @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                    reason:[NSString stringWithFormat:@"task %@ must override executeTask", [self.class description]]
                                  userInfo:nil];
 }

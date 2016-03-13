@@ -38,19 +38,19 @@
     NSString *protocolName = NSStringFromProtocol(protocol);
     NSString *className = NSStringFromClass(implClass);
     if (![implClass conformsToProtocol:@protocol(FWService)]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                        reason:[NSString stringWithFormat:@"service %@ must confirms to protocol %@", className, @"FWService"]
                                      userInfo:nil];
     }
     if (![implClass conformsToProtocol:protocol]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                        reason:[NSString stringWithFormat:@"service %@ must confirms to protocol %@", className, protocolName]
                                      userInfo:nil];
     }
     
     //服务对象已被使用不能修改
     if ([servicePool objectForKey:protocolName]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                        reason:[NSString stringWithFormat:@"service %@ is already in use", protocolName]
                                      userInfo:nil];
     }

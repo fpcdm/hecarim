@@ -28,7 +28,9 @@
 #define FRAMEWORK_XMLVIEW_EXT @"html"
 
 //框架错误域
-#define FRAMEWORK_ERRORDOMAIN @"Framework"
+#define FRAMEWORK_ERROR_DOMAIN @"Framework"
+//框架异常名
+#define FRAMEWORK_EXCEPTION_NAME @"Framework"
 /********<<<框架配置********/
 
 

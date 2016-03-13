@@ -38,19 +38,19 @@
     NSString *protocolName = NSStringFromProtocol(protocol);
     NSString *className = NSStringFromClass(implClass);
     if (![implClass conformsToProtocol:@protocol(FWPlugin)]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                        reason:[NSString stringWithFormat:@"plugin %@ must confirms to protocol %@", className, @"FWPlugin"]
                                      userInfo:nil];
     }
     if (![implClass conformsToProtocol:protocol]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                        reason:[NSString stringWithFormat:@"plugin %@ must confirms to protocol %@", className, protocolName]
                                      userInfo:nil];
     }
     
     //插件对象已被使用不能修改
     if ([pluginPool objectForKey:protocolName]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME
                                        reason:[NSString stringWithFormat:@"plugin %@ is already in use", protocolName]
                                      userInfo:nil];
     }

@@ -19,7 +19,7 @@
 
 + (FWTestException *)exceptionWithExpr:(const char *)expr file:(const char *)file line:(int)line
 {
-    FWTestException *exception = [[FWTestException alloc] initWithName:@"FWUnitTest" reason:@"Assertion failed" userInfo:nil];
+    FWTestException *exception = [[FWTestException alloc] initWithName:FRAMEWORK_EXCEPTION_NAME reason:@"Assertion failed" userInfo:nil];
     exception.expr = @(expr);
     exception.file = [@(file) lastPathComponent];
     exception.line = line;
@@ -40,7 +40,7 @@
 - (void)expected:(BOOL)value
 {
     if (!value) {
-        @throw [NSException exceptionWithName:@"FWUnitTest" reason:@"Assertion failed" userInfo:nil];
+        @throw [NSException exceptionWithName:FRAMEWORK_EXCEPTION_NAME reason:@"Assertion failed" userInfo:nil];
     }
 }
 
@@ -56,9 +56,6 @@
 @implementation FWUnit
 {
     NSMutableArray *_testCases;
-    
-    NSUInteger _failedCount;
-    NSUInteger _succeedCount;
 }
 
 @def_singleton(FWUnit)
@@ -68,9 +65,12 @@
     self = [super init];
     if (self) {
         _testCases = [[NSMutableArray alloc] init];
-        
-        NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
-        [_testCases addObjectsFromArray:classes];
+
+#if FRAMEWORK_TEST
+        //自动添加所有测试用例
+        NSArray *testClasses = [FWRuntime subclassesOfClass:[FWTestCase class]];
+        [_testCases addObjectsFromArray:testClasses];
+#endif
     }
     return self;
 }
@@ -96,10 +96,10 @@
     NSMutableString *testLog = [[NSMutableString alloc] init];
     
     //获取测试列表
-    //NSArray *classes = [FWRuntime subclassesOfClass:[FWTestCase class]];
-    NSArray *classes = _testCases;
+    NSUInteger failedCount = 0;
+    NSUInteger succeedCount = 0;
     CFTimeInterval beginTime = CACurrentMediaTime();
-    for (NSString *className in classes) {
+    for (NSString *className in _testCases) {
         Class classType = NSClassFromString(className);
         if (nil == classType) continue;
         
@@ -150,12 +150,12 @@
         
         if ( testCasePassed ) {
             //测试通过
-            _succeedCount += 1;
+            succeedCount += 1;
             
             [testLog appendFormat:@"[  OK  ] : %@ ( %.003fs )\n", formatClass, time];
         } else {
             //测试失败
-            _failedCount += 1;
+            failedCount += 1;
             [testLog appendFormat:@"[ FAIL ] : %@ ( %.003fs )\n", formatClass, time];
             [testLog appendFormat:@"    %@\n", formatError];
         }
@@ -165,8 +165,8 @@
     CFTimeInterval totalTime = endTime - beginTime;
     
     //统计信息
-    NSUInteger totalCount = _succeedCount + _failedCount;
-    float passRate = totalCount > 0 ? (_succeedCount * 1.0f) / (totalCount * 1.0f) * 100.0f : 100.0f;
+    NSUInteger totalCount = succeedCount + failedCount;
+    float passRate = totalCount > 0 ? (succeedCount * 1.0f) / (totalCount * 1.0f) * 100.0f : 100.0f;
     
     //显示日志
     NSString *log = [NSString stringWithFormat:@"\n\n\
@@ -174,8 +174,8 @@
   TOTAL  : [ %@ ] ( %lu/%lu ) ( %.0f%@ ) ( %.003fs )\n\
 ========== UNITTEST  ==========\n",
                      testLog,
-                     _failedCount < 1 ? @"OK" : @"FAIL",
-                     (unsigned long)_succeedCount,
+                     failedCount < 1 ? @"OK" : @"FAIL",
+                     (unsigned long)succeedCount,
                      (unsigned long)totalCount,
                      passRate,
                      @"%%",
