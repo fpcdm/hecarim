@@ -94,3 +94,38 @@ typedef void (^FWSignalCallback)(FWSignal *signal);
 - (void)route:(FWSignal *)signal;
 
 @end
+
+#pragma mark -
+@interface FWSignalKvo : NSObject
+
+@prop_unsafe(id, source)
+
+- (void)observeProperty:(NSString *)name;
+- (void)observeAllProperties;
+- (void)unobserveProperty:(NSString *)name;
+- (void)unobserveAllProperties;
+
+@end
+
+//object,property,block||property,block
+typedef NSObject* (^FWSignalKvoBlock)(id object, id property, ...);
+
+@interface NSObject (FWSignalKvo)
+
+@prop_readonly(FWSignalKvoBlock, onPropertyChanging);
+@prop_readonly(FWSignalKvoBlock, onPropertyChanged);
+
+- (FWSignalKvo *)kvoObserver;
+
+- (void)observeProperty:(NSString *)name;
+- (void)observeAllProperties;
+- (void)unobserveProperty:(NSString *)name;
+- (void)unobserveAllProperties;
+
+- (void)propertyChanged:(NSString *)name;
+- (void)propertyChanged:(NSString *)name value:(id)value;
+
+- (void)propertyChanging:(NSString *)name;
+- (void)propertyChanging:(NSString *)name value:(id)value;
+
+@end

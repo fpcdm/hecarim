@@ -290,6 +290,242 @@
 @end
 
 #pragma mark -
+@implementation FWSignalKvo
+{
+    NSMutableArray *_properties;
+}
+
+@def_prop_unsafe(id, source);
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _properties = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [self unobserveAllProperties];
+    
+    [_properties removeAllObjects];
+    _properties = nil;
+}
+
+- (void)observeProperty:(NSString *)name
+{
+    if (!name || [_properties containsObject:name]) return;
+    
+    [self.source addObserver:self
+                  forKeyPath:name
+                     options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
+                     context:NULL];
+    [_properties addObject:name];
+}
+
+- (void)observeAllProperties
+{
+    NSArray *classProperties = [FWRuntime propertiesOfClass:[self.source class]];
+    for (NSString *name in classProperties) {
+        [self observeProperty:name];
+    }
+}
+
+- (void)unobserveProperty:(NSString *)name
+{
+    if (![_properties containsObject:name]) return;
+    
+    [self.source removeObserver:self forKeyPath:name];
+    [_properties removeObject:name];
+}
+
+- (void)unobserveAllProperties
+{
+    for (NSString *name in _properties) {
+        [self.source removeObserver:self forKeyPath:name];
+    }
+    [_properties removeAllObjects];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    id oldValue = [change objectForKey:@"old"];
+    id newValue = [change objectForKey:@"new"];
+    
+    if (oldValue) {
+        FWSignal *signal = [FWSignal signal];
+        signal.name = [NSString stringWithFormat:@"signal.%@.%@Changing", [[object class] description], keyPath];
+        signal.source = object;
+        signal.target = self.source;
+        signal.object = [oldValue isKindOfClass:[NSNull class]] ? nil : oldValue;
+        
+        [signal send];
+    }
+    
+    if (newValue) {
+        FWSignal *signal = [FWSignal signal];
+        signal.name = [NSString stringWithFormat:@"signal.%@.%@Changed", [[object class] description], keyPath];
+        signal.source = object;
+        signal.target = self.source;
+        signal.object = [newValue isKindOfClass:[NSNull class]] ? nil : newValue;
+        
+        [signal send];
+    }
+}
+
+@end
+
+@implementation NSObject (FWSignalKvo)
+
+@def_prop_dynamic(FWSignalKvoBlock, onPropertyChanging);
+@def_prop_dynamic(FWSignalKvoBlock, onPropertyChanged);
+
+- (FWSignalKvo *)kvoObserver
+{
+    FWSignalKvo *observer = [self getAssociatedObjectForKey:"kvoObserver"];
+    if (nil == observer) {
+        observer = [[FWSignalKvo alloc] init];
+        observer.source = self;
+        
+        [self retainAssociatedObject:observer forKey:"kvoObserver"];
+    }
+    return observer;
+}
+
+- (FWSignalKvoBlock)onPropertyChanging
+{
+    @weakify(self);
+    
+    FWSignalKvoBlock onBlock = ^ NSObject* (id object, id property, ...)
+    {
+        @strongify(self);
+        
+        //object,property,block||property,block
+        if ([object isKindOfClass:[NSString class]]) {
+            NSString *name = [object stringByAppendingString:@"Changing"];
+            if (property) {
+                [self.blockHandler setBlock:name block:property];
+            } else {
+                [self.blockHandler removeBlock:name];
+            }
+        } else {
+            va_list args;
+            va_start(args, property);
+            id block = va_arg(args, id);
+            va_end(args);
+            
+            [object observeProperty:property];
+            [object addSignalResponder:self];
+            
+            NSString *name = [NSString stringWithFormat:@"signal.%@.%@Changing", [[object class] description], property];
+            if (block) {
+                [self.blockHandler setBlock:name block:block];
+            } else {
+                [self.blockHandler removeBlock:name];
+            }
+        }
+        
+        return self;
+    };
+    
+    return [onBlock copy];
+}
+
+- (FWSignalKvoBlock)onPropertyChanged
+{
+    @weakify(self);
+    
+    FWSignalKvoBlock onBlock = ^ NSObject* (id object, id property, ...)
+    {
+        @strongify(self);
+        
+        //object,property,block||property,block
+        if ([object isKindOfClass:[NSString class]]) {
+            NSString *name = [object stringByAppendingString:@"Changed"];
+            if (property) {
+                [self.blockHandler setBlock:name block:property];
+            } else {
+                [self.blockHandler removeBlock:name];
+            }
+        } else {
+            va_list args;
+            va_start(args, property);
+            id block = va_arg(args, id);
+            va_end(args);
+            
+            [object observeProperty:property];
+            [object addSignalResponder:self];
+            
+            NSString *name = [NSString stringWithFormat:@"signal.%@.%@Changed", [[object class] description], property];
+            if (block) {
+                [self.blockHandler setBlock:name block:block];
+            } else {
+                [self.blockHandler removeBlock:name];
+            }
+        }
+        
+        return self;
+    };
+    
+    return [onBlock copy];
+}
+
+- (void)observeProperty:(NSString *)name
+{
+    [self.kvoObserver observeProperty:name];
+}
+
+- (void)observeAllProperties
+{
+    [self.kvoObserver observeAllProperties];
+}
+
+- (void)unobserveProperty:(NSString *)name
+{
+    FWSignalKvo *observer = [self getAssociatedObjectForKey:"kvoObserver"];
+    if (observer) {
+        [observer unobserveProperty:name];
+    }
+}
+
+- (void)unobserveAllProperties
+{
+    FWSignalKvo *observer = [self getAssociatedObjectForKey:"kvoObserver"];
+    if (observer) {
+        [observer unobserveAllProperties];
+        [self removeAssociatedObjectForKey:"kvoObserver"];
+    }
+}
+
+- (void)propertyChanging:(NSString *)name
+{
+    [self propertyChanging:name value:nil];
+}
+
+- (void)propertyChanging:(NSString *)name value:(id)value
+{
+    NSString *signal = [NSString stringWithFormat:@"signal.%@.%@Changing", [[self class] description], name];
+    NSString *object = [value isKindOfClass:[NSNull class]] ? nil : value;
+    [self sendSignal:signal withObject:object];
+}
+
+- (void)propertyChanged:(NSString *)name
+{
+    [self propertyChanged:name value:nil];
+}
+
+- (void)propertyChanged:(NSString *)name value:(id)value
+{
+    NSString *signal = [NSString stringWithFormat:@"signal.%@.%@Changed", [[self class] description], name];
+    NSString *object = [value isKindOfClass:[NSNull class]] ? nil : value;
+    [self sendSignal:signal withObject:object];
+}
+
+@end
+
+#pragma mark -
 //UnitTest
 #if FRAMEWORK_TEST
 
