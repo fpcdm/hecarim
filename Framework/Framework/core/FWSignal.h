@@ -108,6 +108,7 @@ typedef void (^FWSignalCallback)(FWSignal *signal);
 @end
 
 #pragma mark -
+//object,property,block||property,block
 typedef NSObject* (^FWSignalKvoBlock)(id object, id property, ...);
 
 @interface NSObject (FWSignalKvoResponder)

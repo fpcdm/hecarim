@@ -352,26 +352,13 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     id oldValue = [change objectForKey:@"old"];
-    id newValue = [change objectForKey:@"new"];
-    
     if (oldValue) {
-        FWSignal *signal = [FWSignal signal];
-        signal.name = [NSString stringWithFormat:@"signal.%@.%@Changing", [[object class] description], keyPath];
-        signal.source = object;
-        signal.target = self.source;
-        signal.object = [oldValue isKindOfClass:[NSNull class]] ? nil : oldValue;
-        
-        [signal send];
+        [object propertyChanging:keyPath value:oldValue];
     }
     
+    id newValue = [change objectForKey:@"new"];
     if (newValue) {
-        FWSignal *signal = [FWSignal signal];
-        signal.name = [NSString stringWithFormat:@"signal.%@.%@Changed", [[object class] description], keyPath];
-        signal.source = object;
-        signal.target = self.source;
-        signal.object = [newValue isKindOfClass:[NSNull class]] ? nil : newValue;
-        
-        [signal send];
+        [object propertyChanged:keyPath value:newValue];
     }
 }
 
@@ -513,8 +500,7 @@
 - (void)propertyChanging:(NSString *)name value:(id)value
 {
     NSString *signal = [NSString stringWithFormat:@"signal.%@.%@Changing", [[self class] description], name];
-    NSString *object = [value isKindOfClass:[NSNull class]] ? nil : value;
-    [self sendSignal:signal withObject:object];
+    [self sendSignal:signal withObject:[value isKindOfClass:[NSNull class]] ? nil : value];
 }
 
 - (void)propertyChanged:(NSString *)name
@@ -525,8 +511,7 @@
 - (void)propertyChanged:(NSString *)name value:(id)value
 {
     NSString *signal = [NSString stringWithFormat:@"signal.%@.%@Changed", [[self class] description], name];
-    NSString *object = [value isKindOfClass:[NSNull class]] ? nil : value;
-    [self sendSignal:signal withObject:object];
+    [self sendSignal:signal withObject:[value isKindOfClass:[NSNull class]] ? nil : value];
 }
 
 @end
