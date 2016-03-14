@@ -279,6 +279,20 @@ TEST(onNotification)
     EXPECTED(10 == value)
 }
 
+TEST(makeNotification)
+{
+    self.onNotification(makeNotification(FWTestCase_core_FWNotification_Test, CHANGED_MAKE), ^(NSNotification *nofitication){
+        EXPECTED([nofitication.name isEqualToString:@"notification.FWTestCase_core_FWNotification_Test.CHANGED_MAKE"])
+        value += 1;
+    });
+    
+    TIMES(10)
+    {
+        [obj postNotification:makeNotification(FWTestCase_core_FWNotification_Test, CHANGED_MAKE)];
+    }
+    EXPECTED(10 == value)
+}
+
 TEARDOWN()
 {
     obj = nil;

@@ -327,8 +327,8 @@
 
 - (void)observeAllProperties
 {
-    NSArray *classProperties = [FWRuntime propertiesOfClass:[self.source class]];
-    for (NSString *name in classProperties) {
+    NSArray *properties = [FWRuntime propertiesOfClass:[self.source class] mutable:YES];
+    for (NSString *name in properties) {
         [self observeProperty:name];
     }
 }
@@ -377,7 +377,8 @@
 
 @end
 
-@implementation NSObject (FWSignalKvo)
+#pragma mark -
+@implementation NSObject (FWSignalKvoResponder)
 
 @def_prop_dynamic(FWSignalKvoBlock, onPropertyChanging);
 @def_prop_dynamic(FWSignalKvoBlock, onPropertyChanged);
@@ -498,6 +499,11 @@
         [self removeAssociatedObjectForKey:"kvoObserver"];
     }
 }
+
+@end
+
+#pragma mark -
+@implementation NSObject (FWSignalKvoSender)
 
 - (void)propertyChanging:(NSString *)name
 {
