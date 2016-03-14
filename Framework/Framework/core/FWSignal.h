@@ -100,15 +100,14 @@ typedef void (^FWSignalCallback)(FWSignal *signal);
 
 @prop_unsafe(id, source)
 
-- (void)observeProperty:(NSString *)property;
+- (void)observeProperty:(NSString *)name;
 - (void)observeAllProperties;
-- (void)unobserveProperty:(NSString *)property;
+- (void)unobserveProperty:(NSString *)name;
 - (void)unobserveAllProperties;
 
 @end
 
 #pragma mark -
-//object,property,block||property,block
 typedef NSObject* (^FWSignalKvoBlock)(id object, id property, ...);
 
 @interface NSObject (FWSignalKvoResponder)
@@ -118,9 +117,9 @@ typedef NSObject* (^FWSignalKvoBlock)(id object, id property, ...);
 
 - (FWSignalKvo *)kvoObserver;
 
-- (void)observeProperty:(NSString *)property;
+- (void)observeProperty:(NSString *)name;
 - (void)observeAllProperties;
-- (void)unobserveProperty:(NSString *)property;
+- (void)unobserveProperty:(NSString *)name;
 - (void)unobserveAllProperties;
 
 @end
@@ -128,10 +127,10 @@ typedef NSObject* (^FWSignalKvoBlock)(id object, id property, ...);
 #pragma mark -
 @interface NSObject (FWSignalKvoSender)
 
-- (void)propertyChanging:(NSString *)property;
-- (void)propertyChanging:(NSString *)property value:(id)value;
+- (void)propertyChanging:(NSString *)name;
+- (void)propertyChanging:(NSString *)name value:(id)value;
 
-- (void)propertyChanged:(NSString *)property;
-- (void)propertyChanged:(NSString *)property value:(id)value;
+- (void)propertyChanged:(NSString *)name;
+- (void)propertyChanged:(NSString *)name value:(id)value;
 
 @end
