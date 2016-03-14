@@ -180,7 +180,6 @@
     }
     
     return propertyNames;
-    
 }
 
 + (BOOL)isReadonly:(const char *)attr
@@ -193,29 +192,26 @@
 
 + (NSArray *)propertiesOfClass:(Class)clazz
 {
-    NSDictionary *properties = [self allProperties:clazz];
-    NSArray *result = [properties allKeys];
-    return result;
+    return [self propertiesOfClass:clazz mutable:NO];
 }
 
-+ (NSArray *)propertiesOfClass:(Class)clazz withPrefix:(NSString *)prefix
++ (NSArray *)propertiesOfClass:(Class)clazz mutable:(BOOL)mutable
 {
-    NSArray *properties = [self propertiesOfClass:clazz];
-    if (nil == properties || 0 == properties.count) {
-        return properties;
+    NSDictionary *properties = [self allProperties:clazz];
+    //所有属性
+    if (!mutable) {
+        NSArray *result = [properties allKeys];
+        return result;
     }
     
-    if (nil == prefix) {
-        return properties;
-    }
-    
+    //非只读属性
     NSMutableArray *result = [NSMutableArray array];
     for (NSString *property in properties) {
-        if (![property hasPrefix:prefix]) continue;
+        NSString *attrName = [properties objectForKey:property];
+        if ([self isReadonly:[attrName UTF8String]]) continue;
         
         [result addObject:property];
     }
-    
     return result;
 }
 
@@ -224,7 +220,7 @@
 {
     if (!obj) return nil;
     
-    NSDictionary *properties = [self allProperties:[obj class]];
+    NSArray *properties = [self propertiesOfClass:[obj class]];
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     for (NSString *property in properties) {
         //检查是否可获取属性
@@ -255,12 +251,9 @@
     id newObj = zone ? [[clazz allocWithZone:zone] init] : [[clazz alloc] init];
     if (!newObj) return nil;
     
-    NSDictionary *properties = [self allProperties:clazz];
+    //忽略只读属性
+    NSArray *properties = [self propertiesOfClass:clazz mutable:YES];
     for (NSString *property in properties) {
-        //忽略只读属性
-        NSString *attrName = [properties objectForKey:property];
-        if ([self isReadonly:[attrName UTF8String]]) continue;
-        
         id value = [obj valueForKey:property];
         [newObj setValue:value forKey:property];
     }
@@ -284,7 +277,7 @@
 
 + (void)decodeObject:(id)obj withCoder:(NSCoder *)aDecoder
 {
-    NSDictionary *properties = [self allProperties:[obj class]];
+    NSArray *properties = [self propertiesOfClass:[obj class]];
     for (NSString *property in properties) {
         id value = [aDecoder decodeObjectForKey:property];
         if (value != nil && value != [NSNull null]) {

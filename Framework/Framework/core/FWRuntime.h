@@ -20,7 +20,7 @@
 
 //获取类属性
 + (NSArray *)propertiesOfClass:(Class)clazz;
-+ (NSArray *)propertiesOfClass:(Class)clazz withPrefix:(NSString *)prefix;
++ (NSArray *)propertiesOfClass:(Class)clazz mutable:(BOOL)mutable;
 
 //获取对象属性
 + (NSDictionary *)propertiesOfObject:(id)obj;
